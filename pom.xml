@@ -66,7 +66,7 @@
 		<dependency>
 			<groupId>ca.uhn.hapi.fhir</groupId>
 			<artifactId>hapi-fhir-structures-r4</artifactId>
-			<version>5.7.0</version>
+			<version>6.1.0</version>
 		</dependency>
 
 		<!--Provides Feasibility to interact with HAPI FHIR JPA Server-->
@@ -106,7 +106,7 @@
 		<dependency>
 			<groupId>com.okta.spring</groupId>
 			<artifactId>okta-spring-boot-starter</artifactId>
-			<version>2.1.5</version>
+			<version>2.1.6</version>
 		</dependency>
 
 		<dependency>
