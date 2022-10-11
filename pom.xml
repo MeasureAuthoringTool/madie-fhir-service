@@ -5,7 +5,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.6.4</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>gov.cms.madie</groupId>
 	<artifactId>madie-fhir-service</artifactId>
@@ -16,7 +16,7 @@
 	<properties>
 		<java.version>16</java.version>
 		<springfox.version>3.0.0</springfox.version>
-		<cqframework.version>1.5.7</cqframework.version>
+		<cqframework.version>1.5.11</cqframework.version>
 	</properties>
 
 	<repositories>
@@ -169,7 +169,7 @@
 										</goals>
 									</pluginExecutionFilter>
 									<action>
-										<ignore></ignore>
+										<ignore/>
 									</action>
 								</pluginExecution>
 							</pluginExecutions>
