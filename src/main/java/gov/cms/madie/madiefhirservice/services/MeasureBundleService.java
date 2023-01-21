@@ -10,7 +10,6 @@ import org.hl7.fhir.r4.model.Library;
 import org.hl7.fhir.r4.model.Resource;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,11 +22,14 @@ public class MeasureBundleService {
   private final MeasureTranslatorService measureTranslatorService;
   private final LibraryTranslatorService libraryTranslatorService;
   private final LibraryService libraryService;
+  private final CqlElmTranslatorClient cqlElmTranslatorClient;
 
   /**
    * Creates measure bundle that contains measure, main library, and included libraries resources
    */
-  public Bundle createMeasureBundle(Measure madieMeasure) {
+  public Bundle createMeasureBundle(Measure madieMeasure, String accessToken) {
+    madieMeasure.setCql(cqlElmTranslatorClient.getFormattedCql(madieMeasure.getCql(), accessToken));
+
     org.hl7.fhir.r4.model.Measure measure =
         measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure);
     // Bundle entry for Measure resource

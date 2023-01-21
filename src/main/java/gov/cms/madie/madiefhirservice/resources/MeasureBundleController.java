@@ -32,8 +32,10 @@ public class MeasureBundleController {
       consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
   public ResponseEntity<String> getMeasureBundle(
       @RequestBody @Validated(Measure.ValidationSequence.class) Measure measure,
-      @RequestHeader(value = HttpHeaders.ACCEPT, required = false) String accept) {
-    Bundle bundle = measureBundleService.createMeasureBundle(measure);
+      @RequestHeader(value = HttpHeaders.ACCEPT, required = false) String accept,
+      @RequestHeader("Authorization") String accessToken) {
+
+    Bundle bundle = measureBundleService.createMeasureBundle(measure, accessToken);
 
     if (accept != null
         && accept.toUpperCase().contains(MediaType.APPLICATION_XML_VALUE.toUpperCase())) {

@@ -21,3 +21,9 @@ okta:
   oauth2:
     issuer: ${OKTA_ISSUER:https://dev-18092578.okta.com/oauth2/default}
     audience: ${OKTA_AUDIENCE:api://default}
+
+madie:
+  cql-elm:
+    service:
+      base-url: ${ELM_TRANSLATOR_SERVICE_URL:http://localhost:8084/api}
+      cql-formatter: /cql/format

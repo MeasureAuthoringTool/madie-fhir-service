@@ -37,6 +37,8 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
 
   @Mock private LibraryTranslatorService libraryTranslatorService;
 
+  @Mock private CqlElmTranslatorClient cqlElmTranslatorClient;
+
   @Mock private LibraryService libraryService;
 
   private Measure madieMeasure;
@@ -62,6 +64,8 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
 
   @Test
   public void testCreateMeasureBundle() {
+    when(cqlElmTranslatorClient.getFormattedCql(anyString(), anyString()))
+        .thenReturn(madieMeasure.getCql());
     when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure))
         .thenReturn(measure);
     when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class))).thenReturn(library);
@@ -76,7 +80,7 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
         .when(libraryService)
         .getIncludedLibraries(anyString(), anyMap());
 
-    Bundle bundle = measureBundleService.createMeasureBundle(madieMeasure);
+    Bundle bundle = measureBundleService.createMeasureBundle(madieMeasure, "testUser");
 
     assertThat(bundle.getEntry().size(), is(3));
     assertThat(bundle.getType(), is(equalTo(Bundle.BundleType.TRANSACTION)));
@@ -95,6 +99,8 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
 
   @Test
   public void testCreateMeasureBundleWhenIncludedLibraryNotFoundInHapi() {
+    when(cqlElmTranslatorClient.getFormattedCql(anyString(), anyString()))
+        .thenReturn(madieMeasure.getCql());
     when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure))
         .thenReturn(measure);
     when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class))).thenReturn(library);
@@ -104,7 +110,7 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
     Exception exception =
         Assertions.assertThrows(
             HapiLibraryNotFoundException.class,
-            () -> measureBundleService.createMeasureBundle(madieMeasure));
+            () -> measureBundleService.createMeasureBundle(madieMeasure, "testUser"));
 
     assertThat(
         exception.getMessage(),
