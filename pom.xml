@@ -67,14 +67,14 @@
 		<dependency>
 			<groupId>ca.uhn.hapi.fhir</groupId>
 			<artifactId>hapi-fhir-structures-r4</artifactId>
-			<version>5.7.0</version>
+			<version>6.4.0</version>
 		</dependency>
 
 		<!-- Validation resources for FHIR validations -->
 		<dependency>
 			<groupId>ca.uhn.hapi.fhir</groupId>
 			<artifactId>hapi-fhir-validation</artifactId>
-			<version>5.7.9</version>
+			<version>6.4.0</version>
 		</dependency>
 		<dependency>
 			<groupId>ca.uhn.hapi.fhir</groupId>
