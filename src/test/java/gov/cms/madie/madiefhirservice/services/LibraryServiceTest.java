@@ -143,7 +143,7 @@ class LibraryServiceTest implements LibraryHelper, ResourceFileUtil {
 
     when(hapiFhirServer.fetchLibraryBundleByNameAndVersion(anyString(), anyString()))
         .thenReturn(new Bundle());
-    when(libraryTranslatorService.convertToFhirLibrary(cqlLibrary)).thenReturn(library);
+    when(libraryTranslatorService.convertToFhirLibrary(cqlLibrary, null)).thenReturn(library);
     when(hapiFhirServer.createResource(any(Library.class))).thenReturn(new MethodOutcome());
     when(humanReadableService.generateLibraryHumanReadable(any(Library.class)))
         .thenReturn("<div>Narrative Text</div>");

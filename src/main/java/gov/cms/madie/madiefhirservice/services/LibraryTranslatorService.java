@@ -48,7 +48,7 @@ public class LibraryTranslatorService {
     this.libCqlVisitorFactory = libCqlVisitorFactory;
   }
 
-  public Library convertToFhirLibrary(CqlLibrary cqlLibrary) {
+  public Library convertToFhirLibrary(CqlLibrary cqlLibrary, ProgramUseContext programUseContext) {
     var visitor = libCqlVisitorFactory.visit(cqlLibrary.getCql());
     Library library = new Library();
     library.setId(cqlLibrary.getId());
@@ -77,8 +77,8 @@ public class LibraryTranslatorService {
     identifier.setSystem("https://madie.cms.gov/login");
     identifier.setValue(cqlLibrary.getId());
     library.setIdentifier(List.of(identifier));
-    if (cqlLibrary.getProgramUseContext() != null) {
-      library.setUseContext(List.of(convertUseContext(cqlLibrary.getProgramUseContext())));
+    if (programUseContext != null) {
+      library.setUseContext(List.of(convertUseContext(programUseContext)));
     }
     // TODO: probably have to revisit this. Human Readable feature is not yet ready
     // result.setText(findHumanReadable(lib.getMeasureId()));
