@@ -11,6 +11,7 @@ import gov.cms.madie.madiefhirservice.utils.MeasureTestHelper;
 import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
 import gov.cms.madie.models.library.CqlLibrary;
 import gov.cms.madie.models.measure.Measure;
+import gov.cms.madie.models.common.ProgramUseContext;
 
 import java.security.Principal;
 import org.hl7.fhir.instance.model.api.IIdType;
@@ -86,7 +87,9 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
   public void testCreateMeasureBundle() {
     when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure))
         .thenReturn(measure);
-    when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class))).thenReturn(library);
+    when(libraryTranslatorService.convertToFhirLibrary(
+            any(CqlLibrary.class), any(ProgramUseContext.class)))
+        .thenReturn(library);
 
     doAnswer(
             invocation -> {
@@ -124,7 +127,9 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
   public void testCreateMeasureBundleWhenIncludedLibraryNotFoundInHapi() {
     when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure))
         .thenReturn(measure);
-    when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class))).thenReturn(library);
+    when(libraryTranslatorService.convertToFhirLibrary(
+            any(CqlLibrary.class), any(ProgramUseContext.class)))
+        .thenReturn(library);
     doThrow(new HapiLibraryNotFoundException("FHIRHelpers", "4.0.001"))
         .when(libraryService)
         .getIncludedLibraries(anyString(), anyMap());
@@ -160,7 +165,9 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
   public void testCreateMeasureBundleForExport() {
     when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure))
         .thenReturn(measure);
-    when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class))).thenReturn(library);
+    when(libraryTranslatorService.convertToFhirLibrary(
+            any(CqlLibrary.class), any(ProgramUseContext.class)))
+        .thenReturn(library);
 
     doAnswer(
             invocation -> {

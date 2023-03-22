@@ -32,6 +32,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.isNull;
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.eq;
 import static org.mockito.Mockito.times;
@@ -143,7 +144,8 @@ class LibraryServiceTest implements LibraryHelper, ResourceFileUtil {
 
     when(hapiFhirServer.fetchLibraryBundleByNameAndVersion(anyString(), anyString()))
         .thenReturn(new Bundle());
-    when(libraryTranslatorService.convertToFhirLibrary(cqlLibrary)).thenReturn(library);
+    when(libraryTranslatorService.convertToFhirLibrary(eq(cqlLibrary), isNull()))
+        .thenReturn(library);
     when(hapiFhirServer.createResource(any(Library.class))).thenReturn(new MethodOutcome());
     when(humanReadableService.generateLibraryHumanReadable(any(Library.class)))
         .thenReturn("<div>Narrative Text</div>");

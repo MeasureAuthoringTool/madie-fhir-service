@@ -104,7 +104,7 @@ public class LibraryService {
           cqlLibrary.getCqlLibraryName(), cqlLibrary.getVersion().toString());
     }
 
-    Library library = libraryTranslatorService.convertToFhirLibrary(cqlLibrary);
+    Library library = libraryTranslatorService.convertToFhirLibrary(cqlLibrary, null);
     library.setText(createLibraryNarrativeText(library));
     hapiFhirServer.createResource(library);
     return library;

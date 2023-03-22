@@ -12,6 +12,7 @@ import org.hl7.fhir.r4.model.Coding;
 import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.Library;
 import org.hl7.fhir.r4.model.Identifier.IdentifierUse;
+import org.hl7.fhir.r4.model.codesystems.Program;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -51,7 +52,7 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
     var visitor = new LibraryCqlVisitorFactory().visit(exm1234Cql);
     when(libCqlVisitorFactory.visit(anyString())).thenReturn(visitor);
 
-    Library library = libraryTranslatorService.convertToFhirLibrary(cqlLibrary);
+    Library library = libraryTranslatorService.convertToFhirLibrary(cqlLibrary, null);
     assertEquals(library.getName(), cqlLibrary.getCqlLibraryName());
     assertEquals(library.getVersion(), cqlLibrary.getVersion().toString());
     assertEquals(library.getDataRequirement().size(), visitor.getDataRequirements().size());
@@ -70,17 +71,14 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
   public void convertToFhirLibraryWithProgramUseContext() {
     var visitor = new LibraryCqlVisitorFactory().visit(exm1234Cql);
     when(libCqlVisitorFactory.visit(anyString())).thenReturn(visitor);
-    CqlLibrary cqlLibraryWithPUC =
-        cqlLibrary
-            .toBuilder()
-            .programUseContext(
-                ProgramUseContext.builder()
-                    .code("code")
-                    .display("display")
-                    .codeSystem("code system")
-                    .build())
+    CqlLibrary cqlLibraryWithNoPUC = cqlLibrary.toBuilder().build();
+    ProgramUseContext PUC =
+        ProgramUseContext.builder()
+            .code("code")
+            .display("display")
+            .codeSystem("code system")
             .build();
-    Library library = libraryTranslatorService.convertToFhirLibrary(cqlLibraryWithPUC);
+    Library library = libraryTranslatorService.convertToFhirLibrary(cqlLibraryWithNoPUC, PUC);
     Coding code = new Coding();
     code.setSystem(UriConstants.UseContext.CODE_SYSTEM_URI);
     code.setCode("program");
@@ -98,7 +96,7 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
     cqlLibrary.setElmJson("ELMJSON");
     cqlLibrary.setElmXml("ELMXML");
 
-    Library library = libraryTranslatorService.convertToFhirLibrary(cqlLibrary);
+    Library library = libraryTranslatorService.convertToFhirLibrary(cqlLibrary, null);
     assertThat(library.getName(), is(equalTo(cqlLibrary.getCqlLibraryName())));
     assertThat(library.getContent(), is(notNullValue()));
     assertThat(library.getContent().size(), is(equalTo(3)));
