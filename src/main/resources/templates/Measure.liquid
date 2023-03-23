@@ -485,7 +485,7 @@
                         {% for useContext in Measure.useContext %}
                             <tr>
                                 <td>{{useContext.code.code}}</td>
-                                <td>{{(useContext.valueCodeableConcept).text}}</td>
+                                <td>{{useContext.value.coding.first().code}}</td>
                             </tr>
                         {% endfor %}
                     </table>
