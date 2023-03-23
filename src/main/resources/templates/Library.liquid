@@ -187,8 +187,8 @@
                         {% for useContext in Library.useContext %}
                             <tr>
                                 <td>{{useContext.code.code}}</td>
-                                <td>{{(useContext.value as CodeableConcept).coding.first().code}}</td>
-                                <td>{{(useContext.value as CodeableConcept).coding.first().display.escape('html')}}</td>
+                                <td>{{useContext.value.coding.first().code}}</td>
+                                <td>{{useContext.value.coding.first().display.escape('html')}}</td>
                             </tr>
                         {% endfor %}
                     </table>
