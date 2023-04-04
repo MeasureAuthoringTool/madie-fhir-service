@@ -92,12 +92,12 @@ class ExportServiceTest implements ResourceFileUtil {
         List.of(
             "ExportTest-v1.0.000-FHIR.json",
             "ExportTest-v1.0.000-FHIR.xml",
-            "/cql/ExportTest-0.0.000.cql",
-            "/cql/FHIRHelpers-4.1.000.cql",
-            "/resources/ExportTest-0.0.000.json",
-            "/resources/ExportTest-0.0.000.xml",
-            "/resources/FHIRHelpers-4.1.000.json",
-            "/resources/FHIRHelpers-4.1.000.xml",
+            "cql/ExportTest-0.0.000.cql",
+            "cql/FHIRHelpers-4.1.000.cql",
+            "resources/ExportTest-0.0.000.json",
+            "resources/ExportTest-0.0.000.xml",
+            "resources/FHIRHelpers-4.1.000.json",
+            "resources/FHIRHelpers-4.1.000.xml",
             "ExportTest-v1.0.000-FHIR.html");
 
     ZipInputStream zipInputStream = new ZipInputStream(new ByteArrayInputStream(out.toByteArray()));

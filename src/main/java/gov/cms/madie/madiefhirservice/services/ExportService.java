@@ -36,8 +36,8 @@ public class ExportService {
   private final HumanReadableService humanReadableService;
 
   private static final String TEXT_CQL = "text/cql";
-  private static final String CQL_DIRECTORY = "/cql/";
-  private static final String RESOURCES_DIRECTORY = "/resources/";
+  private static final String CQL_DIRECTORY = "cql/";
+  private static final String RESOURCES_DIRECTORY = "resources/";
 
   public void createExport(
       Measure madieMeasure, OutputStream outputStream, Principal principal, String accessToken) {
