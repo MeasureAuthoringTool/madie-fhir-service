@@ -3,22 +3,21 @@ package gov.cms.madie.madiefhirservice.services;
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.util.BundleUtil;
 import ca.uhn.fhir.util.OperationOutcomeUtil;
-import gov.cms.madie.madiefhirservice.config.ValidationConfig;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.hl7.fhir.instance.model.api.IBaseBundle;
 import org.hl7.fhir.instance.model.api.IBaseResource;
 import org.hl7.fhir.r4.model.OperationOutcome;
-import org.hl7.fhir.r4.model.Resource;
 import org.springframework.stereotype.Service;
 
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -26,27 +25,11 @@ import java.util.Set;
 public class ResourceValidationService {
 
   private FhirContext fhirContext;
-  private ValidationConfig validationConfig;
 
   public OperationOutcome validateBundleResourcesProfiles(IBaseBundle bundleResource) {
     List<IBaseResource> resources = BundleUtil.toListOfResources(fhirContext, bundleResource);
-    Map<Class<? extends Resource>, String> resourceProfileMap =
-        validationConfig.getResourceProfileMap();
     OperationOutcome operationOutcome = new OperationOutcome();
     for (IBaseResource resource : resources) {
-      if (resourceProfileMap.containsKey(resource.getClass())) {
-        final String requiredProfile = resourceProfileMap.get(resource.getClass());
-        if (resource.getMeta().getProfile().stream()
-            .noneMatch(p -> requiredProfile.equalsIgnoreCase(p.getValueAsString()))) {
-          OperationOutcomeUtil.addIssue(
-              fhirContext,
-              operationOutcome,
-              OperationOutcome.IssueSeverity.ERROR.toCode(),
-              formatMissingRequiredProfileMessage(resource, requiredProfile),
-              null,
-              OperationOutcome.IssueType.INVALID.toCode());
-        }
-      }
       if (resource.getMeta().getProfile().isEmpty()) {
         OperationOutcomeUtil.addIssue(
             fhirContext,
@@ -97,6 +80,26 @@ public class ResourceValidationService {
       }
     }
     return operationOutcome;
+  }
+
+  public boolean isSuccessful(OperationOutcome outcome) {
+    return outcome == null
+        || outcome.getIssue().stream()
+            .noneMatch(
+                i ->
+                    i.getSeverity() == null
+                        || i.getSeverity().ordinal()
+                            < OperationOutcome.IssueSeverity.WARNING.ordinal());
+  }
+
+  public OperationOutcome combineOutcomes(OperationOutcome... outcomes) {
+    OperationOutcome finalOo = new OperationOutcome();
+    finalOo.setIssue(
+        Arrays.stream(outcomes)
+            .map(OperationOutcome::getIssue)
+            .flatMap(java.util.Collection::stream)
+            .collect(Collectors.toList()));
+    return finalOo;
   }
 
   private String formatMissingRequiredProfileMessage(IBaseResource resource, final String profile) {

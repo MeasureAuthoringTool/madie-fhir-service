@@ -178,15 +178,20 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
         is(equalTo(UriConstants.SCORING_SYSTEM_URI)));
     assertThat(group1CodeableConcept.getCoding().get(0).getCode(), is(equalTo("ratio")));
 
-    List<Extension> groupTypes = group1.getExtension().stream()
-        .filter(extension -> extension.hasUrlElement()
-            && extension.getUrl().equals(UriConstants.CqfMeasures.CQFM_TYPE))
-        .toList();
+    List<Extension> groupTypes =
+        group1.getExtension().stream()
+            .filter(
+                extension ->
+                    extension.hasUrlElement()
+                        && extension.getUrl().equals(UriConstants.CqfMeasures.CQFM_TYPE))
+            .toList();
     assertThat(groupTypes.size(), is(2));
-    for(Extension ext : groupTypes) {
+    for (Extension ext : groupTypes) {
       CodeableConcept type = ext.castToCodeableConcept(ext.getValue());
       assertThat(type.getCoding().get(0).getCode(), is(notNullValue()));
-      assertThat(type.getCoding().get(0).getSystem(), is("http://terminology.hl7.org/CodeSystem/measure-type"));
+      assertThat(
+          type.getCoding().get(0).getSystem(),
+          is("http://terminology.hl7.org/CodeSystem/measure-type"));
     }
 
     MeasureGroupPopulationComponent groupComponent =
