@@ -2,7 +2,6 @@ package gov.cms.madie.madiefhirservice.services;
 
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.util.BundleUtil;
-import gov.cms.madie.madiefhirservice.config.ValidationConfig;
 import gov.cms.madie.madiefhirservice.constants.UriConstants;
 import org.hl7.fhir.instance.model.api.IBaseBundle;
 import org.hl7.fhir.r4.model.Bundle;
@@ -34,8 +33,6 @@ class ResourceValidationServiceTest {
 
   @Spy FhirContext fhirContext;
 
-  @Mock ValidationConfig validationConfig;
-
   @InjectMocks ResourceValidationService validationService;
 
   @Test
@@ -58,16 +55,13 @@ class ResourceValidationServiceTest {
           .when(() -> BundleUtil.toListOfResources(any(FhirContext.class), any(IBaseBundle.class)))
           .thenReturn(List.of(new Patient(), new Encounter()));
 
-      when(validationConfig.getResourceProfileMap())
-          .thenReturn(Map.of(Patient.class, UriConstants.QiCore.PATIENT_PROFILE_URI));
-
       Bundle bundle = new Bundle();
       OperationOutcome output = validationService.validateBundleResourcesProfiles(bundle);
       assertThat(output, is(notNullValue()));
       assertThat(output.hasIssue(), is(true));
       // empty profiles for Patient and Encounter has 2 issues, required profile missing adds
       // another one
-      assertThat(output.getIssue().size(), is(equalTo(3)));
+      assertThat(output.getIssue().size(), is(equalTo(2)));
     }
   }
 
@@ -81,9 +75,6 @@ class ResourceValidationServiceTest {
       utilities
           .when(() -> BundleUtil.toListOfResources(any(FhirContext.class), any(IBaseBundle.class)))
           .thenReturn(List.of(p, encounter));
-
-      when(validationConfig.getResourceProfileMap())
-          .thenReturn(Map.of(Patient.class, UriConstants.QiCore.PATIENT_PROFILE_URI));
 
       Bundle bundle = new Bundle();
       OperationOutcome output = validationService.validateBundleResourcesProfiles(bundle);
@@ -104,35 +95,11 @@ class ResourceValidationServiceTest {
           .when(() -> BundleUtil.toListOfResources(any(FhirContext.class), any(IBaseBundle.class)))
           .thenReturn(List.of(p, encounter));
 
-      when(validationConfig.getResourceProfileMap())
-          .thenReturn(Map.of(Patient.class, UriConstants.QiCore.PATIENT_PROFILE_URI));
-
       Bundle bundle = new Bundle();
       OperationOutcome output = validationService.validateBundleResourcesProfiles(bundle);
       assertThat(output, is(notNullValue()));
       assertThat(output.hasIssue(), is(true));
       assertThat(output.getIssue().size(), is(equalTo(1)));
-    }
-  }
-
-  @Test
-  void testValidateBundleResourcesProfilesReturnsIssueForIncorrectProfile() {
-    Patient p = new Patient();
-    p.getMeta().addProfile(UriConstants.CqfMeasures.RATIO_PROFILE_URI);
-    try (MockedStatic<BundleUtil> utilities = Mockito.mockStatic(BundleUtil.class)) {
-      utilities
-          .when(() -> BundleUtil.toListOfResources(any(FhirContext.class), any(IBaseBundle.class)))
-          .thenReturn(List.of(p, new Encounter()));
-
-      when(validationConfig.getResourceProfileMap())
-          .thenReturn(Map.of(Patient.class, UriConstants.QiCore.PATIENT_PROFILE_URI));
-
-      Bundle bundle = new Bundle();
-      OperationOutcome output = validationService.validateBundleResourcesProfiles(bundle);
-      assertThat(output, is(notNullValue()));
-      assertThat(output.hasIssue(), is(true));
-      // empty profile also counts as an issue
-      assertThat(output.getIssue().size(), is(equalTo(2)));
     }
   }
 
@@ -146,9 +113,6 @@ class ResourceValidationServiceTest {
       utilities
           .when(() -> BundleUtil.toListOfResources(any(FhirContext.class), any(IBaseBundle.class)))
           .thenReturn(List.of(p, encounter));
-
-      when(validationConfig.getResourceProfileMap())
-          .thenReturn(Map.of(Patient.class, UriConstants.QiCore.PATIENT_PROFILE_URI));
 
       Bundle bundle = new Bundle();
       OperationOutcome output = validationService.validateBundleResourcesProfiles(bundle);

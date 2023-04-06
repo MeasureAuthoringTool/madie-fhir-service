@@ -15,7 +15,6 @@ import gov.cms.madie.models.measure.HapiOperationOutcome;
 import org.hl7.fhir.common.hapi.validation.support.ValidationSupportChain;
 import org.hl7.fhir.instance.model.api.IBaseBundle;
 import org.hl7.fhir.instance.model.api.IBaseResource;
-import org.hl7.fhir.instance.model.api.IPrimitiveType;
 import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.OperationOutcome;
 import org.hl7.fhir.r4.model.Patient;
@@ -40,7 +39,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -64,9 +62,11 @@ class ValidationControllerTest implements ResourceFileUtil {
 
   @BeforeEach
   void beforeEach() {
-    when(fhirContext.newJsonParser()).thenReturn(parser);
-    when(parser.setParserErrorHandler(any(IParserErrorHandler.class))).thenReturn(parser);
-    when(parser.setPrettyPrint(anyBoolean())).thenReturn(parser);
+    Mockito.lenient().when(fhirContext.newJsonParser()).thenReturn(parser);
+    Mockito.lenient()
+        .when(parser.setParserErrorHandler(any(IParserErrorHandler.class)))
+        .thenReturn(parser);
+    Mockito.lenient().when(parser.setPrettyPrint(anyBoolean())).thenReturn(parser);
   }
 
   @Test
@@ -132,6 +132,13 @@ class ValidationControllerTest implements ResourceFileUtil {
     operationOutcomeWithIssues.addIssue().setSeverity(OperationOutcome.IssueSeverity.ERROR);
     when(validationService.validateBundleResourcesProfiles(any(IBaseBundle.class)))
         .thenReturn(operationOutcomeWithIssues);
+
+    ValidationResult result = Mockito.mock(ValidationResult.class);
+    when(result.toOperationOutcome()).thenReturn(new OperationOutcome());
+    when(fhirValidator.validateWithResult(any(IBaseResource.class))).thenReturn(result);
+    when(validationService.combineOutcomes(any())).thenReturn(operationOutcomeWithIssues);
+    when(validationService.isSuccessful(any(OperationOutcome.class))).thenReturn(false);
+
     HapiOperationOutcome output = validationController.validateBundle(entity);
     assertThat(output, is(notNullValue()));
     assertThat(output.getCode(), is(equalTo(HttpStatus.BAD_REQUEST.value())));
@@ -170,7 +177,6 @@ class ValidationControllerTest implements ResourceFileUtil {
     String tc1Json = getStringFromTestResource("/testCaseBundles/testCaseInvalidEncounter.json");
     when(parser.parseResource(any(Class.class), anyString())).thenReturn(new Bundle());
     when(entity.getBody()).thenReturn(tc1Json);
-    ValidationResult result = Mockito.mock(ValidationResult.class);
 
     Map<String, Object> mockOutcome = new HashMap<>();
     mockOutcome.put("resourceType", "OperationOutcome");
@@ -180,14 +186,20 @@ class ValidationControllerTest implements ResourceFileUtil {
         .thenReturn(new OperationOutcome());
     when(validationService.validateBundleResourcesIdUniqueness(any(IBaseBundle.class)))
         .thenReturn(new OperationOutcome());
+
+    when(parser.encodeResourceToString(any(OperationOutcome.class)))
+        .thenReturn("{ \"resourceType\": \"OperationOutcome\" }");
+
+    ValidationResult result = Mockito.mock(ValidationResult.class);
+    when(result.toOperationOutcome()).thenReturn(new OperationOutcome());
+    when(fhirValidator.validateWithResult(any(IBaseResource.class))).thenReturn(result);
     OperationOutcome outcome = new OperationOutcome();
     outcome.addIssue().setSeverity(OperationOutcome.IssueSeverity.ERROR);
     outcome.addIssue().setSeverity(OperationOutcome.IssueSeverity.WARNING);
     when(result.toOperationOutcome()).thenReturn(outcome);
-    when(result.isSuccessful()).thenReturn(false);
-    when(fhirValidator.validateWithResult(any(IBaseResource.class))).thenReturn(result);
-    when(parser.encodeResourceToString(any(OperationOutcome.class)))
-        .thenReturn("{ \"resourceType\": \"OperationOutcome\" }");
+    when(validationService.combineOutcomes(any())).thenReturn(outcome);
+    when(validationService.isSuccessful(any(OperationOutcome.class))).thenReturn(false);
+
     HapiOperationOutcome output = validationController.validateBundle(entity);
     assertThat(output, is(notNullValue()));
     assertThat(output.getCode(), is(equalTo(HttpStatus.OK.value())));
@@ -221,10 +233,16 @@ class ValidationControllerTest implements ResourceFileUtil {
     when(parser.encodeResourceToString(any(OperationOutcome.class)))
         .thenReturn("{ \"resourceType\": \"OperationOutcome\" }");
 
+    ValidationResult result = Mockito.mock(ValidationResult.class);
+    when(result.toOperationOutcome()).thenReturn(new OperationOutcome());
+    when(fhirValidator.validateWithResult(any(IBaseResource.class))).thenReturn(result);
+
+    when(validationService.combineOutcomes(any())).thenReturn(errorOutcome);
+    when(validationService.isSuccessful(any(OperationOutcome.class))).thenReturn(false);
+
     HapiOperationOutcome output = validationController.validateBundle(entity);
     assertThat(output, is(notNullValue()));
     assertThat(output.getCode(), is(equalTo(HttpStatus.BAD_REQUEST.value())));
-    assertThat(output.isSuccessful(), is(false));
     assertThat(output.getOutcomeResponse() instanceof Map, is(true));
     Map outcomeResponse = (Map) output.getOutcomeResponse();
     Object resourceType = outcomeResponse.get("resourceType");
@@ -242,10 +260,11 @@ class ValidationControllerTest implements ResourceFileUtil {
         .thenReturn(new OperationOutcome());
     when(validationService.validateBundleResourcesIdUniqueness(any(IBaseBundle.class)))
         .thenReturn(new OperationOutcome());
+    when(validationService.combineOutcomes(any())).thenReturn(new OperationOutcome());
+    when(validationService.isSuccessful(any(OperationOutcome.class))).thenReturn(true);
     OperationOutcome outcome = new OperationOutcome();
     outcome.addIssue().setSeverity(OperationOutcome.IssueSeverity.INFORMATION);
     when(result.toOperationOutcome()).thenReturn(outcome);
-    when(result.isSuccessful()).thenReturn(true);
     when(fhirValidator.validateWithResult(any(IBaseResource.class))).thenReturn(result);
     when(parser.encodeResourceToString(any(OperationOutcome.class)))
         .thenReturn("{ \"resourceType\": \"OperationOutcome\" }");

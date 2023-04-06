@@ -67,31 +67,23 @@ public class ValidationController {
 
     OperationOutcome requiredProfilesOutcome =
         validationService.validateBundleResourcesProfiles(bundle);
-    if (requiredProfilesOutcome.hasIssue()) {
-      return encodeOutcome(
-          parser,
-          HttpStatus.BAD_REQUEST.value(),
-          false,
-          "Some resources in the bundle are missing required profile declarations.",
-          requiredProfilesOutcome);
-    }
     OperationOutcome uniqueIdsOutcome =
         validationService.validateBundleResourcesIdUniqueness(bundle);
-    if (uniqueIdsOutcome.hasIssue()) {
-      return encodeOutcome(
-          parser,
-          HttpStatus.BAD_REQUEST.value(),
-          false,
-          "Some resources in the bundle have duplicate resource IDs.",
-          uniqueIdsOutcome);
-    }
 
     ValidationResult result = validator.validateWithResult(bundle);
     try {
-      String outcomeString = parser.encodeResourceToString(result.toOperationOutcome());
+      final OperationOutcome combinedOutcome =
+          validationService.combineOutcomes(
+              requiredProfilesOutcome,
+              uniqueIdsOutcome,
+              (OperationOutcome) result.toOperationOutcome());
+      String outcomeString = parser.encodeResourceToString(combinedOutcome);
       return HapiOperationOutcome.builder()
-          .code(HttpStatus.OK.value())
-          .successful(result.isSuccessful())
+          .code(
+              requiredProfilesOutcome.hasIssue() || uniqueIdsOutcome.hasIssue()
+                  ? HttpStatus.BAD_REQUEST.value()
+                  : HttpStatus.OK.value())
+          .successful(validationService.isSuccessful(combinedOutcome))
           .outcomeResponse(mapper.readValue(outcomeString, Object.class))
           .build();
     } catch (Exception ex) {

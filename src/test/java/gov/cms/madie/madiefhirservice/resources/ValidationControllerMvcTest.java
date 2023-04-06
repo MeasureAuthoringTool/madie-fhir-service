@@ -80,6 +80,7 @@ class ValidationControllerMvcTest implements ResourceFileUtil {
         .thenReturn(new OperationOutcome());
     when(validationService.validateBundleResourcesIdUniqueness(any(IBaseBundle.class)))
         .thenReturn(new OperationOutcome());
+    when(validationService.combineOutcomes(any())).thenReturn(new OperationOutcome());
 
     mockMvc
         .perform(
@@ -99,9 +100,13 @@ class ValidationControllerMvcTest implements ResourceFileUtil {
   void testUnsuccessfulOutcomeReturnedForMissingProfile() throws Exception {
     String tc1Json = getStringFromTestResource("/testCaseBundles/testCaseInvalidEncounter.json");
     OperationOutcome operationOutcomeWithIssues = new OperationOutcome();
-    operationOutcomeWithIssues.addIssue().setSeverity(OperationOutcome.IssueSeverity.ERROR);
+    operationOutcomeWithIssues.addIssue().setSeverity(OperationOutcome.IssueSeverity.WARNING);
     when(validationService.validateBundleResourcesProfiles(any(IBaseBundle.class)))
         .thenReturn(operationOutcomeWithIssues);
+    when(validationService.validateBundleResourcesIdUniqueness(any(IBaseBundle.class)))
+        .thenReturn(new OperationOutcome());
+    when(validationService.combineOutcomes(any())).thenReturn(operationOutcomeWithIssues);
+    when(validationService.isSuccessful(any(OperationOutcome.class))).thenReturn(true);
 
     mockMvc
         .perform(
@@ -114,16 +119,18 @@ class ValidationControllerMvcTest implements ResourceFileUtil {
             (result) -> assertThat(result.getResponse().getContentAsString(), is(notNullValue())))
         .andExpect(status().isOk())
         .andExpect(jsonPath("$.code").value(400))
-        .andExpect(jsonPath("$.successful").value(false));
+        .andExpect(jsonPath("$.successful").value(true));
   }
 
   @Test
-  void testUnsuccessfulOutcomeReturnedForValidTestCaseJson() throws Exception {
+  void testSuccessfulOutcomeReturnedForValidTestCaseJson() throws Exception {
     String tc1Json = getStringFromTestResource("/testCaseBundles/validTestCase.json");
     when(validationService.validateBundleResourcesProfiles(any(IBaseBundle.class)))
         .thenReturn(new OperationOutcome());
     when(validationService.validateBundleResourcesIdUniqueness(any(IBaseBundle.class)))
         .thenReturn(new OperationOutcome());
+    when(validationService.combineOutcomes(any())).thenReturn(new OperationOutcome());
+    when(validationService.isSuccessful(any(OperationOutcome.class))).thenReturn(true);
 
     mockMvc
         .perform(
@@ -137,5 +144,36 @@ class ValidationControllerMvcTest implements ResourceFileUtil {
         .andExpect(status().isOk())
         .andExpect(jsonPath("$.code").value(200))
         .andExpect(jsonPath("$.successful").value(true));
+  }
+
+  @Test
+  void testUnsuccessfulOutcomeReturnedForMissingProfileValidTestCaseJson() throws Exception {
+    String tc1Json = getStringFromTestResource("/testCaseBundles/validTestCase.json");
+    OperationOutcome profileWarningOutcome = new OperationOutcome();
+    profileWarningOutcome.addIssue().setSeverity(OperationOutcome.IssueSeverity.WARNING);
+    when(validationService.validateBundleResourcesProfiles(any(IBaseBundle.class)))
+        .thenReturn(profileWarningOutcome);
+    OperationOutcome uniqueIdErrorOutcome = new OperationOutcome();
+    uniqueIdErrorOutcome.addIssue().setSeverity(OperationOutcome.IssueSeverity.ERROR);
+    when(validationService.validateBundleResourcesIdUniqueness(any(IBaseBundle.class)))
+        .thenReturn(uniqueIdErrorOutcome);
+    OperationOutcome combinedOutcome = new OperationOutcome();
+    combinedOutcome.addIssue().setSeverity(OperationOutcome.IssueSeverity.ERROR);
+    combinedOutcome.addIssue().setSeverity(OperationOutcome.IssueSeverity.WARNING);
+    when(validationService.combineOutcomes(any())).thenReturn(combinedOutcome);
+    when(validationService.isSuccessful(any(OperationOutcome.class))).thenReturn(false);
+
+    mockMvc
+        .perform(
+            MockMvcRequestBuilders.post("/fhir/validations/bundles")
+                .with(user(TEST_USER_ID))
+                .with(csrf())
+                .content(tc1Json)
+                .contentType(MediaType.APPLICATION_JSON_VALUE))
+        .andDo(
+            (result) -> assertThat(result.getResponse().getContentAsString(), is(notNullValue())))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$.code").value(400))
+        .andExpect(jsonPath("$.successful").value(false));
   }
 }
