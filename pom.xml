@@ -135,12 +135,12 @@
 		<dependency>
 			<groupId>gov.cms.madie</groupId>
 			<artifactId>madie-java-models</artifactId>
-			<version>0.6.0-SNAPSHOT</version>
+			<version>0.6.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>gov.cms.madie.packaging</groupId>
 			<artifactId>packaging-utility</artifactId>
-			<version>0.2.2</version>
+			<version>0.2.3</version>
 			<exclusions>
 				<exclusion>
 					<groupId>gov.cms.madie</groupId>

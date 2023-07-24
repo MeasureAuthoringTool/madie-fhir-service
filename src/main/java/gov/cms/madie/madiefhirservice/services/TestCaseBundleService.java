@@ -5,7 +5,9 @@ import ca.uhn.fhir.parser.DataFormatException;
 import ca.uhn.fhir.parser.IParser;
 import ca.uhn.fhir.parser.StrictErrorHandler;
 import gov.cms.madie.madiefhirservice.constants.UriConstants;
+import gov.cms.madie.madiefhirservice.exceptions.InternalServerException;
 import gov.cms.madie.madiefhirservice.exceptions.ResourceNotFoundException;
+import gov.cms.madie.madiefhirservice.utils.ExportFileNamesUtil;
 import gov.cms.madie.madiefhirservice.utils.FhirResourceHelpers;
 import gov.cms.madie.models.measure.Measure;
 import gov.cms.madie.models.measure.TestCase;
@@ -14,16 +16,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.hl7.fhir.r4.model.*;
 import org.springframework.stereotype.Service;
-import gov.cms.madie.madiefhirservice.exceptions.InternalServerException;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.TimeZone;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -59,6 +55,31 @@ public class TestCaseBundleService {
     var measureReport = buildMeasureReport(testCase, measure, testCaseBundle);
     var bundleEntryComponent = FhirResourceHelpers.getBundleEntryComponent(measureReport);
     testCaseBundle.getEntry().add(bundleEntryComponent);
+    return testCaseBundle;
+  }
+
+  public Map<String, Bundle> getTestCaseExportBundle(Measure measure, List<TestCase> testCases) {
+    if (measure == null || testCases == null || testCases.isEmpty()) {
+      throw new InternalServerException("Unable to find Measure and/or test case");
+    }
+
+    IParser parser =
+        fhirContext
+            .newJsonParser()
+            .setParserErrorHandler(new StrictErrorHandler())
+            .setPrettyPrint(true);
+
+    Map<String, Bundle> testCaseBundle = new HashMap<>();
+
+    for (TestCase testCase : testCases) {
+      Bundle bundle = parser.parseResource(Bundle.class, testCase.getJson());
+      String fileName = ExportFileNamesUtil.getTestCaseExportFileName(measure, testCase);
+      var measureReport = buildMeasureReport(testCase, measure, bundle);
+      var bundleEntryComponent = FhirResourceHelpers.getBundleEntryComponent(measureReport);
+      bundle.getEntry().add(bundleEntryComponent);
+      testCaseBundle.put(fileName, bundle);
+    }
+
     return testCaseBundle;
   }
 

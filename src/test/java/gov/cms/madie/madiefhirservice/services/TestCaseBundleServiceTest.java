@@ -23,8 +23,13 @@ import org.mockito.InjectMocks;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.util.ReflectionTestUtils;
+
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
+import static java.util.Collections.emptyList;
+import static java.util.Collections.singletonList;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -179,5 +184,73 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
             p -> "initial-population".equalsIgnoreCase(p.getCode().getCoding().get(0).getCode()))
         .findFirst()
         .ifPresent(e -> assertEquals(3, e.getCount()));
+  }
+
+  @Test
+  void getTestCaseExportBundleMulti() {
+    Map<String, Bundle> exportMap = testCaseBundleService.getTestCaseExportBundle(madieMeasure, madieMeasure.getTestCases());
+    assertEquals(2, exportMap.size());
+
+    Bundle bundle = exportMap.get("285d114d-9c36-4d66-b0a0-06f395bbf23d/title-v0.0.000-test case series-test case title");
+    assertEquals(5, bundle.getEntry().size());
+    MeasureReport measureReport = (MeasureReport) bundle.getEntry().get(4).getResource();
+    assertEquals("MeasureReport", measureReport.getResourceType().toString());
+    assertEquals(
+            UriConstants.CqfTestCases.CQFM_TEST_CASES,
+            measureReport.getMeta().getProfile().get(0).asStringValue());
+
+    Parameters parameters = (Parameters) measureReport.getContained().get(0);
+    assertEquals("test case title-parameters", parameters.getId());
+    assertEquals("Patient-1", parameters.getParameter().get(0).getValue().toString());
+
+    // Reference to parameter created above
+    Reference reference = (Reference) measureReport.getExtension().get(0).getValue();
+    assertEquals("#test case title-parameters", reference.getReference());
+    assertEquals(MeasureReport.MeasureReportStatus.COMPLETE, measureReport.getStatus());
+    assertEquals(MeasureReport.MeasureReportType.INDIVIDUAL, measureReport.getType());
+    assertEquals("cms.gov/Measure/SimpleFhirMeasureLib", measureReport.getMeasure());
+
+    assertEquals(
+            "01/01/2023", DateFormatUtils.format(measureReport.getPeriod().getStart(), "MM/dd/yyyy"));
+    assertThat(
+            DateFormatUtils.format(measureReport.getPeriod().getEnd(), "MM/dd/yyyy"),
+            is(equalTo("12/31/2023")));
+    // Groups
+    assertEquals(1, measureReport.getGroup().size());
+    assertEquals(6, measureReport.getGroup().get(0).getPopulation().size());
+    measureReport.getGroup().get(0).getPopulation().stream()
+            .filter(
+                    p -> "initial-population".equalsIgnoreCase(p.getCode().getCoding().get(0).getCode()))
+            .findFirst()
+            .ifPresent(e -> assertEquals(0, e.getCount()));
+
+    // evaluated resources
+    assertEquals(4, measureReport.getEvaluatedResource().size());
+    assertEquals("/Patient/Patient-1", measureReport.getEvaluatedResource().get(0).getReference());
+    assertEquals(
+            "/Encounter/Encounter-1", measureReport.getEvaluatedResource().get(1).getReference());
+  }
+
+  @Test
+  void getTestCaseExportAllThrowExceptionWhenTestCaseIsNotFound() {
+    List<TestCase> testCaseList = null;
+    assertThrows(
+            InternalServerException.class,
+            () -> testCaseBundleService.getTestCaseExportBundle(madieMeasure, testCaseList));
+  }
+
+  @Test
+  void getTestCaseExportAllThrowExceptionWhenTestCaseIsEmpty() {
+    assertThrows(
+            InternalServerException.class,
+            () -> testCaseBundleService.getTestCaseExportBundle(madieMeasure, emptyList()));
+  }
+
+  @Test
+  void getTestCaseExportAllThrowExceptionWhenMeasureIsNotFound() {
+    madieMeasure = null;
+    assertThrows(
+            InternalServerException.class,
+            () -> testCaseBundleService.getTestCaseExportBundle(madieMeasure, singletonList(testCase)));
   }
 }
