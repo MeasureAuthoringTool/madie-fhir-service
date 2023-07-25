@@ -293,6 +293,7 @@ public class TestCaseBundleService {
         ZipEntry zipEntry = zis.getNextEntry();
         while (zipEntry != null) {
           zos.putNextEntry(zipEntry);
+          zos.write(zis.readAllBytes());
           zipEntry = zis.getNextEntry();
         }
         zis.closeEntry();
