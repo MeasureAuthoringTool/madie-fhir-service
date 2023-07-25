@@ -125,7 +125,7 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
         .thenReturn(testCaseBundleMap);
     mockMvc
         .perform(
-            MockMvcRequestBuilders.put("/fhir/test-cases/exportAll")
+            MockMvcRequestBuilders.put("/fhir/test-cases/export-all")
                 .with(user(TEST_USER_ID))
                 .with(csrf())
                 .header(HttpHeaders.AUTHORIZATION, "test-okta")
@@ -148,7 +148,7 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
                     .build();
     mockMvc
             .perform(
-                    MockMvcRequestBuilders.put("/fhir/test-cases/exportAll")
+                    MockMvcRequestBuilders.put("/fhir/test-cases/export-all")
                             .with(user(TEST_USER_ID))
                             .with(csrf())
                             .header(HttpHeaders.AUTHORIZATION, "test-okta")
@@ -166,7 +166,7 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
                     .build();
     mockMvc
             .perform(
-                    MockMvcRequestBuilders.put("/fhir/test-cases/exportAll")
+                    MockMvcRequestBuilders.put("/fhir/test-cases/export-all")
                             .with(user(TEST_USER_ID))
                             .with(csrf())
                             .header(HttpHeaders.AUTHORIZATION, "test-okta")
