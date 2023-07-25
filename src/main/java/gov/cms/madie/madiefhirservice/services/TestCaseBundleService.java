@@ -5,22 +5,32 @@ import ca.uhn.fhir.parser.DataFormatException;
 import ca.uhn.fhir.parser.IParser;
 import ca.uhn.fhir.parser.StrictErrorHandler;
 import gov.cms.madie.madiefhirservice.constants.UriConstants;
+import gov.cms.madie.madiefhirservice.exceptions.BundleOperationException;
 import gov.cms.madie.madiefhirservice.exceptions.InternalServerException;
 import gov.cms.madie.madiefhirservice.exceptions.ResourceNotFoundException;
 import gov.cms.madie.madiefhirservice.utils.ExportFileNamesUtil;
 import gov.cms.madie.madiefhirservice.utils.FhirResourceHelpers;
 import gov.cms.madie.models.measure.Measure;
 import gov.cms.madie.models.measure.TestCase;
+import gov.cms.madie.packaging.utils.PackagingUtility;
+import gov.cms.madie.packaging.utils.PackagingUtilityFactory;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
+import java.util.zip.ZipOutputStream;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.hl7.fhir.r4.model.*;
 import org.springframework.stereotype.Service;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.*;
-import java.util.stream.Collectors;
+import org.springframework.web.client.RestClientException;
 
 @Slf4j
 @Service
@@ -228,6 +238,79 @@ public class TestCaseBundleService {
       return simpleDateFormat.parse(utcFormattedString);
     } catch (ParseException parseException) {
       throw new RuntimeException("Unable to parse date ", parseException);
+    }
+  }
+
+  private String generateReadMe(List<TestCase> testCases) {
+    String readMe =
+        "The purpose of this file is to allow users to view the mapping of test case names to their test case "
+            + "UUIDs. In order to find a specific test case file in the export, first locate the test case "
+            + "name in this document and then use the associated UUID to find the name of the folder in "
+            + "the export.\n";
+
+    readMe +=
+        testCases.stream()
+            .map(
+                testCase ->
+                    "\n"
+                        + testCase.getPatientId()
+                        + " = "
+                        + testCase.getSeries()
+                        + " "
+                        + testCase.getTitle())
+            .collect(Collectors.joining());
+
+    return readMe;
+  }
+
+  /**
+   * Combines the zip from Packaging Utility and a generated ReadMe file for the testcases
+   *
+   * @param measure
+   * @param exportableTestCaseBundle
+   * @param testCases
+   * @return
+   */
+  public byte[] zipTestCaseContents(
+      Measure measure, Map<String, Bundle> exportableTestCaseBundle, List<TestCase> testCases) {
+
+    try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
+
+      PackagingUtility utility = PackagingUtilityFactory.getInstance(measure.getModel());
+      byte[] bytes = utility.getZipBundle(exportableTestCaseBundle, null);
+
+      try (ZipOutputStream zos = new ZipOutputStream(baos);
+          ZipInputStream zis = new ZipInputStream(new ByteArrayInputStream(bytes))) {
+
+        // Add the README file to the zip
+        String readme = generateReadMe(testCases);
+        ZipEntry entry = new ZipEntry("README.txt");
+        entry.setSize(readme.length());
+        zos.putNextEntry(entry);
+        zos.write(readme.getBytes());
+
+        // Add the TestCases back the zip
+        ZipEntry zipEntry = zis.getNextEntry();
+        while (zipEntry != null) {
+          zos.putNextEntry(zipEntry);
+          zipEntry = zis.getNextEntry();
+        }
+        zis.closeEntry();
+        zos.closeEntry();
+      }
+      // return after the zip streams are closed
+      return baos.toByteArray();
+    } catch (RestClientException
+        | IllegalArgumentException
+        | InstantiationException
+        | IllegalAccessException
+        | InvocationTargetException
+        | NoSuchMethodException
+        | SecurityException
+        | ClassNotFoundException
+        | IOException ex) {
+      log.error("An error occurred while bundling testcases for measure {}", measure.getId(), ex);
+      throw new BundleOperationException("Measure", measure.getId(), ex);
     }
   }
 }

@@ -113,26 +113,15 @@ public class TestCaseBundleController {
     Map<String, Bundle> exportableTestCaseBundle =
         testCaseBundleService.getTestCaseExportBundle(measure, testCases);
 
-    try {
-      PackagingUtility utility = PackagingUtilityFactory.getInstance(measure.getModel());
-      return ResponseEntity.ok()
-          .header(
-              HttpHeaders.CONTENT_DISPOSITION,
-              "attachment;filename=\""
-                  + ExportFileNamesUtil.getTestCaseExportZipName(measure)
-                  + ".zip\"")
-          .contentType(MediaType.APPLICATION_OCTET_STREAM)
-          .body(utility.getZipBundle(exportableTestCaseBundle, null));
-    } catch (RestClientException
-        | IllegalArgumentException
-        | InstantiationException
-        | IllegalAccessException
-        | InvocationTargetException
-        | NoSuchMethodException
-        | SecurityException
-        | ClassNotFoundException ex) {
-      log.error("An error occurred while bundling measure {}", measure.getId(), ex);
-      throw new BundleOperationException("Measure", measure.getId(), ex);
-    }
+    return ResponseEntity.ok()
+        .header(
+            HttpHeaders.CONTENT_DISPOSITION,
+            "attachment;filename=\""
+                + ExportFileNamesUtil.getTestCaseExportZipName(measure)
+                + ".zip\"")
+        .contentType(MediaType.APPLICATION_OCTET_STREAM)
+        .body(
+            testCaseBundleService.zipTestCaseContents(
+                measure, exportableTestCaseBundle, testCases));
   }
 }
