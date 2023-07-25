@@ -86,7 +86,7 @@ public class TestCaseBundleController {
     }
   }
 
-  @PutMapping("/exportAll")
+  @PutMapping("/export-all")
   public ResponseEntity<byte[]> getTestCaseExportBundle(
       Principal principal, @RequestBody ExportDTO exportDTO) {
     Measure measure = exportDTO.getMeasure();
