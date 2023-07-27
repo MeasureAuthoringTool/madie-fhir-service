@@ -16,7 +16,6 @@ import gov.cms.madie.madiefhirservice.utils.FhirResourceHelpers;
 import gov.cms.madie.madiefhirservice.utils.MeasureTestHelper;
 import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
 import gov.cms.madie.models.measure.Measure;
-import gov.cms.madie.models.measure.PopulationType;
 import gov.cms.madie.models.measure.TestCase;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -64,8 +63,14 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
   }
 
   @Test
-  void getTestCaseExportBundle() {
-    Bundle bundle = testCaseBundleService.getTestCaseExportBundle(madieMeasure, testCase);
+  void getTestCaseExportBundleMulti() {
+    Map<String, Bundle> exportMap =
+        testCaseBundleService.getTestCaseExportBundle(madieMeasure, madieMeasure.getTestCases());
+    assertEquals(2, exportMap.size());
+
+    Bundle bundle =
+        exportMap.get(
+            "285d114d-9c36-4d66-b0a0-06f395bbf23d/title-v0.0.000-test case series-test case title");
     assertEquals(5, bundle.getEntry().size());
     MeasureReport measureReport = (MeasureReport) bundle.getEntry().get(4).getResource();
     assertEquals("MeasureReport", measureReport.getResourceType().toString());
@@ -106,97 +111,12 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
   }
 
   @Test
-  void getTestCaseExportBundleThrowExceptionWhenTestCaseIsNotFound() {
-    testCase = null;
-    assertThrows(
-        InternalServerException.class,
-        () -> testCaseBundleService.getTestCaseExportBundle(madieMeasure, testCase));
-  }
-
-  @Test
-  void getTestCaseExportBundleThrowExceptionWhenMeasureIsNotFound() {
-    madieMeasure = null;
-    assertThrows(
-        InternalServerException.class,
-        () -> testCaseBundleService.getTestCaseExportBundle(madieMeasure, testCase));
-  }
-
-  @Test
-  void getTestCaseExportBundleThrowsDataFormatExceptionForInvalidTestCaseJson() {
-    var testCaseJson =
-        "{\n"
-            + "    \"resourceType\": \"Bundle\"\n"
-            + "    \"id\": \"bundleWithNoPatientResource\",\n"
-            + "}";
-    testCase.setJson(testCaseJson);
-    assertThrows(
-        InternalServerException.class,
-        () -> testCaseBundleService.getTestCaseExportBundle(madieMeasure, testCase));
-  }
-
-  @Test
-  void
-      getTestCaseExportBundleThrowsNoResourceFoundExceptionForTestCaseBundleWithNoPatientResource() {
-    String testCaseBundleJson =
-        "{\n"
-            + "      \"resourceType\": \"Bundle\",\n"
-            + "        \"id\": \"bundleWithNoPatientResource\",\n"
-            + "        \"type\": \"collection\",\n"
-            + "        \"entry\": [\n"
-            + "      {\n"
-            + "        \"fullUrl\": \"633c9d020968f8012250fc60\",\n"
-            + "          \"resource\": {\n"
-            + "        \"resourceType\": \"Encounter\",\n"
-            + "            \"id\": \"encounter-test-resource\"\n"
-            + "      }\n"
-            + "      }\n"
-            + "    ]\n"
-            + "    }";
-    testCase.setJson(testCaseBundleJson);
-    assertThrows(
-        ResourceNotFoundException.class,
-        () -> testCaseBundleService.getTestCaseExportBundle(madieMeasure, testCase));
-  }
-
-  @Test
-  void getTestCaseExportBundleHandlesNullExpectedValues() {
-    // setting the expected values for initial population of 1st group to be null
-    testCase.getGroupPopulations().get(0).getPopulationValues().stream()
-        .filter(p -> PopulationType.INITIAL_POPULATION.equals(p.getName()))
-        .findFirst()
-        .ifPresent(p -> p.setExpected(null));
-
-    Bundle bundle = testCaseBundleService.getTestCaseExportBundle(madieMeasure, testCase);
-    MeasureReport measureReport = (MeasureReport) bundle.getEntry().get(4).getResource();
-    measureReport.getGroup().get(0).getPopulation().stream()
-        .filter(
-            p -> "initial-population".equalsIgnoreCase(p.getCode().getCoding().get(0).getCode()))
-        .findFirst()
-        .ifPresent(e -> assertEquals(0, e.getCount()));
-  }
-
-  @Test
-  void getTestCaseExportBundleHandlesIntegerExpectedValues() {
-    // setting the expected values for initial population of 1st group to be 3
-    testCase.getGroupPopulations().get(0).getPopulationValues().stream()
-        .filter(p -> PopulationType.INITIAL_POPULATION.equals(p.getName()))
-        .findFirst()
-        .ifPresent(p -> p.setExpected(3));
-
-    Bundle bundle = testCaseBundleService.getTestCaseExportBundle(madieMeasure, testCase);
-    MeasureReport measureReport = (MeasureReport) bundle.getEntry().get(4).getResource();
-    measureReport.getGroup().get(0).getPopulation().stream()
-        .filter(
-            p -> "initial-population".equalsIgnoreCase(p.getCode().getCoding().get(0).getCode()))
-        .findFirst()
-        .ifPresent(e -> assertEquals(3, e.getCount()));
-  }
-
-  @Test
-  void getTestCaseExportBundleMulti() {
+  void getTestCaseExportBundleMultiReducedResult() {
+    madieMeasure.getTestCases().get(1).setJson("malformed");
     Map<String, Bundle> exportMap =
         testCaseBundleService.getTestCaseExportBundle(madieMeasure, madieMeasure.getTestCases());
-    assertEquals(2, exportMap.size());
+    // The service should remove the malformed testCase and return only the valid one
+    assertEquals(1, exportMap.size());
 
     Bundle bundle =
         exportMap.get(
@@ -249,7 +169,7 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
   }
 
   @Test
-  void getTestCaseExportAllThrowExceptionWhenTestCaseIsEmpty() {
+  void getTestCaseExportAllThrowExceptionWhenTestCaseListIsEmpty() {
     assertThrows(
         InternalServerException.class,
         () -> testCaseBundleService.getTestCaseExportBundle(madieMeasure, emptyList()));
@@ -260,6 +180,30 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
     madieMeasure = null;
     assertThrows(
         InternalServerException.class,
+        () -> testCaseBundleService.getTestCaseExportBundle(madieMeasure, singletonList(testCase)));
+  }
+
+  @Test
+  void getTestCaseExportAllThrowExceptionWhenTestCaseJsonIsNull() {
+    testCase.setJson(null);
+    assertThrows(
+        ResourceNotFoundException.class,
+        () -> testCaseBundleService.getTestCaseExportBundle(madieMeasure, singletonList(testCase)));
+  }
+
+  @Test
+  void getTestCaseExportAllThrowExceptionWhenTestCaseJsonIsEmpty() {
+    testCase.setJson("");
+    assertThrows(
+        ResourceNotFoundException.class,
+        () -> testCaseBundleService.getTestCaseExportBundle(madieMeasure, singletonList(testCase)));
+  }
+
+  @Test
+  void getTestCaseExportAllThrowExceptionWhenAllTestCaseJsonIsMalformed() {
+    testCase.setJson("test");
+    assertThrows(
+        ResourceNotFoundException.class,
         () -> testCaseBundleService.getTestCaseExportBundle(madieMeasure, singletonList(testCase)));
   }
 
