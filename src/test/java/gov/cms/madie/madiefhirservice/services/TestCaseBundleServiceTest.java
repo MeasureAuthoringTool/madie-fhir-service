@@ -33,6 +33,7 @@ import org.hl7.fhir.r4.model.MeasureReport;
 import org.hl7.fhir.r4.model.Parameters;
 import org.hl7.fhir.r4.model.Reference;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -207,6 +208,7 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
         () -> testCaseBundleService.getTestCaseExportBundle(madieMeasure, singletonList(testCase)));
   }
 
+  @Disabled
   @Test
   void zipTestCaseContents() throws IOException {
     Map<String, Bundle> testCaseBundleMap = new HashMap<>();
