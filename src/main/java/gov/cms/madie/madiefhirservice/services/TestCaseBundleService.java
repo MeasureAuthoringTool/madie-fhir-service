@@ -220,7 +220,7 @@ public class TestCaseBundleService {
     List<Reference> references = new ArrayList<>();
     testCaseBundle
         .getEntry()
-        .forEach(entry -> references.add(new Reference("/" + entry.getResource().getId())));
+        .forEach(entry -> references.add(new Reference(entry.getResource().getId())));
     return references;
   }
 

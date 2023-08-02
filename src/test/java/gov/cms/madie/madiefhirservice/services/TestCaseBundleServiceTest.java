@@ -106,9 +106,9 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
 
     // evaluated resources
     assertEquals(4, measureReport.getEvaluatedResource().size());
-    assertEquals("/Patient/Patient-1", measureReport.getEvaluatedResource().get(0).getReference());
+    assertEquals("Patient/Patient-1", measureReport.getEvaluatedResource().get(0).getReference());
     assertEquals(
-        "/Encounter/Encounter-1", measureReport.getEvaluatedResource().get(1).getReference());
+        "Encounter/Encounter-1", measureReport.getEvaluatedResource().get(1).getReference());
   }
 
   @Test
@@ -156,9 +156,9 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
 
     // evaluated resources
     assertEquals(4, measureReport.getEvaluatedResource().size());
-    assertEquals("/Patient/Patient-1", measureReport.getEvaluatedResource().get(0).getReference());
+    assertEquals("Patient/Patient-1", measureReport.getEvaluatedResource().get(0).getReference());
     assertEquals(
-        "/Encounter/Encounter-1", measureReport.getEvaluatedResource().get(1).getReference());
+        "Encounter/Encounter-1", measureReport.getEvaluatedResource().get(1).getReference());
   }
 
   @Test
