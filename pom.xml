@@ -7,7 +7,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.0.9</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>gov.cms.madie</groupId>
 	<artifactId>madie-fhir-service</artifactId>
@@ -19,7 +19,7 @@
 		<java.version>17</java.version>
 		<springfox.version>3.0.0</springfox.version>
 		<cqframework.version>2.11.0</cqframework.version>
-		<hapi.fhir.r4.version>6.6.2</hapi.fhir.r4.version>
+		<hapi.fhir.r4.version>6.8.0</hapi.fhir.r4.version>
 	</properties>
 
 	<repositories>
@@ -190,7 +190,7 @@
 										</goals>
 									</pluginExecutionFilter>
 									<action>
-										<ignore />
+										<ignore/>
 									</action>
 								</pluginExecution>
 							</pluginExecutions>
