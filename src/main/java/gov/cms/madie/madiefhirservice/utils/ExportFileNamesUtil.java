@@ -21,7 +21,7 @@ public class ExportFileNamesUtil {
           + "-v"
           + measure.getVersion().toString()
           + "-"
-          + testCase.getTitle();
+          + testCase.getTitle().replaceAll("\\s", "");
     } else {
       return testCase.getPatientId()
           + "/"
@@ -29,9 +29,9 @@ public class ExportFileNamesUtil {
           + "-v"
           + measure.getVersion().toString()
           + "-"
-          + testCase.getSeries()
+          + testCase.getSeries().replaceAll("\\s", "")
           + "-"
-          + testCase.getTitle();
+          + testCase.getTitle().replaceAll("\\s", "");
     }
   }
 
