@@ -73,9 +73,11 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
         exportMap.get(
             "285d114d-9c36-4d66-b0a0-06f395bbf23d/title-v0.0.000-test case series-test case title");
     assertEquals(5, bundle.getEntry().size());
-    assertEquals("https://madie.cms.gov/MeasureReport/" + madieMeasure.getId()
-                    + "/285d114d-9c36-4d66-b0a0-06f395bbf23d",
-            bundle.getEntry().get(4).getFullUrl());
+    assertEquals(
+        "https://madie.cms.gov/MeasureReport/"
+            + madieMeasure.getId()
+            + "/285d114d-9c36-4d66-b0a0-06f395bbf23d",
+        bundle.getEntry().get(4).getFullUrl());
     MeasureReport measureReport = (MeasureReport) bundle.getEntry().get(4).getResource();
     assertEquals("MeasureReport", measureReport.getResourceType().toString());
     assertEquals(
