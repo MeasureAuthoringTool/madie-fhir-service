@@ -44,7 +44,7 @@ public class LibraryService {
   }
 
   public Library cqlLibraryToFhirLibrary(CqlLibrary cqlLibrary, final String bundleType) {
-    Library library = libraryTranslatorService.convertToFhirLibrary(cqlLibrary, null);
+    Library library = libraryTranslatorService.convertToFhirLibrary(cqlLibrary);
     if (BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT.equals(bundleType)) {
       library.setText(createLibraryNarrativeText(library));
     }

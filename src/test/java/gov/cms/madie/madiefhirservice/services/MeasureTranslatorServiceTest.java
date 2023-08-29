@@ -138,13 +138,6 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
         is(equalTo(madieMeasure.getMeasureMetaData().getClinicalRecommendation())));
     assertThat(measure.getDate(), is(equalTo(Date.from(madieMeasure.getLastModifiedAt()))));
     assertNotNull(measure.getUseContext());
-    assertTrue(measure.getUseContext().size() == 1);
-    assertThat(
-        measure.getUseContext().get(0).getValueCodeableConcept().getCoding().get(0).getCode(),
-        is(equalTo(madieMeasure.getProgramUseContext().getCode())));
-    assertThat(
-        measure.getUseContext().get(0).getValueCodeableConcept().getCoding().get(0).getDisplay(),
-        is(equalTo(madieMeasure.getProgramUseContext().getDisplay())));
     assertThat(
         measure.hasExtension(UriConstants.CqfMeasures.SUPPLEMENTAL_DATA_GUIDANCE_URI), is(true));
     List<Extension> guidanceExtensions =

@@ -1,18 +1,14 @@
 package gov.cms.madie.madiefhirservice.services;
 
-import gov.cms.madie.madiefhirservice.constants.UriConstants;
 import gov.cms.madie.madiefhirservice.cql.LibraryCqlVisitorFactory;
 import gov.cms.madie.madiefhirservice.utils.LibraryHelper;
 import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
 import gov.cms.madie.models.library.CqlLibrary;
-import gov.cms.madie.models.common.ProgramUseContext;
 import gov.cms.madie.models.common.Version;
 import org.hl7.fhir.r4.model.Attachment;
-import org.hl7.fhir.r4.model.Coding;
 import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.Library;
 import org.hl7.fhir.r4.model.Identifier.IdentifierUse;
-import org.hl7.fhir.r4.model.codesystems.Program;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -52,7 +48,7 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
     var visitor = new LibraryCqlVisitorFactory().visit(exm1234Cql);
     when(libCqlVisitorFactory.visit(anyString())).thenReturn(visitor);
 
-    Library library = libraryTranslatorService.convertToFhirLibrary(cqlLibrary, null);
+    Library library = libraryTranslatorService.convertToFhirLibrary(cqlLibrary);
     assertEquals(library.getName(), cqlLibrary.getCqlLibraryName());
     assertEquals(library.getVersion(), cqlLibrary.getVersion().toString());
     assertEquals(library.getDataRequirement().size(), visitor.getDataRequirements().size());
@@ -68,35 +64,13 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
   }
 
   @Test
-  public void convertToFhirLibraryWithProgramUseContext() {
-    var visitor = new LibraryCqlVisitorFactory().visit(exm1234Cql);
-    when(libCqlVisitorFactory.visit(anyString())).thenReturn(visitor);
-    CqlLibrary cqlLibraryWithNoPUC = cqlLibrary.toBuilder().build();
-    ProgramUseContext PUC =
-        ProgramUseContext.builder()
-            .code("code")
-            .display("display")
-            .codeSystem("code system")
-            .build();
-    Library library = libraryTranslatorService.convertToFhirLibrary(cqlLibraryWithNoPUC, PUC);
-    Coding code = new Coding();
-    code.setSystem(UriConstants.UseContext.CODE_SYSTEM_URI);
-    code.setCode("program");
-    assertThat(library.getUseContext().get(0).getCode().getSystem(), is(equalTo(code.getSystem())));
-    assertThat(library.getUseContext().get(0).getCode().getCode(), is(equalTo(code.getCode())));
-    assertThat(
-        library.getUseContext().get(0).getValueCodeableConcept().getCoding().get(0).getSystem(),
-        is(equalTo(UriConstants.UseContext.VALUE_CODABLE_CONTEXT_CODING_SYSTEM_URI)));
-  }
-
-  @Test
   public void testConvertToFhirLibraryHandlesElmJsonElmXml() {
     var visitor = new LibraryCqlVisitorFactory().visit(exm1234Cql);
     when(libCqlVisitorFactory.visit(anyString())).thenReturn(visitor);
     cqlLibrary.setElmJson("ELMJSON");
     cqlLibrary.setElmXml("ELMXML");
 
-    Library library = libraryTranslatorService.convertToFhirLibrary(cqlLibrary, null);
+    Library library = libraryTranslatorService.convertToFhirLibrary(cqlLibrary);
     assertThat(library.getName(), is(equalTo(cqlLibrary.getCqlLibraryName())));
     assertThat(library.getContent(), is(notNullValue()));
     assertThat(library.getContent().size(), is(equalTo(3)));

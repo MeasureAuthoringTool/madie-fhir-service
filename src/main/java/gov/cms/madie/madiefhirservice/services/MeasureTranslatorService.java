@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 
 import gov.cms.madie.madiefhirservice.constants.ValueConstants;
 import gov.cms.madie.madiefhirservice.utils.FhirResourceHelpers;
-import gov.cms.madie.madiefhirservice.utils.UseContextUtil;
 import gov.cms.madie.models.common.Organization;
 import gov.cms.madie.models.measure.*;
 import gov.cms.madie.models.measure.Group;
@@ -34,7 +33,6 @@ import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.StringType;
 import org.hl7.fhir.r4.model.*;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import ca.uhn.fhir.model.api.TemporalPrecisionEnum;
 import gov.cms.madie.madiefhirservice.constants.UriConstants;
@@ -93,10 +91,7 @@ public class MeasureTranslatorService {
             madieMeasure.getMeasureMetaData().getClinicalRecommendation())
         .setDate(Date.from(madieMeasure.getLastModifiedAt()))
         .setMeta(buildMeasureMeta());
-    if (madieMeasure.getProgramUseContext() != null) {
-      measure.setUseContext(
-          List.of(new UseContextUtil().convertUseContext(madieMeasure.getProgramUseContext())));
-    }
+
     for (Extension ext : buildExtensions(madieMeasure)) {
       measure.addExtension(ext);
     }

@@ -134,8 +134,7 @@ class LibraryServiceTest implements LibraryHelper, ResourceFileUtil {
     when(libCqlVisitorFactory.visit(anyString())).thenReturn(visitor1).thenReturn(visitor2);
     when(cqlLibraryService.getLibrary(anyString(), anyString(), anyString()))
         .thenReturn(cqlLibrary);
-    when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class), isNull()))
-        .thenReturn(library);
+    when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class))).thenReturn(library);
 
     Map<String, Library> includedLibraryMap = new HashMap<>();
     libraryService.getIncludedLibraries(
