@@ -8,6 +8,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.apache.commons.collections4.CollectionUtils;
 import org.hl7.fhir.convertors.advisors.impl.BaseAdvisor_40_50;
 import org.hl7.fhir.convertors.conv40_50.VersionConvertor_40_50;
 import org.hl7.fhir.exceptions.FHIRException;
@@ -197,10 +198,14 @@ public class HumanReadableService extends ResourceUtils {
       madieMeasure.getGroups().stream()
           .forEach(
               (g) ->
-                  strats.addAll(
-                      g.getStratifications().stream()
-                          .map(s -> s.getCqlDefinition())
-                          .collect(Collectors.toList())));
+              {
+                  if (CollectionUtils.isNotEmpty(g.getStratifications())) {
+                      strats.addAll(
+                              g.getStratifications().stream()
+                                      .map(s -> s.getCqlDefinition())
+                                      .collect(Collectors.toList()));
+                  }
+              });
     }
 
     Collections.sort(

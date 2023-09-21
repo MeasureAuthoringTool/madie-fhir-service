@@ -6,8 +6,14 @@ import gov.cms.madie.madiefhirservice.exceptions.ResourceNotFoundException;
 import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
 import gov.cms.madie.madiefhirservice.utils.ResourceUtils;
 import gov.cms.madie.models.common.Version;
+import gov.cms.madie.models.measure.Group;
 import gov.cms.madie.models.measure.Measure;
+import gov.cms.madie.models.measure.MeasureGroupTypes;
 import gov.cms.madie.models.measure.MeasureMetaData;
+import gov.cms.madie.models.measure.MeasureScoring;
+import gov.cms.madie.models.measure.Population;
+import gov.cms.madie.models.measure.PopulationType;
+import org.hl7.fhir.MeasureGroup;
 import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.r4.model.Attachment;
 import org.hl7.fhir.r4.model.Bundle;
@@ -24,6 +30,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Date;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -53,6 +60,22 @@ class HumanReadableServiceTest implements ResourceFileUtil {
 
   @BeforeEach
   void setUp() {
+    Group measureGroup1 = Group.builder()
+            .id("GroupId1")
+            .groupDescription("some random group")
+            .measureGroupTypes(List.of(MeasureGroupTypes.OUTCOME))
+            .scoring(MeasureScoring.COHORT.toString())
+            .populations(List.of(
+                    Population.builder()
+                            .id("PopId1")
+                            .name(PopulationType.INITIAL_POPULATION)
+                            .definition("Initial Population")
+                            .description(null)
+                            .build()
+            ))
+            .build();
+    measureGroup1.setStratifications(null);
+
     madieMeasure =
         Measure.builder()
             .id("madie-test-id")
@@ -67,6 +90,7 @@ class HumanReadableServiceTest implements ResourceFileUtil {
                     .copyright("test_copyright")
                     .disclaimer("test_disclaimer")
                     .build())
+            .groups(List.of(measureGroup1))
             .build();
 
     measure =
