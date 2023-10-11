@@ -4,6 +4,7 @@ import gov.cms.madie.madiefhirservice.constants.UriConstants;
 import gov.cms.madie.madiefhirservice.utils.BundleUtil;
 import gov.cms.madie.madiefhirservice.utils.FhirResourceHelpers;
 import gov.cms.madie.madiefhirservice.utils.ResourceUtils;
+
 import gov.cms.madie.models.library.CqlLibrary;
 import gov.cms.madie.models.measure.Measure;
 import gov.cms.mat.cql.CqlFormatter;
@@ -50,7 +51,7 @@ public class MeasureBundleService {
 
     // Bundle entry for Measure resource
     Bundle.BundleEntryComponent measureEntryComponent =
-        FhirResourceHelpers.getBundleEntryComponent(measure, "Transaction");
+        FhirResourceHelpers.getBundleEntryComponent(measure, Bundle.BundleType.TRANSACTION);
     Bundle bundle =
         new Bundle().setType(Bundle.BundleType.TRANSACTION).addEntry(measureEntryComponent);
     // Bundle entries for all the library resources of a MADiE Measure
@@ -91,13 +92,15 @@ public class MeasureBundleService {
       Measure madieMeasure, final String bundleType, final String accessToken) {
     Library library = getMeasureLibraryResourceForMadieMeasure(madieMeasure);
     Bundle.BundleEntryComponent mainLibraryBundleComponent =
-        FhirResourceHelpers.getBundleEntryComponent(library, "Transaction");
+        FhirResourceHelpers.getBundleEntryComponent(library, Bundle.BundleType.TRANSACTION);
     Map<String, Library> includedLibraryMap = new HashMap<>();
     libraryService.getIncludedLibraries(
         madieMeasure.getCql(), includedLibraryMap, bundleType, accessToken);
     List<Bundle.BundleEntryComponent> libraryBundleComponents =
         includedLibraryMap.values().stream()
-            .map((lib) -> FhirResourceHelpers.getBundleEntryComponent(lib, "Transaction"))
+            .map(
+                (lib) ->
+                    FhirResourceHelpers.getBundleEntryComponent(lib, Bundle.BundleType.TRANSACTION))
             .collect(Collectors.toList());
     // add main library first in the list
     libraryBundleComponents.add(0, mainLibraryBundleComponent);

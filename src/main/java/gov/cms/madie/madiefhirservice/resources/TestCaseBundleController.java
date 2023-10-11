@@ -50,9 +50,6 @@ public class TestCaseBundleController {
     if (testCaseId == null || testCaseId.isEmpty()) {
       throw new ResourceNotFoundException("test cases", "measure", measure.getId());
     }
-    //MAT-6204 Here we're modifying the bundle based on export choice, 
-    // but we don't want to modify it permanently
-    testCaseBundleService.setExportBundleType(exportDTO, measure);
 
     List<TestCase> testCases =
         Optional.ofNullable(measure.getTestCases())
@@ -62,7 +59,8 @@ public class TestCaseBundleController {
             .filter(tc -> testCaseId.stream().anyMatch(id -> id.equals(tc.getId())))
             .collect(Collectors.toList());
     Map<String, Bundle> exportableTestCaseBundle =
-        testCaseBundleService.getTestCaseExportBundle(measure, testCases);
+        testCaseBundleService.getTestCaseExportBundle(
+            measure, testCases, exportDTO.getBundleType());
     if (testCases.size() != exportableTestCaseBundle.size()) {
       // remove the test cases that couldn't be parsed
       testCases =
