@@ -2,6 +2,7 @@ package gov.cms.madie.madiefhirservice.utils;
 
 import ca.uhn.fhir.model.api.TemporalPrecisionEnum;
 import org.hl7.fhir.r4.model.Bundle;
+import org.hl7.fhir.r4.model.Bundle.BundleType;
 import org.hl7.fhir.r4.model.CodeableConcept;
 import org.hl7.fhir.r4.model.Coding;
 import org.hl7.fhir.r4.model.Period;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.stream.Collectors;
 
 @Component
 public class FhirResourceHelpers {
@@ -21,26 +23,55 @@ public class FhirResourceHelpers {
     FhirResourceHelpers.madieUrl = url;
   }
 
+  public static Bundle setTestCaseBundleEntryComponent(Bundle bundle) {
+
+    // modify the bundle
+    org.hl7.fhir.r4.model.Bundle.BundleType fhirBundleType =
+        org.hl7.fhir.r4.model.Bundle.BundleType.valueOf(bundle.getType().toString().toUpperCase());
+    bundle.setType(fhirBundleType);
+    bundle.setEntry(
+        bundle.getEntry().stream()
+            .map(
+                entry -> {
+                  if (org.hl7.fhir.r4.model.Bundle.BundleType.valueOf(
+                          bundle.getType().toString().toUpperCase())
+                      == BundleType.TRANSACTION) {
+                    FhirResourceHelpers.setResourceEntry(entry.getResource(), entry);
+                    return entry;
+                  } else if (org.hl7.fhir.r4.model.Bundle.BundleType.valueOf(
+                          bundle.getType().toString().toUpperCase())
+                      == BundleType.COLLECTION) {
+                    entry.setRequest(null);
+                  }
+                  return entry;
+                })
+            .collect(Collectors.toList()));
+    // bundle to json
+
+    return bundle;
+  }
+
   public static Bundle.BundleEntryComponent getBundleEntryComponent(
-      Resource resource, String bundleType) {
+      Resource resource, Bundle.BundleType bundleType) {
     Bundle.BundleEntryComponent entryComponent =
         new Bundle.BundleEntryComponent()
             .setFullUrl(buildResourceFullUrl(resource.fhirType(), resource.getIdPart()))
             .setResource(resource);
     // for the transaction bundles, add request object to the entry
-    if ("Transaction".equalsIgnoreCase(bundleType)) {
+    if (bundleType == Bundle.BundleType.TRANSACTION) {
       setResourceEntry(resource, entryComponent);
     }
     return entryComponent;
   }
 
-public static void setResourceEntry(Resource resource, Bundle.BundleEntryComponent entryComponent) {
-	Bundle.BundleEntryRequestComponent requestComponent =
-          new Bundle.BundleEntryRequestComponent()
-              .setMethod(Bundle.HTTPVerb.POST)
-              .setUrl(resource.getResourceType() + "/" + resource.getIdPart());
-      entryComponent.setRequest(requestComponent);
-}
+  public static void setResourceEntry(
+      Resource resource, Bundle.BundleEntryComponent entryComponent) {
+    Bundle.BundleEntryRequestComponent requestComponent =
+        new Bundle.BundleEntryRequestComponent()
+            .setMethod(Bundle.HTTPVerb.POST)
+            .setUrl(resource.getResourceType() + "/" + resource.getIdPart());
+    entryComponent.setRequest(requestComponent);
+  }
 
   public static Period getPeriodFromDates(Date startDate, Date endDate) {
     return new Period()

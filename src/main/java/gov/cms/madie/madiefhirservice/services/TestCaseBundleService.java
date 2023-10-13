@@ -24,8 +24,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.hl7.fhir.r4.model.BooleanType;
 import org.hl7.fhir.r4.model.Bundle;
-
-import org.hl7.fhir.r4.model.Bundle.HTTPVerb;
 import org.hl7.fhir.r4.model.Extension;
 import org.hl7.fhir.r4.model.MarkdownType;
 import org.hl7.fhir.r4.model.MeasureReport;
@@ -49,7 +47,6 @@ import gov.cms.madie.madiefhirservice.exceptions.ResourceNotFoundException;
 import gov.cms.madie.madiefhirservice.utils.ExportFileNamesUtil;
 import gov.cms.madie.madiefhirservice.utils.FhirResourceHelpers;
 import gov.cms.madie.models.common.BundleType;
-import gov.cms.madie.models.dto.ExportDTO;
 import gov.cms.madie.models.measure.Measure;
 import gov.cms.madie.models.measure.TestCase;
 import gov.cms.madie.packaging.utils.PackagingUtility;
@@ -64,7 +61,8 @@ public class TestCaseBundleService {
 
   private final FhirContext fhirContext;
 
-  public Map<String, Bundle> getTestCaseExportBundle(Measure measure, List<TestCase> testCases) {
+  public Map<String, Bundle> getTestCaseExportBundle(
+      Measure measure, List<TestCase> testCases, BundleType bundleType) {
     if (measure == null || testCases == null || testCases.isEmpty()) {
       throw new InternalServerException("Unable to find Measure and/or test case");
     }
@@ -85,6 +83,11 @@ public class TestCaseBundleService {
           throw new DataFormatException("TestCase Json is empty");
         }
         bundle = parser.parseResource(Bundle.class, testCase.getJson());
+        if (bundleType != null) {
+          bundle.setType(
+              org.hl7.fhir.r4.model.Bundle.BundleType.valueOf(bundleType.toString().toUpperCase()));
+          bundle = FhirResourceHelpers.setTestCaseBundleEntryComponent(bundle);
+        }
       } catch (DataFormatException | ClassCastException ex) {
         log.error(
             "Unable to parse test case bundle resource for test case [{}] from Measure [{}]",
@@ -95,9 +98,9 @@ public class TestCaseBundleService {
 
       String fileName = ExportFileNamesUtil.getTestCaseExportFileName(measure, testCase);
       var measureReport = buildMeasureReport(testCase, measure, bundle);
+
       var bundleEntryComponent =
-          FhirResourceHelpers.getBundleEntryComponent(
-              measureReport, String.valueOf(bundle.getType()));
+          FhirResourceHelpers.getBundleEntryComponent(measureReport, bundle.getType());
       bundle.getEntry().add(bundleEntryComponent);
       testCaseBundle.put(fileName, bundle);
     }
@@ -108,41 +111,6 @@ public class TestCaseBundleService {
     }
 
     return testCaseBundle;
-  }
-
-  public void updateEntry(TestCase testCase, BundleType bundleType) {
-
-    // Convert Test case JSON to a BUndle
-    IParser parser =
-        fhirContext
-            .newJsonParser()
-            .setParserErrorHandler(new StrictErrorHandler())
-            .setPrettyPrint(true);
-    Bundle bundle = parser.parseResource(Bundle.class, testCase.getJson());
-
-    // modify the bundle
-    org.hl7.fhir.r4.model.Bundle.BundleType fhirBundleType =
-        org.hl7.fhir.r4.model.Bundle.BundleType.valueOf(bundleType.toString().toUpperCase());
-    bundle.setType(fhirBundleType);
-    bundle.setEntry(
-        bundle.getEntry().stream()
-            .map(
-                entry -> {
-                  if (bundleType == BundleType.TRANSACTION) {
-
-                    
-                    FhirResourceHelpers.setResourceEntry(entry.getResource(), entry);
-                    return entry;
-                  } else if (bundleType == BundleType.COLLECTION) {
-                    entry.setRequest(null);
-                  }
-                  return entry;
-                })
-            .collect(Collectors.toList()));
-    // bundle to json
-    String json = parser.encodeResourceToString(bundle);
-
-    testCase.setJson(json);
   }
 
   private MeasureReport buildMeasureReport(
@@ -317,26 +285,6 @@ public class TestCaseBundleService {
             .collect(Collectors.joining());
 
     return readMe;
-  }
-
-  public void setExportBundleType(ExportDTO exportDTO, Measure measure) {
-    if (exportDTO.getBundleType() != null) {
-      BundleType bundleType = BundleType.valueOf(exportDTO.getBundleType().name());
-      switch (bundleType) {
-        case COLLECTION:
-          log.debug("You're exporting a Collection");
-          // update bundle type for each entry MAT 6405
-          break;
-        case TRANSACTION:
-          log.debug("You're exporting a Transaction");
-          // update bundle type and add entry.request for each entry
-          if (measure.getTestCases() != null) {
-            measure.getTestCases().stream().forEach(testCase -> updateEntry(testCase, bundleType));
-          }
-          break;
-        default:
-      }
-    }
   }
 
   /**

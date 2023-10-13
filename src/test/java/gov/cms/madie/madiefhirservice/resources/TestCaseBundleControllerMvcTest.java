@@ -1,14 +1,20 @@
 package gov.cms.madie.madiefhirservice.resources;
 
-import ca.uhn.fhir.context.FhirContext;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import gov.cms.madie.madiefhirservice.services.TestCaseBundleService;
-import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
-import gov.cms.madie.models.common.BundleType;
-import gov.cms.madie.models.dto.ExportDTO;
-import gov.cms.madie.models.measure.Measure;
-import gov.cms.madie.models.measure.TestCase;
+import static java.util.Arrays.asList;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.security.Principal;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.hl7.fhir.r4.model.Bundle;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,15 +25,16 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import java.security.Principal;
-import java.util.*;
 
-import static java.util.Arrays.asList;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import ca.uhn.fhir.context.FhirContext;
+import gov.cms.madie.madiefhirservice.services.TestCaseBundleService;
+import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
+import gov.cms.madie.models.common.BundleType;
+import gov.cms.madie.models.dto.ExportDTO;
+import gov.cms.madie.models.measure.Measure;
 
 @WebMvcTest({TestCaseBundleController.class})
 class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
@@ -73,7 +80,8 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
         dto.getMeasure().getTestCases().get(0).getPatientId().toString(), testCaseBundle);
     testCaseBundleMap.put(
         dto.getMeasure().getTestCases().get(1).getPatientId().toString(), testCaseBundle);
-    when(testCaseBundleService.getTestCaseExportBundle(any(Measure.class), any(List.class)))
+    when(testCaseBundleService.getTestCaseExportBundle(
+            any(Measure.class), any(List.class), any(gov.cms.madie.models.common.BundleType.class)))
         .thenReturn(testCaseBundleMap);
     mockMvc
         .perform(
@@ -85,7 +93,8 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
                 .contentType(MediaType.APPLICATION_JSON_VALUE))
         .andExpect(status().isOk());
     verify(testCaseBundleService, times(1))
-        .getTestCaseExportBundle(any(Measure.class), any(List.class));
+        .getTestCaseExportBundle(
+            any(Measure.class), any(List.class), any(gov.cms.madie.models.common.BundleType.class));
   }
 
   @Test
@@ -99,7 +108,8 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
         dto.getMeasure().getTestCases().get(0).getPatientId().toString(), testCaseBundle);
     testCaseBundleMap.put(
         dto.getMeasure().getTestCases().get(1).getPatientId().toString(), testCaseBundle);
-    when(testCaseBundleService.getTestCaseExportBundle(any(Measure.class), any(List.class)))
+    when(testCaseBundleService.getTestCaseExportBundle(
+            any(Measure.class), any(List.class), any(gov.cms.madie.models.common.BundleType.class)))
         .thenReturn(testCaseBundleMap);
     mockMvc
         .perform(
@@ -111,7 +121,8 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
                 .contentType(MediaType.APPLICATION_JSON_VALUE))
         .andExpect(status().isOk());
     verify(testCaseBundleService, times(1))
-        .getTestCaseExportBundle(any(Measure.class), any(List.class));
+        .getTestCaseExportBundle(
+            any(Measure.class), any(List.class), any(gov.cms.madie.models.common.BundleType.class));
   }
 
   @Test
@@ -126,7 +137,8 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
         dto.getMeasure().getTestCases().get(0).getPatientId().toString(), testCaseBundle);
     testCaseBundleMap.put(
         dto.getMeasure().getTestCases().get(1).getPatientId().toString(), testCaseBundle);
-    when(testCaseBundleService.getTestCaseExportBundle(any(Measure.class), any(List.class)))
+    when(testCaseBundleService.getTestCaseExportBundle(
+            any(Measure.class), any(List.class), any(gov.cms.madie.models.common.BundleType.class)))
         .thenReturn(testCaseBundleMap);
     mockMvc
         .perform(
@@ -138,7 +150,8 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
                 .contentType(MediaType.APPLICATION_JSON_VALUE))
         .andExpect(status().isOk());
     verify(testCaseBundleService, times(1))
-        .getTestCaseExportBundle(any(Measure.class), any(List.class));
+        .getTestCaseExportBundle(
+            any(Measure.class), any(List.class), any(gov.cms.madie.models.common.BundleType.class));
   }
 
   @Test
@@ -184,7 +197,8 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
     Map<String, Bundle> testCaseBundleMap = new HashMap<>();
     testCaseBundleMap.put(
         dto.getMeasure().getTestCases().get(0).getPatientId().toString(), testCaseBundle);
-    when(testCaseBundleService.getTestCaseExportBundle(any(Measure.class), any(List.class)))
+    when(testCaseBundleService.getTestCaseExportBundle(
+            any(Measure.class), any(List.class), any(gov.cms.madie.models.common.BundleType.class)))
         .thenReturn(testCaseBundleMap);
     mockMvc
         .perform(
@@ -196,6 +210,7 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
                 .contentType(MediaType.APPLICATION_JSON_VALUE))
         .andExpect(status().is(206));
     verify(testCaseBundleService, times(1))
-        .getTestCaseExportBundle(any(Measure.class), any(List.class));
+        .getTestCaseExportBundle(
+            any(Measure.class), any(List.class), any(gov.cms.madie.models.common.BundleType.class));
   }
 }
