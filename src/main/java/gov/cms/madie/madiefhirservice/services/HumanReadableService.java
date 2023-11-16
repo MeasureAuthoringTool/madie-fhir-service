@@ -62,8 +62,15 @@ public class HumanReadableService extends ResourceUtils {
     measure.setSubtitle(escapeStr(measure.getSubtitle()));
     measure.setRiskAdjustment(escapeStr(measure.getRiskAdjustment()));
     measure.setRateAggregation(escapeStr(measure.getRateAggregation()));
-    measure.setClinicalRecommendationStatement(
-        escapeStr(measure.getClinicalRecommendationStatement()));
+    if (measure.hasAuthor()) {
+      measure.setAuthor(
+          measure.getAuthor().stream()
+              .map(
+                  contactDetail -> {
+                    return contactDetail.setName(escapeStr(contactDetail.getName()));
+                  })
+              .collect(Collectors.toList()));
+    }
   }
 
   private void escapeIdentifiers(org.hl7.fhir.r5.model.Measure measure) {
