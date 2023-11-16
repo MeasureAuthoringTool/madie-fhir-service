@@ -62,21 +62,25 @@ public class HumanReadableService extends ResourceUtils {
     measure.setSubtitle(escapeStr(measure.getSubtitle()));
     measure.setRiskAdjustment(escapeStr(measure.getRiskAdjustment()));
     measure.setRateAggregation(escapeStr(measure.getRateAggregation()));
-    measure.setClinicalRecommendationStatement(escapeStr(measure.getClinicalRecommendationStatement()));
+    measure.setClinicalRecommendationStatement(
+        escapeStr(measure.getClinicalRecommendationStatement()));
   }
 
   private void escapeIdentifiers(org.hl7.fhir.r5.model.Measure measure) {
-      if (CollectionUtils.isNotEmpty(measure.getIdentifier())) {
-          measure.setIdentifier(measure.getIdentifier()
-                          .stream().map(identifier -> {
-                              if (identifier.hasAssigner()) {
-                                  Reference ref = identifier.getAssigner();
-                                  ref.setDisplay(escapeStr(ref.getDisplay()));
-                                  identifier.setAssigner(ref);
-                              }
-                              return identifier;
-                          }).collect(Collectors.toList()));
-      }
+    if (CollectionUtils.isNotEmpty(measure.getIdentifier())) {
+      measure.setIdentifier(
+          measure.getIdentifier().stream()
+              .map(
+                  identifier -> {
+                    if (identifier.hasAssigner()) {
+                      Reference ref = identifier.getAssigner();
+                      ref.setDisplay(escapeStr(ref.getDisplay()));
+                      identifier.setAssigner(ref);
+                    }
+                    return identifier;
+                  })
+              .collect(Collectors.toList()));
+    }
   }
 
   private void escapeSupplementalProperties(org.hl7.fhir.r5.model.Measure measure) {
@@ -100,10 +104,13 @@ public class HumanReadableService extends ResourceUtils {
               org.hl7.fhir.r5.model.Library lib = (org.hl7.fhir.r5.model.Library) contained;
               List<RelatedArtifact> relatedArtifacts = lib.getRelatedArtifact();
               if (lib.hasParameter()) {
-                  lib.setParameter(
-                          lib.getParameter().stream().map(parameterDefinition ->
-                                  parameterDefinition.setName(escapeStr(parameterDefinition.getName()))).collect(Collectors.toList())
-                  );
+                lib.setParameter(
+                    lib.getParameter().stream()
+                        .map(
+                            parameterDefinition ->
+                                parameterDefinition.setName(
+                                    escapeStr(parameterDefinition.getName())))
+                        .collect(Collectors.toList()));
               }
               lib.getExtension()
                   .forEach(
@@ -152,6 +159,13 @@ public class HumanReadableService extends ResourceUtils {
             });
 
     // population criteria descriptions
+    escapePopulationCriteria(measure);
+
+    // population criteria stratifications
+    return measure;
+  }
+
+  private void escapePopulationCriteria(org.hl7.fhir.r5.model.Measure measure) {
     measure
         .getGroup()
         .forEach(
@@ -168,25 +182,28 @@ public class HumanReadableService extends ResourceUtils {
                         criteria.setExpression(escapeStr(criteria.getExpression()));
                       });
               if (group.hasStratifier()) {
-                  group.setStratifier(group.getStratifier()
-                          .stream()
-                          .map(measureGroupStratifierComponent -> {
-                              measureGroupStratifierComponent
-                                      .setDescription(escapeStr(measureGroupStratifierComponent.getDescription()));
+                group.setStratifier(
+                    group.getStratifier().stream()
+                        .map(
+                            measureGroupStratifierComponent -> {
+                              measureGroupStratifierComponent.setDescription(
+                                  escapeStr(measureGroupStratifierComponent.getDescription()));
                               log.info("escaping stratifier: {}", measureGroupStratifierComponent);
                               if (measureGroupStratifierComponent.hasCriteria()) {
-                                  measureGroupStratifierComponent
-                                          .setCriteria(measureGroupStratifierComponent
-                                                  .getCriteria().setExpression(
-                                                          escapeStr(measureGroupStratifierComponent.getCriteria().getExpression())));
+                                measureGroupStratifierComponent.setCriteria(
+                                    measureGroupStratifierComponent
+                                        .getCriteria()
+                                        .setExpression(
+                                            escapeStr(
+                                                measureGroupStratifierComponent
+                                                    .getCriteria()
+                                                    .getExpression())));
                               }
                               return measureGroupStratifierComponent;
-                          }).collect(Collectors.toList()));
+                            })
+                        .collect(Collectors.toList()));
               }
             });
-
-    // population criteria stratifications
-    return measure;
   }
 
   public String generateMeasureHumanReadable(
