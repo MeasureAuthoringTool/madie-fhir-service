@@ -72,6 +72,10 @@ public class TestCaseBundleService {
         fhirContext
             .newJsonParser()
             .setParserErrorHandler(new StrictErrorHandler())
+            // Disable HAPI IParser default override of Resource IDs with FullUrl.
+            // When enabled, the Parser will replace a Resource's ID with its FullUrl
+            // when the FullUrl is present and its IdPart == the Resource ID.
+            .setOverrideResourceIdWithBundleEntryFullUrl(false)
             .setPrettyPrint(true);
 
     Map<String, Bundle> testCaseBundle = new HashMap<>();
