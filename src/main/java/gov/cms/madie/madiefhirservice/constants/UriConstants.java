@@ -91,6 +91,6 @@ public final class UriConstants {
   public static final class MadieMeasure {
     public static final String CMS_ID = "https://madie.cms.gov/measure/cmsId";
     public static final String SHORT_NAME = "https://madie.cms.gov/measure/shortName";
-    public static final String NQF_ID = "https://madie.cms.gov/measure/nqfId";
+    public static final String CBE_ID = "https://madie.cms.gov/measure/cbeId";
   }
 }
