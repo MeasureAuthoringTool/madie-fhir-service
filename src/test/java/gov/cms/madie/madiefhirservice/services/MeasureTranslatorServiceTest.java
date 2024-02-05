@@ -738,7 +738,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
                 MeasureMetaData.builder()
                     .endorsements(
                         List.of(
-                            Endorsement.builder().endorsementId("NQF1234").endorser("NQF").build()))
+                            Endorsement.builder().endorsementId("CBE1234").endorser("CBE").build()))
                     .build())
             .build();
     List<Identifier> output = measureTranslatorService.buildMeasureIdentifiers(madieMeasure);
@@ -777,18 +777,18 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
         is(equalTo(CODE_SYSTEM_IDENTIFIER_TYPE_URI)));
     assertThat(
         output.get(2).getType().getCodingFirstRep().getCode(), is(equalTo(CODE_VERSION_SPECIFIC)));
-    // NQF ID
+    // CBE ID
     assertThat(output.get(3), is(notNullValue()));
     assertThat(output.get(3).getUse(), is(equalTo(Identifier.IdentifierUse.OFFICIAL)));
-    assertThat(output.get(3).getSystem(), is(equalTo(UriConstants.MadieMeasure.NQF_ID)));
-    assertThat(output.get(3).getValue(), is(equalTo("NQF1234")));
+    assertThat(output.get(3).getSystem(), is(equalTo(UriConstants.MadieMeasure.CBE_ID)));
+    assertThat(output.get(3).getValue(), is(equalTo("CBE1234")));
     assertThat(output.get(3).getType(), is(notNullValue()));
     assertThat(
         output.get(3).getType().getCodingFirstRep().getSystem(),
         is(equalTo(CODE_SYSTEM_IDENTIFIER_TYPE_URI)));
     assertThat(output.get(3).getType().getCodingFirstRep().getCode(), is(equalTo(CODE_ENDORSER)));
     assertThat(output.get(3).getAssigner(), is(notNullValue()));
-    assertThat(output.get(3).getAssigner().getDisplay(), is(equalTo("NQF")));
+    assertThat(output.get(3).getAssigner().getDisplay(), is(equalTo("CBE")));
     // CMS ID
     assertThat(output.get(4), is(notNullValue()));
     assertThat(output.get(4).getUse(), is(equalTo(Identifier.IdentifierUse.OFFICIAL)));
@@ -804,7 +804,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
   }
 
   @Test
-  public void testBuildMeasureIdentifiersReturnsIdentifiersWithCmsIdWithoutNqfForMeasure() {
+  public void testBuildMeasureIdentifiersReturnsIdentifiersWithCmsIdWithoutCbeForMeasure() {
     final Measure madieMeasure =
         Measure.builder()
             .id("MEASURE_ID_1")
@@ -831,7 +831,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
   }
 
   @Test
-  public void testBuildMeasureIdentifiersReturnsIdentifiersWithoutCmsIdWithNqfForMeasure() {
+  public void testBuildMeasureIdentifiersReturnsIdentifiersWithoutCmsIdWithCbeForMeasure() {
     final Measure madieMeasure =
         Measure.builder()
             .id("MEASURE_ID_1")
@@ -842,7 +842,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
                 MeasureMetaData.builder()
                     .endorsements(
                         List.of(
-                            Endorsement.builder().endorsementId("NQF1234").endorser("NQF").build()))
+                            Endorsement.builder().endorsementId("CBE1234").endorser("CBE").build()))
                     .build())
             .build();
     List<Identifier> output = measureTranslatorService.buildMeasureIdentifiers(madieMeasure);
@@ -857,13 +857,13 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     // Measure ID
     assertThat(output.get(2), is(notNullValue()));
     assertThat(output.get(2).getValue(), is(equalTo(URN_UUID_PREFIX + "UUID_1")));
-    // NQF ID
+    // CBE ID
     assertThat(output.get(3), is(notNullValue()));
-    assertThat(output.get(3).getValue(), is(equalTo("NQF1234")));
+    assertThat(output.get(3).getValue(), is(equalTo("CBE1234")));
   }
 
   @Test
-  public void testBuildMeasureIdentifiersReturnsIdentifiersWithoutNqfForMeasure() {
+  public void testBuildMeasureIdentifiersReturnsIdentifiersWithoutCbeForMeasure() {
     final Measure madieMeasure =
         Measure.builder()
             .id("MEASURE_ID_1")
