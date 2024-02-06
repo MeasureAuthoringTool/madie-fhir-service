@@ -152,7 +152,7 @@ public class MeasureTranslatorService {
         identifiers.add(
             buildIdentifier(
                     IdentifierUse.OFFICIAL,
-                    UriConstants.MadieMeasure.NQF_ID,
+                    UriConstants.MadieMeasure.CBE_ID,
                     endorsement.getEndorsementId(),
                     ValueConstants.CODE_ENDORSER)
                 .setAssigner(
