@@ -48,20 +48,24 @@ public class MeasureBundleService {
         "Generating measure bundle of type [{}] for measure {}", bundleType, madieMeasure.getId());
     madieMeasure.setCql(CqlFormatter.formatCql(madieMeasure.getCql(), principal));
 
+    log.info("CQL formatting completed successfully for measure {}", madieMeasure.getId());
     org.hl7.fhir.r4.model.Measure measure =
         measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure);
     Set<String> expressions = getExpressions(measure);
 
+    log.info("Mapping of MADiE measure to FHIR measure completed successfully {}", madieMeasure.getId());
     // Bundle entry for Measure resource
     Bundle.BundleEntryComponent measureEntryComponent =
         FhirResourceHelpers.getBundleEntryComponent(measure, "Transaction");
     Bundle bundle =
         new Bundle().setType(Bundle.BundleType.TRANSACTION).addEntry(measureEntryComponent);
+    log.info("Measure bundle entry created successfully {}", madieMeasure.getId());
     // Bundle entries for all the library resources of a MADiE Measure
     List<Bundle.BundleEntryComponent> libraryEntryComponents =
         createBundleComponentsForLibrariesOfMadieMeasure(
             expressions, madieMeasure, bundleType, accessToken);
     libraryEntryComponents.forEach(bundle::addEntry);
+    log.info("Included library components created successfully {}", madieMeasure.getId());
 
     if (BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT.equals(bundleType)) {
       CqlLibraryDetails libraryDetails =
