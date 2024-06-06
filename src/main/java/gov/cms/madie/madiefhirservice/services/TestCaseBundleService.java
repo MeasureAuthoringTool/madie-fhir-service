@@ -33,6 +33,7 @@ import org.hl7.fhir.r4.model.Parameters;
 import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.Resource;
 import org.hl7.fhir.r4.model.StringType;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.client.RestClientException;
@@ -62,6 +63,9 @@ import lombok.extern.slf4j.Slf4j;
 public class TestCaseBundleService {
 
   private final FhirContext fhirContext;
+
+  @Value("${madie.url}")
+  private String madieUrl;
 
   public Map<String, Bundle> getTestCaseExportBundle(Measure measure, List<TestCase> testCases) {
     if (measure == null || testCases == null || testCases.isEmpty()) {
@@ -280,7 +284,10 @@ public class TestCaseBundleService {
     List<Reference> references = new ArrayList<>();
     testCaseBundle
         .getEntry()
-        .forEach(entry -> references.add(new Reference(entry.getResource().getId())));
+        // remove the madie url to provide relative urls
+        .forEach(
+            entry ->
+                references.add(new Reference(StringUtils.remove(entry.getResource().getId(), madieUrl))));
     return references;
   }
 
