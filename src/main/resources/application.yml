@@ -14,6 +14,8 @@ madie:
       versioned:
         uri: /cql-libraries/versioned
   url: ${MADIE_URL:https://madie.cms.gov}
+  resource:
+    url: https://madie.cms.gov
 
 #springdoc:
 #  swagger-ui:

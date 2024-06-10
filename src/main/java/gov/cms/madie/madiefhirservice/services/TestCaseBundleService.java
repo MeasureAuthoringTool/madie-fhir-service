@@ -64,8 +64,8 @@ public class TestCaseBundleService {
 
   private final FhirContext fhirContext;
 
-  @Value("${madie.url}")
-  private String madieUrl;
+  @Value("${madie.resource.url}")
+  private String madieResourceUrl;
 
   public Map<String, Bundle> getTestCaseExportBundle(Measure measure, List<TestCase> testCases) {
     if (measure == null || testCases == null || testCases.isEmpty()) {
@@ -288,7 +288,8 @@ public class TestCaseBundleService {
         .forEach(
             entry ->
                 references.add(
-                    new Reference(StringUtils.remove(entry.getResource().getId(), madieUrl))));
+                    new Reference(
+                        StringUtils.remove(entry.getResource().getId(), madieResourceUrl))));
     return references;
   }
 
