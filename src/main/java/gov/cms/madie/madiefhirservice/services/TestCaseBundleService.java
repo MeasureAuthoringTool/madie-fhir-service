@@ -132,8 +132,8 @@ public class TestCaseBundleService {
             .map(
                 entry -> {
                   if (bundleType == BundleType.TRANSACTION) {
-
-                    FhirResourceHelpers.setResourceEntry(entry.getResource(), entry);
+                    FhirResourceHelpers.setRequestForResourceEntry(
+                        entry.getResource(), entry, Bundle.HTTPVerb.PUT);
                     return entry;
                   } else if (bundleType == BundleType.COLLECTION) {
                     entry.setRequest(null);
@@ -287,7 +287,8 @@ public class TestCaseBundleService {
         // remove the madie url to provide relative urls
         .forEach(
             entry ->
-                references.add(new Reference(StringUtils.remove(entry.getResource().getId(), madieUrl))));
+                references.add(
+                    new Reference(StringUtils.remove(entry.getResource().getId(), madieUrl))));
     return references;
   }
 
