@@ -33,7 +33,6 @@ import gov.cms.madie.models.measure.Population;
 import gov.cms.madie.models.measure.PopulationType;
 import gov.cms.madie.models.measure.Stratification;
 import java.sql.Date;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -289,6 +288,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
         measure.getSupplementalData().get(2).getCriteria().getExpression());
     assertEquals("Risk Adjustments example", measure.getSupplementalData().get(2).getDescription());
     assertFalse(measure.getSupplementalData().get(2).getUsage().get(0).getCoding().isEmpty());
+    assertEquals("0.0.000", measure.getVersion());
   }
 
   @Test
@@ -911,5 +911,13 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
         measureTranslatorService.buildScoringConcept("Continuous Variable");
     assertNotNull(codeConcept);
     assertEquals("continuous-variable", codeConcept.getCoding().get(0).getCode());
+  }
+
+  @Test
+  public void testCreateFhirMeasureForDraftMadieMeasure() {
+    madieMeasure.getMeasureMetaData().setDraft(true);
+    org.hl7.fhir.r4.model.Measure measure =
+        measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure);
+    assertEquals("Draft based on 0.0.000", measure.getVersion());
   }
 }

@@ -20,6 +20,9 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import gov.cms.madie.models.dto.TestCaseExportMetaData;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.hl7.fhir.r4.model.BooleanType;
@@ -33,6 +36,7 @@ import org.hl7.fhir.r4.model.Parameters;
 import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.Resource;
 import org.hl7.fhir.r4.model.StringType;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.client.RestClientException;
@@ -62,6 +66,9 @@ import lombok.extern.slf4j.Slf4j;
 public class TestCaseBundleService {
 
   private final FhirContext fhirContext;
+
+  @Value("${madie.resource.url}")
+  private String madieResourceUrl;
 
   public Map<String, Bundle> getTestCaseExportBundle(Measure measure, List<TestCase> testCases) {
     if (measure == null || testCases == null || testCases.isEmpty()) {
@@ -128,8 +135,8 @@ public class TestCaseBundleService {
             .map(
                 entry -> {
                   if (bundleType == BundleType.TRANSACTION) {
-
-                    FhirResourceHelpers.setResourceEntry(entry.getResource(), entry);
+                    FhirResourceHelpers.setRequestForResourceEntry(
+                        entry.getResource(), entry, Bundle.HTTPVerb.PUT);
                     return entry;
                   } else if (bundleType == BundleType.COLLECTION) {
                     entry.setRequest(null);
@@ -280,7 +287,12 @@ public class TestCaseBundleService {
     List<Reference> references = new ArrayList<>();
     testCaseBundle
         .getEntry()
-        .forEach(entry -> references.add(new Reference(entry.getResource().getId())));
+        // remove the madie url to provide relative urls
+        .forEach(
+            entry ->
+                references.add(
+                    new Reference(
+                        StringUtils.remove(entry.getResource().getId(), madieResourceUrl))));
     return references;
   }
 
@@ -315,6 +327,30 @@ public class TestCaseBundleService {
             .collect(Collectors.joining());
 
     return readMe;
+  }
+
+  private String generateMadieMetadataFile(List<TestCase> testCases)
+      throws JsonProcessingException {
+    if (CollectionUtils.isEmpty(testCases)) {
+      return "";
+    }
+    List<TestCaseExportMetaData> metaDataList =
+        testCases.stream()
+            .map(
+                testCase ->
+                    TestCaseExportMetaData.builder()
+                        .testCaseId(testCase.getId())
+                        .title(testCase.getTitle())
+                        .series(testCase.getSeries())
+                        .description(testCase.getDescription())
+                        .patientId(
+                            testCase.getPatientId() == null
+                                ? null
+                                : testCase.getPatientId().toString())
+                        .build())
+            .toList();
+    ObjectMapper mapper = new ObjectMapper();
+    return mapper.writeValueAsString(metaDataList);
   }
 
   public void setExportBundleType(ExportDTO exportDTO, Measure measure) {
@@ -361,6 +397,12 @@ public class TestCaseBundleService {
         entry.setSize(readme.length());
         zos.putNextEntry(entry);
         zos.write(readme.getBytes());
+        // Add the .madie metadata file
+        String metadata = generateMadieMetadataFile(testCases);
+        ZipEntry metaDataEntry = new ZipEntry(".madie");
+        entry.setSize(metadata.length());
+        zos.putNextEntry(metaDataEntry);
+        zos.write(metadata.getBytes());
         // Add the TestCases back the zip
         ZipEntry zipEntry = zis.getNextEntry();
         while (zipEntry != null) {

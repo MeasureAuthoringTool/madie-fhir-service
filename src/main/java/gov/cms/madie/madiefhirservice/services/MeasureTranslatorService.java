@@ -14,7 +14,6 @@ import gov.cms.madie.models.measure.Measure;
 import gov.cms.madie.models.measure.Population;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.hl7.fhir.Uri;
 import org.hl7.fhir.r4.model.Identifier.IdentifierUse;
 import org.hl7.fhir.instance.model.api.IBaseDatatype;
 import org.hl7.fhir.r4.model.CanonicalType;
@@ -53,7 +52,10 @@ public class MeasureTranslatorService {
     String rationale = madieMeasure.getMeasureMetaData().getRationale();
     Instant approvalDate = madieMeasure.getReviewMetaData().getApprovalDate();
     Instant lastReviewDate = madieMeasure.getReviewMetaData().getLastReviewDate();
-
+    String version = madieMeasure.getVersion().toString();
+    if (madieMeasure.getMeasureMetaData() != null && madieMeasure.getMeasureMetaData().isDraft()) {
+      version = "Draft based on " + version;
+    }
     org.hl7.fhir.r4.model.Measure measure = new org.hl7.fhir.r4.model.Measure();
     measure
         .setName(madieMeasure.getCqlLibraryName())
@@ -62,7 +64,7 @@ public class MeasureTranslatorService {
         .setExperimental(madieMeasure.getMeasureMetaData().isExperimental())
         .setUrl(
             FhirResourceHelpers.buildResourceFullUrl("Measure", madieMeasure.getCqlLibraryName()))
-        .setVersion(madieMeasure.getVersion().toString())
+        .setVersion(version)
         .setEffectivePeriod(
             getPeriodFromDates(
                 madieMeasure.getMeasurementPeriodStart(), madieMeasure.getMeasurementPeriodEnd()))

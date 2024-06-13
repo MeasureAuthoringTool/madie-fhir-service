@@ -13,7 +13,6 @@ import gov.cms.madie.models.measure.MeasureMetaData;
 import gov.cms.madie.models.measure.MeasureScoring;
 import gov.cms.madie.models.measure.Population;
 import gov.cms.madie.models.measure.PopulationType;
-import org.hl7.fhir.MeasureGroup;
 import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.r4.model.Attachment;
 import org.hl7.fhir.r4.model.Bundle;
@@ -87,10 +86,7 @@ class HumanReadableServiceTest implements ResourceFileUtil {
             .measurementPeriodEnd(new Date())
             .measureMetaData(
                 new MeasureMetaData()
-                    .toBuilder()
-                    .copyright("test_copyright")
-                    .disclaimer("test_disclaimer")
-                    .build())
+                    .toBuilder().copyright("test_copyright").disclaimer("test_disclaimer").build())
             .groups(List.of(measureGroup1))
             .build();
 

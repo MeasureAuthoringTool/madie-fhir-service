@@ -8,7 +8,6 @@ import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
 import gov.cms.madie.models.common.BundleType;
 import gov.cms.madie.models.dto.ExportDTO;
 import gov.cms.madie.models.measure.Measure;
-import gov.cms.madie.models.measure.TestCase;
 import org.hl7.fhir.r4.model.Bundle;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

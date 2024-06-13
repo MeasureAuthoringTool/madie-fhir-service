@@ -17,7 +17,6 @@ import org.hl7.fhir.r4.model.Library;
 import org.hl7.fhir.r4.model.RelatedArtifact;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -188,7 +187,9 @@ public class LibraryCqlVisitor extends cqlBaseVisitor<String> {
     return null;
   }
 
-  /** @return Has to be something so always null. */
+  /**
+   * @return Has to be something so always null.
+   */
   @Override
   protected String defaultResult() {
     return null;
