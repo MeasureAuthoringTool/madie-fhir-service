@@ -11,12 +11,14 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.isNull;
 import static org.mockito.Mockito.doReturn;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -35,7 +37,6 @@ import org.hl7.fhir.r4.model.Reference;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -112,7 +113,7 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
   }
 
   @Test
-  void zipTestCaseContentsTest() {
+  void zipTestCaseContentsTest() throws IOException {
 
     PackagingUtilityImpl utility = Mockito.mock(PackagingUtilityImpl.class);
 
@@ -133,6 +134,10 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
         testCaseBundleService.zipTestCaseContents(
             madieMeasure, exportableTestCaseBundle, testCaseList);
     assertNotNull(results);
+    Map<String, String> zipContents = getZipContents(results);
+    assertEquals(2, zipContents.size());
+    assertTrue(zipContents.containsKey("README.txt"));
+    assertTrue(zipContents.containsKey(".madie"));
   }
 
   @Test
@@ -313,9 +318,16 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
     assertEquals(0, measureReport.getGroup().size());
   }
 
-  @Disabled
+  //  @Disabled
   @Test
-  void zipTestCaseContents() throws IOException {
+  void zipTestCaseContents()
+      throws IOException,
+          ClassNotFoundException,
+          InvocationTargetException,
+          InstantiationException,
+          IllegalAccessException,
+          NoSuchMethodException {
+
     Map<String, Bundle> testCaseBundleMap = new HashMap<>();
     testCaseBundleMap.put(
         "test1",
@@ -328,15 +340,19 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
             .newJsonParser()
             .parseResource(Bundle.class, madieMeasure.getTestCases().get(1).getJson()));
 
+    factory
+        .when(() -> PackagingUtilityFactory.getInstance(anyString()))
+        .thenReturn(new PackagingUtilityImpl());
     byte[] result =
         testCaseBundleService.zipTestCaseContents(
             madieMeasure, testCaseBundleMap, madieMeasure.getTestCases());
 
     Map<String, String> zipContents = getZipContents(result);
-    assertEquals(3, zipContents.size());
+    assertEquals(4, zipContents.size());
     assertTrue(zipContents.containsKey("test1.json"));
     assertTrue(zipContents.containsKey("test2.json"));
     assertTrue(zipContents.containsKey("README.txt"));
+    assertTrue(zipContents.containsKey(".madie"));
   }
 
   private Map<String, String> getZipContents(byte[] inputBytes) throws IOException {

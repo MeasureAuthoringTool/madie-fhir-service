@@ -20,6 +20,9 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import gov.cms.madie.models.dto.TestCaseExportMetaData;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.hl7.fhir.r4.model.BooleanType;
@@ -326,6 +329,30 @@ public class TestCaseBundleService {
     return readMe;
   }
 
+  private String generateMadieMetadataFile(List<TestCase> testCases)
+      throws JsonProcessingException {
+    if (CollectionUtils.isEmpty(testCases)) {
+      return "";
+    }
+    List<TestCaseExportMetaData> metaDataList =
+        testCases.stream()
+            .map(
+                testCase ->
+                    TestCaseExportMetaData.builder()
+                        .testCaseId(testCase.getId())
+                        .title(testCase.getTitle())
+                        .series(testCase.getSeries())
+                        .description(testCase.getDescription())
+                        .patientId(
+                            testCase.getPatientId() == null
+                                ? null
+                                : testCase.getPatientId().toString())
+                        .build())
+            .toList();
+    ObjectMapper mapper = new ObjectMapper();
+    return mapper.writeValueAsString(metaDataList);
+  }
+
   public void setExportBundleType(ExportDTO exportDTO, Measure measure) {
     if (exportDTO.getBundleType() != null) {
       BundleType bundleType = BundleType.valueOf(exportDTO.getBundleType().name());
@@ -370,6 +397,12 @@ public class TestCaseBundleService {
         entry.setSize(readme.length());
         zos.putNextEntry(entry);
         zos.write(readme.getBytes());
+        // Add the .madie metadata file
+        String metadata = generateMadieMetadataFile(testCases);
+        ZipEntry metaDataEntry = new ZipEntry(".madie");
+        entry.setSize(metadata.length());
+        zos.putNextEntry(metaDataEntry);
+        zos.write(metadata.getBytes());
         // Add the TestCases back the zip
         ZipEntry zipEntry = zis.getNextEntry();
         while (zipEntry != null) {
