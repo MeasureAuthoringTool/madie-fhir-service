@@ -41,28 +41,26 @@ public class TestCaseBundleController {
       Principal principal, @RequestBody ExportDTO exportDTO) {
     Measure measure = exportDTO.getMeasure();
 
-    List<String> testCaseId = exportDTO.getTestCaseIds();
+    List<String> testCaseIds = exportDTO.getTestCaseIds();
     final String username = principal.getName();
     log.info(
         "User [{}] is attempting to export all test cases from Measure [{}]",
         username,
         measure.getId());
-    if (testCaseId == null || testCaseId.isEmpty()) {
+    if (testCaseIds == null || testCaseIds.isEmpty()) {
       throw new ResourceNotFoundException("test cases", "measure", measure.getId());
     }
-    // MAT-6204 Here we're modifying the bundle based on export choice,
-    // but we don't want to modify it permanently
-    testCaseBundleService.setExportBundleType(exportDTO, measure);
 
     List<TestCase> testCases =
         Optional.ofNullable(measure.getTestCases())
             .orElseThrow(
                 () -> new ResourceNotFoundException("test cases", "measure", measure.getId()))
             .stream()
-            .filter(tc -> testCaseId.stream().anyMatch(id -> id.equals(tc.getId())))
+            .filter(tc -> testCaseIds.stream().anyMatch(id -> id.equals(tc.getId())))
             .collect(Collectors.toList());
+
     Map<String, Bundle> exportableTestCaseBundle =
-        testCaseBundleService.getTestCaseExportBundle(measure, testCases);
+        testCaseBundleService.getTestCaseExportBundle(measure, testCases, exportDTO);
     if (testCases.size() != exportableTestCaseBundle.size()) {
       // remove the test cases that couldn't be parsed
       testCases =

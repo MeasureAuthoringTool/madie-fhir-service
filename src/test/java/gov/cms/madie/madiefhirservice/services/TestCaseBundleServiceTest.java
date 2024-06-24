@@ -5,11 +5,7 @@ import static java.util.Collections.singletonList;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.isNull;
@@ -27,9 +23,9 @@ import java.util.Objects;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
+import gov.cms.madie.models.dto.ExportDTO;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
-import org.hl7.fhir.dstu2.model.Bundle.HTTPVerb;
 import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.MeasureReport;
 import org.hl7.fhir.r4.model.Parameters;
@@ -75,6 +71,9 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
   private Measure madieMeasure;
 
   private TestCase testCase;
+
+  private ExportDTO exportDTO;
+  private IParser parser;
   private static MockedStatic<PackagingUtilityFactory> factory;
 
   @BeforeAll
@@ -89,27 +88,88 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
 
   @BeforeEach
   public void setUp() throws JsonProcessingException {
-    String madieMeasureJson =
-        getStringFromTestResource("/measures/SimpleFhirMeasureLib/madie_measure.json");
-    madieMeasure = MeasureTestHelper.createMadieMeasureFromJson(madieMeasureJson);
-    testCase = Objects.requireNonNull(madieMeasure).getTestCases().get(0);
-    ReflectionTestUtils.setField(fhirResourceHelpers, "madieUrl", "madie.cms.gov");
-  }
-
-  @Test
-  void updateEntryTest() {
-    IParser parser =
+    parser =
         fhirContext
             .newJsonParser()
             .setParserErrorHandler(new StrictErrorHandler())
             .setPrettyPrint(true);
-    Bundle bundle = parser.parseResource(Bundle.class, testCase.getJson());
-    assertNull(bundle.getEntry().get(0).getRequest().getMethod());
-    testCaseBundleService.updateEntry(testCase, BundleType.TRANSACTION);
+    String madieMeasureJson =
+        getStringFromTestResource("/measures/SimpleFhirMeasureLib/madie_measure.json");
+    madieMeasure = MeasureTestHelper.createMadieMeasureFromJson(madieMeasureJson);
+    testCase = Objects.requireNonNull(madieMeasure).getTestCases().get(0);
+    exportDTO = ExportDTO.builder().bundleType(BundleType.TRANSACTION).build();
+    ReflectionTestUtils.setField(fhirResourceHelpers, "madieUrl", "madie.cms.gov");
+  }
 
-    bundle = parser.parseResource(Bundle.class, testCase.getJson());
+  @Test
+  void updateEntryForTransactionBundleType() {
+    Bundle testBundle =
+        parser.parseResource(Bundle.class, madieMeasure.getTestCases().get(0).getJson());
+    Bundle.BundleEntryComponent patientEntry = testBundle.getEntry().get(0);
+    Bundle.BundleEntryComponent encounterEntry = testBundle.getEntry().get(1);
+    assertEquals(Bundle.BundleType.COLLECTION, testBundle.getType());
+    assertEquals("Patient-1", patientEntry.getResource().getIdPart());
+    assertEquals("Encounter-1", encounterEntry.getResource().getIdPart());
+    assertNull(patientEntry.getRequest().getMethod());
+
+    var updatedBundle =
+        testCaseBundleService.updateEntry(testBundle, BundleType.TRANSACTION, parser);
+
+    Bundle.BundleEntryComponent updatedPatientEntry = updatedBundle.getEntry().get(0);
+    Bundle.BundleEntryComponent updatedEncounterEntry = updatedBundle.getEntry().get(1);
+    assertEquals(Bundle.BundleType.TRANSACTION, updatedBundle.getType());
+    assertNotNull(updatedPatientEntry.getResource().getIdPart());
+    assertNotEquals("Patient-1", updatedPatientEntry.getResource().getIdPart());
+    assertNotNull(updatedEncounterEntry.getResource().getIdPart());
+    assertEquals("Encounter-1", encounterEntry.getResource().getIdPart());
+    assertEquals(updatedPatientEntry.getRequest().getMethod(), Bundle.HTTPVerb.PUT);
     assertEquals(
-        bundle.getEntry().get(0).getRequest().getMethod().toString(), HTTPVerb.PUT.toString());
+        "Patient/" + updatedPatientEntry.getResource().getId(),
+        updatedEncounterEntry
+            .getResource()
+            .getChildByName("subject")
+            .getValues()
+            .get(0)
+            .getChildByName("reference")
+            .getValues()
+            .get(0)
+            .toString());
+  }
+
+  @Test
+  void updateEntryForCollectionBundleType() {
+    Bundle testBundle =
+        parser.parseResource(Bundle.class, madieMeasure.getTestCases().get(1).getJson());
+    Bundle.BundleEntryComponent patientEntry = testBundle.getEntry().get(0);
+    Bundle.BundleEntryComponent encounterEntry = testBundle.getEntry().get(1);
+    assertEquals(Bundle.BundleType.TRANSACTION, testBundle.getType());
+    assertEquals("Patient-1", patientEntry.getResource().getIdPart());
+    assertEquals("Encounter-1", encounterEntry.getResource().getIdPart());
+    assertNull(testBundle.getEntry().get(0).getRequest().getMethod());
+
+    var updatedBundle =
+        testCaseBundleService.updateEntry(testBundle, BundleType.COLLECTION, parser);
+
+    Bundle.BundleEntryComponent updatedPatientEntry = updatedBundle.getEntry().get(0);
+    Bundle.BundleEntryComponent updatedEncounterEntry = updatedBundle.getEntry().get(1);
+    assertEquals(Bundle.BundleType.COLLECTION, updatedBundle.getType());
+    assertNotNull(updatedPatientEntry.getResource().getIdPart());
+    assertNotEquals("Patient-1", updatedPatientEntry.getResource().getIdPart());
+    assertNotNull(updatedEncounterEntry.getResource().getIdPart());
+    assertEquals("Encounter-1", encounterEntry.getResource().getIdPart());
+    assertNull(updatedPatientEntry.getRequest().getMethod());
+    assertNull(updatedEncounterEntry.getRequest().getMethod());
+    assertEquals(
+        "Patient/" + updatedPatientEntry.getResource().getId(),
+        updatedEncounterEntry
+            .getResource()
+            .getChildByName("subject")
+            .getValues()
+            .get(0)
+            .getChildByName("reference")
+            .getValues()
+            .get(0)
+            .toString());
   }
 
   @Test
@@ -142,14 +202,17 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
 
   @Test
   void getTestCaseExportBundleMulti() {
+    exportDTO = ExportDTO.builder().bundleType(BundleType.COLLECTION).build();
     Map<String, Bundle> exportMap =
-        testCaseBundleService.getTestCaseExportBundle(madieMeasure, madieMeasure.getTestCases());
+        testCaseBundleService.getTestCaseExportBundle(
+            madieMeasure, madieMeasure.getTestCases(), exportDTO);
     assertEquals(2, exportMap.size());
 
     // first test case bundle(collection)
     Bundle bundle =
         exportMap.get(
             "285d114d-9c36-4d66-b0a0-06f395bbf23d/title-v0.0.000-testcaseseries-testcasetitle");
+    String patientResourceId = bundle.getEntry().get(0).getResource().getId();
     assertEquals(5, bundle.getEntry().size());
     assertEquals(bundle.getType(), Bundle.BundleType.COLLECTION);
     Bundle.BundleEntryComponent bundleEntry = bundle.getEntry().get(4);
@@ -165,7 +228,7 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
         measureReport.getMeta().getProfile().get(0).asStringValue());
 
     Parameters parameters = (Parameters) measureReport.getContained().get(0);
-    assertEquals("Patient-1", parameters.getParameter().get(0).getValue().toString());
+    assertEquals(patientResourceId, parameters.getParameter().get(0).getValue().toString());
 
     // Reference to parameter created above
     Reference reference = (Reference) measureReport.getExtension().get(0).getValue();
@@ -190,34 +253,36 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
 
     // evaluated resources
     assertEquals(4, measureReport.getEvaluatedResource().size());
-    assertEquals("Patient/Patient-1", measureReport.getEvaluatedResource().get(0).getReference());
     assertEquals(
-        "Encounter/Encounter-1", measureReport.getEvaluatedResource().get(1).getReference());
+        "Patient/" + patientResourceId, measureReport.getEvaluatedResource().get(0).getReference());
+    assertEquals(
+        "Encounter/" + bundle.getEntry().get(1).getResource().getId(),
+        measureReport.getEvaluatedResource().get(1).getReference());
 
     // second test case bundle(transactional)
     bundle =
         exportMap.get(
             "0ec1197a-4895-43ed-b2eb-27971f8fb95b/title-v0.0.000-testcaseseries-testcasetitle1");
     assertEquals(5, bundle.getEntry().size());
-    assertEquals(bundle.getType(), Bundle.BundleType.TRANSACTION);
+    assertEquals(bundle.getType(), Bundle.BundleType.COLLECTION);
     bundleEntry = bundle.getEntry().get(4);
-    assertEquals(bundleEntry.getRequest().getMethod(), Bundle.HTTPVerb.PUT);
-    assertEquals(
-        bundleEntry.getRequest().getUrl(),
-        "MeasureReport/" + bundleEntry.getResource().getIdPart());
+    assertNull(bundleEntry.getRequest().getMethod());
+    assertNull(bundleEntry.getRequest().getUrl());
   }
 
   @Test
   void getTestCaseExportBundleMultiReducedResult() {
     madieMeasure.getTestCases().get(1).setJson("malformed");
     Map<String, Bundle> exportMap =
-        testCaseBundleService.getTestCaseExportBundle(madieMeasure, madieMeasure.getTestCases());
+        testCaseBundleService.getTestCaseExportBundle(
+            madieMeasure, madieMeasure.getTestCases(), exportDTO);
     // The service should remove the malformed testCase and return only the valid one
     assertEquals(1, exportMap.size());
 
     Bundle bundle =
         exportMap.get(
             "285d114d-9c36-4d66-b0a0-06f395bbf23d/title-v0.0.000-testcaseseries-testcasetitle");
+    String patientResourceId = bundle.getEntry().get(0).getResource().getId();
     assertEquals(5, bundle.getEntry().size());
     MeasureReport measureReport = (MeasureReport) bundle.getEntry().get(4).getResource();
     assertEquals("MeasureReport", measureReport.getResourceType().toString());
@@ -226,7 +291,7 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
         measureReport.getMeta().getProfile().get(0).asStringValue());
 
     Parameters parameters = (Parameters) measureReport.getContained().get(0);
-    assertEquals("Patient-1", parameters.getParameter().get(0).getValue().toString());
+    assertEquals(patientResourceId, parameters.getParameter().get(0).getValue().toString());
 
     // Reference to parameter created above
     Reference reference = (Reference) measureReport.getExtension().get(0).getValue();
@@ -251,24 +316,25 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
 
     // evaluated resources
     assertEquals(4, measureReport.getEvaluatedResource().size());
-    assertEquals("Patient/Patient-1", measureReport.getEvaluatedResource().get(0).getReference());
     assertEquals(
-        "Encounter/Encounter-1", measureReport.getEvaluatedResource().get(1).getReference());
+        "Patient/" + patientResourceId, measureReport.getEvaluatedResource().get(0).getReference());
+    assertEquals(
+        "Encounter/" + bundle.getEntry().get(1).getResource().getId(),
+        measureReport.getEvaluatedResource().get(1).getReference());
   }
 
   @Test
   void getTestCaseExportAllThrowExceptionWhenTestCaseIsNotFound() {
-    List<TestCase> testCaseList = null;
     assertThrows(
         InternalServerException.class,
-        () -> testCaseBundleService.getTestCaseExportBundle(madieMeasure, testCaseList));
+        () -> testCaseBundleService.getTestCaseExportBundle(madieMeasure, null, exportDTO));
   }
 
   @Test
   void getTestCaseExportAllThrowExceptionWhenTestCaseListIsEmpty() {
     assertThrows(
         InternalServerException.class,
-        () -> testCaseBundleService.getTestCaseExportBundle(madieMeasure, emptyList()));
+        () -> testCaseBundleService.getTestCaseExportBundle(madieMeasure, emptyList(), exportDTO));
   }
 
   @Test
@@ -276,7 +342,9 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
     madieMeasure = null;
     assertThrows(
         InternalServerException.class,
-        () -> testCaseBundleService.getTestCaseExportBundle(madieMeasure, singletonList(testCase)));
+        () ->
+            testCaseBundleService.getTestCaseExportBundle(
+                madieMeasure, singletonList(testCase), exportDTO));
   }
 
   @Test
@@ -284,7 +352,9 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
     testCase.setJson(null);
     assertThrows(
         ResourceNotFoundException.class,
-        () -> testCaseBundleService.getTestCaseExportBundle(madieMeasure, singletonList(testCase)));
+        () ->
+            testCaseBundleService.getTestCaseExportBundle(
+                madieMeasure, singletonList(testCase), exportDTO));
   }
 
   @Test
@@ -292,7 +362,9 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
     testCase.setJson("");
     assertThrows(
         ResourceNotFoundException.class,
-        () -> testCaseBundleService.getTestCaseExportBundle(madieMeasure, singletonList(testCase)));
+        () ->
+            testCaseBundleService.getTestCaseExportBundle(
+                madieMeasure, singletonList(testCase), exportDTO));
   }
 
   @Test
@@ -300,7 +372,9 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
     testCase.setJson("test");
     assertThrows(
         ResourceNotFoundException.class,
-        () -> testCaseBundleService.getTestCaseExportBundle(madieMeasure, singletonList(testCase)));
+        () ->
+            testCaseBundleService.getTestCaseExportBundle(
+                madieMeasure, singletonList(testCase), exportDTO));
   }
 
   @Test
@@ -308,7 +382,8 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
 
     madieMeasure.getTestCases().get(0).setGroupPopulations(null);
     Map<String, Bundle> exportMap =
-        testCaseBundleService.getTestCaseExportBundle(madieMeasure, madieMeasure.getTestCases());
+        testCaseBundleService.getTestCaseExportBundle(
+            madieMeasure, madieMeasure.getTestCases(), exportDTO);
     assertEquals(2, exportMap.size());
 
     Bundle bundle =

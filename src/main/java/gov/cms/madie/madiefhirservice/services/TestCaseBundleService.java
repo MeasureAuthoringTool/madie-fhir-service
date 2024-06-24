@@ -36,11 +36,9 @@ import org.hl7.fhir.r4.model.Parameters;
 import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.Resource;
 import org.hl7.fhir.r4.model.StringType;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.client.RestClientException;
-
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.parser.DataFormatException;
 import ca.uhn.fhir.parser.IParser;
@@ -67,10 +65,8 @@ public class TestCaseBundleService {
 
   private final FhirContext fhirContext;
 
-  @Value("${madie.resource.url}")
-  private String madieResourceUrl;
-
-  public Map<String, Bundle> getTestCaseExportBundle(Measure measure, List<TestCase> testCases) {
+  public Map<String, Bundle> getTestCaseExportBundle(
+      Measure measure, List<TestCase> testCases, ExportDTO exportDTO) {
     if (measure == null || testCases == null || testCases.isEmpty()) {
       throw new InternalServerException("Unable to find Measure and/or test case");
     }
@@ -82,7 +78,6 @@ public class TestCaseBundleService {
             .setPrettyPrint(true);
 
     Map<String, Bundle> testCaseBundle = new HashMap<>();
-
     for (TestCase testCase : testCases) {
       Bundle bundle;
       try {
@@ -97,6 +92,15 @@ public class TestCaseBundleService {
             testCase.getId(),
             measure.getId());
         continue;
+      }
+
+      // MAT-6204 Here we're modifying the bundle based on export choice,
+      // but we don't want to modify it permanently
+      if (exportDTO.getBundleType() != null) {
+        BundleType bundleType = BundleType.valueOf(exportDTO.getBundleType().name());
+        bundle = updateEntry(bundle, bundleType, parser);
+        String json = parser.encodeResourceToString(bundle);
+        testCase.setJson(json);
       }
 
       String fileName = ExportFileNamesUtil.getTestCaseExportFileName(measure, testCase);
@@ -116,24 +120,34 @@ public class TestCaseBundleService {
     return testCaseBundle;
   }
 
-  public void updateEntry(TestCase testCase, BundleType bundleType) {
-
-    // Convert Test case JSON to a BUndle
-    IParser parser =
-        fhirContext
-            .newJsonParser()
-            .setParserErrorHandler(new StrictErrorHandler())
-            .setPrettyPrint(true);
-    Bundle bundle = parser.parseResource(Bundle.class, testCase.getJson());
-
-    // modify the bundle
+  public Bundle updateEntry(Bundle bundle, BundleType bundleType, IParser parser) {
+    Bundle bundleCopy = bundle.copy();
     org.hl7.fhir.r4.model.Bundle.BundleType fhirBundleType =
         org.hl7.fhir.r4.model.Bundle.BundleType.valueOf(bundleType.toString().toUpperCase());
-    bundle.setType(fhirBundleType);
-    bundle.setEntry(
-        bundle.getEntry().stream()
+    bundleCopy.setType(fhirBundleType);
+
+    // Generating a new UUID for each resource and updating all its references across the bundle.
+    // for example replaces string that matches "Patient/patient-id" with
+    // "Patient/madie-generated-uuid"
+    String bundleString = parser.encodeResourceToString(bundleCopy);
+    for (Bundle.BundleEntryComponent entry : bundleCopy.getEntry()) {
+      var resourceID = UUID.randomUUID().toString();
+      var resourceType = entry.getResource().getResourceType() + "/";
+      bundleString =
+          bundleString.replaceAll(
+              resourceType + entry.getResource().getIdPart(), resourceType + resourceID);
+    }
+    bundleCopy = parser.parseResource(Bundle.class, bundleString);
+
+    // Modifying Request attribute for each Resource
+    // Also updating the resource Id with the MADiE generated UUID
+    bundleCopy.setEntry(
+        bundleCopy.getEntry().stream()
             .map(
                 entry -> {
+                  entry
+                      .getResource()
+                      .setId(StringUtils.substringAfterLast(entry.getFullUrl(), "/"));
                   if (bundleType == BundleType.TRANSACTION) {
                     FhirResourceHelpers.setRequestForResourceEntry(
                         entry.getResource(), entry, Bundle.HTTPVerb.PUT);
@@ -144,10 +158,7 @@ public class TestCaseBundleService {
                   return entry;
                 })
             .collect(Collectors.toList()));
-    // bundle to json
-    String json = parser.encodeResourceToString(bundle);
-
-    testCase.setJson(json);
+    return bundleCopy;
   }
 
   private MeasureReport buildMeasureReport(
@@ -292,7 +303,9 @@ public class TestCaseBundleService {
             entry ->
                 references.add(
                     new Reference(
-                        StringUtils.remove(entry.getResource().getId(), madieResourceUrl))));
+                        entry.getResource().getResourceType()
+                            + "/"
+                            + entry.getResource().getIdPart())));
     return references;
   }
 
@@ -351,26 +364,6 @@ public class TestCaseBundleService {
             .toList();
     ObjectMapper mapper = new ObjectMapper();
     return mapper.writeValueAsString(metaDataList);
-  }
-
-  public void setExportBundleType(ExportDTO exportDTO, Measure measure) {
-    if (exportDTO.getBundleType() != null) {
-      BundleType bundleType = BundleType.valueOf(exportDTO.getBundleType().name());
-      switch (bundleType) {
-        case COLLECTION:
-          log.debug("You're exporting a Collection");
-          // update bundle type for each entry MAT 6405
-          break;
-        case TRANSACTION:
-          log.debug("You're exporting a Transaction");
-          // update bundle type and add entry.request for each entry
-          if (measure.getTestCases() != null) {
-            measure.getTestCases().forEach(testCase -> updateEntry(testCase, bundleType));
-          }
-          break;
-        default:
-      }
-    }
   }
 
   /**

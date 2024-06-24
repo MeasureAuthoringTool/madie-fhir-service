@@ -72,7 +72,8 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
         dto.getMeasure().getTestCases().get(0).getPatientId().toString(), testCaseBundle);
     testCaseBundleMap.put(
         dto.getMeasure().getTestCases().get(1).getPatientId().toString(), testCaseBundle);
-    when(testCaseBundleService.getTestCaseExportBundle(any(Measure.class), any(List.class)))
+    when(testCaseBundleService.getTestCaseExportBundle(
+            any(Measure.class), any(List.class), any(ExportDTO.class)))
         .thenReturn(testCaseBundleMap);
     mockMvc
         .perform(
@@ -84,7 +85,7 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
                 .contentType(MediaType.APPLICATION_JSON_VALUE))
         .andExpect(status().isOk());
     verify(testCaseBundleService, times(1))
-        .getTestCaseExportBundle(any(Measure.class), any(List.class));
+        .getTestCaseExportBundle(any(Measure.class), any(List.class), any(ExportDTO.class));
   }
 
   @Test
@@ -98,7 +99,8 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
         dto.getMeasure().getTestCases().get(0).getPatientId().toString(), testCaseBundle);
     testCaseBundleMap.put(
         dto.getMeasure().getTestCases().get(1).getPatientId().toString(), testCaseBundle);
-    when(testCaseBundleService.getTestCaseExportBundle(any(Measure.class), any(List.class)))
+    when(testCaseBundleService.getTestCaseExportBundle(
+            any(Measure.class), any(List.class), any(ExportDTO.class)))
         .thenReturn(testCaseBundleMap);
     mockMvc
         .perform(
@@ -110,7 +112,7 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
                 .contentType(MediaType.APPLICATION_JSON_VALUE))
         .andExpect(status().isOk());
     verify(testCaseBundleService, times(1))
-        .getTestCaseExportBundle(any(Measure.class), any(List.class));
+        .getTestCaseExportBundle(any(Measure.class), any(List.class), any(ExportDTO.class));
   }
 
   @Test
@@ -125,7 +127,8 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
         dto.getMeasure().getTestCases().get(0).getPatientId().toString(), testCaseBundle);
     testCaseBundleMap.put(
         dto.getMeasure().getTestCases().get(1).getPatientId().toString(), testCaseBundle);
-    when(testCaseBundleService.getTestCaseExportBundle(any(Measure.class), any(List.class)))
+    when(testCaseBundleService.getTestCaseExportBundle(
+            any(Measure.class), any(List.class), any(ExportDTO.class)))
         .thenReturn(testCaseBundleMap);
     mockMvc
         .perform(
@@ -137,7 +140,7 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
                 .contentType(MediaType.APPLICATION_JSON_VALUE))
         .andExpect(status().isOk());
     verify(testCaseBundleService, times(1))
-        .getTestCaseExportBundle(any(Measure.class), any(List.class));
+        .getTestCaseExportBundle(any(Measure.class), any(List.class), any(ExportDTO.class));
   }
 
   @Test
@@ -183,7 +186,8 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
     Map<String, Bundle> testCaseBundleMap = new HashMap<>();
     testCaseBundleMap.put(
         dto.getMeasure().getTestCases().get(0).getPatientId().toString(), testCaseBundle);
-    when(testCaseBundleService.getTestCaseExportBundle(any(Measure.class), any(List.class)))
+    when(testCaseBundleService.getTestCaseExportBundle(
+            any(Measure.class), any(List.class), any(ExportDTO.class)))
         .thenReturn(testCaseBundleMap);
     mockMvc
         .perform(
@@ -195,6 +199,6 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
                 .contentType(MediaType.APPLICATION_JSON_VALUE))
         .andExpect(status().is(206));
     verify(testCaseBundleService, times(1))
-        .getTestCaseExportBundle(any(Measure.class), any(List.class));
+        .getTestCaseExportBundle(any(Measure.class), any(List.class), any(ExportDTO.class));
   }
 }
