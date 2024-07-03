@@ -109,7 +109,9 @@ public class MeasureBundleService {
       final String accessToken) {
     Library library =
         getMeasureLibraryResourceForMadieMeasure(expressions, madieMeasure, accessToken);
-    library.setPublisher(madieMeasure.getMeasureMetaData().getSteward().getName());
+    if (madieMeasure.getMeasureMetaData().getSteward() != null) {
+      library.setPublisher(madieMeasure.getMeasureMetaData().getSteward().getName());
+    }
     Bundle.BundleEntryComponent mainLibraryBundleComponent =
         FhirResourceHelpers.getBundleEntryComponent(library, "Transaction");
     Map<String, Library> includedLibraryMap = new HashMap<>();
