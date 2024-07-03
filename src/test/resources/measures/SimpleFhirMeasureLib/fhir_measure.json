@@ -11,6 +11,7 @@
   "title": "SimpleFhirMeasure",
   "experimental": true,
   "publisher": "UNKNOWN",
+  "guidance":"test guidance",
   "contact": [
     {
       "telecom": [

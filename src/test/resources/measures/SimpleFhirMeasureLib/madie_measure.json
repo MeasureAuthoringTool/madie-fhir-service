@@ -247,7 +247,12 @@
    "measurementPeriodEnd": "2023-12-31T08:00:00.000Z",
    "model":"QI-Core v4.1.1",
    "measureMetaData":{
-      "steward":null,
+      "steward":{
+         "id": null,
+         "name": "UNKNOWN",
+         "oid": null,
+         "url": null
+      },
       "description":"test description",
       "copyright":null,
       "disclaimer":null,
