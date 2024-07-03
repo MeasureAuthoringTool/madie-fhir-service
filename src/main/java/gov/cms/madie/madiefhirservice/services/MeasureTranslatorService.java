@@ -74,6 +74,7 @@ public class MeasureTranslatorService {
             (steward == null || StringUtils.isBlank(steward.getName()))
                 ? UNKNOWN
                 : steward.getName())
+        .setGuidance(madieMeasure.getMeasureMetaData().getGuidance())
         .setCopyright(StringUtils.isBlank(copyright) ? UNKNOWN : copyright)
         .setDisclaimer(StringUtils.isBlank(disclaimer) ? UNKNOWN : disclaimer)
         .setRationale(rationale)
@@ -102,7 +103,6 @@ public class MeasureTranslatorService {
     for (Extension ext : buildExtensions(madieMeasure)) {
       measure.addExtension(ext);
     }
-
     return measure;
   }
 

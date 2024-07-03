@@ -87,7 +87,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
         measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure);
 
     assertThat(measure.getName(), is(equalTo(madieMeasure.getCqlLibraryName())));
-    assertThat(measure.getGuidance(), is(equalTo(madieMeasure.getMeasureMetaData().getSteward())));
+    assertThat(measure.getGuidance(), is(equalTo(madieMeasure.getMeasureMetaData().getGuidance())));
     assertThat(
         measure.getRationale(), is(equalTo(madieMeasure.getMeasureMetaData().getRationale())));
     assertThat(measure.getPublisher(), is(equalTo("UNKNOWN")));
@@ -303,7 +303,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
 
     assertThat(measure.getName(), is(equalTo(madieMeasure.getCqlLibraryName())));
     assertFalse(measure.getExperimental());
-    assertThat(measure.getGuidance(), is(equalTo(madieMeasure.getMeasureMetaData().getSteward())));
+    assertThat(measure.getGuidance(), is(equalTo(madieMeasure.getMeasureMetaData().getGuidance())));
     assertThat(
         measure.getRationale(), is(equalTo(madieMeasure.getMeasureMetaData().getRationale())));
     assertThat(measure.getPublisher(), is(equalTo("testSteward")));

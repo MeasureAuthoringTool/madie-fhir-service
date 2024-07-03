@@ -111,13 +111,16 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
         (org.hl7.fhir.r4.model.Measure) bundle.getEntry().get(0).getResource();
     assertThat(madieMeasure.getCqlLibraryName(), is(equalTo(measureResource.getName())));
     assertThat(
-        madieMeasure.getMeasureMetaData().getGuidance(), is(equalTo(measureResource.getGuidance())));
+        madieMeasure.getMeasureMetaData().getGuidance(),
+        is(equalTo(measureResource.getGuidance())));
 
     Library measureLibrary = (Library) bundle.getEntry().get(1).getResource();
     assertThat(measureLibrary.getName(), is(equalTo(madieMeasure.getCqlLibraryName())));
     assertThat(measureLibrary.getContent(), is(notNullValue()));
     assertThat(measureLibrary.getContent().size(), is(equalTo(2)));
-    assertThat(measureLibrary.getPublisher(), is(equalTo(madieMeasure.getMeasureMetaData().getSteward().getName())));
+    assertThat(
+        measureLibrary.getPublisher(),
+        is(equalTo(madieMeasure.getMeasureMetaData().getSteward().getName())));
     Bundle.BundleEntryRequestComponent measureEntryRequest = bundle.getEntry().get(0).getRequest();
     assertThat(
         measureEntryRequest.getUrl(), is(equalTo("Measure/" + madieMeasure.getCqlLibraryName())));
@@ -199,7 +202,8 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
         (org.hl7.fhir.r4.model.Measure) bundle.getEntry().get(0).getResource();
     assertThat(madieMeasure.getCqlLibraryName(), is(equalTo(measureResource.getName())));
     assertThat(
-        madieMeasure.getMeasureMetaData().getGuidance(), is(equalTo(measureResource.getGuidance())));
+        madieMeasure.getMeasureMetaData().getGuidance(),
+        is(equalTo(measureResource.getGuidance())));
 
     var r4Measure = (org.hl7.fhir.r4.model.Measure) bundle.getEntry().get(0).getResource();
     Library r4MeasureLibrary = (Library) bundle.getEntry().get(1).getResource();
@@ -219,6 +223,8 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
     assertThat(
         r4MeasureLibrary.getText().getDivAsString(),
         is(equalTo("<div xmlns=\"http://www.w3.org/1999/xhtml\">test narrative</div>")));
-    assertThat(r4MeasureLibrary.getPublisher(), is(equalTo(madieMeasure.getMeasureMetaData().getSteward().getName())));
+    assertThat(
+        r4MeasureLibrary.getPublisher(),
+        is(equalTo(madieMeasure.getMeasureMetaData().getSteward().getName())));
   }
 }
