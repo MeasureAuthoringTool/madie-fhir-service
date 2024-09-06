@@ -333,7 +333,7 @@ public class TestCaseBundleService {
             .map(
                 testCase ->
                     "\n"
-                        + ExportFileNamesUtil.getPatientId(testCase)
+                        + testCase.getPatientId()
                         + " = "
                         + testCase.getSeries()
                         + " "
