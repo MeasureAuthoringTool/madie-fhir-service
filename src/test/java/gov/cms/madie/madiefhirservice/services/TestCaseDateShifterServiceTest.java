@@ -262,4 +262,22 @@ public class TestCaseDateShifterServiceTest implements ResourceFileUtil {
     testCaseDateShifterService.shiftDates(procedure, 1);
     assertTrue(copy.getPerformed().equalsDeep(procedure.getPerformed()));
   }
+
+  @Test
+  void limitsUpperYearRangeTo9999() {
+    Patient patient = (Patient) ResourceUtils.getResource(testCaseBundle, "Patient");
+    Date originalBirthDate = (Date) patient.getBirthDate().clone();
+    int shiftBy = 1000000; // years
+    testCaseDateShifterService.shiftDates(patient, shiftBy);
+    assertEquals(DateUtils.setYears(originalBirthDate, 9999), patient.getBirthDate());
+  }
+
+  @Test
+  void limitsLowerYearRangeTo0() {
+    Patient patient = (Patient) ResourceUtils.getResource(testCaseBundle, "Patient");
+    Date originalBirthDate = (Date) patient.getBirthDate().clone();
+    int shiftBy = -1000000; // years
+    testCaseDateShifterService.shiftDates(patient, shiftBy);
+    assertEquals(DateUtils.setYears(originalBirthDate, 1900), patient.getBirthDate());
+  }
 }

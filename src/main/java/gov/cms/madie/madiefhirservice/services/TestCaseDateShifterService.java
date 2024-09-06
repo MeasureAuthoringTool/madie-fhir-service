@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.time.DateUtils;
 import org.hl7.fhir.r4.model.Base;
 import org.hl7.fhir.r4.model.BaseDateTimeType;
 import org.hl7.fhir.r4.model.Bundle;
@@ -16,6 +17,9 @@ import org.hl7.fhir.r4.model.Property;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Field;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.*;
 
 @Slf4j
@@ -25,18 +29,18 @@ public class TestCaseDateShifterService {
 
   private FhirContext fhirContext;
 
-  public TestCase shiftDates(TestCase testCase, int shifted) {
+  public TestCase shiftDates(TestCase testCase, int shiftBy) {
     if (testCase == null) {
       return null;
     }
-    List<TestCase> shiftedTestCases = shiftDates(List.of(testCase), shifted);
+    List<TestCase> shiftedTestCases = shiftDates(List.of(testCase), shiftBy);
     if (CollectionUtils.isNotEmpty(shiftedTestCases) && shiftedTestCases.size() == 1) {
       return shiftedTestCases.get(0);
     }
     return null;
   }
 
-  public List<TestCase> shiftDates(List<TestCase> testCases, int shifted) {
+  public List<TestCase> shiftDates(List<TestCase> testCases, int shiftBy) {
     if (CollectionUtils.isEmpty(testCases)) {
       return Collections.emptyList();
     }
@@ -51,7 +55,7 @@ public class TestCaseDateShifterService {
         // convert test case json to bundle
         Bundle bundle = parser.parseResource(Bundle.class, testCase.getJson());
         // update the test case dates
-        bundle.getEntry().forEach(entry -> shiftDates(entry.getResource(), shifted));
+        bundle.getEntry().forEach(entry -> shiftDates(entry.getResource(), shiftBy));
         // convert the updated bundle to string and assign back to test case.
         String json = parser.encodeResourceToString(bundle);
         testCase.setJson(json);
@@ -63,7 +67,7 @@ public class TestCaseDateShifterService {
     return shiftedTestCases;
   }
 
-  void shiftDates(Base baseResource, int shifted) {
+  void shiftDates(Base baseResource, int shiftBy) {
     List<Field> fields = new LinkedList<>();
     getAllFields(fields, baseResource.getClass());
     for (Field field : fields) {
@@ -77,11 +81,19 @@ public class TestCaseDateShifterService {
               // HAPI will build partial objects when given partial data, like only an extension.
               // Verify the target date value is non-null.
               if (dateType.getValue() != null) {
-                dateType.add(1, shifted);
+                Instant date = dateType.getValue().toInstant();
+                ZonedDateTime shifted = date.atZone(ZoneId.of("UTC")).plusYears(shiftBy);
+                if (shifted.getYear() > 9999) {
+                  dateType.setValue(DateUtils.setYears(dateType.getValue(), 9999));
+                } else if (shifted.getYear() < 1900) {
+                  dateType.setValue(DateUtils.setYears(dateType.getValue(), 1900));
+                } else {
+                  dateType.add(1, shiftBy);
+                }
               }
             }
           } else {
-            shiftDates(value, shifted);
+            shiftDates(value, shiftBy);
           }
         }
       }
