@@ -98,7 +98,7 @@ public class TestCaseBundleService {
       // but we don't want to modify it permanently
       if (exportDTO.getBundleType() != null) {
         BundleType bundleType = BundleType.valueOf(exportDTO.getBundleType().name());
-        bundle = updateEntry(bundle, bundleType, parser);
+        bundle = updateEntry(bundle, bundleType, parser, testCase.getPatientId().toString());
         String json = parser.encodeResourceToString(bundle);
         testCase.setJson(json);
       }
@@ -120,7 +120,8 @@ public class TestCaseBundleService {
     return testCaseBundle;
   }
 
-  public Bundle updateEntry(Bundle bundle, BundleType bundleType, IParser parser) {
+  public Bundle updateEntry(
+      Bundle bundle, BundleType bundleType, IParser parser, String patientId) {
     Bundle bundleCopy = bundle.copy();
     org.hl7.fhir.r4.model.Bundle.BundleType fhirBundleType =
         org.hl7.fhir.r4.model.Bundle.BundleType.valueOf(bundleType.toString().toUpperCase());
@@ -131,8 +132,8 @@ public class TestCaseBundleService {
     // "Patient/madie-generated-uuid"
     String bundleString = parser.encodeResourceToString(bundleCopy);
     for (Bundle.BundleEntryComponent entry : bundleCopy.getEntry()) {
-      var resourceID = UUID.randomUUID().toString();
       var resourceType = entry.getResource().getResourceType() + "/";
+      var resourceID = resourceType.equals("Patient/") ? patientId : UUID.randomUUID().toString();
       bundleString =
           bundleString.replaceAll(
               resourceType + entry.getResource().getIdPart(), resourceType + resourceID);

@@ -112,7 +112,7 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
     assertNull(patientEntry.getRequest().getMethod());
 
     var updatedBundle =
-        testCaseBundleService.updateEntry(testBundle, BundleType.TRANSACTION, parser);
+        testCaseBundleService.updateEntry(testBundle, BundleType.TRANSACTION, parser, "123");
 
     Bundle.BundleEntryComponent updatedPatientEntry = updatedBundle.getEntry().get(0);
     Bundle.BundleEntryComponent updatedEncounterEntry = updatedBundle.getEntry().get(1);
@@ -147,7 +147,7 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
     assertNull(testBundle.getEntry().get(0).getRequest().getMethod());
 
     var updatedBundle =
-        testCaseBundleService.updateEntry(testBundle, BundleType.COLLECTION, parser);
+        testCaseBundleService.updateEntry(testBundle, BundleType.COLLECTION, parser, "123");
 
     Bundle.BundleEntryComponent updatedPatientEntry = updatedBundle.getEntry().get(0);
     Bundle.BundleEntryComponent updatedEncounterEntry = updatedBundle.getEntry().get(1);
