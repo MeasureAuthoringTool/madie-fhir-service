@@ -135,7 +135,7 @@
 		<dependency>
 			<groupId>gov.cms.madie</groupId>
 			<artifactId>madie-java-models</artifactId>
-			<version>0.6.53-SNAPSHOT</version>
+			<version>0.6.65-SNAPSHOT</version>
 		</dependency>
 		    <dependency>
       <groupId>com.jayway.jsonpath</groupId>
