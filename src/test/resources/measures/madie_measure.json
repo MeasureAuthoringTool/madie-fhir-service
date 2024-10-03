@@ -248,7 +248,7 @@
    "model":"QI-Core v4.1.1",
    "measureMetaData":{
       "steward":{
-         "id": null,
+         "id": "testId",
          "name": "UNKNOWN",
          "oid": null,
          "url": null
@@ -257,7 +257,7 @@
       "copyright":null,
       "disclaimer":null,
       "rationale":null,
-      "developers":[{ "name": "testDeveloper", "url":  "test-developer-url.com" }],
+      "developers":[{ "id": "testId","name": "testDeveloper", "url":  "test-developer-url.com" }],
       "guidance":"test guidance",
       "clinicalRecommendation": "testClinical",
       "experimental": "false"
