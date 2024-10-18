@@ -17,8 +17,8 @@
 
 	<properties>
 		<java.version>17</java.version>
-		<springfox.version>3.0.0</springfox.version>		
-		<hapi.fhir.r4.version>6.6.2</hapi.fhir.r4.version>
+		<springfox.version>3.0.0</springfox.version>
+		<hapi.fhir.r4.version>7.4.3</hapi.fhir.r4.version>
 	</properties>
 
 	<repositories>
@@ -107,6 +107,20 @@
 			<groupId>ca.uhn.hapi.fhir</groupId>
 			<artifactId>hapi-fhir-client</artifactId>
 			<version>${hapi.fhir.r4.version}</version>
+		</dependency>
+
+		<!-- In-memory caching - required in HAPI FHIR v7.4.3 -->
+		<dependency>
+			<groupId>ca.uhn.hapi.fhir</groupId>
+			<artifactId>hapi-fhir-caching-caffeine</artifactId>
+			<version>${hapi.fhir.r4.version}</version>
+		</dependency>
+
+		<!-- Needed to fix class not found errors when using v2.15.4 - required in HAPI FHIR v7.4.3 -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.17.1</version>
 		</dependency>
 
 		<dependency>
