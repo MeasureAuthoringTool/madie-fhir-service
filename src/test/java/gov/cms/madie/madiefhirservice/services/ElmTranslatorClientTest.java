@@ -62,8 +62,12 @@ public class ElmTranslatorClientTest {
             + "    \"coding\": [ {\n"
             + "      \"system\": \"http://terminology.hl7.org/CodeSystem/library-type\",\n"
             + "      \"code\": \"module-definition\"\n"
-            + "    } ]\n"
-            + "  }\n"
+            + "    }]},\n"
+            + "  \"relatedArtifact\": [{\n"
+            + "      \"type\": \"depends-on\",\n"
+            + "      \"display\": \"Library Status\",\n"
+            + "      \"resource\": \"Library/Status|1.6.000\"\n"
+            + "   }]\n"
             + "}";
     CqlLibraryDetails libraryDetails = CqlLibraryDetails.builder().libraryName("Test").build();
     when(restTemplate.exchange(
@@ -71,9 +75,14 @@ public class ElmTranslatorClientTest {
         .thenReturn(ResponseEntity.ok(effectiveDR));
 
     when(fhirContext.newJsonParser()).thenReturn(FhirContext.forR5().newJsonParser());
+    when(elmTranslatorClientConfig.getMadieUrl()).thenReturn("http://test.url");
 
     Library output =
         elmTranslatorClient.getEffectiveDataRequirements(libraryDetails, false, "TEST_TOKEN");
     assertThat(output.getId(), is(equalTo("effective-data-requirements")));
+    assertThat(output.getRelatedArtifact().size(), is(equalTo(1)));
+    assertThat(
+        output.getRelatedArtifact().get(0).getResource(),
+        is(equalTo("http://test.url/Library/Status|1.6.000")));
   }
 }

@@ -15,6 +15,9 @@ public class ElmTranslatorClientConfig {
   @Value("${madie.cql-elm.service.effective-data-requirements-uri}")
   private String effectiveDataRequirementsDataUri;
 
+  @Value("${madie.url}")
+  private String madieUrl;
+
   @Bean
   public RestTemplate elmTranslatorRestTemplate() {
     return new RestTemplate();

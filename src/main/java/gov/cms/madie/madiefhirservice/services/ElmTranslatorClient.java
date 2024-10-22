@@ -63,6 +63,16 @@ public class ElmTranslatorClient {
       CqlLibraryDetails libraryDetails, boolean recursive, String accessToken) {
     Library effectiveDataRequirements =
         getModuleDefinitionLibrary(libraryDetails, recursive, accessToken);
+    // update relative urls of Library artifacts to be canonical
+    effectiveDataRequirements
+        .getRelatedArtifact()
+        .forEach(
+            relatedArtifact -> {
+              if (relatedArtifact.getDisplay().startsWith("Library")) {
+                relatedArtifact.setResource(
+                    elmTranslatorClientConfig.getMadieUrl() + "/" + relatedArtifact.getResource());
+              }
+            });
     // effectiveDataRequirements needs to have fixed id: effective-data-requirements
     effectiveDataRequirements.setId("effective-data-requirements");
     return effectiveDataRequirements;

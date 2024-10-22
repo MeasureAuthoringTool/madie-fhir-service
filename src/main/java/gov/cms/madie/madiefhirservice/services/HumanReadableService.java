@@ -116,9 +116,11 @@ public class HumanReadableService extends ResourceUtils {
                             .getExtension()
                             .forEach(
                                 innerExtension -> {
-                                  innerExtension.setValue(
-                                      new StringType(
-                                          escapeStr(innerExtension.getValue().primitiveValue())));
+                                  if (innerExtension.getValue() instanceof StringType) {
+                                    innerExtension.setValue(
+                                        new StringType(
+                                            escapeStr(innerExtension.getValue().primitiveValue())));
+                                  }
                                 });
                       });
               // population criteria
