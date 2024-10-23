@@ -63,7 +63,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class TestCaseBundleService {
 
-  private final FhirContext fhirContext;
+  private final FhirContext qicoreFhirContext;
 
   public Map<String, Bundle> getTestCaseExportBundle(
       Measure measure, List<TestCase> testCases, ExportDTO exportDTO) {
@@ -72,7 +72,7 @@ public class TestCaseBundleService {
     }
 
     IParser parser =
-        fhirContext
+        qicoreFhirContext
             .newJsonParser()
             .setParserErrorHandler(new StrictErrorHandler())
             .setPrettyPrint(true);

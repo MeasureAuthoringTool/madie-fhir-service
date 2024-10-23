@@ -1,45 +1,53 @@
 package gov.cms.madie.madiefhirservice.services;
 
+import ca.uhn.fhir.context.BaseRuntimeChildDefinition;
 import ca.uhn.fhir.context.FhirContext;
+import ca.uhn.fhir.context.RuntimeResourceDefinition;
+import ca.uhn.fhir.parser.IParser;
 import ca.uhn.fhir.util.BundleUtil;
 import ca.uhn.fhir.util.OperationOutcomeUtil;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import gov.cms.madie.madiefhirservice.exceptions.HapiJsonException;
+import gov.cms.madie.models.measure.HapiOperationOutcome;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import org.apache.commons.lang3.StringUtils;
 import org.hl7.fhir.instance.model.api.IBaseBundle;
+import org.hl7.fhir.instance.model.api.IBaseOperationOutcome;
 import org.hl7.fhir.instance.model.api.IBaseResource;
-import org.hl7.fhir.r4.model.OperationOutcome;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Slf4j
 @Service
 @AllArgsConstructor
 public class ResourceValidationService {
 
-  private FhirContext fhirContext;
+  private ObjectMapper mapper;
 
-  public OperationOutcome validateBundleResourcesProfiles(IBaseBundle bundleResource) {
+  public IBaseOperationOutcome validateBundleResourcesProfiles(
+      FhirContext fhirContext, IBaseBundle bundleResource) {
     List<IBaseResource> resources = BundleUtil.toListOfResources(fhirContext, bundleResource);
-    OperationOutcome operationOutcome = new OperationOutcome();
+    IBaseOperationOutcome operationOutcome = OperationOutcomeUtil.newInstance(fhirContext);
     for (IBaseResource resource : resources) {
       if (resource.getMeta().getProfile().isEmpty()) {
         OperationOutcomeUtil.addIssue(
             fhirContext,
             operationOutcome,
-            OperationOutcome.IssueSeverity.WARNING.toCode(),
+            "warning",
             formatMissingMetaProfileMessage(resource),
             null,
-            OperationOutcome.IssueType.INVALID.toCode());
+            "invalid");
       } else {
         resource
             .getMeta()
@@ -50,10 +58,10 @@ public class ResourceValidationService {
                     OperationOutcomeUtil.addIssue(
                         fhirContext,
                         operationOutcome,
-                        OperationOutcome.IssueSeverity.WARNING.toCode(),
+                        "warning",
                         formatInvalidProfileMessage(resource),
                         null,
-                        OperationOutcome.IssueType.INVALID.toCode());
+                        "invalid");
                   }
                 });
       }
@@ -61,30 +69,31 @@ public class ResourceValidationService {
     return operationOutcome;
   }
 
-  public OperationOutcome validateBundleResourcesIdValid(IBaseBundle bundleResource) {
+  public IBaseOperationOutcome validateBundleResourcesIdValid(
+      FhirContext fhirContext, IBaseBundle bundleResource) {
     List<IBaseResource> resources = BundleUtil.toListOfResources(fhirContext, bundleResource);
     Set<String> existingIds = new HashSet<>();
     Set<String> duplicateIds = new HashSet<>();
-    OperationOutcome operationOutcome = new OperationOutcome();
+    IBaseOperationOutcome operationOutcome = OperationOutcomeUtil.newInstance(fhirContext);
     for (IBaseResource resource : resources) {
       final String resourceId = resource.getIdElement().getIdPart();
       if (StringUtils.isBlank(resourceId)) {
         OperationOutcomeUtil.addIssue(
             fhirContext,
             operationOutcome,
-            OperationOutcome.IssueSeverity.ERROR.toCode(),
+            "error",
             "All resources must have an Id",
             null,
-            OperationOutcome.IssueType.INVALID.toCode());
+            "invalid");
       } else {
         if (existingIds.contains(resourceId) && !duplicateIds.contains(resourceId)) {
           OperationOutcomeUtil.addIssue(
               fhirContext,
               operationOutcome,
-              OperationOutcome.IssueSeverity.ERROR.toCode(),
+              "error",
               formatUniqueIdViolationMessage(resourceId),
               null,
-              OperationOutcome.IssueType.INVALID.toCode());
+              "invalid");
           duplicateIds.add(resourceId);
         } else {
           existingIds.add(resourceId);
@@ -94,23 +103,32 @@ public class ResourceValidationService {
     return operationOutcome;
   }
 
-  public boolean isSuccessful(OperationOutcome outcome) {
+  public boolean isSuccessful(FhirContext fhirContext, IBaseOperationOutcome outcome) {
     return outcome == null
-        || outcome.getIssue().stream()
-            .noneMatch(
-                i ->
-                    i.getSeverity() == null
-                        || i.getSeverity().ordinal()
-                            < OperationOutcome.IssueSeverity.WARNING.ordinal());
+        || (!OperationOutcomeUtil.hasIssuesOfSeverity(fhirContext, outcome, "error")
+            && !OperationOutcomeUtil.hasIssuesOfSeverity(fhirContext, outcome, "fatal"));
   }
 
-  public OperationOutcome combineOutcomes(OperationOutcome... outcomes) {
-    OperationOutcome finalOo = new OperationOutcome();
-    finalOo.setIssue(
-        Arrays.stream(outcomes)
-            .map(OperationOutcome::getIssue)
-            .flatMap(java.util.Collection::stream)
-            .collect(Collectors.toList()));
+  public IBaseOperationOutcome combineOutcomes(
+      FhirContext fhirContext, IBaseOperationOutcome... outcomes) {
+
+    IBaseOperationOutcome finalOo = OperationOutcomeUtil.newInstance(fhirContext);
+    RuntimeResourceDefinition finalOoDef = fhirContext.getResourceDefinition(finalOo);
+    BaseRuntimeChildDefinition finalOoIssueChild = finalOoDef.getChildByName("issue");
+    BaseRuntimeChildDefinition.IMutator mutator = finalOoIssueChild.getMutator();
+    Arrays.stream(outcomes)
+        .map(
+            iBaseOperationOutcome -> {
+              // This is the way that HAPI handles managing child data without needing the specific
+              // FHIR version (R4 vs R5, etc)
+              RuntimeResourceDefinition ooDef =
+                  fhirContext.getResourceDefinition(iBaseOperationOutcome);
+              BaseRuntimeChildDefinition issueChild = ooDef.getChildByName("issue");
+              return issueChild.getAccessor().getValues(iBaseOperationOutcome);
+            })
+        .flatMap(Collection::stream)
+        .forEach(iBase -> mutator.addValue(finalOo, iBase));
+
     return finalOo;
   }
 
@@ -146,5 +164,28 @@ public class ResourceValidationService {
     return String.format(
         "Resource of type [%s] has invalid profile. Resource Id: [%s]",
         resource.fhirType(), resource.getIdElement().getIdPart());
+  }
+
+  public HapiOperationOutcome invalidErrorOutcome(
+      FhirContext fhirContext, IParser parser, String message, String exceptionMessage) {
+    IBaseOperationOutcome operationOutcome = OperationOutcomeUtil.newInstance(fhirContext);
+    OperationOutcomeUtil.addIssue(
+        fhirContext, operationOutcome, "error", exceptionMessage, null, "invalid");
+    return encodeOutcome(parser, HttpStatus.BAD_REQUEST.value(), false, message, operationOutcome);
+  }
+
+  protected HapiOperationOutcome encodeOutcome(
+      IParser parser, int code, boolean successful, String message, IBaseOperationOutcome outcome) {
+    try {
+      String outcomeString = parser.encodeResourceToString(outcome);
+      return HapiOperationOutcome.builder()
+          .code(code)
+          .message(message)
+          .successful(successful)
+          .outcomeResponse(mapper.readValue(outcomeString, Object.class))
+          .build();
+    } catch (Exception ex) {
+      throw new HapiJsonException("An error occurred processing the validation results", ex);
+    }
   }
 }

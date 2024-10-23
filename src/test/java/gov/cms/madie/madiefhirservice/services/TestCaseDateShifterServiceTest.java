@@ -29,7 +29,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 public class TestCaseDateShifterServiceTest implements ResourceFileUtil {
 
-  @Autowired FhirContext fhirContext;
+  @Autowired FhirContext qicoreFhirContext;
 
   @Autowired TestCaseDateShifterService testCaseDateShifterService;
   private Measure measure;

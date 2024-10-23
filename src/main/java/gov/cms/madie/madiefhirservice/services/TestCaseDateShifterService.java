@@ -27,7 +27,7 @@ import java.util.*;
 @AllArgsConstructor
 public class TestCaseDateShifterService {
 
-  private FhirContext fhirContext;
+  private FhirContext qicoreFhirContext;
 
   public TestCase shiftDates(TestCase testCase, int shiftBy) {
     if (testCase == null) {
@@ -108,7 +108,7 @@ public class TestCaseDateShifterService {
   }
 
   IParser getIParser() {
-    return fhirContext
+    return qicoreFhirContext
         .newJsonParser()
         .setParserErrorHandler(new StrictErrorHandler())
         .setPrettyPrint(true);

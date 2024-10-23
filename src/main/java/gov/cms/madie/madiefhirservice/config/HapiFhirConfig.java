@@ -26,13 +26,14 @@ import java.io.IOException;
 public class HapiFhirConfig {
 
   @Bean
-  public FhirContext fhirContext() {
+  @Qualifier("qicoreFhirContext")
+  public FhirContext qicoreFhirContext() {
     return FhirContext.forR4();
   }
 
   @Bean
-  @Qualifier("fhirContextQiCoreStu600")
-  public FhirContext fhirContextQiCoreStu600() {
+  @Qualifier("qicore6FhirContext")
+  public FhirContext qicore6FhirContext() {
     return FhirContext.forR4();
   }
 
@@ -43,59 +44,75 @@ public class HapiFhirConfig {
   }
 
   @Bean
-  public IValidationSupport validationSupportChain411(@Autowired FhirContext fhirContext)
+  public IValidationSupport validationSupportChain411(@Autowired FhirContext qicoreFhirContext)
       throws IOException {
-    NpmPackageValidationSupport npmPackageSupport = new NpmPackageValidationSupport(fhirContext);
+    NpmPackageValidationSupport npmPackageSupport =
+        new NpmPackageValidationSupport(qicoreFhirContext);
     npmPackageSupport.loadPackageFromClasspath("classpath:packages/hl7.fhir.us.qicore-4.1.1.tgz");
     npmPackageSupport.loadPackageFromClasspath("classpath:packages/hl7.fhir.us.core-3.1.0.tgz");
     npmPackageSupport.loadPackageFromClasspath(
         "classpath:packages/hl7.fhir.xver-extensions-0.0.13.tgz");
 
     UnknownCodeSystemWarningValidationSupport unknownCodeSystemWarningValidationSupport =
-        new UnknownCodeSystemWarningValidationSupport(fhirContext);
+        new UnknownCodeSystemWarningValidationSupport(qicoreFhirContext);
     unknownCodeSystemWarningValidationSupport.setNonExistentCodeSystemSeverity(
         IValidationSupport.IssueSeverity.WARNING);
 
     return new ValidationSupportChain(
         npmPackageSupport,
-        new DefaultProfileValidationSupport(fhirContext),
-        new InMemoryTerminologyServerValidationSupport(fhirContext),
-        new CommonCodeSystemsTerminologyService(fhirContext),
+        new DefaultProfileValidationSupport(qicoreFhirContext),
+        new InMemoryTerminologyServerValidationSupport(qicoreFhirContext),
+        new CommonCodeSystemsTerminologyService(qicoreFhirContext),
         unknownCodeSystemWarningValidationSupport);
   }
 
   @Bean
   public IValidationSupport validationSupportChainQiCore600(
-      @Autowired FhirContext fhirContextQiCoreStu600) throws IOException {
+      @Autowired FhirContext qicore6FhirContext) throws IOException {
     NpmPackageValidationSupport npmPackageSupport =
-        new NpmPackageValidationSupport(fhirContextQiCoreStu600);
+        new NpmPackageValidationSupport(qicore6FhirContext);
     npmPackageSupport.loadPackageFromClasspath("classpath:packages/hl7.fhir.us.qicore-6.0.0.tgz");
     npmPackageSupport.loadPackageFromClasspath("classpath:packages/hl7.fhir.us.core-6.1.0.tgz");
     npmPackageSupport.loadPackageFromClasspath(
         "classpath:packages/hl7.fhir.xver-extensions-0.1.0.tgz");
 
     UnknownCodeSystemWarningValidationSupport unknownCodeSystemWarningValidationSupport =
-        new UnknownCodeSystemWarningValidationSupport(fhirContextQiCoreStu600);
+        new UnknownCodeSystemWarningValidationSupport(qicore6FhirContext);
     unknownCodeSystemWarningValidationSupport.setNonExistentCodeSystemSeverity(
         IValidationSupport.IssueSeverity.WARNING);
 
     return new ValidationSupportChain(
         npmPackageSupport,
-        new DefaultProfileValidationSupport(fhirContextQiCoreStu600),
-        new InMemoryTerminologyServerValidationSupport(fhirContextQiCoreStu600),
-        new CommonCodeSystemsTerminologyService(fhirContextQiCoreStu600),
+        new DefaultProfileValidationSupport(qicore6FhirContext),
+        new InMemoryTerminologyServerValidationSupport(qicore6FhirContext),
+        new CommonCodeSystemsTerminologyService(qicore6FhirContext),
         unknownCodeSystemWarningValidationSupport);
   }
 
   @Bean
-  public FhirValidator npmFhirValidator(
-      @Autowired FhirContext fhirContext, @Autowired IValidationSupport validationSupportChain411) {
-    log.info("validator config on FHIR Context v{}", fhirContext.getVersion());
+  public FhirValidator qicoreNpmFhirValidator(
+      @Autowired FhirContext qicoreFhirContext,
+      @Autowired IValidationSupport validationSupportChain411) {
+    log.info("validator config on FHIR Context v{}", qicoreFhirContext.getVersion());
     // Ask the context for a validator
-    FhirValidator validator = fhirContext.newValidator();
+    FhirValidator validator = qicoreFhirContext.newValidator();
 
     // Create a validation module and register it
     IValidatorModule module = new FhirInstanceValidator(validationSupportChain411);
+    validator.registerValidatorModule(module);
+    return validator;
+  }
+
+  @Bean
+  public FhirValidator qicore6NpmFhirValidator(
+      @Autowired FhirContext qicore6FhirContext,
+      @Autowired IValidationSupport validationSupportChainQiCore600) {
+    log.info("validator config on FHIR Context v{}", qicore6FhirContext.getVersion());
+    // Ask the context for a validator
+    FhirValidator validator = qicore6FhirContext.newValidator();
+
+    // Create a validation module and register it
+    IValidatorModule module = new FhirInstanceValidator(validationSupportChainQiCore600);
     validator.registerValidatorModule(module);
     return validator;
   }
