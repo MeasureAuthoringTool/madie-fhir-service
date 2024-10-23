@@ -26,7 +26,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import static gov.cms.madie.madiefhirservice.utils.ModelEndpointMap.QICORE_4_1_1;
 import static gov.cms.madie.madiefhirservice.utils.ModelEndpointMap.QICORE_VERSION_MODELTYPE_MAP;
 
 @Slf4j
@@ -51,10 +50,9 @@ public class ValidationController {
       @PathVariable("model") String modelVersion, HttpEntity<String> request) {
     final ModelType modelType = QICORE_VERSION_MODELTYPE_MAP.get(modelVersion);
     FhirContext fhirContext = validatorFactory.getContextForModel(modelType);
-    IBaseBundle bundle;
     IParser parser = validatorFactory.getJsonParserForModel(modelType);
     FhirValidator fhirValidator = validatorFactory.getValidatorForModel(modelType);
-
+    IBaseBundle bundle;
     try {
       bundle = validatorFactory.parseForModel(modelType, request.getBody());
     } catch (DataFormatException | ClassCastException ex) {
@@ -94,13 +92,5 @@ public class ValidationController {
     } catch (Exception ex) {
       throw new HapiJsonException("An error occurred processing the validation results", ex);
     }
-  }
-
-  @PostMapping(
-      path = "/bundles",
-      consumes = MediaType.APPLICATION_JSON_VALUE,
-      produces = MediaType.APPLICATION_JSON_VALUE)
-  public HapiOperationOutcome validateBundle(HttpEntity<String> request) {
-    return validateBundleByModel(QICORE_4_1_1, request);
   }
 }
