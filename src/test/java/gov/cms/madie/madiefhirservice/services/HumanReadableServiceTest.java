@@ -19,6 +19,7 @@ import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.Library;
 import org.hl7.fhir.r4.model.Period;
 import org.hl7.fhir.r4.model.Resource;
+import org.hl7.fhir.r5.context.SimpleWorkerContext;
 import org.hl7.fhir.r5.model.ParameterDefinition;
 import org.hl7.fhir.r5.utils.LiquidEngine;
 import org.junit.jupiter.api.BeforeEach;
@@ -28,6 +29,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -41,7 +43,8 @@ import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class HumanReadableServiceTest implements ResourceFileUtil {
+class HumanReadableServiceTest
+    implements ResourceFileUtil, LiquidEngine.ILiquidEngineIncludeResolver {
 
   @Mock LiquidEngine liquidEngine;
 
@@ -155,6 +158,36 @@ class HumanReadableServiceTest implements ResourceFileUtil {
             madieMeasure, bundle, effectiveDataRequirements);
     assertNotNull(generatedHumanReadable);
     assertTrue(generatedHumanReadable.contains(hrText));
+  }
+
+  @Test
+  public void generateMeasureHumanReadableUsingIncludes() throws IOException {
+    var measureBundleEntryComponent = getBundleEntryComponent(measure);
+    var libraryBundleEntryComponent = getBundleEntryComponent(library);
+    var bundle =
+        new Bundle()
+            .setType(Bundle.BundleType.TRANSACTION)
+            .addEntry(measureBundleEntryComponent)
+            .addEntry(libraryBundleEntryComponent);
+
+    var le = new LiquidEngine(new SimpleWorkerContext.SimpleWorkerContextBuilder().build(), null);
+    var hr = new HumanReadableService(le);
+
+    // The following throws an exception because the include resolver has not been established with
+    // the LiquidEngine
+    var finalHr = hr;
+    assertThrows(
+        HumanReadableGenerationException.class,
+        () ->
+            finalHr.generateMeasureHumanReadable(madieMeasure, bundle, effectiveDataRequirements));
+
+    // Set the include resolver
+    le.setIncludeResolver(this);
+    hr = new HumanReadableService(le);
+
+    var generatedHumanReadable =
+        hr.generateMeasureHumanReadable(madieMeasure, bundle, effectiveDataRequirements);
+    assertNotNull(generatedHumanReadable);
   }
 
   @Test
@@ -285,5 +318,10 @@ class HumanReadableServiceTest implements ResourceFileUtil {
   public void testAddCssToHumanReadable() {
     String humanReadableWithCSS = humanReadableService.addCssToHumanReadable(humanReadable);
     assertTrue(humanReadableWithCSS.contains("<style>"));
+  }
+
+  @Override
+  public String fetchInclude(LiquidEngine engine, String name) {
+    return gov.cms.madie.madiefhirservice.utils.ResourceUtils.getData("/templates/" + name);
   }
 }
