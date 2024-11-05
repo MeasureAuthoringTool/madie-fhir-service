@@ -5,6 +5,7 @@ import ca.uhn.fhir.context.support.DefaultProfileValidationSupport;
 import ca.uhn.fhir.context.support.IValidationSupport;
 import ca.uhn.fhir.validation.FhirValidator;
 import ca.uhn.fhir.validation.IValidatorModule;
+import gov.cms.madie.madiefhirservice.utils.ResourceUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.hl7.fhir.common.hapi.validation.support.CommonCodeSystemsTerminologyService;
 import org.hl7.fhir.common.hapi.validation.support.InMemoryTerminologyServerValidationSupport;
@@ -119,6 +120,17 @@ public class HapiFhirConfig {
 
   @Bean
   public LiquidEngine liquidEngine() throws IOException {
-    return new LiquidEngine(new SimpleWorkerContext.SimpleWorkerContextBuilder().build(), null);
+    SimpleWorkerContext context = new SimpleWorkerContext.SimpleWorkerContextBuilder().build();
+    LiquidEngine liquidEngine = new LiquidEngine(context, null);
+    liquidEngine.setIncludeResolver(new IncludeResolver());
+
+    return liquidEngine;
+  }
+
+  static class IncludeResolver implements LiquidEngine.ILiquidEngineIncludeResolver {
+    @Override
+    public String fetchInclude(LiquidEngine liquidEngine, String s) {
+      return ResourceUtils.getData("/templates/" + s);
+    }
   }
 }

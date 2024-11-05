@@ -171,19 +171,9 @@ class HumanReadableServiceTest
             .addEntry(libraryBundleEntryComponent);
 
     var le = new LiquidEngine(new SimpleWorkerContext.SimpleWorkerContextBuilder().build(), null);
-    var hr = new HumanReadableService(le);
-
-    // The following throws an exception because the include resolver has not been established with
-    // the LiquidEngine
-    var finalHr = hr;
-    assertThrows(
-        HumanReadableGenerationException.class,
-        () ->
-            finalHr.generateMeasureHumanReadable(madieMeasure, bundle, effectiveDataRequirements));
-
     // Set the include resolver
     le.setIncludeResolver(this);
-    hr = new HumanReadableService(le);
+    var hr = new HumanReadableService(le);
 
     var generatedHumanReadable =
         hr.generateMeasureHumanReadable(madieMeasure, bundle, effectiveDataRequirements);
