@@ -13,11 +13,9 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import gov.cms.madie.madiefhirservice.constants.UriConstants;
-import gov.cms.madie.madiefhirservice.dto.MadieFeatureFlag;
 import gov.cms.madie.madiefhirservice.utils.FhirResourceHelpers;
 import gov.cms.madie.madiefhirservice.utils.MeasureTestHelper;
 import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
@@ -771,11 +769,13 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     Stratification strat1 = new Stratification();
     strat1.setId("testStrat1Id");
     strat1.setDescription("strat-description");
-    strat1.setAssociation(PopulationType.INITIAL_POPULATION);
+    strat1.setAssociations(
+        List.of(PopulationType.INITIAL_POPULATION, PopulationType.MEASURE_POPULATION));
     stratifications.add(strat1);
     Stratification strat2 = new Stratification();
     strat2.setDescription("strat-description");
-    strat2.setAssociation(PopulationType.MEASURE_POPULATION);
+    strat1.setAssociations(
+        List.of(PopulationType.INITIAL_POPULATION, PopulationType.MEASURE_POPULATION));
     stratifications.add(strat2);
     group.setStratifications(stratifications);
     List<Group> groups = new ArrayList<>();
@@ -795,12 +795,9 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertThat(measureGroupStratifierComponent.getDescription(), is(equalTo("strat-description")));
     Expression expression = measureGroupStratifierComponent.getCriteria();
     assertThat(expression, is(notNullValue()));
-    assertThat(
-        measureGroupStratifierComponent.getExtensionByUrl(UriConstants.CqfMeasures.APPLIES_TO_URI),
-        is(notNullValue()));
-    Extension appliesToExt =
-        measureGroupStratifierComponent.getExtensionByUrl(UriConstants.CqfMeasures.APPLIES_TO_URI);
-    Type value = appliesToExt.getValue();
+    List<Extension> appliesToExt = measureGroupStratifierComponent.getExtension();
+    assertThat(appliesToExt.size(), is(2));
+    Type value = appliesToExt.get(0).getValue();
     CodeableConcept codeableConcept = value.castToCodeableConcept(value);
     assertThat(codeableConcept.getCoding(), is(notNullValue()));
     assertThat(codeableConcept.getCoding().size(), is(equalTo(1)));
@@ -815,7 +812,6 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
 
   @Test
   public void testBuildFhirPopulationGroupsWithStratificationsOfMultipleAssociations() {
-    when(appConfigService.isFlagEnabled(MadieFeatureFlag.QiCore_STU4_UPDATES)).thenReturn(true);
 
     Population ip1 = new Population();
     ip1.setName(PopulationType.INITIAL_POPULATION);
@@ -886,7 +882,6 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
 
   @Test
   public void testBuildFhirPopulationGroupsWithStratificationsOfNoAssociations() {
-    when(appConfigService.isFlagEnabled(MadieFeatureFlag.QiCore_STU4_UPDATES)).thenReturn(false);
 
     Population ip1 = new Population();
     ip1.setName(PopulationType.INITIAL_POPULATION);

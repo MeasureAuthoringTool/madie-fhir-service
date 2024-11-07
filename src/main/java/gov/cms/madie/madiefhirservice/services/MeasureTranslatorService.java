@@ -4,7 +4,6 @@ import java.time.Instant;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
-import gov.cms.madie.madiefhirservice.dto.MadieFeatureFlag;
 import gov.cms.madie.madiefhirservice.constants.IdentifierType;
 import gov.cms.madie.madiefhirservice.utils.FhirResourceHelpers;
 import gov.cms.madie.models.common.Organization;
