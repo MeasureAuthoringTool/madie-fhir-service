@@ -388,12 +388,6 @@ public class MeasureTranslatorService {
               .map(
                   strat -> {
                     List<PopulationType> associations = strat.getAssociations();
-                    if (!appConfigService.isFlagEnabled(MadieFeatureFlag.QiCore_STU4_UPDATES)) {
-                      associations = new ArrayList<>();
-                      if (strat.getAssociation() != null) {
-                        associations.add(strat.getAssociation());
-                      }
-                    }
                     MeasureGroupStratifierComponent stratComponent = null;
                     if (CollectionUtils.isNotEmpty(associations)) {
                       List<Extension> extensionList =
