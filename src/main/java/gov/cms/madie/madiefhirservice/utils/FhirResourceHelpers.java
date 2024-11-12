@@ -100,10 +100,12 @@ public class FhirResourceHelpers {
                   stratifierGroupPopulationComponent.setCode(
                       buildCodeableConcept(
                           populationCode, UriConstants.POPULATION_SYSTEM_URI, populationDisplay));
+
                   stratifierGroupPopulationComponent.setCount(
-                      valueIndex == false
-                          ? getExpectedInverseValue(getExpectedValue(populationValue.getExpected()))
-                          : getExpectedValue(populationValue.getExpected()));
+                      valueIndex
+                          ? getExpectedValue(populationValue.getExpected())
+                          : getExpectedInverseValue(
+                              getExpectedValue(populationValue.getExpected())));
                   return stratifierGroupPopulationComponent;
                 })
             .collect(Collectors.toList());
