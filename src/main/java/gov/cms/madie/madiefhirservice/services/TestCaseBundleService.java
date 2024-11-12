@@ -23,19 +23,11 @@ import java.util.zip.ZipOutputStream;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import gov.cms.madie.models.dto.TestCaseExportMetaData;
+import gov.cms.madie.models.measure.TestCaseStratificationValue;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
-import org.hl7.fhir.r4.model.BooleanType;
-import org.hl7.fhir.r4.model.Bundle;
+import org.hl7.fhir.r4.model.*;
 
-import org.hl7.fhir.r4.model.Extension;
-import org.hl7.fhir.r4.model.MarkdownType;
-import org.hl7.fhir.r4.model.MeasureReport;
-import org.hl7.fhir.r4.model.Meta;
-import org.hl7.fhir.r4.model.Parameters;
-import org.hl7.fhir.r4.model.Reference;
-import org.hl7.fhir.r4.model.Resource;
-import org.hl7.fhir.r4.model.StringType;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.client.RestClientException;
@@ -259,7 +251,8 @@ public class TestCaseBundleService {
                               String populationDisplay =
                                   testCasePopulationValue.getName().getDisplay();
                               int expectedValue =
-                                  getExpectedValue(testCasePopulationValue.getExpected());
+                                  FhirResourceHelpers.getExpectedValue(
+                                      testCasePopulationValue.getExpected());
                               return (new MeasureReport.MeasureReportGroupPopulationComponent())
                                   .setCode(
                                       FhirResourceHelpers.buildCodeableConcept(
@@ -271,23 +264,56 @@ public class TestCaseBundleService {
                         .collect(Collectors.toList());
                 measureReportGroupComponent.setPopulation(measureReportGroupPopulationComponents);
               }
+
+              if (population.getStratificationValues() != null) {
+                var measureReportGroupStratifierComponents =
+                    population.getStratificationValues().stream()
+                        .map(
+                            testCaseStratificationValue -> {
+
+                              // code
+                              List<CodeableConcept> code = new ArrayList<CodeableConcept>();
+                              code.add(
+                                  new CodeableConcept()
+                                      .setText(testCaseStratificationValue.getName()));
+
+                              return (new MeasureReport.MeasureReportGroupStratifierComponent())
+                                  .setCode(code)
+                                  .setStratum(buildStratum(testCaseStratificationValue));
+                            })
+                        .collect(Collectors.toList());
+                measureReportGroupComponent.setStratifier(measureReportGroupStratifierComponents);
+              }
               return measureReportGroupComponent;
             })
         .collect(Collectors.toList());
   }
 
-  /**
-   * @param expectedValue expected value for a population, can be a string or boolean
-   * @return an equivalent integer
-   */
-  private int getExpectedValue(Object expectedValue) {
-    if (expectedValue == null || StringUtils.isBlank(expectedValue.toString())) {
-      return 0;
-    } else if (expectedValue instanceof Boolean) {
-      return (Boolean) expectedValue ? 1 : 0;
-    } else {
-      return Integer.parseInt(expectedValue.toString());
-    }
+  private List<MeasureReport.StratifierGroupComponent> buildStratum(
+      TestCaseStratificationValue testCaseStratificationValue) {
+
+    // stratum
+    List<MeasureReport.StratifierGroupComponent> stratum =
+        new ArrayList<MeasureReport.StratifierGroupComponent>();
+
+    MeasureReport.StratifierGroupComponent stratifierGroupComponent =
+        new MeasureReport.StratifierGroupComponent();
+
+    // when value is true
+    stratifierGroupComponent.setValue(new CodeableConcept().setText("true"));
+    stratifierGroupComponent.setPopulation(
+        FhirResourceHelpers.buildStratum(testCaseStratificationValue, true));
+    stratum.add(stratifierGroupComponent);
+
+    // when value is false (i.e., inverted )
+    MeasureReport.StratifierGroupComponent stratifierGroupComponentForInvertedValue =
+        new MeasureReport.StratifierGroupComponent();
+    stratifierGroupComponentForInvertedValue.setValue(new CodeableConcept().setText("false"));
+    stratifierGroupComponentForInvertedValue.setPopulation(
+        FhirResourceHelpers.buildStratum(testCaseStratificationValue, false));
+    stratum.add(stratifierGroupComponentForInvertedValue);
+
+    return stratum;
   }
 
   /**

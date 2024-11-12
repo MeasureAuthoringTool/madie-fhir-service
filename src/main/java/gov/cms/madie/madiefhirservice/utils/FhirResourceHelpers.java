@@ -1,16 +1,17 @@
 package gov.cms.madie.madiefhirservice.utils;
 
 import ca.uhn.fhir.model.api.TemporalPrecisionEnum;
-import org.hl7.fhir.r4.model.Bundle;
-import org.hl7.fhir.r4.model.CodeableConcept;
-import org.hl7.fhir.r4.model.Coding;
-import org.hl7.fhir.r4.model.Period;
-import org.hl7.fhir.r4.model.Resource;
+import gov.cms.madie.madiefhirservice.constants.UriConstants;
+import gov.cms.madie.models.measure.TestCaseStratificationValue;
+import org.apache.commons.lang3.StringUtils;
+import org.hl7.fhir.r4.model.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class FhirResourceHelpers {
@@ -60,6 +61,53 @@ public class FhirResourceHelpers {
     codeableConcept.setCoding(new ArrayList<>());
     codeableConcept.getCoding().add(buildCoding(code, system, display));
     return codeableConcept;
+  }
+
+  /**
+   * @param expectedValue expected value for a population, can be a string or boolean
+   * @return an equivalent integer
+   */
+  public static int getExpectedValue(Object expectedValue) {
+    if (expectedValue == null || StringUtils.isBlank(expectedValue.toString())) {
+      return 0;
+    } else if (expectedValue instanceof Boolean) {
+      return (Boolean) expectedValue ? 1 : 0;
+    } else {
+      return Integer.parseInt(expectedValue.toString());
+    }
+  }
+
+  public static int getExpectedInverseValue(int expectedValue) {
+    if (expectedValue == 0) {
+      return 1;
+    }
+    return 0;
+  }
+
+  public static List<MeasureReport.StratifierGroupPopulationComponent> buildStratum(
+      TestCaseStratificationValue testCaseStratificationValue, boolean valueIndex) {
+    var measureTestCaseStratificationComponents =
+        testCaseStratificationValue.getPopulationValues().stream()
+            .map(
+                populationValue -> {
+                  MeasureReport.StratifierGroupPopulationComponent
+                      stratifierGroupPopulationComponent =
+                          new MeasureReport.StratifierGroupPopulationComponent();
+                  String populationCode = populationValue.getName().toCode();
+                  String populationDisplay = populationValue.getName().getDisplay();
+
+                  stratifierGroupPopulationComponent.setId(populationValue.getId());
+                  stratifierGroupPopulationComponent.setCode(
+                      buildCodeableConcept(
+                          populationCode, UriConstants.POPULATION_SYSTEM_URI, populationDisplay));
+                  stratifierGroupPopulationComponent.setCount(
+                      valueIndex == false
+                          ? getExpectedInverseValue(getExpectedValue(populationValue.getExpected()))
+                          : getExpectedValue(populationValue.getExpected()));
+                  return stratifierGroupPopulationComponent;
+                })
+            .collect(Collectors.toList());
+    return measureTestCaseStratificationComponents;
   }
 
   public static Coding buildCoding(String code, String system, String display) {
