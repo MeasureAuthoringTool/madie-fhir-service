@@ -23,11 +23,14 @@ import java.util.zip.ZipOutputStream;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import gov.cms.madie.models.dto.TestCaseExportMetaData;
-import gov.cms.madie.models.measure.TestCaseStratificationValue;
+import gov.cms.madie.models.measure.*;
+import gov.cms.madie.models.measure.Group;
+import gov.cms.madie.models.measure.Measure;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.hl7.fhir.r4.model.*;
 
+import org.hl7.fhir.r4.model.Reference;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.client.RestClientException;
@@ -43,8 +46,6 @@ import gov.cms.madie.madiefhirservice.utils.ExportFileNamesUtil;
 import gov.cms.madie.madiefhirservice.utils.FhirResourceHelpers;
 import gov.cms.madie.models.common.BundleType;
 import gov.cms.madie.models.dto.ExportDTO;
-import gov.cms.madie.models.measure.Measure;
-import gov.cms.madie.models.measure.TestCase;
 import gov.cms.madie.packaging.utils.PackagingUtility;
 import gov.cms.madie.packaging.utils.PackagingUtilityFactory;
 import lombok.RequiredArgsConstructor;
@@ -171,7 +172,7 @@ public class TestCaseBundleService {
             getUTCDates(measure.getMeasurementPeriodStart()),
             getUTCDates(measure.getMeasurementPeriodEnd())));
 
-    measureReport.setGroup(buildMeasureReportGroupComponents(testCase));
+    measureReport.setGroup(buildMeasureReportGroupComponents(testCase, measure.getGroups()));
     measureReport.setEvaluatedResource(buildEvaluatedResource(testCaseBundle));
     return measureReport;
   }
@@ -233,7 +234,7 @@ public class TestCaseBundleService {
   }
 
   private List<MeasureReport.MeasureReportGroupComponent> buildMeasureReportGroupComponents(
-      TestCase testCase) {
+      TestCase testCase, List<Group> groups) {
     if (CollectionUtils.isEmpty(testCase.getGroupPopulations())) {
       return List.of();
     }
@@ -270,16 +271,21 @@ public class TestCaseBundleService {
                     population.getStratificationValues().stream()
                         .map(
                             testCaseStratificationValue -> {
-
-                              // code
                               List<CodeableConcept> code = new ArrayList<CodeableConcept>();
                               code.add(
                                   new CodeableConcept()
-                                      .setText(testCaseStratificationValue.getName()));
+                                      .setText(
+                                          getStratificationDefinition(
+                                              groups,
+                                              population.getGroupId(),
+                                              testCaseStratificationValue.getId())));
 
-                              return (new MeasureReport.MeasureReportGroupStratifierComponent())
-                                  .setCode(code)
-                                  .setStratum(buildStratum(testCaseStratificationValue));
+                              var stratifierComponent =
+                                  new MeasureReport.MeasureReportGroupStratifierComponent()
+                                      .setCode(code)
+                                      .setStratum(buildStratum(testCaseStratificationValue));
+                              stratifierComponent.setId(testCaseStratificationValue.getId());
+                              return stratifierComponent;
                             })
                         .collect(Collectors.toList());
                 measureReportGroupComponent.setStratifier(measureReportGroupStratifierComponents);
@@ -287,6 +293,23 @@ public class TestCaseBundleService {
               return measureReportGroupComponent;
             })
         .collect(Collectors.toList());
+  }
+
+  private String getStratificationDefinition(
+      List<Group> groups, String populationId, String testCaseStratificationId) {
+    Group filteredGroup =
+        groups.stream()
+            .filter(group -> group.getId().equals(populationId))
+            .findFirst()
+            .orElse(null);
+    if (filteredGroup != null) {
+      return filteredGroup.getStratifications().stream()
+          .filter(stratification -> stratification.getId().equals(testCaseStratificationId))
+          .map(selectedStratification -> selectedStratification.getCqlDefinition())
+          .findFirst()
+          .orElse(null);
+    }
+    return null;
   }
 
   private List<MeasureReport.StratifierGroupComponent> buildStratum(
