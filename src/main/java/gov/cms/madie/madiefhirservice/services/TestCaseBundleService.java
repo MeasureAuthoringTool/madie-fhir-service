@@ -242,7 +242,6 @@ public class TestCaseBundleService {
         .map(
             population -> {
               var measureReportGroupComponent = new MeasureReport.MeasureReportGroupComponent();
-
               if (population.getPopulationValues() != null) {
                 var measureReportGroupPopulationComponents =
                     population.getPopulationValues().stream()
@@ -266,31 +265,37 @@ public class TestCaseBundleService {
                 measureReportGroupComponent.setPopulation(measureReportGroupPopulationComponents);
               }
 
-              if (population.getStratificationValues() != null) {
-                var measureReportGroupStratifierComponents =
-                    population.getStratificationValues().stream()
-                        .map(
-                            testCaseStratificationValue -> {
-                              List<CodeableConcept> code = new ArrayList<CodeableConcept>();
-                              code.add(
-                                  new CodeableConcept()
-                                      .setText(
-                                          getStratificationDefinition(
-                                              groups,
-                                              population.getGroupId(),
-                                              testCaseStratificationValue.getId())));
-
-                              var stratifierComponent =
-                                  new MeasureReport.MeasureReportGroupStratifierComponent()
-                                      .setCode(code)
-                                      .setStratum(buildStratum(testCaseStratificationValue));
-                              stratifierComponent.setId(testCaseStratificationValue.getId());
-                              return stratifierComponent;
-                            })
-                        .collect(Collectors.toList());
-                measureReportGroupComponent.setStratifier(measureReportGroupStratifierComponents);
+              // adding stratification for patient basis
+              if (population.getStratificationValues() != null
+                  && StringUtils.equalsIgnoreCase("boolean", population.getPopulationBasis())) {
+                measureReportGroupComponent.setStratifier(
+                    buildGroupStratifierComponentForPatientBasisMeasures(
+                        population, groups, population.getGroupId()));
               }
               return measureReportGroupComponent;
+            })
+        .collect(Collectors.toList());
+  }
+
+  private List<MeasureReport.MeasureReportGroupStratifierComponent>
+      buildGroupStratifierComponentForPatientBasisMeasures(
+          TestCaseGroupPopulation population, List<Group> groups, String populationGroupId) {
+    return population.getStratificationValues().stream()
+        .map(
+            testCaseStratificationValue -> {
+              List<CodeableConcept> code = new ArrayList<CodeableConcept>();
+              code.add(
+                  new CodeableConcept()
+                      .setText(
+                          getStratificationDefinition(
+                              groups, populationGroupId, testCaseStratificationValue.getId())));
+
+              var stratifierComponent =
+                  new MeasureReport.MeasureReportGroupStratifierComponent()
+                      .setCode(code)
+                      .setStratum(buildStratum(testCaseStratificationValue));
+              stratifierComponent.setId(testCaseStratificationValue.getId());
+              return stratifierComponent;
             })
         .collect(Collectors.toList());
   }
