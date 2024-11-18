@@ -266,34 +266,46 @@ public class TestCaseBundleService {
               }
 
               // adding stratification for patient basis
-              if (population.getStratificationValues() != null
-                  && StringUtils.equalsIgnoreCase("boolean", population.getPopulationBasis())) {
-                measureReportGroupComponent.setStratifier(
-                    buildGroupStratifierComponentForPatientBasisMeasures(
-                        population, groups, population.getGroupId()));
+              if (population.getStratificationValues() != null) {
+                if (StringUtils.equalsIgnoreCase("boolean", population.getPopulationBasis())) {
+                  measureReportGroupComponent.setStratifier(
+                      buildGroupStratifierComponent(
+                          population, groups, population.getGroupId(), true));
+                } else {
+                  measureReportGroupComponent.setStratifier(
+                      buildGroupStratifierComponent(
+                          population, groups, population.getGroupId(), false));
+                }
               }
               return measureReportGroupComponent;
             })
         .collect(Collectors.toList());
   }
 
-  private List<MeasureReport.MeasureReportGroupStratifierComponent>
-      buildGroupStratifierComponentForPatientBasisMeasures(
-          TestCaseGroupPopulation population, List<Group> groups, String populationGroupId) {
+  private List<MeasureReport.MeasureReportGroupStratifierComponent> buildGroupStratifierComponent(
+      TestCaseGroupPopulation population,
+      List<Group> groups,
+      String populationGroupId,
+      boolean isPatientBased) {
     return population.getStratificationValues().stream()
         .map(
             testCaseStratificationValue -> {
               List<CodeableConcept> code = new ArrayList<CodeableConcept>();
-              code.add(
-                  new CodeableConcept()
-                      .setText(
-                          getStratificationDefinition(
-                              groups, populationGroupId, testCaseStratificationValue.getId())));
+              var codeText =
+                  isPatientBased
+                      ? getStratificationDefinition(
+                          groups, populationGroupId, testCaseStratificationValue.getId())
+                      : testCaseStratificationValue.getName();
+              code.add(new CodeableConcept().setText(codeText));
 
               var stratifierComponent =
                   new MeasureReport.MeasureReportGroupStratifierComponent()
                       .setCode(code)
-                      .setStratum(buildStratum(testCaseStratificationValue));
+                      .setStratum(
+                          buildStratum(
+                              testCaseStratificationValue,
+                              isPatientBased,
+                              testCaseStratificationValue.getName()));
               stratifierComponent.setId(testCaseStratificationValue.getId());
               return stratifierComponent;
             })
@@ -318,7 +330,9 @@ public class TestCaseBundleService {
   }
 
   private List<MeasureReport.StratifierGroupComponent> buildStratum(
-      TestCaseStratificationValue testCaseStratificationValue) {
+      TestCaseStratificationValue testCaseStratificationValue,
+      boolean isPatientBased,
+      String testCaseStratificationName) {
 
     // stratum
     List<MeasureReport.StratifierGroupComponent> stratum =
@@ -327,20 +341,27 @@ public class TestCaseBundleService {
     MeasureReport.StratifierGroupComponent stratifierGroupComponent =
         new MeasureReport.StratifierGroupComponent();
 
-    // when value is true
-    stratifierGroupComponent.setValue(new CodeableConcept().setText("true"));
-    stratifierGroupComponent.setPopulation(
-        FhirResourceHelpers.buildStratum(testCaseStratificationValue, true));
-    stratum.add(stratifierGroupComponent);
+    if (isPatientBased) {
+      // when value is true
+      stratifierGroupComponent.setValue(new CodeableConcept().setText("true"));
+      stratifierGroupComponent.setPopulation(
+          FhirResourceHelpers.buildStratumPopulation(testCaseStratificationValue, true, true));
+      stratum.add(stratifierGroupComponent);
 
-    // when value is false (i.e., inverted )
-    MeasureReport.StratifierGroupComponent stratifierGroupComponentForInvertedValue =
-        new MeasureReport.StratifierGroupComponent();
-    stratifierGroupComponentForInvertedValue.setValue(new CodeableConcept().setText("false"));
-    stratifierGroupComponentForInvertedValue.setPopulation(
-        FhirResourceHelpers.buildStratum(testCaseStratificationValue, false));
-    stratum.add(stratifierGroupComponentForInvertedValue);
-
+      // when value is false (i.e., inverted )
+      MeasureReport.StratifierGroupComponent stratifierGroupComponentForInvertedValue =
+          new MeasureReport.StratifierGroupComponent();
+      stratifierGroupComponentForInvertedValue.setValue(new CodeableConcept().setText("false"));
+      stratifierGroupComponentForInvertedValue.setPopulation(
+          FhirResourceHelpers.buildStratumPopulation(testCaseStratificationValue, false, true));
+      stratum.add(stratifierGroupComponentForInvertedValue);
+    } else {
+      // Non-patient based measures
+      stratifierGroupComponent.setValue(new CodeableConcept().setText(testCaseStratificationName));
+      stratifierGroupComponent.setPopulation(
+          FhirResourceHelpers.buildStratumPopulation(testCaseStratificationValue, true, false));
+      stratum.add(stratifierGroupComponent);
+    }
     return stratum;
   }
 

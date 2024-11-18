@@ -84,8 +84,10 @@ public class FhirResourceHelpers {
     return 0;
   }
 
-  public static List<MeasureReport.StratifierGroupPopulationComponent> buildStratum(
-      TestCaseStratificationValue testCaseStratificationValue, boolean valueIndex) {
+  public static List<MeasureReport.StratifierGroupPopulationComponent> buildStratumPopulation(
+      TestCaseStratificationValue testCaseStratificationValue,
+      boolean valueIndex,
+      boolean isPatientBased) {
     var measureTestCaseStratificationComponents =
         testCaseStratificationValue.getPopulationValues().stream()
             .map(
@@ -102,10 +104,12 @@ public class FhirResourceHelpers {
                           populationCode, UriConstants.POPULATION_SYSTEM_URI, populationDisplay));
 
                   stratifierGroupPopulationComponent.setCount(
-                      valueIndex
-                          ? getExpectedValue(populationValue.getExpected())
-                          : getExpectedInverseValue(
-                              getExpectedValue(populationValue.getExpected())));
+                      isPatientBased
+                          ? (valueIndex
+                              ? getExpectedValue(populationValue.getExpected())
+                              : getExpectedInverseValue(
+                                  getExpectedValue(populationValue.getExpected())))
+                          : Integer.parseInt(populationValue.getExpected().toString()));
                   return stratifierGroupPopulationComponent;
                 })
             .collect(Collectors.toList());
