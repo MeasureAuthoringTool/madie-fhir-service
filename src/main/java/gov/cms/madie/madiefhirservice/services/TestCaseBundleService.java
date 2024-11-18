@@ -242,29 +242,36 @@ public class TestCaseBundleService {
         .map(
             population -> {
               var measureReportGroupComponent = new MeasureReport.MeasureReportGroupComponent();
+              measureReportGroupComponent.setId(population.getGroupId());
+              // adding populations
               if (population.getPopulationValues() != null) {
                 var measureReportGroupPopulationComponents =
                     population.getPopulationValues().stream()
                         .map(
                             testCasePopulationValue -> {
-                              String populationCode = testCasePopulationValue.getName().toCode();
-                              String populationDisplay =
-                                  testCasePopulationValue.getName().getDisplay();
-                              int expectedValue =
-                                  FhirResourceHelpers.getExpectedValue(
-                                      testCasePopulationValue.getExpected());
-                              return (new MeasureReport.MeasureReportGroupPopulationComponent())
-                                  .setCode(
-                                      FhirResourceHelpers.buildCodeableConcept(
-                                          populationCode,
-                                          UriConstants.POPULATION_SYSTEM_URI,
-                                          populationDisplay))
-                                  .setCount(expectedValue);
+                              var groupComponent =
+                                  (new MeasureReport.MeasureReportGroupPopulationComponent())
+                                      .setCode(
+                                          FhirResourceHelpers.buildCodeableConcept(
+                                              testCasePopulationValue.getName().toCode(),
+                                              UriConstants.POPULATION_SYSTEM_URI,
+                                              testCasePopulationValue.getName().getDisplay()))
+                                      .setCount(
+                                          FhirResourceHelpers.getExpectedValue(
+                                              testCasePopulationValue.getExpected()));
+                              groupComponent.setId(testCasePopulationValue.getId());
+                              return groupComponent;
                             })
                         .collect(Collectors.toList());
                 measureReportGroupComponent.setPopulation(measureReportGroupPopulationComponents);
               }
-
+              // adding measure score
+              measureReportGroupComponent.setMeasureScore(
+                  new Quantity()
+                      .setValue(
+                          StringUtils.equalsIgnoreCase("boolean", population.getPopulationBasis())
+                              ? 1.0
+                              : 0));
               // adding stratification for patient basis
               if (population.getStratificationValues() != null) {
                 if (StringUtils.equalsIgnoreCase("boolean", population.getPopulationBasis())) {

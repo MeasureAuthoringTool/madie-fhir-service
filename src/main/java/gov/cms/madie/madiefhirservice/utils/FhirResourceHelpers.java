@@ -95,13 +95,13 @@ public class FhirResourceHelpers {
                   MeasureReport.StratifierGroupPopulationComponent
                       stratifierGroupPopulationComponent =
                           new MeasureReport.StratifierGroupPopulationComponent();
-                  String populationCode = populationValue.getName().toCode();
-                  String populationDisplay = populationValue.getName().getDisplay();
 
                   stratifierGroupPopulationComponent.setId(populationValue.getId());
                   stratifierGroupPopulationComponent.setCode(
                       buildCodeableConcept(
-                          populationCode, UriConstants.POPULATION_SYSTEM_URI, populationDisplay));
+                          populationValue.getName().toCode(),
+                          UriConstants.POPULATION_SYSTEM_URI,
+                          populationValue.getName().getDisplay()));
 
                   stratifierGroupPopulationComponent.setCount(
                       isPatientBased
