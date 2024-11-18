@@ -280,8 +280,7 @@ public class TestCaseBundleService {
                           population, groups, population.getGroupId(), true));
                 } else {
                   measureReportGroupComponent.setStratifier(
-                      buildGroupStratifierComponent(
-                          population, groups, population.getGroupId(), false));
+                      buildGroupStratifierComponent(population, null, null, false));
                 }
               }
               return measureReportGroupComponent;
@@ -366,7 +365,7 @@ public class TestCaseBundleService {
       // Non-patient based measures
       stratifierGroupComponent.setValue(new CodeableConcept().setText(testCaseStratificationName));
       stratifierGroupComponent.setPopulation(
-          FhirResourceHelpers.buildStratumPopulation(testCaseStratificationValue, true, false));
+          FhirResourceHelpers.buildStratumPopulation(testCaseStratificationValue, null, false));
       stratum.add(stratifierGroupComponent);
     }
     return stratum;

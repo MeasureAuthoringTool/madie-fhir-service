@@ -86,7 +86,7 @@ public class FhirResourceHelpers {
 
   public static List<MeasureReport.StratifierGroupPopulationComponent> buildStratumPopulation(
       TestCaseStratificationValue testCaseStratificationValue,
-      boolean valueIndex,
+      Boolean valueIndex,
       boolean isPatientBased) {
     var measureTestCaseStratificationComponents =
         testCaseStratificationValue.getPopulationValues().stream()
