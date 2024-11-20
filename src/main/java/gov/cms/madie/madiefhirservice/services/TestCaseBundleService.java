@@ -23,19 +23,14 @@ import java.util.zip.ZipOutputStream;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import gov.cms.madie.models.dto.TestCaseExportMetaData;
+import gov.cms.madie.models.measure.*;
+import gov.cms.madie.models.measure.Group;
+import gov.cms.madie.models.measure.Measure;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
-import org.hl7.fhir.r4.model.BooleanType;
-import org.hl7.fhir.r4.model.Bundle;
+import org.hl7.fhir.r4.model.*;
 
-import org.hl7.fhir.r4.model.Extension;
-import org.hl7.fhir.r4.model.MarkdownType;
-import org.hl7.fhir.r4.model.MeasureReport;
-import org.hl7.fhir.r4.model.Meta;
-import org.hl7.fhir.r4.model.Parameters;
 import org.hl7.fhir.r4.model.Reference;
-import org.hl7.fhir.r4.model.Resource;
-import org.hl7.fhir.r4.model.StringType;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.client.RestClientException;
@@ -51,8 +46,6 @@ import gov.cms.madie.madiefhirservice.utils.ExportFileNamesUtil;
 import gov.cms.madie.madiefhirservice.utils.FhirResourceHelpers;
 import gov.cms.madie.models.common.BundleType;
 import gov.cms.madie.models.dto.ExportDTO;
-import gov.cms.madie.models.measure.Measure;
-import gov.cms.madie.models.measure.TestCase;
 import gov.cms.madie.packaging.utils.PackagingUtility;
 import gov.cms.madie.packaging.utils.PackagingUtilityFactory;
 import lombok.RequiredArgsConstructor;
@@ -179,7 +172,7 @@ public class TestCaseBundleService {
             getUTCDates(measure.getMeasurementPeriodStart()),
             getUTCDates(measure.getMeasurementPeriodEnd())));
 
-    measureReport.setGroup(buildMeasureReportGroupComponents(testCase));
+    measureReport.setGroup(buildMeasureReportGroupComponents(testCase, measure.getGroups()));
     measureReport.setEvaluatedResource(buildEvaluatedResource(testCaseBundle));
     return measureReport;
   }
@@ -241,7 +234,7 @@ public class TestCaseBundleService {
   }
 
   private List<MeasureReport.MeasureReportGroupComponent> buildMeasureReportGroupComponents(
-      TestCase testCase) {
+      TestCase testCase, List<Group> groups) {
     if (CollectionUtils.isEmpty(testCase.getGroupPopulations())) {
       return List.of();
     }
@@ -249,45 +242,133 @@ public class TestCaseBundleService {
         .map(
             population -> {
               var measureReportGroupComponent = new MeasureReport.MeasureReportGroupComponent();
-
+              measureReportGroupComponent.setId(population.getGroupId());
+              // adding populations
               if (population.getPopulationValues() != null) {
                 var measureReportGroupPopulationComponents =
                     population.getPopulationValues().stream()
                         .map(
                             testCasePopulationValue -> {
-                              String populationCode = testCasePopulationValue.getName().toCode();
-                              String populationDisplay =
-                                  testCasePopulationValue.getName().getDisplay();
-                              int expectedValue =
-                                  getExpectedValue(testCasePopulationValue.getExpected());
-                              return (new MeasureReport.MeasureReportGroupPopulationComponent())
-                                  .setCode(
-                                      FhirResourceHelpers.buildCodeableConcept(
-                                          populationCode,
-                                          UriConstants.POPULATION_SYSTEM_URI,
-                                          populationDisplay))
-                                  .setCount(expectedValue);
+                              var groupComponent =
+                                  (new MeasureReport.MeasureReportGroupPopulationComponent())
+                                      .setCode(
+                                          FhirResourceHelpers.buildCodeableConcept(
+                                              testCasePopulationValue.getName().toCode(),
+                                              UriConstants.POPULATION_SYSTEM_URI,
+                                              testCasePopulationValue.getName().getDisplay()))
+                                      .setCount(
+                                          FhirResourceHelpers.getExpectedValue(
+                                              testCasePopulationValue.getExpected()));
+                              groupComponent.setId(testCasePopulationValue.getId());
+                              return groupComponent;
                             })
                         .collect(Collectors.toList());
                 measureReportGroupComponent.setPopulation(measureReportGroupPopulationComponents);
+              }
+              // adding measure score
+              measureReportGroupComponent.setMeasureScore(
+                  new Quantity()
+                      .setValue(
+                          StringUtils.equalsIgnoreCase("boolean", population.getPopulationBasis())
+                              ? 1.0
+                              : 0));
+              // adding stratification for patient basis
+              if (population.getStratificationValues() != null) {
+                if (StringUtils.equalsIgnoreCase("boolean", population.getPopulationBasis())) {
+                  measureReportGroupComponent.setStratifier(
+                      buildGroupStratifierComponent(
+                          population, groups, population.getGroupId(), true));
+                } else {
+                  measureReportGroupComponent.setStratifier(
+                      buildGroupStratifierComponent(population, null, null, false));
+                }
               }
               return measureReportGroupComponent;
             })
         .collect(Collectors.toList());
   }
 
-  /**
-   * @param expectedValue expected value for a population, can be a string or boolean
-   * @return an equivalent integer
-   */
-  private int getExpectedValue(Object expectedValue) {
-    if (expectedValue == null || StringUtils.isBlank(expectedValue.toString())) {
-      return 0;
-    } else if (expectedValue instanceof Boolean) {
-      return (Boolean) expectedValue ? 1 : 0;
-    } else {
-      return Integer.parseInt(expectedValue.toString());
+  private List<MeasureReport.MeasureReportGroupStratifierComponent> buildGroupStratifierComponent(
+      TestCaseGroupPopulation population,
+      List<Group> groups,
+      String populationGroupId,
+      boolean isPatientBased) {
+    return population.getStratificationValues().stream()
+        .map(
+            testCaseStratificationValue -> {
+              List<CodeableConcept> code = new ArrayList<CodeableConcept>();
+              var codeText =
+                  isPatientBased
+                      ? getStratificationDefinition(
+                          groups, populationGroupId, testCaseStratificationValue.getId())
+                      : testCaseStratificationValue.getName();
+              code.add(new CodeableConcept().setText(codeText));
+
+              var stratifierComponent =
+                  new MeasureReport.MeasureReportGroupStratifierComponent()
+                      .setCode(code)
+                      .setStratum(
+                          buildStratum(
+                              testCaseStratificationValue,
+                              isPatientBased,
+                              testCaseStratificationValue.getName()));
+              stratifierComponent.setId(testCaseStratificationValue.getId());
+              return stratifierComponent;
+            })
+        .collect(Collectors.toList());
+  }
+
+  private String getStratificationDefinition(
+      List<Group> groups, String populationId, String testCaseStratificationId) {
+    Group filteredGroup =
+        groups.stream()
+            .filter(group -> group.getId().equals(populationId))
+            .findFirst()
+            .orElse(null);
+    if (filteredGroup != null) {
+      return filteredGroup.getStratifications().stream()
+          .filter(stratification -> stratification.getId().equals(testCaseStratificationId))
+          .map(selectedStratification -> selectedStratification.getCqlDefinition())
+          .findFirst()
+          .orElse(null);
     }
+    return null;
+  }
+
+  private List<MeasureReport.StratifierGroupComponent> buildStratum(
+      TestCaseStratificationValue testCaseStratificationValue,
+      boolean isPatientBased,
+      String testCaseStratificationName) {
+
+    // stratum
+    List<MeasureReport.StratifierGroupComponent> stratum =
+        new ArrayList<MeasureReport.StratifierGroupComponent>();
+
+    MeasureReport.StratifierGroupComponent stratifierGroupComponent =
+        new MeasureReport.StratifierGroupComponent();
+
+    if (isPatientBased) {
+      // when value is true
+      stratifierGroupComponent.setValue(new CodeableConcept().setText("true"));
+      stratifierGroupComponent.setPopulation(
+          FhirResourceHelpers.buildStratumPopulation(testCaseStratificationValue, true, true));
+      stratum.add(stratifierGroupComponent);
+
+      // when value is false (i.e., inverted )
+      MeasureReport.StratifierGroupComponent stratifierGroupComponentForInvertedValue =
+          new MeasureReport.StratifierGroupComponent();
+      stratifierGroupComponentForInvertedValue.setValue(new CodeableConcept().setText("false"));
+      stratifierGroupComponentForInvertedValue.setPopulation(
+          FhirResourceHelpers.buildStratumPopulation(testCaseStratificationValue, false, true));
+      stratum.add(stratifierGroupComponentForInvertedValue);
+    } else {
+      // Non-patient based measures
+      stratifierGroupComponent.setValue(new CodeableConcept().setText(testCaseStratificationName));
+      stratifierGroupComponent.setPopulation(
+          FhirResourceHelpers.buildStratumPopulation(testCaseStratificationValue, null, false));
+      stratum.add(stratifierGroupComponent);
+    }
+    return stratum;
   }
 
   /**
