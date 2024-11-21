@@ -158,7 +158,7 @@
 	<dependency>
 		<groupId>gov.cms.madie.packaging</groupId>
 		<artifactId>packaging-utility</artifactId>
-		<version>0.2.4</version>
+		<version>0.2.5</version>
 		<exclusions>
 			<exclusion>
 				<groupId>gov.cms.madie</groupId>
