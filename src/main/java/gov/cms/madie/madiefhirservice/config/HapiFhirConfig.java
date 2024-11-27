@@ -5,13 +5,10 @@ import ca.uhn.fhir.context.support.DefaultProfileValidationSupport;
 import ca.uhn.fhir.context.support.IValidationSupport;
 import ca.uhn.fhir.validation.FhirValidator;
 import ca.uhn.fhir.validation.IValidatorModule;
+import gov.cms.madie.madiefhirservice.utils.QiCoreLenientTerminologyValidator;
 import gov.cms.madie.madiefhirservice.utils.ResourceUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.hl7.fhir.common.hapi.validation.support.CommonCodeSystemsTerminologyService;
-import org.hl7.fhir.common.hapi.validation.support.InMemoryTerminologyServerValidationSupport;
-import org.hl7.fhir.common.hapi.validation.support.NpmPackageValidationSupport;
-import org.hl7.fhir.common.hapi.validation.support.UnknownCodeSystemWarningValidationSupport;
-import org.hl7.fhir.common.hapi.validation.support.ValidationSupportChain;
+import org.hl7.fhir.common.hapi.validation.support.*;
 import org.hl7.fhir.common.hapi.validation.validator.FhirInstanceValidator;
 import org.hl7.fhir.r5.context.SimpleWorkerContext;
 import org.hl7.fhir.r5.utils.LiquidEngine;
@@ -85,7 +82,7 @@ public class HapiFhirConfig {
     return new ValidationSupportChain(
         npmPackageSupport,
         new DefaultProfileValidationSupport(qicore6FhirContext),
-        new InMemoryTerminologyServerValidationSupport(qicore6FhirContext),
+        new QiCoreLenientTerminologyValidator(qicore6FhirContext),
         new CommonCodeSystemsTerminologyService(qicore6FhirContext),
         unknownCodeSystemWarningValidationSupport);
   }
