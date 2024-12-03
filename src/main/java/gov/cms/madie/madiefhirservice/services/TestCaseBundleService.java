@@ -78,6 +78,9 @@ public class TestCaseBundleService {
         if (testCase.getJson() == null || testCase.getJson().isEmpty()) {
           throw new DataFormatException("TestCase Json is empty");
         }
+        if (!testCase.isValidResource()) {
+          throw new DataFormatException("TestCase Json is not valid");
+        }
         bundle = parser.parseResource(Bundle.class, testCase.getJson());
       } catch (DataFormatException | ClassCastException ex) {
         log.error(
