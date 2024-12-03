@@ -367,6 +367,16 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
   }
 
   @Test
+  void getTestCaseExportAllThrowExceptionWhenTestCaseJsonHasErrors() {
+    testCase.setValidResource(false);
+    assertThrows(
+        ResourceNotFoundException.class,
+        () ->
+            testCaseBundleService.getTestCaseExportBundle(
+                madieMeasure, singletonList(testCase), exportDTO));
+  }
+
+  @Test
   void getTestCaseExportAllThrowExceptionWhenAllTestCaseJsonIsMalformed() {
     testCase.setJson("test");
     assertThrows(
