@@ -31,8 +31,7 @@ public class ExportService {
 
     PackagingUtility utility;
     try {
-      // TODO.. this method is already tied to FHIR.  so.. just hardcoding for now
-      utility = PackagingUtilityFactory.getInstance("QI-Core v4.1.1");
+      utility = PackagingUtilityFactory.getInstance(madieMeasure.getModel());
     } catch (InstantiationException
         | IllegalAccessException
         | IllegalArgumentException
