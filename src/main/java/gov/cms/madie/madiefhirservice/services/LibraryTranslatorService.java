@@ -56,15 +56,13 @@ public class LibraryTranslatorService {
         cqlLibrary.getPublisher() != null && StringUtils.isNotBlank(cqlLibrary.getPublisher())
             ? cqlLibrary.getPublisher()
             : UNKNOWN_VALUE);
-    library.setDescription(StringUtils.defaultString(cqlLibrary.getDescription(), UNKNOWN_VALUE));
+    library.setDescription(Objects.toString(cqlLibrary.getDescription(), UNKNOWN_VALUE));
     library.setExperimental(cqlLibrary.isExperimental());
     library.setContent(
         createContent(cqlLibrary.getCql(), cqlLibrary.getElmJson(), cqlLibrary.getElmXml()));
     library.setType(createType(UriConstants.LIBRARY_SYSTEM_TYPE_URI, SYSTEM_CODE));
     library.setUrl(
         FhirResourceHelpers.buildResourceFullUrl("Library", cqlLibrary.getCqlLibraryName()));
-    library.setDataRequirement(distinctDataRequirements(visitor.getDataRequirements()));
-
     library.getExtension().addAll(visitor.getDrcExtensions());
     library.setRelatedArtifact(distinctArtifacts(visitor.getRelatedArtifacts()));
     library.setMeta(createLibraryMeta());
