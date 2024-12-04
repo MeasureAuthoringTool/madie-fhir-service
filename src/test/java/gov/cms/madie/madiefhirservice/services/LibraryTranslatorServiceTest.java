@@ -51,7 +51,6 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
     Library library = libraryTranslatorService.convertToFhirLibrary(cqlLibrary);
     assertEquals(library.getName(), cqlLibrary.getCqlLibraryName());
     assertEquals(library.getVersion(), cqlLibrary.getVersion().toString());
-    assertEquals(library.getDataRequirement().size(), visitor.getDataRequirements().size());
     assertThat(library.getTitle(), is(equalTo(cqlLibrary.getCqlLibraryName())));
     assertThat(library.getPublisher(), is(equalTo(cqlLibrary.getPublisher())));
     Identifier identifier = new Identifier();

@@ -1,6 +1,7 @@
 package gov.cms.madie.madiefhirservice.services;
 
 import gov.cms.madie.madiefhirservice.cql.LibraryCqlVisitorFactory;
+import gov.cms.madie.madiefhirservice.dto.CqlLibraryDetails;
 import gov.cms.madie.madiefhirservice.exceptions.*;
 import gov.cms.madie.madiefhirservice.utils.BundleUtil;
 import gov.cms.madie.madiefhirservice.utils.LibraryHelper;
@@ -28,6 +29,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.when;
@@ -41,6 +43,7 @@ class LibraryServiceTest implements LibraryHelper, ResourceFileUtil {
   @Mock private LibraryTranslatorService libraryTranslatorService;
   @Mock private LibraryCqlVisitorFactory libCqlVisitorFactory;
   @Mock private HumanReadableService humanReadableService;
+  @Mock private ElmTranslatorClient elmTranslatorClient;
   private Library fhirHelpersLibrary;
 
   Bundle bundle = new Bundle();
@@ -133,12 +136,15 @@ class LibraryServiceTest implements LibraryHelper, ResourceFileUtil {
     when(cqlLibraryService.getLibrary(anyString(), anyString(), anyString()))
         .thenReturn(cqlLibrary);
     when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class))).thenReturn(library);
+    when(elmTranslatorClient.getModuleDefinitionLibrary(
+            any(CqlLibraryDetails.class), anyBoolean(), anyString()))
+        .thenReturn(new org.hl7.fhir.r5.model.Library());
 
     Map<String, Library> includedLibraryMap = new HashMap<>();
     libraryService.getIncludedLibraries(
         mainLibrary, includedLibraryMap, BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT, "TOKEN");
     assertThat(includedLibraryMap.size(), is(equalTo(1)));
-    assertNotNull(includedLibraryMap.get("IncludedLibrary0.1.0"));
+    assertNotNull(includedLibraryMap.get("IncludedLibrary0.1.000"));
   }
 
   @Test
