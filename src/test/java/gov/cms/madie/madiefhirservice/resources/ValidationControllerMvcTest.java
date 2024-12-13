@@ -5,6 +5,7 @@ import ca.uhn.fhir.parser.IParser;
 import ca.uhn.fhir.parser.StrictErrorHandler;
 import ca.uhn.fhir.validation.FhirValidator;
 import gov.cms.madie.madiefhirservice.factories.ModelAwareFhirFactory;
+import gov.cms.madie.madiefhirservice.services.AppConfigService;
 import gov.cms.madie.madiefhirservice.services.ResourceValidationService;
 import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
 import gov.cms.madie.models.common.ModelType;
@@ -48,6 +49,7 @@ class ValidationControllerMvcTest implements ResourceFileUtil {
   @Autowired private MockMvc mockMvc;
   @Autowired FhirValidator qicoreNpmFhirValidator;
   @MockBean private ModelAwareFhirFactory validatorFactory;
+  @MockBean private AppConfigService appConfigService;
   private IParser r4Parser;
 
   @BeforeEach
