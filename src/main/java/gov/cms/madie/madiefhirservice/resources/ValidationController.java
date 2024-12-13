@@ -6,9 +6,12 @@ import ca.uhn.fhir.parser.IParser;
 import ca.uhn.fhir.util.OperationOutcomeUtil;
 import ca.uhn.fhir.validation.FhirValidator;
 import ca.uhn.fhir.validation.ValidationResult;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import gov.cms.madie.madiefhirservice.dto.MadieFeatureFlag;
 import gov.cms.madie.madiefhirservice.factories.ModelAwareFhirFactory;
+import gov.cms.madie.madiefhirservice.services.AppConfigService;
 import gov.cms.madie.models.common.ModelType;
 import gov.cms.madie.models.measure.HapiOperationOutcome;
 import gov.cms.madie.madiefhirservice.exceptions.HapiJsonException;
@@ -16,8 +19,10 @@ import gov.cms.madie.madiefhirservice.services.ResourceValidationService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.hl7.fhir.instance.model.api.IBaseBundle;
 import org.hl7.fhir.instance.model.api.IBaseOperationOutcome;
+import org.hl7.fhir.r4.model.OperationOutcome;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,6 +30,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Objects;
 
 import static gov.cms.madie.madiefhirservice.utils.ModelEndpointMap.QICORE_VERSION_MODELTYPE_MAP;
 
@@ -39,6 +46,7 @@ public class ValidationController {
 
   private ResourceValidationService validationService;
   private ModelAwareFhirFactory validatorFactory;
+  private AppConfigService appConfigService;
 
   private ObjectMapper mapper;
 
@@ -49,8 +57,17 @@ public class ValidationController {
   public HapiOperationOutcome validateBundleByModel(
       @PathVariable("model") String modelVersion, HttpEntity<String> request) {
     final ModelType modelType = QICORE_VERSION_MODELTYPE_MAP.get(modelVersion);
-    FhirContext fhirContext = validatorFactory.getContextForModel(modelType);
     IParser parser = validatorFactory.getJsonParserForModel(modelType);
+
+    // MAT-8019: Disable Test Case Validations for QI-Core STU 6 only.
+    if (ModelType.QI_CORE_6_0_0.equals(modelType)
+        && !appConfigService.isFlagEnabled(MadieFeatureFlag.STU6_TEST_CASE_VALIDATION)
+        && StringUtils.deleteWhitespace(Objects.requireNonNull(request.getBody()).trim())
+            .contains("\"resourceType\":\"Patient\"")) {
+      return noValidationResponse(parser);
+    }
+
+    FhirContext fhirContext = validatorFactory.getContextForModel(modelType);
     FhirValidator fhirValidator = validatorFactory.getValidatorForModel(modelType);
     IBaseBundle bundle;
     try {
@@ -91,6 +108,19 @@ public class ValidationController {
           .build();
     } catch (Exception ex) {
       throw new HapiJsonException("An error occurred processing the validation results", ex);
+    }
+  }
+
+  private HapiOperationOutcome noValidationResponse(IParser parser) {
+    try {
+      return HapiOperationOutcome.builder()
+          .code(HttpStatus.OK.value())
+          .successful(true)
+          .outcomeResponse(
+              mapper.readValue(parser.encodeResourceToString(new OperationOutcome()), Object.class))
+          .build();
+    } catch (JsonProcessingException e) {
+      throw new HapiJsonException("An error occurred processing the validation results", e);
     }
   }
 }
