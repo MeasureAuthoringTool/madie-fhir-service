@@ -1,5 +1,6 @@
 package gov.cms.madie.madiefhirservice.utils;
 
+import gov.cms.madie.models.common.ModelType;
 import gov.cms.madie.models.common.Version;
 import gov.cms.madie.models.measure.Measure;
 import gov.cms.madie.models.measure.TestCase;
@@ -18,8 +19,19 @@ public class ExportFileNamesUtilTest {
 
   @BeforeEach
   void setup() {
-    measure = Measure.builder().ecqmTitle("ecqm").version(Version.parse("1.0.000")).build();
+    measure =
+        Measure.builder()
+            .model(ModelType.QI_CORE.getValue())
+            .ecqmTitle("ecqm")
+            .version(Version.parse("1.0.000"))
+            .build();
     testCase = TestCase.builder().patientId(uuid).series("group").title("test").build();
+  }
+
+  @Test
+  void trimMeasureFileName() {
+    Measure msr = measure.toBuilder().ecqmTitle("   ecqm   ").build();
+    assertEquals("ecqm-v1.0.000-FHIR", ExportFileNamesUtil.getExportFileName(msr));
   }
 
   @Test
