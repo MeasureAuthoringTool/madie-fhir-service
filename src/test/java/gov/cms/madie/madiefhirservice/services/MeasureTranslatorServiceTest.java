@@ -170,6 +170,8 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
 
     Extension improvementNotationExt =
         group1.getExtensionByUrl(UriConstants.CqfMeasures.IMPROVEMENT_NOTATION_URI);
+    Extension improvementNotationGudianceExt =
+        group1.getExtensionByUrl(UriConstants.CqfMeasures.IMPROVEMENT_NOTATION_GUIDANCE_URI);
     CodeableConcept improvementNotation =
         improvementNotationExt.getValue().castToCodeableConcept(improvementNotationExt.getValue());
     assertEquals(
@@ -179,6 +181,12 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertEquals(
         UriConstants.CqfMeasures.IMPROVEMENT_NOTATION_CODE_SYSTEM_URI,
         improvementNotation.getCoding().get(0).getSystem());
+    assertEquals(
+        improvementNotationGudianceExt.getUrl(),
+        UriConstants.CqfMeasures.IMPROVEMENT_NOTATION_GUIDANCE_URI);
+    assertThat(
+        improvementNotationGudianceExt.getValue().toString(),
+        is(equalTo("Improvement notation description")));
 
     Extension scoringUnitExt1 = group1.getExtensionByUrl(UriConstants.CqfMeasures.SCORING_UNIT_URI);
     assertThat(scoringUnitExt1, is(notNullValue()));

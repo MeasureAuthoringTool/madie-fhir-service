@@ -172,6 +172,7 @@
          "measureObservations":null,
          "groupDescription":"test 4495 group 1",
          "improvementNotation":"Increased score indicates improvement",
+         "improvementNotationDescription":"Improvement notation description",
          "rateAggregation":"Rate Aggregation Example",
          "scoringUnit":{
             "label":"kg kilogram",

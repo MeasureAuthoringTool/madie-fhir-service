@@ -280,6 +280,11 @@ public class MeasureTranslatorService {
           new Extension(
               UriConstants.CqfMeasures.IMPROVEMENT_NOTATION_URI,
               buildImprovementNotation(madieGroup.getImprovementNotation())));
+      if (StringUtils.isNotBlank(madieGroup.getImprovementNotationDescription())) {
+        element.addExtension(
+            UriConstants.CqfMeasures.IMPROVEMENT_NOTATION_GUIDANCE_URI,
+            new MarkdownType(madieGroup.getImprovementNotationDescription()));
+      }
     }
     return (MeasureGroupComponent) element;
   }
