@@ -193,8 +193,9 @@ public class MeasureTranslatorService {
     identifier.setType(
         buildCodeableConcept(
             identifierType.getCode(),
-            UriConstants.CqfMeasures.CODE_SYSTEM_IDENTIFIER_TYPE_URI,
+            UriConstants.CodeSystem.CODE_SYSTEM_IDENTIFIER_TYPE_URI,
             identifierType.getDisplay()));
+    log.info("\nbuildIdentifier: identifier = " + identifier.toString());
     return identifier;
   }
 
@@ -293,12 +294,12 @@ public class MeasureTranslatorService {
     if ("Increased score indicates improvement".equalsIgnoreCase(improvementNotation)) {
       return buildCodeableConcept(
           "increase",
-          UriConstants.CqfMeasures.IMPROVEMENT_NOTATION_CODE_SYSTEM_URI,
+          UriConstants.CodeSystem.IMPROVEMENT_NOTATION_CODE_SYSTEM_URI,
           improvementNotation);
     } else {
       return buildCodeableConcept(
           "decrease",
-          UriConstants.CqfMeasures.IMPROVEMENT_NOTATION_CODE_SYSTEM_URI,
+          UriConstants.CodeSystem.IMPROVEMENT_NOTATION_CODE_SYSTEM_URI,
           improvementNotation);
     }
   }
@@ -334,7 +335,7 @@ public class MeasureTranslatorService {
                           .setCode(
                               buildCodeableConcept(
                                   populationCode,
-                                  UriConstants.POPULATION_SYSTEM_URI,
+                                  UriConstants.CodeSystem.POPULATION_SYSTEM_URI,
                                   populationDisplay))
                           .setCriteria(
                               buildExpression("text/cql-identifier", population.getDefinition()))
@@ -360,7 +361,7 @@ public class MeasureTranslatorService {
                           .setCode(
                               buildCodeableConcept(
                                   PopulationType.MEASURE_OBSERVATION.toCode(),
-                                  UriConstants.POPULATION_SYSTEM_URI,
+                                  UriConstants.CodeSystem.POPULATION_SYSTEM_URI,
                                   PopulationType.MEASURE_OBSERVATION.getDisplay()))
                           .setCriteria(
                               buildExpression(
@@ -404,7 +405,7 @@ public class MeasureTranslatorService {
                                             UriConstants.CqfMeasures.APPLIES_TO_URI,
                                             buildCodeableConcept(
                                                 associationPopulation.toCode(),
-                                                UriConstants.POPULATION_SYSTEM_URI,
+                                                UriConstants.CodeSystem.POPULATION_SYSTEM_URI,
                                                 associationPopulation.getDisplay())));
                                     return extension.get();
                                   })
@@ -478,7 +479,7 @@ public class MeasureTranslatorService {
     if ("continuous variable".equals(code)) {
       code = "continuous-variable";
     }
-    return buildCodeableConcept(code, UriConstants.SCORING_SYSTEM_URI, scoring);
+    return buildCodeableConcept(code, UriConstants.CodeSystem.SCORING_SYSTEM_URI, scoring);
   }
 
   private CodeableConcept buildCodeableConcept(String code, String system, String display) {
@@ -557,7 +558,7 @@ public class MeasureTranslatorService {
         .add(
             buildCoding(
                 "supplemental-data",
-                UriConstants.CqfMeasures.CODE_SYSTEM_MEASURE_DATA_USAGE_URI,
+                UriConstants.CodeSystem.CODE_SYSTEM_MEASURE_DATA_USAGE_URI,
                 "Supplemental Data"));
     codeableConcept.setText("Supplemental Data Guidance");
     Extension ext = new Extension(UriConstants.CqfMeasures.SUPPLEMENTAL_DATA_GUIDANCE_URI);
@@ -588,7 +589,7 @@ public class MeasureTranslatorService {
         .add(
             buildCoding(
                 "risk-adjustment-factor",
-                UriConstants.CqfMeasures.CODE_SYSTEM_MEASURE_DATA_USAGE_URI,
+                UriConstants.CodeSystem.CODE_SYSTEM_MEASURE_DATA_USAGE_URI,
                 "Risk Adjustment Factor"));
     codeableConcept.setText("Risk Adjustment Variable Guidance");
     Extension ext = new Extension(UriConstants.CqfMeasures.SUPPLEMENTAL_DATA_GUIDANCE_URI);
