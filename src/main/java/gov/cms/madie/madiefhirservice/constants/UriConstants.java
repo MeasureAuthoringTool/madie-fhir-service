@@ -51,7 +51,7 @@ public final class UriConstants {
         "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/executable-measure-cqfm";
 
     public static final String CODE_SYSTEM_IDENTIFIER_TYPE_URI =
-        "http://hl7.org/fhir/us/cqfmeasures/CodeSystem/identifier-type";
+        "http://terminology.hl7.org/CodeSystem/artifact-identifier-type";
 
     public static final String SUPPLEMENTAL_DATA_GUIDANCE_URI =
         "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-supplementalDataGuidance";
