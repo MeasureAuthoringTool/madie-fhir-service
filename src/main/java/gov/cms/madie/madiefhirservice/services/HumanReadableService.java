@@ -387,10 +387,4 @@ public class HumanReadableService extends ResourceUtils {
     extension.getValueReference().setReference("#effective-data-requirements");
     return extension;
   }
-
-  protected String addCssToHumanReadable(String measureHr) {
-    // Wrapper template for Measure.liquid o/p
-    String humanReadable = getData("/templates/HumanReadable.liquid");
-    return humanReadable.replace("human_readable_content_holder", measureHr);
-  }
 }
