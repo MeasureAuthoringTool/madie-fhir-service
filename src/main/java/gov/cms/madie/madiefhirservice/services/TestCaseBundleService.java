@@ -257,7 +257,7 @@ public class TestCaseBundleService {
                                       .setCode(
                                           FhirResourceHelpers.buildCodeableConcept(
                                               testCasePopulationValue.getName().toCode(),
-                                              UriConstants.POPULATION_SYSTEM_URI,
+                                              UriConstants.CodeSystem.POPULATION_SYSTEM_URI,
                                               testCasePopulationValue.getName().getDisplay()))
                                       .setCount(
                                           FhirResourceHelpers.getExpectedValue(

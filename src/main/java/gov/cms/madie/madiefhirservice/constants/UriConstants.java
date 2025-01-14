@@ -3,16 +3,29 @@ package gov.cms.madie.madiefhirservice.constants;
 public final class UriConstants {
   public static final String URN_UUID_PREFIX = "urn:uuid:";
   public static final String URN_IETF_RFC_3986 = "urn:ietf:rfc:3986";
-  public static final String POPULATION_SYSTEM_URI =
-      "http://terminology.hl7.org/CodeSystem/measure-population";
-  public static final String SCORING_SYSTEM_URI =
-      "http://terminology.hl7.org/CodeSystem/measure-scoring";
-  public static final String LIBRARY_SYSTEM_TYPE_URI =
-      "http://terminology.hl7.org/CodeSystem/library-type";
 
   public static final class FhirStructureDefinitions {
     public static final String CATEGORY_URI =
         "http://hl7.org/fhir/StructureDefinition/structuredefinition-category";
+  }
+
+  public static final class CodeSystem {
+    public static final String POPULATION_SYSTEM_URI =
+        "http://terminology.hl7.org/CodeSystem/measure-population";
+    public static final String SCORING_SYSTEM_URI =
+        "http://terminology.hl7.org/CodeSystem/measure-scoring";
+    public static final String LIBRARY_SYSTEM_TYPE_URI =
+        "http://terminology.hl7.org/CodeSystem/library-type";
+
+    public static final String CODE_SYSTEM_IDENTIFIER_TYPE_URI =
+        "http://terminology.hl7.org/CodeSystem/artifact-identifier-type";
+    public static final String CODE_SYSTEM_MEASURE_DATA_USAGE_URI =
+        "http://terminology.hl7.org/CodeSystem/measure-data-usage";
+    public static final String IMPROVEMENT_NOTATION_CODE_SYSTEM_URI =
+        "http://terminology.hl7.org/CodeSystem/measure-improvement-notation";
+
+    public static final String CODE_SYSTEM_URI =
+        "http://terminology.hl7.org/CodeSystem/usage-context-type";
   }
 
   public static final class CqfMeasures {
@@ -50,17 +63,11 @@ public final class UriConstants {
     public static final String EXECUTABLE_MEASURE_PROFILE_URI =
         "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/executable-measure-cqfm";
 
-    public static final String CODE_SYSTEM_IDENTIFIER_TYPE_URI =
-        "http://hl7.org/fhir/us/cqfmeasures/CodeSystem/identifier-type";
-
     public static final String SUPPLEMENTAL_DATA_GUIDANCE_URI =
         "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-supplementalDataGuidance";
 
     public static final String INCLUDE_IN_REPORT_TYPE_URI =
         "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType";
-
-    public static final String CODE_SYSTEM_MEASURE_DATA_USAGE_URI =
-        "http://terminology.hl7.org/CodeSystem/measure-data-usage";
 
     public static final String DIRECT_REFERENCE_CODE_URI =
         "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode";
@@ -73,9 +80,6 @@ public final class UriConstants {
 
     public static final String IMPROVEMENT_NOTATION_GUIDANCE_URI =
         "http://hl7.org/fhir/StructureDefinition/cqf-improvementNotationGuidance";
-
-    public static final String IMPROVEMENT_NOTATION_CODE_SYSTEM_URI =
-        "http://terminology.hl7.org/CodeSystem/measure-improvement-notation";
   }
 
   public static final class CqfTestCases {
@@ -90,8 +94,6 @@ public final class UriConstants {
   }
 
   public static final class UseContext {
-    public static final String CODE_SYSTEM_URI =
-        "http://terminology.hl7.org/CodeSystem/usage-context-type";
     public static final String VALUE_CODABLE_CONTEXT_CODING_SYSTEM_URI =
         "http://hl7.org/fhir/us/cqfmeasures/CodeSystem/quality-programs";
   }
