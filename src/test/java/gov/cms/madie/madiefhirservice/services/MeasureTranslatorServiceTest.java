@@ -1,6 +1,6 @@
 package gov.cms.madie.madiefhirservice.services;
 
-import static gov.cms.madie.madiefhirservice.constants.UriConstants.CqfMeasures.CODE_SYSTEM_IDENTIFIER_TYPE_URI;
+import static gov.cms.madie.madiefhirservice.constants.UriConstants.CodeSystem.CODE_SYSTEM_IDENTIFIER_TYPE_URI;
 import static gov.cms.madie.madiefhirservice.constants.UriConstants.MadieMeasure.SHORT_NAME;
 import static gov.cms.madie.madiefhirservice.constants.IdentifierType.CODE_ENDORSER;
 import static gov.cms.madie.madiefhirservice.constants.IdentifierType.CODE_PUBLISHER;
@@ -179,7 +179,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
         improvementNotation.getCoding().get(0).getDisplay());
     assertEquals("increase", improvementNotation.getCoding().get(0).getCode());
     assertEquals(
-        UriConstants.CqfMeasures.IMPROVEMENT_NOTATION_CODE_SYSTEM_URI,
+        UriConstants.CodeSystem.IMPROVEMENT_NOTATION_CODE_SYSTEM_URI,
         improvementNotation.getCoding().get(0).getSystem());
     assertEquals(
         improvementNotationGudianceExt.getUrl(),
@@ -206,7 +206,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertThat(group1CodeableConcept.getCoding().get(0), is(notNullValue()));
     assertThat(
         group1CodeableConcept.getCoding().get(0).getSystem(),
-        is(equalTo(UriConstants.SCORING_SYSTEM_URI)));
+        is(equalTo(UriConstants.CodeSystem.SCORING_SYSTEM_URI)));
     assertThat(group1CodeableConcept.getCoding().get(0).getCode(), is(equalTo("ratio")));
 
     List<Extension> groupTypes =
@@ -266,7 +266,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
         improvementNotation1.getCoding().get(0).getDisplay());
     assertEquals("decrease", improvementNotation1.getCoding().get(0).getCode());
     assertEquals(
-        UriConstants.CqfMeasures.IMPROVEMENT_NOTATION_CODE_SYSTEM_URI,
+        UriConstants.CodeSystem.IMPROVEMENT_NOTATION_CODE_SYSTEM_URI,
         improvementNotation1.getCoding().get(0).getSystem());
     Extension group2Ex = group2.getExtension().get(0);
     assertThat(group2Ex.getUrl(), is(equalTo(UriConstants.CqfMeasures.SCORING_URI)));
@@ -276,7 +276,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertThat(group2CodeableConcept.getCoding().get(0), is(notNullValue()));
     assertThat(
         group2CodeableConcept.getCoding().get(0).getSystem(),
-        is(equalTo(UriConstants.SCORING_SYSTEM_URI)));
+        is(equalTo(UriConstants.CodeSystem.SCORING_SYSTEM_URI)));
     assertThat(group2CodeableConcept.getCoding().get(0).getCode(), is(equalTo("ratio")));
 
     // verifies if SupplemenntalData is populated, it includes both SDE and RiskAdjustmentFators
@@ -486,7 +486,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertThat(group1CodeableConcept.getCoding().get(0), is(notNullValue()));
     assertThat(
         group1CodeableConcept.getCoding().get(0).getSystem(),
-        is(equalTo(UriConstants.SCORING_SYSTEM_URI)));
+        is(equalTo(UriConstants.CodeSystem.SCORING_SYSTEM_URI)));
     assertThat(group1CodeableConcept.getCoding().get(0).getCode(), is(equalTo("ratio")));
 
     MeasureGroupPopulationComponent groupPopComponent = group1.getPopulation().get(0);
@@ -611,7 +611,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertThat(group1CodeableConcept.getCoding().get(0), is(notNullValue()));
     assertThat(
         group1CodeableConcept.getCoding().get(0).getSystem(),
-        is(equalTo(UriConstants.SCORING_SYSTEM_URI)));
+        is(equalTo(UriConstants.CodeSystem.SCORING_SYSTEM_URI)));
     assertThat(
         group1CodeableConcept.getCoding().get(0).getCode(), is(equalTo("continuous-variable")));
 
@@ -812,7 +812,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertThat(codeableConcept.getCodingFirstRep(), is(notNullValue()));
     assertThat(
         codeableConcept.getCodingFirstRep().getSystem(),
-        is(equalTo(UriConstants.POPULATION_SYSTEM_URI)));
+        is(equalTo(UriConstants.CodeSystem.POPULATION_SYSTEM_URI)));
     assertThat(
         codeableConcept.getCodingFirstRep().getCode(),
         is(equalTo(PopulationType.INITIAL_POPULATION.toCode())));
@@ -882,7 +882,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertThat(codeableConcept.getCodingFirstRep(), is(notNullValue()));
     assertThat(
         codeableConcept.getCodingFirstRep().getSystem(),
-        is(equalTo(UriConstants.POPULATION_SYSTEM_URI)));
+        is(equalTo(UriConstants.CodeSystem.POPULATION_SYSTEM_URI)));
     assertThat(
         codeableConcept.getCodingFirstRep().getCode(),
         is(equalTo(PopulationType.MEASURE_POPULATION.toCode())));

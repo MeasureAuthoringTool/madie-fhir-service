@@ -100,7 +100,7 @@ public class FhirResourceHelpers {
                   stratifierGroupPopulationComponent.setCode(
                       buildCodeableConcept(
                           populationValue.getName().toCode(),
-                          UriConstants.POPULATION_SYSTEM_URI,
+                          UriConstants.CodeSystem.POPULATION_SYSTEM_URI,
                           populationValue.getName().getDisplay()));
 
                   stratifierGroupPopulationComponent.setCount(

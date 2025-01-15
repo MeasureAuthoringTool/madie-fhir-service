@@ -304,12 +304,6 @@ class HumanReadableServiceTest
         "Error occurred while generating human readable for library: " + library.getName());
   }
 
-  @Test
-  public void testAddCssToHumanReadable() {
-    String humanReadableWithCSS = humanReadableService.addCssToHumanReadable(humanReadable);
-    assertTrue(humanReadableWithCSS.contains("<style>"));
-  }
-
   @Override
   public String fetchInclude(LiquidEngine engine, String name) {
     return gov.cms.madie.madiefhirservice.utils.ResourceUtils.getData("/templates/" + name);

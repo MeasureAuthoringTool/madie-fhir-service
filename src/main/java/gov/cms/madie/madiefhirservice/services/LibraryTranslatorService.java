@@ -60,7 +60,7 @@ public class LibraryTranslatorService {
     library.setExperimental(cqlLibrary.isExperimental());
     library.setContent(
         createContent(cqlLibrary.getCql(), cqlLibrary.getElmJson(), cqlLibrary.getElmXml()));
-    library.setType(createType(UriConstants.LIBRARY_SYSTEM_TYPE_URI, SYSTEM_CODE));
+    library.setType(createType(UriConstants.CodeSystem.LIBRARY_SYSTEM_TYPE_URI, SYSTEM_CODE));
     library.setUrl(
         FhirResourceHelpers.buildResourceFullUrl("Library", cqlLibrary.getCqlLibraryName()));
     library.getExtension().addAll(visitor.getDrcExtensions());
