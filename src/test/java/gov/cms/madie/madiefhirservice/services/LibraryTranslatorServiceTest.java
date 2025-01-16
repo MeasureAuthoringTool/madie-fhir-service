@@ -24,7 +24,6 @@ import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
@@ -70,6 +69,10 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
     assertThat(library.getIdentifier().get(0).getSystem(), is(equalTo(identifier.getSystem())));
     assertThat(library.getIdentifier().get(0).getUse(), is(equalTo(identifier.getUse())));
     assertThat(library.getId(), is(equalTo(cqlLibrary.getCqlLibraryName())));
+    assertThat(library.getId(), is(equalTo(cqlLibrary.getCqlLibraryName())));
+    assertThat(
+        library.getRelatedArtifact().get(0).getDisplay(),
+        is(equalTo(r5Library.getRelatedArtifact().get(0).getDisplay())));
   }
 
   @Test
