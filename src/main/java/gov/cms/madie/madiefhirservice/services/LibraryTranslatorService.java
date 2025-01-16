@@ -2,31 +2,24 @@ package gov.cms.madie.madiefhirservice.services;
 
 import gov.cms.madie.madiefhirservice.constants.UriConstants;
 import gov.cms.madie.madiefhirservice.cql.LibraryCqlVisitorFactory;
+import gov.cms.madie.madiefhirservice.dto.CqlLibraryDetails;
 import gov.cms.madie.madiefhirservice.utils.FhirResourceHelpers;
 import gov.cms.madie.models.library.CqlLibrary;
-import gov.cms.madie.models.common.Version;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.hl7.fhir.convertors.advisors.impl.BaseAdvisor_40_50;
+import org.hl7.fhir.convertors.conv40_50.VersionConvertor_40_50;
 import org.hl7.fhir.r4.model.Attachment;
 import org.hl7.fhir.r4.model.CodeableConcept;
 import org.hl7.fhir.r4.model.Coding;
-import org.hl7.fhir.r4.model.DataRequirement;
 import org.hl7.fhir.r4.model.Enumerations;
 import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.Library;
 import org.hl7.fhir.r4.model.Meta;
-import org.hl7.fhir.r4.model.RelatedArtifact;
 import org.hl7.fhir.r4.model.Identifier.IdentifierUse;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
-import java.util.function.Predicate;
+import java.util.*;
 
 @Slf4j
 @Service
@@ -38,12 +31,16 @@ public class LibraryTranslatorService {
   public static final String UNKNOWN_VALUE = "UNKNOWN";
 
   private final LibraryCqlVisitorFactory libCqlVisitorFactory;
+  private final ElmTranslatorClient elmTranslatorClient;
 
-  public LibraryTranslatorService(LibraryCqlVisitorFactory libCqlVisitorFactory) {
+  public LibraryTranslatorService(
+      LibraryCqlVisitorFactory libCqlVisitorFactory, ElmTranslatorClient elmTranslatorClient) {
     this.libCqlVisitorFactory = libCqlVisitorFactory;
+    this.elmTranslatorClient = elmTranslatorClient;
   }
 
-  public Library convertToFhirLibrary(CqlLibrary cqlLibrary) {
+  public Library convertToFhirLibrary(
+      CqlLibrary cqlLibrary, Set<String> expressions, String accessToken) {
     var visitor = libCqlVisitorFactory.visit(cqlLibrary.getCql());
     Library library = new Library();
     library.setId(cqlLibrary.getCqlLibraryName());
@@ -64,7 +61,6 @@ public class LibraryTranslatorService {
     library.setUrl(
         FhirResourceHelpers.buildResourceFullUrl("Library", cqlLibrary.getCqlLibraryName()));
     library.getExtension().addAll(visitor.getDrcExtensions());
-    library.setRelatedArtifact(distinctArtifacts(visitor.getRelatedArtifacts()));
     library.setMeta(createLibraryMeta());
     library.setTitle(cqlLibrary.getCqlLibraryName());
     library.setPublisher(cqlLibrary.getPublisher());
@@ -73,39 +69,25 @@ public class LibraryTranslatorService {
     identifier.setSystem("https://madie.cms.gov/login");
     identifier.setValue(cqlLibrary.getId());
     library.setIdentifier(List.of(identifier));
+    // Use the DataRequirementsProcessor to construct data requirements and related artifacts.
+    Library libraryModuleDefinition =
+        retrieveLibraryModuleDefinition(
+            CqlLibraryDetails.builder()
+                .libraryName(cqlLibrary.getCqlLibraryName())
+                .cql(cqlLibrary.getCql())
+                .build(),
+            accessToken);
+    library.setRelatedArtifact(libraryModuleDefinition.getRelatedArtifact());
+    library.setDataRequirement(libraryModuleDefinition.getDataRequirement());
     return library;
   }
 
-  public CqlLibrary convertToCqlLibrary(Library library) {
-    return CqlLibrary.builder()
-        .id(library.getMeta().getId())
-        .cqlLibraryName(library.getName())
-        .version(Version.parse(library.getVersion()))
-        .publisher(UNKNOWN_VALUE.equals(library.getPublisher()) ? null : library.getPublisher())
-        .description(
-            UNKNOWN_VALUE.equals(library.getDescription()) ? null : library.getDescription())
-        .experimental(library.getExperimental())
-        .cql(attachmentToString(findAttachmentOfContentType(library, CQL_CONTENT_TYPE)))
-        .elmJson(attachmentToString(findAttachmentOfContentType(library, JSON_ELM_CONTENT_TYPE)))
-        .elmXml(attachmentToString(findAttachmentOfContentType(library, XML_ELM_CONTENT_TYPE)))
-        .build();
-  }
-
-  public String attachmentToString(Attachment attachment) {
-    if (attachment == null) {
-      return null;
-    }
-    return new String(attachment.getData());
-  }
-
-  public Attachment findAttachmentOfContentType(Library library, String contentType) {
-    if (library == null || library.getContent() == null) {
-      return null;
-    }
-    return library.getContent().stream()
-        .filter(a -> a.getContentType().equals(contentType))
-        .findFirst()
-        .orElse(null);
+  private Library retrieveLibraryModuleDefinition(
+      CqlLibraryDetails cqlLibraryDetails, String accessToken) {
+    org.hl7.fhir.r5.model.Library r5moduleDefinition =
+        elmTranslatorClient.getModuleDefinitionLibrary(cqlLibraryDetails, false, accessToken);
+    var versionConvertor_40_50 = new VersionConvertor_40_50(new BaseAdvisor_40_50());
+    return (Library) versionConvertor_40_50.convertResource(r5moduleDefinition);
   }
 
   private Meta createLibraryMeta() {
@@ -135,69 +117,6 @@ public class LibraryTranslatorService {
       attachments.add(createAttachment(JSON_ELM_CONTENT_TYPE, elmJson.getBytes()));
     }
     return attachments;
-  }
-
-  private List<RelatedArtifact> distinctArtifacts(List<RelatedArtifact> artifacts) {
-    List<RelatedArtifact> result = new ArrayList<>(artifacts.size());
-    // Remove duplicates.
-    artifacts.forEach(
-        a -> {
-          if (result.stream().noneMatch(ar -> Objects.deepEquals(a, ar))) {
-            result.add(a);
-          }
-        });
-    result.sort(Comparator.comparing(RelatedArtifact::getResource));
-    return result;
-  }
-
-  private List<DataRequirement> distinctDataRequirements(List<DataRequirement> reqs) {
-    List<DataRequirement> result = new ArrayList<>(reqs.size());
-    // Remove duplicates.
-    for (DataRequirement req : reqs) {
-      if (result.stream()
-          .noneMatch(r -> matchType(req.getType()).and(matchCodeFilter(req)).test(r))) {
-        result.add(req);
-      }
-    }
-    return result;
-  }
-
-  private Predicate<DataRequirement> matchType(String type) {
-    return d -> StringUtils.equals(d.getType(), type);
-  }
-
-  private Predicate<DataRequirement> matchCodeFilter(DataRequirement o) {
-    return d -> {
-      if ((CollectionUtils.isEmpty(d.getCodeFilter())
-          && CollectionUtils.isEmpty(o.getCodeFilter()))) {
-        // Match when both code filters are empty
-        return true;
-      } else if ((CollectionUtils.isEmpty(d.getCodeFilter())
-          || CollectionUtils.isEmpty(o.getCodeFilter()))) {
-        // No match if either code filter is empty
-        return false;
-      } else {
-        // Match on path AND (code or value set)
-        return StringUtils.equals(
-                d.getCodeFilter().get(0).getPath(), o.getCodeFilter().get(0).getPath())
-            && (hasMatchingValueSet(d, o) || hasMatchingCode(o, d));
-      }
-    };
-  }
-
-  private boolean hasMatchingCode(DataRequirement o, DataRequirement d) {
-    return (!CollectionUtils.isEmpty(d.getCodeFilter().get(0).getCode())
-            && !CollectionUtils.isEmpty(o.getCodeFilter().get(0).getCode()))
-        && StringUtils.equals(
-            d.getCodeFilter().get(0).getCode().get(0).getCode(),
-            o.getCodeFilter().get(0).getCode().get(0).getCode());
-  }
-
-  private boolean hasMatchingValueSet(DataRequirement d, DataRequirement o) {
-    return (d.getCodeFilter().get(0).getValueSet() != null
-            && o.getCodeFilter().get(0).getValueSet() != null)
-        && StringUtils.equals(
-            d.getCodeFilter().get(0).getValueSet(), o.getCodeFilter().get(0).getValueSet());
   }
 
   private CodeableConcept createType(String type, String code) {

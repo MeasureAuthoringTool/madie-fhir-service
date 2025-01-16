@@ -130,25 +130,15 @@ public class MeasureBundleService {
    * Creates a Library resource for main library of MADiE Measure
    *
    * @param expressions- measure populations, SDEs, Stratification
-   * @param madieMeasure
-   * @param accessToken
+   * @param madieMeasure -> instance of MADiE measure
+   * @param accessToken -> okta token
    * @return library- r4 library
    */
   public Library getMeasureLibraryResourceForMadieMeasure(
       Set<String> expressions, Measure madieMeasure, String accessToken) {
     log.info("Preparing Measure library resource for measure: {}", madieMeasure.getId());
     CqlLibrary cqlLibrary = createCqlLibraryForMadieMeasure(madieMeasure);
-    CqlLibraryDetails libraryDetails =
-        CqlLibraryDetails.builder()
-            .libraryName(cqlLibrary.getCqlLibraryName())
-            .cql(cqlLibrary.getCql())
-            .expressions(expressions)
-            .build();
-    Library library = libraryTranslatorService.convertToFhirLibrary(cqlLibrary);
-    org.hl7.fhir.r5.model.Library r5moduleDefinition =
-        elmTranslatorClient.getModuleDefinitionLibrary(libraryDetails, false, accessToken);
-    updateLibraryDataRequirements(library, r5moduleDefinition);
-    return library;
+    return libraryTranslatorService.convertToFhirLibrary(cqlLibrary, expressions, accessToken);
   }
 
   /**
@@ -214,15 +204,5 @@ public class MeasureBundleService {
                       stratifier -> expressionSet.add(stratifier.getCriteria().getExpression()));
             });
     return expressionSet;
-  }
-
-  private void updateLibraryDataRequirements(
-      org.hl7.fhir.r4.model.Library library,
-      org.hl7.fhir.r5.model.Library r5moduleDefinitionLibrary) {
-    var versionConvertor_40_50 = new VersionConvertor_40_50(new BaseAdvisor_40_50());
-    org.hl7.fhir.r4.model.Library r4moduleDefinitionLibrary =
-        (org.hl7.fhir.r4.model.Library)
-            versionConvertor_40_50.convertResource(r5moduleDefinitionLibrary);
-    library.setDataRequirement(r4moduleDefinitionLibrary.getDataRequirement());
   }
 }

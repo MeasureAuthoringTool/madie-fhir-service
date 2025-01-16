@@ -80,10 +80,8 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
     when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure))
         .thenReturn(measure);
 
-    when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class))).thenReturn(library);
-    when(elmTranslatorClient.getModuleDefinitionLibrary(
-            any(CqlLibraryDetails.class), anyBoolean(), anyString()))
-        .thenReturn(effectiveDataRequirements);
+    when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class), any(), anyString()))
+        .thenReturn(library);
     doAnswer(
             invocation -> {
               Object[] args = invocation.getArguments();
@@ -134,14 +132,12 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
     when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure))
         .thenReturn(measure);
 
-    when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class))).thenReturn(library);
+    when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class), any(), anyString()))
+        .thenReturn(library);
 
     doThrow(new CqlLibraryNotFoundException("FHIRHelpers", "4.0.001"))
         .when(libraryService)
         .getIncludedLibraries(anyString(), any(), anyString(), anyString());
-    when(elmTranslatorClient.getModuleDefinitionLibrary(
-            any(CqlLibraryDetails.class), anyBoolean(), anyString()))
-        .thenReturn(effectiveDataRequirements);
     Exception exception =
         Assertions.assertThrows(
             CqlLibraryNotFoundException.class,
@@ -162,7 +158,8 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
     when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure))
         .thenReturn(measure);
 
-    when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class))).thenReturn(library);
+    when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class), any(), anyString()))
+        .thenReturn(library);
 
     doAnswer(
             invocation -> {
@@ -175,9 +172,6 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
         .getIncludedLibraries(anyString(), anyMap(), anyString(), anyString());
 
     when(elmTranslatorClient.getEffectiveDataRequirements(
-            any(CqlLibraryDetails.class), anyBoolean(), anyString()))
-        .thenReturn(effectiveDataRequirements);
-    when(elmTranslatorClient.getModuleDefinitionLibrary(
             any(CqlLibraryDetails.class), anyBoolean(), anyString()))
         .thenReturn(effectiveDataRequirements);
 

@@ -1,7 +1,6 @@
 package gov.cms.madie.madiefhirservice.services;
 
 import gov.cms.madie.madiefhirservice.cql.LibraryCqlVisitorFactory;
-import gov.cms.madie.madiefhirservice.dto.CqlLibraryDetails;
 import gov.cms.madie.madiefhirservice.exceptions.*;
 import gov.cms.madie.madiefhirservice.utils.BundleUtil;
 import gov.cms.madie.madiefhirservice.utils.LibraryHelper;
@@ -25,11 +24,8 @@ import java.util.Map;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.when;
@@ -43,7 +39,6 @@ class LibraryServiceTest implements LibraryHelper, ResourceFileUtil {
   @Mock private LibraryTranslatorService libraryTranslatorService;
   @Mock private LibraryCqlVisitorFactory libCqlVisitorFactory;
   @Mock private HumanReadableService humanReadableService;
-  @Mock private ElmTranslatorClient elmTranslatorClient;
   private Library fhirHelpersLibrary;
 
   Bundle bundle = new Bundle();
@@ -56,53 +51,6 @@ class LibraryServiceTest implements LibraryHelper, ResourceFileUtil {
 
     Bundle.BundleEntryComponent bundleEntryComponent = bundle.addEntry();
     bundleEntryComponent.setResource(fhirHelpersLibrary);
-  }
-
-  @Test
-  void testSuccessfullyFindCqlInCqlLibrary() {
-    when(cqlLibraryService.getLibrary(anyString(), anyString(), anyString()))
-        .thenReturn(
-            CqlLibrary.builder()
-                .cqlLibraryName("FHIRHelpers")
-                .version(Version.builder().major(4).minor(0).revisionNumber(1).build())
-                .cql("Valid FHIRHelpers CQL here")
-                .build());
-    String testCql = libraryService.getLibraryCql("FHIRHelpers", "4.0.001", "TOKEN");
-    assertTrue(testCql.contains("FHIRHelpers"));
-  }
-
-  @Test
-  void testLibraryBundleHasNoEntry() {
-    when(cqlLibraryService.getLibrary(anyString(), anyString(), anyString()))
-        .thenThrow(new CqlLibraryNotFoundException("FHIRHelpers", "4.0.001"));
-    Throwable exception =
-        assertThrows(
-            CqlLibraryNotFoundException.class,
-            () -> libraryService.getLibraryCql("FHIRHelpers", "4.0.001", "TOKEN"));
-    assertEquals(
-        "Cannot find a CQL Library with name: FHIRHelpers, version: 4.0.001",
-        exception.getMessage());
-  }
-
-  @Test
-  void testLibraryDoesNotContainCqlTextAttachment() {
-    //    when(hapiFhirServer.fetchLibraryBundleByNameAndVersion(anyString(), anyString()))
-    //        .thenReturn(bundle);
-    //    when(hapiFhirServer.findLibraryResourceInBundle(bundle, Library.class))
-    //        .thenReturn(Optional.of(fhirHelpersLibrary));
-
-    when(cqlLibraryService.getLibrary(anyString(), anyString(), anyString()))
-        .thenReturn(
-            CqlLibrary.builder()
-                .cqlLibraryName("FHIRHelpers")
-                .version(Version.builder().major(4).minor(0).revisionNumber(1).build())
-                .build());
-    Throwable exception =
-        assertThrows(
-            MissingCqlException.class,
-            () -> libraryService.getLibraryCql("FHIRHelpers", "4.0.001", "TOKEN"));
-    assertEquals(
-        "Cannot find CQL for library name: FHIRHelpers, version: 4.0.001", exception.getMessage());
   }
 
   @Test
@@ -135,10 +83,8 @@ class LibraryServiceTest implements LibraryHelper, ResourceFileUtil {
     when(libCqlVisitorFactory.visit(anyString())).thenReturn(visitor1).thenReturn(visitor2);
     when(cqlLibraryService.getLibrary(anyString(), anyString(), anyString()))
         .thenReturn(cqlLibrary);
-    when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class))).thenReturn(library);
-    when(elmTranslatorClient.getModuleDefinitionLibrary(
-            any(CqlLibraryDetails.class), anyBoolean(), anyString()))
-        .thenReturn(new org.hl7.fhir.r5.model.Library());
+    when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class), any(), anyString()))
+        .thenReturn(library);
 
     Map<String, Library> includedLibraryMap = new HashMap<>();
     libraryService.getIncludedLibraries(
