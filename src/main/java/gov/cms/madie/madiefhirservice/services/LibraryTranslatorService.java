@@ -75,6 +75,7 @@ public class LibraryTranslatorService {
             CqlLibraryDetails.builder()
                 .libraryName(cqlLibrary.getCqlLibraryName())
                 .cql(cqlLibrary.getCql())
+                .expressions(expressions)
                 .build(),
             accessToken);
     library.setRelatedArtifact(libraryModuleDefinition.getRelatedArtifact());
