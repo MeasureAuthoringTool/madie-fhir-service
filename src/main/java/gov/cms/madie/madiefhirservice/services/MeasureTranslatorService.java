@@ -69,10 +69,7 @@ public class MeasureTranslatorService {
                 madieMeasure.getMeasurementPeriodStart(), madieMeasure.getMeasurementPeriodEnd()))
         .setApprovalDate(approvalDate != null ? Date.from(approvalDate) : null)
         .setLastReviewDate(lastReviewDate != null ? Date.from(lastReviewDate) : null)
-        .setPublisher(
-            (steward == null || StringUtils.isBlank(steward.getName()))
-                ? UNKNOWN
-                : steward.getName())
+        .setPublisher(getStewardName(steward))
         .setGuidance(madieMeasure.getMeasureMetaData().getGuidance())
         .setCopyright(StringUtils.isBlank(copyright) ? UNKNOWN : copyright)
         .setDisclaimer(StringUtils.isBlank(disclaimer) ? UNKNOWN : disclaimer)
@@ -98,9 +95,12 @@ public class MeasureTranslatorService {
         .setDate(Date.from(madieMeasure.getLastModifiedAt()))
         .setMeta(buildMeasureMeta())
         .setId(madieMeasure.getCqlLibraryName());
-
     for (Extension ext : buildExtensions(madieMeasure)) {
       measure.addExtension(ext);
+    }
+    if (madieMeasure.getMeasureMetaData().getIntendedVenue() != null) {
+      measure.addUseContext(
+          buildIntendedVenue(madieMeasure.getMeasureMetaData().getIntendedVenue()));
     }
     return measure;
   }
@@ -172,6 +172,30 @@ public class MeasureTranslatorService {
       }
     }
     return identifiers;
+  }
+
+  private UsageContext buildIntendedVenue(CodeConcept intendedVenue) {
+    Coding coding =
+        new Coding()
+            .setSystem("http://hl7.org/fhir/us/cqfmeasures/CodeSystem/intended-venue-codes")
+            .setCode(intendedVenue.getCode())
+            .setDisplay(intendedVenue.getDisplay());
+
+    UsageContext usageContext = new UsageContext();
+    usageContext.setCode(
+        new Coding()
+            .setSystem("http://terminology.hl7.org/CodeSystem/usage-context-type")
+            .setCode("venue")
+            .setDisplay("Venue"));
+    usageContext.setValue(new CodeableConcept(coding));
+
+    return usageContext;
+  }
+
+  private String getStewardName(Organization steward) {
+    return (steward == null || StringUtils.isBlank(steward.getName()))
+        ? UNKNOWN
+        : steward.getName();
   }
 
   private String buildUrnUuid(String value) {
