@@ -263,7 +263,13 @@
       "developers":[{ "id": "testId","name": "testDeveloper", "url":  "test-developer-url.com" }],
       "guidance":"test guidance",
       "clinicalRecommendation": "testClinical",
-      "experimental": "false"
+      "experimental": "false",
+      "intendedVenue": {
+         "code": "ec",
+         "codeSystem": "http://hl7.org/fhir/us/cqfmeasures/CodeSystem/intended-venue-codes",
+         "display": "EC",
+         "definition": "An eligible clinician is a clinician who is eligible to participate in a quality measurement intiative."
+      }
    },
    "supplementalData": [
       {

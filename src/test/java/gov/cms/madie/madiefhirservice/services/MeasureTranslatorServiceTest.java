@@ -397,6 +397,9 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
         "Risk Adjustments example",
         measure.getSupplementalData().get(2).getCriteria().getExpression());
     assertEquals("Risk Adjustments example", measure.getSupplementalData().get(2).getDescription());
+    assertThat(measure.getUseContext().size(), is(equalTo(1)));
+    assertThat(measure.getUseContext().get(0).getCode().getDisplay(), is(equalTo("Venue")));
+    assertThat(measure.getUseContext().get(0).hasValue(), is(equalTo(true)));
     assertFalse(measure.getSupplementalData().get(2).getUsage().get(0).getCoding().isEmpty());
     assertEquals("0.0.000", measure.getVersion());
   }
