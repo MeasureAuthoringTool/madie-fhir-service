@@ -167,7 +167,12 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
             .getExtensionByUrl(UriConstants.CqfMeasures.RATE_AGGREGATION_URI)
             .getValue()
             .primitiveValue());
-
+    assertThat(
+        group1
+            .getExtensionByUrl(UriConstants.CqfMeasures.SCORING_PRECISION_URI)
+            .getValue()
+            .primitiveValue(),
+        is(equalTo("2")));
     Extension improvementNotationExt =
         group1.getExtensionByUrl(UriConstants.CqfMeasures.IMPROVEMENT_NOTATION_URI);
     Extension improvementNotationGudianceExt =

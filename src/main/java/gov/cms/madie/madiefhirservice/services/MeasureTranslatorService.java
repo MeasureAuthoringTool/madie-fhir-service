@@ -300,6 +300,12 @@ public class MeasureTranslatorService {
               UriConstants.CqfMeasures.RATE_AGGREGATION_URI,
               new CodeType(madieGroup.getRateAggregation())));
     }
+    if (madieGroup.getScoringPrecision() != null) {
+      element.addExtension(
+          new Extension(
+              UriConstants.CqfMeasures.SCORING_PRECISION_URI,
+              new PositiveIntType(madieGroup.getScoringPrecision())));
+    }
     if (StringUtils.isNotBlank(madieGroup.getImprovementNotation())) {
       element.addExtension(
           new Extension(
