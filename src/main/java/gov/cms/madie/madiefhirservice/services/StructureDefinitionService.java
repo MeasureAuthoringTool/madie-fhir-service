@@ -54,7 +54,7 @@ public class StructureDefinitionService {
   }
 
   /**
-   * Fetches the structure definition for the given resource
+   * Fetches the value set definition for the given value set url
    *
    * @param url of the value set definition
    */

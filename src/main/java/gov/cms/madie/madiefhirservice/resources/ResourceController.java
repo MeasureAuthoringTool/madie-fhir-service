@@ -35,4 +35,3 @@ public class ResourceController {
     return structureDefinitionService.getAllResources();
   }
 }
-// "http://hl7.org/fhir/us/core/ValueSet/omb-ethnicity-category"
