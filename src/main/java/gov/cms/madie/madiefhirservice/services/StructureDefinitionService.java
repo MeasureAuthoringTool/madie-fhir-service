@@ -9,6 +9,7 @@ import gov.cms.madie.madiefhirservice.dto.StructureDefinitionDto;
 import gov.cms.madie.madiefhirservice.exceptions.ResourceNotFoundException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.CollectionUtils;
 import org.hl7.fhir.instance.model.api.IBaseResource;
 import org.hl7.fhir.r4.model.Extension;
 import org.hl7.fhir.r4.model.StructureDefinition;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -51,6 +53,32 @@ public class StructureDefinitionService {
     return StructureDefinitionDto.builder()
         .definition(parser.encodeResourceToString(structureDefinition))
         .build();
+  }
+
+  public List<StructureDefinitionDto> getExtensionsForTargetPath(String targetPath) {
+    List<org.hl7.fhir.r4.model.StructureDefinition> collect = Objects.requireNonNull(validationSupportChainQiCore600.fetchAllStructureDefinitions())
+        .stream()
+        .filter(resource -> "Extension".equals(((StructureDefinition) resource).getType()))
+        .map(resource -> (org.hl7.fhir.r4.model.StructureDefinition) resource)
+        .filter(structureDef -> contextApplies(structureDef.getContext(), targetPath))
+        .toList();
+
+    // Todo: enhance with model-info, or at least primary code path
+    IParser parser =
+        validationSupportChainQiCore600
+            .getFhirContext()
+            .newJsonParser()
+            .setParserErrorHandler(new StrictErrorHandler())
+            .setPrettyPrint(true);
+
+    return collect.stream().map(c -> StructureDefinitionDto.builder()
+        .definition(parser.encodeResourceToString(c))
+        .build()).collect(Collectors.toList());
+  }
+
+  public boolean contextApplies(List<StructureDefinition.StructureDefinitionContextComponent> context, String target) {
+    return CollectionUtils.isNotEmpty(context) && context.stream().anyMatch(ctx -> ctx.hasExpression()
+        && target.equals(ctx.getExpressionElement().getValueAsString()));
   }
 
   /**

@@ -28,6 +28,14 @@ public class ResourceController {
     return structureDefinitionService.getStructureDefinitionById(structureDefinitionId);
   }
 
+  @GetMapping(
+      value="/extensions/{targetPath}",
+      produces = MediaType.APPLICATION_JSON_VALUE)
+  public List<StructureDefinitionDto> getExtensionsForTargetPath(@PathVariable String targetPath) {
+    log.info("targetPath: [{}]", targetPath);
+    return structureDefinitionService.getExtensionsForTargetPath(targetPath);
+  }
+
   @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
   public List<ResourceIdentifier> getAllResources() {
     return structureDefinitionService.getAllResources();
