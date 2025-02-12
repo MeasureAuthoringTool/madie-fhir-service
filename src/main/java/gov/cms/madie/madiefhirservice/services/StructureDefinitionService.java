@@ -54,6 +54,22 @@ public class StructureDefinitionService {
   }
 
   /**
+   * Fetches the value set definition for the given value set url
+   *
+   * @param url of the value set definition
+   */
+  public String getValueSetDefinition(String url) {
+    IBaseResource structureDefinition = validationSupportChainQiCore600.fetchValueSet(url);
+    IParser parser =
+        validationSupportChainQiCore600
+            .getFhirContext()
+            .newJsonParser()
+            .setParserErrorHandler(new StrictErrorHandler())
+            .setPrettyPrint(true);
+    return parser.encodeResourceToString(structureDefinition);
+  }
+
+  /**
    * Return the ID, title, profile, category and type of all structure definitions that start with
    * QICore and have a kind of "resource"
    *

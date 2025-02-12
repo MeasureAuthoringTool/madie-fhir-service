@@ -85,4 +85,19 @@ class ResourceControllerTest {
     assertThat(output.getDefinition(), is(notNullValue()));
     assertThat(output.getDefinition().contains("\"id\": \"qicore-patient\""), is(true));
   }
+
+  @Test
+  void testGetValueSetDefinition() {
+    // given
+    String valueSetDefinition =
+        "{\"resourceType\": \"ValueSet\", \"id\": \"omb-ethnicity-category\",\"url\": \"http://hl7.org/fhir/us/core/ValueSet/omb-ethnicity-category\"}";
+    when(structureDefinitionService.getValueSetDefinition(anyString()))
+        .thenReturn(valueSetDefinition);
+
+    // when
+    String output = resourceController.getValueSetDefinition("url");
+
+    // then
+    assertThat(output, is(equalTo(valueSetDefinition)));
+  }
 }
