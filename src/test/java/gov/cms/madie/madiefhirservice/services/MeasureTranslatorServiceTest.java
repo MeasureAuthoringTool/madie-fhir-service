@@ -86,6 +86,8 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertThat(measure.getGuidance(), is(equalTo(madieMeasure.getMeasureMetaData().getGuidance())));
     assertThat(
         measure.getRationale(), is(equalTo(madieMeasure.getMeasureMetaData().getRationale())));
+    assertThat(
+            measure.getPurpose(), is(equalTo(madieMeasure.getMeasureMetaData().getPurpose())));
     assertThat(measure.getPublisher(), is(equalTo("UNKNOWN")));
     assertThat(
         measure.getUrl(), is(equalTo("madie.cms.gov/Measure/" + madieMeasure.getCqlLibraryName())));
@@ -419,6 +421,8 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertThat(measure.getGuidance(), is(equalTo(madieMeasure.getMeasureMetaData().getGuidance())));
     assertThat(
         measure.getRationale(), is(equalTo(madieMeasure.getMeasureMetaData().getRationale())));
+    assertThat(
+            measure.getPurpose(), is(equalTo(madieMeasure.getMeasureMetaData().getPurpose())));
     assertThat(measure.getPublisher(), is(equalTo("testSteward")));
     assertThat(measure.getContact(), is(notNullValue()));
     assertThat(measure.getContactFirstRep(), is(notNullValue()));
@@ -555,6 +559,8 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
         is(equalTo(madieCVMeasure.getMeasureMetaData().getSteward().getName())));
     assertThat(
         measure.getRationale(), is(equalTo(madieCVMeasure.getMeasureMetaData().getRationale())));
+    assertThat(
+            measure.getPurpose(), is(equalTo(madieMeasure.getMeasureMetaData().getPurpose())));
     assertThat(
         measure.getUrl(),
         is(equalTo("madie.cms.gov/Measure/" + madieCVMeasure.getCqlLibraryName())));

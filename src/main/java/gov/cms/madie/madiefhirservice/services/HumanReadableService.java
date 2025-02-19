@@ -49,6 +49,7 @@ public class HumanReadableService extends ResourceUtils {
     measure.setClinicalRecommendationStatement(
         escapeStr(measure.getClinicalRecommendationStatement()));
     measure.setRationale(escapeStr(measure.getRationale()));
+    measure.setPurpose(escapeStr(measure.getPurpose()));
     measure.setSubtitle(escapeStr(measure.getSubtitle()));
     measure.setRiskAdjustment(escapeStr(measure.getRiskAdjustment()));
     measure.setRateAggregation(escapeStr(measure.getRateAggregation()));

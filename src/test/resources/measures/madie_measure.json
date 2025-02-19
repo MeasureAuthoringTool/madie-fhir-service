@@ -260,6 +260,7 @@
       "copyright":null,
       "disclaimer":null,
       "rationale":null,
+      "purpose": "Purpose",
       "developers":[{ "id": "testId","name": "testDeveloper", "url":  "test-developer-url.com" }],
       "guidance":"test guidance",
       "clinicalRecommendation": "testClinical",
