@@ -186,7 +186,8 @@
          "stratifications":[
 
          ],
-         "populationBasis":"Account"
+         "populationBasis":"Account",
+         "scoringPrecision": 2
       },
       {
          "id":"62fb788bfb3c765290171e75",

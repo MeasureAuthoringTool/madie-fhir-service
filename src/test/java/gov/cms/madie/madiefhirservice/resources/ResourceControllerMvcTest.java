@@ -5,12 +5,14 @@ import gov.cms.madie.madiefhirservice.dto.StructureDefinitionDto;
 import gov.cms.madie.madiefhirservice.exceptions.ResourceNotFoundException;
 import gov.cms.madie.madiefhirservice.services.StructureDefinitionService;
 import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpHeaders;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.List;
@@ -109,5 +111,32 @@ public class ResourceControllerMvcTest implements ResourceFileUtil {
 
     // then
     verify(structureDefinitionService, times(1)).getStructureDefinitionById(eq("qicore-patient"));
+  }
+
+  @Test
+  void testGetValueSetDefinition() throws Exception {
+    // given
+    String url = "test";
+    String valueSetDefinition =
+        "{\"resourceType\": \"ValueSet\", \"id\": \"omb-ethnicity-category\",\"url\": \"http://hl7.org/fhir/us/core/ValueSet/omb-ethnicity-category\"}";
+    ;
+    when(structureDefinitionService.getValueSetDefinition(anyString()))
+        .thenReturn(valueSetDefinition);
+
+    // when
+    MvcResult result =
+        mockMvc
+            .perform(
+                MockMvcRequestBuilders.get(
+                        "/qicore/6_0_0/resources/value-set-definition?url=" + url)
+                    .with(user(TEST_USER_ID))
+                    .with(csrf())
+                    .header(HttpHeaders.AUTHORIZATION, "test-okta"))
+            .andExpect(status().isOk())
+            .andReturn();
+
+    // then
+    verify(structureDefinitionService, times(1)).getValueSetDefinition(eq(url));
+    Assertions.assertThat(result.getResponse().getContentAsString()).isEqualTo(valueSetDefinition);
   }
 }
