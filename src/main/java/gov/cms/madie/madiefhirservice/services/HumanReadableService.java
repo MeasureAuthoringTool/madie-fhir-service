@@ -41,7 +41,6 @@ public class HumanReadableService extends ResourceUtils {
   private void escapeTopLevelProperties(org.hl7.fhir.r5.model.Measure measure) {
     measure.setPublisher(escapeStr(measure.getPublisher()));
     measure.setDescription(escapeStr(measure.getDescription()));
-    measure.setPurpose(escapeStr(measure.getPurpose()));
     measure.setUsage(escapeStr(measure.getUsage()));
     measure.setCopyright(escapeStr(measure.getCopyright()));
     measure.setDisclaimer(escapeStr(measure.getDisclaimer()));
