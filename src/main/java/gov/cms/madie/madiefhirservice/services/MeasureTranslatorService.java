@@ -74,12 +74,12 @@ public class MeasureTranslatorService {
         .setCopyright(StringUtils.isBlank(copyright) ? UNKNOWN : copyright)
         .setDisclaimer(StringUtils.isBlank(disclaimer) ? UNKNOWN : disclaimer)
         .setRationale(rationale)
+        .setPurpose(madieMeasure.getMeasureMetaData().getPurpose())
         .setLibrary(
             Collections.singletonList(
                 new CanonicalType(
                     FhirResourceHelpers.buildResourceFullUrl(
                         "Library", madieMeasure.getCqlLibraryName()))))
-        .setPurpose(UNKNOWN)
         .setContact(buildContactDetail(madieMeasure.getMeasureMetaData().getSteward(), false))
         .setGroup(buildGroups(madieMeasure.getGroups()))
         .setSupplementalData(buildSupplementalData(madieMeasure))
