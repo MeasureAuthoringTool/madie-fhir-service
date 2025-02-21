@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="appropriateness-score"/>
+  <meta>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <text>
+    <status value="generated"/>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <ul>
+        <li>Include all codes defined in 
+          <a href="CodeSystem-appropriateness-score.html">
+            <code>http://terminology.hl7.org/CodeSystem/appropriateness-score</code>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </text>
+  <url value="http://terminology.hl7.org/ValueSet/appropriateness-score"/>
+  <identifier>
+    <use value="old"/>
+    <value value="http://hl7.org/fhir/us/qicore/ValueSet/appropriateness-score"/>
+  </identifier>
+  <version value="2.0.0"/>
+  <name value="AppropriatenessScore"/>
+  <title value="Appropriateness Score"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2022-10-19"/>
+  <publisher value="Health Level Seven International"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org"/>
+    </telecom>
+    <telecom>
+      <system value="email"/>
+      <value value="hq@HL7.org"/>
+    </telecom>
+  </contact>
+  <description value="The scoring for appropriateness of an action based upon RAND."/>
+  <copyright value="This material derives from the HL7 Terminology THO. THO is copyright ©1989+ Health Level Seven International and is made available under the CC0 designation. For more licensing information see: https://terminology.hl7.org/license"/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/appropriateness-score"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:5ba68a4a-d180-4c7b-a4ab-7f402e83e746"/>
+    <timestamp value="2025-01-17T09:53:42-07:00"/>
+    <total value="9"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/appropriateness-score|2.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/appropriateness-score"/>
+      <code value="extremely-inappropriate"/>
+      <display value="Extremely Inappropriate"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/appropriateness-score"/>
+      <code value="inappropriate"/>
+      <display value="Inappropriate"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/appropriateness-score"/>
+      <code value="probably-inappropriate"/>
+      <display value="Probably Inappropriate"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/appropriateness-score"/>
+      <code value="uncertain-inappropriate"/>
+      <display value="Uncertain Inappropriate"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/appropriateness-score"/>
+      <code value="uncertain"/>
+      <display value="Uncertain"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/appropriateness-score"/>
+      <code value="uncertain-appropriate"/>
+      <display value="Uncertain Appropriate"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/appropriateness-score"/>
+      <code value="probably-appropriate"/>
+      <display value="Probably Appropriate"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/appropriateness-score"/>
+      <code value="appropriate"/>
+      <display value="Appropriate"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/appropriateness-score"/>
+      <code value="extremely-appropriate"/>
+      <display value="Extremely Appropriate"/>
+    </contains>
+  </expansion>
+</ValueSet>

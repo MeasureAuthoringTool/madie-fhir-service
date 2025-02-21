@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="2.16.840.1.113762.1.4.1186.4"/>
+  <meta>
+    <versionId value="5"/>
+    <lastUpdated value="2018-05-03T01:00:04.000-04:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+    <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/publishable-valueset-cqfm"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/valueset-author">
+    <valueString value="HL7 Patient Care WG Author"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate">
+    <valueDate value="2022-12-15"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/valueset-effectiveDate">
+    <valueDate value="2018-05-03"/>
+  </extension>
+  <url value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1186.4"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113762.1.4.1186.4"/>
+  </identifier>
+  <version value="20180503"/>
+  <name value="CommonEnvironmentalSubstancesForAllergyAndIntoleranceDocumentation"/>
+  <title value="Common environmental substances for allergy and intolerance documentation"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2018-05-03T01:00:04-04:00"/>
+  <publisher value="HL7 Patient Care WG Steward"/>
+  <jurisdiction>
+    <extension url="http://hl7.org/fhir/StructureDefinition/data-absent-reason">
+      <valueString value="UNKNOWN"/>
+    </extension>
+  </jurisdiction>
+  <purpose value="(Clinical Focus: Documentation of environmental substances suspected of causing an allergy or intolerance reaction in an individual),(Data Element Scope: Reactant element of allergy or intolerance record),(Inclusion Criteria: SNOMED-CT environmental substances suspected of causing reactions),(Exclusion Criteria: Drugs and foods; expressions asserting absence of conditions; specific antigen substances; actual conditions caused by exposure (reactions, allergies))"/>
+  <compose>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <concept>
+        <code value="111088007"/>
+        <display value="Latex (substance)"/>
+      </concept>
+      <concept>
+        <code value="256259004"/>
+        <display value="Pollen (substance)"/>
+      </concept>
+      <concept>
+        <code value="256277009"/>
+        <display value="Grass pollen (substance)"/>
+      </concept>
+      <concept>
+        <code value="256417003"/>
+        <display value="Horse dander (substance)"/>
+      </concept>
+      <concept>
+        <code value="256440004"/>
+        <display value="Wasp venom (substance)"/>
+      </concept>
+      <concept>
+        <code value="260152009"/>
+        <display value="Cat dander (substance)"/>
+      </concept>
+      <concept>
+        <code value="260154005"/>
+        <display value="Dog dander (substance)"/>
+      </concept>
+      <concept>
+        <code value="264287008"/>
+        <display value="Animal dander (substance)"/>
+      </concept>
+      <concept>
+        <code value="288328004"/>
+        <display value="Bee venom (substance)"/>
+      </concept>
+      <concept>
+        <code value="33008008"/>
+        <display value="Dust (substance)"/>
+      </concept>
+      <concept>
+        <code value="412583005"/>
+        <display value="Bee pollen (substance)"/>
+      </concept>
+      <concept>
+        <code value="418920007"/>
+        <display value="Adhesive agent (substance)"/>
+      </concept>
+      <concept>
+        <code value="43921001"/>
+        <display value="Nickel compound (substance)"/>
+      </concept>
+      <concept>
+        <code value="720687003"/>
+        <display value="Dust mite protein (substance)"/>
+      </concept>
+      <concept>
+        <code value="84489001"/>
+        <display value="Mold (organism)"/>
+      </concept>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:5b13c70c-ac38-49f6-9dcc-c6102f49e88f"/>
+    <timestamp value="2023-06-29T16:29:16-04:00"/>
+    <total value="15"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="111088007"/>
+      <display value="Latex (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="256259004"/>
+      <display value="Pollen (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="256277009"/>
+      <display value="Grass pollen (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="256417003"/>
+      <display value="Horse dander (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="256440004"/>
+      <display value="Wasp venom (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="260152009"/>
+      <display value="Cat dander (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="260154005"/>
+      <display value="Dog dander (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="264287008"/>
+      <display value="Animal dander (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="288328004"/>
+      <display value="Bee venom (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="33008008"/>
+      <display value="Dust (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="412583005"/>
+      <display value="Bee pollen (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="418920007"/>
+      <display value="Adhesive agent (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="43921001"/>
+      <display value="Nickel compound (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="720687003"/>
+      <display value="Dust mite protein (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="84489001"/>
+      <display value="Mold (organism)"/>
+    </contains>
+  </expansion>
+</ValueSet>

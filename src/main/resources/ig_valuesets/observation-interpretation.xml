@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="observation-interpretation"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="oo"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="normative"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+    <valueCode value="4.0.0"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="5"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/observation-interpretation"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.399"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="ObservationInterpretationCodes"/>
+  <title value="Observation Interpretation Codes"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="A categorical assessment, providing a rough qualitative interpretation of the observation value,    such as “normal”/ “abnormal”,”low” / “high”, “better” / “worse”, “susceptible” / “resistant”, “expected”/ “not expected”.    The value set is intended to be for ANY use where coded representation of an interpretation is needed.   &#xD;&#xA;   &#xD;&#xA;   Notes:&#xD;&#xA;   &#xD;&#xA;   This is being communicated in v2.x in OBX-8 (Observation Interpretation), in v3 in ObservationInterpretation (CWE) in R1 (Representative Realm) and in FHIR in    Observation.interpretation. Historically these values come from the laboratory domain, and these codes are extensively    used. The value set binding is extensible, so codes outside the value set that are needed for interpretation concepts    (i.e. particular meanings) that are not included in the value set can be used, and these new codes may also be added to    the value set and published in a future version."/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:eb9a7936-302c-4363-af1d-3154be7b572b"/>
+    <timestamp value="2025-01-17T09:53:38-07:00"/>
+    <total value="57"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation|3.0.0"/>
+    </parameter>
+    <property>
+      <code value="status"/>
+      <uri value="http://hl7.org/fhir/concept-properties#status"/>
+    </property>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <abstract value="true"/>
+      <code value="_GeneticObservationInterpretation"/>
+      <display value="GeneticObservationInterpretation"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="CAR"/>
+      <display value="Carrier"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <inactive value="true"/>
+      <code value="Carrier"/>
+      <display value="Carrier"/>
+      <property>
+        <code value="status"/>
+        <valueCode value="deprecated"/>
+      </property>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <abstract value="true"/>
+      <code value="_ObservationInterpretationChange"/>
+      <display value="ObservationInterpretationChange"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="B"/>
+      <display value="Better"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="D"/>
+      <display value="Significant change down"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="U"/>
+      <display value="Significant change up"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="W"/>
+      <display value="Worse"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <abstract value="true"/>
+      <code value="_ObservationInterpretationExceptions"/>
+      <display value="ObservationInterpretationExceptions"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="&lt;"/>
+      <display value="Off scale low"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="&gt;"/>
+      <display value="Off scale high"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <inactive value="true"/>
+      <code value="AC"/>
+      <display value="Anti-complementary substances present"/>
+      <property>
+        <code value="status"/>
+        <valueCode value="deprecated"/>
+      </property>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="IE"/>
+      <display value="Insufficient evidence"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <inactive value="true"/>
+      <code value="QCF"/>
+      <display value="Quality control failure"/>
+      <property>
+        <code value="status"/>
+        <valueCode value="deprecated"/>
+      </property>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <inactive value="true"/>
+      <code value="TOX"/>
+      <display value="Cytotoxic substance present"/>
+      <property>
+        <code value="status"/>
+        <valueCode value="deprecated"/>
+      </property>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <abstract value="true"/>
+      <code value="_ObservationInterpretationNormality"/>
+      <display value="ObservationInterpretationNormality"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="A"/>
+      <display value="Abnormal"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="AA"/>
+      <display value="Critical abnormal"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="HH"/>
+      <display value="Critical high"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="LL"/>
+      <display value="Critical low"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="H"/>
+      <display value="High"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <inactive value="true"/>
+      <code value="H&gt;"/>
+      <display value="Significantly high"/>
+      <property>
+        <code value="status"/>
+        <valueCode value="deprecated"/>
+      </property>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="HU"/>
+      <display value="Significantly high"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="L"/>
+      <display value="Low"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <inactive value="true"/>
+      <code value="L&lt;"/>
+      <display value="Significantly low"/>
+      <property>
+        <code value="status"/>
+        <valueCode value="deprecated"/>
+      </property>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="LU"/>
+      <display value="Significantly low"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="N"/>
+      <display value="Normal"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <abstract value="true"/>
+      <code value="_ObservationInterpretationSusceptibility"/>
+      <display value="ObservationInterpretationSusceptibility"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="I"/>
+      <display value="Intermediate"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <inactive value="true"/>
+      <code value="MS"/>
+      <display value="moderately susceptible"/>
+      <property>
+        <code value="status"/>
+        <valueCode value="deprecated"/>
+      </property>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="NCL"/>
+      <display value="No CLSI defined breakpoint"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="NS"/>
+      <display value="Non-susceptible"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="R"/>
+      <display value="Resistant"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="SYN-R"/>
+      <display value="Synergy - resistant"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="S"/>
+      <display value="Susceptible"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="SDD"/>
+      <display value="Susceptible-dose dependent"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="SYN-S"/>
+      <display value="Synergy - susceptible"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <inactive value="true"/>
+      <code value="VS"/>
+      <display value="very susceptible"/>
+      <property>
+        <code value="status"/>
+        <valueCode value="deprecated"/>
+      </property>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="EX"/>
+      <display value="outside threshold"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="HX"/>
+      <display value="above high threshold"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="LX"/>
+      <display value="below low threshold"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <inactive value="true"/>
+      <code value="HM"/>
+      <display value="Hold for Medical Review"/>
+      <property>
+        <code value="status"/>
+        <valueCode value="deprecated"/>
+      </property>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <abstract value="true"/>
+      <code value="ObservationInterpretationDetection"/>
+      <display value="ObservationInterpretationDetection"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="IND"/>
+      <display value="Indeterminate"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="E"/>
+      <display value="Equivocal"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="NEG"/>
+      <display value="Negative"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="ND"/>
+      <display value="Not detected"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="POS"/>
+      <display value="Positive"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="DET"/>
+      <display value="Detected"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <abstract value="true"/>
+      <code value="ObservationInterpretationExpectation"/>
+      <display value="ObservationInterpretationExpectation"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="EXP"/>
+      <display value="Expected"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="UNE"/>
+      <display value="Unexpected"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <inactive value="true"/>
+      <code value="OBX"/>
+      <display value="Interpretation qualifiers in separate OBX segments"/>
+      <property>
+        <code value="status"/>
+        <valueCode value="deprecated"/>
+      </property>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <abstract value="true"/>
+      <code value="ReactivityObservationInterpretation"/>
+      <display value="ReactivityObservationInterpretation"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="NR"/>
+      <display value="Non-reactive"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="RR"/>
+      <display value="Reactive"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+      <code value="WR"/>
+      <display value="Weakly reactive"/>
+    </contains>
+  </expansion>
+</ValueSet>

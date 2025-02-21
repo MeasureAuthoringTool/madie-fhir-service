@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="immunization-evaluation-target-disease"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="pher"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/immunization-evaluation-target-disease"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.300"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="ImmunizationEvaluationTargetDiseaseCodes"/>
+  <title value="Immunization Evaluation Target Disease Codes"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="The value set to instantiate this attribute should be drawn from a terminologically robust code system that consists of or contains concepts to support describing the disease that the evaluation is against. This value set is provided as a suggestive example and includes the SNOMED CT concepts from the 64572001 (Disease) hierarchy."/>
+  <copyright value="This resource includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyright of the International Health Terminology Standards Development Organisation (IHTSDO). Implementers of these specifications must have the appropriate SNOMED CT Affiliate license - for more information contact http://www.snomed.org/snomed-ct/get-snomed-ct or info@snomed.org"/>
+  <compose>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <concept>
+        <code value="1857005"/>
+      </concept>
+      <concept>
+        <code value="397430003"/>
+      </concept>
+      <concept>
+        <code value="14189004"/>
+      </concept>
+      <concept>
+        <code value="36989005"/>
+      </concept>
+      <concept>
+        <code value="36653000"/>
+      </concept>
+      <concept>
+        <code value="76902006"/>
+      </concept>
+      <concept>
+        <code value="709410003"/>
+      </concept>
+      <concept>
+        <code value="27836007"/>
+      </concept>
+      <concept>
+        <code value="398102009"/>
+      </concept>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:372426b7-8b7b-4303-a831-210b56c04fee"/>
+    <timestamp value="2025-01-17T09:53:38-07:00"/>
+    <total value="9"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-valueset"/>
+      <valueUri value="null"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801"/>
+    </parameter>
+    <parameter>
+      <name value="version"/>
+      <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801"/>
+    </parameter>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1857005"/>
+      <display value="Gestational rubella syndrome"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="397430003"/>
+      <display value="Diphtheria caused by Corynebacterium diphtheriae (disorder)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14189004"/>
+      <display value="Measles"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36989005"/>
+      <display value="Mumps"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36653000"/>
+      <display value="Rubella"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="76902006"/>
+      <display value="Tetanus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="709410003"/>
+      <display value="Haemophilus influenzae type b infection"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27836007"/>
+      <display value="Pertussis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="398102009"/>
+      <display value="Acute poliomyelitis (disorder)"/>
+    </contains>
+  </expansion>
+</ValueSet>

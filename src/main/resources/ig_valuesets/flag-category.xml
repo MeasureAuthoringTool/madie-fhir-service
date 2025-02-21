@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="flag-category"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="pc"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/flag-category"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.122"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="FlagCategory"/>
+  <title value="Flag Category"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="HL7 International - Patient Care WG"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://www.hl7.org/Special/committees/patientcare"/>
+    </telecom>
+  </contact>
+  <description value="Example list of general categories for flagged issues. (Not complete or necessarily appropriate.)"/>
+  <immutable value="true"/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/flag-category"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:06bec8cb-09d3-455b-8ff8-aa199798a6d2"/>
+    <timestamp value="2025-01-17T09:53:37-07:00"/>
+    <total value="10"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/flag-category|1.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/flag-category"/>
+      <code value="diet"/>
+      <display value="Diet"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/flag-category"/>
+      <code value="drug"/>
+      <display value="Drug"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/flag-category"/>
+      <code value="lab"/>
+      <display value="Lab"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/flag-category"/>
+      <code value="admin"/>
+      <display value="Administrative"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/flag-category"/>
+      <code value="contact"/>
+      <display value="Subject Contact"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/flag-category"/>
+      <code value="clinical"/>
+      <display value="Clinical"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/flag-category"/>
+      <code value="behavioral"/>
+      <display value="Behavioral"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/flag-category"/>
+      <code value="research"/>
+      <display value="Research"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/flag-category"/>
+      <code value="advance-directive"/>
+      <display value="Advance Directive"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/flag-category"/>
+      <code value="safety"/>
+      <display value="Safety"/>
+    </contains>
+  </expansion>
+</ValueSet>

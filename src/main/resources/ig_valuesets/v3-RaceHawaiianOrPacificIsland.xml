@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="v3-RaceHawaiianOrPacificIsland"/>
+  <language value="en"/>
+  <text>
+    <status value="generated"/>
+    <div xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+      <ul>
+        <li>Include codes from 
+          <a href="CodeSystem-v3-Race.html">
+            <code>http://terminology.hl7.org/CodeSystem/v3-Race</code>
+          </a> where concept  is-a  
+          <a href="CodeSystem-v3-Race.html#v3-Race-2076-8">2076-8</a>
+        </li>
+      </ul>
+    </div>
+  </text>
+  <url value="http://terminology.hl7.org/ValueSet/v3-RaceHawaiianOrPacificIsland"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.1.11.15787"/>
+  </identifier>
+  <version value="3.0.0"/>
+  <name value="RaceHawaiianOrPacificIsland"/>
+  <title value="RaceHawaiianOrPacificIsland"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2014-03-26"/>
+  <publisher value="Health Level Seven International"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org"/>
+    </telecom>
+    <telecom>
+      <system value="email"/>
+      <value value="hq@HL7.org"/>
+    </telecom>
+  </contact>
+  <description value="***No description***"/>
+  <copyright value="This material derives from the HL7 Terminology THO. THO is copyright ©1989+ Health Level Seven International and is made available under the CC0 designation. For more licensing information see: https://terminology.hl7.org/license"/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="2076-8"/>
+      </filter>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:f435067c-2fa7-4151-a668-451e0784b2cd"/>
+    <timestamp value="2025-01-17T09:53:42-07:00"/>
+    <total value="27"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/v3-Race|4.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2076-8"/>
+      <display value="Native Hawaiian or Other Pacific Islander"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2078-4"/>
+      <display value="Polynesian"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2079-2"/>
+      <display value="Native Hawaiian"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2080-0"/>
+      <display value="Samoan"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2081-8"/>
+      <display value="Tahitian"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2082-6"/>
+      <display value="Tongan"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2083-4"/>
+      <display value="Tokelauan"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2085-9"/>
+      <display value="Micronesian"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2086-7"/>
+      <display value="Guamanian or Chamorro"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2087-5"/>
+      <display value="Guamanian"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2088-3"/>
+      <display value="Chamorro"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2089-1"/>
+      <display value="Mariana Islander"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2090-9"/>
+      <display value="Marshallese"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2091-7"/>
+      <display value="Palauan"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2092-5"/>
+      <display value="Carolinian"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2093-3"/>
+      <display value="Kosraean"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2094-1"/>
+      <display value="Pohnpeian"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2095-8"/>
+      <display value="Saipanese"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2096-6"/>
+      <display value="Kiribati"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2097-4"/>
+      <display value="Chuukese"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2098-2"/>
+      <display value="Yapese"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2100-6"/>
+      <display value="Melanesian"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2101-4"/>
+      <display value="Fijian"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2102-2"/>
+      <display value="Papua New Guinean"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2103-0"/>
+      <display value="Solomon Islander"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2104-8"/>
+      <display value="New Hebrides"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2500-7"/>
+      <display value="Other Pacific Islander"/>
+    </contains>
+  </expansion>
+</ValueSet>

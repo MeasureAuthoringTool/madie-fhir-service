@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="v3-ParticipationModeVerbal"/>
+  <language value="en"/>
+  <text>
+    <status value="generated"/>
+    <div xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+      <ul>
+        <li>Include codes from 
+          <a href="CodeSystem-v3-ParticipationMode.html">
+            <code>http://terminology.hl7.org/CodeSystem/v3-ParticipationMode</code>
+          </a> where concept  is-a  
+          <a href="CodeSystem-v3-ParticipationMode.html#v3-ParticipationMode-VERBAL">VERBAL</a>
+        </li>
+      </ul>
+    </div>
+  </text>
+  <url value="http://terminology.hl7.org/ValueSet/v3-ParticipationModeVerbal"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.1.11.16544"/>
+  </identifier>
+  <version value="3.0.0"/>
+  <name value="ParticipationModeVerbal"/>
+  <title value="ParticipationModeVerbal"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2014-03-26"/>
+  <publisher value="Health Level Seven International"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org"/>
+    </telecom>
+    <telecom>
+      <system value="email"/>
+      <value value="hq@HL7.org"/>
+    </telecom>
+  </contact>
+  <description value="Participation by voice communication"/>
+  <copyright value="This material derives from the HL7 Terminology THO. THO is copyright ©1989+ Health Level Seven International and is made available under the CC0 designation. For more licensing information see: https://terminology.hl7.org/license"/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationMode"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="VERBAL"/>
+      </filter>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:4c84e042-11e9-4780-b607-2571b328cb25"/>
+    <timestamp value="2025-01-17T09:53:42-07:00"/>
+    <total value="5"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/v3-ParticipationMode|4.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationMode"/>
+      <code value="VERBAL"/>
+      <display value="verbal"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationMode"/>
+      <code value="DICTATE"/>
+      <display value="dictated"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationMode"/>
+      <code value="FACE"/>
+      <display value="face-to-face"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationMode"/>
+      <code value="PHONE"/>
+      <display value="telephone"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationMode"/>
+      <code value="VIDEOCONF"/>
+      <display value="videoconferencing"/>
+    </contains>
+  </expansion>
+</ValueSet>

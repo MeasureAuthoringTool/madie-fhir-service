@@ -1,0 +1,5096 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="medication-codes"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="phx"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/medication-codes"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.375"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="SNOMEDCTMedicationCodes"/>
+  <title value="SNOMED CT Medication Codes"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="This value set includes all drug or medicament substance codes and all pharmaceutical/biologic products from SNOMED CT - provided as an exemplar value set."/>
+  <copyright value="This resource includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyright of the International Health Terminology Standards Development Organisation (IHTSDO). Implementers of these specifications must have the appropriate SNOMED CT Affiliate license - for more information contact http://www.snomed.org/snomed-ct/get-snomed-ct or info@snomed.org"/>
+  <compose>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="410942007"/>
+      </filter>
+    </include>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="373873005"/>
+      </filter>
+    </include>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="106181007"/>
+      </filter>
+    </include>
+  </compose>
+  <expansion>
+    <extension url="http://hl7.org/fhir/StructureDefinition/valueset-unclosed">
+      <valueBoolean value="true"/>
+    </extension>
+    <identifier value="urn:uuid:87b0ea78-0044-4949-af4a-600777913e95"/>
+    <timestamp value="2025-01-17T09:53:38-07:00"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-valueset"/>
+      <valueUri value="null"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801"/>
+    </parameter>
+    <parameter>
+      <name value="version"/>
+      <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801"/>
+    </parameter>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="410942007"/>
+      <display value="Drug or medicament (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="261000"/>
+      <display value="Codeine phosphate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="336001"/>
+      <display value="Fibrinogen Tokyo II"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="363000"/>
+      <display value="Fibrinogen San Juan"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="472007"/>
+      <display value="Vegetable textile fiber"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="519005"/>
+      <display value="Free protein S"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="585007"/>
+      <display value="Substance P"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="698006"/>
+      <display value="Erythromycin lactobionate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="699003"/>
+      <display value="Coal tar extract"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="747006"/>
+      <display value="Oxamniquine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="873008"/>
+      <display value="Urethan"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1018001"/>
+      <display value="Nornicotine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1091008"/>
+      <display value="Coagulation factor inhibitor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1171004"/>
+      <display value="Fibrinogen Kawaguchi"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1190007"/>
+      <display value="Mephenoxalone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1244009"/>
+      <display value="Fibrinogen Madrid I"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1269009"/>
+      <display value="Amikacin sulfate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1325004"/>
+      <display value="Metocurine iodide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1336006"/>
+      <display value="Deoxycortone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1355006"/>
+      <display value="Antihemophilic factor B Oxford 3 variant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1450002"/>
+      <display value="Methylparafynol"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1476002"/>
+      <display value="Codeine sulfate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1536005"/>
+      <display value="Pargyline hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1575001"/>
+      <display value="Maltose tetrapalmitate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1668008"/>
+      <display value="Ceforanide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1914001"/>
+      <display value="von Willebrand factor inhibitor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1944003"/>
+      <display value="Coagulation factor X Patient variant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1971003"/>
+      <display value="Loxapine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2029004"/>
+      <display value="Fibrinogen Oslo II"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2125008"/>
+      <display value="Betazole"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2195004"/>
+      <display value="Tocainide hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2212007"/>
+      <display value="Fibrinogen Bethesda II"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2249001"/>
+      <display value="Gentamicin sulfate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2346005"/>
+      <display value="Vascormone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2537003"/>
+      <display value="Antituberculosis agent"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2660003"/>
+      <display value="Sodium dehydrocholate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2680002"/>
+      <display value="Anti-factor XIII"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2796008"/>
+      <display value="Methantheline (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2799001"/>
+      <display value="Methylbenzethonium chloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2869004"/>
+      <display value="Ethanoic acid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2878005"/>
+      <display value="Isonipecaine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2925007"/>
+      <display value="Fluorometholone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2927004"/>
+      <display value="Rescinnamine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2958003"/>
+      <display value="Zinc caprylate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2964005"/>
+      <display value="Dimethoxyamphetamine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2991007"/>
+      <display value="Mecamylamine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2995003"/>
+      <display value="Arecoline"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3031003"/>
+      <display value="Dihydroxyaluminum sodium carbonate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3066001"/>
+      <display value="Triiodothyroacetic acid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3136005"/>
+      <display value="Cefoperazone sodium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3142009"/>
+      <display value="Azacyclonol"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3209002"/>
+      <display value="Pancuronium sodium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3225007"/>
+      <display value="Fibrinogen Seattle I"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3378009"/>
+      <display value="Imipramine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3501003"/>
+      <display value="Isoxsuprine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3597005"/>
+      <display value="Acebutolol hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3672002"/>
+      <display value="Fibrinogen Caracas"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3693004"/>
+      <display value="Fibrinogen Dusard"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3823007"/>
+      <display value="Prochlorperazine edisylate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3829006"/>
+      <display value="Iron"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3874004"/>
+      <display value="Hydrocodone bitartrate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3941003"/>
+      <display value="Metronidazole hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3983008"/>
+      <display value="N,-N-dimethyltryptamine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4014000"/>
+      <display value="Sulfisomidine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4025009"/>
+      <display value="Captodiamine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4043008"/>
+      <display value="Etidocaine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4076007"/>
+      <display value="Parathyroid hormone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4188007"/>
+      <display value="Fibrinogen Sydney II"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4203009"/>
+      <display value="Imipramine pamoate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4355007"/>
+      <display value="Coagulation factor IX San Dimas variant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4423008"/>
+      <display value="Fibrinogen New York II"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4480008"/>
+      <display value="Sulfaethidole"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4616002"/>
+      <display value="Triclobisonium chloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4681002"/>
+      <display value="Potassium permanganate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4700006"/>
+      <display value="Beef insulin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4780009"/>
+      <display value="Secbutabarbital sodium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4814001"/>
+      <display value="Valethamate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4844003"/>
+      <display value="3,3' T&gt;2&lt;"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5007006"/>
+      <display value="Papain"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5142007"/>
+      <display value="Coagulation factor II Houston variant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5172001"/>
+      <display value="Coagulation factor Xa"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5220000"/>
+      <display value="Bacitracin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5641004"/>
+      <display value="Valproate semisodium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5647000"/>
+      <display value="Griseofulvin ultramicrosize"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5681006"/>
+      <display value="Ceftizoxime sodium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5691000"/>
+      <display value="Absorbable gelatin sponge"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5699003"/>
+      <display value="Somatomedin C"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5739006"/>
+      <display value="Stramonium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5767002"/>
+      <display value="Sulfamerazine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5774007"/>
+      <display value="White petrolatum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5907009"/>
+      <display value="Quinidine polygalacturonate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6088007"/>
+      <display value="Benzfetamine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6162007"/>
+      <display value="Meclocycline"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6260007"/>
+      <display value="Protokylol"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6333002"/>
+      <display value="Squill extract"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6394006"/>
+      <display value="Phentermine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6495008"/>
+      <display value="Fibrinogen Montreal II"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6513000"/>
+      <display value="Flumethiazide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6524003"/>
+      <display value="Distilled spirits"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6602005"/>
+      <display value="Aminoacridine (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6612003"/>
+      <display value="Chloramphenicol sodium succinate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6710000"/>
+      <display value="Nitric oxide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6717002"/>
+      <display value="Nifuroxime"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6790004"/>
+      <display value="Aminopterin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6826009"/>
+      <display value="Sterol hormone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6837005"/>
+      <display value="Dextropropoxyphene napsylate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6865007"/>
+      <display value="Theophylline calcium salicylate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6873003"/>
+      <display value="Cefapirin sodium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6992002"/>
+      <display value="Triflupromazine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7034005"/>
+      <display value="Diclofenac"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7084003"/>
+      <display value="Fibrinogen Buenos Aires II"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7179006"/>
+      <display value="Prekallikrein"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7302008"/>
+      <display value="Ambuphylline"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7328006"/>
+      <display value="Red petrolatum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7348004"/>
+      <display value="Coagulation factor II"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7549008"/>
+      <display value="Fibrinogen Bethesda I"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7737009"/>
+      <display value="Chlortetracycline hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7774008"/>
+      <display value="Neo-b-vitamin A1 (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7816005"/>
+      <display value="Antazoline hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7834009"/>
+      <display value="Acetyl digitoxin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7904003"/>
+      <display value="Deanol"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7924004"/>
+      <display value="Diflorasone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7975001"/>
+      <display value="Amiphenazole"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8030004"/>
+      <display value="Polyethylene glycol"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8143001"/>
+      <display value="Diosmin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8203003"/>
+      <display value="Human menopausal gonadotropin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8222007"/>
+      <display value="Coagulation factor II Padua variant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8252004"/>
+      <display value="Chlorothiazide sodium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8397006"/>
+      <display value="Nicotine resin complex"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8631001"/>
+      <display value="Potassium chloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8689007"/>
+      <display value="Kanamycin sulfate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8701002"/>
+      <display value="Sulfachlorpyridazine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8767001"/>
+      <display value="Santonin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8886003"/>
+      <display value="Flecainide acetate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8919000"/>
+      <display value="Biotin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8987006"/>
+      <display value="Cycle-phase specific agent"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9174005"/>
+      <display value="Fibrinogen Poitiers"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9234005"/>
+      <display value="Chlorobutanol"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9271007"/>
+      <display value="Fibrinogen Pontoise"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9457002"/>
+      <display value="Fibrinogen Almeria"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9530002"/>
+      <display value="Amine hormone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9532005"/>
+      <display value="Coagulation factor XIIIa"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9539001"/>
+      <display value="Chlorprothixene lactate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9643009"/>
+      <display value="Chlorphentermine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9663002"/>
+      <display value="Mepazine (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9676008"/>
+      <display value="Fibrinogen New York III"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9680003"/>
+      <display value="Central depressant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9721008"/>
+      <display value="Phencyclidine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9910008"/>
+      <display value="Oxymetazoline hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9974009"/>
+      <display value="Angiotensin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10016008"/>
+      <display value="Bithionol"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10020007"/>
+      <display value="Biperiden hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10109009"/>
+      <display value="Fibrinogen London III"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10174003"/>
+      <display value="Procarbazine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10192006"/>
+      <display value="Prostaglandin PGF2 (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10202007"/>
+      <display value="Prostaglandin E3"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10270000"/>
+      <display value="Erythromycin estolate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10282009"/>
+      <display value="Betahistidine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10324005"/>
+      <display value="Demeclocycline hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10329000"/>
+      <display value="Zinc insulin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10342000"/>
+      <display value="Heparin cofactor II"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10354000"/>
+      <display value="Somantin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10377000"/>
+      <display value="Sodium nitrite"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10424009"/>
+      <display value="Maprotiline hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10471003"/>
+      <display value="Fibrinogen Vienna"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10500003"/>
+      <display value="Xanthinol"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10534002"/>
+      <display value="Thyrotropin releasing factor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10595003"/>
+      <display value="Pseudoephedrine sulfate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10682002"/>
+      <display value="Fibrinogen Grand Rapids"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10730008"/>
+      <display value="Azlocillin sodium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10751006"/>
+      <display value="Netilmicin sulfate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10782005"/>
+      <display value="Pentagastrin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10843002"/>
+      <display value="Anterior pituitary hormone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10955007"/>
+      <display value="Anti-factor X"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11036001"/>
+      <display value="Alum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11115001"/>
+      <display value="Thromboxane A&gt;2&lt;"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11136004"/>
+      <display value="Methoxyflurane"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11473005"/>
+      <display value="Trichlormethiazide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11504003"/>
+      <display value="Edrophonium chloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11633008"/>
+      <display value="Flurbiprofen sodium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11644000"/>
+      <display value="Piperacillin sodium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11652002"/>
+      <display value="Vasoactive intestinal peptide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11714005"/>
+      <display value="Strong silver protein"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11943009"/>
+      <display value="Hydroxydione"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11984007"/>
+      <display value="Alfacalcidol"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11986009"/>
+      <display value="Penicillin G potassium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12009000"/>
+      <display value="Coagulation factor IX Chapel Hill variant (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12015000"/>
+      <display value="Magnesium carbonate hydroxide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12034000"/>
+      <display value="Coagulation factor II Salatka variant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12177002"/>
+      <display value="Pseudoephedrine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12194000"/>
+      <display value="Leukotriene"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12208001"/>
+      <display value="Syrosingopine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12218006"/>
+      <display value="Diltiazem hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12290003"/>
+      <display value="Emetine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12391001"/>
+      <display value="Dextran 70"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12525000"/>
+      <display value="Tybamate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12578001"/>
+      <display value="Erythromycin ethylsuccinate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12716009"/>
+      <display value="Aluminum carbonate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12821002"/>
+      <display value="Clemizole"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12870003"/>
+      <display value="Coagulation factor IX Durham variant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12970004"/>
+      <display value="Inositol hexanitrate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13030002"/>
+      <display value="Piperocaine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13150000"/>
+      <display value="Animal fat"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13188003"/>
+      <display value="Tobramycin sulfate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13235001"/>
+      <display value="Riboflavin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13477003"/>
+      <display value="Lysozyme"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13502005"/>
+      <display value="Hydroxychloroquine sulfate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13585009"/>
+      <display value="Cefotetan"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13787003"/>
+      <display value="Protein secretory trypsin inhibitor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13789000"/>
+      <display value="Coal tar creosote"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13841004"/>
+      <display value="Leukotriene C"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14013006"/>
+      <display value="Guanadrel sulfate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14285000"/>
+      <display value="Coagulation factor XI variant type III"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14312008"/>
+      <display value="Vitamin L&gt;2&lt;"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14340003"/>
+      <display value="Verapamil hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14349002"/>
+      <display value="Fibrinogen Seattle II"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14409006"/>
+      <display value="Neocinchophen"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14438009"/>
+      <display value="Carbenicillin disodium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14443002"/>
+      <display value="Substance with aminoglycoside structure and antibacterial mechanism of action (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14461006"/>
+      <display value="Aluminum phosphate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14507006"/>
+      <display value="Arsthinol"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14638000"/>
+      <display value="Thiobarbiturate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14715007"/>
+      <display value="Dextran 75"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14743003"/>
+      <display value="Cinchonine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14767006"/>
+      <display value="Alpha-1-protease inhibitor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14796007"/>
+      <display value="Amphechloral"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14819006"/>
+      <display value="Aspidium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14903000"/>
+      <display value="Antimony sodium thioglycolate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14905007"/>
+      <display value="Promethazine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15009009"/>
+      <display value="Meprylcaine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15017001"/>
+      <display value="Beeswax"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15098005"/>
+      <display value="Alseroxylon"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15129007"/>
+      <display value="Zinc propionate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15322006"/>
+      <display value="Benzoquinonium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15352003"/>
+      <display value="Cyproheptadine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15505005"/>
+      <display value="Preprodynorphin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15571002"/>
+      <display value="Mezlocillin sodium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15660006"/>
+      <display value="Bleomycin sulfate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15698006"/>
+      <display value="Lysergic acid diethylamide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15730005"/>
+      <display value="Porphyrin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15785009"/>
+      <display value="Phenazopyridine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15810003"/>
+      <display value="Tuaminoheptane"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15895007"/>
+      <display value="Fibrinogen London I"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15901005"/>
+      <display value="Fibrinogen Paris III"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16106007"/>
+      <display value="Sulfametoxydiazine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16125005"/>
+      <display value="Styramate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16214005"/>
+      <display value="Deslanoside"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16257000"/>
+      <display value="Dopamine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16276003"/>
+      <display value="Coagulation factor IX Eagle Rock variant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16285003"/>
+      <display value="Isoamyl salicylate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16318005"/>
+      <display value="Dibenzothiepin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16355005"/>
+      <display value="Tetracycline hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16359004"/>
+      <display value="Phthalylsulfathiazole"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16392005"/>
+      <display value="Hexylcaine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16395007"/>
+      <display value="Pituitary gonadotropin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16462002"/>
+      <display value="Alpha neoendorphin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16492006"/>
+      <display value="Cloxacillin sodium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16522004"/>
+      <display value="Fludroxycortide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16613008"/>
+      <display value="Prostaglandin D2"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16628008"/>
+      <display value="Somatotropin releasing factor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16670003"/>
+      <display value="B-beta 1-42"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16683002"/>
+      <display value="Progesterone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16717002"/>
+      <display value="Dehydrocorticosterone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16744007"/>
+      <display value="Lactobacillus acidophilus (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16748005"/>
+      <display value="Zolamine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16808006"/>
+      <display value="Trichloroethylene"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16826009"/>
+      <display value="Pentamidine isethionate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16915004"/>
+      <display value="Streptozocin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16923002"/>
+      <display value="Lupus anticoagulant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16946000"/>
+      <display value="Triacetin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17008002"/>
+      <display value="Levallorphan"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17062003"/>
+      <display value="Nafoxidine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17117004"/>
+      <display value="Androsterone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17147002"/>
+      <display value="Cholic acid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17212003"/>
+      <display value="Bismuth subcarbonate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17243005"/>
+      <display value="Uramustine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17244004"/>
+      <display value="Apraclonidine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17356001"/>
+      <display value="Pralidoxime chloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17503004"/>
+      <display value="Clocortolone pivalate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17614005"/>
+      <display value="Fibrinogen Buenos Aires I"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17731005"/>
+      <display value="Coagulation factor IX London variant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17798001"/>
+      <display value="Coagulation factor II Cardeza variant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17836006"/>
+      <display value="Aromatic ammonia spirit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17908000"/>
+      <display value="Betamethasone benzoate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17917000"/>
+      <display value="Activated attapulgite"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17932007"/>
+      <display value="Fibrinogen Vicenza"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17942009"/>
+      <display value="Fibrinogen Houston"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17990002"/>
+      <display value="Melarsoprol"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17991003"/>
+      <display value="Fibrinogen Adelaide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18143001"/>
+      <display value="Fibrinogen Quebec II"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18220004"/>
+      <display value="Thyroid hormone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18288009"/>
+      <display value="von Willebrand factor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18298003"/>
+      <display value="Thromboxane B&gt;2&lt;"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18321003"/>
+      <display value="Thiethylperazine maleate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18414002"/>
+      <display value="Vitamin D&gt;3&lt;"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18449009"/>
+      <display value="Lincomycin hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18462008"/>
+      <display value="Methdilazine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18535002"/>
+      <display value="Hypothalamic releasing factor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18550006"/>
+      <display value="Thioridazine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18600008"/>
+      <display value="Glucurolactone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18616005"/>
+      <display value="Lithium hydride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18712002"/>
+      <display value="Phenacemide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18819001"/>
+      <display value="Cryoglobulin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18832006"/>
+      <display value="Butylphenamide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18852007"/>
+      <display value="Fibrinogen New York IV"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18959002"/>
+      <display value="Dibenzazepine derivative"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18970009"/>
+      <display value="Prolactin releasing factor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19012003"/>
+      <display value="Fibrinogen Tokyo I"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19041007"/>
+      <display value="Tolazoline hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19046002"/>
+      <display value="Fibrinogen Pamplona"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19114000"/>
+      <display value="Mafenide acetate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19126005"/>
+      <display value="Merbromin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19163001"/>
+      <display value="Prohormone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19205004"/>
+      <display value="Secretin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19421007"/>
+      <display value="Chloroprocaine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19510001"/>
+      <display value="Diphenhydramine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19524002"/>
+      <display value="Penthienate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19595005"/>
+      <display value="Phenolphthalein"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19839007"/>
+      <display value="Sorbitol"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19918001"/>
+      <display value="Dihydroergocornine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19967004"/>
+      <display value="Viomycin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19978007"/>
+      <display value="Hexafluorenium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20056006"/>
+      <display value="Dibromosalicylaldehyde"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20170008"/>
+      <display value="Lung surfactant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20217007"/>
+      <display value="Trimethaphan camsylate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20231007"/>
+      <display value="Sodium aminosalicylate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20238001"/>
+      <display value="Chlorinated lime"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20327004"/>
+      <display value="Sodium caprylate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20340009"/>
+      <display value="Methysergide maleate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20368008"/>
+      <display value="Diphenadione"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20378006"/>
+      <display value="Methyldimethoxyamphetamine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20379003"/>
+      <display value="Neomycin C"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20413008"/>
+      <display value="Levopropoxyphene"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20450009"/>
+      <display value="Ciprofloxacin hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20468007"/>
+      <display value="Isopropamide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20495002"/>
+      <display value="Fibrinogen Bergamo II"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20686000"/>
+      <display value="Fibrinogen Christchurg II"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20752000"/>
+      <display value="Anti-factor II"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20771003"/>
+      <display value="Congenital dysfibrinogen"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20887007"/>
+      <display value="Triethylenemelamine (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21028006"/>
+      <display value="Fibrinogen Bergamo I"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21066009"/>
+      <display value="Buprenorphine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21168008"/>
+      <display value="Acetosulfone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21175009"/>
+      <display value="Methantheline bromide (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21235009"/>
+      <display value="Piperoxan"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21246007"/>
+      <display value="Fibrinogen Detroit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21289006"/>
+      <display value="Platelet factor 4"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21303006"/>
+      <display value="Methoxamine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21394008"/>
+      <display value="Adiphenine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21518006"/>
+      <display value="Naloxone hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21566004"/>
+      <display value="Methyldopate hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21568003"/>
+      <display value="Adrenal cortex hormone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21611007"/>
+      <display value="Boric acid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21614004"/>
+      <display value="Phenelzine sulfate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21706000"/>
+      <display value="Tetrahydrofolic acid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21891005"/>
+      <display value="Digestive enzyme (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21903000"/>
+      <display value="Bismuth violet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21919007"/>
+      <display value="Opium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22005007"/>
+      <display value="Ethyl chloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22086005"/>
+      <display value="Sodium antimonyl gluconate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22165008"/>
+      <display value="Metamizole sodium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22192002"/>
+      <display value="Salicylamide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22236007"/>
+      <display value="Acetarsol"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22242006"/>
+      <display value="Glutaraldehyde"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22250002"/>
+      <display value="Fibrinogen Birmingham"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22496008"/>
+      <display value="Fibrinogen Cleveland I"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22606007"/>
+      <display value="Vitamin K2"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22635004"/>
+      <display value="Anti-factor V"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22654004"/>
+      <display value="Propantheline bromide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22769006"/>
+      <display value="Penthienate bromide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22779008"/>
+      <display value="Coagulation factor II Habana variant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22790003"/>
+      <display value="Physostigmine sulfate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22827004"/>
+      <display value="Prochlorperazine maleate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22840009"/>
+      <display value="Tetraethyl pyrophosphate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22882008"/>
+      <display value="Coagulation factor II Molise variant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22941009"/>
+      <display value="Cortodoxone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22976006"/>
+      <display value="Aluminum acetate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23068001"/>
+      <display value="Caffeine citrate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23077008"/>
+      <display value="Barbituric acid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23176001"/>
+      <display value="Bacampicillin hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23295004"/>
+      <display value="Coagulation factor I"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23375008"/>
+      <display value="Colistin sulfate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23433006"/>
+      <display value="Ergocalciferol"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23564005"/>
+      <display value="Dyclonine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23814005"/>
+      <display value="Guanethidine monosulfate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23816007"/>
+      <display value="Tetrahydrocortisol"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23862004"/>
+      <display value="Fibrinogen Bethesda III"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23866001"/>
+      <display value="Fluoroacetic acid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23883005"/>
+      <display value="Methadone hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23959001"/>
+      <display value="Thyroglobulin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23969007"/>
+      <display value="Tryparsamide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24022008"/>
+      <display value="Bupivacaine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24202000"/>
+      <display value="Ranitidine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24237002"/>
+      <display value="Prostaglandin PGF1 (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24261009"/>
+      <display value="Trimethobenzamide hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24336008"/>
+      <display value="Aminophylline anhydrous"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24357000"/>
+      <display value="Colony-stimulating factor, macrophage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24434007"/>
+      <display value="Sodium tartrate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24435008"/>
+      <display value="Fibrinogen Versailles"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24570008"/>
+      <display value="Cathartic"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24583009"/>
+      <display value="Terbutaline sulfate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24650007"/>
+      <display value="Dihydro-alpha-ergocryptine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24686008"/>
+      <display value="Acaricide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24721007"/>
+      <display value="Chlorothymol"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24751001"/>
+      <display value="Oxymorphone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24809001"/>
+      <display value="Spectinomycin hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24823004"/>
+      <display value="Pipobroman"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24869004"/>
+      <display value="Nifurtimox"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25002001"/>
+      <display value="Perazine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25013003"/>
+      <display value="Pyrantel pamoate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25027008"/>
+      <display value="Glycoprotein hormone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25141001"/>
+      <display value="Tubocurarine chloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25217009"/>
+      <display value="Pituitary follicle stimulating hormone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25254000"/>
+      <display value="Procainamide hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25307002"/>
+      <display value="Petrolatum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25401000"/>
+      <display value="Barbiturate analog"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25486007"/>
+      <display value="Sodium thiosalicylate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25525005"/>
+      <display value="Protein C"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25538002"/>
+      <display value="Tiotixene hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25571003"/>
+      <display value="Clodantoin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25607008"/>
+      <display value="D-dimer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25796002"/>
+      <display value="Aluminum aspirin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25886000"/>
+      <display value="Fibrinogen Bergamo III"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25911004"/>
+      <display value="Prostaglandin H2"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26120001"/>
+      <display value="Desipramine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26277008"/>
+      <display value="Dynorphin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26288002"/>
+      <display value="Mitotane"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26346008"/>
+      <display value="Ethambutol hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26351002"/>
+      <display value="Prostaglandin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26371006"/>
+      <display value="Chlorophacinone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26379008"/>
+      <display value="Dimethisoquin (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26469007"/>
+      <display value="Prepro-opiomelanocortin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26518005"/>
+      <display value="Coagulation factor XIa"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26656004"/>
+      <display value="Aromatic castor oil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26817007"/>
+      <display value="Methylated naphthalene"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26945002"/>
+      <display value="Phendimetrazine tartrate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26992003"/>
+      <display value="Chlorisondamine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27079005"/>
+      <display value="Meclocycline sulfosalicylate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27082000"/>
+      <display value="Sulfapyridine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27184001"/>
+      <display value="17-hydroxypregnenolone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27244000"/>
+      <display value="Lithium isotope"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27248002"/>
+      <display value="Coagulation factor X R.E.D. variant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27345002"/>
+      <display value="Hemin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27499006"/>
+      <display value="Oxyphencyclimine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27586005"/>
+      <display value="Undecoylium chloride iodine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27656005"/>
+      <display value="Gitalin (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27730007"/>
+      <display value="Merodicein"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27736001"/>
+      <display value="Bacitracin A"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27766008"/>
+      <display value="Prothipendyl"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27822002"/>
+      <display value="Phenylpropylmethylamine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27928002"/>
+      <display value="Flurazepam hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27989007"/>
+      <display value="Coagulation factor II Segovia variant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28029005"/>
+      <display value="Metescufylline"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28069006"/>
+      <display value="Refrigerant anesthetic"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28223003"/>
+      <display value="Cycloguanil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28268006"/>
+      <display value="Pregnanediol"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28344001"/>
+      <display value="Mephenytoin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28464005"/>
+      <display value="Dioxyline"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28521000"/>
+      <display value="Coagulation factor II Denver variant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28580002"/>
+      <display value="Diprenorphine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28588009"/>
+      <display value="Cefaloridine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28662003"/>
+      <display value="Hydralazine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28702005"/>
+      <display value="Ambutonium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28825003"/>
+      <display value="Sterigmatocystin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28829009"/>
+      <display value="Coal tar naphtha"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="29135004"/>
+      <display value="Flax fiber"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="29184007"/>
+      <display value="Diphemanil methylsulfate (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="29190006"/>
+      <display value="Fentanyl citrate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="29301006"/>
+      <display value="Isoprenaline hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="29327006"/>
+      <display value="Chloramphenicol palmitate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="29527005"/>
+      <display value="Benztropine mesylate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="29622009"/>
+      <display value="Octyl salicylate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="29666006"/>
+      <display value="Nortriptyline hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="29671004"/>
+      <display value="Lithium bromide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="29725000"/>
+      <display value="Heparin calcium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="29765001"/>
+      <display value="Fumagillin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="29783009"/>
+      <display value="Chromocarb"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="29805009"/>
+      <display value="Potassium perchlorate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30034004"/>
+      <display value="Dimethoxanate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30053009"/>
+      <display value="Brefeldin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30094001"/>
+      <display value="Riboflavin dinucleotide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30145004"/>
+      <display value="Activin hormone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30178006"/>
+      <display value="Calciotropic hormone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30203009"/>
+      <display value="Paromomycin sulfate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30205002"/>
+      <display value="Thymic T lymphocyte factor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30236005"/>
+      <display value="Tilorone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30325000"/>
+      <display value="Chlorfenvinphos"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30326004"/>
+      <display value="Atrial natriuretic factor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30329006"/>
+      <display value="Triflupromazine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30333004"/>
+      <display value="Mercaptomerin sodium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30424002"/>
+      <display value="Proparacaine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30658004"/>
+      <display value="Turacoporphyrin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30676006"/>
+      <display value="Metharbital"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30745005"/>
+      <display value="Loxapine succinate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30804005"/>
+      <display value="Coagulation factor VII"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30827002"/>
+      <display value="Azapetine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30848000"/>
+      <display value="Fibrinogen Oslo III"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30863002"/>
+      <display value="Desiccated whole bile"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30990007"/>
+      <display value="Abnormal fibrinogen"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31011004"/>
+      <display value="4-hydroxycoumarin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31055005"/>
+      <display value="Gastrointestinal hormone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31147000"/>
+      <display value="Metoclopramide hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31178001"/>
+      <display value="Bethanechol chloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31422009"/>
+      <display value="Ox bile extract"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31522006"/>
+      <display value="Mild silver protein"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31617001"/>
+      <display value="Hydrophilic petrolatum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31706007"/>
+      <display value="Ketamine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31707003"/>
+      <display value="Zinc bacitracin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31780003"/>
+      <display value="Preproenkephalin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31787000"/>
+      <display value="Coagulation factor IX Alabama variant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31799007"/>
+      <display value="Mephentermine sulfate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31801005"/>
+      <display value="Benzonatate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31815007"/>
+      <display value="Oxybutynin chloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31827005"/>
+      <display value="Ristocetin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31895006"/>
+      <display value="Gonadotropin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31990000"/>
+      <display value="Fibrinogen Cleveland II"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32083005"/>
+      <display value="Oxanamide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32133002"/>
+      <display value="Microarazide nitrate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32197004"/>
+      <display value="Clobetasol propionate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32281001"/>
+      <display value="Fibrinogen Oslo IV"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32370002"/>
+      <display value="Diprophylline"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32436002"/>
+      <display value="Phentolamine mesylate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32498003"/>
+      <display value="Cortisone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32519007"/>
+      <display value="Activated charcoal"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32757009"/>
+      <display value="Dibenzepin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32789000"/>
+      <display value="Ferritin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32800009"/>
+      <display value="Ethionamide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32824001"/>
+      <display value="Ergot alkaloid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32852005"/>
+      <display value="Beta melanocyte stimulating hormone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32898006"/>
+      <display value="Fibrinogen San Francisco"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32901007"/>
+      <display value="Prostaglandin A2"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33307008"/>
+      <display value="Sodium meralein"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33435008"/>
+      <display value="Capillary active drug"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33440000"/>
+      <display value="Ceftriaxone sodium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33447002"/>
+      <display value="Bephenium hydroxynaphthoate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33535006"/>
+      <display value="Renal hormone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33619005"/>
+      <display value="Plasminogen activator"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33635003"/>
+      <display value="Serotonin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33642003"/>
+      <display value="Fibrinogen Sydney I"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33667000"/>
+      <display value="Mercumatilin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33752008"/>
+      <display value="Motilin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33785000"/>
+      <display value="Iodine (125-I) liothyronine (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33837008"/>
+      <display value="Aluminum glycinate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33922005"/>
+      <display value="Vitamin L"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33963004"/>
+      <display value="Angiotensin III"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34070005"/>
+      <display value="Fibrinogen Nagoya"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34086003"/>
+      <display value="Antithrombin III"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34113002"/>
+      <display value="Acrisorcin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34120009"/>
+      <display value="Fibrinogen Amsterdam"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34239008"/>
+      <display value="Castor oil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34332002"/>
+      <display value="Nitrophenol"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34425005"/>
+      <display value="Amolanone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34654009"/>
+      <display value="Iodine solution"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34657002"/>
+      <display value="Isopropamide iodide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34658007"/>
+      <display value="Met-enkephalin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34737006"/>
+      <display value="C1 esterase inhibitor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34915005"/>
+      <display value="Pyridostigmine bromide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34919004"/>
+      <display value="Potassium tartrate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34953000"/>
+      <display value="Colocynth"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34983009"/>
+      <display value="Epicillin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35135004"/>
+      <display value="Aglycone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35150008"/>
+      <display value="Glucocorticoid hormone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35236008"/>
+      <display value="Thenyldiamine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35281007"/>
+      <display value="Acetophenazine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35318005"/>
+      <display value="Esmolol hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35343004"/>
+      <display value="Cefonicid sodium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35406002"/>
+      <display value="Clocortolone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35431001"/>
+      <display value="Adenosine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35466004"/>
+      <display value="Relaxin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35473009"/>
+      <display value="Fibrinogen St. Louis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35605007"/>
+      <display value="Anhydrous lanolin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35733004"/>
+      <display value="Fat-soluble vitamin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35748005"/>
+      <display value="Wine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35765001"/>
+      <display value="Sincalide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35864006"/>
+      <display value="Pyrathiazine (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35903003"/>
+      <display value="Potassium bromide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35946000"/>
+      <display value="Pentolinium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35954003"/>
+      <display value="Coagulation factor II variant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35966009"/>
+      <display value="Ouabain"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35976007"/>
+      <display value="Pancreatic peptide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36020009"/>
+      <display value="Anti-factor IX"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36021008"/>
+      <display value="Cefadroxil monohydrate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36022001"/>
+      <display value="Fibrinogen Freiberg"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36167005"/>
+      <display value="Fibrinogen Torino"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36173006"/>
+      <display value="Tetraiodothyroacetic acid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36176003"/>
+      <display value="Thrombin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36378007"/>
+      <display value="Lithium compound"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36380001"/>
+      <display value="Oxyphencyclimine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36541005"/>
+      <display value="Mercuric iodide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36661005"/>
+      <display value="Tyrothricin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36712003"/>
+      <display value="Anti-factor XII"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36872003"/>
+      <display value="Tridihexethyl"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36887008"/>
+      <display value="Mineralocorticoid hormone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36953002"/>
+      <display value="Fibrinogen Nancy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37006008"/>
+      <display value="Cyclothiazide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37013008"/>
+      <display value="Dipivalyl epinephrine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37078005"/>
+      <display value="Nitromersol"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37202001"/>
+      <display value="Fiber"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37237003"/>
+      <display value="Tocopherol"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37262003"/>
+      <display value="Phenyl p-aminosalicylate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37276002"/>
+      <display value="Polypeptide hormone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37365003"/>
+      <display value="Fibrinogen Rouen"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37433002"/>
+      <display value="Polycarbophil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37451001"/>
+      <display value="Laudanum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37527009"/>
+      <display value="Sufentanil citrate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37648000"/>
+      <display value="Clindamycin phosphate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37656002"/>
+      <display value="Thiamazole"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37691005"/>
+      <display value="Hetacillin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37751002"/>
+      <display value="Substance with beta-2 adrenergic receptor antagonist mechanism of action (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37756007"/>
+      <display value="Gastric inhibitory polypeptide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37758008"/>
+      <display value="Drug-induced coagulation inhibitor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37765000"/>
+      <display value="Amfepramone hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37951005"/>
+      <display value="Fibrinogen Paris I"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37957009"/>
+      <display value="Pentoxyverine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37978007"/>
+      <display value="Nitrofurantoin sodium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37994000"/>
+      <display value="Fibrinogen Hanover"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38044001"/>
+      <display value="Paromomycin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38122009"/>
+      <display value="Anisindione"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38218009"/>
+      <display value="Hyaluronic acid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38245005"/>
+      <display value="Thymus hormone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38446009"/>
+      <display value="Diflorasone diacetate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38622005"/>
+      <display value="Aluminum oxide ore"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38648002"/>
+      <display value="Mephentermine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38684009"/>
+      <display value="Alclometasone dipropionate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38686006"/>
+      <display value="Colistimethate sodium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38714005"/>
+      <display value="Somatomedin A"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38909000"/>
+      <display value="Glutamic acid hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38914001"/>
+      <display value="Thymol iodide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39044007"/>
+      <display value="Aluminum alkyl"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39123009"/>
+      <display value="Cephaloglycin (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39152007"/>
+      <display value="Erythromycin stearate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39263003"/>
+      <display value="Amisometradine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39428005"/>
+      <display value="Deuteroporphyrin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39514001"/>
+      <display value="Decamethonium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39552000"/>
+      <display value="Scabicide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39815009"/>
+      <display value="Clorazepate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39933002"/>
+      <display value="Pancreatic hormone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39962001"/>
+      <display value="Coagulation factor II Barcelona variant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39973008"/>
+      <display value="C-peptide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40036000"/>
+      <display value="Sulfadimidine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40115000"/>
+      <display value="Aluminum hydroxychloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40342009"/>
+      <display value="Thiamylal sodium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40438007"/>
+      <display value="Antimony sodium tartrate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40545005"/>
+      <display value="Amphotericin A"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40601003"/>
+      <display value="Chlordiazepoxide hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40789008"/>
+      <display value="Adrenocorticotropic hormone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40856000"/>
+      <display value="Leukotriene A"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40924008"/>
+      <display value="Water-soluble vitamin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40940006"/>
+      <display value="Human chorionic gonadotropin, beta subunit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="41062004"/>
+      <display value="Methoxsalen"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="41067005"/>
+      <display value="Oxiconazole nitrate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="41091001"/>
+      <display value="Mebutamate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="41143004"/>
+      <display value="Ursodeoxycholic acid (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="41153003"/>
+      <display value="Amyl nitrate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="41199001"/>
+      <display value="Melatonin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="41261002"/>
+      <display value="Quinethazone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="41332001"/>
+      <display value="Oleandomycin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="41395001"/>
+      <display value="Tamoxifen citrate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="41410009"/>
+      <display value="Intrinsic factor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="41433005"/>
+      <display value="Aluminum compound"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="41509001"/>
+      <display value="Potassium warfarin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="41722006"/>
+      <display value="Cefotaxime sodium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="41793006"/>
+      <display value="Calcium cyanamide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="41903005"/>
+      <display value="Hexapradol"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="41945007"/>
+      <display value="Alkylpiperidine derivative of phenothiazine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="42033003"/>
+      <display value="Sterculia gum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="42056007"/>
+      <display value="Placental hormone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="42145009"/>
+      <display value="Fibrinogen Copenhagen"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="42163009"/>
+      <display value="Methylphenidate hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="42180008"/>
+      <display value="Vitamin D&gt;2&lt;, phosphate ester"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="42212002"/>
+      <display value="Sodium pentachlorophenate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="42230009"/>
+      <display value="Bentonite"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="42319009"/>
+      <display value="Lipotropin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="42520004"/>
+      <display value="Bulrush millet ergot alkaloid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="42549007"/>
+      <display value="Alpha-2 macroglobulin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="42605004"/>
+      <display value="Aldosterone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="42671007"/>
+      <display value="Rye ergot alkaloid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="42692007"/>
+      <display value="Naproxen sodium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="42710006"/>
+      <display value="Coagulation factor XI variant type II"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="43004008"/>
+      <display value="Glucagon-like peptide 1"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="43032004"/>
+      <display value="Anabasine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="43048003"/>
+      <display value="Amfomycin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="43136004"/>
+      <display value="Strontium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="43289005"/>
+      <display value="Dihydrofolic acid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="43332008"/>
+      <display value="Coagulation factor IX Lake Elsinor variant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="43356007"/>
+      <display value="Betaine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="43440003"/>
+      <display value="Melanocyte stimulating hormone releasing factor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="43541002"/>
+      <display value="Pentapiperide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="43585000"/>
+      <display value="Sulfonamide diuretic"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="43592005"/>
+      <display value="Cactinomycin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="43597004"/>
+      <display value="Chymodenin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="43621003"/>
+      <display value="Antihemophilic factor B Oxford 2 variant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="43688007"/>
+      <display value="Testosterone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="43698001"/>
+      <display value="Hydroxystilbamidine isethionate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="43706004"/>
+      <display value="Ascorbic acid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="43735007"/>
+      <display value="Sulfur"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="43784004"/>
+      <display value="Thymic lymphopoietin suppressing factor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="43835003"/>
+      <display value="Zinc gelatin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="43848004"/>
+      <display value="Agkistrodon serine proteinase"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="43909000"/>
+      <display value="Thiamine triphosphate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="43989002"/>
+      <display value="MDBMK"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="44262008"/>
+      <display value="Oxidized cellulose"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="44293009"/>
+      <display value="Phenoxybenzamine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="44330008"/>
+      <display value="Pyrvinium pamoate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="44347009"/>
+      <display value="Lergotrile"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="44469001"/>
+      <display value="Fibrinogen Petoskey"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="44508008"/>
+      <display value="Hydromorphone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="44520000"/>
+      <display value="Nylidrin hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="44555003"/>
+      <display value="Methylenedioxyamphetamine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="44609006"/>
+      <display value="Calcitonin gene-related peptide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="44624002"/>
+      <display value="Fibrinogen New Orleans I"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="44681007"/>
+      <display value="Hypothalamic inhibiting factor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="44837002"/>
+      <display value="Cyclopropane"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="44908000"/>
+      <display value="Chlorzoxazone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="45084007"/>
+      <display value="Fibrin degradation product, D fragment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="45119009"/>
+      <display value="Glycine salt of bile acid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="45159007"/>
+      <display value="Azatadine maleate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="45207006"/>
+      <display value="Dexamphetamine sulfate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="45266004"/>
+      <display value="Antiplasmin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="45483006"/>
+      <display value="Psilocin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="45555007"/>
+      <display value="Norepinephrine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="45604009"/>
+      <display value="Tranquilizer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="45754009"/>
+      <display value="Interferon alfa (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="45807004"/>
+      <display value="Coagulation factor IX variant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="45940009"/>
+      <display value="Theophylline anhydrous"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="45946003"/>
+      <display value="Proglucagon"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="45960001"/>
+      <display value="Naepaine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="46015007"/>
+      <display value="Melanocyte stimulating hormone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="46058006"/>
+      <display value="Prostaglandin G2"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="46120009"/>
+      <display value="17-ketosteroid (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="46134009"/>
+      <display value="Prostaglandin A1"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="46146008"/>
+      <display value="Cefotetan disodium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="46201000"/>
+      <display value="Piperidolate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="46225008"/>
+      <display value="Cholecystokinin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="46250006"/>
+      <display value="Slaframine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="46293006"/>
+      <display value="Bromocriptine mesylate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="46514003"/>
+      <display value="Calcium mandelate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="46548002"/>
+      <display value="Leukotriene B"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="46558003"/>
+      <display value="Imipenem"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="46572007"/>
+      <display value="Coagulation factor XI"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="46654009"/>
+      <display value="Tetrahydrocortisone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="46668002"/>
+      <display value="Homatropine methylbromide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="46887006"/>
+      <display value="Ambenonium chloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="46921009"/>
+      <display value="Quinoline dye"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="46943001"/>
+      <display value="Cortolone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="46950002"/>
+      <display value="Protriptyline hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="47176005"/>
+      <display value="Methdilazine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="47180000"/>
+      <display value="Methisazone (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="47218005"/>
+      <display value="Fibrinogen Giessen II (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="47247003"/>
+      <display value="Fibrinogen Kyoto"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="47336007"/>
+      <display value="Fibrinogen Manchester"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="47349002"/>
+      <display value="Beta neoendorphin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="47350002"/>
+      <display value="Pregnenolone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="47383009"/>
+      <display value="Dihydropsychotrine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="47408003"/>
+      <display value="Naftifine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="47413004"/>
+      <display value="Fat emulsion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="47414005"/>
+      <display value="Trimethidinium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="47663000"/>
+      <display value="Clindamycin palmitate hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="47691008"/>
+      <display value="Fibrin degradation product, first derivative"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="47714006"/>
+      <display value="Fibrinogen Troyes"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="47826006"/>
+      <display value="Thiourea"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="47834000"/>
+      <display value="Oxophenarsine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="47853005"/>
+      <display value="Parachlorophenol"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="47857006"/>
+      <display value="Quinine sulfate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="47901003"/>
+      <display value="TMA"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="47937008"/>
+      <display value="Ipecac syrup"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="47950009"/>
+      <display value="Taurocholic acid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="48052001"/>
+      <display value="Enalaprilat"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="48070003"/>
+      <display value="Phenylpiperidine derivative"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="48078005"/>
+      <display value="Butyl aminobenzoate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="48132000"/>
+      <display value="Fibrinogen New York I"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="48172009"/>
+      <display value="Cefamandole nafate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="48199006"/>
+      <display value="Dimazole"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="48384000"/>
+      <display value="Amitriptyline hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="48474002"/>
+      <display value="Salbutamol sulfate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="48693008"/>
+      <display value="Phenaglycodol"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="48753004"/>
+      <display value="Cefuroxime sodium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="48940005"/>
+      <display value="Methoxypromazine (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="48988008"/>
+      <display value="Alprostadil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="49010003"/>
+      <display value="Paraprotein"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="49022000"/>
+      <display value="Merethoxylline procaine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="49053003"/>
+      <display value="Tuftsin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="49067007"/>
+      <display value="Thymic neuromuscular function blocking agent"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="49145008"/>
+      <display value="Demecarium bromide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="49313009"/>
+      <display value="Nialamide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="49327004"/>
+      <display value="Interferon"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="49371000"/>
+      <display value="Methscopolamine bromide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="49399009"/>
+      <display value="Magnesium salicylate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="49427003"/>
+      <display value="3,5 T&gt;2&lt;"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="49451008"/>
+      <display value="Ethaverine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="49559007"/>
+      <display value="Zinc pelargonate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="49565007"/>
+      <display value="Disopyramide phosphate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="49602000"/>
+      <display value="Isoprenaline sulfate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="49616005"/>
+      <display value="Monoclonal antibody"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="49722008"/>
+      <display value="Somatotropin release inhibiting factor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="49724009"/>
+      <display value="Pyrvinium chloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="49839002"/>
+      <display value="Hexamethonium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="49849004"/>
+      <display value="Metriphonate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="49869009"/>
+      <display value="Gonadotropin releasing factor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="49889005"/>
+      <display value="Formiminoglutamic acid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="49893004"/>
+      <display value="Polyamine methylene resin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="49998007"/>
+      <display value="Sufentanil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="50045009"/>
+      <display value="Heparin sodium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="50218000"/>
+      <display value="Melarsonyl"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="50371003"/>
+      <display value="Carnosine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="50507004"/>
+      <display value="N-phenylacetamide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="50580004"/>
+      <display value="Sulthiamine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="50627005"/>
+      <display value="Labetalol hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="50661007"/>
+      <display value="Bismuth subgallate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="50665003"/>
+      <display value="Hydrocortisone butyrate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="50685004"/>
+      <display value="Epinephrine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="50706005"/>
+      <display value="Fibrinogen Malmoe"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="50735002"/>
+      <display value="Coagulation factor X Melbourne variant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="50754002"/>
+      <display value="Trifluoperazine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="50848005"/>
+      <display value="Sulfamoxole"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="50951002"/>
+      <display value="Neuropeptide Y"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="50973009"/>
+      <display value="Metacycline hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="51076005"/>
+      <display value="Fibrinogen Argenteuil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="51161000"/>
+      <display value="Coagulation factor XIII"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="51224002"/>
+      <display value="Carboxymethylcellulose sodium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="51260007"/>
+      <display value="Metabutoxycaine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="51305002"/>
+      <display value="Thymosin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="51321007"/>
+      <display value="Propylhexedrine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="51379007"/>
+      <display value="Fibrinogen Alba/Geneva"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="51462002"/>
+      <display value="Hematoporphyrin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="51569009"/>
+      <display value="Sulfaphenazole"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="51598008"/>
+      <display value="Coproporphyrin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="51612003"/>
+      <display value="Hydrocortisone valerate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="51739000"/>
+      <display value="Ethyl biscoumacetate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="51775003"/>
+      <display value="Estrone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="51803002"/>
+      <display value="Fibrinogen Chapel Hill II"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="51844001"/>
+      <display value="Tetracaine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="51866008"/>
+      <display value="Protoporphyrin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="52130006"/>
+      <display value="Quercetin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="52140009"/>
+      <display value="Oxybuprocaine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="52275001"/>
+      <display value="Benactyzine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="52283007"/>
+      <display value="Peppermint oil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="52370008"/>
+      <display value="Psyllium (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="52422003"/>
+      <display value="20-hydroxyprogesterone (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="52574003"/>
+      <display value="Amiodarone hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="52601000"/>
+      <display value="Deproteinated pancreatic extract"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="52720007"/>
+      <display value="Bismuth compound"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="52803004"/>
+      <display value="Alimemazine tartrate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="52836003"/>
+      <display value="Paraformaldehyde"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="52850008"/>
+      <display value="Profenamine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="52885008"/>
+      <display value="Alphaprodine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="52886009"/>
+      <display value="Minocycline hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="52978005"/>
+      <display value="Coagulation factor II Brussels variant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="53023007"/>
+      <display value="Leukotriene D"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="53034005"/>
+      <display value="Coal tar"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="53048005"/>
+      <display value="Hematin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="53052005"/>
+      <display value="Methazolamide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="53072000"/>
+      <display value="Leukotriene E"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="53090004"/>
+      <display value="Sulfacytidine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="53136009"/>
+      <display value="Chloroquine phosphate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="53235000"/>
+      <display value="Protamine zinc insulin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="53252001"/>
+      <display value="Mullerian regression factor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="53268007"/>
+      <display value="Ipomea"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="53353009"/>
+      <display value="Stibophen"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="53410008"/>
+      <display value="Beer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="53499005"/>
+      <display value="Riboflavin mononucleotide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="53513007"/>
+      <display value="Psilocybin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="53527002"/>
+      <display value="Alcoholic beverage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="53563002"/>
+      <display value="Bismuth telluride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="53577004"/>
+      <display value="Phthalylsulfacetamide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="53681007"/>
+      <display value="Colony-stimulating factor, granulocyte-macrophage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="53682000"/>
+      <display value="Endorphin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="53777001"/>
+      <display value="Ethoxyquin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="53845007"/>
+      <display value="Bromisovalum (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="53856007"/>
+      <display value="Single chain urokinase-like plasminogen activator"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="53859000"/>
+      <display value="Methyl lomustine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="54062005"/>
+      <display value="Cefalexin hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="54086007"/>
+      <display value="Hexylresorcinol"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="54141007"/>
+      <display value="Psyllium seed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="54144004"/>
+      <display value="Factor IX complex"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="54172006"/>
+      <display value="Orciprenaline sulfate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="54188006"/>
+      <display value="Human placental lactogen"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="54195002"/>
+      <display value="Anti-factor III"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="54197005"/>
+      <display value="Cyclomethycaine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="54228000"/>
+      <display value="Fibrinogen Montreal I"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="54245005"/>
+      <display value="Lithocholic acid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="54340002"/>
+      <display value="Antimony potassium tartrate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="54370007"/>
+      <display value="Coagulation factor IX Long Beach variant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="54378000"/>
+      <display value="Coagulation factor IX"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="54717003"/>
+      <display value="Ethinamate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="54729007"/>
+      <display value="Oxytetracycline hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="54835003"/>
+      <display value="Lithium chloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="55124001"/>
+      <display value="Molindone hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="55170008"/>
+      <display value="Uroporphyrin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="55316001"/>
+      <display value="Colestipol hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="55358003"/>
+      <display value="Thiouracil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="55435000"/>
+      <display value="Nafcillin sodium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="55452001"/>
+      <display value="Oxycodone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="55486005"/>
+      <display value="Phenazone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="55491006"/>
+      <display value="Strophanthin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="55579004"/>
+      <display value="Coagulation factor II San Juan 2 variant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="55691004"/>
+      <display value="Dibenzocycloheptane derivative"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="55706007"/>
+      <display value="Fibrinogen Wiesbaden (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="55723003"/>
+      <display value="Fibrin degradation product, intermediate derivative"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="55741006"/>
+      <display value="Methenamine hippurate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="55789002"/>
+      <display value="Porphobilinogen"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="55792003"/>
+      <display value="Rotenone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="55793008"/>
+      <display value="Anileridine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="55882001"/>
+      <display value="White wax"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="55944008"/>
+      <display value="Niridazole"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="56065005"/>
+      <display value="Spermaceti"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="56066006"/>
+      <display value="Turacin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="56085009"/>
+      <display value="Hyoscyamine sulfate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="56146000"/>
+      <display value="Androstenedione"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="56156001"/>
+      <display value="Desoxycorticosterone acetate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="56227008"/>
+      <display value="Trolnitrate phosphate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="56297001"/>
+      <display value="Dextro-propoxyphene hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="56325002"/>
+      <display value="Carbromal"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="56328000"/>
+      <display value="Fibrinogen Homburg III (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="56352007"/>
+      <display value="Fibrinogen Giessen I (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="56374001"/>
+      <display value="Plasminogen activator inhibitor-2"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="56383006"/>
+      <display value="Leucocyanidin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="56389005"/>
+      <display value="Etafedrine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="56436005"/>
+      <display value="Sulfanilamide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="56613007"/>
+      <display value="Bretylium tosylate (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="56714008"/>
+      <display value="Bombesin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="56723006"/>
+      <display value="Phenoxymethyl penicillin potassium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="56740002"/>
+      <display value="Triiodotyrosine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="56898001"/>
+      <display value="Protein S"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="57037002"/>
+      <display value="Fibrin degradation product, small peptide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="57064001"/>
+      <display value="Fibrinogen Quebec I"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="57090003"/>
+      <display value="Collagen type III"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="57164003"/>
+      <display value="Dyclonine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="57199004"/>
+      <display value="Plasminogen activator inhibitor-1"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="57244003"/>
+      <display value="11-ketoandrosterone (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="57308006"/>
+      <display value="Acetylcholine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="57454001"/>
+      <display value="Metalloporphyrin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="57574005"/>
+      <display value="Loperamide hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="57583000"/>
+      <display value="Naphazoline hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="57808000"/>
+      <display value="Beta thromboglobulin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="57813001"/>
+      <display value="Heme"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="57842009"/>
+      <display value="Coagulation factor X Friuli variant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="57868002"/>
+      <display value="Dichlorvos"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="57911003"/>
+      <display value="Methotrimeprazine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="57913000"/>
+      <display value="Anisotropine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="57979006"/>
+      <display value="Picrotoxin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="58152009"/>
+      <display value="Bacitracin C"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="58173009"/>
+      <display value="Dinoprost tromethamine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="58233009"/>
+      <display value="Meclofenamate sodium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="58292001"/>
+      <display value="Selenium sulfide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="58325006"/>
+      <display value="Mesuximide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="58343005"/>
+      <display value="Cefonicid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="58461000"/>
+      <display value="Metaraminol bitartrate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="58520002"/>
+      <display value="Collagen type I"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="58536000"/>
+      <display value="Antimony dimercaptosuccinate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="58620008"/>
+      <display value="Sporidesmin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="58624004"/>
+      <display value="Fibrinogen Philadelphia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="58693000"/>
+      <display value="Sodium bromide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="58730008"/>
+      <display value="Anti-factor VIII"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="58732000"/>
+      <display value="Red wine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="58765008"/>
+      <display value="Uroporphyrin I"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="58804001"/>
+      <display value="Fibrinogen Bern II"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="58907007"/>
+      <display value="Succinylcholine chloride (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="58910000"/>
+      <display value="Fibrinogen Genova I"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="58956008"/>
+      <display value="Trazodone hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="59071003"/>
+      <display value="Vinyl ether"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="59082006"/>
+      <display value="Urokinase (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="59087000"/>
+      <display value="Coagulation factor XI variant type I"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="59161003"/>
+      <display value="Thymic erythropoietin suppression factor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="59163000"/>
+      <display value="Fibrinogen Valencia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="59170000"/>
+      <display value="Dextrothyroxine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="59314005"/>
+      <display value="Pipradrol"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="59433001"/>
+      <display value="Human chorionic gonadotropin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="59488002"/>
+      <display value="Phenprocoumon"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="59489005"/>
+      <display value="Calusterone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="59526004"/>
+      <display value="Florantyrone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="59549002"/>
+      <display value="Fibrinogen Milano II"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="59560006"/>
+      <display value="Mepivacaine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="59570008"/>
+      <display value="Transferrin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="59759004"/>
+      <display value="Bacitracin B"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="59779007"/>
+      <display value="Human chorionic gonadotropin, alpha subunit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="59882007"/>
+      <display value="Aminocaproic acid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="59937009"/>
+      <display value="Cefalotin sodium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="60018006"/>
+      <display value="Amrinone lactate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="60208008"/>
+      <display value="Coagulation factor V"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="60244003"/>
+      <display value="3-dehydroretinol"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="60266005"/>
+      <display value="Chloroquine hydrochloride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="60289002"/>
+      <display value="Mepenzolate bromide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="60455000"/>
+      <display value="Racephedrine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="60526005"/>
+      <display value="Acetyl salicylate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="60544002"/>
+      <display value="Aminoamide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="60714002"/>
+      <display value="Fibrin degradation product, E fragment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="60727003"/>
+      <display value="Miconazole nitrate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="60760000"/>
+      <display value="Reverse T&gt;3&lt;"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="60764009"/>
+      <display value="Neovitamin A"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="60803009"/>
+      <display value="Protocollagen"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="60808000"/>
+      <display value="Fibrinogen Marburg"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="60884001"/>
+      <display value="Procollagen"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="60885000"/>
+      <display value="Trisulphapyrimidine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="60886004"/>
+      <display value="Morphine sulfate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="60905001"/>
+      <display value="Salicylanilide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="60924003"/>
+      <display value="Fibrinogen Paris II"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="60988002"/>
+      <display value="Tolmetin sodium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="61178007"/>
+      <display value="Neamine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="61275002"/>
+      <display value="Triiodothyronine"/>
+    </contains>
+  </expansion>
+</ValueSet>

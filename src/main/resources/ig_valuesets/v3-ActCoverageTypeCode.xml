@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="v3-ActCoverageTypeCode"/>
+  <language value="en"/>
+  <text>
+    <status value="generated"/>
+    <div xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+      <ul>
+        <li>Include codes from 
+          <a href="CodeSystem-v3-ActCode.html">
+            <code>http://terminology.hl7.org/CodeSystem/v3-ActCode</code>
+          </a> where concept  is-a  
+          <a href="CodeSystem-v3-ActCode.html#v3-ActCode-_ActCoverageTypeCode">_ActCoverageTypeCode</a>
+        </li>
+      </ul>
+    </div>
+  </text>
+  <url value="http://terminology.hl7.org/ValueSet/v3-ActCoverageTypeCode"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.1.11.19855"/>
+  </identifier>
+  <version value="3.0.0"/>
+  <name value="ActCoverageTypeCode"/>
+  <title value="ActCoverageTypeCode"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2014-03-26"/>
+  <publisher value="Health Level Seven International"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org"/>
+    </telecom>
+    <telecom>
+      <system value="email"/>
+      <value value="hq@HL7.org"/>
+    </telecom>
+  </contact>
+  <description value="**Definition:** Set of codes indicating the type of insurance policy or program that pays for the cost of benefits provided to covered parties."/>
+  <copyright value="This material derives from the HL7 Terminology THO. THO is copyright ©1989+ Health Level Seven International and is made available under the CC0 designation. For more licensing information see: https://terminology.hl7.org/license"/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="_ActCoverageTypeCode"/>
+      </filter>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:807ef343-74bb-4434-b813-a200cf091813"/>
+    <timestamp value="2025-01-17T09:53:42-07:00"/>
+    <total value="57"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/v3-ActCode|9.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <abstract value="true"/>
+      <code value="_ActCoverageTypeCode"/>
+      <display value="ActCoverageTypeCode"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <abstract value="true"/>
+      <code value="_ActInsurancePolicyCode"/>
+      <display value="ActInsurancePolicyCode"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="EHCPOL"/>
+      <display value="extended healthcare"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="HSAPOL"/>
+      <display value="health spending account"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="AUTOPOL"/>
+      <display value="automobile"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="COL"/>
+      <display value="collision coverage policy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="UNINSMOT"/>
+      <display value="uninsured motorist policy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="PUBLICPOL"/>
+      <display value="public healthcare"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="DENTPRG"/>
+      <display value="dental program"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="DISEASEPRG"/>
+      <display value="public health program"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="CANPRG"/>
+      <display value="women's cancer detection program"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="ENDRENAL"/>
+      <display value="end renal program"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="HIVAIDS"/>
+      <display value="HIV-AIDS program"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="MANDPOL"/>
+      <display value="mandatory health program"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="MENTPRG"/>
+      <display value="mental health program"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="SAFNET"/>
+      <display value="safety net clinic program"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="SUBPRG"/>
+      <display value="substance use program"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="SUBSIDIZ"/>
+      <display value="subsidized health program"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="SUBSIDMC"/>
+      <display value="subsidized managed care program"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="SUBSUPP"/>
+      <display value="subsidized supplemental health program"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="WCBPOL"/>
+      <display value="worker's compensation"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <abstract value="true"/>
+      <code value="_ActInsuranceTypeCode"/>
+      <display value="ActInsuranceTypeCode"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <abstract value="true"/>
+      <code value="_ActHealthInsuranceTypeCode"/>
+      <display value="ActHealthInsuranceTypeCode"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="DENTAL"/>
+      <display value="dental care policy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="DISEASE"/>
+      <display value="disease specific policy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="DRUGPOL"/>
+      <display value="drug policy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="HIP"/>
+      <display value="health insurance plan policy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="LTC"/>
+      <display value="long term care policy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="MCPOL"/>
+      <display value="managed care policy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="POS"/>
+      <display value="point of service policy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="HMO"/>
+      <display value="health maintenance organization policy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="PPO"/>
+      <display value="preferred provider organization policy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="MENTPOL"/>
+      <display value="mental health policy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="SUBPOL"/>
+      <display value="substance use policy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="VISPOL"/>
+      <display value="vision care policy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="DIS"/>
+      <display value="disability insurance policy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="EWB"/>
+      <display value="employee welfare benefit plan policy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="FLEXP"/>
+      <display value="flexible benefit plan policy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="LIFE"/>
+      <display value="life insurance policy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="ANNU"/>
+      <display value="annuity policy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="TLIFE"/>
+      <display value="term life insurance policy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="ULIFE"/>
+      <display value="universal life insurance policy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="PNC"/>
+      <display value="property and casualty insurance policy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="REI"/>
+      <display value="reinsurance policy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="SURPL"/>
+      <display value="surplus line insurance policy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="UMBRL"/>
+      <display value="umbrella liability insurance policy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <abstract value="true"/>
+      <code value="_ActProgramTypeCode"/>
+      <display value="ActProgramTypeCode"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="CHAR"/>
+      <display value="charity program"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="CRIME"/>
+      <display value="crime victim program"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="EAP"/>
+      <display value="employee assistance program"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="GOVEMP"/>
+      <display value="government employee health program"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="HIRISK"/>
+      <display value="high risk pool program"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="IND"/>
+      <display value="indigenous peoples health program"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="MILITARY"/>
+      <display value="military health program"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="RETIRE"/>
+      <display value="retiree health program"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="SOCIAL"/>
+      <display value="social service program"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="VET"/>
+      <display value="veteran health program"/>
+    </contains>
+  </expansion>
+</ValueSet>

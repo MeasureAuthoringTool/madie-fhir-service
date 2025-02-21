@@ -1,0 +1,5072 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="observation-codes"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="fhir"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/observation-codes"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.396"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="LOINCCodes"/>
+  <title value="LOINC Codes"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="This value set includes all LOINC codes"/>
+  <copyright value="This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use."/>
+  <compose>
+    <include>
+      <system value="http://loinc.org"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:6a60bcef-7124-4b6c-9622-0c1a55fd83ac"/>
+    <timestamp value="2025-01-15T16:21:32.385Z"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="limitedExpansion"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://loinc.org|2.78"/>
+    </parameter>
+    <parameter>
+      <name value="version"/>
+      <valueUri value="http://loinc.org|2.78"/>
+    </parameter>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100000-9"/>
+      <display value="Health informatics pioneer and the father of LOINC"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100001-7"/>
+      <display value="Health informatics pioneer and cofounder of LOINC"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100002-5"/>
+      <display value="Specimen care is maintained"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100003-3"/>
+      <display value="Team communication is maintained throughout care"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100004-1"/>
+      <display value="Demonstrates knowledge of the expected psychosocial responses to the procedure"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100005-8"/>
+      <display value="Demonstrates knowledge of nutritional management related to the procedure"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100006-6"/>
+      <display value="Demonstrates knowledge of medication management"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100007-4"/>
+      <display value="Demonstrates knowledge of pain management"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10000-8"/>
+      <display value="R wave duration in lead AVR"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100008-2"/>
+      <display value="Demonstrates knowledge of wound management"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100009-0"/>
+      <display value="Demonstrates knowledge of the procedure and expected results"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100010-8"/>
+      <display value="No injury related to procedure equipment, medical supplies, or instrumentation"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100011-6"/>
+      <display value="No injury related to an electrical source"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100012-4"/>
+      <display value="Participates in decisions affecting the patient's plan of care"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100013-2"/>
+      <display value="Participates in the discharge process"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100014-0"/>
+      <display value="Psychosocial health is maintained at or improved from baseline"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100015-7"/>
+      <display value="No injury related to positioning due to care or procedure"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10001-6"/>
+      <display value="R wave duration in lead I"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100016-5"/>
+      <display value="No injury related to a laser source"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100017-3"/>
+      <display value="Perioperative nursing data set outcomes panel [PNDS]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100018-1"/>
+      <display value="Hospice care Note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100019-9"/>
+      <display value="ALK gene mutations found [Identifier] in Blood or Tissue by Molecular genetics method Nominal"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100020-7"/>
+      <display value="GNA11 gene mutations found [Identifier] in Blood or Tissue by Molecular genetics method Nominal"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100021-5"/>
+      <display value="GNAQ gene mutations found [Identifier] in Blood or Tissue by Molecular genetics method Nominal"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100022-3"/>
+      <display value="IDH1 gene mutations found [Identifier] in Blood or Tissue by Molecular genetics method Nominal"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100023-1"/>
+      <display value="IDH2 gene mutations found [Identifier] in Blood or Tissue by Molecular genetics method Nominal"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10002-4"/>
+      <display value="R wave duration in lead II"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100024-9"/>
+      <display value="SETBP1 gene mutations found [Identifier] in Blood or Tissue by Molecular genetics method Nominal"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100025-6"/>
+      <display value="SRSF2 gene mutations found [Identifier] in Blood or Tissue by Molecular genetics method Nominal"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100026-4"/>
+      <display value="MET gene mutations found [Identifier] in Blood or Tissue by Molecular genetics method Nominal"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100027-2"/>
+      <display value="SMAD4 gene mutations found [Identifier] in Blood or Tissue by Molecular genetics method Nominal"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100028-0"/>
+      <display value="FBXW7 gene mutations found [Identifier] in Blood or Tissue by Molecular genetics method Nominal"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100029-8"/>
+      <display value="Cancer related multigene analysis in Plasma cell-free DNA by Molecular genetics method"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100030-6"/>
+      <display value="Axis I: Temporal aspects score [Mainz Pain Staging System]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100031-4"/>
+      <display value="Axis II: Spatial aspects score [Mainz Pain Staging System]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10003-2"/>
+      <display value="R wave duration in lead III"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100032-2"/>
+      <display value="Axis III: Drug taking behavior score [Mainz Pain Staging System]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100033-0"/>
+      <display value="Axis IV: Utilization of the health care system score [Mainz Pain Staging System]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100034-8"/>
+      <display value="Provider of automated external defibrillator use"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100035-5"/>
+      <display value="Exam finding location of Chest"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100036-3"/>
+      <display value="Exam finding location of Lung"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100037-1"/>
+      <display value="Patient contact disposition EMS unit"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100038-9"/>
+      <display value="Patient evaluation disposition EMS unit"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100039-7"/>
+      <display value="Crew disposition for patient care EMS unit"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10004-0"/>
+      <display value="R wave duration in lead V1"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100040-5"/>
+      <display value="Patient transport disposition EMS unit"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100041-3"/>
+      <display value="Aminoglycoside [Susceptibility]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100042-1"/>
+      <display value="Atovaquone [Susceptibility]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100043-9"/>
+      <display value="Azithromycin+Ethambutol [Susceptibility]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100044-7"/>
+      <display value="Cefcapene [Susceptibility]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100045-4"/>
+      <display value="Cefozopran [Susceptibility]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100046-2"/>
+      <display value="Cefquinome [Susceptibility]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100047-0"/>
+      <display value="Cefteram [Susceptibility]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100048-8"/>
+      <display value="Clarithromycin+Ethambutol [Susceptibility]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100049-6"/>
+      <display value="Eravacycline [Susceptibility]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100050-4"/>
+      <display value="Erythromycin+Ethambutol [Susceptibility]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100051-2"/>
+      <display value="Ethambutol+rifAMPin [Susceptibility]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100052-0"/>
+      <display value="Flomoxef [Susceptibility]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100053-8"/>
+      <display value="Fluoroquinolone [Susceptibility]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100054-6"/>
+      <display value="Gamithromycin [Susceptibility]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100055-3"/>
+      <display value="Optochin [Susceptibility]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100056-1"/>
+      <display value="Panipenem [Susceptibility]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10005-7"/>
+      <display value="R wave duration in lead V2"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100057-9"/>
+      <display value="Prothionamide [Susceptibility]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100058-7"/>
+      <display value="Prulifloxacin [Susceptibility]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100059-5"/>
+      <display value="Rifapentine [Susceptibility]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100060-3"/>
+      <display value="Tildipirosin [Susceptibility]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100061-1"/>
+      <display value="Tosufloxacin [Susceptibility]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100062-9"/>
+      <display value="Standard Dermatology Outcome Measures panel"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100063-7"/>
+      <display value="Primary skin concern"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100064-5"/>
+      <display value="Itch severity Reporting Period - Reported"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10006-5"/>
+      <display value="R wave duration in lead V3"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100065-2"/>
+      <display value="Satisfied with treatment"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100066-0"/>
+      <display value="Specular microscopy panel"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100067-8"/>
+      <display value="Eye Image magnification"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100068-6"/>
+      <display value="Right eye Fixation point [Angle]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100069-4"/>
+      <display value="Left eye Fixation point [Angle]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100070-2"/>
+      <display value="Right cornea Cell density"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100071-0"/>
+      <display value="Left cornea Cell density"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100072-8"/>
+      <display value="Right cornea Coefficient of variation"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10007-3"/>
+      <display value="R wave duration in lead V4"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100073-6"/>
+      <display value="Left cornea Coefficient of variation"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100074-4"/>
+      <display value="Right cornea Hexagonality"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100075-1"/>
+      <display value="Left cornea Hexagonality"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100076-9"/>
+      <display value="Right cornea Endothelial cells counted"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100077-7"/>
+      <display value="Left cornea Endothelial cells counted"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100078-5"/>
+      <display value="Right cornea Endothelial cell area.min"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100079-3"/>
+      <display value="Left cornea Endothelial cell area.min"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100080-1"/>
+      <display value="Right cornea Endothelial cell area.max"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10008-1"/>
+      <display value="R wave duration in lead V5"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100081-9"/>
+      <display value="Left cornea Endothelial cell area.max"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100082-7"/>
+      <display value="Right cornea Endothelial cell area.mean"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100083-5"/>
+      <display value="Left cornea Endothelial cell area.mean"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100084-3"/>
+      <display value="Right cornea Cell area.standard deviation"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100085-0"/>
+      <display value="Left cornea Cell area.standard deviation"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100086-8"/>
+      <display value="Right cornea Type of Analysis method by Specular microscopy"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100087-6"/>
+      <display value="Toxocara canis 24-35kD IgG Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100088-4"/>
+      <display value="Taenia solium larva Ab bands panel - Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100089-2"/>
+      <display value="Taenia solium larva 6-8kD Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="1000-9"/>
+      <display value="DBG Ab [Presence] in Serum or Plasma from Blood product unit"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100090-0"/>
+      <display value="Taenia solium larva 45kD Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100091-8"/>
+      <display value="Trypanosoma cruzi Ab [Units/volume] in Serum by Immunoassay"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100092-6"/>
+      <display value="Trypanosoma cruzi Ab bands panel - Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100093-4"/>
+      <display value="Trypanosoma cruzi 15-16kD IgG Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100094-2"/>
+      <display value="Trypanosoma cruzi 21-22kD IgG Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100095-9"/>
+      <display value="Trypanosoma cruzi 27-28kD IgG Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100096-7"/>
+      <display value="Trypanosoma cruzi 42kD IgG Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100097-5"/>
+      <display value="Trypanosoma cruzi 45-47kD IgG Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100098-3"/>
+      <display value="Trypanosoma cruzi 120-200kD IgG Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10009-9"/>
+      <display value="R wave duration in lead V6"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100099-1"/>
+      <display value="Trypanosoma cruzi 160kD IgG Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100100-7"/>
+      <display value="Fasciola sp IgG Ab [Presence] in Serum by Immunoassay"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100101-5"/>
+      <display value="Fasciola sp 8-9kD IgG Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100102-3"/>
+      <display value="Fasciola sp 27-28kD IgG Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100103-1"/>
+      <display value="Fasciola sp 60kD IgG Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100104-9"/>
+      <display value="Fasciola sp 42kD IgG Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100105-6"/>
+      <display value="Filaria IgG and IgM panel - Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100106-4"/>
+      <display value="Filaria IgG Ab [Presence] in Serum by Immunoassay"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10010-7"/>
+      <display value="R' wave amplitude in lead AVF"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100107-2"/>
+      <display value="Leishmania sp IgG Ab [Presence] in Serum by Immunoassay"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100108-0"/>
+      <display value="Leishmania sp IgG Ab [Units/volume] in Serum by Immunoassay"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100109-8"/>
+      <display value="Leishmania sp Ab bands panel - Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100110-6"/>
+      <display value="Leishmania sp 14kD IgG Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100111-4"/>
+      <display value="Leishmania sp 16kD IgG Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100112-2"/>
+      <display value="Fasciola sp Ab bands panel - Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100113-0"/>
+      <display value="Helicobacter pylori Ab panel - Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100114-8"/>
+      <display value="Toxoplasma gondii 30kD Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10011-5"/>
+      <display value="R' wave amplitude in lead AVL"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100115-5"/>
+      <display value="Toxoplasma gondii 31kD Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100116-3"/>
+      <display value="Toxoplasma gondii 33kD Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100117-1"/>
+      <display value="Toxoplasma gondii 40kD Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100118-9"/>
+      <display value="Toxoplasma gondii 41kD Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100119-7"/>
+      <display value="Toxoplasma gondii 45kD Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100120-5"/>
+      <display value="Chlamydia trachomatis Ab panel - Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100121-3"/>
+      <display value="Chlamydia trachomatis IgA Ab [Presence] in Serum by Immunoassay"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100122-1"/>
+      <display value="Chlamydophila pneumoniae Ab panel - Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10012-3"/>
+      <display value="R' wave amplitude in lead AVR"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100123-9"/>
+      <display value="Chlamydophila pneumoniae IgA Ab [Presence] in Serum by Immunoassay"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100124-7"/>
+      <display value="Chlamydophila pneumoniae IgA Ab [Units/volume] in Serum by Immunoassay"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100125-4"/>
+      <display value="Chlamydophila psittaci Ab panel - Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100126-2"/>
+      <display value="Bordetella pertussis Ab.IgG panel - Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100127-0"/>
+      <display value="Campylobacter sp Ab panel - Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100128-8"/>
+      <display value="Cryptococcus sp Ag panel - Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100129-6"/>
+      <display value="Schistosoma sp Ab [Titer] in Serum by Hemagglutination"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100130-4"/>
+      <display value="Schistosoma mansoni Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10013-1"/>
+      <display value="R' wave amplitude in lead I"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100131-2"/>
+      <display value="Schistosoma sp 8kD Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100132-0"/>
+      <display value="Schistosoma sp 9kD Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100133-8"/>
+      <display value="Schistosoma sp 10kD Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100134-6"/>
+      <display value="Schistosoma sp 11kD Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100135-3"/>
+      <display value="Schistosoma sp 12-13kD Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100136-1"/>
+      <display value="Schistosoma sp 14-15kD Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100137-9"/>
+      <display value="Schistosoma sp 15-16kD Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100138-7"/>
+      <display value="Schistosoma sp 18-19kD Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100139-5"/>
+      <display value="Schistosoma sp 22-24kD Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100140-3"/>
+      <display value="Schistosoma sp 30-34kD Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100141-1"/>
+      <display value="Schistosoma sp 65kD Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100142-9"/>
+      <display value="Schistosoma sp 70kD Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100143-7"/>
+      <display value="Schistosoma sp 80kD Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100144-5"/>
+      <display value="Schistosoma sp 95kD Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100145-2"/>
+      <display value="Schistosoma sp 110kD Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100146-0"/>
+      <display value="Schistosoma sp 120kD Ab [Presence] in Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100147-8"/>
+      <display value="Toxoplasma gondii Ab bands panel - Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100148-6"/>
+      <display value="Schistosoma sp Ab bands panel - Serum by Immunoblot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10014-9"/>
+      <display value="R' wave amplitude in lead II"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100149-4"/>
+      <display value="6-oxo-piperidine-2-carboxylate and 6(R+S)-oxo-propylpiperidine-2-carboxylate panel - Urine and Serum or Plasma"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100150-2"/>
+      <display value="6(R+S)-oxo-propylpiperidine-2-carboxylate [Moles/volume] in Plasma"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100151-0"/>
+      <display value="6-oxo-piperidine-2-carboxylate [Moles/volume] in Plasma"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100152-8"/>
+      <display value="6-oxo-piperidine-2-carboxylate/Creatinine [Molar ratio] in Urine"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100153-6"/>
+      <display value="6(R+S)-oxo-propylpiperidine-2-carboxylate/Creatinine [Molar ratio] in Urine"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100154-4"/>
+      <display value="Specimen collection supervision level"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100155-1"/>
+      <display value="Left cornea Type of Analysis method by Specular microscopy"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10015-6"/>
+      <display value="R' wave amplitude in lead III"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100156-9"/>
+      <display value="SARS-CoV-2 (COVID-19) variant [Type] in Specimen by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100157-7"/>
+      <display value="SARS-CoV-2 (COVID-19) lineage [Type] in Specimen by Sequencing"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100158-5"/>
+      <display value="Microalbumin [Mass/volume] in Urine collected for unspecified duration"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100159-3"/>
+      <display value="Knee Society Score pre-op panel [Knee Society Score]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100160-1"/>
+      <display value="Knee replacement"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100161-9"/>
+      <display value="Charnley Functional Classification"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100162-7"/>
+      <display value="Knee alignment W standing X-ray measured"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100163-5"/>
+      <display value="Knee medial AndOr lateral instability W full extension"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10016-4"/>
+      <display value="R' wave amplitude in lead V1"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100164-3"/>
+      <display value="Knee AP instability W 90 degree flexion"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100165-0"/>
+      <display value="Knee range of motion"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100166-8"/>
+      <display value="Flexion contracture range of Knee"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100167-6"/>
+      <display value="Extensor lag range of Knee"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100168-4"/>
+      <display value="Knee pain severity with level walking"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100169-2"/>
+      <display value="Knee pain severity with stairs or inclines"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="1001-7"/>
+      <display value="DBG Ab [Presence] in Serum or Plasma from Donor"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100170-0"/>
+      <display value="Knee feels normal"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100171-8"/>
+      <display value="Satisfaction with level of knee pain while sitting"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10017-2"/>
+      <display value="R' wave amplitude in lead V2"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100172-6"/>
+      <display value="Satisfaction with level of knee pain while lying in bed"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100173-4"/>
+      <display value="Satisfaction with knee function while getting out of bed"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100174-2"/>
+      <display value="Satisfaction with knee function while performing light household duties"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100175-9"/>
+      <display value="Satisfaction with knee function while performing recreational activities"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100176-7"/>
+      <display value="Expect surgery to relieve pain"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100177-5"/>
+      <display value="Expect surgery will improve ability to perform activities of daily living"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100178-3"/>
+      <display value="Expect surgery will improve ability to perform leisure, recreational, or sports activities"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100179-1"/>
+      <display value="Walk without assistive mobility devices"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10018-0"/>
+      <display value="R' wave amplitude in lead V3"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100180-9"/>
+      <display value="Assistive mobility devices used"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100181-7"/>
+      <display value="Assistive mobility devices used due to health condition"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100182-5"/>
+      <display value="Duration of standing before sitting due to knee discomfort"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100183-3"/>
+      <display value="Duration of walking before stopping due to knee discomfort"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100184-1"/>
+      <display value="How bothersome is knee when walking on an uneven surface"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100185-8"/>
+      <display value="How bothersome is knee when turning or pivoting leg"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100186-6"/>
+      <display value="How bothersome is knee when climbing up or down a flight of stairs"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100187-4"/>
+      <display value="How bothersome is knee when getting up from a low seat without armrests"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100188-2"/>
+      <display value="How bothersome is knee when getting into or out of a car"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100189-0"/>
+      <display value="How bothersome is knee when moving laterally"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100190-8"/>
+      <display value="How bothersome is knee when climbing a ladder or step stool"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100191-6"/>
+      <display value="How bothersome is knee when carrying a bag for one block"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100192-4"/>
+      <display value="How bothersome is knee when squatting"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100193-2"/>
+      <display value="How bothersome is knee when kneeling"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100194-0"/>
+      <display value="How bothersome is knee when running"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100195-7"/>
+      <display value="Pain severity--during activity"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100196-5"/>
+      <display value="Pre-op total score [Knee Society Score]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100197-3"/>
+      <display value="Exercise activity and pain severity panel"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10019-8"/>
+      <display value="R' wave amplitude in lead V4"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100198-1"/>
+      <display value="Pre-op objective knee indicators score [Knee Society Score]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100199-9"/>
+      <display value="Pre-op symptoms score [Knee Society Score]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100200-5"/>
+      <display value="Pre-op patient expectations score [Knee Society Score]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100201-3"/>
+      <display value="Pre-op functional activities score [Knee Society Score]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100202-1"/>
+      <display value="Pre-op discretionary knee activities score [Knee Society Score]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100203-9"/>
+      <display value="Knee Society Score post-op panel [Knee Society Score]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100204-7"/>
+      <display value="Accuracy of pre-surgery expectations of pain relief"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100205-4"/>
+      <display value="Accuracy of pre-surgery expectations to perform activities of daily living"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10020-6"/>
+      <display value="R' wave amplitude in lead V5"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100206-2"/>
+      <display value="Accuracy of pre-surgery expectations to perform leisure, recreational, or sports activities"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100207-0"/>
+      <display value="Post-op total score [Knee Society Score]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100208-8"/>
+      <display value="Post-op objective knee indicators score [Knee Society Score]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100209-6"/>
+      <display value="Post-op symptoms score [Knee Society Score]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100210-4"/>
+      <display value="Post-op patient expectations score [Knee Society Score]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100211-2"/>
+      <display value="Post-op functional activities score [Knee Society Score]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100212-0"/>
+      <display value="Post-op discretionary knee activities score [Knee Society Score]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100213-8"/>
+      <display value="Prostate cancer multigene analysis in Blood or Tissue by Molecular genetics method"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10021-4"/>
+      <display value="R' wave amplitude in lead V6"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100214-6"/>
+      <display value="Dental model prior authorization Document"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100215-3"/>
+      <display value="Episode of care medical records Document Transplant surgery"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100216-1"/>
+      <display value="Surgical synoptic report"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100217-9"/>
+      <display value="Synoptic report Narrative Surgical oncology"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100218-7"/>
+      <display value="Surgical oncology of colon cancer synoptic report"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100219-5"/>
+      <display value="Surgical oncology of melanoma cancer synoptic report"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100220-3"/>
+      <display value="Surgical oncology of breast cancer synoptic report"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100221-1"/>
+      <display value="Surgical oncology of thyroid cancer synoptic report"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10022-2"/>
+      <display value="R' wave duration in lead AVF"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100222-9"/>
+      <display value="Surgical oncology of pancreas cancer synoptic report"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100223-7"/>
+      <display value="Physical findings of Retina Narrative"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100224-5"/>
+      <display value="Cardiac left ventricular segmental wall motion by echo panel"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100225-2"/>
+      <display value="Bone density quantitative ultrasound study"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100226-0"/>
+      <display value="Small bowel capsule endoscopy study Document"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100227-8"/>
+      <display value="Colon capsule endoscopy study Document"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100228-6"/>
+      <display value="Upper gastrointestinal capsule endoscopy study Document"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100229-4"/>
+      <display value="Endoscopic ultrasound study Document"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10023-0"/>
+      <display value="R' wave duration in lead AVL"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100230-2"/>
+      <display value="Routine prenatal assessment panel"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100231-0"/>
+      <display value="Endobronchial ultrasound study"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100232-8"/>
+      <display value="Impacts of Events Scale-Revised panel"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100233-6"/>
+      <display value="Reminders brought back feelings about adverse event"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100234-4"/>
+      <display value="Trouble staying asleep"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100235-1"/>
+      <display value="Other things triggered persistent thoughts about adverse event"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100236-9"/>
+      <display value="Felt irritable AndOr angry"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100237-7"/>
+      <display value="Avoided getting upset when unintentionally thought about adverse event"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100238-5"/>
+      <display value="Thought about adverse event unintentionally"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100239-3"/>
+      <display value="Felt as if adverse event did not happen"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100240-1"/>
+      <display value="Avoided reminders of adverse event"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100241-9"/>
+      <display value="Experienced mental images of adverse event"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100242-7"/>
+      <display value="Easily startled"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100243-5"/>
+      <display value="Tried to not think of adverse event"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100244-3"/>
+      <display value="Aware of feelings about adverse event, but did not address them"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100245-0"/>
+      <display value="Feelings about adverse event were numb"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100246-8"/>
+      <display value="Acted or felt the same as during adverse event"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100247-6"/>
+      <display value="Trouble falling asleep"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10024-8"/>
+      <display value="R' wave duration in lead AVR"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100248-4"/>
+      <display value="Waves of strong feelings about adverse event"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100249-2"/>
+      <display value="Tried to remove adverse event from memory"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="1002-5"/>
+      <display value="DBG Ab [Presence] in Serum or Plasma"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100250-0"/>
+      <display value="Trouble concentrating"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100251-8"/>
+      <display value="Reminders of adverse event caused physical reactions"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100252-6"/>
+      <display value="Had dreams about adverse event"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100253-4"/>
+      <display value="Felt watchful and on-guard"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100254-2"/>
+      <display value="Tried not to talk about adverse event"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10025-5"/>
+      <display value="R' wave duration in lead I"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100255-9"/>
+      <display value="Total score [Impact of Event Scale-Revised]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100256-7"/>
+      <display value="Fallen in last 6 months"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100257-5"/>
+      <display value="Feel unsteady when standing or walking"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100258-3"/>
+      <display value="History of fall related injury"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100259-1"/>
+      <display value="Aware of tactile sensations"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100260-9"/>
+      <display value="Easy to describe thoughts AndOr feelings"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100261-7"/>
+      <display value="Critical of own thoughts AndOr feelings"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100262-5"/>
+      <display value="Able to notice distressing thoughts AndOr feelings without having to react"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10026-3"/>
+      <display value="R' wave duration in lead II"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100263-3"/>
+      <display value="Easily distracted"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100264-1"/>
+      <display value="Able to notice thoughts AndOr feelings without being overwhelmed"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100265-8"/>
+      <display value="Aware of dietary intake impact on self"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100266-6"/>
+      <display value="Difficult to describe thoughts AndOr feelings"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100267-4"/>
+      <display value="Aware of auditory stimuli"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100268-2"/>
+      <display value="Able to avoid immediate reaction in difficult situations"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100269-0"/>
+      <display value="Do things without paying attention"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100270-8"/>
+      <display value="Recover quickly from distressing thoughts AndOr images"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10027-1"/>
+      <display value="R' wave duration in lead III"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100271-6"/>
+      <display value="Aware of olfactory stimuli"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100272-4"/>
+      <display value="Aware of visual stimuli"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100273-2"/>
+      <display value="Aware of emotions affect on thoughts AndOr behavior"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100274-0"/>
+      <display value="Observing score [FFMQ]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100275-7"/>
+      <display value="Describing score [FFMQ]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100276-5"/>
+      <display value="Acting with awareness score [FFMQ]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100277-3"/>
+      <display value="Nonjudging score [FFMQ]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100278-1"/>
+      <display value="Nonreactivity score [FFMQ]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100279-9"/>
+      <display value="Total score [FFMQ]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100280-7"/>
+      <display value="Five Facet Mindfulness Questionnaire panel [FFMQ]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100281-5"/>
+      <display value="D Ab [Units/volume] in Serum or Plasma"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100282-3"/>
+      <display value="Vaccine exemption certificate"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100283-1"/>
+      <display value="Harris Hip Score panel [Harris Hip Score]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100284-9"/>
+      <display value="Walking - functional ability"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100285-6"/>
+      <display value="Comfortable seated position"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100286-4"/>
+      <display value="Able to board public transportation"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100287-2"/>
+      <display value="Put on shoes and socks"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100288-0"/>
+      <display value="Absence of deformity score [Harris Hip Score]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10028-9"/>
+      <display value="R' wave duration in lead V1"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100289-8"/>
+      <display value="Absence of hip deformity measurements"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100290-6"/>
+      <display value="Range of motion score [Harris Hip Score]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100291-4"/>
+      <display value="Total score [Harris Hip Score]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100292-2"/>
+      <display value="Pre-op patient satisfaction score [Knee Society Score]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100293-0"/>
+      <display value="Hip Flexion range of motion"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100294-8"/>
+      <display value="Hip Abduction range of motion"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100295-5"/>
+      <display value="Hip Adduction range of motion"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100296-3"/>
+      <display value="Hip External rotation range of motion"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10029-7"/>
+      <display value="R' wave duration in lead V2"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100297-1"/>
+      <display value="Hip Internal rotation range of motion"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100298-9"/>
+      <display value="Repetition count"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100299-7"/>
+      <display value="Post-op patient satisfaction score [Knee Society Score]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100300-3"/>
+      <display value="End time Unspecified body region"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100301-1"/>
+      <display value="Start time Unspecified body region"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100302-9"/>
+      <display value="Time period start and end panel Unspecified body region"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100303-7"/>
+      <display value="Condition certainty of presence"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100304-5"/>
+      <display value="Flights climbed [#] Reporting Period"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10030-5"/>
+      <display value="R' wave duration in lead V3"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100305-2"/>
+      <display value="IDH1 gene exon 4 targeted mutation analysis [Presence] in Blood or Marrow by Molecular genetics method"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100306-0"/>
+      <display value="IDH2 gene exon 4 targeted mutation analysis [Presence] in Blood or Marrow by Molecular genetics method"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100307-8"/>
+      <display value="Behavioral screening elder mistreatment"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100308-6"/>
+      <display value="Need help getting to essential places"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100309-4"/>
+      <display value="Activity support person"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100310-2"/>
+      <display value="Reliability of support person"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100311-0"/>
+      <display value="Need help to make sure there is enough food, medicines or any other things needed in house"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100312-8"/>
+      <display value="Person or persons that makes sure there is enough food, medicines or any other things needed in house"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10031-3"/>
+      <display value="R' wave duration in lead V4"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100313-6"/>
+      <display value="Need help with household things such as cook meals, help feed, or provide correct medicines each day"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100314-4"/>
+      <display value="Need help with house cleaning or yard work"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100315-1"/>
+      <display value="Need help getting out of bed, showered, or dressed"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100316-9"/>
+      <display value="Need help to make sure bills get paid"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100317-7"/>
+      <display value="Relationship of usual support person for daily activities"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100318-5"/>
+      <display value="Have help with finances AndOr financial decisions"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100319-3"/>
+      <display value="Relationship of financial support person"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100320-1"/>
+      <display value="Financial support person usually asks for permission before making decisions"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10032-1"/>
+      <display value="R' wave duration in lead V5"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100321-9"/>
+      <display value="Financial support person usually makes good decisions about finances"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100322-7"/>
+      <display value="Have access to paperwork for financial decisions made"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100323-5"/>
+      <display value="Financial support person forged signature"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100324-3"/>
+      <display value="Coercion of financial support person for signing a document in order to get money or possessions"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100325-0"/>
+      <display value="Experienced theft by support person"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100326-8"/>
+      <display value="Money spent or property sold without permission"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100327-6"/>
+      <display value="Stranger forged signature for financial gain"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100328-4"/>
+      <display value="Stranger forced document signature for financial gain"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100329-2"/>
+      <display value="Feared for safety due to verbal attack"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="1003-3"/>
+      <display value="Indirect antiglobulin test.complement specific reagent [Presence] in Serum or Plasma"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100330-0"/>
+      <display value="Felt humiliated due to ridicule"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100331-8"/>
+      <display value="Coerced to do something"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100332-6"/>
+      <display value="Ignored by close friend or relative for extended period"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100333-4"/>
+      <display value="Physically hit or threatened"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100334-2"/>
+      <display value="Been physically hurt with some degree of injury"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100335-9"/>
+      <display value="Coerced sexual activity"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100336-7"/>
+      <display value="Coerced touching of private body parts of self or others"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100337-5"/>
+      <display value="Coerced to undress or expose private body area"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100338-3"/>
+      <display value="Photographed in any degree of nudity without consent"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10033-9"/>
+      <display value="R' wave duration in lead V6"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100339-1"/>
+      <display value="Experienced attempted physical restraint"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100340-9"/>
+      <display value="Range of motion panel Hip"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100341-7"/>
+      <display value="Rubella virus IgG Ab index [Units/volume] in Serum and CSF"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100342-5"/>
+      <display value="Volatile Organic Compounds associated with SARS-CoV-2 infection [Presence] in Exhaled gas by Gas chromatography-mass spectrometry"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100343-3"/>
+      <display value="Influenza virus B RNA [Presence] in Saliva (oral fluid) by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100344-1"/>
+      <display value="Influenza virus A RNA [Presence] in Saliva (oral fluid) by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100345-8"/>
+      <display value="Influenza virus A and B and SARS-CoV-2 (COVID-19) RNA panel - Specimen by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100346-6"/>
+      <display value="Clotting time.extrinsic coagulation system activated.platelets inhibited of Blood by Rotational TEG"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10034-7"/>
+      <display value="S wave amplitude in lead AVF"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100347-4"/>
+      <display value="Clot formation.extrinsic coagulation system activated.platelets inhibited [Time] in Blood by Rotational TEG"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100348-2"/>
+      <display value="Model for end-stage liver disease sodium score"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100349-0"/>
+      <display value="US.doppler Penis vessels W vasodilator IV"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100350-8"/>
+      <display value="Sesamum indicum 1 IgE Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100351-6"/>
+      <display value="Pioglitazone [Presence] in Serum or Plasma"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100352-4"/>
+      <display value="Rosiglitazone [Presence] in Serum or Plasma"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100353-2"/>
+      <display value="Norwalk Community Health Center Screening Tool [NCHC]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10035-4"/>
+      <display value="S wave amplitude in lead AVL"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100354-0"/>
+      <display value="Frequency of participating in multi-modal communication without assistance"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100355-7"/>
+      <display value="Frequency of participating in spoken language expression communication without assistance"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100356-5"/>
+      <display value="Chlamydia trachomatis and Neisseria gonorrhoeae and Trichomonas vaginalis DNA [Identifier] in Specimen by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100357-3"/>
+      <display value="Naloxone [Presence] in Cord tissue by Screen method"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100358-1"/>
+      <display value="Phentermine [Presence] in Cord tissue by Screen method"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100359-9"/>
+      <display value="Gliadin 33 mer peptide [Mass/volume] in Stool by Immunoassay"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100360-7"/>
+      <display value="Brief Resilience Scale panel [BRS]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100361-5"/>
+      <display value="Quickly recover from bad events"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10036-2"/>
+      <display value="S wave amplitude in lead AVR"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100362-3"/>
+      <display value="Difficulty making it through stressful events"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100363-1"/>
+      <display value="Easily recover from a stressful event"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100364-9"/>
+      <display value="Difficulty recovering from bad events"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100365-6"/>
+      <display value="Easily recover from difficulties"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100366-4"/>
+      <display value="Lengthy recovery from setbacks"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100367-2"/>
+      <display value="Total Score BRS"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100368-0"/>
+      <display value="Amino Acids Urea Cycle Panel - Serum or Plasma by LC/MS/MS"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100369-8"/>
+      <display value="NM Thyroid gland Views W Tl-201 IV"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10037-0"/>
+      <display value="S wave amplitude in lead I"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100370-6"/>
+      <display value="Orthopoxvirus DNA [Identifier] in Specimen by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100371-4"/>
+      <display value="Titin Ab [Units/volume] in Serum by Immunoassay"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100372-2"/>
+      <display value="Abiraterone [Mass/volume] in Serum or Plasma"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100373-0"/>
+      <display value="Eucheuma IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100374-8"/>
+      <display value="Aloe vera IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100375-5"/>
+      <display value="Anise IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100376-3"/>
+      <display value="Bambusa vulgaris IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100377-1"/>
+      <display value="Goat cheese IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100378-9"/>
+      <display value="Sheep cheese IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100379-7"/>
+      <display value="Leeks IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100380-5"/>
+      <display value="Red cabbage IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100381-3"/>
+      <display value="Mentha balsamea Wild IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100382-1"/>
+      <display value="FDA package insert REMS addressed risk"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100383-9"/>
+      <display value="Monkeypox virus DNA [Presence] in Specimen by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100384-7"/>
+      <display value="Rapeseed IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100385-4"/>
+      <display value="Corn salad IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100386-2"/>
+      <display value="Rosemary IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100387-0"/>
+      <display value="Poppy Seed IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10038-8"/>
+      <display value="S wave amplitude in lead II"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100388-8"/>
+      <display value="Cocoa IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100389-6"/>
+      <display value="Pistachio IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100390-4"/>
+      <display value="Sunflower Seed IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100391-2"/>
+      <display value="Dates IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100392-0"/>
+      <display value="Duck meat IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100393-8"/>
+      <display value="Allergen Mushroom mix 2 (Xerocomus, Boletus) IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100394-6"/>
+      <display value="Astacoidea IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100395-3"/>
+      <display value="Carob IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10039-6"/>
+      <display value="S wave amplitude in lead III"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100396-1"/>
+      <display value="Brassica napus IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100397-9"/>
+      <display value="Goat Meat IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100398-7"/>
+      <display value="Goose meat IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100399-5"/>
+      <display value="Ostrich meat IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100400-1"/>
+      <display value="Quail meat IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100401-9"/>
+      <display value="Rabbit meat IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100402-7"/>
+      <display value="Venison meat IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100403-5"/>
+      <display value="Guineafowl IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10040-4"/>
+      <display value="S wave amplitude in lead V1"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100404-3"/>
+      <display value="Horse meat IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100405-0"/>
+      <display value="Kefir IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100406-8"/>
+      <display value="Butter IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100407-6"/>
+      <display value="Camembert cheese IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100408-4"/>
+      <display value="Emmental cheese IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100409-2"/>
+      <display value="Processed cheese IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="1004-1"/>
+      <display value="Direct antiglobulin test.complement specific reagent [Presence] on Red Blood Cells"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100410-0"/>
+      <display value="Curd cheese IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100411-8"/>
+      <display value="Sugar Beet IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10041-2"/>
+      <display value="S wave amplitude in lead V2"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100412-6"/>
+      <display value="Chinese cabbage IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100413-4"/>
+      <display value="Fennel Fresh IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100414-2"/>
+      <display value="Gourd IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100415-9"/>
+      <display value="Kale IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100416-7"/>
+      <display value="Savoy cabbage IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100417-5"/>
+      <display value="Vitis sp leaf IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100418-3"/>
+      <display value="Liquorice IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100419-1"/>
+      <display value="Snow pea IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10042-0"/>
+      <display value="S wave amplitude in lead V3"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100420-9"/>
+      <display value="Fava bean IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100421-7"/>
+      <display value="Chick Pea IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100422-5"/>
+      <display value="Chicory IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100423-3"/>
+      <display value="Allergy Mushroom Mix 1 (Button + oyster + Shiitaki + chanterelle mushroom) IgG Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100424-1"/>
+      <display value="8(9)-Cholestenol [Mass/volume] in Serum or Plasma"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100425-8"/>
+      <display value="DiHydro T-Mas [Mass/volume] in Serum or Plasma"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100426-6"/>
+      <display value="Squalene [Mass/volume] in Serum or Plasma"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100427-4"/>
+      <display value="Stigmasterol [Mass/volume] in Serum or Plasma"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100428-2"/>
+      <display value="Carnitine free and total and acylcarnitine panel - Urine"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100429-0"/>
+      <display value="LRBA deficiency panel - Blood"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100430-8"/>
+      <display value="Cells.LRBA+/100 Cells.CD3+CD14-CD45+ in Blood by Flow cytometry (FC)"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100431-6"/>
+      <display value="Cells.CD3+CD14-CD45+.LRBA mean fluorescence intensity in Blood by Flow cytometry (FC)"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100432-4"/>
+      <display value="Cells.LRBA+/100 Cells.CD3-CD14-CD19+CD45+ in Blood by Flow cytometry (FC)"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100433-2"/>
+      <display value="Cells.CD3-CD14-CD19+CD45+.LRBA mean fluorescence intensity in Blood by Flow cytometry (FC)"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100434-0"/>
+      <display value="Orthopoxvirus.non-variola DNA [Presence] in Specimen by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100435-7"/>
+      <display value="Glial fibrillary acidic protein [Mass/volume] in Serum by Immunoassay"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100436-5"/>
+      <display value="Ubiquitin carboxyl-terminal hydrolase-L1 [Mass/volume] in Serum by Immunoassay"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100437-3"/>
+      <display value="Norsufentanil [Mass/volume] in Urine by Confirmatory method"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10043-8"/>
+      <display value="S wave amplitude in lead V4"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100438-1"/>
+      <display value="Adolescent medicine Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100439-9"/>
+      <display value="Allergy and Immunology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100440-7"/>
+      <display value="Allergy Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100441-5"/>
+      <display value="Attending Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100442-3"/>
+      <display value="Audiology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100443-1"/>
+      <display value="Bariatric surgery Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100444-9"/>
+      <display value="Blood banking and transfusion medicine Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100445-6"/>
+      <display value="Bone Marrow Transplant Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10044-6"/>
+      <display value="S wave amplitude in lead V5"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100446-4"/>
+      <display value="Breastfeeding Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100447-2"/>
+      <display value="Burn management Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100448-0"/>
+      <display value="Cardiac surgery Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100449-8"/>
+      <display value="Cardiopulmonary Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100450-6"/>
+      <display value="Child and adolescent psychiatry Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100451-4"/>
+      <display value="Chiropractic medicine Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100452-2"/>
+      <display value="Clinical cardiac electrophysiology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10045-3"/>
+      <display value="S wave amplitude in lead V6"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100453-0"/>
+      <display value="Clinical genetics Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100454-8"/>
+      <display value="Clinical neurophysiology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100455-5"/>
+      <display value="Clinical pathology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100456-3"/>
+      <display value="Colon and rectal surgery Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100457-1"/>
+      <display value="Consultant Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100458-9"/>
+      <display value="Outpatient COVID-19 Intubation Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100459-7"/>
+      <display value="Outpatient COVID-19 Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100460-5"/>
+      <display value="Dermatology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10046-1"/>
+      <display value="S wave duration in lead AVF"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100461-3"/>
+      <display value="Developmental-behavioral pediatrics Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100462-1"/>
+      <display value="Dialysis and Therapeutic apheresis Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100463-9"/>
+      <display value="Eating disorders Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100464-7"/>
+      <display value="Endocrinology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100465-4"/>
+      <display value="Family medicine Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100466-2"/>
+      <display value="Gastroenterology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100467-0"/>
+      <display value="Geriatric medicine Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100468-8"/>
+      <display value="Gynecologic oncology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100469-6"/>
+      <display value="Gynecology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100470-4"/>
+      <display value="Healthcare navigator Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100471-2"/>
+      <display value="Heart failure Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100472-0"/>
+      <display value="Heart failure+Transplant cardiology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100473-8"/>
+      <display value="Hematology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100474-6"/>
+      <display value="Hematology+Medical oncology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100475-3"/>
+      <display value="Hepatology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100476-1"/>
+      <display value="Immunology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100477-9"/>
+      <display value="Infectious disease Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100478-7"/>
+      <display value="Internal medicine Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10047-9"/>
+      <display value="S wave duration in lead AVL"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100479-5"/>
+      <display value="Interventional cardiology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100480-3"/>
+      <display value="Interventional radiology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100481-1"/>
+      <display value="Outpatient Mechanical circulatory support Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100482-9"/>
+      <display value="Medical Aid in Dying Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100483-7"/>
+      <display value="Mental health Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100484-5"/>
+      <display value="Multi-specialty program Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100485-2"/>
+      <display value="Neonatal perinatal medicine Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100486-0"/>
+      <display value="Nephrology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10048-7"/>
+      <display value="S wave duration in lead AVR"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100487-8"/>
+      <display value="Neurological surgery Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100488-6"/>
+      <display value="Neurology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100489-4"/>
+      <display value="Neurology with special qualifications in child neurology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100490-2"/>
+      <display value="Nurse practitioner Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100491-0"/>
+      <display value="Nurse Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100492-8"/>
+      <display value="Nutrition and dietetics Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100493-6"/>
+      <display value="Obstetrics and Gynecology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100494-4"/>
+      <display value="Obstetrics Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10049-5"/>
+      <display value="S wave duration in lead I"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100495-1"/>
+      <display value="Occupational therapy Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100496-9"/>
+      <display value="Oncology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100497-7"/>
+      <display value="Ophthalmology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100498-5"/>
+      <display value="Optometry Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100499-3"/>
+      <display value="Oral and Maxillofacial Surgery Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100500-8"/>
+      <display value="Orthopaedic surgery Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100501-6"/>
+      <display value="Orthotics prosthetics Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100502-4"/>
+      <display value="Otolaryngology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10050-3"/>
+      <display value="S wave duration in lead II"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100503-2"/>
+      <display value="Pain medicine Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100504-0"/>
+      <display value="Palliative care Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100505-7"/>
+      <display value="Pediatric cardiology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100506-5"/>
+      <display value="Pediatric dermatology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100507-3"/>
+      <display value="Pediatric endocrinology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100508-1"/>
+      <display value="Pediatric gastroenterology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100509-9"/>
+      <display value="Pediatric hematology-oncology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100510-7"/>
+      <display value="Pediatric infectious diseases Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10051-1"/>
+      <display value="S wave duration in lead III"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100511-5"/>
+      <display value="Pediatric otolaryngology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100512-3"/>
+      <display value="Pediatric pulmonology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100513-1"/>
+      <display value="Pediatric rheumatology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100514-9"/>
+      <display value="Pediatric surgery Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100515-6"/>
+      <display value="Pediatric transplant hepatology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100516-4"/>
+      <display value="Pediatric urology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100517-2"/>
+      <display value="Pharmacogenomics Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100518-0"/>
+      <display value="Physical medicine and rehab Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100519-8"/>
+      <display value="Physical therapy Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100520-6"/>
+      <display value="Plastic surgery Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100521-4"/>
+      <display value="Podiatry Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100522-2"/>
+      <display value="Psychiatry Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100523-0"/>
+      <display value="Psychology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100524-8"/>
+      <display value="Pulmonary Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100525-5"/>
+      <display value="Radiation oncology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100526-3"/>
+      <display value="Radiology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100527-1"/>
+      <display value="Recreational therapy Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100528-9"/>
+      <display value="Reproductive endocrinology and infertility Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10052-9"/>
+      <display value="S wave duration in lead V1"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100529-7"/>
+      <display value="Research Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100530-5"/>
+      <display value="Rheumatology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100531-3"/>
+      <display value="Sleep medicine Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100532-1"/>
+      <display value="Social worker Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100533-9"/>
+      <display value="Solid Organ Transplant Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100534-7"/>
+      <display value="Speech-language pathology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100535-4"/>
+      <display value="Spinal surgery Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100536-2"/>
+      <display value="Sports medicine Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10053-7"/>
+      <display value="S wave duration in lead V2"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100537-0"/>
+      <display value="Surgery of the hand Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100538-8"/>
+      <display value="Telehealth+Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100539-6"/>
+      <display value="Thromboembolism Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100540-4"/>
+      <display value="Transplant surgery Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100541-2"/>
+      <display value="Trauma Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100542-0"/>
+      <display value="Urology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100543-8"/>
+      <display value="Vascular neurology Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100544-6"/>
+      <display value="Vascular surgery Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10054-5"/>
+      <display value="S wave duration in lead V3"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100545-3"/>
+      <display value="Wound care management Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100546-1"/>
+      <display value="Wound, Ostomy, and Continence Care Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100547-9"/>
+      <display value="Adolescent medicine Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100548-7"/>
+      <display value="Allergy and Immunology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100549-5"/>
+      <display value="Allergy Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100550-3"/>
+      <display value="Attending Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100551-1"/>
+      <display value="Audiology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10055-2"/>
+      <display value="S wave duration in lead V4"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100552-9"/>
+      <display value="Bariatric surgery Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100553-7"/>
+      <display value="Blood banking and transfusion medicine Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100554-5"/>
+      <display value="Bone Marrow Transplant Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100555-2"/>
+      <display value="Breastfeeding Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100556-0"/>
+      <display value="Burn management Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100557-8"/>
+      <display value="Cardiac surgery Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100558-6"/>
+      <display value="Cardiopulmonary Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100559-4"/>
+      <display value="Child and adolescent psychiatry Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10056-0"/>
+      <display value="S wave duration in lead V5"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100560-2"/>
+      <display value="Clinical cardiac electrophysiology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100561-0"/>
+      <display value="Clinical genetics Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100562-8"/>
+      <display value="Clinical neurophysiology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100563-6"/>
+      <display value="Clinical pathology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100564-4"/>
+      <display value="Colon and rectal surgery Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100565-1"/>
+      <display value="Consultant Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100566-9"/>
+      <display value="Dentistry Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100567-7"/>
+      <display value="Dermatology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100568-5"/>
+      <display value="Developmental-behavioral pediatrics Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100569-3"/>
+      <display value="Dialysis and Therapeutic apheresis Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100570-1"/>
+      <display value="Eating disorders Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100571-9"/>
+      <display value="Endocrinology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100572-7"/>
+      <display value="Family medicine Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100573-5"/>
+      <display value="Gastroenterology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100574-3"/>
+      <display value="General medicine Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100575-0"/>
+      <display value="Geriatric medicine Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100576-8"/>
+      <display value="Gynecologic oncology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100577-6"/>
+      <display value="Gynecology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10057-8"/>
+      <display value="S wave duration in lead V6"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100578-4"/>
+      <display value="Healthcare navigator Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100579-2"/>
+      <display value="Heart failure Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="1005-8"/>
+      <display value="Indirect antiglobulin test.IgG specific reagent [Presence] in Serum or Plasma"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100580-0"/>
+      <display value="Heart failure+Transplant cardiology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100581-8"/>
+      <display value="Hematology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100582-6"/>
+      <display value="Hematology+Medical oncology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100583-4"/>
+      <display value="Hepatology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100584-2"/>
+      <display value="Immunology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100585-9"/>
+      <display value="Infectious disease Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10058-6"/>
+      <display value="S' wave amplitude in lead AVF"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100586-7"/>
+      <display value="Internal medicine Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100587-5"/>
+      <display value="Interventional cardiology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100588-3"/>
+      <display value="Interventional radiology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100589-1"/>
+      <display value="Hospital Mechanical circulatory support Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100590-9"/>
+      <display value="Medical Aid in Dying Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100591-7"/>
+      <display value="Mental health Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100592-5"/>
+      <display value="Multi-specialty program Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100593-3"/>
+      <display value="Neonatal perinatal medicine Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10059-4"/>
+      <display value="S' wave amplitude in lead AVL"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100594-1"/>
+      <display value="Nephrology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100595-8"/>
+      <display value="Neurological surgery Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100596-6"/>
+      <display value="Neurology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100597-4"/>
+      <display value="Neurology with special qualifications in child neurology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100598-2"/>
+      <display value="Nurse practitioner Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100599-0"/>
+      <display value="Nurse Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100600-6"/>
+      <display value="Nutrition and dietetics Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100601-4"/>
+      <display value="Obstetrics and Gynecology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10060-2"/>
+      <display value="S' wave amplitude in lead AVR"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100602-2"/>
+      <display value="Obstetrics Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100603-0"/>
+      <display value="Occupational therapy Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100604-8"/>
+      <display value="Oncology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100605-5"/>
+      <display value="Ophthalmology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100606-3"/>
+      <display value="Oral and Maxillofacial Surgery Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100607-1"/>
+      <display value="Orthopaedic surgery Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100608-9"/>
+      <display value="Orthotics prosthetics Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100609-7"/>
+      <display value="Otolaryngology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10061-0"/>
+      <display value="S' wave amplitude in lead I"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100610-5"/>
+      <display value="Pain medicine Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100611-3"/>
+      <display value="Palliative care Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100612-1"/>
+      <display value="Pastoral care Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100613-9"/>
+      <display value="Pediatric cardiology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100614-7"/>
+      <display value="Pediatric dermatology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100615-4"/>
+      <display value="Pediatric endocrinology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100616-2"/>
+      <display value="Pediatric gastroenterology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100617-0"/>
+      <display value="Pediatric hematology-oncology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100618-8"/>
+      <display value="Pediatric infectious diseases Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100619-6"/>
+      <display value="Pediatric otolaryngology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100620-4"/>
+      <display value="Pediatric pulmonology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100621-2"/>
+      <display value="Pediatric rheumatology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100622-0"/>
+      <display value="Pediatric surgery Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100623-8"/>
+      <display value="Pediatric transplant hepatology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100624-6"/>
+      <display value="Pharmacogenomics Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100625-3"/>
+      <display value="Pharmacology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100626-1"/>
+      <display value="Physical medicine and rehab Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100627-9"/>
+      <display value="Physical therapy Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10062-8"/>
+      <display value="S' wave amplitude in lead II"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100628-7"/>
+      <display value="Plastic surgery Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100629-5"/>
+      <display value="Podiatry Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100630-3"/>
+      <display value="Psychology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100631-1"/>
+      <display value="Radiation oncology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100632-9"/>
+      <display value="Radiology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100633-7"/>
+      <display value="Rapid response team Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100634-5"/>
+      <display value="Recreational therapy Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100635-2"/>
+      <display value="Reproductive endocrinology and infertility Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10063-6"/>
+      <display value="S' wave amplitude in lead III"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100636-0"/>
+      <display value="Research Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100637-8"/>
+      <display value="Rheumatology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100638-6"/>
+      <display value="Sleep medicine Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100639-4"/>
+      <display value="Social worker Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100640-2"/>
+      <display value="Solid Organ Transplant Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100641-0"/>
+      <display value="Speech-language pathology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100642-8"/>
+      <display value="Spinal surgery Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100643-6"/>
+      <display value="Surgery of the hand Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10064-4"/>
+      <display value="S' wave amplitude in lead V1"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100644-4"/>
+      <display value="Thromboembolism Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100645-1"/>
+      <display value="Trauma Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100646-9"/>
+      <display value="Urology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100647-7"/>
+      <display value="Vascular neurology Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100648-5"/>
+      <display value="Vascular surgery Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100649-3"/>
+      <display value="Wound care management Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100650-1"/>
+      <display value="Wound, Ostomy, and Continence Care Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10065-1"/>
+      <display value="S' wave amplitude in lead V2"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100651-9"/>
+      <display value="Hospital COVID-19 Intubation Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100652-7"/>
+      <display value="Pure tone bone conduction threshold audiometry panel"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100653-5"/>
+      <display value="Pure tone air conduction threshold audiometry panel"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100654-3"/>
+      <display value="Pyruvate kinase M2 [Presence] in Stool"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100655-0"/>
+      <display value="XR Sella turcica Lateral"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100656-8"/>
+      <display value="Maternal and fetal medicine Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100657-6"/>
+      <display value="Maternal and fetal medicine Telephone encounter+Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100658-4"/>
+      <display value="Hospital COVID-19 Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100659-2"/>
+      <display value="Maternal and fetal medicine Hospital Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="1006-6"/>
+      <display value="Direct antiglobulin test.IgG specific reagent [Interpretation] on Red Blood Cells"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100660-0"/>
+      <display value="Maternal and fetal medicine Telephone encounter+Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100661-8"/>
+      <display value="Psychiatry Outpatient Progress note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100662-6"/>
+      <display value="Cortisol free and total panel - Serum or Plasma"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100663-4"/>
+      <display value="TPMT gene c.460G&gt;A and c.719A&gt;G [Presence] in Blood by Molecular genetics method"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100664-2"/>
+      <display value="NUDT15 gene c.50_55dup and c.415C&gt;T [Presence] in Blood by Molecular genetics method"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100665-9"/>
+      <display value="NUDT15 gene c.415C&gt;T [Presence] in Blood by Molecular genetics method"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100666-7"/>
+      <display value="NUDT15 gene c.416G&gt;A [Presence] in Blood by Molecular genetics method"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100667-5"/>
+      <display value="NUDT15 gene c.52G&gt;A [Presence] in Blood by Molecular genetics method"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100668-3"/>
+      <display value="NUDT15 gene c.50_55dup [Presence] in Blood by Molecular genetics method"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10066-9"/>
+      <display value="S' wave amplitude in lead V3"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100669-1"/>
+      <display value="NUDT15 gene c.50_55del [Presence] in Blood by Molecular genetics method"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100670-9"/>
+      <display value="RHD gene allele [Identifier] in Plasma cell-free DNA Nominal--fetus"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100671-7"/>
+      <display value="Aspergillus sp DNA [Presence] in Blood by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100672-5"/>
+      <display value="Aspergillus fumigatus DNA [Presence] in Blood by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100673-3"/>
+      <display value="Aspergillus terreus DNA [Presence] in Blood by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100674-1"/>
+      <display value="BK virus DNA [Log #/volume] (viral load) in Blood by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100675-8"/>
+      <display value="Cytomegalovirus DNA [Units/volume] (viral load) in Blood by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100676-6"/>
+      <display value="Cytomegalovirus DNA [log units/volume] (viral load) in Blood by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10067-7"/>
+      <display value="S' wave amplitude in lead V4"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100677-4"/>
+      <display value="Epstein Barr virus DNA [Log #/volume] (viral load) in Serum or Plasma by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100678-2"/>
+      <display value="Epstein Barr virus DNA [Log #/volume] (viral load) in Blood by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100679-0"/>
+      <display value="Herpes virus 6 DNA [Log #/volume] (viral load) in Serum or Plasma by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100680-8"/>
+      <display value="Herpes virus 6 DNA [Log #/volume] (viral load) in Blood by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100681-6"/>
+      <display value="Herpes virus 7 DNA [Log #/volume] (viral load) in Serum or Plasma by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100682-4"/>
+      <display value="Herpes virus 7 DNA [Log #/volume] (viral load) in Blood by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100683-2"/>
+      <display value="Herpes virus 8 DNA [Log #/volume] (viral load) in Serum or Plasma by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100684-0"/>
+      <display value="Herpes virus 8 DNA [Log #/volume] (viral load) in Blood by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10068-5"/>
+      <display value="S' wave amplitude in lead V5"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100685-7"/>
+      <display value="JC virus DNA [Log #/volume] (viral load) in Serum or Plasma by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100686-5"/>
+      <display value="JC virus DNA [Log #/volume] (viral load) in Cerebral spinal fluid by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100687-3"/>
+      <display value="JC virus DNA [Log #/volume] (viral load) in Urine by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100688-1"/>
+      <display value="Parvovirus B19 DNA [Log #/volume] (viral load) in Blood by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100689-9"/>
+      <display value="Toxoplasma gondii DNA [Log #/volume] in Serum or Plasma by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100690-7"/>
+      <display value="Toxoplasma gondii DNA [Log #/volume] in Cerebral spinal fluid by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100691-5"/>
+      <display value="Varicella zoster virus DNA [Log #/volume] (viral load) in Blood by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100692-3"/>
+      <display value="Varicella zoster virus DNA [Log #/volume] (viral load) in Cerebral spinal fluid by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10069-3"/>
+      <display value="S' wave amplitude in lead V6"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100693-1"/>
+      <display value="Pneumocystis jiroveci DNA [Log #/volume] in Respiratory system specimen by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100694-9"/>
+      <display value="SMN1 gene silent carrier analysis [Presence] in Blood or Tissue by Molecular genetics method"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100695-6"/>
+      <display value="Genetic disease analysis overall carrier interpretation in Blood or Tissue by Molecular genetics method Narrative"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100696-4"/>
+      <display value="CTNS related multigene analysis [Identifier] in Bodyfluid and Serum or Plasma by Molecular genetics method Nominal"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100697-2"/>
+      <display value="Interventional radiology Outpatient Note"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100698-0"/>
+      <display value="Social Determinants of Health screening report Document"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100699-8"/>
+      <display value="Rifabutin+Ethambutol [Susceptibility]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100700-4"/>
+      <display value="Trichomonas vaginalis DNA [Presence] in Urethra by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10070-1"/>
+      <display value="S' wave duration in lead AVF"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100701-2"/>
+      <display value="Trichomonas vaginalis rRNA [Presence] in Urethra by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100702-0"/>
+      <display value="Mycoplasma genitalium rRNA [Presence] in Urethra by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100703-8"/>
+      <display value="Mycoplasma genitalium rRNA [Presence] in Urine by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100704-6"/>
+      <display value="Mycoplasma genitalium rRNA [Presence] in Cervix by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100705-3"/>
+      <display value="Mycoplasma genitalium rRNA [Presence] in Anorectal by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100706-1"/>
+      <display value="Mycoplasma genitalium rRNA [Presence] in Specimen by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100707-9"/>
+      <display value="Polymorphonuclear cells [#/volume] in Peritoneal dialysis fluid by Automated count"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100708-7"/>
+      <display value="Plasma cells/100 leukocytes in Synovial fluid"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100709-5"/>
+      <display value="Hepatocellular carcinoma risk [Score] by GAAD"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100710-3"/>
+      <display value="Chlamydia trachomatis and Neisseria gonorrhoeae rRNA panel - Throat by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100711-1"/>
+      <display value="Borrelia burgdorferi.VlsE1+pepC10 Ab [Units/volume] in Serum by Immunoassay"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100712-9"/>
+      <display value="Brexpiprazole [Mass/volume] in Serum or Plasma"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100713-7"/>
+      <display value="Cariprazine [Mass/volume] in Serum or Plasma"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100714-5"/>
+      <display value="Guanfacine [Mass/volume] in Serum or Plasma"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100715-2"/>
+      <display value="Prothipendyl [Mass/volume] in Serum or Plasma"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100716-0"/>
+      <display value="Prostate specific Ag [Mass/volume] in DBS"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100717-8"/>
+      <display value="FCGR3A gene.p.Phe176Val [Presence] in Blood or Tissue by Molecular genetics method"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100718-6"/>
+      <display value="Undersea and hyperbaric medicine Discharge summary"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10071-9"/>
+      <display value="S' wave duration in lead AVL"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100719-4"/>
+      <display value="Surgical oncology Discharge summary"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100720-2"/>
+      <display value="Reproductive endocrinology and infertility Discharge summary"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100721-0"/>
+      <display value="Community health care Discharge summary"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100722-8"/>
+      <display value="Integrative medicine Discharge summary"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100723-6"/>
+      <display value="Sports medicine Discharge summary"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100724-4"/>
+      <display value="Diabetology Discharge summary"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100725-1"/>
+      <display value="Optometry Discharge summary"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100726-9"/>
+      <display value="Podiatry Discharge summary"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10072-7"/>
+      <display value="S' wave duration in lead AVR"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100727-7"/>
+      <display value="Chiropractic medicine Discharge summary"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100728-5"/>
+      <display value="Cardiac surgery Discharge summary"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100729-3"/>
+      <display value="Breastfeeding Discharge summary"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100730-1"/>
+      <display value="Transplant surgery Discharge summary"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100731-9"/>
+      <display value="Urgent care center Discharge summary"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100732-7"/>
+      <display value="Cholesterol.in lipoprotein (little a) and Cholesterol.in LDL panel - Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100733-5"/>
+      <display value="Cholesterol in LDL [Mass/volume] in Serum by calculation --corrected for Cholesterol.in lipoprotein (little a)"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100734-3"/>
+      <display value="traMADol and Metabolites Panel - Urine by Confirmatory method"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10073-5"/>
+      <display value="S' wave duration in lead I"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100735-0"/>
+      <display value="Mannose-6-phosphate isomerase and phosphomannomutase 1 panel - Leukocytes"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100736-8"/>
+      <display value="Acylcarnitine Analysis Post Mortem in Specimen Document"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100737-6"/>
+      <display value="Alkaline phosphatase.macromolecular [Presence] in Serum or Plasma"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100738-4"/>
+      <display value="Alanine aminotransferase.macromolecular [Presence] in Serum or Plasma"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100739-2"/>
+      <display value="Aspartate aminotransferase.macromolecular [Presence] in Serum or Plasma"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="1007-4"/>
+      <display value="Direct antiglobulin test.polyspecific reagent [Presence] on Red Blood Cells"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100740-0"/>
+      <display value="Amylase.macromolecular [Presence] in Serum or Plasma"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100741-8"/>
+      <display value="Gamma glutamyl transferase.macromolecular [Presence] in Serum or Plasma"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100742-6"/>
+      <display value="Lactate dehydrogenase.macromolecular [Presence] in Serum or Plasma"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10074-3"/>
+      <display value="S' wave duration in lead II"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100743-4"/>
+      <display value="Lipase.macromolecular [Presence] in Serum or Plasma"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100744-2"/>
+      <display value="Alpha-1-acid glycoprotein [Mass/volume] in Serum or Plasma by Electrophoresis"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100745-9"/>
+      <display value="Chloride [Moles/volume] in Mixed venous blood"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100746-7"/>
+      <display value="Glucose [Moles/volume] in Mixed venous blood"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100747-5"/>
+      <display value="Legionella serogroup panel - Specimen"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100748-3"/>
+      <display value="Legionella spp [Presence] in Specimen by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100749-1"/>
+      <display value="Legionella pneumophila serogroup 1 [Presence] in Specimen by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10075-0"/>
+      <display value="S' wave duration in lead III"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100750-9"/>
+      <display value="Legionella pneumophila non-serogroup 1 [Presence] in Specimen by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100751-7"/>
+      <display value="Galactose-alpha-1,3-galactose (Alpha-Gal) panel - Serum or Plasma"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100752-5"/>
+      <display value="Exacerbating factors - Reported"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100753-3"/>
+      <display value="Alleviating factors - Reported"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100754-1"/>
+      <display value="Platelet disorders multigene analysis in Blood or Tissue by Sequencing"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100755-8"/>
+      <display value="Oligoclonal bands [#] in Serum or Plasma by Isoelectric focusing"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100756-6"/>
+      <display value="Oligoclonal bands [Interpretation] in Cerebral spinal fluid by Isoelectric focusing"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100757-4"/>
+      <display value="Protein fractions.oligoclonal bands panel - Serum and CSF by Isoelectric focusing"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100758-2"/>
+      <display value="Estimated lung age by based on clinical data"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100759-0"/>
+      <display value="Inspiratory reserve [Volume] Respiratory system by Spirometry"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100760-8"/>
+      <display value="XR Radius and Ulna - left Single view"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100761-6"/>
+      <display value="PALB2 gene targeted mutation analysis in Blood or Tissue by Molecular genetics method"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100762-4"/>
+      <display value="HBA2 gene.c.377T&gt;C [Presence] in Blood by Molecular genetics method"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100763-2"/>
+      <display value="Mycobacterium sp comparative reaction interpretation Narrative"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100764-0"/>
+      <display value="Mycobacterium bovis reaction wheal [Diameter] Qualitative --3 days post dose mammalian tuberculin intradermal"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100765-7"/>
+      <display value="Homocysteine and methylmalonate and methylcitrate panel - DBS"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100766-5"/>
+      <display value="Center for Epidemiologic Studies Depression Scale panel [CES-D]"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100767-3"/>
+      <display value="Bothered by things that are not usually bothersome"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10076-8"/>
+      <display value="S' wave duration in lead V1"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100768-1"/>
+      <display value="Poor appetite"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100769-9"/>
+      <display value="Unhappy even with help from my family or friends"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100770-7"/>
+      <display value="Feeling just as good as others"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100771-5"/>
+      <display value="Trouble focusing"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100772-3"/>
+      <display value="Feeling depressed"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100773-1"/>
+      <display value="Feeling everything is too much of an effort"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100774-9"/>
+      <display value="Feeling hopeful about the future"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100775-6"/>
+      <display value="Feeling life had been a failure"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10077-6"/>
+      <display value="S' wave duration in lead V2"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100776-4"/>
+      <display value="Feeling fearful"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100777-2"/>
+      <display value="Restless sleep"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100778-0"/>
+      <display value="Feeling happy"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100779-8"/>
+      <display value="Quieter than usual"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100780-6"/>
+      <display value="Feeling lonely"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100781-4"/>
+      <display value="People were unfriendly"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100782-2"/>
+      <display value="Enjoying life"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100783-0"/>
+      <display value="Crying spells"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10078-4"/>
+      <display value="S' wave duration in lead V3"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100784-8"/>
+      <display value="Feeling sad"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100785-5"/>
+      <display value="Feeling people dislike me"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100786-3"/>
+      <display value="Lack of energy"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100787-1"/>
+      <display value="Total Score CES-D"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100788-9"/>
+      <display value="Stemphylium botryosum IgG4 Ab [Mass/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100789-7"/>
+      <display value="Rhizopus nigricans IgG4 Ab [Mass/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100790-5"/>
+      <display value="Lepidoglyphus destructor IgG Ab [Mass/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100791-3"/>
+      <display value="Hamster epithelium IgG Ab [Mass/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10079-2"/>
+      <display value="S' wave duration in lead V4"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100792-1"/>
+      <display value="Forsythia IgE Ab [Units/volume] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100793-9"/>
+      <display value="Testosterone [Mass/volume] in Body fluid"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100794-7"/>
+      <display value="Follitropin [Units/volume] in Body fluid"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100795-4"/>
+      <display value="S100 calcium binding protein B [Mass/volume] in Body fluid"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100796-2"/>
+      <display value="Thyroglobulin [Mass/volume] in Body fluid"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100797-0"/>
+      <display value="Testosterone Free [Mass/volume] in Serum --1st specimen post XXX challenge"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100798-8"/>
+      <display value="Testosterone Free [Mass/volume] in Serum --2nd specimen post XXX challenge"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100799-6"/>
+      <display value="21-Deoxycortisol [Mass/volume] in Serum --1st specimen post XXX challenge"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100-8"/>
+      <display value="Cefoperazone [Susceptibility] by Minimum inhibitory concentration (MIC)"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10080-0"/>
+      <display value="S' wave duration in lead V5"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100800-2"/>
+      <display value="21-Deoxycortisol [Mass/volume] in Serum --2nd specimen post XXX challenge"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100801-0"/>
+      <display value="21-Deoxycortisol [Mass/volume] in Serum --3rd specimen post XXX challenge"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100802-8"/>
+      <display value="21-Deoxycortisol [Mass/volume] in Serum --4th specimen post XXX challenge"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100803-6"/>
+      <display value="21-Deoxycortisol [Mass/volume] in Serum --5th specimen post XXX challenge"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100804-4"/>
+      <display value="Vasopressin [Moles/volume] in Plasma --1st specimen post XXX challenge"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100805-1"/>
+      <display value="Vasopressin [Moles/volume] in Plasma --2nd specimen post XXX challenge"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100806-9"/>
+      <display value="Vasopressin [Moles/volume] in Plasma --3rd specimen post XXX challenge"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100807-7"/>
+      <display value="Vasopressin [Moles/volume] in Plasma --4th specimen post XXX challenge"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100808-5"/>
+      <display value="Vasopressin [Moles/volume] in Plasma --5th specimen post XXX challenge"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100809-3"/>
+      <display value="Vasopressin [Moles/volume] in Plasma --6th specimen post XXX challenge"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100810-1"/>
+      <display value="Vasopressin [Moles/volume] in Plasma --7th specimen post XXX challenge"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100811-9"/>
+      <display value="Vasopressin [Moles/volume] in Plasma --8th specimen post XXX challenge"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100812-7"/>
+      <display value="Vasopressin [Moles/volume] in Plasma --9th specimen post XXX challenge"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100813-5"/>
+      <display value="Vasopressin [Moles/volume] in Plasma --10th specimen post XXX challenge"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100814-3"/>
+      <display value="Vasopressin [Moles/volume] in Plasma --11th specimen post XXX challenge"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100815-0"/>
+      <display value="Vasopressin [Moles/volume] in Plasma --12th specimen post XXX challenge"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100816-8"/>
+      <display value="Glucagon [Mass/volume] in Serum or Plasma --6th specimen post XXX challenge"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100817-6"/>
+      <display value="Glucagon [Mass/volume] in Serum or Plasma --7th specimen post XXX challenge"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10081-8"/>
+      <display value="S' wave duration in lead V6"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100818-4"/>
+      <display value="Renin [Mass/volume] in Plasma --1st specimen post XXX challenge"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100819-2"/>
+      <display value="Renin [Mass/volume] in Plasma --2nd specimen post XXX challenge"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="1008-2"/>
+      <display value="Indirect antiglobulin test.polyspecific reagent [Presence] in Serum or Plasma"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100820-0"/>
+      <display value="Renin [Mass/volume] in Plasma --3rd specimen post XXX challenge"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100821-8"/>
+      <display value="National POLST form: portable medical order panel"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100822-6"/>
+      <display value="Cardiopulmonary resuscitation orders"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100823-4"/>
+      <display value="Initial portable medical treatment orders"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100824-2"/>
+      <display value="Additional portable medical orders or instructions"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100825-9"/>
+      <display value="Medically assisted nutrition orders"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10082-6"/>
+      <display value="ST initial amplitude 6 ms in lead AVF"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100826-7"/>
+      <display value="Portable medical order AndOr advance directive review"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100827-5"/>
+      <display value="Portable medical order discussion participants"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100828-3"/>
+      <display value="Portable medical order administrative information"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100829-1"/>
+      <display value="Renin [Mass/volume] in Plasma --4th specimen post XXX challenge"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100830-9"/>
+      <display value="Alpha subunit free [Units/volume] in Serum or Plasma --1st specimen post XXX challenge"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100831-7"/>
+      <display value="Alpha subunit free [Units/volume] in Serum or Plasma --2nd specimen post XXX challenge"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100832-5"/>
+      <display value="Alpha subunit free [Units/volume] in Serum or Plasma --3rd specimen post XXX challenge"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100833-3"/>
+      <display value="Alpha subunit free [Units/volume] in Serum or Plasma --4th specimen post XXX challenge"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10083-4"/>
+      <display value="ST initial amplitude 6 ms in lead AVL"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100834-1"/>
+      <display value="Alpha subunit free [Units/volume] in Serum or Plasma --5th specimen post XXX challenge"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100835-8"/>
+      <display value="Alpha subunit free [Units/volume] in Serum or Plasma --6th specimen post XXX challenge"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100836-6"/>
+      <display value="Alpha subunit free [Units/volume] in Serum or Plasma --7th specimen post XXX challenge"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100837-4"/>
+      <display value="Insulin-like growth factor-I [Mass/volume] in Serum or Plasma --9th specimen post XXX challenge"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100838-2"/>
+      <display value="Testosterone [Mass/volume] in Serum or Plasma --9th specimen post XXX challenge"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100839-0"/>
+      <display value="Vitamin A/Retinol binding protein [Ratio] in Serum or Plasma"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100840-8"/>
+      <display value="IgE [Units/volume] in Body fluid"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100841-6"/>
+      <display value="Zinc finger protein of the cerebellum 4 Ab [Presence] in Cerebral spinal fluid by Line blot"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10084-2"/>
+      <display value="ST initial amplitude 6 ms in lead AVR"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100842-4"/>
+      <display value="Nonalcoholic steatohepatitis score in Serum or Plasma Calculated by FAST"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100843-2"/>
+      <display value="Liver fibrosis score in Serum or Plasma by Calculated.Agile3+"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100844-0"/>
+      <display value="Liver fibrosis score in Serum or Plasma by Calculated.Agile4"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100845-7"/>
+      <display value="Neurofascin155 IgG4 Ab [Presence] in Serum by Flow cytometry (FC)"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100846-5"/>
+      <display value="Dengue virus 1+2+3+4 nsP1 IgG Ab [Presence] in Serum or Plasma by Immunoassay"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100847-3"/>
+      <display value="Gas and ammonia panel - Arterial blood"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100848-1"/>
+      <display value="Cell count and Differential panel - Amniotic fluid by Manual count"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100849-9"/>
+      <display value="Leukocytes [#/volume] in Amniotic fluid by Manual count"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100850-7"/>
+      <display value="Neutrophils [#/volume] in Amniotic fluid by Manual count"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100851-5"/>
+      <display value="Other cells [#/volume] in Amniotic fluid by Manual count"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100852-3"/>
+      <display value="NM Bones Views for metastasis W Sr-89 IV"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100853-1"/>
+      <display value="NM Pericardial space Pericardial effusion"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100854-9"/>
+      <display value="Lymphocytes/100 cells in Blood mononuclear cells by Immunoassay"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100855-6"/>
+      <display value="CD3 cells/100 cells in Blood mononuclear cells"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100856-4"/>
+      <display value="CD3+CD4+ (T4 helper) cells/100 cells in Blood mononuclear cells"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100857-2"/>
+      <display value="CD3+CD8+ (T8 suppressor) cells/100 cells in Blood mononuclear cells"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100858-0"/>
+      <display value="Cells.CD4+CD154+/CD4 cells in Blood --after stimulation with SARS-CoV-2 Spike peptide"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10085-9"/>
+      <display value="ST initial amplitude 6 ms in lead I"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100859-8"/>
+      <display value="Cells.CD4.Interferon gamma-expressing/CD4 cells in Blood --after stimulation with SARS-CoV-2 Spike peptide"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100860-6"/>
+      <display value="Cells.CD4.Tumor necrosis factor alfa-expressing/CD4 cells in Blood --after stimulation with SARS-CoV-2 Spike peptide"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100861-4"/>
+      <display value="Cells.CD4+CD154+/CD4 cells in Blood --after stimulation with SARS-CoV-2 Nucleocapsid peptide"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100862-2"/>
+      <display value="Cells.CD4.Interferon gamma-expressing/CD4 cells in Blood --after stimulation with SARS-CoV-2 Nucleocapsid peptide"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100863-0"/>
+      <display value="Cells.CD4.Tumor necrosis factor alfa-expressing/CD4 cells in Blood --after stimulation with SARS-CoV-2 Nucleocapsid peptide"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100864-8"/>
+      <display value="Giardia lamblia bg gene [Genotype] in Specimen by Molecular genetics method"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100865-5"/>
+      <display value="Avian schistosomes DNA [Presence] in Specimen by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100866-3"/>
+      <display value="Febrile antibody profile in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10086-7"/>
+      <display value="ST initial amplitude 6 ms in lead II"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100867-1"/>
+      <display value="Campylobacter jejuni+coli+lari+upsaliensis Ag [Presence] in Stool by Rapid immunoassay"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100868-9"/>
+      <display value="Cryptosporidium sp 18S-LC2 rRNA [Genotype] in Specimen by Molecular genetics method"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100869-7"/>
+      <display value="Cryptosporidium gp60 gene [Type] in Specimen by Molecular genetics method"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100870-5"/>
+      <display value="Cryptosporidium 18S rRNA [Genotype] in Specimen by Molecular genetics method"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100871-3"/>
+      <display value="Giardia lamblia gdh gene [Genotype] in Specimen by Molecular genetics method"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100872-1"/>
+      <display value="Bacteria producing polysaccharide from sucrose [Presence] in Isolate"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100873-9"/>
+      <display value="Giardia lamblia tpi gene [Genotype] in Specimen by Molecular genetics method"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100874-7"/>
+      <display value="Basidiobolus sp [Presence] in Specimen"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10087-5"/>
+      <display value="ST initial amplitude 6 ms in lead III"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100875-4"/>
+      <display value="Fetal Heart Document limited US"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100876-2"/>
+      <display value="Fetal Heart Document US"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100877-0"/>
+      <display value="US Heart Transesophageal during surgery"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100878-8"/>
+      <display value="Endoscopic ultrasound study Upper GI tract Document"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100879-6"/>
+      <display value="US Guidance for cryoablation of Breast - right"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100880-4"/>
+      <display value="US Guidance for cryoablation of Breast - left"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100881-2"/>
+      <display value="MR Guidance for cryoablation of Bone"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100882-0"/>
+      <display value="MR Peritoneum W contrast percutaneous intraperitoneal"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10088-3"/>
+      <display value="ST initial amplitude 6 ms in lead V1"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100883-8"/>
+      <display value="MR Guidance for biopsy of Kidney - left"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100884-6"/>
+      <display value="MR Guidance for biopsy of Kidney - right"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100885-3"/>
+      <display value="Parapoxvirus DNA [Presence] in Specimen by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100886-1"/>
+      <display value="Orf virus DNA [Presence] in Specimen by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100887-9"/>
+      <display value="Pseudocowpox virus DNA [Presence] in Specimen by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100888-7"/>
+      <display value="Monkeypox virus clade II DNA [Presence] in Specimen by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100889-5"/>
+      <display value="Monkeypox virus clade I DNA [Presence] in Specimen by NAA with probe detection"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100890-3"/>
+      <display value="Poxvirus DNA panel"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="10089-1"/>
+      <display value="ST initial amplitude 6 ms in lead V2"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100891-1"/>
+      <display value="Orthopoxvirus IgG Ab [Presence] in Serum or Plasma by Immunoassay"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100892-9"/>
+      <display value="Orthopoxvirus IgM Ab [Presence] in Serum or Plasma by Immunoassay"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100893-7"/>
+      <display value="Orthopoxvirus IgG and IgM Ab panel - Serum or Plasma"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100894-5"/>
+      <display value="Recommended screening frequency Narrative"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100895-2"/>
+      <display value="Rickettsia conorii IgG and IgM [Interpretation] in Serum"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100896-0"/>
+      <display value="Vasopressin [Moles/volume] in Plasma --13th specimen post XXX challenge"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100897-8"/>
+      <display value="Staphylococcus aureus [Presence] in Specimen by Organism specific culture"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100898-6"/>
+      <display value="Lipid panel - Serum or Plasma"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="100899-4"/>
+      <display value="Enterobacteriaceae.extended spectrum beta lactamase resistance phenotype [Identifier] in Specimen by Organism specific culture"/>
+    </contains>
+  </expansion>
+</ValueSet>

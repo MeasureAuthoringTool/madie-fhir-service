@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="goal-priority"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="pc"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/goal-priority"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.273"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="GoalPriority"/>
+  <title value="Goal priority"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="HL7 International - Patient Care WG"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://www.hl7.org/Special/committees/patientcare/"/>
+    </telecom>
+  </contact>
+  <description value="Indicates the level of importance associated with reaching or sustaining a goal."/>
+  <immutable value="true"/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/goal-priority"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:3644c59b-9c4d-44d2-8be4-312a5a3b2d5e"/>
+    <timestamp value="2025-01-17T09:53:38-07:00"/>
+    <total value="3"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/goal-priority|1.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/goal-priority"/>
+      <code value="high-priority"/>
+      <display value="High Priority"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/goal-priority"/>
+      <code value="medium-priority"/>
+      <display value="Medium Priority"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/goal-priority"/>
+      <code value="low-priority"/>
+      <display value="Low Priority"/>
+    </contains>
+  </expansion>
+</ValueSet>

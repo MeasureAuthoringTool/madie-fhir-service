@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="us-core-survey-codes"/>
+  <text>
+    <status value="generated"/>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <p>This value set includes codes based on the following rules:</p>
+      <ul>
+        <li>Include codes from 
+          <a href="http://loinc.org">
+            <code>http://loinc.org</code>
+          </a> where CLASSTYPE  =  4
+        </li>
+        <li>Include codes from 
+          <a href="http://loinc.org">
+            <code>http://loinc.org</code>
+          </a> where CLASSTYPE  =  2
+        </li>
+        <li>Include codes from 
+          <a href="http://loinc.org">
+            <code>http://loinc.org</code>
+          </a> where CLASS  =  PANEL.NEONAT
+        </li>
+      </ul>
+    </div>
+  </text>
+  <url value="http://hl7.org/fhir/us/core/ValueSet/us-core-survey-codes"/>
+  <version value="6.1.0"/>
+  <name value="USCoreSurveyCodes"/>
+  <title value="US Core Survey Codes"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2022-09-29"/>
+  <publisher value="HL7 International - Cross-Group Projects"/>
+  <contact>
+    <name value="HL7 International - Cross-Group Projects"/>
+    <telecom>
+      <system value="url"/>
+      <value value="http://www.hl7.org/Special/committees/cgp"/>
+    </telecom>
+    <telecom>
+      <system value="email"/>
+      <value value="cgp@lists.HL7.org"/>
+    </telecom>
+  </contact>
+  <description value="This value set includes screening and assessment panel codes in LOINC (Refer to [Appendix A](https://loinc.org/kb/users-guide/loinc-database-structure/) of LOINC Users' Guide)."/>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="US"/>
+    </coding>
+  </jurisdiction>
+  <copyright value="This material contains content from LOINC (http://loinc.org). LOINC is copyright © 1995-2020, Regenstrief Institute, Inc. and the Logical Observation Identifiers Names and Codes (LOINC) Committee and is available at no cost under the license at http://loinc.org/license. LOINC® is a registered United States trademark of Regenstrief Institute, Inc"/>
+  <compose>
+    <include>
+      <system value="http://loinc.org"/>
+      <filter>
+        <property value="CLASSTYPE"/>
+        <op value="="/>
+        <value value="4"/>
+      </filter>
+    </include>
+    <include>
+      <system value="http://loinc.org"/>
+      <filter>
+        <property value="CLASSTYPE"/>
+        <op value="="/>
+        <value value="2"/>
+      </filter>
+    </include>
+    <include>
+      <system value="http://loinc.org"/>
+      <filter>
+        <property value="CLASS"/>
+        <op value="="/>
+        <value value="PANEL.NEONAT"/>
+      </filter>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:7f9281a8-465c-4b72-950f-a5154279d868"/>
+    <timestamp value="2025-01-17T09:53:42-07:00"/>
+    <total value="8"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-valueset"/>
+      <valueUri value="null"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://loinc.org|2.78"/>
+    </parameter>
+    <parameter>
+      <name value="version"/>
+      <valueUri value="http://loinc.org|2.78"/>
+    </parameter>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="101967-8"/>
+      <display value="Neonatal infant pain scale panel (NIPS)"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="48332-1"/>
+      <display value="10 minute Apgar panel"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="48333-9"/>
+      <display value="5 minute Apgar panel"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="48334-7"/>
+      <display value="1 minute Apgar panel"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="95620-1"/>
+      <display value="Neonatal pain, agitation, and sedation scale panel NPASS"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="95621-9"/>
+      <display value="Pain/agitation panel NPASS"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="95629-2"/>
+      <display value="Sedation panel NPASS"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="98008-6"/>
+      <display value="Deprecated Neonatal infant pain scale panel"/>
+    </contains>
+  </expansion>
+</ValueSet>

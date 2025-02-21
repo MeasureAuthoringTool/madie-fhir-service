@@ -1,0 +1,1636 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="v3-ActReason"/>
+  <text>
+    <status value="generated"/>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <ul>
+        <li>Include all codes defined in 
+          <a href="CodeSystem-v3-ActReason.html">
+            <code>http://terminology.hl7.org/CodeSystem/v3-ActReason</code>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </text>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="vocab"/>
+  </extension>
+  <url value="http://terminology.hl7.org/ValueSet/v3-ActReason"/>
+  <version value="3.0.0"/>
+  <name value="ActReason"/>
+  <title value="v3 Code System ActReason"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2018-08-12"/>
+  <publisher value="Health Level Seven International"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org"/>
+    </telecom>
+    <telecom>
+      <system value="email"/>
+      <value value="hq@HL7.org"/>
+    </telecom>
+  </contact>
+  <description value=" A set of codes specifying the motivation, cause, or rationale of an Act, when such rationale is not reasonably represented as an ActRelationship of type &quot;has reason&quot; linking to another Act.  Examples:&#xD;&#xA;Example reasons that might qualify for being coded in this field might be: &quot;routine requirement&quot;, &quot;infectious disease reporting requirement&quot;, &quot;on patient request&quot;, &quot;required by law&quot;."/>
+  <immutable value="true"/>
+  <copyright value="This material derives from the HL7 Terminology THO. THO is copyright ©1989+ Health Level Seven International and is made available under the CC0 designation. For more licensing information see: https://terminology.hl7.org/license"/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:6c657a61-8d03-4fb1-9b5b-8b758b2ad338"/>
+    <timestamp value="2025-01-17T09:53:42-07:00"/>
+    <total value="298"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/v3-ActReason|3.1.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <code value="_ActAccommodationReason"/>
+      <display value="ActAccommodationReason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="ACCREQNA"/>
+      <display value="Accommodation Requested Not Available"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="FLRCNV"/>
+      <display value="Floor Convenience"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="MEDNEC"/>
+      <display value="Medical Necessity"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="PAT"/>
+      <display value="Patient request"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <code value="_ActCoverageReason"/>
+      <display value="ActCoverageReason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <code value="_EligibilityActReasonCode"/>
+      <display value="EligibilityActReasonCode"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <code value="_ActIneligibilityReason"/>
+      <display value="ActIneligibilityReason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="COVSUS"/>
+      <display value="coverage suspended"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="DECSD"/>
+      <display value="deceased"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="REGERR"/>
+      <display value="registered in error"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <code value="_CoverageEligibilityReason"/>
+      <display value="CoverageEligibilityReason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="AGE"/>
+      <display value="age eligibility"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="CRIME"/>
+      <display value="crime victim"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="DIS"/>
+      <display value="disability"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="EMPLOY"/>
+      <display value="employment benefit"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="FINAN"/>
+      <display value="financial eligibility"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="HEALTH"/>
+      <display value="health status"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="MULTI"/>
+      <display value="multiple criteria eligibility"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="PNC"/>
+      <display value="property and casualty condition"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="STATUTORY"/>
+      <display value="statutory eligibility"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="VEHIC"/>
+      <display value="motor vehicle accident victim"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="WORK"/>
+      <display value="work related"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <inactive value="true"/>
+      <code value="_ActCoverageProviderReason"/>
+      <display value="ActCoverageProviderReason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <inactive value="true"/>
+      <code value="_ActCoverageServiceReason"/>
+      <display value="ActCoverageServiceReason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <inactive value="true"/>
+      <code value="_CoverageExclusionReason"/>
+      <display value="CoverageExclusionReason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <inactive value="true"/>
+      <code value="_CoverageFinancialParticipationReason"/>
+      <display value="CoverageFinancialParticipationReason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <inactive value="true"/>
+      <code value="_CoverageLimitationReason"/>
+      <display value="CoverageLimitationReason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <code value="_ActInformationManagementReason"/>
+      <display value="ActInformationManagementReason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <code value="_ActHealthInformationManagementReason"/>
+      <display value="ActHealthInformationManagementReason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <code value="_ActConsentInformationAccessOverrideReason"/>
+      <display value="ActConsentInformationAccessOverrideReason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="OVRER"/>
+      <display value="emergency treatment override"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="OVRINCOMP"/>
+      <display value="incompetency override"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="OVRPJ"/>
+      <display value="professional judgment override"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="OVRPS"/>
+      <display value="public safety override"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="OVRTPS"/>
+      <display value="third party safety override"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <code value="PurposeOfUse"/>
+      <display value="purpose of use"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="HMARKT"/>
+      <display value="healthcare marketing"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="HOPERAT"/>
+      <display value="healthcare operations"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="CAREMGT"/>
+      <display value="care management"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="DONAT"/>
+      <display value="donation"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="FRAUD"/>
+      <display value="fraud"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="GOV"/>
+      <display value="government"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="HACCRED"/>
+      <display value="health accreditation"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="HCOMPL"/>
+      <display value="health compliance"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="HDECD"/>
+      <display value="decedent"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="HDIRECT"/>
+      <display value="directory"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="HDM"/>
+      <display value="healthcare delivery management"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="HLEGAL"/>
+      <display value="legal"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="HOUTCOMS"/>
+      <display value="health outcome measure"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="HPRGRP"/>
+      <display value="health program reporting"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="HQUALIMP"/>
+      <display value="health quality improvement"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="HSYSADMIN"/>
+      <display value="health system administration"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="LABELING"/>
+      <display value="labeling"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="METAMGT"/>
+      <display value="metadata management"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="MEMADMIN"/>
+      <display value="member administration"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="MILCDM"/>
+      <display value="military command"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="PATADMIN"/>
+      <display value="patient administration"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="PATSFTY"/>
+      <display value="patient safety"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="PERFMSR"/>
+      <display value="performance measure"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="RECORDMGT"/>
+      <display value="records management"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="SYSDEV"/>
+      <display value="system development"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="HTEST"/>
+      <display value="test health data"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="TRAIN"/>
+      <display value="training"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="MLTRAINING"/>
+      <display value="machine learning training"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="HPAYMT"/>
+      <display value="healthcare payment"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="CLMATTCH"/>
+      <display value="claim attachment"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="COVAUTH"/>
+      <display value="coverage authorization"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="COVERAGE"/>
+      <display value="coverage under policy or program"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="ELIGDTRM"/>
+      <display value="eligibility determination"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="ELIGVER"/>
+      <display value="eligibility verification"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="ENROLLM"/>
+      <display value="enrollment"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="MILDCRG"/>
+      <display value="military discharge"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="REMITADV"/>
+      <display value="remittance advice"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="PMTDS"/>
+      <display value="decision support assisted payment decision"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="HRESCH"/>
+      <display value="healthcare research"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="BIORCH"/>
+      <display value="biomedical research"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="CLINTRCH"/>
+      <display value="clinical trial research"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="CLINTRCHNPC"/>
+      <display value="clinical trial research without patient care"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="CLINTRCHPC"/>
+      <display value="clinical trial research with patient care"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="PRECLINTRCH"/>
+      <display value="preclinical trial research"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="DSRCH"/>
+      <display value="disease specific healthcare research"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="POARCH"/>
+      <display value="population origins or ancestry healthcare research"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="TRANSRCH"/>
+      <display value="translational healthcare research"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="PATRQT"/>
+      <display value="patient requested"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="FAMRQT"/>
+      <display value="family requested"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="PWATRNY"/>
+      <display value="power of attorney"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="SUPNWK"/>
+      <display value="support network"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="PUBHLTH"/>
+      <display value="public health"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="DISASTER"/>
+      <display value="disaster"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="THREAT"/>
+      <display value="threat"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="TREAT"/>
+      <display value="treatment"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="CLINTRL"/>
+      <display value="clinical trial"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="COC"/>
+      <display value="coordination of care"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="ETREAT"/>
+      <display value="Emergency Treatment"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="BTG"/>
+      <display value="break the glass"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="ERTREAT"/>
+      <display value="emergency room treatment"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="POPHLTH"/>
+      <display value="population health"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="TREATDS"/>
+      <display value="decision support assisted treatment decision"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <inactive value="true"/>
+      <code value="_ActHealthInformationPrivacyReason"/>
+      <display value="ActHealthInformationPrivacyReason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <code value="_ActInformationPrivacyReason"/>
+      <display value="ActInformationPrivacyReason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="MARKT"/>
+      <display value="marketing"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="OPERAT"/>
+      <display value="operations"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="LEGAL"/>
+      <display value="subpoena"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="ACCRED"/>
+      <display value="accreditation"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="COMPL"/>
+      <display value="compliance"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="ENADMIN"/>
+      <display value="entity administration"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="OUTCOMS"/>
+      <display value="outcome measure"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="PRGRPT"/>
+      <display value="program reporting"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="QUALIMP"/>
+      <display value="quality improvement"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="SYSADMN"/>
+      <display value="system administration"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="PAYMT"/>
+      <display value="payment"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="RESCH"/>
+      <display value="research"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="SRVC"/>
+      <display value="service"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="_ActInvalidReason"/>
+      <display value="ActInvalidReason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="ADVSTORAGE"/>
+      <display value="adverse storage condition"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="COLDCHNBRK"/>
+      <display value="cold chain break"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="EXPLOT"/>
+      <display value="expired lot"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="OUTSIDESCHED"/>
+      <display value="administered outside recommended schedule or practice"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="PRODRECALL"/>
+      <display value="product recall"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <code value="_ActInvoiceCancelReason"/>
+      <display value="ActInvoiceCancelReason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="INCCOVPTY"/>
+      <display value="incorrect covered party as patient"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="INCINVOICE"/>
+      <display value="incorrect billing"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="INCPOLICY"/>
+      <display value="incorrect policy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="INCPROV"/>
+      <display value="incorrect provider"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <code value="_ActNoImmunizationReason"/>
+      <display value="ActNoImmunizationReason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="IMMUNE"/>
+      <display value="immunity"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="MEDPREC"/>
+      <display value="medical precaution"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="OSTOCK"/>
+      <display value="product out of stock"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="PATOBJ"/>
+      <display value="patient objection"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="PHILISOP"/>
+      <display value="philosophical objection"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="RELIG"/>
+      <display value="religious objection"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="VACEFF"/>
+      <display value="vaccine efficacy concerns"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="VACSAF"/>
+      <display value="vaccine safety concerns"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <code value="_ActSupplyFulfillmentRefusalReason"/>
+      <display value="ActSupplyFulfillmentRefusalReason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="FRR01"/>
+      <display value="order stopped"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="FRR02"/>
+      <display value="stale-dated order"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="FRR03"/>
+      <display value="incomplete data"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="FRR04"/>
+      <display value="product unavailable"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="FRR05"/>
+      <display value="ethical/religious"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="FRR06"/>
+      <display value="unable to provide care"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <code value="_ClinicalResearchEventReason"/>
+      <display value="ClinicalResearchEventReason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="RET"/>
+      <display value="retest"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="SCH"/>
+      <display value="scheduled"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="TRM"/>
+      <display value="termination"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="UNS"/>
+      <display value="unscheduled"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <code value="_ClinicalResearchObservationReason"/>
+      <display value="ClinicalResearchObservationReason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="NPT"/>
+      <display value="non-protocol"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="PPT"/>
+      <display value="per protocol"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="UPT"/>
+      <display value="per definition"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <code value="_CombinedPharmacyOrderSuspendReasonCode"/>
+      <display value="CombinedPharmacyOrderSuspendReasonCode"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="ALTCHOICE"/>
+      <display value="try another treatment first"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="CLARIF"/>
+      <display value="prescription requires clarification"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="DRUGHIGH"/>
+      <display value="drug level too high"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="HOSPADM"/>
+      <display value="admission to hospital"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="LABINT"/>
+      <display value="lab interference issues"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="NON-AVAIL"/>
+      <display value="patient not-available"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="PREG"/>
+      <display value="parent is pregnant/breast feeding"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="SALG"/>
+      <display value="allergy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="SDDI"/>
+      <display value="drug interacts with another drug"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="SDUPTHER"/>
+      <display value="duplicate therapy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="SINTOL"/>
+      <display value="suspected intolerance"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="SURG"/>
+      <display value="patient scheduled for surgery"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="WASHOUT"/>
+      <display value="waiting for old drug to wash out"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="_ControlActNullificationReasonCode"/>
+      <display value="ControlActNullificationReasonCode"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="ALTD"/>
+      <display value="altered decision"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="EIE"/>
+      <display value="entered in error"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="NORECMTCH"/>
+      <display value="no record match"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <code value="_ControlActNullificationRefusalReasonType"/>
+      <display value="ControlActNullificationRefusalReasonType"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="INRQSTATE"/>
+      <display value="in requested state"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="NOMATCH"/>
+      <display value="no match"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="NOPRODMTCH"/>
+      <display value="no product match"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="NOSERMTCH"/>
+      <display value="no service match"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="NOVERMTCH"/>
+      <display value="no version match"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="NOPERM"/>
+      <display value="no permission"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="NOUSERPERM"/>
+      <display value="no user permission"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="NOAGNTPERM"/>
+      <display value="no agent permission"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <inactive value="true"/>
+      <code value="NOUSRPERM"/>
+      <display value="no user permission"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="WRNGVER"/>
+      <display value="wrong version"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <code value="_ControlActReason"/>
+      <display value="ControlActReason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <code value="_MedicationOrderAbortReasonCode"/>
+      <display value="medication order abort reason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="DISCONT"/>
+      <display value="product discontinued"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="INEFFECT"/>
+      <display value="ineffective"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="MONIT"/>
+      <display value="response to monitoring"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="NOREQ"/>
+      <display value="no longer required for treatment"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="NOTCOVER"/>
+      <display value="not covered"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="PREFUS"/>
+      <display value="patient refuse"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="RECALL"/>
+      <display value="product recalled"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="REPLACE"/>
+      <display value="change in order"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="DOSECHG"/>
+      <display value="change in medication/dose"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="REPLACEFIX"/>
+      <display value="error in order"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="UNABLE"/>
+      <display value="unable to use"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <code value="_MedicationOrderReleaseReasonCode"/>
+      <display value="medication order release reason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="HOLDDONE"/>
+      <display value="suspend reason no longer applies"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="HOLDINAP"/>
+      <display value="suspend reason inappropriate"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <code value="_ModifyPrescriptionReasonType"/>
+      <display value="ModifyPrescriptionReasonType"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="ADMINERROR"/>
+      <display value="administrative error in order"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="CLINMOD"/>
+      <display value="clinical modification"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="_PharmacySupplyEventAbortReason"/>
+      <display value="PharmacySupplyEventAbortReason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="CONTRA"/>
+      <display value="contraindication"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="FOABORT"/>
+      <display value="order aborted"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="FOSUSP"/>
+      <display value="order suspended"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="NOPICK"/>
+      <display value="not picked up"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="PATDEC"/>
+      <display value="patient changed mind"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="QUANTCHG"/>
+      <display value="change supply quantity"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <code value="_PharmacySupplyEventStockReasonCode"/>
+      <display value="pharmacy supply event stock reason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="FLRSTCK"/>
+      <display value="floor stock"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="LTC"/>
+      <display value="long term care use"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="OFFICE"/>
+      <display value="office use"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="PHARM"/>
+      <display value="pharmacy transfer"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="PROG"/>
+      <display value="program use"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <code value="_PharmacySupplyRequestRenewalRefusalReasonCode"/>
+      <display value="pharmacy supply request renewal refusal reason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="ALREADYRX"/>
+      <display value="new prescription exists"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="FAMPHYS"/>
+      <display value="family physician must authorize further fills"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="MODIFY"/>
+      <display value="modified prescription exists"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="NEEDAPMT"/>
+      <display value="patient must make appointment"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="NOTAVAIL"/>
+      <display value="prescriber not available"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="NOTPAT"/>
+      <display value="patient no longer in this practice"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="ONHOLD"/>
+      <display value="medication on hold"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="PRNA"/>
+      <display value="product not available"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="STOPMED"/>
+      <display value="prescriber stopped medication for patient"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="TOOEARLY"/>
+      <display value="too early"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <code value="_SupplyOrderAbortReasonCode"/>
+      <display value="supply order abort reason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="IMPROV"/>
+      <display value="condition improved"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="INTOL"/>
+      <display value="intolerance"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="NEWSTR"/>
+      <display value="new strength"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="NEWTHER"/>
+      <display value="new therapy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <inactive value="true"/>
+      <code value="_ControlActReasonConditionNullify"/>
+      <display value="ControlActReasonConditionNullify"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <code value="_GenericUpdateReasonCode"/>
+      <display value="GenericUpdateReasonCode"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="CHGDATA"/>
+      <display value="information change"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="FIXDATA"/>
+      <display value="error correction"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="MDATA"/>
+      <display value="merge data"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="NEWDATA"/>
+      <display value="new information"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="UMDATA"/>
+      <display value="unmerge data"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <code value="_PatientProfileQueryReasonCode"/>
+      <display value="patient profile query reason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="ADMREV"/>
+      <display value="administrative review"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="PATCAR"/>
+      <display value="patient care"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="PATREQ"/>
+      <display value="patient request query"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="PRCREV"/>
+      <display value="practice review"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="REGUL"/>
+      <display value="regulatory review"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="RSRCH"/>
+      <display value="research"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="VALIDATION"/>
+      <display value="validation review"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="_PharmacySupplyRequestFulfillerRevisionRefusalReasonCode"/>
+      <display value="PharmacySupplyRequestFulfillerRevisionRefusalReasonCode"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="LOCKED"/>
+      <display value="locked"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="UNKWNTARGET"/>
+      <display value="unknown target"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <code value="_RefusalReasonCode"/>
+      <display value="RefusalReasonCode"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <code value="_SchedulingActReason"/>
+      <display value="SchedulingActReason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="BLK"/>
+      <display value="Unexpected Block (of Schedule)"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="DEC"/>
+      <display value="Patient Deceased"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="FIN"/>
+      <display value="No Financial Backing"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="MED"/>
+      <display value="Medical Status Altered"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="MTG"/>
+      <display value="In an outside meeting"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="PHY"/>
+      <display value="Physician request"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="_StatusRevisionRefusalReasonCode"/>
+      <display value="StatusRevisionRefusalReasonCode"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="FILLED"/>
+      <display value="fully filled"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="_SubstanceAdministrationPermissionRefusalReasonCode"/>
+      <display value="SubstanceAdministrationPermissionRefusalReasonCode"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="PATINELIG"/>
+      <display value="patient not eligible"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="PROTUNMET"/>
+      <display value="protocol not met"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="PROVUNAUTH"/>
+      <display value="provider not authorized"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <code value="_SubstanceAdminSubstitutionNotAllowedReason"/>
+      <display value="SubstanceAdminSubstitutionNotAllowedReason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="ALGINT"/>
+      <display value="allergy intolerance"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="COMPCON"/>
+      <display value="compliance concern"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="THERCHAR"/>
+      <display value="therapeutic characteristics"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="TRIAL"/>
+      <display value="clinical trial drug"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <code value="_SubstanceAdminSubstitutionReason"/>
+      <display value="SubstanceAdminSubstitutionReason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="CT"/>
+      <display value="continuing therapy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="FP"/>
+      <display value="formulary policy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="OS"/>
+      <display value="out of stock"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="RR"/>
+      <display value="regulatory requirement"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <code value="_TransferActReason"/>
+      <display value="TransferActReason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="ER"/>
+      <display value="Error"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="RQ"/>
+      <display value="Request"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <inactive value="true"/>
+      <code value="_ActAdjudicationReason"/>
+      <display value="ActAdjudicationReason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <inactive value="true"/>
+      <code value="_ActBillableServiceReason"/>
+      <display value="ActBillableServiceReason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <inactive value="true"/>
+      <code value="_ActBillableClinicalServiceReason"/>
+      <display value="ActBillableClinicalServiceReason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <inactive value="true"/>
+      <code value="_MedicallyNecessaryDuplicateProcedureReason"/>
+      <display value="MedicallyNecessaryDuplicateProcedureReason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <inactive value="true"/>
+      <code value="_ActCoverageLevelRasonCode"/>
+      <display value="ActCoverageLevelRasonCode"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <inactive value="true"/>
+      <code value="_ActImmunizationReason"/>
+      <display value="ActImmunizationReason"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <inactive value="true"/>
+      <code value="_ConrolActNullificationReasonCode"/>
+      <display value="ConrolActNullificationReasonCode"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <inactive value="true"/>
+      <code value="_NonPerformanceReasonCode"/>
+      <display value="NonPerformanceReasonCode"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <inactive value="true"/>
+      <code value="_ReasonForNotEvaluatingDevice"/>
+      <display value="ReasonForNotEvaluatingDevice"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <abstract value="true"/>
+      <inactive value="true"/>
+      <code value="_ReferralReasonCode"/>
+      <display value="ReferralReasonCode"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <inactive value="true"/>
+      <code value="BONUS"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <inactive value="true"/>
+      <code value="CHD"/>
+      <display value="Children only"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <inactive value="true"/>
+      <code value="DEP"/>
+      <display value="Dependents only"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <inactive value="true"/>
+      <code value="ECH"/>
+      <display value="Employee and children"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <inactive value="true"/>
+      <code value="EDU"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <inactive value="true"/>
+      <code value="EMP"/>
+      <display value="Employee only"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <inactive value="true"/>
+      <code value="ESP"/>
+      <display value="Employee and spouse"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <inactive value="true"/>
+      <code value="FAM"/>
+      <display value="Family"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <inactive value="true"/>
+      <code value="IND"/>
+      <display value="Individual"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <inactive value="true"/>
+      <code value="INVOICE"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <inactive value="true"/>
+      <code value="PROA"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <inactive value="true"/>
+      <code value="RECOV"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <inactive value="true"/>
+      <code value="RETRO"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <inactive value="true"/>
+      <code value="SPC"/>
+      <display value="Spouse and children"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <inactive value="true"/>
+      <code value="SPO"/>
+      <display value="Spouse only"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <inactive value="true"/>
+      <code value="TRAN"/>
+    </contains>
+  </expansion>
+</ValueSet>

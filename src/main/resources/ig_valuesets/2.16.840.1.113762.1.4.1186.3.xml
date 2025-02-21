@@ -1,0 +1,1329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="2.16.840.1.113762.1.4.1186.3"/>
+  <meta>
+    <versionId value="6"/>
+    <lastUpdated value="2018-05-03T01:00:04.000-04:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+    <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/publishable-valueset-cqfm"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/valueset-author">
+    <valueString value="HL7 Patient Care WG Author"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate">
+    <valueDate value="2022-12-15"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/valueset-effectiveDate">
+    <valueDate value="2018-05-03"/>
+  </extension>
+  <url value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1186.3"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113762.1.4.1186.3"/>
+  </identifier>
+  <version value="20180503"/>
+  <name value="CommonDietarySubstancesForAllergyAndIntoleranceDocumentation"/>
+  <title value="Common dietary substances for allergy and intolerance documentation"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2018-05-03T01:00:04-04:00"/>
+  <publisher value="HL7 Patient Care WG Steward"/>
+  <jurisdiction>
+    <extension url="http://hl7.org/fhir/StructureDefinition/data-absent-reason">
+      <valueString value="UNKNOWN"/>
+    </extension>
+  </jurisdiction>
+  <purpose value="(Clinical Focus: Documentation of foods and dietary substances suspected of causing an allergy or intolerance reaction in an individual),(Data Element Scope: Reactant element of allergy or intolerance record),(Inclusion Criteria: SNOMED-CT dietary substances ingested by patients, both specific (e.g., strawberry) and general (e.g., crustaceans); Substances that may be either foods or drugs (e.g., ethanol)),(Exclusion Criteria: SNOMED-CT products; environmental substances; expressions asserting absence of conditions; specific antigen substances; actual conditions caused by exposure (reactions, allergies))"/>
+  <compose>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <concept>
+        <code value="102259006"/>
+        <display value="Citrus fruit (substance)"/>
+      </concept>
+      <concept>
+        <code value="102261002"/>
+        <display value="Strawberry (substance)"/>
+      </concept>
+      <concept>
+        <code value="102262009"/>
+        <display value="Chocolate (substance)"/>
+      </concept>
+      <concept>
+        <code value="102263004"/>
+        <display value="Eggs (edible) (substance)"/>
+      </concept>
+      <concept>
+        <code value="102264005"/>
+        <display value="Cheese (substance)"/>
+      </concept>
+      <concept>
+        <code value="11526002"/>
+        <display value="Aspartame (substance)"/>
+      </concept>
+      <concept>
+        <code value="116274004"/>
+        <display value="Artificial sweetener (substance)"/>
+      </concept>
+      <concept>
+        <code value="13577000"/>
+        <display value="Nut (substance)"/>
+      </concept>
+      <concept>
+        <code value="226723006"/>
+        <display value="Buckwheat - cereal (substance)"/>
+      </concept>
+      <concept>
+        <code value="226734009"/>
+        <display value="Wheatgerm (substance)"/>
+      </concept>
+      <concept>
+        <code value="226760005"/>
+        <display value="Dairy foods (substance)"/>
+      </concept>
+      <concept>
+        <code value="226915003"/>
+        <display value="Red meat (substance)"/>
+      </concept>
+      <concept>
+        <code value="226916002"/>
+        <display value="Beef (substance)"/>
+      </concept>
+      <concept>
+        <code value="226934003"/>
+        <display value="Pork (substance)"/>
+      </concept>
+      <concept>
+        <code value="226955001"/>
+        <display value="Chicken - meat (substance)"/>
+      </concept>
+      <concept>
+        <code value="226967004"/>
+        <display value="Turkey - meat (substance)"/>
+      </concept>
+      <concept>
+        <code value="227144008"/>
+        <display value="Tuna fish (substance)"/>
+      </concept>
+      <concept>
+        <code value="227151004"/>
+        <display value="Prawns (substance)"/>
+      </concept>
+      <concept>
+        <code value="227208008"/>
+        <display value="Abalone canned in brine (substance)"/>
+      </concept>
+      <concept>
+        <code value="227219006"/>
+        <display value="Aubergine (substance)"/>
+      </concept>
+      <concept>
+        <code value="227313005"/>
+        <display value="Pulse vegetables (substance)"/>
+      </concept>
+      <concept>
+        <code value="227388008"/>
+        <display value="Cinnamon (substance)"/>
+      </concept>
+      <concept>
+        <code value="227400003"/>
+        <display value="Ginger (substance)"/>
+      </concept>
+      <concept>
+        <code value="227421003"/>
+        <display value="Cranberries (substance)"/>
+      </concept>
+      <concept>
+        <code value="227444000"/>
+        <display value="Raspberries (substance)"/>
+      </concept>
+      <concept>
+        <code value="227493005"/>
+        <display value="Cashew nut (substance)"/>
+      </concept>
+      <concept>
+        <code value="227512001"/>
+        <display value="Pistachio nut (substance)"/>
+      </concept>
+      <concept>
+        <code value="227598003"/>
+        <display value="Honey (substance)"/>
+      </concept>
+      <concept>
+        <code value="228102000"/>
+        <display value="Sodium nitrate (substance)"/>
+      </concept>
+      <concept>
+        <code value="255641001"/>
+        <display value="Caffeine (substance)"/>
+      </concept>
+      <concept>
+        <code value="256306003"/>
+        <display value="Orange - fruit (substance)"/>
+      </concept>
+      <concept>
+        <code value="256307007"/>
+        <display value="Banana (substance)"/>
+      </concept>
+      <concept>
+        <code value="256313003"/>
+        <display value="Pineapple (substance)"/>
+      </concept>
+      <concept>
+        <code value="256315005"/>
+        <display value="Grapefruit (substance)"/>
+      </concept>
+      <concept>
+        <code value="256317002"/>
+        <display value="Grapes (substance)"/>
+      </concept>
+      <concept>
+        <code value="256319004"/>
+        <display value="Carrot (substance)"/>
+      </concept>
+      <concept>
+        <code value="256326004"/>
+        <display value="Celery (substance)"/>
+      </concept>
+      <concept>
+        <code value="256329006"/>
+        <display value="Spinach (substance)"/>
+      </concept>
+      <concept>
+        <code value="256350002"/>
+        <display value="Almond (substance)"/>
+      </concept>
+      <concept>
+        <code value="256351003"/>
+        <display value="Brazil nut (substance)"/>
+      </concept>
+      <concept>
+        <code value="256352005"/>
+        <display value="Walnut - nut (substance)"/>
+      </concept>
+      <concept>
+        <code value="256353000"/>
+        <display value="Hazelnut (substance)"/>
+      </concept>
+      <concept>
+        <code value="256354006"/>
+        <display value="Bean (substance)"/>
+      </concept>
+      <concept>
+        <code value="260167008"/>
+        <display value="Sesame seed (substance)"/>
+      </concept>
+      <concept>
+        <code value="260176001"/>
+        <display value="Kiwi fruit (substance)"/>
+      </concept>
+      <concept>
+        <code value="260177005"/>
+        <display value="Melon (substance)"/>
+      </concept>
+      <concept>
+        <code value="260179008"/>
+        <display value="Mango fruit (substance)"/>
+      </concept>
+      <concept>
+        <code value="260184002"/>
+        <display value="Peas (substance)"/>
+      </concept>
+      <concept>
+        <code value="260189007"/>
+        <display value="Pecan nut (substance)"/>
+      </concept>
+      <concept>
+        <code value="260205009"/>
+        <display value="Sunflower seed (substance)"/>
+      </concept>
+      <concept>
+        <code value="264337003"/>
+        <display value="Seed (substance)"/>
+      </concept>
+      <concept>
+        <code value="28230009"/>
+        <display value="Poultry (substance)"/>
+      </concept>
+      <concept>
+        <code value="28942008"/>
+        <display value="Coconut oil (substance)"/>
+      </concept>
+      <concept>
+        <code value="29263009"/>
+        <display value="Coffee (substance)"/>
+      </concept>
+      <concept>
+        <code value="35748005"/>
+        <display value="Wine (substance)"/>
+      </concept>
+      <concept>
+        <code value="3692009"/>
+        <display value="Sodium sulfite (substance)"/>
+      </concept>
+      <concept>
+        <code value="373531009"/>
+        <display value="Gelatin (substance)"/>
+      </concept>
+      <concept>
+        <code value="386127005"/>
+        <display value="Formula milk (substance)"/>
+      </concept>
+      <concept>
+        <code value="391737006"/>
+        <display value="Almond oil (substance)"/>
+      </concept>
+      <concept>
+        <code value="391739009"/>
+        <display value="Aloe (substance)"/>
+      </concept>
+      <concept>
+        <code value="412061001"/>
+        <display value="Blueberries (substance)"/>
+      </concept>
+      <concept>
+        <code value="412062008"/>
+        <display value="Cantaloupe (substance)"/>
+      </concept>
+      <concept>
+        <code value="412066006"/>
+        <display value="Pepper (substance)"/>
+      </concept>
+      <concept>
+        <code value="412068007"/>
+        <display value="Rye (substance)"/>
+      </concept>
+      <concept>
+        <code value="412069004"/>
+        <display value="Flavoring agent (substance)"/>
+      </concept>
+      <concept>
+        <code value="412071004"/>
+        <display value="Wheat (substance)"/>
+      </concept>
+      <concept>
+        <code value="412357001"/>
+        <display value="Corn (substance)"/>
+      </concept>
+      <concept>
+        <code value="412533000"/>
+        <display value="Wheat bran (substance)"/>
+      </concept>
+      <concept>
+        <code value="412534006"/>
+        <display value="Yeast (substance)"/>
+      </concept>
+      <concept>
+        <code value="417889008"/>
+        <display value="Arachis oil (substance)"/>
+      </concept>
+      <concept>
+        <code value="418504009"/>
+        <display value="Oats (substance)"/>
+      </concept>
+      <concept>
+        <code value="419420009"/>
+        <display value="Watermelon (substance)"/>
+      </concept>
+      <concept>
+        <code value="424369009"/>
+        <display value="Product containing beta-Galactosidase (medicinal product)"/>
+      </concept>
+      <concept>
+        <code value="43735007"/>
+        <display value="Sulfur (substance)"/>
+      </concept>
+      <concept>
+        <code value="44027008"/>
+        <display value="Seafood (substance)"/>
+      </concept>
+      <concept>
+        <code value="442381000124103"/>
+        <display value="Blue food coloring (substance)"/>
+      </concept>
+      <concept>
+        <code value="442571000124108"/>
+        <display value="Tree nut (substance)"/>
+      </concept>
+      <concept>
+        <code value="442771000124102"/>
+        <display value="Pepperoni (substance)"/>
+      </concept>
+      <concept>
+        <code value="44588005"/>
+        <display value="Iodine (substance)"/>
+      </concept>
+      <concept>
+        <code value="446273004"/>
+        <display value="Red food coloring (substance)"/>
+      </concept>
+      <concept>
+        <code value="446274005"/>
+        <display value="Yellow food coloring (substance)"/>
+      </concept>
+      <concept>
+        <code value="47703008"/>
+        <display value="Lactose (substance)"/>
+      </concept>
+      <concept>
+        <code value="51386004"/>
+        <display value="Food preservative (substance)"/>
+      </concept>
+      <concept>
+        <code value="51905005"/>
+        <display value="Mustard (substance)"/>
+      </concept>
+      <concept>
+        <code value="53041004"/>
+        <display value="Alcohol (substance)"/>
+      </concept>
+      <concept>
+        <code value="61789006"/>
+        <display value="Dye (substance)"/>
+      </concept>
+      <concept>
+        <code value="63045006"/>
+        <display value="Berry (substance)"/>
+      </concept>
+      <concept>
+        <code value="67324005"/>
+        <display value="Rice (substance)"/>
+      </concept>
+      <concept>
+        <code value="70813002"/>
+        <display value="Milk (substance)"/>
+      </concept>
+      <concept>
+        <code value="710179004"/>
+        <display value="Lupine seed (substance)"/>
+      </concept>
+      <concept>
+        <code value="72511004"/>
+        <display value="Fruit (substance)"/>
+      </concept>
+      <concept>
+        <code value="726730005"/>
+        <display value="Yam (substance)"/>
+      </concept>
+      <concept>
+        <code value="734881000"/>
+        <display value="Tomato (substance)"/>
+      </concept>
+      <concept>
+        <code value="735006003"/>
+        <display value="Squid (substance)"/>
+      </concept>
+      <concept>
+        <code value="735009005"/>
+        <display value="Salmon (substance)"/>
+      </concept>
+      <concept>
+        <code value="735029006"/>
+        <display value="Shellfish (substance)"/>
+      </concept>
+      <concept>
+        <code value="735030001"/>
+        <display value="Garlic (substance)"/>
+      </concept>
+      <concept>
+        <code value="735043001"/>
+        <display value="Mackerel (substance)"/>
+      </concept>
+      <concept>
+        <code value="735045008"/>
+        <display value="Mushroom (substance)"/>
+      </concept>
+      <concept>
+        <code value="735047000"/>
+        <display value="Onion (substance)"/>
+      </concept>
+      <concept>
+        <code value="735049002"/>
+        <display value="Peach (substance)"/>
+      </concept>
+      <concept>
+        <code value="735050002"/>
+        <display value="Pear (substance)"/>
+      </concept>
+      <concept>
+        <code value="735051003"/>
+        <display value="Plum (substance)"/>
+      </concept>
+      <concept>
+        <code value="735053000"/>
+        <display value="Potato (substance)"/>
+      </concept>
+      <concept>
+        <code value="735123009"/>
+        <display value="Broccoli (substance)"/>
+      </concept>
+      <concept>
+        <code value="735124003"/>
+        <display value="Barley (substance)"/>
+      </concept>
+      <concept>
+        <code value="735211005"/>
+        <display value="Coconut (substance)"/>
+      </concept>
+      <concept>
+        <code value="735212003"/>
+        <display value="Papaya (substance)"/>
+      </concept>
+      <concept>
+        <code value="735213008"/>
+        <display value="Cucumber (substance)"/>
+      </concept>
+      <concept>
+        <code value="735214002"/>
+        <display value="Apricot (substance)"/>
+      </concept>
+      <concept>
+        <code value="735215001"/>
+        <display value="Apple (substance)"/>
+      </concept>
+      <concept>
+        <code value="735248001"/>
+        <display value="Cherry (substance)"/>
+      </concept>
+      <concept>
+        <code value="735249009"/>
+        <display value="Avocado (substance)"/>
+      </concept>
+      <concept>
+        <code value="735340006"/>
+        <display value="Lemon (substance)"/>
+      </concept>
+      <concept>
+        <code value="735959004"/>
+        <display value="Marine mollusk (substance)"/>
+      </concept>
+      <concept>
+        <code value="735971005"/>
+        <display value="Fish (substance)"/>
+      </concept>
+      <concept>
+        <code value="735977009"/>
+        <display value="Marine crustacean (substance)"/>
+      </concept>
+      <concept>
+        <code value="736027000"/>
+        <display value="Scallop (substance)"/>
+      </concept>
+      <concept>
+        <code value="736030007"/>
+        <display value="Clam (substance)"/>
+      </concept>
+      <concept>
+        <code value="736031006"/>
+        <display value="Oyster (substance)"/>
+      </concept>
+      <concept>
+        <code value="736159005"/>
+        <display value="Crab (substance)"/>
+      </concept>
+      <concept>
+        <code value="736162008"/>
+        <display value="Lobster (substance)"/>
+      </concept>
+      <concept>
+        <code value="74801000"/>
+        <display value="Sugar (substance)"/>
+      </concept>
+      <concept>
+        <code value="75665004"/>
+        <display value="Monosodium glutamate (substance)"/>
+      </concept>
+      <concept>
+        <code value="762952008"/>
+        <display value="Peanut (substance)"/>
+      </concept>
+      <concept>
+        <code value="7791007"/>
+        <display value="Soy protein (substance)"/>
+      </concept>
+      <concept>
+        <code value="80259003"/>
+        <display value="Food flavoring agent (substance)"/>
+      </concept>
+      <concept>
+        <code value="89707004"/>
+        <display value="Sesame oil (substance)"/>
+      </concept>
+      <concept>
+        <code value="89811004"/>
+        <display value="Gluten (substance)"/>
+      </concept>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:872aa43a-18a2-4809-acc5-6ae96d9dff51"/>
+    <timestamp value="2023-06-29T16:29:11-04:00"/>
+    <total value="126"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="102259006"/>
+      <display value="Citrus fruit (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="102261002"/>
+      <display value="Strawberry (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="102262009"/>
+      <display value="Chocolate (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="102263004"/>
+      <display value="Eggs (edible) (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="102264005"/>
+      <display value="Cheese (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="11526002"/>
+      <display value="Aspartame (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="116274004"/>
+      <display value="Artificial sweetener (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="13577000"/>
+      <display value="Nut (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="226723006"/>
+      <display value="Buckwheat - cereal (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="226734009"/>
+      <display value="Wheatgerm (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="226915003"/>
+      <display value="Red meat (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="226916002"/>
+      <display value="Beef (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="226934003"/>
+      <display value="Pork (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="226955001"/>
+      <display value="Chicken - meat (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="226967004"/>
+      <display value="Turkey - meat (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="227144008"/>
+      <display value="Tuna fish (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="227151004"/>
+      <display value="Prawns (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="227208008"/>
+      <display value="Abalone canned in brine (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="227219006"/>
+      <display value="Eggplant (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="227313005"/>
+      <display value="Pulse vegetable (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="227388008"/>
+      <display value="Cinnamon (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="227400003"/>
+      <display value="Ginger (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="227421003"/>
+      <display value="Cranberries (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="227444000"/>
+      <display value="Raspberries (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="227493005"/>
+      <display value="Cashew nut (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="227512001"/>
+      <display value="Pistachio nut (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="227598003"/>
+      <display value="Honey (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="228102000"/>
+      <display value="Sodium nitrate (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="255641001"/>
+      <display value="Caffeine (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="256306003"/>
+      <display value="Orange - fruit (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="256307007"/>
+      <display value="Banana (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="256313003"/>
+      <display value="Pineapple (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="256315005"/>
+      <display value="Grapefruit (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="256317002"/>
+      <display value="Grapes (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="256319004"/>
+      <display value="Carrot (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="256326004"/>
+      <display value="Celery (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="256329006"/>
+      <display value="Spinach (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="256350002"/>
+      <display value="Almond (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="256351003"/>
+      <display value="Brazil nut (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="256352005"/>
+      <display value="Walnut - nut (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="256353000"/>
+      <display value="Hazelnut (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="256354006"/>
+      <display value="Bean (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="260167008"/>
+      <display value="Sesame seed (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="260176001"/>
+      <display value="Kiwi fruit (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="260177005"/>
+      <display value="Melon (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="260179008"/>
+      <display value="Mango fruit (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="260184002"/>
+      <display value="Pea (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="260189007"/>
+      <display value="Pecan nut (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="260205009"/>
+      <display value="Sunflower seed (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="264337003"/>
+      <display value="Seed (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="28230009"/>
+      <display value="Poultry (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="28942008"/>
+      <display value="Coconut oil (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="29263009"/>
+      <display value="Coffee (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="35748005"/>
+      <display value="Wine (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="3692009"/>
+      <display value="Sodium sulfite (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="373531009"/>
+      <display value="Gelatin (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="386127005"/>
+      <display value="Formula milk (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="391737006"/>
+      <display value="Almond oil (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="391739009"/>
+      <display value="Aloe (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="412061001"/>
+      <display value="Blueberries (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="412062008"/>
+      <display value="Cantaloupe (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="412068007"/>
+      <display value="Rye (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="412071004"/>
+      <display value="Wheat (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="412357001"/>
+      <display value="Corn (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="412533000"/>
+      <display value="Wheat bran (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="412534006"/>
+      <display value="Yeast (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="417889008"/>
+      <display value="Arachis oil (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="418504009"/>
+      <display value="Oat (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="419420009"/>
+      <display value="Watermelon (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="424369009"/>
+      <display value="Product containing beta-galactosidase (medicinal product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="43735007"/>
+      <display value="Sulfur (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="44027008"/>
+      <display value="Seafood (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="442381000124103"/>
+      <display value="Blue food coloring (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="442571000124108"/>
+      <display value="Tree nut (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="442771000124102"/>
+      <display value="Pepperoni (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="44588005"/>
+      <display value="Iodine (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="446273004"/>
+      <display value="Red food coloring (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="446274005"/>
+      <display value="Yellow food coloring (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="47703008"/>
+      <display value="Lactose (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="51386004"/>
+      <display value="Food preservative (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="51905005"/>
+      <display value="Mustard (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="53041004"/>
+      <display value="Substance with alcohol structure (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="61789006"/>
+      <display value="Dye (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="63045006"/>
+      <display value="Berry (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="67324005"/>
+      <display value="Rice (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="70813002"/>
+      <display value="Milk (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="710179004"/>
+      <display value="Lupine seed (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="72511004"/>
+      <display value="Fruit (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="726730005"/>
+      <display value="Yam (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="734881000"/>
+      <display value="Tomato (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="735006003"/>
+      <display value="Squid (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="735009005"/>
+      <display value="Salmon (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="735029006"/>
+      <display value="Shellfish (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="735030001"/>
+      <display value="Garlic (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="735043001"/>
+      <display value="Mackerel (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="735045008"/>
+      <display value="Mushroom (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="735047000"/>
+      <display value="Onion (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="735049002"/>
+      <display value="Peach (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="735050002"/>
+      <display value="Pear (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="735051003"/>
+      <display value="Plum (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="735053000"/>
+      <display value="Potato (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="735123009"/>
+      <display value="Broccoli (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="735124003"/>
+      <display value="Barley (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="735211005"/>
+      <display value="Coconut (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="735212003"/>
+      <display value="Papaya (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="735213008"/>
+      <display value="Cucumber (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="735214002"/>
+      <display value="Apricot (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="735215001"/>
+      <display value="Apple (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="735248001"/>
+      <display value="Cherry (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="735249009"/>
+      <display value="Avocado (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="735340006"/>
+      <display value="Lemon (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="735959004"/>
+      <display value="Marine mollusk (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="735971005"/>
+      <display value="Fish (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="735977009"/>
+      <display value="Marine crustacean (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="736027000"/>
+      <display value="Scallop (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="736030007"/>
+      <display value="Clam (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="736031006"/>
+      <display value="Oyster (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="736159005"/>
+      <display value="Crab (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="736162008"/>
+      <display value="Lobster (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="74801000"/>
+      <display value="Simple carbohydrate (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="75665004"/>
+      <display value="Monosodium glutamate (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="762952008"/>
+      <display value="Peanut (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="7791007"/>
+      <display value="Glycine max protein (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="80259003"/>
+      <display value="Food flavoring agent (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="89707004"/>
+      <display value="Sesame oil (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="89811004"/>
+      <display value="Gluten (substance)"/>
+    </contains>
+  </expansion>
+</ValueSet>

@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="tooth"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="fm"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/tooth"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.540"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="OralSiteCodes"/>
+  <title value="Oral Site Codes"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="Financial Management"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="This value set includes a smattering of FDI oral site codes."/>
+  <immutable value="true"/>
+  <copyright value="This is an example set."/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:d94cbb34-3a82-4cf3-aa4d-8760bea1bdc4"/>
+    <timestamp value="2025-01-17T09:53:39-07:00"/>
+    <total value="41"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/ex-tooth|1.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="0"/>
+      <display value="Oral cavity"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="1"/>
+      <display value="1"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="2"/>
+      <display value="2"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="3"/>
+      <display value="3"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="4"/>
+      <display value="4"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="5"/>
+      <display value="5"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="6"/>
+      <display value="6"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="7"/>
+      <display value="7"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="8"/>
+      <display value="8"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="11"/>
+      <display value="11"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="12"/>
+      <display value="12"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="13"/>
+      <display value="13"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="14"/>
+      <display value="14"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="15"/>
+      <display value="15"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="16"/>
+      <display value="16"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="17"/>
+      <display value="17"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="18"/>
+      <display value="18"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="21"/>
+      <display value="21"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="22"/>
+      <display value="22"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="23"/>
+      <display value="23"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="24"/>
+      <display value="24"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="25"/>
+      <display value="25"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="26"/>
+      <display value="26"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="27"/>
+      <display value="27"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="28"/>
+      <display value="28"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="31"/>
+      <display value="31"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="32"/>
+      <display value="32"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="33"/>
+      <display value="33"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="34"/>
+      <display value="34"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="35"/>
+      <display value="35"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="36"/>
+      <display value="36"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="37"/>
+      <display value="37"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="38"/>
+      <display value="38"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="41"/>
+      <display value="41"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="42"/>
+      <display value="42"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="43"/>
+      <display value="43"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="44"/>
+      <display value="44"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="45"/>
+      <display value="45"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="46"/>
+      <display value="46"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="47"/>
+      <display value="47"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-tooth"/>
+      <code value="48"/>
+      <display value="48"/>
+    </contains>
+  </expansion>
+</ValueSet>

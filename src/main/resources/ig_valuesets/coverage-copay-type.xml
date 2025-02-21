@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="coverage-copay-type"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="fm"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="trial-use"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="2"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/coverage-copay-type"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.527"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="CoverageCopayTypeCodes"/>
+  <title value="Coverage Copay Type Codes"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="Financial Management"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="This value set includes sample Coverage Copayment Type codes."/>
+  <immutable value="true"/>
+  <copyright value="This is an example set."/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/coverage-copay-type"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:2d07b1a6-7dbc-4ca6-95d6-6e2c19acd8fa"/>
+    <timestamp value="2025-01-17T09:53:37-07:00"/>
+    <total value="10"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/coverage-copay-type|1.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/coverage-copay-type"/>
+      <code value="gpvisit"/>
+      <display value="GP Office Visit"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/coverage-copay-type"/>
+      <code value="spvisit"/>
+      <display value="Specialist Office Visit"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/coverage-copay-type"/>
+      <code value="emergency"/>
+      <display value="Emergency"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/coverage-copay-type"/>
+      <code value="inpthosp"/>
+      <display value="Inpatient Hospital"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/coverage-copay-type"/>
+      <code value="televisit"/>
+      <display value="Tele-visit"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/coverage-copay-type"/>
+      <code value="urgentcare"/>
+      <display value="Urgent Care"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/coverage-copay-type"/>
+      <code value="copaypct"/>
+      <display value="Copay Percentage"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/coverage-copay-type"/>
+      <code value="copay"/>
+      <display value="Copay Amount"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/coverage-copay-type"/>
+      <code value="deductible"/>
+      <display value="Deductible"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/coverage-copay-type"/>
+      <code value="maxoutofpocket"/>
+      <display value="Maximum out of pocket"/>
+    </contains>
+  </expansion>
+</ValueSet>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="v3-RaceBlackOrAfricanAmerican"/>
+  <language value="en"/>
+  <text>
+    <status value="generated"/>
+    <div xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+      <ul>
+        <li>Include codes from 
+          <a href="CodeSystem-v3-Race.html">
+            <code>http://terminology.hl7.org/CodeSystem/v3-Race</code>
+          </a> where concept  is-a  
+          <a href="CodeSystem-v3-Race.html#v3-Race-2054-5">2054-5</a>
+        </li>
+      </ul>
+    </div>
+  </text>
+  <url value="http://terminology.hl7.org/ValueSet/v3-RaceBlackOrAfricanAmerican"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.1.11.15768"/>
+  </identifier>
+  <version value="3.0.0"/>
+  <name value="RaceBlackOrAfricanAmerican"/>
+  <title value="RaceBlackOrAfricanAmerican"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2014-03-26"/>
+  <publisher value="Health Level Seven International"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org"/>
+    </telecom>
+    <telecom>
+      <system value="email"/>
+      <value value="hq@HL7.org"/>
+    </telecom>
+  </contact>
+  <description value="***No description***"/>
+  <copyright value="This material derives from the HL7 Terminology THO. THO is copyright ©1989+ Health Level Seven International and is made available under the CC0 designation. For more licensing information see: https://terminology.hl7.org/license"/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="2054-5"/>
+      </filter>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:19be0852-52f3-47c7-8760-a334db263208"/>
+    <timestamp value="2025-01-17T09:53:42-07:00"/>
+    <total value="19"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/v3-Race|4.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2054-5"/>
+      <display value="Black or African American"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2056-0"/>
+      <display value="Black"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2058-6"/>
+      <display value="African American"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2060-2"/>
+      <display value="African"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2061-0"/>
+      <display value="Botswanan"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2062-8"/>
+      <display value="Ethiopian"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2063-6"/>
+      <display value="Liberian"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2064-4"/>
+      <display value="Namibian"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2065-1"/>
+      <display value="Nigerian"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2066-9"/>
+      <display value="Zairean"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2067-7"/>
+      <display value="Bahamian"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2068-5"/>
+      <display value="Barbadian"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2069-3"/>
+      <display value="Dominican"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2070-1"/>
+      <display value="Dominica Islander"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2071-9"/>
+      <display value="Haitian"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2072-7"/>
+      <display value="Jamaican"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2073-5"/>
+      <display value="Tobagoan"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2074-3"/>
+      <display value="Trinidadian"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2075-0"/>
+      <display value="West Indian"/>
+    </contains>
+  </expansion>
+</ValueSet>

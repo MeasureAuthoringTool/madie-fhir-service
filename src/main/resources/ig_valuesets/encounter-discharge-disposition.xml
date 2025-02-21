@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="encounter-discharge-disposition"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="pa"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/encounter-discharge-disposition"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.259"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="DischargeDisposition"/>
+  <title value="Discharge disposition"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="This value set defines a set of codes that can be used to where the patient left the hospital."/>
+  <immutable value="true"/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/discharge-disposition"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:719286c0-528a-49f6-b223-76f8ddf4633e"/>
+    <timestamp value="2025-01-17T09:53:37-07:00"/>
+    <total value="11"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/discharge-disposition|1.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/discharge-disposition"/>
+      <code value="home"/>
+      <display value="Home"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/discharge-disposition"/>
+      <code value="alt-home"/>
+      <display value="Alternative home"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/discharge-disposition"/>
+      <code value="other-hcf"/>
+      <display value="Other healthcare facility"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/discharge-disposition"/>
+      <code value="hosp"/>
+      <display value="Hospice"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/discharge-disposition"/>
+      <code value="long"/>
+      <display value="Long-term care"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/discharge-disposition"/>
+      <code value="aadvice"/>
+      <display value="Left against advice"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/discharge-disposition"/>
+      <code value="exp"/>
+      <display value="Expired"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/discharge-disposition"/>
+      <code value="psy"/>
+      <display value="Psychiatric hospital"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/discharge-disposition"/>
+      <code value="rehab"/>
+      <display value="Rehabilitation"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/discharge-disposition"/>
+      <code value="snf"/>
+      <display value="Skilled nursing facility"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/discharge-disposition"/>
+      <code value="oth"/>
+      <display value="Other"/>
+    </contains>
+  </expansion>
+</ValueSet>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="medication-statement-status"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="phx"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="trial-use"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="3"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/medication-statement-status"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.367"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="Medication Status Codes"/>
+  <title value="Medication  status  codes"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="Medication Status Codes"/>
+  <immutable value="true"/>
+  <compose>
+    <include>
+      <system value="http://hl7.org/fhir/CodeSystem/medication-statement-status"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:d971e6da-cd34-414f-b4d5-511be7ba0597"/>
+    <timestamp value="2025-01-17T09:53:38-07:00"/>
+    <total value="8"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://hl7.org/fhir/CodeSystem/medication-statement-status|4.0.1"/>
+    </parameter>
+    <contains>
+      <system value="http://hl7.org/fhir/CodeSystem/medication-statement-status"/>
+      <code value="active"/>
+      <display value="Active"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/CodeSystem/medication-statement-status"/>
+      <code value="completed"/>
+      <display value="Completed"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/CodeSystem/medication-statement-status"/>
+      <code value="entered-in-error"/>
+      <display value="Entered in Error"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/CodeSystem/medication-statement-status"/>
+      <code value="intended"/>
+      <display value="Intended"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/CodeSystem/medication-statement-status"/>
+      <code value="stopped"/>
+      <display value="Stopped"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/CodeSystem/medication-statement-status"/>
+      <code value="on-hold"/>
+      <display value="On Hold"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/CodeSystem/medication-statement-status"/>
+      <code value="unknown"/>
+      <display value="Unknown"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/CodeSystem/medication-statement-status"/>
+      <code value="not-taken"/>
+      <display value="Not Taken"/>
+    </contains>
+  </expansion>
+</ValueSet>

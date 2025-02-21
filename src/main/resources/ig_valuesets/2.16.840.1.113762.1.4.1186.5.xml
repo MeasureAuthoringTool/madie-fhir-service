@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="2.16.840.1.113762.1.4.1186.5"/>
+  <meta>
+    <versionId value="13"/>
+    <lastUpdated value="2021-06-22T01:00:25.000-04:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+    <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/publishable-valueset-cqfm"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/valueset-author">
+    <valueString value="HL7 Patient Care WG Author"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate">
+    <valueDate value="2022-12-15"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/valueset-effectiveDate">
+    <valueDate value="2021-06-22"/>
+  </extension>
+  <url value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1186.5"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113762.1.4.1186.5"/>
+  </identifier>
+  <version value="20210622"/>
+  <name value="CommonRefutationsForSubstanceCausesForAllergyAndIntoleranceDocumentation"/>
+  <title value="Common refutations for substance causes for allergy and intolerance documentation"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2021-06-22T01:00:25-04:00"/>
+  <publisher value="HL7 Patient Care WG Steward"/>
+  <description value="2021-06-21 updated content of the value set to align with changes noted in https://jira.hl7.org/browse/FHIR-30345"/>
+  <jurisdiction>
+    <extension url="http://hl7.org/fhir/StructureDefinition/data-absent-reason">
+      <valueString value="UNKNOWN"/>
+    </extension>
+  </jurisdiction>
+  <purpose value="(Clinical Focus: Refutation of associations between substances and reactions),(Data Element Scope: Reactant element of allergy or intolerance record),(Inclusion Criteria: SNOMED CT situation concepts asserting that a substance or class of substances does not cause adverse reactions in the patient),(Exclusion Criteria: Substances; actual conditions caused by exposure (reactions, allergies))"/>
+  <compose>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <concept>
+        <code value="1003774007"/>
+        <display value="No known Hevea brasiliensis latex allergy (situation)"/>
+      </concept>
+      <concept>
+        <code value="1631000175102"/>
+        <display value="Patient not asked (contextual qualifier) (qualifier value)"/>
+      </concept>
+      <concept>
+        <code value="409137002"/>
+        <display value="No known drug allergy (situation)"/>
+      </concept>
+      <concept>
+        <code value="428607008"/>
+        <display value="No known environmental allergy (situation)"/>
+      </concept>
+      <concept>
+        <code value="429625007"/>
+        <display value="No known food allergy (situation)"/>
+      </concept>
+      <concept>
+        <code value="716184000"/>
+        <display value="No known latex allergy (situation)"/>
+      </concept>
+      <concept>
+        <code value="716186003"/>
+        <display value="No known allergy (situation)"/>
+      </concept>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:c6988050-a29d-4f73-9c2f-f18be26fce48"/>
+    <timestamp value="2023-06-29T16:29:30-04:00"/>
+    <total value="6"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="1003774007"/>
+      <display value="No known Hevea brasiliensis latex allergy (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="1631000175102"/>
+      <display value="Patient not asked (contextual qualifier) (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="409137002"/>
+      <display value="No known drug allergy (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="428607008"/>
+      <display value="No known environmental allergy (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="429625007"/>
+      <display value="No known food allergy (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="716186003"/>
+      <display value="No known allergy (situation)"/>
+    </contains>
+  </expansion>
+</ValueSet>

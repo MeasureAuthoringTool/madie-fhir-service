@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="procedure-followup"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="pc"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/procedure-followup"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.429"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="ProcedureFollowUpCodes(SNOMEDCT)"/>
+  <title value="Procedure Follow up Codes (SNOMED CT)"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="Procedure follow up codes: A selection of SNOMED CT codes relevant to procedure follow up."/>
+  <copyright value="This resource includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyright of the International Health Terminology Standards Development Organisation (IHTSDO). Implementers of these specifications must have the appropriate SNOMED CT Affiliate license - for more information contact http://www.snomed.org/snomed-ct/get-snomed-ct or info@snomed.org"/>
+  <compose>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <concept>
+        <code value="18949003"/>
+      </concept>
+      <concept>
+        <code value="30549001"/>
+      </concept>
+      <concept>
+        <code value="241031001"/>
+      </concept>
+      <concept>
+        <code value="35963001"/>
+      </concept>
+      <concept>
+        <code value="225164002"/>
+      </concept>
+      <concept>
+        <code value="447346005"/>
+      </concept>
+      <concept>
+        <code value="229506003"/>
+      </concept>
+      <concept>
+        <code value="274441001"/>
+      </concept>
+      <concept>
+        <code value="394725008"/>
+      </concept>
+      <concept>
+        <code value="359825008"/>
+      </concept>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:810d3c88-166d-46f8-b2dc-e48cd50bc6b1"/>
+    <timestamp value="2025-01-17T09:53:38-07:00"/>
+    <total value="10"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-valueset"/>
+      <valueUri value="null"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801"/>
+    </parameter>
+    <parameter>
+      <name value="version"/>
+      <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801"/>
+    </parameter>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18949003"/>
+      <display value="Change of dressing"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30549001"/>
+      <display value="Removal of suture"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="241031001"/>
+      <display value="Removal of drain"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35963001"/>
+      <display value="Removal of staples"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="225164002"/>
+      <display value="Removal of ligature"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="447346005"/>
+      <display value="Cardiopulmonary exercise test (procedure)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="229506003"/>
+      <display value="Scar tissue massage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="274441001"/>
+      <display value="Suction drainage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="394725008"/>
+      <display value="Diabetes medication review (procedure)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="359825008"/>
+      <display value="Cytopathology, review of bronchioalveolar lavage specimen"/>
+    </contains>
+  </expansion>
+</ValueSet>

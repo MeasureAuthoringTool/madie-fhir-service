@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="us-core-usps-state"/>
+  <text>
+    <status value="generated"/>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <ul>
+        <li>Include all codes defined in 
+          <code>https://www.usps.com/</code>
+        </li>
+      </ul>
+    </div>
+  </text>
+  <url value="http://hl7.org/fhir/us/core/ValueSet/us-core-usps-state"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.40"/>
+  </identifier>
+  <version value="6.1.0"/>
+  <name value="UspsTwoLetterAlphabeticCodes"/>
+  <title value="USPS Two Letter Alphabetic Codes"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2022-09-29"/>
+  <publisher value="HL7 International - Cross-Group Projects"/>
+  <contact>
+    <name value="HL7 International - Cross-Group Projects"/>
+    <telecom>
+      <system value="url"/>
+      <value value="http://www.hl7.org/Special/committees/cgp"/>
+    </telecom>
+    <telecom>
+      <system value="email"/>
+      <value value="cgp@lists.HL7.org"/>
+    </telecom>
+  </contact>
+  <description value="This value set defines two letter USPS alphabetic codes."/>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="US"/>
+    </coding>
+  </jurisdiction>
+  <copyright value="On July 1, 1963, the Post Office Department implemented the five-digit ZIP Code, which was placed after the state name in the last line of an address. To provide room for the ZIP Code, the Department issued two-letter abbreviations for all states and territories. Publication 59, Abbreviations for Use with ZIP Code, issued by the Department in October 1963. There is no copyright restriction on this value set."/>
+  <compose>
+    <include>
+      <system value="https://www.usps.com/"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:f4524429-3432-429c-aba5-76476881dbea"/>
+    <timestamp value="2025-01-17T09:53:42-07:00"/>
+    <total value="62"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-valueset"/>
+      <valueUri value="null"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="https://www.usps.com/"/>
+    </parameter>
+    <parameter>
+      <name value="version"/>
+      <valueUri value="https://www.usps.com/"/>
+    </parameter>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="AL"/>
+      <display value="Alabama"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="AK"/>
+      <display value="Alaska"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="AS"/>
+      <display value="American Samoa"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="AZ"/>
+      <display value="Arizona"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="AR"/>
+      <display value="Arkansas"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="CA"/>
+      <display value="California"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="CO"/>
+      <display value="Colorado"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="CT"/>
+      <display value="Connecticut"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="DE"/>
+      <display value="Delaware"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="DC"/>
+      <display value="District of Columbia"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="FM"/>
+      <display value="Federated States of Micronesia"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="FL"/>
+      <display value="Florida"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="GA"/>
+      <display value="Georgia"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="GU"/>
+      <display value="Guam"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="HI"/>
+      <display value="Hawaii"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="ID"/>
+      <display value="Idaho"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="IL"/>
+      <display value="Illinois"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="IN"/>
+      <display value="Indiana"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="IA"/>
+      <display value="Iowa"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="KS"/>
+      <display value="Kansas"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="KY"/>
+      <display value="Kentucky"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="LA"/>
+      <display value="Louisiana"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="ME"/>
+      <display value="Maine"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="MH"/>
+      <display value="Marshall Islands"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="MD"/>
+      <display value="Maryland"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="MA"/>
+      <display value="Massachusetts"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="MI"/>
+      <display value="Michigan"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="MN"/>
+      <display value="Minnesota"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="MS"/>
+      <display value="Mississippi"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="MO"/>
+      <display value="Missouri"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="MT"/>
+      <display value="Montana"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="NE"/>
+      <display value="Nebraska"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="NV"/>
+      <display value="Nevada"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="NH"/>
+      <display value="New Hampshire"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="NJ"/>
+      <display value="New Jersey"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="NM"/>
+      <display value="New Mexico"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="NY"/>
+      <display value="New York"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="NC"/>
+      <display value="North Carolina"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="ND"/>
+      <display value="North Dakota"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="MP"/>
+      <display value="Northern Mariana Islands"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="OH"/>
+      <display value="Ohio"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="OK"/>
+      <display value="Oklahoma"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="OR"/>
+      <display value="Oregon"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="PW"/>
+      <display value="Palau"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="PA"/>
+      <display value="Pennsylvania"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="PR"/>
+      <display value="Puerto Rico"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="RI"/>
+      <display value="Rhode Island"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="SC"/>
+      <display value="South Carolina"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="SD"/>
+      <display value="South Dakota"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="TN"/>
+      <display value="Tennessee"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="TX"/>
+      <display value="Texas"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="UT"/>
+      <display value="Utah"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="VT"/>
+      <display value="Vermont"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="VI"/>
+      <display value="Virgin Islands"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="VA"/>
+      <display value="Virginia"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="WA"/>
+      <display value="Washington"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="WV"/>
+      <display value="West Virginia"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="WI"/>
+      <display value="Wisconsin"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="WY"/>
+      <display value="Wyoming"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="AE"/>
+      <display value="Armed Forces Europe, the Middle East, and Canada"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="AP"/>
+      <display value="Armed Forces Pacific"/>
+    </contains>
+    <contains>
+      <system value="https://www.usps.com/"/>
+      <code value="AA"/>
+      <display value="Armed Forces Americas (except Canada)"/>
+    </contains>
+  </expansion>
+</ValueSet>

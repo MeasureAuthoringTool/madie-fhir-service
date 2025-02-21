@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="history-absent-reason"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="pc"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/history-absent-reason"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.269"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="FamilyHistoryAbsentReason"/>
+  <title value="FamilyHistoryAbsentReason"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="HL7 (FHIR Project)"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+    <telecom>
+      <system value="email"/>
+      <value value="fhir@lists.hl7.org"/>
+    </telecom>
+  </contact>
+  <description value="Codes describing the reason why a family member's history is not available."/>
+  <immutable value="true"/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/history-absent-reason"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:f7302918-4a08-4c56-b0de-2c0497fe336f"/>
+    <timestamp value="2025-01-17T09:53:38-07:00"/>
+    <total value="4"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/history-absent-reason|1.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/history-absent-reason"/>
+      <code value="subject-unknown"/>
+      <display value="Subject Unknown"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/history-absent-reason"/>
+      <code value="withheld"/>
+      <display value="Information Withheld"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/history-absent-reason"/>
+      <code value="unable-to-obtain"/>
+      <display value="Unable To Obtain"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/history-absent-reason"/>
+      <code value="deferred"/>
+      <display value="Deferred"/>
+    </contains>
+  </expansion>
+</ValueSet>

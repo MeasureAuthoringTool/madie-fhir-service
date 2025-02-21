@@ -1,0 +1,2035 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="device-action"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="pc"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/device-action"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.425"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="ProcedureDeviceActionCodes"/>
+  <title value="Procedure Device Action Codes"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="HL7 International - Patient Care WG"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://www.hl7.org/Special/committees/patientcare/"/>
+    </telecom>
+  </contact>
+  <description value="Example codes indicating the change that happened to the device during the procedure.  Note that these are in no way complete and might not even be appropriate for some uses."/>
+  <immutable value="true"/>
+  <copyright value="This resource includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyright of the International Health Terminology Standards Development Organisation (IHTSDO). Implementers of these specifications must have the appropriate SNOMED CT Affiliate license - for more information contact http://www.snomed.org/snomed-ct/get-snomed-ct or info@snomed.org"/>
+  <compose>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="129264002"/>
+      </filter>
+    </include>
+  </compose>
+  <expansion>
+    <extension url="http://hl7.org/fhir/StructureDefinition/valueset-unclosed">
+      <valueBoolean value="true"/>
+    </extension>
+    <identifier value="urn:uuid:3a02c82d-1e4c-4bc6-9dfa-81872b6ef1ed"/>
+    <timestamp value="2025-01-17T09:53:37-07:00"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-valueset"/>
+      <valueUri value="null"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801"/>
+    </parameter>
+    <parameter>
+      <name value="version"/>
+      <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801"/>
+    </parameter>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129264002"/>
+      <display value="Action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129265001"/>
+      <display value="Evaluation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129266000"/>
+      <display value="Measurement - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129267009"/>
+      <display value="Administrative action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129268004"/>
+      <display value="Observation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129269007"/>
+      <display value="Assisting - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129271007"/>
+      <display value="Management - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129272000"/>
+      <display value="Stimulation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129273005"/>
+      <display value="Admission - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129274004"/>
+      <display value="Discharge - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129275003"/>
+      <display value="Administrative transfer - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129276002"/>
+      <display value="Referral - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129277006"/>
+      <display value="Administrative disposition - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129278001"/>
+      <display value="Audit - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129279009"/>
+      <display value="Medicolegal action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129280007"/>
+      <display value="Medicolegal testimony - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129283009"/>
+      <display value="Training - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129284003"/>
+      <display value="Surgical action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129286001"/>
+      <display value="Microsurgery - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129287005"/>
+      <display value="Incision - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129289008"/>
+      <display value="Drainage - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129291000"/>
+      <display value="Drilling - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129292007"/>
+      <display value="Evacuation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129293002"/>
+      <display value="Dissection - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129294008"/>
+      <display value="Discission - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129295009"/>
+      <display value="Slitting - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129296005"/>
+      <display value="Bisection - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129297001"/>
+      <display value="Bifurcation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129298006"/>
+      <display value="Division - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129299003"/>
+      <display value="Release - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129300006"/>
+      <display value="Puncture - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129301005"/>
+      <display value="Scarification - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129303008"/>
+      <display value="Removal - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129304002"/>
+      <display value="Excision - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129305001"/>
+      <display value="Wedge resection - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129306000"/>
+      <display value="Surgical removal - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129307009"/>
+      <display value="Expulsion - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129309007"/>
+      <display value="Amputation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129310002"/>
+      <display value="Transfixion - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129311003"/>
+      <display value="Evisceration - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129312005"/>
+      <display value="Enucleation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129313000"/>
+      <display value="Trephination - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129314006"/>
+      <display value="Biopsy - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129315007"/>
+      <display value="Incisional biopsy - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129316008"/>
+      <display value="Aspiration - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129317004"/>
+      <display value="Debridement - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129318009"/>
+      <display value="Saucerization - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129319001"/>
+      <display value="Curettage - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129321006"/>
+      <display value="Trimming - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129322004"/>
+      <display value="Shaving - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129323009"/>
+      <display value="Scraping - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129324003"/>
+      <display value="Filleting - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129325002"/>
+      <display value="Introduction - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129326001"/>
+      <display value="Injection - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129327005"/>
+      <display value="Tattooing - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129328000"/>
+      <display value="Inflation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129330003"/>
+      <display value="Infusion - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129331004"/>
+      <display value="Perfusion - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129332006"/>
+      <display value="Irrigation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129333001"/>
+      <display value="Insufflation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129334007"/>
+      <display value="Instillation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129335008"/>
+      <display value="Embolization - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129336009"/>
+      <display value="Implantation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129337000"/>
+      <display value="Reimplantation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129338005"/>
+      <display value="Surgical implantation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129340000"/>
+      <display value="Sounding - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129344009"/>
+      <display value="Surgical recession - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129345005"/>
+      <display value="Resection-recession - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129346006"/>
+      <display value="Radial incision - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129347002"/>
+      <display value="Surgical transfer - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129348007"/>
+      <display value="Z-plasty - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129349004"/>
+      <display value="Surgical lengthening - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129350004"/>
+      <display value="Surgical shortening - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129351000"/>
+      <display value="Surgical augmentation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129352007"/>
+      <display value="Surgical advancement - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129353002"/>
+      <display value="Suspension and fixation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129354008"/>
+      <display value="Exteriorization - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129355009"/>
+      <display value="Marsupialization - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129356005"/>
+      <display value="Reinforcement - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129357001"/>
+      <display value="Closure - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129360008"/>
+      <display value="Oversewing - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129366002"/>
+      <display value="Closure by buckling - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129368001"/>
+      <display value="Cerclage - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129369009"/>
+      <display value="Ligation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129371009"/>
+      <display value="Fixation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129372002"/>
+      <display value="Cryopexy - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129373007"/>
+      <display value="Plication - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129374001"/>
+      <display value="Imbrication - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129376004"/>
+      <display value="Construction - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129377008"/>
+      <display value="Reconstruction - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129378003"/>
+      <display value="Stabilization - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129379006"/>
+      <display value="Fusion - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129380009"/>
+      <display value="Anchoring - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129381008"/>
+      <display value="Enlargement - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129382001"/>
+      <display value="Destruction - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129383006"/>
+      <display value="Avulsion - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129384000"/>
+      <display value="Decortication - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129385004"/>
+      <display value="Stripping - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129386003"/>
+      <display value="Stripping and ligation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129387007"/>
+      <display value="Abrasion - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129388002"/>
+      <display value="Salabrasion - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129390001"/>
+      <display value="Coagulation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129391002"/>
+      <display value="Obliteration - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129392009"/>
+      <display value="Cauterization - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129393004"/>
+      <display value="Cryosurgery - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129395006"/>
+      <display value="Fulguration - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129400007"/>
+      <display value="Crushing - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129401006"/>
+      <display value="Fragmentation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129402004"/>
+      <display value="Emulsification - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129403009"/>
+      <display value="Chemosurgery - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129404003"/>
+      <display value="Chemocautery - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129405002"/>
+      <display value="Photocoagulation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129406001"/>
+      <display value="Transplantation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129407005"/>
+      <display value="Grafting - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129408000"/>
+      <display value="Manipulation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129409008"/>
+      <display value="Mobilization - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129410003"/>
+      <display value="Remobilization - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129411004"/>
+      <display value="Traction - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129412006"/>
+      <display value="Manual reduction - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129413001"/>
+      <display value="Elevation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129414007"/>
+      <display value="Instrumental elevation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129415008"/>
+      <display value="Extraction - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129416009"/>
+      <display value="Surgical extraction - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129418005"/>
+      <display value="Expression - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129419002"/>
+      <display value="Dilation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129420008"/>
+      <display value="Stretching - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129421007"/>
+      <display value="Dilation and stretching - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129424004"/>
+      <display value="Fitting - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129425003"/>
+      <display value="Application - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129426002"/>
+      <display value="Adjustment - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129427006"/>
+      <display value="Reduction - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129430004"/>
+      <display value="Consultation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129431000"/>
+      <display value="History taking - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129433002"/>
+      <display value="Inspection - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129434008"/>
+      <display value="Palpation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129435009"/>
+      <display value="Percussion - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129436005"/>
+      <display value="Auscultation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129437001"/>
+      <display value="Optical transillumination - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129438006"/>
+      <display value="Prescription - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129441002"/>
+      <display value="Counseling - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129442009"/>
+      <display value="Iontophoresis - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129443004"/>
+      <display value="Electrolysis - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129445006"/>
+      <display value="Administration - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129449000"/>
+      <display value="Functional assessment - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183648002"/>
+      <display value="Long-term assistance"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="245854003"/>
+      <display value="Proximal anastomosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="245855002"/>
+      <display value="Distal anastomosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="255595002"/>
+      <display value="Debulking - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257729003"/>
+      <display value="Ablation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257730008"/>
+      <display value="Chemical destruction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257739009"/>
+      <display value="Open adjustment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257741005"/>
+      <display value="Anastomosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257742003"/>
+      <display value="Direct anastomosis - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257744002"/>
+      <display value="End-to-end anastomosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257746000"/>
+      <display value="End-to-side anastomosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257750007"/>
+      <display value="Side-to-side anastomosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257759008"/>
+      <display value="FNA - Fine needle aspiration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257768005"/>
+      <display value="Binding - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257777003"/>
+      <display value="Chemical inactivation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257783000"/>
+      <display value="Thermocoagulation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257786008"/>
+      <display value="Cryotherapy - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257791009"/>
+      <display value="Desiccation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257802002"/>
+      <display value="Anterior displacement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257803007"/>
+      <display value="Posterior displacement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257804001"/>
+      <display value="Lateral displacement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257805000"/>
+      <display value="Medial displacement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257806004"/>
+      <display value="Close rectal dissection"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257811002"/>
+      <display value="External drainage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257817003"/>
+      <display value="Digital evacuation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257821005"/>
+      <display value="Manual expression"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257822003"/>
+      <display value="Extracapsular extraction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257825001"/>
+      <display value="Fenestration - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257850003"/>
+      <display value="Mechanical fragmentation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257857000"/>
+      <display value="Galvanism"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257863009"/>
+      <display value="Radioactive destruction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257867005"/>
+      <display value="Insertion - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257878002"/>
+      <display value="Keeling - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257880008"/>
+      <display value="Localisation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257884004"/>
+      <display value="Immobilization - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257885003"/>
+      <display value="Occlusion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257886002"/>
+      <display value="Operative ultrasound"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257889009"/>
+      <display value="Padding"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257893003"/>
+      <display value="Pressure - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257894009"/>
+      <display value="One handed pressure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257895005"/>
+      <display value="Two handed pressure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257897002"/>
+      <display value="Realignment - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257903006"/>
+      <display value="Repair - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257907007"/>
+      <display value="Patching - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257911001"/>
+      <display value="Repair of recurrence"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257912008"/>
+      <display value="Rotation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257913003"/>
+      <display value="IR - Internal rotation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257914009"/>
+      <display value="External rotation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257915005"/>
+      <display value="Sampling"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257916006"/>
+      <display value="Bilateral sampling"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257917002"/>
+      <display value="Bilateral sequential sampling"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257918007"/>
+      <display value="Bilateral simultaneous sampling"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257926004"/>
+      <display value="Unilateral sampling"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257933004"/>
+      <display value="Tamponade - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257935006"/>
+      <display value="Tapering - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257940003"/>
+      <display value="Transposition - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258061005"/>
+      <display value="Photic stimulation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="260222006"/>
+      <display value="SPECT"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="261191006"/>
+      <display value="Open extraction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="261197005"/>
+      <display value="Doppler color flow"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="261198000"/>
+      <display value="Doppler continuous wave"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="261199008"/>
+      <display value="Doppler pulsed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="261391004"/>
+      <display value="Resurfacing - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="261519002"/>
+      <display value="Diathermy excision"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="261545006"/>
+      <display value="Loop diathermy excision"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="261553003"/>
+      <display value="REDY - Regeneration of dialysate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="261569005"/>
+      <display value="Thermocompaction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="263720003"/>
+      <display value="Compression"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="264592006"/>
+      <display value="Intravesical drug therapy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="264594007"/>
+      <display value="Laser - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="264730003"/>
+      <display value="Lateral rotation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="264739002"/>
+      <display value="Medial rotation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="272381008"/>
+      <display value="Microvascular anastomosis - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="274392008"/>
+      <display value="Examination under anaesthesia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="276734006"/>
+      <display value="Mechanical assistance"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="277261002"/>
+      <display value="Excision biopsy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="277607009"/>
+      <display value="Digital removal"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="277763000"/>
+      <display value="Refashioning"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="277851003"/>
+      <display value="Conduit anastomosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="278110001"/>
+      <display value="Radiographic imaging"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="278292003"/>
+      <display value="Ultrasound imaging"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="278312000"/>
+      <display value="Reattachment - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="278313005"/>
+      <display value="Regeneration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="281609006"/>
+      <display value="Cryoablation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="281613004"/>
+      <display value="Decompression - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="281615006"/>
+      <display value="Exploration - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="281698007"/>
+      <display value="Cryocautery - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="281767003"/>
+      <display value="Manual dilatation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="281838007"/>
+      <display value="Disarticulation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="281839004"/>
+      <display value="Exenteration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="282015008"/>
+      <display value="Shave biopsy - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="282089006"/>
+      <display value="Replacement - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="286553006"/>
+      <display value="Plastic operation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="286792001"/>
+      <display value="Denervation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="287682008"/>
+      <display value="Application of caustics"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="288324002"/>
+      <display value="Eversion - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="288468001"/>
+      <display value="Disimpaction - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="289928003"/>
+      <display value="Reduction plasty"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="289936007"/>
+      <display value="Shave excision"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="289938008"/>
+      <display value="Microsurgical repair"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="290001001"/>
+      <display value="Recession - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="297179000"/>
+      <display value="Microsurgical anastomosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="297183000"/>
+      <display value="Revascularisation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="298053008"/>
+      <display value="Devascularization - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="298116000"/>
+      <display value="Application of substance"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="299712004"/>
+      <display value="Osteoclasis - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="299893001"/>
+      <display value="Interposition anastomosis - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="302193003"/>
+      <display value="Actions by modality"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="302196006"/>
+      <display value="Freeing - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="302199004"/>
+      <display value="Examination - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="302204005"/>
+      <display value="Ultrasound - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="302205006"/>
+      <display value="Microwave - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="303893007"/>
+      <display value="Functional modification"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="303894001"/>
+      <display value="Structural modification"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="303955003"/>
+      <display value="Transfusion - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="303996000"/>
+      <display value="Terminalization"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="303998004"/>
+      <display value="Unused action values"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304054006"/>
+      <display value="Structural support - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304904003"/>
+      <display value="Manual evacuation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="312236008"/>
+      <display value="Duplex ultrasound"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="312250003"/>
+      <display value="Magnetic resonance imaging"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="312251004"/>
+      <display value="Computed tomography technique"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="312254007"/>
+      <display value="Plain X-ray imaging"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="312275004"/>
+      <display value="Fluoroscopic imaging"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="312336005"/>
+      <display value="Opening - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="312337001"/>
+      <display value="Thermography imaging"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="312421008"/>
+      <display value="Radionuclide imaging"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="312883004"/>
+      <display value="Desensitisation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="313029009"/>
+      <display value="Brachytherapy - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360017003"/>
+      <display value="Clipping - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360018008"/>
+      <display value="Stimulus dosing technique"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360020006"/>
+      <display value="Extirpation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360021005"/>
+      <display value="Bypass - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360025001"/>
+      <display value="Harvesting - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360027009"/>
+      <display value="Interposition - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360028004"/>
+      <display value="Surgical biopsy - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360029007"/>
+      <display value="Nonsurgical biopsy - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360032005"/>
+      <display value="Flap reconstruction - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360037004"/>
+      <display value="Imaging - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360038009"/>
+      <display value="Glueing - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360051004"/>
+      <display value="Surgical toilet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360060007"/>
+      <display value="Approximation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360082000"/>
+      <display value="Apposition - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360084004"/>
+      <display value="Septation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360087006"/>
+      <display value="Indirect anastomosis - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360146007"/>
+      <display value="Repositioning - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360147003"/>
+      <display value="Attention - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360148008"/>
+      <display value="Obstetric action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360149000"/>
+      <display value="Delivery - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360150000"/>
+      <display value="Inlay replacement - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360152008"/>
+      <display value="Monitoring - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360153003"/>
+      <display value="Take impression - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360154009"/>
+      <display value="Try-in of device - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360160009"/>
+      <display value="Checking - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360161008"/>
+      <display value="Induction - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360163006"/>
+      <display value="Infiltration - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360165004"/>
+      <display value="Apheresis - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360166003"/>
+      <display value="Filtration - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360220002"/>
+      <display value="Mapping - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360222005"/>
+      <display value="Massage - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360223000"/>
+      <display value="Cine imaging - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360226008"/>
+      <display value="Electrical discharge - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360231005"/>
+      <display value="Video imaging - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360232003"/>
+      <display value="Spectroscopy - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360239007"/>
+      <display value="Termination - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360240009"/>
+      <display value="Connection - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360270004"/>
+      <display value="Therapy - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360272007"/>
+      <display value="Discussion - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360273002"/>
+      <display value="Provision - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360314001"/>
+      <display value="Cutting - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360315000"/>
+      <display value="Filing - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360323003"/>
+      <display value="Restore - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360324009"/>
+      <display value="Obturation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360325005"/>
+      <display value="Simple removal - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360393008"/>
+      <display value="Disinsertion - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="363659002"/>
+      <display value="Pacing - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="363678002"/>
+      <display value="Positron emission tomographic imaging"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="367529003"/>
+      <display value="Lending - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="367558000"/>
+      <display value="Contouring - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="367559008"/>
+      <display value="Preparation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="367642006"/>
+      <display value="Inversion - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="367740008"/>
+      <display value="Suspension - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="369242005"/>
+      <display value="Hyfrecation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="386746003"/>
+      <display value="Maintenance - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="399009009"/>
+      <display value="B mode ultrasound (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="399015009"/>
+      <display value="Tomographic imaging, plain radiologic - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="399035005"/>
+      <display value="Tomographic imaging - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="399064001"/>
+      <display value="Two dimensional mode ultrasound - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="399155008"/>
+      <display value="M-mode ultrasound (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="410756002"/>
+      <display value="Surgical decompression - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="410757006"/>
+      <display value="Decompressive excision - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="410758001"/>
+      <display value="Decompressive incision - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="410759009"/>
+      <display value="Decompressive division - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="410769003"/>
+      <display value="Elevation reduction - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="410814006"/>
+      <display value="Surgical reduction - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="410817004"/>
+      <display value="Dilation repair - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="410820007"/>
+      <display value="Surgical transplantation - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="416677001"/>
+      <display value="Internal drainage - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="419385000"/>
+      <display value="Use"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="419652001"/>
+      <display value="Take"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="419656003"/>
+      <display value="Examination AND/OR history taking - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="419988009"/>
+      <display value="Action of drug administration (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="424208002"/>
+      <display value="Shunt - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="424832003"/>
+      <display value="Surgical introduction - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="424900004"/>
+      <display value="Recommendation - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="425362007"/>
+      <display value="Surgical insertion - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="425689005"/>
+      <display value="Education - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="425704008"/>
+      <display value="Power Doppler ultrasound - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="425764006"/>
+      <display value="Transection - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="426413004"/>
+      <display value="Closed reduction - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="426530000"/>
+      <display value="Open reduction - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="426865009"/>
+      <display value="3D mode ultrasound (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="428381003"/>
+      <display value="Therapeutic diathermy - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="430975009"/>
+      <display value="Surgical piercing - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="439237009"/>
+      <display value="Mechanical repair - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="439417007"/>
+      <display value="Closed manual reduction - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="439513008"/>
+      <display value="Surgical size reduction - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="440338007"/>
+      <display value="Dispensing - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="440647007"/>
+      <display value="Mechanical construction - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="441504007"/>
+      <display value="Surgical manipulation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="442837002"/>
+      <display value="Excision debridement - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="445103003"/>
+      <display value="Fixation by wedging - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="702569007"/>
+      <display value="Cone beam computed tomography imaging - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="713295009"/>
+      <display value="Surgical replacement - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="787145007"/>
+      <display value="Reinsertion - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="788288006"/>
+      <display value="Surgical reimplantation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="830058008"/>
+      <display value="Nonsurgical fixation - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="830059000"/>
+      <display value="Nonsurgical repair - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1156997004"/>
+      <display value="Surgical rotation - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1172737007"/>
+      <display value="Doppler ultrasound - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1172738002"/>
+      <display value="Doppler ultrasound imaging - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1193839003"/>
+      <display value="Distant flap reconstruction - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1193841002"/>
+      <display value="Local flap reconstruction - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1193842009"/>
+      <display value="Local flap reconstruction by rotation - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1193851001"/>
+      <display value="Local flap reconstruction by advancement - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1193917004"/>
+      <display value="Flap creation - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1196928009"/>
+      <display value="Regional flap reconstruction - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1196931005"/>
+      <display value="Local flap reconstruction by transposition - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1204227006"/>
+      <display value="Local flap reconstruction by rotation advancement technique - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1204229009"/>
+      <display value="Local flap reconstruction by W-plasty - action"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1231382004"/>
+      <display value="Super resolution ultrasound imaging - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1287329000"/>
+      <display value="Surgical diathermy - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1287372006"/>
+      <display value="Surgical electrolysis - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1287587002"/>
+      <display value="Surgical occlusion - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1331947007"/>
+      <display value="Mammographic imaging - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1331948002"/>
+      <display value="Digital tomosynthesis - action (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1332511003"/>
+      <display value="3D (three dimensional) mammographic imaging"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="899991000168109"/>
+      <display value="Unroofing - action"/>
+    </contains>
+  </expansion>
+</ValueSet>

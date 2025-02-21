@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="care-plan-activity-status"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="pc"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="trial-use"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="2"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/care-plan-activity-status"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.146"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="CarePlanActivityStatus"/>
+  <title value="CarePlanActivityStatus"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="HL7 (FHIR Project)"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+    <telecom>
+      <system value="email"/>
+      <value value="fhir@lists.hl7.org"/>
+    </telecom>
+  </contact>
+  <description value="Codes that reflect the current state of a care plan activity within its overall life cycle."/>
+  <immutable value="true"/>
+  <compose>
+    <include>
+      <system value="http://hl7.org/fhir/care-plan-activity-status"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:79c65c41-b924-42fa-a27f-28fa04ecdad8"/>
+    <timestamp value="2025-01-17T09:53:37-07:00"/>
+    <total value="9"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://hl7.org/fhir/care-plan-activity-status|4.0.1"/>
+    </parameter>
+    <contains>
+      <system value="http://hl7.org/fhir/care-plan-activity-status"/>
+      <code value="not-started"/>
+      <display value="Not Started"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/care-plan-activity-status"/>
+      <code value="scheduled"/>
+      <display value="Scheduled"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/care-plan-activity-status"/>
+      <code value="in-progress"/>
+      <display value="In Progress"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/care-plan-activity-status"/>
+      <code value="on-hold"/>
+      <display value="On Hold"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/care-plan-activity-status"/>
+      <code value="completed"/>
+      <display value="Completed"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/care-plan-activity-status"/>
+      <code value="cancelled"/>
+      <display value="Cancelled"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/care-plan-activity-status"/>
+      <code value="stopped"/>
+      <display value="Stopped"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/care-plan-activity-status"/>
+      <code value="unknown"/>
+      <display value="Unknown"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/care-plan-activity-status"/>
+      <code value="entered-in-error"/>
+      <display value="Entered in Error"/>
+    </contains>
+  </expansion>
+</ValueSet>

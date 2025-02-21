@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="substance-category"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="oo"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="trial-use"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="2"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/substance-category"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.476"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="SubstanceCategoryCodes"/>
+  <title value="Substance Category Codes"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="HL7 Orders and Observations Workgroup"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://www.hl7.org/Special/committees/orders/index.cfm"/>
+    </telecom>
+  </contact>
+  <description value="Substance category codes"/>
+  <immutable value="true"/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/substance-category"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:fd3d5991-13dc-494d-bfa9-9b331d2f495a"/>
+    <timestamp value="2025-01-17T09:53:39-07:00"/>
+    <total value="7"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/substance-category|1.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/substance-category"/>
+      <code value="allergen"/>
+      <display value="Allergen"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/substance-category"/>
+      <code value="biological"/>
+      <display value="Biological Substance"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/substance-category"/>
+      <code value="body"/>
+      <display value="Body Substance"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/substance-category"/>
+      <code value="chemical"/>
+      <display value="Chemical"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/substance-category"/>
+      <code value="food"/>
+      <display value="Dietary Substance"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/substance-category"/>
+      <code value="drug"/>
+      <display value="Drug or Medicament"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/substance-category"/>
+      <code value="material"/>
+      <display value="Material"/>
+    </contains>
+  </expansion>
+</ValueSet>

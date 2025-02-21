@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="immunization-status-reason"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="pher"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/immunization-status-reason"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.992"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="ImmunizationStatusReasonCodes"/>
+  <title value="Immunization Status Reason Codes"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="The value set to instantiate this attribute should be drawn from a terminologically robust code system that consists of or contains concepts to support describing the reason why a dose of vaccine was not administered. This value set is provided as a suggestive example."/>
+  <copyright value="This resource includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyright of the International Health Terminology Standards Development Organisation (IHTSDO). Implementers of these specifications must have the appropriate SNOMED CT Affiliate license - for more information contact http://www.snomed.org/snomed-ct/get-snomed-ct or info@snomed.org"/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <concept>
+        <code value="IMMUNE"/>
+      </concept>
+      <concept>
+        <code value="MEDPREC"/>
+      </concept>
+      <concept>
+        <code value="OSTOCK"/>
+      </concept>
+      <concept>
+        <code value="PATOBJ"/>
+      </concept>
+    </include>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="310376006"/>
+      </filter>
+    </include>
+  </compose>
+  <expansion>
+    <extension url="http://hl7.org/fhir/StructureDefinition/valueset-unclosed">
+      <valueBoolean value="true"/>
+    </extension>
+    <identifier value="urn:uuid:8348202f-b304-4760-a1ec-35513a5f9dab"/>
+    <timestamp value="2025-01-17T09:53:38-07:00"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/v3-ActReason|3.1.0"/>
+    </parameter>
+    <parameter>
+      <name value="used-valueset"/>
+      <valueUri value="null"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801"/>
+    </parameter>
+    <parameter>
+      <name value="version"/>
+      <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="IMMUNE"/>
+      <display value="immunity"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="MEDPREC"/>
+      <display value="medical precaution"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="OSTOCK"/>
+      <display value="product out of stock"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="PATOBJ"/>
+      <display value="patient objection"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="310376006"/>
+      <display value="Immunization consent not given"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="171257003"/>
+      <display value="No consent - Tetanus/low dose diphtheria vaccine (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="171265000"/>
+      <display value="Pertussis vaccine refused"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="171266004"/>
+      <display value="No consent - diphtheria immunisation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="171267008"/>
+      <display value="No consent - tetanus immunization"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="171268003"/>
+      <display value="Polio immunisation refused"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="171269006"/>
+      <display value="No consent - measles immunization"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="171270007"/>
+      <display value="No consent - rubella immunisation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="171271006"/>
+      <display value="No consent - BCG"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="171272004"/>
+      <display value="No consent - influenza immunization"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="171280006"/>
+      <display value="No consent for MMR"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="171283008"/>
+      <display value="No consent for any primary immunization (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="171285001"/>
+      <display value="No consent - pre-school vaccinations"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="171286000"/>
+      <display value="No consent - school exit vaccinations"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="171291004"/>
+      <display value="No consent for Haemophilus influenzae type b immunization"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="171292006"/>
+      <display value="No consent pneumococcal immunisation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="171293001"/>
+      <display value="No consent for MR - Measles/rubella vaccine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="268559007"/>
+      <display value="No consent for any immunization"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="310839003"/>
+      <display value="No consent for MMR1"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="310840001"/>
+      <display value="No consent for measles/mumps/rubella two"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="314768003"/>
+      <display value="No consent DTP immunisation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="314769006"/>
+      <display value="No consent DT immunization"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="314936001"/>
+      <display value="No consent for meningitis C immunisation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="407598009"/>
+      <display value="No consent for third Haemophilus influenzae type b vaccine booster (finding)"/>
+    </contains>
+  </expansion>
+</ValueSet>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="us-core-problem-or-health-concern"/>
+  <text>
+    <status value="extensions"/>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <p>This value set includes codes based on the following rules:</p>
+      <ul>
+        <li>Include these codes as defined in 
+          <a href="http://terminology.hl7.org/5.0.0/CodeSystem-condition-category.html">
+            <code>http://terminology.hl7.org/CodeSystem/condition-category</code>
+          </a>
+          <table class="none">
+            <tr>
+              <td style="white-space:nowrap">
+                <b>Code</b>
+              </td>
+              <td>
+                <b>Display</b>
+              </td>
+              <td>
+                <b>Definition</b>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="http://terminology.hl7.org/5.0.0/CodeSystem-condition-category.html#condition-category-problem-list-item">problem-list-item</a>
+              </td>
+              <td>Problem List Item</td>
+              <td>An item on a problem list that can be managed over time and can be expressed by a practitioner (e.g. physician, nurse), patient, or related person.</td>
+            </tr>
+          </table>
+        </li>
+        <li>Include these codes as defined in 
+          <a href="CodeSystem-condition-category.html">
+            <code>http://hl7.org/fhir/us/core/CodeSystem/condition-category</code>
+          </a>
+          <table class="none">
+            <tr>
+              <td style="white-space:nowrap">
+                <b>Code</b>
+              </td>
+              <td>
+                <b>Display</b>
+              </td>
+              <td>
+                <b>Definition</b>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="CodeSystem-condition-category.html#condition-category-health-concern">health-concern</a>
+              </td>
+              <td>Health Concern</td>
+              <td>Additional health concerns from other stakeholders which are outside the provider's problem list.</td>
+            </tr>
+          </table>
+        </li>
+      </ul>
+    </div>
+  </text>
+  <url value="http://hl7.org/fhir/us/core/ValueSet/us-core-problem-or-health-concern"/>
+  <version value="6.1.0"/>
+  <name value="USCoreProblemOrHealthConcern"/>
+  <title value="US Core Problem or Health Concern"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2022-09-29"/>
+  <publisher value="HL7 International - Cross-Group Projects"/>
+  <contact>
+    <name value="HL7 International - Cross-Group Projects"/>
+    <telecom>
+      <system value="url"/>
+      <value value="http://www.hl7.org/Special/committees/cgp"/>
+    </telecom>
+    <telecom>
+      <system value="email"/>
+      <value value="cgp@lists.HL7.org"/>
+    </telecom>
+  </contact>
+  <description value="Code set for category codes for *US Core Condition Problems and Health Concerns Profile* consisting of the concepts &quot;problem&quot; and &quot;health-concern&quot;."/>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="US"/>
+    </coding>
+  </jurisdiction>
+  <copyright value="Used by permission of HL7 International, all rights reserved Creative Commons License"/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/condition-category"/>
+      <concept>
+        <code value="problem-list-item"/>
+      </concept>
+    </include>
+    <include>
+      <system value="http://hl7.org/fhir/us/core/CodeSystem/condition-category"/>
+      <concept>
+        <code value="health-concern"/>
+      </concept>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:e27d3004-9201-4b27-8657-db9bb245b1ab"/>
+    <timestamp value="2025-01-17T09:53:41-07:00"/>
+    <total value="2"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="warning-draft"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/condition-category|1.0.0"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/condition-category|1.0.0"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://hl7.org/fhir/us/core/CodeSystem/condition-category|6.1.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/condition-category"/>
+      <code value="problem-list-item"/>
+      <display value="Problem List Item"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/us/core/CodeSystem/condition-category"/>
+      <code value="health-concern"/>
+      <display value="Health Concern"/>
+    </contains>
+  </expansion>
+</ValueSet>
