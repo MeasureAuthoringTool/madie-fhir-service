@@ -6,10 +6,7 @@ import gov.cms.madie.madiefhirservice.services.StructureDefinitionService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,6 +23,11 @@ public class ResourceController {
       produces = MediaType.APPLICATION_JSON_VALUE)
   public StructureDefinitionDto getStructureDefinition(@PathVariable String structureDefinitionId) {
     return structureDefinitionService.getStructureDefinitionById(structureDefinitionId);
+  }
+
+  @GetMapping(value = "/value-set-definition", produces = MediaType.APPLICATION_JSON_VALUE)
+  public String getValueSetDefinition(@RequestParam String url) {
+    return structureDefinitionService.getValueSetDefinition(url);
   }
 
   @GetMapping(

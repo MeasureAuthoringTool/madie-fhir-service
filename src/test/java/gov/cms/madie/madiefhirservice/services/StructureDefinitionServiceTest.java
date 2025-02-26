@@ -9,6 +9,7 @@ import gov.cms.madie.madiefhirservice.exceptions.ResourceNotFoundException;
 import org.hl7.fhir.r4.model.Extension;
 import org.hl7.fhir.r4.model.StringType;
 import org.hl7.fhir.r4.model.StructureDefinition;
+import org.hl7.fhir.r4.model.ValueSet;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -336,5 +337,22 @@ class StructureDefinitionServiceTest {
 
     // then
     assertThat(output, is(equalTo("Base.Individuals")));
+  }
+
+  @Test
+  void getValueSetDefinition() {
+    // given
+    ValueSet valueSet = new ValueSet().setUrl("test").setName("omb ethnicity category");
+    when(validationSupportChainQiCore600.fetchValueSet(valueSet.getUrl())).thenReturn(valueSet);
+    when(validationSupportChainQiCore600.getFhirContext()).thenReturn(fhirContextQiCoreStu600);
+    // when
+    String output = structureDefinitionService.getValueSetDefinition(valueSet.getUrl());
+
+    // then
+    assertThat(
+        output,
+        is(
+            equalTo(
+                "{\n  \"resourceType\": \"ValueSet\",\n  \"url\": \"test\",\n  \"name\": \"omb ethnicity category\"\n}")));
   }
 }
