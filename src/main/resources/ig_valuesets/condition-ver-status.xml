@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="condition-ver-status"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="pc"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="trial-use"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="3"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/condition-ver-status"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.166"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="ConditionVerificationStatus"/>
+  <title value="ConditionVerificationStatus"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="HL7 (FHIR Project)"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+    <telecom>
+      <system value="email"/>
+      <value value="fhir@lists.hl7.org"/>
+    </telecom>
+  </contact>
+  <description value="The verification status to support or decline the clinical status of the condition or diagnosis."/>
+  <immutable value="true"/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/condition-ver-status"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:05250286-a88a-47d0-87e8-02a2a7f5fb7c"/>
+    <timestamp value="2025-01-17T09:53:37-07:00"/>
+    <total value="6"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/condition-ver-status|2.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/condition-ver-status"/>
+      <code value="unconfirmed"/>
+      <display value="Unconfirmed"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/condition-ver-status"/>
+      <code value="provisional"/>
+      <display value="Provisional"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/condition-ver-status"/>
+      <code value="differential"/>
+      <display value="Differential"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/condition-ver-status"/>
+      <code value="confirmed"/>
+      <display value="Confirmed"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/condition-ver-status"/>
+      <code value="refuted"/>
+      <display value="Refuted"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/condition-ver-status"/>
+      <code value="entered-in-error"/>
+      <display value="Entered in Error"/>
+    </contains>
+  </expansion>
+</ValueSet>

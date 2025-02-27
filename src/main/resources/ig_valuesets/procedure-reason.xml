@@ -1,0 +1,5088 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="procedure-reason"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="pc"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/procedure-reason"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.432"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="ProcedureReasonCodes"/>
+  <title value="Procedure Reason Codes"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="This example value set defines the set of codes that can be used to indicate a reason for a procedure."/>
+  <copyright value="This resource includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyright of the International Health Terminology Standards Development Organisation (IHTSDO). Implementers of these specifications must have the appropriate SNOMED CT Affiliate license - for more information contact http://www.snomed.org/snomed-ct/get-snomed-ct or info@snomed.org"/>
+  <compose>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="404684003"/>
+      </filter>
+    </include>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="71388002"/>
+      </filter>
+    </include>
+  </compose>
+  <expansion>
+    <extension url="http://hl7.org/fhir/StructureDefinition/valueset-unclosed">
+      <valueBoolean value="true"/>
+    </extension>
+    <identifier value="urn:uuid:38197277-c019-4d47-ab00-234347c520b1"/>
+    <timestamp value="2025-01-17T09:53:38-07:00"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-valueset"/>
+      <valueUri value="null"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801"/>
+    </parameter>
+    <parameter>
+      <name value="version"/>
+      <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801"/>
+    </parameter>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="404684003"/>
+      <display value="Clinical finding (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="109006"/>
+      <display value="Anxiety disorder of childhood OR adolescence"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="122003"/>
+      <display value="Choroidal hemorrhage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="127009"/>
+      <display value="Spontaneous abortion with laceration of cervix"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129007"/>
+      <display value="Homoiothermia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="134006"/>
+      <display value="Decreased hair growth"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="140004"/>
+      <display value="Chronic pharyngitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="144008"/>
+      <display value="Normal peripheral vision"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="150003"/>
+      <display value="Abnormal bladder continence"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="151004"/>
+      <display value="Gonococcal meningitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="162004"/>
+      <display value="Severe manic bipolar I disorder without psychotic features"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="165002"/>
+      <display value="Accident-prone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="168000"/>
+      <display value="Typhlolithiasis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="171008"/>
+      <display value="Injury of ascending right colon without open wound into abdominal cavity"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="175004"/>
+      <display value="Supraorbital neuralgia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="177007"/>
+      <display value="Poisoning by sawfly larvae"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="179005"/>
+      <display value="Apraxia of dressing"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="181007"/>
+      <display value="Hemorrhagic bronchopneumonia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183005"/>
+      <display value="Autoimmune pancytopenia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="184004"/>
+      <display value="Withdrawal arrhythmia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="188001"/>
+      <display value="Injury of intercostal artery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="192008"/>
+      <display value="Congenital syphilitic hepatomegaly"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="193003"/>
+      <display value="Benign hypertensive renal disease"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="198007"/>
+      <display value="Disease caused by Filoviridae (disorder)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="199004"/>
+      <display value="Decreased lactation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="216004"/>
+      <display value="Delusion of persecution"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="219006"/>
+      <display value="Alcohol user"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="222008"/>
+      <display value="Acute epiglottitis with obstruction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="223003"/>
+      <display value="Tumor of body of uterus affecting pregnancy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228007"/>
+      <display value="Lucio phenomenon"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="241006"/>
+      <display value="Epilepsia partialis continua"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="242004"/>
+      <display value="Noninfectious jejunitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="253005"/>
+      <display value="Sycosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="257006"/>
+      <display value="Acne rosacea, erythematous telangiectatic type"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="264008"/>
+      <display value="Blind hypertensive eye"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="276008"/>
+      <display value="Poisoning by oxytocin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="279001"/>
+      <display value="Senile myocarditis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="281004"/>
+      <display value="Dementia associated with alcoholism"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="290006"/>
+      <display value="Melnick-Fraser syndrome"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="292003"/>
+      <display value="EEG finding"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="297009"/>
+      <display value="Acute myringitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="299007"/>
+      <display value="Paraffinoma of skin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="303002"/>
+      <display value="Apoplectic pancreatitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="308006"/>
+      <display value="Pearly penile papules"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="310008"/>
+      <display value="Boil of penis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="313005"/>
+      <display value="Déjà vu"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="317006"/>
+      <display value="Reactive hypoglycemia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="320003"/>
+      <display value="Cervical dilatation, 1cm"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="324007"/>
+      <display value="Plaster ulcer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="330007"/>
+      <display value="Occipital headache"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="335002"/>
+      <display value="Pylorospasm"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="341009"/>
+      <display value="ABO incompatibility reaction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="349006"/>
+      <display value="Absent tendon reflex"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="355001"/>
+      <display value="Hemorrhagic shock"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="357009"/>
+      <display value="Closed fracture of trapezoidal bone of wrist"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="359007"/>
+      <display value="Kernicterus due to isoimmunization"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="360002"/>
+      <display value="Acute radiation disease"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="364006"/>
+      <display value="Acute left-sided heart failure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="366008"/>
+      <display value="Hidromeiosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="368009"/>
+      <display value="Heart valve disorder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="369001"/>
+      <display value="Normal jugular venous pressure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="378007"/>
+      <display value="Morquio syndrome"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="382009"/>
+      <display value="Legal history finding relating to child"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="383004"/>
+      <display value="Passive range of hip extension - finding"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="385006"/>
+      <display value="Secondary peripheral neuropathy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="387003"/>
+      <display value="Melanuria"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="398002"/>
+      <display value="Left axis deviation greater than -90 degrees by EKG"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="407000"/>
+      <display value="Congenital hepatomegaly"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="408005"/>
+      <display value="Tooth chattering"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="409002"/>
+      <display value="Food allergy diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="426008"/>
+      <display value="Superficial injury of ankle without infection"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="431005"/>
+      <display value="Hypertrophy of scrotum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437009"/>
+      <display value="Abnormal composition of urine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="440009"/>
+      <display value="Persistent hyperphenylalaninemia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="442001"/>
+      <display value="Secondary hypopituitarism"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="443006"/>
+      <display value="Cystocele affecting pregnancy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="447007"/>
+      <display value="Coach in sports activity accident"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="450005"/>
+      <display value="Ulcerative stomatitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="452002"/>
+      <display value="Blister of groin without infection"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="460001"/>
+      <display value="Squamous metaplasia of prostate gland"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="467003"/>
+      <display value="Old laceration of muscles of pelvic floor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="470004"/>
+      <display value="Vitreous touch syndrome"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="479003"/>
+      <display value="Graves' disease with pretibial myxedema AND with thyrotoxic crisis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="486006"/>
+      <display value="Acute vascular insufficiency"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="488007"/>
+      <display value="Fibroid myocarditis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="490008"/>
+      <display value="Upper respiratory tract hypersensitivity reaction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="496002"/>
+      <display value="Closed traumatic dislocation of third cervical vertebra (disorder)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="504009"/>
+      <display value="Androgen-dependent hirsutism"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="517007"/>
+      <display value="Foreign body in hypopharynx"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="518002"/>
+      <display value="Multiple aggregation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="520004"/>
+      <display value="Congenital bent nose"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="527001"/>
+      <display value="Spontaneous fetal evolution, Roederer's method"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="536002"/>
+      <display value="Glissonian cirrhosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="539009"/>
+      <display value="Conjunctival argyrosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="547009"/>
+      <display value="Hypersecretion of calcitonin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="548004"/>
+      <display value="13p partial trisomy syndrome"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="554003"/>
+      <display value="2p partial trisomy syndrome"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="555002"/>
+      <display value="Poisoning caused by Dicentra (disorder)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="563001"/>
+      <display value="Nystagmus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="568005"/>
+      <display value="Tic disorder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="586008"/>
+      <display value="Contact dermatitis caused by Primula obconica (disorder)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="590005"/>
+      <display value="Congenital aneurysm of anterior communicating artery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="596004"/>
+      <display value="Premenstrual dysphoric disorder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="599006"/>
+      <display value="Chronic pneumothorax"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="600009"/>
+      <display value="Pyromania"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="607007"/>
+      <display value="Decreased vital capacity"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="610000"/>
+      <display value="Spastic aphonia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="613003"/>
+      <display value="Fragile X syndrome"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="615005"/>
+      <display value="Obstruction due to foreign body accidentally left in operative wound AND/OR body cavity during a procedure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="616006"/>
+      <display value="Sensorimotor disorder of eyelid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="626004"/>
+      <display value="Hypercortisolism due to nonpituitary tumor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="631002"/>
+      <display value="Transfusion reaction due to minor incompatibility"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="640003"/>
+      <display value="Injury of pneumogastric nerve"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="643001"/>
+      <display value="Hypertrophy of lip"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="646009"/>
+      <display value="Idiopathic cyst of anterior chamber of eye (disorder)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="649002"/>
+      <display value="Open fracture of distal end of ulna"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="651003"/>
+      <display value="Root work"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="652005"/>
+      <display value="Gangrenous tonsillitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="655007"/>
+      <display value="Abnormal fetal heart beat noted before labor in liveborn infant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="658009"/>
+      <display value="Injury of colon without open wound into abdominal cavity"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="664002"/>
+      <display value="Delayed ovulation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="675003"/>
+      <display value="Torsion of intestine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="701003"/>
+      <display value="Adult osteochondritis of spine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="703000"/>
+      <display value="Congenital adhesions of tongue"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="714002"/>
+      <display value="Abrasion and/or friction burn of toe with infection (disorder)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="715001"/>
+      <display value="Nontraumatic rupture of urethra"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="718004"/>
+      <display value="Acute bronchiolitis with obstruction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="734001"/>
+      <display value="Opocephalus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="736004"/>
+      <display value="Abscess of hip"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="750009"/>
+      <display value="Schistosoma mansoni infection (disorder)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="755004"/>
+      <display value="Postgastrectomy phytobezoar"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="756003"/>
+      <display value="Chronic rheumatic myopericarditis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="758002"/>
+      <display value="Cyst of uterus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="775008"/>
+      <display value="Open wound of head with complication"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="776009"/>
+      <display value="Partial arterial retinal occlusion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="781000"/>
+      <display value="Cestrum diurnum poisoning"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="787001"/>
+      <display value="Rheumatic mitral stenosis with regurgitation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="788006"/>
+      <display value="Disease-related diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="792004"/>
+      <display value="Jakob-Creutzfeldt disease"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="799008"/>
+      <display value="Sigmoid colon ulcer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="801006"/>
+      <display value="Nonvenomous insect bite of foot with infection"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="805002"/>
+      <display value="Silicosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="811004"/>
+      <display value="Flail motion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="813001"/>
+      <display value="Ankle instability"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="815008"/>
+      <display value="Episcleritis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="816009"/>
+      <display value="Genetic recombination"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="818005"/>
+      <display value="Third degree burn of multiple sites of lower limb"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="825003"/>
+      <display value="Superficial injury of axilla with infection"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="827006"/>
+      <display value="Late congenital syphilis, latent (+ sero., - C.S.F., 2 years OR more)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="832007"/>
+      <display value="Moderate major depression"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="834008"/>
+      <display value="Chair-seated facing coital position"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="841002"/>
+      <display value="Congenital absence of skull bone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="842009"/>
+      <display value="Consanguinity"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="843004"/>
+      <display value="Poliomyelomalacia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="844005"/>
+      <display value="Behavior finding"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="845006"/>
+      <display value="Injury of inferior mesenteric artery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="849000"/>
+      <display value="Total cataract"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="857002"/>
+      <display value="Erythema simplex"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="862001"/>
+      <display value="Anemia caused by chlorate (disorder)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="865004"/>
+      <display value="Hyperalimentation formula for ileus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="871005"/>
+      <display value="Contracted pelvis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="874002"/>
+      <display value="Therapeutic diuresis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="875001"/>
+      <display value="Chalcosis of eye"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="890002"/>
+      <display value="Deep third degree burn of elbow"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="899001"/>
+      <display value="Axis I diagnosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="903008"/>
+      <display value="Chorioretinal infarction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="904002"/>
+      <display value="Pinard's sign"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="928000"/>
+      <display value="Disorder of musculoskeletal system"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="931004"/>
+      <display value="Gestation period, 9 weeks"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="932006"/>
+      <display value="Flat affect"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="934007"/>
+      <display value="Thalassemia intermedia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="943003"/>
+      <display value="Congenital retinal aneurysm"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="961007"/>
+      <display value="Erythema nodosum, acute form"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="962000"/>
+      <display value="Disability evaluation, disability 6%"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="964004"/>
+      <display value="Open wound of pharynx without complication"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="965003"/>
+      <display value="Toxic amblyopia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="975000"/>
+      <display value="Anorectal agenesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="978003"/>
+      <display value="Chronic infantile eczema"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="981008"/>
+      <display value="Hemorrhagic proctitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="984000"/>
+      <display value="Perirectal cellulitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="987007"/>
+      <display value="Cellulitis of temple region"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="991002"/>
+      <display value="Wide QRS complex"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="998008"/>
+      <display value="Chagas' disease with heart involvement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1003002"/>
+      <display value="Religious discrimination"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1020003"/>
+      <display value="Disease caused by Nairovirus (disorder)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1023001"/>
+      <display value="Apnea"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1027000"/>
+      <display value="Alkaline reflux disease"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1031006"/>
+      <display value="Open wound of trachea without complication"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1033009"/>
+      <display value="Thoracic arthritis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1034003"/>
+      <display value="Mesenteric-portal fistula"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1038000"/>
+      <display value="Disacchariduria"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1045000"/>
+      <display value="Colonospasm"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1046004"/>
+      <display value="Ureteritis glandularis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1051005"/>
+      <display value="Hyperplasia of islet alpha cells with gastrin excess"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1055001"/>
+      <display value="Stenosis of precerebral artery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1059007"/>
+      <display value="Opisthorchiasis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1070000"/>
+      <display value="Facial myokymia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1073003"/>
+      <display value="Xeroderma pigmentosum, group B"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1077002"/>
+      <display value="Septal infarction by EKG"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1079004"/>
+      <display value="Macular retinal cyst"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1085006"/>
+      <display value="Candidiasis of vulva"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1089000"/>
+      <display value="Intrauterine sepsis of fetus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1102005"/>
+      <display value="Intraerythrocytic parasitosis by Nuttallia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1107004"/>
+      <display value="Early latent syphilis, positive serology, negative cerebrospinal fluid, with relapse after treatment (disorder)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1108009"/>
+      <display value="Female pattern alopecia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1111005"/>
+      <display value="Normal sebaceous gland activity"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1112003"/>
+      <display value="Degenerative disorder of eyelid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1116000"/>
+      <display value="Chronic aggressive type B viral hepatitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1124005"/>
+      <display value="Postpartum period, 6 days"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1125006"/>
+      <display value="Septicemia during labor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1126007"/>
+      <display value="Knee locking"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1131009"/>
+      <display value="Congenital valvular insufficiency"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1134001"/>
+      <display value="Muehrcke's lines"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1135000"/>
+      <display value="Solar retinopathy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1139006"/>
+      <display value="Confrontation (visual) test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1140008"/>
+      <display value="Thermal hypesthesia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1141007"/>
+      <display value="Circumoral paresthesia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1145003"/>
+      <display value="Developmental speech disorder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1150009"/>
+      <display value="Congenital microcheilia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1151008"/>
+      <display value="Visual field constriction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1152001"/>
+      <display value="Skin reaction negative"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1155004"/>
+      <display value="EKG hypertrophy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1168007"/>
+      <display value="Allotype"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1184008"/>
+      <display value="Glasgow coma scale, 10"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1194003"/>
+      <display value="Disease condition determination, well controlled"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1196001"/>
+      <display value="Chronic bipolar II disorder, most recent episode major depressive"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1197005"/>
+      <display value="Carbuncle of heel"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1201005"/>
+      <display value="Benign essential hypertension"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1207009"/>
+      <display value="Glaucomatous atrophy of optic disc"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1208004"/>
+      <display value="Gastroptosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1212005"/>
+      <display value="Childhood type dermatomyositis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1214006"/>
+      <display value="Infection by Strongyloides"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1239002"/>
+      <display value="Congenital anteversion of femur"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1240000"/>
+      <display value="Prone body position"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1259003"/>
+      <display value="Schistosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1261007"/>
+      <display value="Fracture of multiple ribs"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1264004"/>
+      <display value="Injury of descending left colon without open wound into abdominal cavity"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1271009"/>
+      <display value="Bart-Pumphrey syndrome"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1280009"/>
+      <display value="Isologous chimera"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1282001"/>
+      <display value="Perichondritis of larynx"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1284000"/>
+      <display value="Abnormal jaw closure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1286003"/>
+      <display value="Vitamin K deficiency coagulation disorder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1287007"/>
+      <display value="Congenital absence of bile duct"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1297003"/>
+      <display value="Infection by Cladosporium carrionii"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1308001"/>
+      <display value="Complication of reimplant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1310004"/>
+      <display value="Impaired glucose tolerance associated with genetic syndrome"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1318006"/>
+      <display value="Post-translational genetic protein processing"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1323006"/>
+      <display value="Poisoning by kanamycin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1332008"/>
+      <display value="Conjugated visual deviation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1335005"/>
+      <display value="Induratio penis plastica"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1343000"/>
+      <display value="Deep transverse arrest"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1345007"/>
+      <display value="Hang nail"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1351002"/>
+      <display value="Injury of iliac artery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1356007"/>
+      <display value="Calculus of common duct with obstruction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1361009"/>
+      <display value="Leukocoria"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1367008"/>
+      <display value="Injury of superior mesenteric artery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1370007"/>
+      <display value="Open fracture of metacarpal bone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1372004"/>
+      <display value="Uterus unicornis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1376001"/>
+      <display value="Obsessive compulsive personality disorder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1378000"/>
+      <display value="Supination-eversion injury of ankle"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1380006"/>
+      <display value="Agoraphobia without history of panic disorder with limited symptom attacks"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1383008"/>
+      <display value="Hallucinogen mood disorder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1384002"/>
+      <display value="Diffuse cholesteatosis of middle ear"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1386000"/>
+      <display value="Intracranial hemorrhage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1387009"/>
+      <display value="Solanum nigrum poisoning"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1388004"/>
+      <display value="Metabolic alkalosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1393001"/>
+      <display value="Lenz-Majewski hyperostosis syndrome"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1395008"/>
+      <display value="Complication of ultrasound therapy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1402001"/>
+      <display value="Fear (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1412008"/>
+      <display value="Anterior subcapsular polar cataract"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1415005"/>
+      <display value="Lymphangitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1418007"/>
+      <display value="Hypoplastic chondrodystrophy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1426004"/>
+      <display value="Necrotizing glomerulonephritis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1447000"/>
+      <display value="Icthyoparasitism"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1469007"/>
+      <display value="Spontaneous abortion with urinary tract infection"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1474004"/>
+      <display value="Hypertensive heart AND renal disease complicating AND/OR reason for care during childbirth"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1475003"/>
+      <display value="Herpes labialis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1478001"/>
+      <display value="Obliteration of lymphatic vessel"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1479009"/>
+      <display value="20q partial trisomy (disorder)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1482004"/>
+      <display value="Chalazion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1486001"/>
+      <display value="Orbital congestion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1488000"/>
+      <display value="Postoperative nausea and vomiting"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1489008"/>
+      <display value="Hordeolum externum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1492007"/>
+      <display value="Congenital anomaly of large intestine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1493002"/>
+      <display value="Acute endophthalmitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1499003"/>
+      <display value="Bipolar I disorder, single manic episode with postpartum onset"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1512006"/>
+      <display value="Congenital stricture of bile duct"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1515008"/>
+      <display value="Gorham's disease"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1518005"/>
+      <display value="Splenitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1519002"/>
+      <display value="Congenital phlebectasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1521007"/>
+      <display value="Blister of buttock without infection"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1525003"/>
+      <display value="Blister of foot without infection"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1531000"/>
+      <display value="Poisoning by nitrofuran derivatives"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1532007"/>
+      <display value="Viral pharyngitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1534008"/>
+      <display value="Palsy of conjugate gaze"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1538006"/>
+      <display value="Central nervous system malformation in fetus affecting obstetrical care"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1539003"/>
+      <display value="Acquired trigger finger"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1542009"/>
+      <display value="Omphalocele with obstruction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1544005"/>
+      <display value="Open dislocation of knee"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1551001"/>
+      <display value="Osteomyelitis of femur (disorder)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1556006"/>
+      <display value="Clark melanoma level 4"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1563006"/>
+      <display value="Protein S deficiency disease"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1567007"/>
+      <display value="Chronic gastric ulcer without hemorrhage, without perforation AND without obstruction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1588003"/>
+      <display value="Heterosexual precocious puberty"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1592005"/>
+      <display value="Failed attempted abortion with uremia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1593000"/>
+      <display value="Infantile hemiplegia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1606009"/>
+      <display value="Infection by Macracanthorhynchus hirudinaceus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1608005"/>
+      <display value="Increased capillary permeability"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1639007"/>
+      <display value="Abnormality of organs AND/OR soft tissues of pelvis affecting pregnancy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1647007"/>
+      <display value="Poisoning by primaquine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1648002"/>
+      <display value="Lymphocytic pseudotumor of lung"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1654001"/>
+      <display value="Corticosteroid-induced glaucoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1657008"/>
+      <display value="Mevinphos poisoning"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1658003"/>
+      <display value="Closed fracture of acromial end of clavicle"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1663004"/>
+      <display value="G2 stage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1667003"/>
+      <display value="Early fontanel closure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1670004"/>
+      <display value="Cerebral hemiparesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1671000"/>
+      <display value="Sago spleen"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1674008"/>
+      <display value="Juvenile epithelial corneal dystrophy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1679003"/>
+      <display value="Arthritis associated with another disorder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1682008"/>
+      <display value="Transitory amino acid metabolic disorder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1685005"/>
+      <display value="Rat bite fever"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1686006"/>
+      <display value="Sedative, hypnotic AND/OR anxiolytic-induced anxiety disorder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1694004"/>
+      <display value="Accessory lobe of lung"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1698001"/>
+      <display value="Ulcer of bile duct"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1703007"/>
+      <display value="Increased leg circumference"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1705000"/>
+      <display value="Closed fracture of base of neck of femur"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1714005"/>
+      <display value="Photokeratitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1717003"/>
+      <display value="Idiopathic guttate hypomelanosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1723008"/>
+      <display value="Urethral stricture due to schistosomiasis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1724002"/>
+      <display value="Infection by Crenosoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1734006"/>
+      <display value="Fracture of vertebral column with spinal cord injury"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1735007"/>
+      <display value="Thrill"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1739001"/>
+      <display value="Fracture of occipital bone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1742007"/>
+      <display value="Female hypererotism"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1744008"/>
+      <display value="Fusion of teeth"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1748006"/>
+      <display value="Thrombophlebitis of deep femoral vein"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1755008"/>
+      <display value="Old myocardial infarction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1761006"/>
+      <display value="Biliary cirrhosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1763009"/>
+      <display value="Interstitial keratitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1767005"/>
+      <display value="Fisher's syndrome"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1769008"/>
+      <display value="Thoracodidymus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1771008"/>
+      <display value="Insulin biosynthesis defect"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1776003"/>
+      <display value="Renal tubular acidosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1777007"/>
+      <display value="Increased molecular dissociation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1778002"/>
+      <display value="Malocclusion due to abnormal swallowing"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1779005"/>
+      <display value="Mohr syndrome"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1794009"/>
+      <display value="Idiopathic corneal edema"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1816003"/>
+      <display value="Panic disorder with agoraphobia, severe agoraphobic avoidance AND mild panic attacks"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1821000"/>
+      <display value="Chemoreceptor apnea"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1822007"/>
+      <display value="Impaired glucose tolerance associated with pancreatic disease"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1824008"/>
+      <display value="Allergic gastritis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1826005"/>
+      <display value="Granuloma of lip"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1828006"/>
+      <display value="Infestation by Gasterophilus haemorrhoidalis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1835003"/>
+      <display value="Necrosis of pancreas"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1837006"/>
+      <display value="Poisoning by metaproterenol"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1845001"/>
+      <display value="Paraparesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1847009"/>
+      <display value="Endophthalmitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1852004"/>
+      <display value="Traumatic injury of sixth cranial nerve"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1855002"/>
+      <display value="Developmental academic disorder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1856001"/>
+      <display value="Accessory nose"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1857005"/>
+      <display value="Gestational rubella syndrome"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1860003"/>
+      <display value="Fluid volume disorder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1865008"/>
+      <display value="Impaired intestinal protein absorption"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1869002"/>
+      <display value="Rupture of sphincter of pupil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1892002"/>
+      <display value="Star figure at the macula"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1896004"/>
+      <display value="Ectopic breast tissue"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1897008"/>
+      <display value="Amsinckia poisoning (disorder)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1899006"/>
+      <display value="Autosomal hereditary disorder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1903004"/>
+      <display value="Infestation by Psorergates ovis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1922008"/>
+      <display value="Congenital absence of urethra"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1926006"/>
+      <display value="Osteopetrosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1939005"/>
+      <display value="Abnormal vascular flow"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1943009"/>
+      <display value="Left-right confusion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1953005"/>
+      <display value="Congenital deficiency of pigment of skin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1955003"/>
+      <display value="Preauricular dimple"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1959009"/>
+      <display value="Poisoning caused by Encephalartos (disorder)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1963002"/>
+      <display value="Paroxysmal nocturnal hemoglobinuria"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1965009"/>
+      <display value="Normal skin pH"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1967001"/>
+      <display value="Longitudinal absence of radius AND ulna"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1973000"/>
+      <display value="Sedative, hypnotic AND/OR anxiolytic-induced psychotic disorder with delusions"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1977004"/>
+      <display value="Poisoning by oxymetholone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1979001"/>
+      <display value="Focal choroiditis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1980003"/>
+      <display value="Seromucinous otitis media"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1981004"/>
+      <display value="Urhidrosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2004005"/>
+      <display value="Normal blood pressure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2012002"/>
+      <display value="Fracture of lunate bone of wrist"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2028007"/>
+      <display value="Erythema induratum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2032001"/>
+      <display value="Cerebral edema"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2036003"/>
+      <display value="Acquired factor VII deficiency disease"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2040007"/>
+      <display value="Neurogenic thoracic outlet syndrome"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2041006"/>
+      <display value="Eunuchoid gigantism"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2043009"/>
+      <display value="Alcoholic gastritis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2055003"/>
+      <display value="Recurrent erosion of cornea"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2061000"/>
+      <display value="Conductive hearing loss of combined sites"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2065009"/>
+      <display value="Dominant hereditary optic atrophy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2066005"/>
+      <display value="Gastric ulcer with hemorrhage AND perforation but without obstruction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2070002"/>
+      <display value="Burning sensation in eye"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2073000"/>
+      <display value="Delusion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2087000"/>
+      <display value="Pulmonary nocardiosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2089002"/>
+      <display value="Osteitis deformans"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2091005"/>
+      <display value="Pharyngeal diverticulitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2094002"/>
+      <display value="Toxic effect of carbon disulfide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2102007"/>
+      <display value="Deep vascularization of cornea"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2107001"/>
+      <display value="Anisomelia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2109003"/>
+      <display value="Isolated somatotropin deficiency"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2114004"/>
+      <display value="Infection by Cysticercus pisiformis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2116002"/>
+      <display value="Intramembranous bone formation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2120003"/>
+      <display value="Weak cry"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2121004"/>
+      <display value="Poisoning by ethopropazine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2128005"/>
+      <display value="Disease of pharyngeal tonsil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2129002"/>
+      <display value="Edema of pharynx"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2132004"/>
+      <display value="Meconium in amniotic fluid noted before labor in liveborn infant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2134003"/>
+      <display value="Diffuse pain"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2136001"/>
+      <display value="Open wound of jaw with complication"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2138000"/>
+      <display value="LSP - Left sacroposterior position"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2145000"/>
+      <display value="Anal intercourse"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2149006"/>
+      <display value="Decreased hormone production"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2158004"/>
+      <display value="Infection by Contracaecum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2167004"/>
+      <display value="Retinal hemangioblastomatosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2169001"/>
+      <display value="Thoracic radiculitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2170000"/>
+      <display value="Gallop rhythm"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2176006"/>
+      <display value="Halogen acne"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2177002"/>
+      <display value="Postherpetic neuralgia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2186007"/>
+      <display value="Compensated metabolic alkalosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2202000"/>
+      <display value="Open posterior dislocation of distal end of femur"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2204004"/>
+      <display value="Acquired deformity of pinna"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2213002"/>
+      <display value="Congenital anomaly of vena cava"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2216005"/>
+      <display value="Nocturnal emission"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2219003"/>
+      <display value="Disability evaluation, disability 100%"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2224000"/>
+      <display value="Selenium poisoning"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2228002"/>
+      <display value="Scintillating scotoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2229005"/>
+      <display value="Chimera"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2231001"/>
+      <display value="Nerve plexus disorder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2237002"/>
+      <display value="Pleurodynia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2239004"/>
+      <display value="Previous pregnancies 6"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2241003"/>
+      <display value="X-linked absence of thyroxine-binding globulin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2243000"/>
+      <display value="Hypercalcemia due to hyperthyroidism"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2245007"/>
+      <display value="Foreign body in nasopharynx"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2251002"/>
+      <display value="Primary hypotony of eye"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2256007"/>
+      <display value="Monozygotic twins"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2261009"/>
+      <display value="Obstetrical pulmonary fat embolism"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2268003"/>
+      <display value="Victim of homosexual aggression (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2284002"/>
+      <display value="Pulsating exophthalmos"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2295008"/>
+      <display value="Closed fracture of upper end of forearm"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2296009"/>
+      <display value="Iron dextran toxicity"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2301009"/>
+      <display value="Psychosomatic factor in physical condition, psychological component of unknown degree"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2303007"/>
+      <display value="Inguinal hernia with gangrene"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2304001"/>
+      <display value="Discitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2307008"/>
+      <display value="Fat necrosis of pancreas"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2308003"/>
+      <display value="Silent alleles"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2312009"/>
+      <display value="Reactive attachment disorder of infancy OR early childhood, inhibited type"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2314005"/>
+      <display value="Unprotected sexual intercourse"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2326000"/>
+      <display value="Marriage annulment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2339001"/>
+      <display value="Sexual overexposure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2341000"/>
+      <display value="Infection by Moniliformis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2351004"/>
+      <display value="Genetic transduction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2355008"/>
+      <display value="Rud's syndrome"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2359002"/>
+      <display value="Hyper-beta-alaninemia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2365002"/>
+      <display value="Chronic granular pharyngitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2366001"/>
+      <display value="Late effect of dislocation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2367005"/>
+      <display value="Acute hemorrhagic gastritis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2374000"/>
+      <display value="Monofascicular block"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2385003"/>
+      <display value="Cellulitis of pectoral region"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2388001"/>
+      <display value="Normal variation in translucency"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2390000"/>
+      <display value="Acute gonococcal vulvovaginitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2391001"/>
+      <display value="Achondrogenesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2396006"/>
+      <display value="Malignant pyoderma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2398007"/>
+      <display value="Quinidine toxicity by EKG"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2403008"/>
+      <display value="Psychoactive substance dependence"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2415007"/>
+      <display value="Lumbosacral radiculopathy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2418009"/>
+      <display value="Toxic effect of polyester fumes"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2419001"/>
+      <display value="Open wound of forehead with complication"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2420007"/>
+      <display value="Third degree burn of multiple sites of upper limb"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2432006"/>
+      <display value="Cerebrospinal fluid circulation disorder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2435008"/>
+      <display value="Ascariasis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2437000"/>
+      <display value="Placenta circumvallata"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2438005"/>
+      <display value="Iniencephaly"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2439002"/>
+      <display value="Purulent endocarditis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2443003"/>
+      <display value="Hydrogen sulfide poisoning"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2452007"/>
+      <display value="Fetal rotation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2463005"/>
+      <display value="Acquired heterochromia of iris"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2469009"/>
+      <display value="Onychomalacia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2471009"/>
+      <display value="Postoperative intra-abdominal abscess"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2472002"/>
+      <display value="Anuria"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2473007"/>
+      <display value="Intermittent vertical heterotropia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2477008"/>
+      <display value="Superficial thrombophlebitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2492009"/>
+      <display value="Nutritional disorder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2495006"/>
+      <display value="Congenital cerebral arteriovenous aneurysm"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2496007"/>
+      <display value="Acalculia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2506003"/>
+      <display value="Early onset dysthymia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2513003"/>
+      <display value="Tinea capitis caused by Trichophyton"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2518007"/>
+      <display value="Cryptogenic sexual precocity"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2521009"/>
+      <display value="Bone conduction better than air"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2523007"/>
+      <display value="Salmonella pneumonia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2526004"/>
+      <display value="Noninflammatory disorder of the female genital organs"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2528003"/>
+      <display value="Viremia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2532009"/>
+      <display value="Choroidal rupture"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2534005"/>
+      <display value="Congenital absence of vena cava"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2538008"/>
+      <display value="Ketosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2541004"/>
+      <display value="Compulsive buying"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2554006"/>
+      <display value="Acute purulent pericarditis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2556008"/>
+      <display value="Periodontal disease"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2560006"/>
+      <display value="Syndactyly of fingers with fusion of bones"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2562003"/>
+      <display value="Athanasia trifurcata poisoning"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2576002"/>
+      <display value="Trachoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2581006"/>
+      <display value="Clasp-knife effect"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2582004"/>
+      <display value="Deep third degree burn of multiple sites of lower limb"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2583009"/>
+      <display value="Chiari's network"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2584003"/>
+      <display value="Cerebral degeneration in childhood"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2585002"/>
+      <display value="Pneumococcal pleurisy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2589008"/>
+      <display value="Acute dacryoadenitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2591000"/>
+      <display value="Crushing injury of shoulder region"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2593002"/>
+      <display value="Dubowitz's syndrome"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2602008"/>
+      <display value="Hemarthrosis of shoulder region"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2606006"/>
+      <display value="Furuncle of perineum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2615004"/>
+      <display value="Follicular cyst of ovary"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2618002"/>
+      <display value="Chronic recurrent major depressive disorder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2622007"/>
+      <display value="Infected ulcer of skin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2625009"/>
+      <display value="Senter syndrome"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2634004"/>
+      <display value="Decreased blood erythrocyte volume"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2638001"/>
+      <display value="Drug-induced hypercalcaemia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2640006"/>
+      <display value="Clinical stage IV"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2651006"/>
+      <display value="Closed traumatic dislocation of elbow joint (disorder)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2655002"/>
+      <display value="Invalidism"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2657005"/>
+      <display value="Overflow proteinuria"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2663001"/>
+      <display value="Palpatory proteinuria"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2683000"/>
+      <display value="Nonvenomous insect bite of axilla without infection"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2689001"/>
+      <display value="Dominant dystrophic epidermolysis bullosa with absence of skin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2694001"/>
+      <display value="Myelophthisic anemia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2704003"/>
+      <display value="Acute disease"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2707005"/>
+      <display value="Necrotizing enterocolitis in fetus OR newborn"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2713001"/>
+      <display value="Closed pneumothorax"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2724004"/>
+      <display value="Recruitment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2725003"/>
+      <display value="Previous abnormality of glucose tolerance"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2733002"/>
+      <display value="Heel pain"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2736005"/>
+      <display value="Atrophoderma vermiculatum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2740001"/>
+      <display value="Gouty proteinuria"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2749000"/>
+      <display value="Congenital deformity of hip joint"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2751001"/>
+      <display value="Fibrocalculous pancreatic diabetes"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2761008"/>
+      <display value="Decreased stool caliber"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2764000"/>
+      <display value="Articular crepitation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2772003"/>
+      <display value="Acquired epidermolysis bullosa"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2775001"/>
+      <display value="Loose body in joint"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2776000"/>
+      <display value="Delirium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2782002"/>
+      <display value="Temporomandibular dysplasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2783007"/>
+      <display value="Gastrojejunal ulcer without hemorrhage AND without perforation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2805007"/>
+      <display value="Phosmet poisoning"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2806008"/>
+      <display value="Impaired psychomotor development"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2807004"/>
+      <display value="Chronic gastrojejunal ulcer with perforation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2808009"/>
+      <display value="Infection by Prosthenorchis elegans"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2815001"/>
+      <display value="Sexual pyromania"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2816000"/>
+      <display value="Dilated cardiomyopathy secondary to myotonic dystrophy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2818004"/>
+      <display value="Congenital vascular anomaly of eye"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2819007"/>
+      <display value="Poisoning by magnesium sulfate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2825006"/>
+      <display value="Gingival abrasion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2828008"/>
+      <display value="Congenital stenosis of nares"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2829000"/>
+      <display value="Uhl's disease"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2835000"/>
+      <display value="Traumatic cardiac hemolytic anemia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2836004"/>
+      <display value="Toxic effect of butane"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2838003"/>
+      <display value="Piblokto"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2850009"/>
+      <display value="Infection by Schistosoma incognitum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2853006"/>
+      <display value="Macular keratitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2856003"/>
+      <display value="Vitamin A-responsive dermatosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2858002"/>
+      <display value="Puerperal septicemia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2884008"/>
+      <display value="Weill-Marchesani syndrome"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2893009"/>
+      <display value="Anomaly of chromosome pair 10"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2897005"/>
+      <display value="Thrombocytopenia due to immune destruction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2899008"/>
+      <display value="Thought block"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2901004"/>
+      <display value="Melena"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2902006"/>
+      <display value="Decreased lymphocyte life span"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2904007"/>
+      <display value="Male infertility"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2910007"/>
+      <display value="Discharge from penis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2912004"/>
+      <display value="Cystic-bullous disease of the lung"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2917005"/>
+      <display value="Transient hypothyroidism"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2918000"/>
+      <display value="Infection caused by Bacteroides"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2919008"/>
+      <display value="Nausea, vomiting and diarrhea"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2929001"/>
+      <display value="Occlusion of artery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2935001"/>
+      <display value="Poisoning by antiasthmatic"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2946003"/>
+      <display value="Osmotic diarrhea"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2951009"/>
+      <display value="Atopic cataract"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2955000"/>
+      <display value="Chronic ulcerative pulpitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2965006"/>
+      <display value="Congenital alopecia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2967003"/>
+      <display value="Non-comitant strabismus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2978006"/>
+      <display value="Aneurysm of conjunctiva"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2981001"/>
+      <display value="Abdominal pulsatile mass"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2990008"/>
+      <display value="Lymphocytic leukemoid reaction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2992000"/>
+      <display value="Pigmentary pallidal degeneration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2994004"/>
+      <display value="Brain fag"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2999009"/>
+      <display value="Injury of ear"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3002002"/>
+      <display value="Hemorrhage of thyroid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3004001"/>
+      <display value="Congenital dilatation of esophagus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3006004"/>
+      <display value="Disturbance of consciousness"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3009006"/>
+      <display value="Solanum malacoxylon poisoning"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3013004"/>
+      <display value="Open wound of ear drum without complication"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3014005"/>
+      <display value="Id reaction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3018008"/>
+      <display value="Penetration of eyeball with magnetic foreign body"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3019000"/>
+      <display value="Closed anterior dislocation of elbow"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3021005"/>
+      <display value="Normal gastric acidity"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3023008"/>
+      <display value="Acute peptic ulcer without hemorrhage, without perforation AND without obstruction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3032005"/>
+      <display value="Nonvenomous insect bite of cheek without infection"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3033000"/>
+      <display value="Bone AND/OR joint disorder of pelvis in mother complicating pregnancy, childbirth AND/OR puerperium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3038009"/>
+      <display value="Acute lymphangitis of umbilicus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3044008"/>
+      <display value="Vitreous prolapse"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3053001"/>
+      <display value="Poisoning by nitroglycerin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3059002"/>
+      <display value="Acute lymphangitis of thigh"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3067005"/>
+      <display value="Blood group antigen C^u^"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3071008"/>
+      <display value="Widow"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3072001"/>
+      <display value="Hormone-induced hypopituitarism"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3073006"/>
+      <display value="Ruvalcaba syndrome"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3089009"/>
+      <display value="Disability evaluation, impairment, class 7"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3094009"/>
+      <display value="Vomiting in infants AND/OR children"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3095005"/>
+      <display value="Induced malaria"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3097002"/>
+      <display value="Superficial injury of lip with infection"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3098007"/>
+      <display value="Rupture of interventricular septum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3109008"/>
+      <display value="Secondary dysthymia early onset"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3110003"/>
+      <display value="Acute otitis media"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3119002"/>
+      <display value="Brain stem laceration with open intracranial wound AND loss of consciousness"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3129009"/>
+      <display value="Infarction of ovary"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3135009"/>
+      <display value="Swimmer's ear"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3140001"/>
+      <display value="Citrullinemia, subacute type"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3144005"/>
+      <display value="Staphylococcal pleurisy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3158007"/>
+      <display value="Panic disorder with agoraphobia, agoraphobic avoidance in partial remission AND panic attacks in partial remission"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3160009"/>
+      <display value="Female infertility of cervical origin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3163006"/>
+      <display value="Acute adenoviral follicular conjunctivitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3168002"/>
+      <display value="Thrombophlebitis of intracranial venous sinus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3185000"/>
+      <display value="Mood-congruent delusion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3199001"/>
+      <display value="Sprain of shoulder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3200003"/>
+      <display value="Sacrocoxalgia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3214003"/>
+      <display value="Invasive pulmonary aspergillosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3217005"/>
+      <display value="Open dislocation of sixth cervical vertebra"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3218000"/>
+      <display value="Mycosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3219008"/>
+      <display value="Disease type AND/OR category unknown"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3228009"/>
+      <display value="Closed fracture of shaft of radius"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3229001"/>
+      <display value="Ulcer of trachea"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3238004"/>
+      <display value="Pericarditis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3239007"/>
+      <display value="Lymphocyte disorder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3253007"/>
+      <display value="Discoloration of skin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3254001"/>
+      <display value="Infection by Strongyloides westeri"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3259006"/>
+      <display value="Cape tulip poisoning"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3261002"/>
+      <display value="Migratory osteolysis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3263004"/>
+      <display value="Verumontanitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3272007"/>
+      <display value="Stomatocytosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3274008"/>
+      <display value="Flat chest"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3275009"/>
+      <display value="Behcet's syndrome, vascular type"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3276005"/>
+      <display value="Toad poisoning"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3282008"/>
+      <display value="Welders' keratitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3283003"/>
+      <display value="Feeling of sand or foreign body in eye"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3286006"/>
+      <display value="Patient status determination, greatly improved"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3289004"/>
+      <display value="Anisometropia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3291007"/>
+      <display value="Closed fracture of two ribs"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3298001"/>
+      <display value="Amnestic disorder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3303004"/>
+      <display value="Disease caused by Arenavirus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3304005"/>
+      <display value="Bronchial compression"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3305006"/>
+      <display value="Disorder of lymphatics"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3308008"/>
+      <display value="Atrophic-hyperplastic gastritis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3310005"/>
+      <display value="Foreign body granuloma of skin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3321001"/>
+      <display value="Renal abscess"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3323003"/>
+      <display value="Leukoplakia of penis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3327002"/>
+      <display value="Jerk nystagmus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3331008"/>
+      <display value="Open fracture of neck of metacarpal bone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3344003"/>
+      <display value="Toxic labyrinthitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3345002"/>
+      <display value="Idiopathic osteoporosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3358001"/>
+      <display value="Lichen ruber moniliformis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3368006"/>
+      <display value="Dull chest pain"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3376008"/>
+      <display value="Pseudoptyalism"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3381004"/>
+      <display value="Open fracture of astragalus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3387000"/>
+      <display value="Auditory discrimination aphasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3391005"/>
+      <display value="Negative for tumor cells"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3398004"/>
+      <display value="Cadmium poisoning"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3415004"/>
+      <display value="Cyanosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3419005"/>
+      <display value="Faucial diphtheria"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3421000"/>
+      <display value="Open fracture of orbital floor (blow-out)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3424008"/>
+      <display value="Tachycardia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3426005"/>
+      <display value="Retained magnetic intraocular foreign body"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3427001"/>
+      <display value="Nonglucosuric melituria"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3434004"/>
+      <display value="Myotonia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3439009"/>
+      <display value="Combined immunodeficiency associated with maturation pathway defect"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3441005"/>
+      <display value="Disease of sebaceous glands"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3446000"/>
+      <display value="Open fracture of T7-T12 level with spinal cord injury"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3449007"/>
+      <display value="Finger agnosia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3456001"/>
+      <display value="Chronic progressive non-hereditary chorea"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3458000"/>
+      <display value="Polymyositis ossificans"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3461004"/>
+      <display value="Deep third degree burn of thumb"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3464007"/>
+      <display value="Infection by Oesophagostomum dentatum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3468005"/>
+      <display value="Neonatal infective mastitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3469002"/>
+      <display value="Second degree burn of thumb"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3472009"/>
+      <display value="Spondylolisthesis, grade 4"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3474005"/>
+      <display value="Glycine max poisoning"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3480002"/>
+      <display value="Burn of wrist"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3482005"/>
+      <display value="Postoperative esophagitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3483000"/>
+      <display value="Chronic peptic ulcer with perforation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3487004"/>
+      <display value="Candidiasis of lung"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3502005"/>
+      <display value="Cervical lymphadenitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3506008"/>
+      <display value="Stenosis of retinal artery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3507004"/>
+      <display value="Abscess of thigh"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3511005"/>
+      <display value="Infectious thyroiditis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3514002"/>
+      <display value="Peribronchial fibrosis of lung"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3519007"/>
+      <display value="Disorder of synovium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3528008"/>
+      <display value="Restricted carbohydrate fat controlled diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3529000"/>
+      <display value="Infection by Sanguinicola"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3530005"/>
+      <display value="Bipolar I disorder, single manic episode, in full remission"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3531009"/>
+      <display value="Intrapsychic conflict"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3533007"/>
+      <display value="Pustular bacterid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3539006"/>
+      <display value="Enteromenia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3542000"/>
+      <display value="Laceration extending into parenchyma of spleen with open wound into abdominal cavity"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3544004"/>
+      <display value="Hair-splitting"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3545003"/>
+      <display value="Diastolic dysfunction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3548001"/>
+      <display value="Brachial plexus lesion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3549009"/>
+      <display value="Pancreatic acinar atrophy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3558002"/>
+      <display value="Mesenteric infarction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3560000"/>
+      <display value="Bilateral recurrent inguinal hernia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3570003"/>
+      <display value="Increased blood erythrocyte volume"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3571004"/>
+      <display value="Megaloblastic anemia due to pancreatic insufficiency"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3577000"/>
+      <display value="Retinal lattice degeneration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3585009"/>
+      <display value="Blinking"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3586005"/>
+      <display value="Psychogenic fugue"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3589003"/>
+      <display value="Syphilitic pericarditis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3590007"/>
+      <display value="Enteroenteric fistula"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3591006"/>
+      <display value="Metabolic acidosis, NAG, bicarbonate losses"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3611003"/>
+      <display value="Demeton poisoning"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3633001"/>
+      <display value="Abscess of hand"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3639002"/>
+      <display value="Glossoptosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3640000"/>
+      <display value="Late effect of traumatic amputation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3641001"/>
+      <display value="Infection by Coenurosis serialis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3642008"/>
+      <display value="Deficiency of steryl-sulfatase"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3644009"/>
+      <display value="Macerated skin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3649004"/>
+      <display value="Contusion of multiple sites of trunk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3650004"/>
+      <display value="Congenital absence of liver"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3652007"/>
+      <display value="Overproduction of growth hormone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3657001"/>
+      <display value="Osteospermum poisoning (disorder)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3662000"/>
+      <display value="Paraesophageal hernia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3677008"/>
+      <display value="Academic problem"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3680009"/>
+      <display value="Monocephalus tripus dibrachius"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3681008"/>
+      <display value="Thrombophlebitis of torcular Herophili"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3696007"/>
+      <display value="Nonulcer dyspepsia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3699000"/>
+      <display value="Transverse deficiency of upper limb"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3704008"/>
+      <display value="Diffuse endocapillary proliferative glomerulonephritis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3705009"/>
+      <display value="Congenital anomaly of anterior chamber of eye"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3716002"/>
+      <display value="Goiter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3720003"/>
+      <display value="Abnormal presence of hemoglobin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3723001"/>
+      <display value="Arthritis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3733009"/>
+      <display value="Congenital eventration of right crus of diaphragm"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3738000"/>
+      <display value="Viral hepatitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3744001"/>
+      <display value="Hyperlipoproteinemia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3747008"/>
+      <display value="Ejection click"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3750006"/>
+      <display value="Arteriospasm"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3751005"/>
+      <display value="Contusion of labium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3752003"/>
+      <display value="Trichuriasis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3754002"/>
+      <display value="Dysplasia of vagina"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3755001"/>
+      <display value="Pityriasis rubra pilaris"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3756000"/>
+      <display value="Static ataxia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3759007"/>
+      <display value="Injury of heart with open wound into thorax"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3760002"/>
+      <display value="Familial multiple factor deficiency syndrome, type V"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3762005"/>
+      <display value="Bilateral recurrent femoral hernia with gangrene"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3763000"/>
+      <display value="Expected bereavement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3783004"/>
+      <display value="Enamel pearls"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3797007"/>
+      <display value="Periodontal cyst"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3798002"/>
+      <display value="Premature birth of identical twins, both stillborn"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3815005"/>
+      <display value="Crohn's disease of rectum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3820005"/>
+      <display value="Inner ear conductive hearing loss"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3827008"/>
+      <display value="Aneurysm of artery of neck"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3830001"/>
+      <display value="Subcutaneous emphysema"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3841004"/>
+      <display value="Blister of cheek with infection"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3845008"/>
+      <display value="Congenital duplication of intestine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3855007"/>
+      <display value="Disorder of pancreas"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3885002"/>
+      <display value="ABO isoimmunization affecting pregnancy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3886001"/>
+      <display value="Congenital fecaliths"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3899003"/>
+      <display value="Neutropenic typhlitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3900008"/>
+      <display value="Mixed sensory-motor polyneuropathy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3902000"/>
+      <display value="Non dose-related drug-induced neutropenia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3908001"/>
+      <display value="Infestation by Haematopinus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3909009"/>
+      <display value="Coeur en sabot"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3913002"/>
+      <display value="Injury of gastrointestinal tract with open wound into abdominal cavity"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3914008"/>
+      <display value="Mental disorder in childhood"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3928002"/>
+      <display value="Zika virus disease"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3939004"/>
+      <display value="Bacterial colony density, transparent"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3944006"/>
+      <display value="Steroid sulfatase deficiency"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3947004"/>
+      <display value="High oxygen affinity hemoglobin polycythemia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3950001"/>
+      <display value="Birth"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3951002"/>
+      <display value="Proctitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3972004"/>
+      <display value="Primary insomnia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3975002"/>
+      <display value="Deep third degree burn of lower limb"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3978000"/>
+      <display value="Hemolytic anemia due to warm antibody"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3987009"/>
+      <display value="Congenital absence of trachea"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3993001"/>
+      <display value="Infection by Muellerius"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3999002"/>
+      <display value="Acute pyelitis without renal medullary necrosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4003003"/>
+      <display value="Alphavirus disease"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4006006"/>
+      <display value="Fetal tachycardia affecting management of mother"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4009004"/>
+      <display value="Lower urinary tract infectious disease"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4016003"/>
+      <display value="Empyema of mastoid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4017007"/>
+      <display value="Increased stratum corneum adhesiveness"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4022007"/>
+      <display value="Vulvitis circumscripta plasmacellularis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4026005"/>
+      <display value="Interstitial mastitis associated with childbirth"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4030008"/>
+      <display value="Le Dantec virus disease"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4038001"/>
+      <display value="Myrotheciotoxicosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4039009"/>
+      <display value="Multiple vitamin deficiency disease"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4040006"/>
+      <display value="Hassall-Henle bodies"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4041005"/>
+      <display value="Congenital anomaly of macula"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4046000"/>
+      <display value="Degenerative spondylolisthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4062006"/>
+      <display value="Lumbosacral plexus lesion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4063001"/>
+      <display value="Achillodynia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4069002"/>
+      <display value="Anoxic brain damage during AND/OR resulting from a procedure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4070001"/>
+      <display value="Palinphrasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4075006"/>
+      <display value="Peganum harmala poisoning"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4082005"/>
+      <display value="Syphilitic myocarditis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4088009"/>
+      <display value="Acquired hydrocephalus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4089001"/>
+      <display value="Meningococcemia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4107000"/>
+      <display value="Infertile male syndrome"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4113009"/>
+      <display value="Arrested hydrocephalus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4120002"/>
+      <display value="Bronchiolitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4124006"/>
+      <display value="Nonvenomous insect bite of vagina with infection"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4127004"/>
+      <display value="Prostatic obstruction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4129001"/>
+      <display value="Argyll-Robertson pupil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4135001"/>
+      <display value="11p partial monosomy syndrome"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4136000"/>
+      <display value="Macrodactyly of toe (disorder)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4142001"/>
+      <display value="Muscular asthenopia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4160001"/>
+      <display value="Congenital anomaly of upper respiratory system"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4168008"/>
+      <display value="Tibial plateau chondromalacia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4174008"/>
+      <display value="Placenta tripartita"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4175009"/>
+      <display value="Infestation by Oestrus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4181001"/>
+      <display value="Normal peak expiratory flow rate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4183003"/>
+      <display value="Charcot-Marie-Tooth disease, type IC"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4184009"/>
+      <display value="Congenital anomaly of endocrine gland"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4195003"/>
+      <display value="Congenital duplication of anus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4197006"/>
+      <display value="Disability evaluation, impairment, class 5"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4199009"/>
+      <display value="18p partial trisomy syndrome"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4208000"/>
+      <display value="Closed multiple fractures of both lower limbs"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4210003"/>
+      <display value="Ocular hypertension"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4223005"/>
+      <display value="Parkinsonism caused by drug"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4224004"/>
+      <display value="Complication of infusion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4225003"/>
+      <display value="Tuberculosis of nose"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4232007"/>
+      <display value="Chronic vulvitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4237001"/>
+      <display value="Suppurative pulpitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4240001"/>
+      <display value="Rupture of aorta"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4241002"/>
+      <display value="Listeriosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4242009"/>
+      <display value="18q partial monosomy syndrome"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4248008"/>
+      <display value="Synovitis AND/OR tenosynovitis associated with another disease"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4249000"/>
+      <display value="Poor peripheral circulation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4260009"/>
+      <display value="Sacral spinal cord injury without bone injury"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4262001"/>
+      <display value="Phlebitis of superior sagittal sinus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4264000"/>
+      <display value="Chronic pericoronitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4269005"/>
+      <display value="Chronic gastrojejunal ulcer without hemorrhage AND without perforation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4273008"/>
+      <display value="Closed posterior dislocation of elbow"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4275001"/>
+      <display value="Spasm of conjugate gaze"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4283007"/>
+      <display value="Mirizzi's syndrome"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4287008"/>
+      <display value="Chordee"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4294006"/>
+      <display value="Isosexual precocious puberty"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4300009"/>
+      <display value="Deep third degree burn of forearm"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4301008"/>
+      <display value="Autoimmune state"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4306003"/>
+      <display value="Cluster B personality disorder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4307007"/>
+      <display value="Pregestational diabetes mellitus AND/OR impaired glucose tolerance, modified White class F"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4313003"/>
+      <display value="Acardiacus anceps"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4316006"/>
+      <display value="Myometritis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4320005"/>
+      <display value="Factor V deficiency"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4324001"/>
+      <display value="Subacute cystitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4325000"/>
+      <display value="11q partial monosomy syndrome"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4338008"/>
+      <display value="Arnold's nerve reflex cough syndrome"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4340003"/>
+      <display value="Acrodermatitis atrophicans chronica"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4349002"/>
+      <display value="Open fracture of multiple sites of metacarpus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4354006"/>
+      <display value="Open dislocation of scapula"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4356008"/>
+      <display value="Gingival recession"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4359001"/>
+      <display value="Early congenital syphilis (less than 2 years)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4364002"/>
+      <display value="Structure of associations"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4367009"/>
+      <display value="Hoover's sign"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4373005"/>
+      <display value="Hippocratic nails"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4374004"/>
+      <display value="Congenital anomaly of tricuspid valve"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4381006"/>
+      <display value="Verbal paraphasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4386001"/>
+      <display value="Bronchospasm"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4390004"/>
+      <display value="Lithium nephropathy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4397001"/>
+      <display value="Partial congenital duodenal obstruction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4399003"/>
+      <display value="Acute hemorrhagic pancreatitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4403007"/>
+      <display value="Exclamation point hair"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4406004"/>
+      <display value="Congenital anomaly of male genital system"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4409006"/>
+      <display value="Adenosylcobalamin and methylcobalamin synthesis defect"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4410001"/>
+      <display value="Retroperitoneal hernia with obstruction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4412009"/>
+      <display value="Injury of digital nerve"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4414005"/>
+      <display value="Infection by Setaria"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4416007"/>
+      <display value="Heerfordt's syndrome"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4418008"/>
+      <display value="Gangrenous ergotism"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4434006"/>
+      <display value="Bloom syndrome"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4439001"/>
+      <display value="Cyclic oculomotor paralysis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4441000"/>
+      <display value="Severe bipolar disorder with psychotic features"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4445009"/>
+      <display value="Tuberculosis of genitourinary system"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4448006"/>
+      <display value="Allergic headache"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4461006"/>
+      <display value="Complication of administrative procedure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4463009"/>
+      <display value="Familial amyloid polyneuropathy, type II"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4464003"/>
+      <display value="Rocio virus disease"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4465002"/>
+      <display value="Spherophakia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4468000"/>
+      <display value="Oppenheim's gait"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4470009"/>
+      <display value="Blanching of skin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4473006"/>
+      <display value="Migraine with aura"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4477007"/>
+      <display value="Juvenile myopathy AND lactate acidosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4478002"/>
+      <display value="Multiple fractures of upper AND lower limbs"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4481007"/>
+      <display value="Abnormal gastric secretion regulation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4483005"/>
+      <display value="Syphilitic punched out ulcer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4494009"/>
+      <display value="Diverticulitis of large intestine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4495005"/>
+      <display value="Congenital hypertrophy of ureteric valve"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4499004"/>
+      <display value="Disseminated anergic leishmaniasis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4501007"/>
+      <display value="Tuberculous ascites"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4506002"/>
+      <display value="Educational problem"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4510004"/>
+      <display value="Streptococcal meningitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4512007"/>
+      <display value="Group sex play"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4519003"/>
+      <display value="Hypouricemia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4522001"/>
+      <display value="Dental plaque on tooth (disorder)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4523006"/>
+      <display value="Babinski-Nageotte syndrome"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4526003"/>
+      <display value="Poisoning by probenecid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4529005"/>
+      <display value="Abnormal spermatogenesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4530000"/>
+      <display value="Madelung's deformity"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4547004"/>
+      <display value="Determination of outcome, satisfactory to physician"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4550001"/>
+      <display value="Special infant formula"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4554005"/>
+      <display value="Intraventricular conduction defect"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4556007"/>
+      <display value="Gastritis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4557003"/>
+      <display value="Preinfarction syndrome"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4559000"/>
+      <display value="Mixed infectious disease"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4565000"/>
+      <display value="Decreased oxygen affinity"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4568003"/>
+      <display value="Retrosternal chest pain"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4575002"/>
+      <display value="Acute hyponatremia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4586000"/>
+      <display value="Complication of internal fixation device"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4592006"/>
+      <display value="S&gt;4&lt; gallop"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4598005"/>
+      <display value="Osteomalacia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4602007"/>
+      <display value="Robin sequence"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4633009"/>
+      <display value="Hymenoxys richardsonii poisoning"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4637005"/>
+      <display value="Intrahepatic cholestasis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4639008"/>
+      <display value="Glanders"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4641009"/>
+      <display value="Myxedema heart disease"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4645000"/>
+      <display value="Senile brain amyloidosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4654002"/>
+      <display value="Posteruptive color change of tooth"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4659007"/>
+      <display value="Acne fulminans"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4661003"/>
+      <display value="Calculus of bile duct with obstruction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4665007"/>
+      <display value="Costal respiration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4667004"/>
+      <display value="Female infertility due to structural congenital anomaly of vagina"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4669001"/>
+      <display value="Pinta, primary lesion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4673003"/>
+      <display value="Open fracture of lateral malleolus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4676006"/>
+      <display value="SLE glomerulonephritis syndrome, WHO class II"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4688008"/>
+      <display value="Poisoning by griseofulvin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4690009"/>
+      <display value="Metabolic acidosis caused by paraldehyde (disorder)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4702003"/>
+      <display value="Inherited disorder of folate metabolism"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4708004"/>
+      <display value="Disability evaluation, disability 35%"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4711003"/>
+      <display value="Congenital anomaly of bile ducts"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4721006"/>
+      <display value="Basic motor learning problem"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4724003"/>
+      <display value="Acute radial nerve palsy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4733001"/>
+      <display value="Orunga virus disease"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4740000"/>
+      <display value="Herpes zoster"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4749004"/>
+      <display value="Naso-palatine duct cyst"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4750004"/>
+      <display value="Open fracture of medial condyle of humerus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4754008"/>
+      <display value="Gynecomastia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4760008"/>
+      <display value="Chronic dacryoadenitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4763005"/>
+      <display value="Frostbite of hand"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4771009"/>
+      <display value="Poisoning by cephalosporin group antibiotic"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4776004"/>
+      <display value="Lichen planus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4783006"/>
+      <display value="Maternal diabetes mellitus with hypoglycemia affecting fetus OR newborn"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4788002"/>
+      <display value="Closed fracture of zygoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4800001"/>
+      <display value="Pyuria"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4805006"/>
+      <display value="Functional aphasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4806007"/>
+      <display value="Bjerrum scotoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4817008"/>
+      <display value="Primary degenerative dementia of the Alzheimer type, senile onset, with delirium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4819006"/>
+      <display value="Effusion of joint of ankle AND/OR foot"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4821001"/>
+      <display value="Contusion of cheek"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4834000"/>
+      <display value="Typhoid fever"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4835004"/>
+      <display value="Infection by Nosema bombycis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4839005"/>
+      <display value="Chronic enlargement of lacrimal gland"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4846001"/>
+      <display value="Anicteric viral hepatitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4851007"/>
+      <display value="Chronic endocarditis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4853005"/>
+      <display value="Dry coitus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4854004"/>
+      <display value="Acquired hemolytic anemia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4855003"/>
+      <display value="Diabetic retinopathy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4859009"/>
+      <display value="Lichen spinulosus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4860004"/>
+      <display value="Infection by Aspergillus niger"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4863002"/>
+      <display value="Phencyclidine-induced mood disorder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4873000"/>
+      <display value="Localized vascularization of cornea"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4874006"/>
+      <display value="11q partial trisomy syndrome"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4886009"/>
+      <display value="Premature birth of newborn male"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4887000"/>
+      <display value="Hypertyrosinemia, Richner-Hanhart type"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4896000"/>
+      <display value="Acute toxic hepatitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4900002"/>
+      <display value="Endocrine disorder related to puberty"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4907004"/>
+      <display value="Non-involution of uterus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4915001"/>
+      <display value="Infection by Entamoeba coli"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4920001"/>
+      <display value="Deficiency of acetyl-CoA carboxylase"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4921002"/>
+      <display value="Infection by Basidiobolus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4922009"/>
+      <display value="Infestation by Simuliidae"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4926007"/>
+      <display value="Schizophrenia in remission"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4927003"/>
+      <display value="Acute anterior uveitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4932002"/>
+      <display value="Panic disorder with agoraphobia, moderate agoraphobic avoidance AND mild panic attacks"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4939006"/>
+      <display value="Hemolytic anemia due to nonlymphoid neoplasm"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4945003"/>
+      <display value="Microgyria"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4949009"/>
+      <display value="Motor skill disorder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4951008"/>
+      <display value="Nervous asthenopia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4952001"/>
+      <display value="Cerebral irritability in newborn"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4953006"/>
+      <display value="Toxic effect of butyl alcohol"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4967002"/>
+      <display value="Disability evaluation, disability 99%"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4969004"/>
+      <display value="Sinus headache"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4973001"/>
+      <display value="Left bundle branch hemiblock"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4975008"/>
+      <display value="Crushing injury of trunk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4981000"/>
+      <display value="Panacinar emphysema"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4984008"/>
+      <display value="Microcytic normochromic anemia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4985009"/>
+      <display value="Disorder of urethra"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4989003"/>
+      <display value="Electrical burn of skin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4996001"/>
+      <display value="Hypophosphatemia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4997005"/>
+      <display value="Thyrotoxicosis factitia"/>
+    </contains>
+  </expansion>
+</ValueSet>

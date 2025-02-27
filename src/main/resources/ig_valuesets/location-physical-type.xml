@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="location-physical-type"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="pa"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/location-physical-type"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.328"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="LocationType"/>
+  <title value="Location type"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="This example value set defines a set of codes that can be used to indicate the physical form of the Location."/>
+  <immutable value="true"/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/location-physical-type"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:d93d705d-8d7d-4a50-8b94-72eb43115773"/>
+    <timestamp value="2025-01-17T09:53:38-07:00"/>
+    <total value="15"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/location-physical-type|2.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/location-physical-type"/>
+      <code value="si"/>
+      <display value="Site"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/location-physical-type"/>
+      <code value="bu"/>
+      <display value="Building"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/location-physical-type"/>
+      <code value="wi"/>
+      <display value="Wing"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/location-physical-type"/>
+      <code value="wa"/>
+      <display value="Ward"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/location-physical-type"/>
+      <code value="lvl"/>
+      <display value="Level"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/location-physical-type"/>
+      <code value="co"/>
+      <display value="Corridor"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/location-physical-type"/>
+      <code value="ro"/>
+      <display value="Room"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/location-physical-type"/>
+      <code value="bd"/>
+      <display value="Bed"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/location-physical-type"/>
+      <code value="ve"/>
+      <display value="Vehicle"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/location-physical-type"/>
+      <code value="ho"/>
+      <display value="House"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/location-physical-type"/>
+      <code value="ca"/>
+      <display value="Cabinet"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/location-physical-type"/>
+      <code value="rd"/>
+      <display value="Road"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/location-physical-type"/>
+      <code value="area"/>
+      <display value="Area"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/location-physical-type"/>
+      <code value="jdn"/>
+      <display value="Jurisdiction"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/location-physical-type"/>
+      <code value="vi"/>
+      <display value="Virtual"/>
+    </contains>
+  </expansion>
+</ValueSet>

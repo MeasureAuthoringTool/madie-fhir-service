@@ -3,21 +3,28 @@ package gov.cms.madie.madiefhirservice.config;
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.context.support.DefaultProfileValidationSupport;
 import ca.uhn.fhir.context.support.IValidationSupport;
+import ca.uhn.fhir.parser.IParser;
 import ca.uhn.fhir.validation.FhirValidator;
 import ca.uhn.fhir.validation.IValidatorModule;
-import gov.cms.madie.madiefhirservice.utils.QiCoreLenientTerminologyValidator;
+import gov.cms.madie.madiefhirservice.utils.CustomQiCoreInMemoryValidationSupport;
 import gov.cms.madie.madiefhirservice.utils.ResourceUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.hl7.fhir.common.hapi.validation.support.*;
 import org.hl7.fhir.common.hapi.validation.validator.FhirInstanceValidator;
+import org.hl7.fhir.instance.model.api.IBaseResource;
+import org.hl7.fhir.r4.model.ValueSet;
 import org.hl7.fhir.r5.context.SimpleWorkerContext;
 import org.hl7.fhir.r5.utils.LiquidEngine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 
 import java.io.IOException;
+import java.util.Objects;
+import java.util.stream.Stream;
 
 @Slf4j
 @Configuration
@@ -78,13 +85,16 @@ public class HapiFhirConfig {
         new UnknownCodeSystemWarningValidationSupport(qicore6FhirContext);
     unknownCodeSystemWarningValidationSupport.setNonExistentCodeSystemSeverity(
         IValidationSupport.IssueSeverity.WARNING);
+    PrePopulatedValidationSupport prePopulatedValidationSupport =
+        getPrePopulatedValidationSupport(qicore6FhirContext);
 
     return new ValidationSupportChain(
         npmPackageSupport,
         new DefaultProfileValidationSupport(qicore6FhirContext),
-        new QiCoreLenientTerminologyValidator(qicore6FhirContext),
-        new CommonCodeSystemsTerminologyService(qicore6FhirContext),
-        unknownCodeSystemWarningValidationSupport);
+        prePopulatedValidationSupport,
+        new CustomQiCoreInMemoryValidationSupport(qicore6FhirContext),
+        new InMemoryTerminologyServerValidationSupport(qicore6FhirContext),
+        new CommonCodeSystemsTerminologyService(qicore6FhirContext));
   }
 
   @Bean
@@ -129,5 +139,23 @@ public class HapiFhirConfig {
     public String fetchInclude(LiquidEngine liquidEngine, String s) {
       return ResourceUtils.getData("/templates/" + s);
     }
+  }
+
+  private PrePopulatedValidationSupport getPrePopulatedValidationSupport(
+      FhirContext qicore6FhirContext) throws IOException {
+    PrePopulatedValidationSupport prePopulatedValidationSupport =
+        new PrePopulatedValidationSupport(qicore6FhirContext);
+    IParser xmlParser = qicore6FhirContext.newXmlParser();
+    Resource resource = new ClassPathResource("ig_valuesets");
+    Stream.of(Objects.requireNonNull(resource.getFile().listFiles()))
+        .forEach(
+            (file) -> {
+              String data = ResourceUtils.getData("/ig_valuesets/" + file.getName());
+              IBaseResource baseResource = xmlParser.parseResource(data);
+              if (baseResource instanceof ValueSet) {
+                prePopulatedValidationSupport.addValueSet(baseResource);
+              }
+            });
+    return prePopulatedValidationSupport;
   }
 }

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="service-place"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="fm"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/service-place"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.564"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="ExampleServicePlaceCodes"/>
+  <title value="Example Service Place Codes"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="Financial Management"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="This value set includes a smattering of Service Place codes."/>
+  <immutable value="true"/>
+  <copyright value="This is an example set."/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-serviceplace"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:38f02ce1-6355-4eaf-9b09-1022bb75b51a"/>
+    <timestamp value="2025-01-17T09:53:39-07:00"/>
+    <total value="17"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/ex-serviceplace|1.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-serviceplace"/>
+      <code value="01"/>
+      <display value="Pharmacy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-serviceplace"/>
+      <code value="03"/>
+      <display value="School"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-serviceplace"/>
+      <code value="04"/>
+      <display value="Homeless Shelter"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-serviceplace"/>
+      <code value="05"/>
+      <display value="Indian Health Service Free-standing Facility"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-serviceplace"/>
+      <code value="06"/>
+      <display value="Indian Health Service Provider-based Facility"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-serviceplace"/>
+      <code value="07"/>
+      <display value="Tribal 638 Free-Standing Facility"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-serviceplace"/>
+      <code value="08"/>
+      <display value="Tribal 638 Provider-Based Facility"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-serviceplace"/>
+      <code value="09"/>
+      <display value="Prison/Correctional Facility"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-serviceplace"/>
+      <code value="11"/>
+      <display value="Office"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-serviceplace"/>
+      <code value="12"/>
+      <display value="Home"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-serviceplace"/>
+      <code value="13"/>
+      <display value="Assisted Living Fa"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-serviceplace"/>
+      <code value="14"/>
+      <display value="Group Home"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-serviceplace"/>
+      <code value="15"/>
+      <display value="Mobile Unit"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-serviceplace"/>
+      <code value="19"/>
+      <display value="Off Campus-Outpatient Hospital"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-serviceplace"/>
+      <code value="20"/>
+      <display value="Urgent Care Facility"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-serviceplace"/>
+      <code value="21"/>
+      <display value="Inpatient Hospital"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-serviceplace"/>
+      <code value="41"/>
+      <display value="Ambulance—Land"/>
+    </contains>
+  </expansion>
+</ValueSet>

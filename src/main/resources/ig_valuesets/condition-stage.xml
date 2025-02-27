@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="condition-stage"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="pc"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/condition-stage"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.170"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="ConditionStage"/>
+  <title value="Condition Stage"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="HL7 International - Patient Care WG"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://www.hl7.org/Special/committees/patientcare/"/>
+    </telecom>
+  </contact>
+  <description value="Example value set for stages of cancer and other conditions."/>
+  <copyright value="This resource includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyright of the International Health Terminology Standards Development Organisation (IHTSDO). Implementers of these specifications must have the appropriate SNOMED CT Affiliate license - for more information contact http://www.snomed.org/snomed-ct/get-snomed-ct or info@snomed.org"/>
+  <compose>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="385356007"/>
+      </filter>
+    </include>
+  </compose>
+  <expansion>
+    <extension url="http://hl7.org/fhir/StructureDefinition/valueset-unclosed">
+      <valueBoolean value="true"/>
+    </extension>
+    <identifier value="urn:uuid:45c8b7b7-1421-481c-94dd-26356f5dfd93"/>
+    <timestamp value="2025-01-17T09:53:37-07:00"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-valueset"/>
+      <valueUri value="null"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801"/>
+    </parameter>
+    <parameter>
+      <name value="version"/>
+      <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801"/>
+    </parameter>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="385356007"/>
+      <display value="Tumor stage finding (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2640006"/>
+      <display value="Clinical stage IV"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5701003"/>
+      <display value="Lymphoma stage IIe"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13104003"/>
+      <display value="Clinical stage I"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30440004"/>
+      <display value="Lymphoma stage I"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31747005"/>
+      <display value="Modified Dukes stage B1"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="44255004"/>
+      <display value="Lymphoma stage IIIe"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="50283003"/>
+      <display value="Clinical stage III"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="53173007"/>
+      <display value="Modified Dukes stage B2"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="54498006"/>
+      <display value="Modified Dukes stage C1"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="56769006"/>
+      <display value="Modified Dukes stage A"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="56944001"/>
+      <display value="Lymphoma stage III"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="57306005"/>
+      <display value="Modified Dukes stage C2"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="57605004"/>
+      <display value="Modified Dukes stage D"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="60333009"/>
+      <display value="Clinical stage II"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="66445009"/>
+      <display value="Lymphoma stage IV"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="73055006"/>
+      <display value="FIGO VM stage V"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="74053007"/>
+      <display value="Lymphoma stage IIIs"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="75339006"/>
+      <display value="Lymphoma stage III 2"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="76422004"/>
+      <display value="Lymphoma stage II"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="78199001"/>
+      <display value="Epithelial ovarian tumor, FIGO stage IIC"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="78607009"/>
+      <display value="Epithelial ovarian tumor, FIGO stage II"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="84633001"/>
+      <display value="Lymphoma stage IIIse"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="89487002"/>
+      <display value="Lymphoma stage Ie"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="112241002"/>
+      <display value="Lymphoma stage III 1"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="385358008"/>
+      <display value="Dukes stage finding (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="385360005"/>
+      <display value="Modified Dukes stage finding (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="385362002"/>
+      <display value="FIGO stage finding for gynaecological malignancy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="385364001"/>
+      <display value="FIGO ovarian tumour stage finding"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="385366004"/>
+      <display value="FIGO stage finding for epithelial tumour of ovary"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="385368003"/>
+      <display value="FIGO stage finding for cervical carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="385370007"/>
+      <display value="FIGO stage finding for vulvar carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="385372004"/>
+      <display value="FIGO stage finding for vulvar melanoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="385374003"/>
+      <display value="FIGO uterine tumour stage finding"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="385376001"/>
+      <display value="FIGO stage finding for endometrial carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="385389007"/>
+      <display value="Lymphoma stage finding (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="394939004"/>
+      <display value="Dukes stage A (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="394940002"/>
+      <display value="Dukes stage B (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="394941003"/>
+      <display value="Dukes stage C1 (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="394942005"/>
+      <display value="Dukes stage C2 (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="394943000"/>
+      <display value="Dukes stage D (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="396532004"/>
+      <display value="Stage I: Tumor confined to gland, 5 cm or less (adrenal cortical carcinoma) (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="396533009"/>
+      <display value="Stage II: Tumor confined to gland, greater than 5 cm (adrenal cortical carcinoma) (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="396534003"/>
+      <display value="Stage III: Extraglandular extension of tumor without other organ involvement (adrenal cortical carcinoma) (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="396535002"/>
+      <display value="Stage IV: Distant metastasis or extension into other organs (adrenal cortical carcinoma) (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="396907008"/>
+      <display value="Thymic epithelial neoplasm stage finding (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="396908003"/>
+      <display value="Stage I: Grossly and microscopically encapsulated (thymus gland) (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="396909006"/>
+      <display value="Stage IIa: Microscopic transcapsular invasion (thymus gland) (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="396910001"/>
+      <display value="Stage IIb: Macroscopic capsular invasion into thymic or surrounding fat, or grossly adherent to, but not breaking through, mediastinal pleura or pericardium (thymus gland) (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="396911002"/>
+      <display value="Stage III: Macroscopic invasion of neighboring organs (thymus gland) (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="396912009"/>
+      <display value="Stage IVa: Pleural or pericardial dissemination (thymus gland) (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="396913004"/>
+      <display value="Stage IVb: Hematogenous or lymphatic dissemination (thymus gland) (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="399517007"/>
+      <display value="Tumor stage cannot be determined (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="399605004"/>
+      <display value="FIGO stage finding for fallopian tube tumour"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="405917009"/>
+      <display value="Intergroup rhabdomyosarcoma study post-surgical clinical group finding (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="405918004"/>
+      <display value="Intergroup rhabdomyosarcoma study post-surgical clinical group not applicable (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="405919007"/>
+      <display value="Intergroup rhabdomyosarcoma study post-surgical clinical group cannot be assessed (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="405957007"/>
+      <display value="Intergroup rhabdomyosarcoma study post-surgical clinical group IA: localized tumor, confined to site of origin, completely resected (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="405958002"/>
+      <display value="Intergroup rhabdomyosarcoma study post-surgical clinical group IB: localized tumor, infiltrating beyond site of origin, completely resected (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="405959005"/>
+      <display value="Intergroup rhabdomyosarcoma study post-surgical clinical group IIA: localized tumor, gross total resection, but with microscopic residual disease (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="405960000"/>
+      <display value="Intergroup rhabdomyosarcoma study post-surgical clinical group IIB: Locally extensive tumor (spread to regional lymph nodes), completely resected (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="405961001"/>
+      <display value="Intergroup rhabdomyosarcoma study post-surgical clinical group IIC: Locally extensive tumor (spread to regional lymph nodes), gross total resection, but microscopic residual disease (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="405962008"/>
+      <display value="Intergroup rhabdomyosarcoma study post-surgical clinical group IIIA: Localized or locally extensive tumor, gross residual disease after biopsy only (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="405963003"/>
+      <display value="Intergroup rhabdomyosarcoma study post-surgical clinical group IIIB: Localised or locally extensive tumour, gross residual disease after major resection (greater than 50% debulking)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="405964009"/>
+      <display value="Intergroup rhabdomyosarcoma study post-surgical clinical group IV: Any size primary tumor, with or without regional lymph node involvement, with distant metastases, without respect to surgical approach to primary tumor (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="409721000"/>
+      <display value="International neuroblastoma staging system stage finding (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="409722007"/>
+      <display value="International neuroblastoma staging system stage 1 (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="409723002"/>
+      <display value="International neuroblastoma staging system stage 2A (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="409724008"/>
+      <display value="International neuroblastoma staging system stage 2B (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="409725009"/>
+      <display value="International neuroblastoma staging system stage 3 (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="409726005"/>
+      <display value="International neuroblastoma staging system stage 4 (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="409727001"/>
+      <display value="International neuroblastoma staging system stage 4S (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="422375001"/>
+      <display value="Carcinoma of colon, stage III (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="422581008"/>
+      <display value="Carcinoma of colon, stage II (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="422985007"/>
+      <display value="Carcinoma of colon, stage IV (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="425037004"/>
+      <display value="Low grade lymphoma, stage 1 (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="425213009"/>
+      <display value="Carcinoma of colon, stage I (finding)"/>
+    </contains>
+  </expansion>
+</ValueSet>

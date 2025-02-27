@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="2.16.840.1.113762.1.4.1021.56"/>
+  <meta>
+    <versionId value="6"/>
+    <lastUpdated value="2019-12-12T01:00:20.000-05:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+    <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/publishable-valueset-cqfm"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/valueset-author">
+    <valueString value="MD Partners Author"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate">
+    <valueDate value="2022-12-15"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/valueset-effectiveDate">
+    <valueDate value="2019-12-12"/>
+  </extension>
+  <url value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1021.56"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113762.1.4.1021.56"/>
+  </identifier>
+  <version value="20191212"/>
+  <name value="MedicalReasonNotDoneSCT"/>
+  <title value="Medical Reason Not Done SCT"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2019-12-12T01:00:20-05:00"/>
+  <publisher value="MD Partners Steward"/>
+  <jurisdiction>
+    <extension url="http://hl7.org/fhir/StructureDefinition/data-absent-reason">
+      <valueString value="UNKNOWN"/>
+    </extension>
+  </jurisdiction>
+  <purpose value="(Clinical Focus: This value set contains concepts that represent situations that represent medical reasons for not providing treatment.),(Data Element Scope: This value set may use the Quality Data Model (QDM) attribute related to Negation Rationale or Reason. The intent of this data element is to identify medical reasons for not providing treatment.),(Inclusion Criteria: Includes only relevant concepts associated with SNOMED CT codes representing medical reasons for not providing treatment should be included.),(Exclusion Criteria: None.)"/>
+  <compose>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <concept>
+        <code value="183932001"/>
+        <display value="Procedure contraindicated (situation)"/>
+      </concept>
+      <concept>
+        <code value="183964008"/>
+        <display value="Treatment not indicated (situation)"/>
+      </concept>
+      <concept>
+        <code value="183966005"/>
+        <display value="Drug treatment not indicated (situation)"/>
+      </concept>
+      <concept>
+        <code value="216952002"/>
+        <display value="Failure in dosage (event)"/>
+      </concept>
+      <concept>
+        <code value="266721009"/>
+        <display value="Absent response to treatment (situation)"/>
+      </concept>
+      <concept>
+        <code value="269191009"/>
+        <display value="Late effect of medical and surgical care complication (disorder)"/>
+      </concept>
+      <concept>
+        <code value="274512008"/>
+        <display value="Drug therapy discontinued (situation)"/>
+      </concept>
+      <concept>
+        <code value="31438003"/>
+        <display value="Drug resistance (disorder)"/>
+      </concept>
+      <concept>
+        <code value="35688006"/>
+        <display value="Complication of medical care (disorder)"/>
+      </concept>
+      <concept>
+        <code value="371133007"/>
+        <display value="Treatment modification (procedure)"/>
+      </concept>
+      <concept>
+        <code value="397745006"/>
+        <display value="Medical contraindication (finding)"/>
+      </concept>
+      <concept>
+        <code value="407563006"/>
+        <display value="Treatment not tolerated (situation)"/>
+      </concept>
+      <concept>
+        <code value="410529002"/>
+        <display value="Not needed (qualifier value)"/>
+      </concept>
+      <concept>
+        <code value="410534003"/>
+        <display value="Not indicated (qualifier value)"/>
+      </concept>
+      <concept>
+        <code value="410536001"/>
+        <display value="Contraindicated (qualifier value)"/>
+      </concept>
+      <concept>
+        <code value="416098002"/>
+        <display value="Allergy to drug (finding)"/>
+      </concept>
+      <concept>
+        <code value="416406003"/>
+        <display value="Procedure discontinued (situation)"/>
+      </concept>
+      <concept>
+        <code value="419511003"/>
+        <display value="Propensity to adverse reactions to drug (finding)"/>
+      </concept>
+      <concept>
+        <code value="428024001"/>
+        <display value="Clinical trial participant (person)"/>
+      </concept>
+      <concept>
+        <code value="428119001"/>
+        <display value="Procedure not indicated (situation)"/>
+      </concept>
+      <concept>
+        <code value="445528004"/>
+        <display value="Treatment changed (situation)"/>
+      </concept>
+      <concept>
+        <code value="59037007"/>
+        <display value="Intolerance to drug (finding)"/>
+      </concept>
+      <concept>
+        <code value="62014003"/>
+        <display value="Adverse reaction caused by drug (disorder)"/>
+      </concept>
+      <concept>
+        <code value="79899007"/>
+        <display value="Drug interaction (finding)"/>
+      </concept>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:7457271e-1831-4066-be9c-665f592fa4a1"/>
+    <timestamp value="2023-06-29T18:32:42-04:00"/>
+    <total value="23"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="183932001"/>
+      <display value="Procedure contraindicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="183964008"/>
+      <display value="Treatment not indicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="183966005"/>
+      <display value="Drug treatment not indicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="216952002"/>
+      <display value="Failure in dosage (event)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="266721009"/>
+      <display value="Absent response to treatment (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="269191009"/>
+      <display value="Late effect of medical and surgical care complication (disorder)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="274512008"/>
+      <display value="Drug therapy discontinued (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="31438003"/>
+      <display value="Drug resistance (disorder)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="35688006"/>
+      <display value="Complication of medical care (disorder)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="371133007"/>
+      <display value="Treatment modification (procedure)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="407563006"/>
+      <display value="Treatment not tolerated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="410529002"/>
+      <display value="Not needed (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="410534003"/>
+      <display value="Not indicated (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="410536001"/>
+      <display value="Contraindicated (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="416098002"/>
+      <display value="Allergy to drug (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="416406003"/>
+      <display value="Procedure discontinued (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="419511003"/>
+      <display value="Propensity to adverse reactions to drug (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="428024001"/>
+      <display value="Clinical trial participant (person)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="428119001"/>
+      <display value="Procedure not indicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="445528004"/>
+      <display value="Treatment changed (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="59037007"/>
+      <display value="Intolerance to drug (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="62014003"/>
+      <display value="Adverse reaction caused by drug (disorder)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="79899007"/>
+      <display value="Drug interaction (finding)"/>
+    </contains>
+  </expansion>
+</ValueSet>

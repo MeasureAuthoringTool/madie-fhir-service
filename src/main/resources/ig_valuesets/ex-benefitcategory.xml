@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="ex-benefitcategory"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="fm"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/ex-benefitcategory"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.1174"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="BenefitCategoryCodes"/>
+  <title value="Benefit Category Codes"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="Financial Management"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="This value set includes examples of Benefit Category codes."/>
+  <immutable value="true"/>
+  <copyright value="This is an example set."/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-benefitcategory"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:916b2b6b-13f3-476b-a356-7c11ca86a7f2"/>
+    <timestamp value="2025-01-17T09:53:37-07:00"/>
+    <total value="28"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/ex-benefitcategory|1.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-benefitcategory"/>
+      <code value="1"/>
+      <display value="Medical Care"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-benefitcategory"/>
+      <code value="2"/>
+      <display value="Surgical"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-benefitcategory"/>
+      <code value="3"/>
+      <display value="Consultation"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-benefitcategory"/>
+      <code value="4"/>
+      <display value="Diagnostic XRay"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-benefitcategory"/>
+      <code value="5"/>
+      <display value="Diagnostic Lab"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-benefitcategory"/>
+      <code value="14"/>
+      <display value="Renal Supplies"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-benefitcategory"/>
+      <code value="23"/>
+      <display value="Diagnostic Dental"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-benefitcategory"/>
+      <code value="24"/>
+      <display value="Periodontics"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-benefitcategory"/>
+      <code value="25"/>
+      <display value="Restorative"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-benefitcategory"/>
+      <code value="26"/>
+      <display value="Endodontics"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-benefitcategory"/>
+      <code value="27"/>
+      <display value="Maxillofacial Prosthetics"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-benefitcategory"/>
+      <code value="28"/>
+      <display value="Adjunctive Dental Services"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-benefitcategory"/>
+      <code value="30"/>
+      <display value="Health Benefit Plan Coverage"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-benefitcategory"/>
+      <code value="35"/>
+      <display value="Dental Care"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-benefitcategory"/>
+      <code value="36"/>
+      <display value="Dental Crowns"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-benefitcategory"/>
+      <code value="37"/>
+      <display value="Dental Accident"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-benefitcategory"/>
+      <code value="49"/>
+      <display value="Hospital Room and Board"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-benefitcategory"/>
+      <code value="55"/>
+      <display value="Major Medical"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-benefitcategory"/>
+      <code value="56"/>
+      <display value="Medically Related Transportation"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-benefitcategory"/>
+      <code value="61"/>
+      <display value="In-vitro Fertilization"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-benefitcategory"/>
+      <code value="62"/>
+      <display value="MRI Scan"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-benefitcategory"/>
+      <code value="63"/>
+      <display value="Donor Procedures"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-benefitcategory"/>
+      <code value="69"/>
+      <display value="Maternity"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-benefitcategory"/>
+      <code value="76"/>
+      <display value="Renal Dialysis"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-benefitcategory"/>
+      <code value="F1"/>
+      <display value="Medical Coverage"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-benefitcategory"/>
+      <code value="F3"/>
+      <display value="Dental Coverage"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-benefitcategory"/>
+      <code value="F4"/>
+      <display value="Hearing Coverage"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-benefitcategory"/>
+      <code value="F6"/>
+      <display value="Vision Coverage"/>
+    </contains>
+  </expansion>
+</ValueSet>

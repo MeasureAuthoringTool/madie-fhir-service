@@ -1,0 +1,5080 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="procedure-code"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="pc"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/procedure-code"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.427"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="ProcedureCodes(SNOMEDCT)"/>
+  <title value="Procedure Codes (SNOMED CT)"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="Procedure Code: All SNOMED CT procedure codes."/>
+  <copyright value="This resource includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyright of the International Health Terminology Standards Development Organisation (IHTSDO). Implementers of these specifications must have the appropriate SNOMED CT Affiliate license - for more information contact http://www.snomed.org/snomed-ct/get-snomed-ct or info@snomed.org"/>
+  <compose>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="71388002"/>
+      </filter>
+    </include>
+  </compose>
+  <expansion>
+    <extension url="http://hl7.org/fhir/StructureDefinition/valueset-unclosed">
+      <valueBoolean value="true"/>
+    </extension>
+    <identifier value="urn:uuid:08d2ab77-602d-4ffb-ae30-4d2e2f75f1b3"/>
+    <timestamp value="2025-01-17T09:53:38-07:00"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-valueset"/>
+      <valueUri value="null"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801"/>
+    </parameter>
+    <parameter>
+      <name value="version"/>
+      <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801"/>
+    </parameter>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="71388002"/>
+      <display value="Procedure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="104001"/>
+      <display value="Excision of lesion of patella"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="115006"/>
+      <display value="Removable appliance therapy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="119000"/>
+      <display value="Thoracoscopic partial lobectomy of lung"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="128004"/>
+      <display value="Hand microscope examination of skin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="133000"/>
+      <display value="Percutaneous implantation of neurostimulator electrodes into neuromuscular component"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="135007"/>
+      <display value="Arthrotomy of wrist joint with exploration and biopsy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="142007"/>
+      <display value="Excision of tumor from shoulder area, deep, intramuscular"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="146005"/>
+      <display value="Repair of nonunion of metatarsal with bone graft"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="153001"/>
+      <display value="Cystourethroscopy with resection of ureterocele"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="166001"/>
+      <display value="Behavioral therapy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170009"/>
+      <display value="Special potency disk identification, vancomycin test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="174000"/>
+      <display value="Harrison-Richardson operation on vagina"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="176003"/>
+      <display value="Anastomosis of rectum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="189009"/>
+      <display value="Excision of lesion of artery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="197002"/>
+      <display value="Mold to yeast conversion test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="230009"/>
+      <display value="Miller operation, urethrovesical suspension"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="243009"/>
+      <display value="Replacement of cerebral ventricular tube"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="245002"/>
+      <display value="Division of nerve ganglion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="262007"/>
+      <display value="Percutaneous aspiration of renal pelvis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="267001"/>
+      <display value="Anal fistulectomy, multiple"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="285008"/>
+      <display value="Incision and drainage of vulva"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="294002"/>
+      <display value="Excisional biopsy of joint structure of spine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="295001"/>
+      <display value="Nonexcisional destruction of cyst of ciliary body"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="306005"/>
+      <display value="Echography of kidney"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="316002"/>
+      <display value="Partial dacryocystectomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="334003"/>
+      <display value="Panorex examination of mandible"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="342002"/>
+      <display value="Amobarbital interview"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="348003"/>
+      <display value="Radionuclide dynamic function study"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="351005"/>
+      <display value="Urinary undiversion of ureteral anastomosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="352003"/>
+      <display value="Reagent RBC, preparation antibody sensitized pool"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="374009"/>
+      <display value="Costosternoplasty for pectus excavatum repair"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="388008"/>
+      <display value="Blepharorrhaphy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="389000"/>
+      <display value="Tobramycin measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="401004"/>
+      <display value="Distal subtotal pancreatectomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="406009"/>
+      <display value="Fulguration of stomach lesion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="417005"/>
+      <display value="Hospital re-admission"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="435001"/>
+      <display value="Pulmonary inhalation study"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="445004"/>
+      <display value="Repair of malunion of tibia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="456004"/>
+      <display value="Total abdominal colectomy with ileostomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="459006"/>
+      <display value="Closed condylotomy of mandible"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="463004"/>
+      <display value="Closed reduction of coxofemoral joint dislocation with splint"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="468008"/>
+      <display value="Glutathione measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="474008"/>
+      <display value="Esophagoenteric anastomosis, intrathoracic"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="489004"/>
+      <display value="Ferritin measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="493005"/>
+      <display value="Urobilinogen measurement, 48-hour, feces"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="494004"/>
+      <display value="Excision of lesion of tonsil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="497006"/>
+      <display value="Replacement of cochlear prosthesis, multiple channels"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="531007"/>
+      <display value="Open pulmonary valve commissurotomy with inflow occlusion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="533005"/>
+      <display value="Repair of vesicocolic fistula"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="535003"/>
+      <display value="Closure of ureterovesicovaginal fistula"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="540006"/>
+      <display value="Antibody to single and double stranded DNA measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="543008"/>
+      <display value="Choledochostomy with transduodenal sphincteroplasty"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="545001"/>
+      <display value="Operative procedure on lower leg"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="549007"/>
+      <display value="Incision of intracranial vein"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="550007"/>
+      <display value="Excision of lesion of adenoids"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="559008"/>
+      <display value="Excision of varicose vein"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="574005"/>
+      <display value="Benzodiazepine measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="617002"/>
+      <display value="Bone graft to mandible"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="618007"/>
+      <display value="Frontal sinusectomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="625000"/>
+      <display value="Removal of supernumerary digit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="628003"/>
+      <display value="Steinman test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="629006"/>
+      <display value="Lysis of adhesions of urethra"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="633004"/>
+      <display value="Chart review by physician"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="637003"/>
+      <display value="Lysis of adhesions of nose"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="642006"/>
+      <display value="Cerebral thermography"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="647000"/>
+      <display value="Excision of cervix by electroconization"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="657004"/>
+      <display value="Operation on bursa"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="665001"/>
+      <display value="Partial meniscectomy of temporomandibular joint"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="670008"/>
+      <display value="Electrosurgical epilation of eyebrow"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="671007"/>
+      <display value="Transplantation of testis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="673005"/>
+      <display value="Indirect laryngoscopy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="674004"/>
+      <display value="Abduction test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="676002"/>
+      <display value="Peritoneal dialysis including cannulation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="680007"/>
+      <display value="Radiation physics consultation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="687005"/>
+      <display value="Albumin/Globulin ratio"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="695009"/>
+      <display value="Destructive procedure of lesion on skin of trunk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="697001"/>
+      <display value="Hepatitis A virus antibody measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="710006"/>
+      <display value="Thromboendarterectomy with graft of mesenteric artery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="712003"/>
+      <display value="Closed chest suction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="722009"/>
+      <display value="Fine needle biopsy of thymus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="726007"/>
+      <display value="Pathology consultation, comprehensive, records and specimen with report"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="730005"/>
+      <display value="Incision of subcutaneous tissue"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="741007"/>
+      <display value="Operation on prostate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="746002"/>
+      <display value="Chiropractic adjustment of coccyx subluxation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="753006"/>
+      <display value="Manipulation of ankle AND foot"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="754000"/>
+      <display value="Total urethrectomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="759005"/>
+      <display value="Intracerebral electroencephalogram"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="762008"/>
+      <display value="Computerized axial tomography of cervical spine with contrast"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="764009"/>
+      <display value="Arthrodesis of interphalangeal joint of great toe"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="767002"/>
+      <display value="White blood cell count"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="789003"/>
+      <display value="Cranial decompression, subtemporal, supratentorial"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="791006"/>
+      <display value="Dressing and fixation procedure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="807005"/>
+      <display value="Excision of brain"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="814007"/>
+      <display value="Electrophoresis measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="817000"/>
+      <display value="Excision of cyst of spleen"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="831000"/>
+      <display value="Drawer test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="853003"/>
+      <display value="Fecal fat measurement, 72-hour collection"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="867007"/>
+      <display value="Facial-hypoglossal nerve anastomosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="870006"/>
+      <display value="Carbamazepine measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="879007"/>
+      <display value="Special blood coagulation test, explain by report"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="881009"/>
+      <display value="Cyclodialysis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="893000"/>
+      <display value="Tumor antigen measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="897004"/>
+      <display value="Radical maxillary antrotomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="910002"/>
+      <display value="MHPG measurement, urine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="911003"/>
+      <display value="Removal of subarachnoid-ureteral shunt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="913000"/>
+      <display value="Chiropractic patient education and instruction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="926001"/>
+      <display value="Embolectomy with catheter of radial artery by arm incision"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="935008"/>
+      <display value="Excision of bulbourethral gland"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="941001"/>
+      <display value="Endoscopy of pituitary gland"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="948007"/>
+      <display value="Phlebectomy of intracranial varicose vein"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="951000"/>
+      <display value="Ultrasonic guidance for endomyocardial biopsy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="967006"/>
+      <display value="Medication education"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="969009"/>
+      <display value="Incision and exploration of larynx"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="971009"/>
+      <display value="Prosthetic construction and fitting"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1001000"/>
+      <display value="Cauterization of Bartholin's gland"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1008006"/>
+      <display value="Operation on nerve ganglion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1019009"/>
+      <display value="Removal of corneal epithelium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1021004"/>
+      <display value="Repair of scrotum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1029002"/>
+      <display value="Fetoscopy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1032004"/>
+      <display value="Enucleation of parotid gland cyst"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1035002"/>
+      <display value="Minimum bactericidal concentration test, microdilution method"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1036001"/>
+      <display value="Insertion of intravascular device in common iliac vein, complete"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1041009"/>
+      <display value="Debridement of open fracture of phalanges of foot"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1048003"/>
+      <display value="Capillary specimen collection"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1054002"/>
+      <display value="Incision of sphincter of Oddi"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1071001"/>
+      <display value="Proximal splenorenal anastomosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1084005"/>
+      <display value="Excision of perinephric cyst"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1093006"/>
+      <display value="Excision of abdominal varicose vein"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1103000"/>
+      <display value="Transcrural mobilization of stapes"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1104006"/>
+      <display value="Triad knee repair"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1115001"/>
+      <display value="Decortication"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1119007"/>
+      <display value="Closed reduction of dislocation of foot and toe"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1121002"/>
+      <display value="Kinetic activities for range of motion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1127003"/>
+      <display value="Interstitial radium application"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1133007"/>
+      <display value="Removal of intact bilateral mammary implants"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1163003"/>
+      <display value="Ureteroenterostomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1176009"/>
+      <display value="Incision of inguinal region"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1181000"/>
+      <display value="Excision of tendon for graft"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1198000"/>
+      <display value="Excisional biopsy of bone of scapula"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1209007"/>
+      <display value="Arthroscopy of knee with lateral meniscus repair"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1227005"/>
+      <display value="Incision of subvalvular tissue for discrete subvalvular aortic stenosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1235008"/>
+      <display value="Muscle transfer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1237000"/>
+      <display value="Application of cast, sugar tong"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1238005"/>
+      <display value="Epiphyseal arrest by stapling of distal radius"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1251000"/>
+      <display value="Incisional biopsy of testis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1253002"/>
+      <display value="Refusion of spine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1258006"/>
+      <display value="Excision of meniscus of wrist"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1266002"/>
+      <display value="Closure of fistula of ear drum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1267006"/>
+      <display value="Electrocoagulation of lesion of vagina"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1278003"/>
+      <display value="Open reduction of closed shoulder dislocation with fracture of greater tuberosity"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1292009"/>
+      <display value="Magnetic resonance imaging of urinary bladder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1299000"/>
+      <display value="Excision of appendiceal stump"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1315009"/>
+      <display value="Reconstruction of eyebrow"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1324000"/>
+      <display value="Cerebrospinal fluid IgG ratio and IgG index"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1327007"/>
+      <display value="Procedure on Meckel's diverticulum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1328002"/>
+      <display value="Ilioiliac shunt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1329005"/>
+      <display value="Division of congenital web of larynx"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1337002"/>
+      <display value="Colosigmoidostomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1339004"/>
+      <display value="Removal of impacted feces"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1352009"/>
+      <display value="Anterior spinal rhizotomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1358008"/>
+      <display value="Anti-human globulin test, enzyme technique, titer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1366004"/>
+      <display value="Inhalation therapy procedure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1385001"/>
+      <display value="Echography, scan B-mode for fetal age determination"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1390003"/>
+      <display value="Laparoscopic-assisted sigmoid colectomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1398005"/>
+      <display value="Direct thrombectomy of iliac vein by leg incision"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1399002"/>
+      <display value="Incision and exploration of ureter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1407007"/>
+      <display value="Application of long leg cast, brace type"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1411001"/>
+      <display value="Operation on papillary muscle of heart"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1413003"/>
+      <display value="Penetrating keratoplasty with homograft"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1417002"/>
+      <display value="Operation on face"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1431002"/>
+      <display value="Fixation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1440003"/>
+      <display value="Repair with resection-recession"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1449002"/>
+      <display value="Epilation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1453000"/>
+      <display value="Biofeedback, galvanic skin response"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1455007"/>
+      <display value="Cerclage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1457004"/>
+      <display value="Truncal vagotomy with pyloroplasty and gastrostomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1494008"/>
+      <display value="Osmolarity measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1500007"/>
+      <display value="Bilateral epididymovasostomy with anastomosis of epididymis to vas deferens"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1501006"/>
+      <display value="Altemeier operation, perineal rectal pull-through"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1505002"/>
+      <display value="Hospital admission for isolation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1529009"/>
+      <display value="Aspiration of soft tissue"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1533002"/>
+      <display value="Ureteroplication"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1550000"/>
+      <display value="Amikacin measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1555005"/>
+      <display value="Brief group psychotherapy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1559004"/>
+      <display value="IL-2 assay"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1576000"/>
+      <display value="Repair of uteroenteric fistula"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1578004"/>
+      <display value="Reconstruction of ossicles with stapedectomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1583007"/>
+      <display value="Tractotomy of mesencephalon"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1585000"/>
+      <display value="Lengthening of gastrocnemius muscle"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1614003"/>
+      <display value="Repair of both direct inguinal hernias"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1615002"/>
+      <display value="Reline of upper partial denture at chairside"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1616001"/>
+      <display value="Galactosylceramide beta-galactosidase measurement, leukocytes"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1636000"/>
+      <display value="Injection of sclerosing agent in varicose vein"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1638004"/>
+      <display value="Cineplasty with cineplastic prosthesis of extremity"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1640009"/>
+      <display value="History and physical examination, insurance"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1645004"/>
+      <display value="Transduodenal sphincterotomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1651009"/>
+      <display value="Excision of tendon sheath"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1653007"/>
+      <display value="Internal fixation of bone without fracture reduction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1669000"/>
+      <display value="Making occupied bed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1677001"/>
+      <display value="Haagensen test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1680000"/>
+      <display value="Secondary chemoprophylaxis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1683003"/>
+      <display value="Direct closure of laceration of conjunctiva"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1689004"/>
+      <display value="Local excision of ovary"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1691007"/>
+      <display value="Drainage of abscess of tonsil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1699009"/>
+      <display value="Special dosimetry"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1704001"/>
+      <display value="Repair of congenital pseudoarthrosis of tibia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1712009"/>
+      <display value="Immunoglobulin typing, IgG"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1713004"/>
+      <display value="Induction and maintenance of total body hypothermia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1730002"/>
+      <display value="Suture of skin wound of hindfoot"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1746005"/>
+      <display value="Scleral buckling with implant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1747001"/>
+      <display value="Replacement of skeletal muscle stimulator"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1753001"/>
+      <display value="Resection of uveal tissue"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1757000"/>
+      <display value="Arthroscopy of wrist with partial synovectomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1759002"/>
+      <display value="Assessment of nutritional status"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1770009"/>
+      <display value="Mitral valvotomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1774000"/>
+      <display value="Nasopharyngeal rehabilitation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1775004"/>
+      <display value="Submaxillary incision with drainage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1784004"/>
+      <display value="Fecal stercobilin, qualitative"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1787006"/>
+      <display value="Ultrasonic guidance for pericardiocentesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1788001"/>
+      <display value="Blood unit collection for directed donation, donor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1801001"/>
+      <display value="Endoscopic biopsy of duodenum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1805005"/>
+      <display value="Surgical closure of stoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1811008"/>
+      <display value="Aspiration of bursa of hand"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1813006"/>
+      <display value="Cryotherapy of genital warts"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1820004"/>
+      <display value="Alcohol measurement, breath"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1830008"/>
+      <display value="Open reduction of open sacral fracture"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1836002"/>
+      <display value="Excision of diverticulum of ventricle of heart"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1844002"/>
+      <display value="Plication of ligament"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1854003"/>
+      <display value="Incision of nose"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1859008"/>
+      <display value="Removal of foreign body from tendon of hand"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1862006"/>
+      <display value="Thoracic phlebectomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1866009"/>
+      <display value="Bilateral total nephrectomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1868005"/>
+      <display value="Removal of foreign body from brain"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1870001"/>
+      <display value="Insertion of halo device of skull with synchronous skeletal traction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1871002"/>
+      <display value="Repair of aneurysm of coronary artery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1872009"/>
+      <display value="Suture of male perineum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1876007"/>
+      <display value="Recession of prognathic jaw"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1879000"/>
+      <display value="Fluorescent antigen measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1889001"/>
+      <display value="Patient transfer, in-hospital, unit-to-unit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1907003"/>
+      <display value="Bifurcation of bone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1917008"/>
+      <display value="Patient discharge, deceased, medicolegal case"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1924009"/>
+      <display value="Hepaticotomy with drainage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1950008"/>
+      <display value="Drainage of abscess of nasal septum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1958001"/>
+      <display value="Grafting of bone of thumb with transfer of skin flap"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1966005"/>
+      <display value="Central block anesthesia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1983001"/>
+      <display value="Total urethrectomy including cystostomy in female"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1995001"/>
+      <display value="Stripping of cerebral meninges"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1999007"/>
+      <display value="Psychologic test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2002009"/>
+      <display value="Construction of subcutaneous tunnel without esophageal anastomosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2021001"/>
+      <display value="Internal fixation of radius and ulna without fracture reduction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2051007"/>
+      <display value="Red cell iron utilization study"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2054004"/>
+      <display value="Barbiturates measurement, quantitative and qualitative"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2067001"/>
+      <display value="Implantation of electromagnetic hearing aid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2069003"/>
+      <display value="Dental subperiosteal implant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2078009"/>
+      <display value="Puncture of bursa of hand"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2079001"/>
+      <display value="Reimplantation of anomalous pulmonary artery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2080003"/>
+      <display value="Angiectomy with anastomosis of lower limb artery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2098004"/>
+      <display value="Open reduction of open mandibular fracture with external fixation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2115003"/>
+      <display value="Dental prophylaxis of child"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2119009"/>
+      <display value="Repair of blood vessel"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2127000"/>
+      <display value="Reduction of closed sacral fracture"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2137005"/>
+      <display value="Excision of pericardial tumor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2153008"/>
+      <display value="Cardiac catheterization education"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2161003"/>
+      <display value="Operation on vulva"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2164006"/>
+      <display value="Injection of aorta"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2166008"/>
+      <display value="Bicuspidization of aortic valve"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2171001"/>
+      <display value="Excision of tonsil tag (procedure)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2178007"/>
+      <display value="Ureterocentesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2181002"/>
+      <display value="Operation for bone injury of tarsals and metatarsals"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2188008"/>
+      <display value="Suture of tendon to skeletal attachment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2193006"/>
+      <display value="Repair of ruptured aneurysm with graft of celiac artery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2196003"/>
+      <display value="Gas liquid chromatography, electron capture type"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2199005"/>
+      <display value="Excision of lesion of cul-de-sac"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2214008"/>
+      <display value="Curette test of skin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2225004"/>
+      <display value="Sensititre system test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2234009"/>
+      <display value="Proctosigmoidopexy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2242005"/>
+      <display value="Reconstruction of eyelid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2244006"/>
+      <display value="Arthroscopy of wrist with internal fixation for instability"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2250001"/>
+      <display value="Resection of ascending aorta with anastomosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2252009"/>
+      <display value="Hospital admission, urgent, 48 hours"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2267008"/>
+      <display value="Changing tracheostomy tube"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2270007"/>
+      <display value="Repair of cleft hand"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2276001"/>
+      <display value="Exploration of popliteal artery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2278000"/>
+      <display value="Urinalysis, automated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2279008"/>
+      <display value="Antibody detection, RBC, enzyme, 1 stage technique, including anti-human globulin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2290003"/>
+      <display value="Microbial culture, anaerobic, initial isolation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2315006"/>
+      <display value="Operation on cerebral meninges"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2321005"/>
+      <display value="Delivery by Ritgen maneuver"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2322003"/>
+      <display value="Suture of recent wound of eyelid, direct closure, full-thickness"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2337004"/>
+      <display value="Adductor tenotomy of hip"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2344008"/>
+      <display value="Complicated cystorrhaphy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2364003"/>
+      <display value="Radical resection of tumor of soft tissue of wrist area"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2371008"/>
+      <display value="Tympanoplasty type II with graft against incus or malleus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2373006"/>
+      <display value="Buffy coat smear evaluation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2382000"/>
+      <display value="Application of manual or electric breast pump"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2386002"/>
+      <display value="Reduction of closed patellar dislocation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2393003"/>
+      <display value="Ligation of vein of lower limb"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2406000"/>
+      <display value="Periodontic dental consultation and report"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2407009"/>
+      <display value="Excision of mediastinal tumor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2408004"/>
+      <display value="Hexosaminidase A and total hexosaminidase measurement, serum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2409007"/>
+      <display value="Reattachment of extremity of foot"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2425002"/>
+      <display value="Epstein-Barr virus serologic test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2442008"/>
+      <display value="Incision of lacrimal canaliculus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2448007"/>
+      <display value="Cell count of synovial fluid with differential count"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2455009"/>
+      <display value="Revision of lumbosubarachnoid shunt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2457001"/>
+      <display value="Blind rehabilitation therapy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2458006"/>
+      <display value="Educational therapy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2459003"/>
+      <display value="Destructive procedure of artery of upper extremity"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2474001"/>
+      <display value="Repair of malunion of metatarsal bones"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2475000"/>
+      <display value="Urine specimen collection, 24 hours"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2480009"/>
+      <display value="Debridement of skin, subcutaneous tissue, muscle and bone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2486003"/>
+      <display value="Destruction of tissue of breast"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2488002"/>
+      <display value="Prescription, fitting and dispensing of contact lens"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2494005"/>
+      <display value="Nursing conference"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2498008"/>
+      <display value="Rebase of upper partial denture"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2507007"/>
+      <display value="5' Nucleotidase measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2508002"/>
+      <display value="Retrograde urography with KUB"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2514009"/>
+      <display value="Reduction of closed humeral supracondylar fracture with manipulation and traction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2517002"/>
+      <display value="Stroke rehabilitation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2530001"/>
+      <display value="Chiropractic visit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2531002"/>
+      <display value="Mononuclear cell function assay"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2535006"/>
+      <display value="Pulpectomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2536007"/>
+      <display value="Injection of medication in anterior chamber of eye"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2547000"/>
+      <display value="Excision of keloid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2552005"/>
+      <display value="Incision of cerebral subarachnoid space"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2566000"/>
+      <display value="Osteoplasty of radius"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2567009"/>
+      <display value="Resection of rib by transaxillary approach"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2580007"/>
+      <display value="Transplant of hair follicles to scalp"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2598006"/>
+      <display value="Open heart surgery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2601001"/>
+      <display value="Removal of bone flap of skull"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2607002"/>
+      <display value="Operation on uterus supporting structures"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2614000"/>
+      <display value="Removal of ligature from fallopian tube"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2616003"/>
+      <display value="Repair of bifid digit of hand"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2619005"/>
+      <display value="Psychiatric interpretation to family or parents of patient"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2629003"/>
+      <display value="Intracranial/cerebral perfusion pressure monitoring"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2632000"/>
+      <display value="Incision and drainage of infected bursa of upper arm"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2642003"/>
+      <display value="Prefabricated post and core in addition to crown"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2643008"/>
+      <display value="Ligation of varicose vein of head and neck"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2644002"/>
+      <display value="Cauterization of liver"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2645001"/>
+      <display value="Intelligence test/WB1"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2646000"/>
+      <display value="Incision and exploration of vas deferens"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2658000"/>
+      <display value="Social service interview of patient"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2659008"/>
+      <display value="Suture of ligament of lower extremity"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2668005"/>
+      <display value="Recementation of space maintainer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2673004"/>
+      <display value="Incision and drainage of masticator space by extraoral approach"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2677003"/>
+      <display value="Stripping"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2690005"/>
+      <display value="Magnetic resonance imaging of pelvis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2693007"/>
+      <display value="Stool fat, quantitative measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2696004"/>
+      <display value="Hepatic venography with hemodynamic evaluation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2697008"/>
+      <display value="Stripping and ligation of saphenous vein"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2716009"/>
+      <display value="Dermal-fat-fascia graft"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2722000"/>
+      <display value="IL-3 assay"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2731000"/>
+      <display value="Serologic test for Influenza A virus (procedure)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2732007"/>
+      <display value="Recession of tendon of hand"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2737001"/>
+      <display value="Exploratory craniotomy, infratentorial"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2742009"/>
+      <display value="Destruction of Bartholin's gland or cyst"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2743004"/>
+      <display value="Operative endoscopy of ileum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2745006"/>
+      <display value="Omentopexy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2752008"/>
+      <display value="Incudopexy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2794006"/>
+      <display value="Cauterization of navel"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2802005"/>
+      <display value="Manual dilation and stretching"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2811005"/>
+      <display value="Cineradiography of pharynx"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2813008"/>
+      <display value="Nephroureterocystectomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2837008"/>
+      <display value="Transposition of ulnar nerve at elbow"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2842000"/>
+      <display value="Gas chromatography measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2843005"/>
+      <display value="Revision of urinary conduit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2851008"/>
+      <display value="Arthrotomy for synovectomy of sternoclavicular joint"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2854000"/>
+      <display value="Bursectomy of hand"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2857007"/>
+      <display value="Complete pinealectomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2866006"/>
+      <display value="Obliteration of lymphatic structure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2885009"/>
+      <display value="Intradermal skin test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2891006"/>
+      <display value="Arthroscopy of elbow with partial synovectomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2898000"/>
+      <display value="DNA analysis, antenatal, blood"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2908005"/>
+      <display value="Destruction of hemorrhoids by cryotherapy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2914003"/>
+      <display value="Anterior sclerotomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2915002"/>
+      <display value="Suture of capsule of ankle"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2945004"/>
+      <display value="Suprapubic diverticulectomy of bladder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2947007"/>
+      <display value="Therapeutic compound measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2960001"/>
+      <display value="Repair of fistula of cervix"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2968008"/>
+      <display value="Craniectomy with treatment of penetrating wound of brain"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2970004"/>
+      <display value="Metacarpal lengthening and transfer of local flap"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2971000"/>
+      <display value="Closure of urethrovaginal fistula"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2977001"/>
+      <display value="Thrombectomy of lower limb vein"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3001009"/>
+      <display value="Total lobectomy with bronchoplasty"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3010001"/>
+      <display value="Removal of silastic tubes from ear"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3016007"/>
+      <display value="Removal of Crutchfield tongs from skull"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3025001"/>
+      <display value="Calcitonin measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3026000"/>
+      <display value="Tibiotalar arthrodesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3029007"/>
+      <display value="Peripheral nervous system disease rehabilitation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3041000"/>
+      <display value="Repair of stomach"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3047001"/>
+      <display value="Kowa fundus photography"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3060007"/>
+      <display value="Forequarter amputation, right"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3061006"/>
+      <display value="Complete avulsion of nail"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3063009"/>
+      <display value="Gastroscopy through artificial stoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3075004"/>
+      <display value="Nonoperative removal of prosthesis of bile duct"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3078002"/>
+      <display value="Embolectomy with catheter of renal artery by abdominal incision"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3083005"/>
+      <display value="Removal of device from thorax"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3090000"/>
+      <display value="Aneurysmectomy with graft replacement of lower limb artery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3112006"/>
+      <display value="Restraint removal"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3116009"/>
+      <display value="Blood coagulation panel"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3130004"/>
+      <display value="Monitoring of cardiac output by ECG"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3133002"/>
+      <display value="Patient discharge, deceased, autopsy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3137001"/>
+      <display value="Reimplantation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3143004"/>
+      <display value="Visual field examination and evaluation, intermediate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3162001"/>
+      <display value="Gadolinium measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3164000"/>
+      <display value="Open reduction of closed mandibular fracture with interdental fixation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3165004"/>
+      <display value="Irrigation of muscle of hand"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3166003"/>
+      <display value="Repair of salivary gland fistula"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3177009"/>
+      <display value="Internal obstetrical version"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3183007"/>
+      <display value="Closure of colostomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3186004"/>
+      <display value="Excision of Skene's gland"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3190002"/>
+      <display value="Epilation by forceps"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3204007"/>
+      <display value="Destructive procedure of nerve"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3241008"/>
+      <display value="Correction of chordee with mobilization of urethra"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3249005"/>
+      <display value="Surgical construction of filtration bleb"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3257008"/>
+      <display value="Empty and measure peritoneal dialysis fluid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3258003"/>
+      <display value="Arteriography of cerebral arteries"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3268008"/>
+      <display value="Transplantation of tissue of pelvic region"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3270004"/>
+      <display value="Implantation of neurostimulator in spine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3278006"/>
+      <display value="Lysis of adhesions of bursa of hand"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3287002"/>
+      <display value="Cholecystogastrostomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3320000"/>
+      <display value="Autotransfusion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3326006"/>
+      <display value="Excision of bunionette"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3328007"/>
+      <display value="Incision of vein of head and neck"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3333006"/>
+      <display value="Application of short arm splint, forearm to hand, static"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3338002"/>
+      <display value="Open reduction of open radial shaft fracture"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3352000"/>
+      <display value="Parathyroid hormone measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3357006"/>
+      <display value="Iron kinetics study"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3360004"/>
+      <display value="Anastomosis of bile ducts"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3390006"/>
+      <display value="Verification routine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3399007"/>
+      <display value="Reduction of torsion of omentum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3407002"/>
+      <display value="Creation of lesion of spinal cord by percutaneous method"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3413006"/>
+      <display value="Blood cell morphology"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3418002"/>
+      <display value="Chondrectomy of spine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3432000"/>
+      <display value="Preventive dental service"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3450007"/>
+      <display value="Lymphocytes, T and B cell evaluation (procedure)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3457005"/>
+      <display value="Patient referral"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3479000"/>
+      <display value="Removal of heart assist system with replacement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3498003"/>
+      <display value="Total excision of pituitary gland by transsphenoidal approach"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3499006"/>
+      <display value="Aspiration of vitreous with replacement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3509001"/>
+      <display value="Streptococcus vaccination"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3515001"/>
+      <display value="Replacement of electronic heart device, pulse generator"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3517009"/>
+      <display value="Removal of foreign body of pelvis from subcutaneous tissue"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3518004"/>
+      <display value="Aversive psychotherapy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3527003"/>
+      <display value="Antibody measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3546002"/>
+      <display value="Aortocoronary artery bypass graft with saphenous vein graft"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3559005"/>
+      <display value="Insertion of ureteral stent with ureterotomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3562008"/>
+      <display value="Rodney Smith operation, radical subtotal pancreatectomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3564009"/>
+      <display value="Removal of foreign body from fallopian tube"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3575008"/>
+      <display value="Repair of fascia with graft of fascia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3580004"/>
+      <display value="Removal of calculus of pharynx"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3605001"/>
+      <display value="Reduction of ciliary body"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3607009"/>
+      <display value="Transplantation of mesenteric tissue"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3620007"/>
+      <display value="Red cell survival study with hepatic sequestration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3651000"/>
+      <display value="Morphometric analysis, nerve"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3654008"/>
+      <display value="Lingulectomy of lung"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3659003"/>
+      <display value="Incision of inner ear"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3664004"/>
+      <display value="Repair of scleral fistula"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3666002"/>
+      <display value="Peripheral neurorrhaphy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3669009"/>
+      <display value="Fitting of prosthesis or prosthetic device of upper arm"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3673007"/>
+      <display value="Leadbetter urethral reconstruction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3683006"/>
+      <display value="Selenium measurement, urine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3686003"/>
+      <display value="Zancolli operation for tendon transfer of biceps"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3690001"/>
+      <display value="Shunt of left subclavian to descending aorta by Blalock-Park operation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3691002"/>
+      <display value="Wedge osteotomy of tarsals and metatarsals"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3697003"/>
+      <display value="Tissue processing technique, routine, embed, cut and stain, per autopsy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3700004"/>
+      <display value="Erysiphake extraction of cataract by intracapsular approach"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3701000"/>
+      <display value="Removal of foreign body of hip from subcutaneous tissue"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3713005"/>
+      <display value="Release for de Quervain's tenosynovitis of hand"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3717006"/>
+      <display value="Dilute Russell viper venom time"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3735002"/>
+      <display value="Coproporphyrin III measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3740005"/>
+      <display value="Removal of foreign body of canthus by incision"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3748003"/>
+      <display value="Biopsy of perirenal tissue"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3749006"/>
+      <display value="Reduction of closed ischial fracture"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3758004"/>
+      <display value="Thrombectomy with catheter of subclavian artery by neck incision"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3770000"/>
+      <display value="Ward urine dip stick testing"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3778007"/>
+      <display value="Manipulation of scrotal tissue"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3780001"/>
+      <display value="Routine patient disposition, no follow-up planned"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3784005"/>
+      <display value="Delayed hypersensitivity skin test for SK-SD"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3786007"/>
+      <display value="Excision of lesion of pharynx"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3787003"/>
+      <display value="Ultrasonic guidance for needle biopsy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3794000"/>
+      <display value="Pregnanetriol measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3796003"/>
+      <display value="Excision of redundant mucosa from jejunostomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3802001"/>
+      <display value="Dental application of desensitizing medicament"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3819004"/>
+      <display value="Embolization of thoracic artery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3826004"/>
+      <display value="Blepharotomy with drainage of abscess of eyelid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3828003"/>
+      <display value="Open biopsy of vertebral body of thoracic region"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3831002"/>
+      <display value="Chiropractic application of ice"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3843001"/>
+      <display value="Removal of foreign body from fascia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3858009"/>
+      <display value="Echography of thyroid, A-mode"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3861005"/>
+      <display value="Aneurysmectomy with anastomosis of lower limb artery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3864002"/>
+      <display value="Excisional biopsy of scrotum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3880007"/>
+      <display value="Excision of lesion of fibula"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3881006"/>
+      <display value="Incision and drainage of submental space by extraoral approach"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3887005"/>
+      <display value="Ligation of wart"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3889008"/>
+      <display value="Suture of lip"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3891000"/>
+      <display value="Comprehensive orthodontic treatment, permanent dentition, for class I malocclusion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3895009"/>
+      <display value="Application of dressing"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3907006"/>
+      <display value="Incision and drainage of retroperitoneal abscess"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3911000"/>
+      <display value="Muscle transplantation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3915009"/>
+      <display value="Excision of artery of thorax and abdomen"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3917001"/>
+      <display value="Excisional biopsy of phalanges of foot"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3918006"/>
+      <display value="Plastic repair with lengthening"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3926003"/>
+      <display value="Lactic acid measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3929005"/>
+      <display value="Patient transfer, in-hospital, bed-to-bed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3936006"/>
+      <display value="Making Foster bed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3938007"/>
+      <display value="Cerclage for retinal reattachment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3942005"/>
+      <display value="Cystopexy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3955006"/>
+      <display value="Antibody elution, RBC"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3957003"/>
+      <display value="Arteriectomy of thoracoabdominal aorta"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3963007"/>
+      <display value="Operation on submaxillary gland"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3967008"/>
+      <display value="Fluorescence polarization immunoassay"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3968003"/>
+      <display value="Facetectomy of vertebra"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3969006"/>
+      <display value="Removal of osteocartilagenous loose body from joint structures"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3971006"/>
+      <display value="Duchenne muscular dystrophy carrier detection"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3980006"/>
+      <display value="Subtotal resection of esophagus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3981005"/>
+      <display value="Carrier detection, molecular genetics"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3991004"/>
+      <display value="Magnetic resonance imaging of pelvis, prostate and bladder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3998005"/>
+      <display value="Bone imaging of limited area"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4007002"/>
+      <display value="Anti-human globulin test, indirect, titer, non-gamma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4008007"/>
+      <display value="Phlebography of neck"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4027001"/>
+      <display value="Implantation of electronic stimulator into phrenic nerve"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4028006"/>
+      <display value="Epiplopexy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4034004"/>
+      <display value="Closed reduction of facial fracture, except mandible"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4035003"/>
+      <display value="Restoration, resin, two surfaces, posterior, permanent"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4036002"/>
+      <display value="Arthroscopy of elbow with extensive debridement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4037006"/>
+      <display value="Removal of vascular graft or prosthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4044002"/>
+      <display value="Permanent colostomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4045001"/>
+      <display value="Drainage of cerebral ventricle by incision"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4052004"/>
+      <display value="Percutaneous aspiration of spinal cord cyst"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4064007"/>
+      <display value="Specimen aliquoting"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4068005"/>
+      <display value="Removal of ventricular reservoir with synchronous replacement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4083000"/>
+      <display value="Fitting of prosthesis or prosthetic device of lower arm"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4084006"/>
+      <display value="Repair of tendon of hand by graft or implant of muscle"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4090005"/>
+      <display value="Replacement of transvenous atrial and ventricular pacemaker electrode leads"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4094001"/>
+      <display value="Reduction of retroversion of uterus by pessary"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4114003"/>
+      <display value="Parenteral chemotherapy for malignant neoplasm"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4116001"/>
+      <display value="Fenestration procedure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4119008"/>
+      <display value="Intracranial phlebectomy with anastomosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4139007"/>
+      <display value="Posterior spinal cordotomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4143006"/>
+      <display value="Injection of anterior chamber of eye"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4149005"/>
+      <display value="Bone histomorphometry, aluminum stain"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4154001"/>
+      <display value="Incision and drainage of penis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4165006"/>
+      <display value="Delayed hypersensitivity skin test for staphage lysate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4192000"/>
+      <display value="Toxicology testing for organophosphate insecticide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4213001"/>
+      <display value="Implantation of Ommaya reservoir"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4214007"/>
+      <display value="Intracardiac injection for cardiac resuscitation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4226002"/>
+      <display value="Excision of lesion of thoracic vein"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4252008"/>
+      <display value="Aneurysmectomy with graft replacement by interposition"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4263006"/>
+      <display value="Biopsy of soft tissue of elbow area, superficial"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4266003"/>
+      <display value="Referral to drug addiction rehabilitation service (procedure)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4285000"/>
+      <display value="Insertion of bone growth stimulator into femur"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4293000"/>
+      <display value="Reduction of intussusception by laparotomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4304000"/>
+      <display value="Excision of cusp of tricuspid valve"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4319004"/>
+      <display value="Rebase of complete lower denture"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4321009"/>
+      <display value="Bilateral leg arteriogram"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4323007"/>
+      <display value="Destruction of lesion of sclera"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4333004"/>
+      <display value="Incision and drainage of perisplenic space"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4336007"/>
+      <display value="Lloyd-Davies operation, abdominoperineal resection"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4337003"/>
+      <display value="Homogentisic acid measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4339000"/>
+      <display value="Repair of nasolabial fistula"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4341004"/>
+      <display value="Complete submucous resection of turbinate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4344007"/>
+      <display value="Cryopexy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4348005"/>
+      <display value="Musculoplasty of hand"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4350002"/>
+      <display value="Removal of implant of cornea"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4363008"/>
+      <display value="Endoscopic brush biopsy of trachea"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4365001"/>
+      <display value="Surgical repair"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4380007"/>
+      <display value="Transposition of vulvar tissue"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4387005"/>
+      <display value="Valvuloplasty of pulmonary valve in total repair of tetralogy of Fallot"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4388000"/>
+      <display value="Repair of splenocolic fistula"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4407008"/>
+      <display value="Slitting of lacrimal canaliculus for passage of tube"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4411002"/>
+      <display value="Removal of device from female genital tract"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4420006"/>
+      <display value="Incision and drainage of parapharyngeal abscess by external approach"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4424002"/>
+      <display value="Making orthopedic bed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4436008"/>
+      <display value="MCP receptor measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4438009"/>
+      <display value="Venography of vena cava"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4443002"/>
+      <display value="Decortication of ovary"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4447001"/>
+      <display value="Autopsy, gross and microscopic examination, stillborn or newborn without CNS"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4449003"/>
+      <display value="Manipulation of spinal meninges"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4450003"/>
+      <display value="Application of Kirschner wire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4455008"/>
+      <display value="Open reduction of open elbow dislocation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4457000"/>
+      <display value="Insertion of mold into vagina"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4466001"/>
+      <display value="Exploration of artery of upper limb"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4467005"/>
+      <display value="Excision of tumor of ankle area, deep, intramuscular"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4475004"/>
+      <display value="Cyanide measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4487006"/>
+      <display value="Norepinephrine measurement, supine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4489009"/>
+      <display value="Neurolysis of trigeminal nerve"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4503005"/>
+      <display value="Removal of foreign body of sclera without use of magnet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4504004"/>
+      <display value="Potter's obstetrical version with extraction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4505003"/>
+      <display value="Tenolysis of flexor tendon of forearm"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4507006"/>
+      <display value="Decompression fasciotomy of wrist, flexor and extensor compartment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4511000"/>
+      <display value="Restoration, inlay, composite/resin, one surface, laboratory processed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4516005"/>
+      <display value="Iridencleisis and iridotasis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4520009"/>
+      <display value="Anastomosis of esophagus, antesternal or antethoracic, with insertion of prosthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4525004"/>
+      <display value="Emergency department patient visit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4533003"/>
+      <display value="Ligation of artery of lower limb"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4535005"/>
+      <display value="Incision of pelvirectal tissue"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4539004"/>
+      <display value="Excision of bronchogenic cyst"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4542005"/>
+      <display value="Closed reduction of fracture of foot"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4544006"/>
+      <display value="Excision of subcutaneous tumor of extremities"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4558008"/>
+      <display value="Anterior resection of rectum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4570007"/>
+      <display value="Chemopallidectomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4581005"/>
+      <display value="Coreoplasty"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4585001"/>
+      <display value="Decompression of tendon of hand"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4587009"/>
+      <display value="Epiphysiodesis of distal radius"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4593001"/>
+      <display value="Cauterization of sclera with iridectomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4594007"/>
+      <display value="Coproporphyrin isomers, series I &amp; III, urine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4613005"/>
+      <display value="Radioimmunoassay"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4625008"/>
+      <display value="Apical pulse taking"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4626009"/>
+      <display value="Take-down of arterial anastomosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4636001"/>
+      <display value="Denker operation for radical maxillary antrotomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4640005"/>
+      <display value="Ligation of fallopian tubes by abdominal approach"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4642002"/>
+      <display value="Removal of inflatable penile prosthesis, with pump, reservoir and cylinders"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4670000"/>
+      <display value="Catheterization of bronchus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4671001"/>
+      <display value="Excision of lesion from sphenoid sinus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4691008"/>
+      <display value="Identification of rotavirus antigen in feces"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4694000"/>
+      <display value="Percutaneous needle biopsy of muscle"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4699005"/>
+      <display value="Alpha naphthyl butyrate stain method, blood or bone marrow (procedure)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4701005"/>
+      <display value="Colony forming unit-granulocyte-monocyte-erythroid-megakaryocyte assay"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4707009"/>
+      <display value="Partial excision of calcaneus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4712005"/>
+      <display value="Removal of Gardner Wells tongs from skull"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4713000"/>
+      <display value="Endoscopy and photography"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4719001"/>
+      <display value="Psychologic cognitive testing and assessment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4727005"/>
+      <display value="Lipoprotein electrophoresis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4734007"/>
+      <display value="Irrigation of wound catheter of integument"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4737000"/>
+      <display value="Mycobacteria culture"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4756005"/>
+      <display value="Cryotherapy of subcutaneous tissue"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4758006"/>
+      <display value="Incudostapediopexy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4764004"/>
+      <display value="Jet ventilation procedure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4765003"/>
+      <display value="Insertion of ocular implant following or secondary to enucleation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4770005"/>
+      <display value="Colporrhaphy for repair of urethrocele"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4772002"/>
+      <display value="Reduction of torsion of spermatic cord"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4784000"/>
+      <display value="Operation on sublingual gland"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4804005"/>
+      <display value="Microbial identification test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4811009"/>
+      <display value="Reconstruction of diaphragm"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4815000"/>
+      <display value="Antibody identification, RBC antibody panel, enzyme, 2 stage technique including anti-human globulin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4820000"/>
+      <display value="Incision of labial frenum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4827002"/>
+      <display value="Shower hydrotherapy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4829004"/>
+      <display value="Excision of small intestine for interposition"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4849008"/>
+      <display value="Biopsy of ovary"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4862007"/>
+      <display value="Revision of anastomosis of large intestine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4877004"/>
+      <display value="Extracapsular extraction of lens with iridectomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4891005"/>
+      <display value="Proctostomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4895001"/>
+      <display value="Construction of sigmoid bladder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4902005"/>
+      <display value="Ethchlorvynol measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4903000"/>
+      <display value="Serum protein electrophoresis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4904006"/>
+      <display value="Dilation of anal sphincter under nonlocal anesthesia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4914002"/>
+      <display value="Treatment planning for teletherapy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4929000"/>
+      <display value="Local perfusion of kidney"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4930005"/>
+      <display value="Repair of thoracogastric fistula"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4957007"/>
+      <display value="Cervical spinal fusion for pseudoarthrosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4966006"/>
+      <display value="Extracorporeal perfusion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4970003"/>
+      <display value="Venography"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4974007"/>
+      <display value="Operation on liver"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4987001"/>
+      <display value="Osteoplasty of cranium with flap of bone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4992004"/>
+      <display value="Cardiac catheterization, left heart, retrograde, percutaneous"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4993009"/>
+      <display value="Ischemic limb exercise with EMG and lactic acid determination"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5019003"/>
+      <display value="Direct laryngoscopy with biopsy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5021008"/>
+      <display value="Aldosterone measurement, standing, normal salt diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5022001"/>
+      <display value="Lysergic acid diethylamide measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5025004"/>
+      <display value="Semen analysis, presence and motility of sperm"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5048009"/>
+      <display value="External cephalic version with tocolysis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5055006"/>
+      <display value="Uniscept system test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5057003"/>
+      <display value="Radical orbitomaxillectomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5091004"/>
+      <display value="Peripheral vascular disease study"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5105000"/>
+      <display value="Endoscopy of renal pelvis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5110001"/>
+      <display value="Ultrasound peripheral imaging, real time scan"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5113004"/>
+      <display value="T4 free measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5119000"/>
+      <display value="Epiglottidectomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5121005"/>
+      <display value="Wedge osteotomy of pelvic bone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5130002"/>
+      <display value="Extraction of primary membranous cataract by discission"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5147001"/>
+      <display value="Excision of lesion of ankle joint"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5151004"/>
+      <display value="Manual reduction of hemorrhoids"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5154007"/>
+      <display value="Speech therapy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5161006"/>
+      <display value="Specialty clinic admission"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5162004"/>
+      <display value="Excision of pressure injury (procedure)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5165002"/>
+      <display value="Division of thoracic artery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5176003"/>
+      <display value="Thromboendarterectomy with graft of renal artery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5182000"/>
+      <display value="Total body perfusion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5184004"/>
+      <display value="Osteotomy of shaft of femur with fixation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5186002"/>
+      <display value="Arthrotomy for synovectomy of glenohumeral joint"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5190000"/>
+      <display value="Cell fusion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5191001"/>
+      <display value="Surgical treatment of missed abortion of second trimester"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5212002"/>
+      <display value="Excision of lesion of lacrimal gland by frontal approach"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5216004"/>
+      <display value="Three dimensional ultrasound imaging of heart"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5233006"/>
+      <display value="Lateral fasciotomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5243009"/>
+      <display value="Suture of adenoid fossa"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5246001"/>
+      <display value="Breakpoint cluster region analysis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5264008"/>
+      <display value="Total bile acids measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5267001"/>
+      <display value="Ligation of adrenal artery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5270002"/>
+      <display value="Destruction of both fallopian tubes"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5273000"/>
+      <display value="Reduction of closed fracture of proximal end of ulna with manipulation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5282006"/>
+      <display value="Operation on oropharynx"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5290006"/>
+      <display value="Incision and drainage of Ludwig's angina"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5298004"/>
+      <display value="Incision and drainage of deep hematoma of thigh region"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5304008"/>
+      <display value="Deep radiation therapy, 200-300 KVP"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5316002"/>
+      <display value="Closed osteotomy of mandibular ramus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5317006"/>
+      <display value="Radical amputation of penis with bilateral pelvic lymphadenectomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5326009"/>
+      <display value="Administration of dermatologic formulation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5328005"/>
+      <display value="Shortening of Achilles tendon"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5337005"/>
+      <display value="Trocar biopsy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5338000"/>
+      <display value="Nicotine measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5342002"/>
+      <display value="Prophylactic treatment of tibia with methyl methacrylate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5357009"/>
+      <display value="Leukocyte poor blood preparation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5373003"/>
+      <display value="Stress breaker"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5384005"/>
+      <display value="Excision of part of frontal cortex"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5391008"/>
+      <display value="Artificial voice rehabilitation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5393006"/>
+      <display value="Exploration of parathyroid with mediastinal exploration by sternal split approach"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5402006"/>
+      <display value="Manipulation of thoracic artery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5407000"/>
+      <display value="Injection of fallopian tube"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5415002"/>
+      <display value="Destruction of lesion of liver"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5419008"/>
+      <display value="Lysis of adhesions of tendon of hand"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5422005"/>
+      <display value="Amylase measurement, peritoneal fluid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5431005"/>
+      <display value="Percutaneous transluminal angioplasty"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5446003"/>
+      <display value="Excision of cervical rib for outlet compression syndrome with sympathectomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5447007"/>
+      <display value="Transfusion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5452002"/>
+      <display value="Core needle biopsy of thymus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5456004"/>
+      <display value="Graft of lymphatic structure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5457008"/>
+      <display value="Serologic test for Rickettsia conorii"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5460001"/>
+      <display value="Removal of prosthesis from fallopian tube"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5479003"/>
+      <display value="Select picture audiometry"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5486006"/>
+      <display value="Delayed suture of tendon of hand"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5506006"/>
+      <display value="Incision and exploration of abdominal wall"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5517007"/>
+      <display value="Restoration, inlay, porcelain/ceramic, per tooth, in addition to inlay"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5521000"/>
+      <display value="Open reduction of fracture of phalanges of foot"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5545001"/>
+      <display value="Repair of carotid body"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5551006"/>
+      <display value="Direct laryngoscopy with arytenoidectomy with operating microscope"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5556001"/>
+      <display value="Manually assisted spontaneous delivery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5570001"/>
+      <display value="Arthrotomy for infection with exploration and drainage of carpometacarpal joint"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5571002"/>
+      <display value="Excision of lesion of aorta with end-to-end anastomosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5572009"/>
+      <display value="Incision of kidney pelvis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5586008"/>
+      <display value="Aminolevulinic acid dehydratase measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5608002"/>
+      <display value="Excretion measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5616006"/>
+      <display value="Osteoplasty of tibia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5632009"/>
+      <display value="Open biopsy of bronchus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5636007"/>
+      <display value="Fistulectomy of bone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5638008"/>
+      <display value="Carbohydrate measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5648005"/>
+      <display value="Surgical repair and revision of shunt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5651003"/>
+      <display value="Arylsulfatase A measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5663008"/>
+      <display value="Phlebectomy of varicose vein of head and neck"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5669007"/>
+      <display value="Portable electroencephalogram awake and asleep with stimulation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5671007"/>
+      <display value="Magnet extraction of foreign body from ciliary body"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5685002"/>
+      <display value="Electrolysis procedure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5687005"/>
+      <display value="Removal of foreign body from ovary"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5690004"/>
+      <display value="Incision of seminal vesicle"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5694008"/>
+      <display value="Crisis intervention with follow-up"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5721002"/>
+      <display value="Repair of eyebrow"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5722009"/>
+      <display value="Surgical reanastomosis of colon"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5726007"/>
+      <display value="Removal of epicardial electrodes"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5728008"/>
+      <display value="Anoscopy for removal of foreign body"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5731009"/>
+      <display value="Hemosiderin, quantitative measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5733007"/>
+      <display value="Fluorescent identification of anti-nuclear antibody"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5738003"/>
+      <display value="Biopsy of cul-de-sac"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5745003"/>
+      <display value="Excision ampulla of Vater with reimplantation of common duct"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5760000"/>
+      <display value="Osteoplasty of radius and ulna, shortening"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5777000"/>
+      <display value="Flexorplasty of elbow"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5781000"/>
+      <display value="Operation on nasal septum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5785009"/>
+      <display value="Forensic autopsy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5787001"/>
+      <display value="Elevation of bone fragments of orbit of skull with debridement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5789003"/>
+      <display value="Lysis of adhesions of intestines"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5796001"/>
+      <display value="Excision of external thrombotic hemorrhoid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5806001"/>
+      <display value="Revision of tracheostomy scar"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5807005"/>
+      <display value="Fenestration of inner ear, initial"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5809008"/>
+      <display value="Selective vagotomy with pyloroplasty and gastrostomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5812006"/>
+      <display value="Laboratory reporting, fax"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5818005"/>
+      <display value="Flocculation test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5821007"/>
+      <display value="Ligation, division and complete stripping of long and short saphenous veins"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5845006"/>
+      <display value="Emulsification procedure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5857002"/>
+      <display value="Complement mediated cytotoxicity assay"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5865004"/>
+      <display value="Open reduction of dislocation of toe"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5870006"/>
+      <display value="Tertiary closure of abdominal wall"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5880005"/>
+      <display value="Clinical examination"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5892005"/>
+      <display value="Mastoid antrotomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5894006"/>
+      <display value="Methyl red test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5897004"/>
+      <display value="Removal of Scribner shunt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5902003"/>
+      <display value="History and physical examination, complete"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5925002"/>
+      <display value="Incision and drainage of hematoma of wrist"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5930003"/>
+      <display value="Cardiac monitor removal"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5961007"/>
+      <display value="Division of blood vessels of cornea"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5966002"/>
+      <display value="Removal of foreign body from elbow area, deep"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5971009"/>
+      <display value="Incision and drainage of axilla"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5983006"/>
+      <display value="Repair of spermatic cord"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5986003"/>
+      <display value="Non-sensitized spontaneous sheep erythrocyte binding, E-rosette"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5992009"/>
+      <display value="Midtarsal arthrodesis, multiple"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5995006"/>
+      <display value="Gas liquid chromatography, flame photometric type"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5997003"/>
+      <display value="Drainage of cerebral subarachnoid space by aspiration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5998008"/>
+      <display value="Radical dissection of groin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6005008"/>
+      <display value="Transplantation of vitreous by anterior approach"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6007000"/>
+      <display value="Magnetic resonance imaging of chest"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6019008"/>
+      <display value="Endoscopy of large intestine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6025007"/>
+      <display value="Laparoscopic appendectomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6026008"/>
+      <display value="Removal of coronary artery obstruction by percutaneous transluminal balloon with thrombolytic agent"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6029001"/>
+      <display value="Augmentation of outflow tract of pulmonary valve"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6035001"/>
+      <display value="Chart abstracting"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6063004"/>
+      <display value="Kanamycin measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6069000"/>
+      <display value="Panniculotomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6082008"/>
+      <display value="Perforation of footplate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6092000"/>
+      <display value="Aspiration of nasal sinus by puncture"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6100001"/>
+      <display value="Fenestration of stapes footplate with vein graft"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6119006"/>
+      <display value="Local destruction of lesion of bony palate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6125005"/>
+      <display value="Change of gastrostomy tube"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6126006"/>
+      <display value="Fitzgerald factor assay"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6130009"/>
+      <display value="Surgical exposure of impacted or unerupted tooth to aid eruption"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6133006"/>
+      <display value="Lymphokine assay"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6143009"/>
+      <display value="Diabetic education (procedure)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6146001"/>
+      <display value="Repair of heart septum with prosthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6148000"/>
+      <display value="Chondrectomy of semilunar cartilage of knee"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6157006"/>
+      <display value="Endoscopic retrograde cholangiopancreatography with biopsy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6159009"/>
+      <display value="Galactose measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6161000"/>
+      <display value="Excision of lesion of capsule of toes"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6164008"/>
+      <display value="Osteoclasis of clavicle"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6166005"/>
+      <display value="Nephropyeloureterostomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6177004"/>
+      <display value="Southern blot assay"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6187000"/>
+      <display value="Repair of aneurysm with graft of common femoral artery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6188005"/>
+      <display value="Arthrotomy of knee"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6189002"/>
+      <display value="Excision of aberrant tissue of breast"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6190006"/>
+      <display value="Colopexy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6195001"/>
+      <display value="Transurethral drainage of prostatic abscess"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6198004"/>
+      <display value="Repair of fracture with Sofield type procedure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6200005"/>
+      <display value="Excision of lesion of female perineum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6205000"/>
+      <display value="Fluorescent antigen, titer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6213004"/>
+      <display value="Prescribing corneoscleral contact lens"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6221005"/>
+      <display value="Suture of colon"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6225001"/>
+      <display value="Antibody detection, RBC, enzyme, 2 stage technique, including anti-human globulin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6226000"/>
+      <display value="Visual rehabilitation, eye motion defect"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6227009"/>
+      <display value="Relationship psychotherapy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6231003"/>
+      <display value="Graft of palate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6240004"/>
+      <display value="Operative procedure on knee"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6271008"/>
+      <display value="Echography, immersion B-scan"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6289009"/>
+      <display value="White blood cell histogram evaluation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6295005"/>
+      <display value="Sequestrectomy of pelvic bone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6307005"/>
+      <display value="Keratophakia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6309008"/>
+      <display value="Fecal fat differential, quantitative"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6319002"/>
+      <display value="Beta lactamase, chromogenic cephalosporin susceptibility test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6337001"/>
+      <display value="Ligation of aortic arch"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6339003"/>
+      <display value="Conditioning play audiometry"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6343004"/>
+      <display value="Forensic bite mark comparison technique"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6353003"/>
+      <display value="Mitsuda reaction to lepromin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6354009"/>
+      <display value="Sedimentation rate, Westergren"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6355005"/>
+      <display value="Removal of internal fixation device of radius"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6358007"/>
+      <display value="Capsulorrhaphy of joint"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6363006"/>
+      <display value="Dilation of lacrimal punctum with irrigation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6370006"/>
+      <display value="Chemosurgery of stomach lesion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6384001"/>
+      <display value="Removal of device from digestive system"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6385000"/>
+      <display value="Exploration of disc space"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6388003"/>
+      <display value="TdT stain"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6396008"/>
+      <display value="Galactokinase measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6397004"/>
+      <display value="Muscular strength development exercise"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6399001"/>
+      <display value="Division of arteriovenous fistula with ligation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6402000"/>
+      <display value="Excision of common bile duct"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6403005"/>
+      <display value="Lengthening of muscle of hand"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6419003"/>
+      <display value="Excision of tumor from elbow area, deep, subfascial"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6433003"/>
+      <display value="Closed heart valvotomy of mitral valve"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6434009"/>
+      <display value="Seminal fluid detection"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6438007"/>
+      <display value="Exploration of ciliary body"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6439004"/>
+      <display value="Destruction of lesion of peripheral nerve"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6444006"/>
+      <display value="Enlargement of eye socket"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6465000"/>
+      <display value="Arthrotomy of glenohumeral joint for infection with drainage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6473009"/>
+      <display value="Suture of old obstetrical laceration of uterus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6480006"/>
+      <display value="Urinary bladder residual urine study"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6486000"/>
+      <display value="Curettage of sclera"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6487009"/>
+      <display value="Hand tendon pulley reconstruction with tendon prosthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6491004"/>
+      <display value="Protein S, free assay"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6499002"/>
+      <display value="Tsuge operation on finger for macrodactyly repair"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6506000"/>
+      <display value="Placing a patient on a bedpan"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6519001"/>
+      <display value="Operation on multiple extraocular muscles with temporary detachment from globe"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6521006"/>
+      <display value="Polytomography"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6527005"/>
+      <display value="Uchida fimbriectomy with tubal ligation by endoscopy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6535008"/>
+      <display value="Excision of cyst of hand"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6536009"/>
+      <display value="Implantation of tricuspid valve with tissue graft"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6543003"/>
+      <display value="Complicated catheterization of bladder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6547002"/>
+      <display value="Repair with closure of non-surgical wound"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6555009"/>
+      <display value="Insertion of infusion pump beneath skin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6556005"/>
+      <display value="Reticulin antibody measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6562000"/>
+      <display value="Destruction of lesion of tongue"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6563005"/>
+      <display value="Transposition of muscle of hand"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6567006"/>
+      <display value="Pulmonary valve commissurotomy by transvenous balloon method"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6585004"/>
+      <display value="Closed reduction of fracture of tarsal or metatarsal"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6589005"/>
+      <display value="Antibody titration, high protein"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6601003"/>
+      <display value="Removal of foreign body from skin of axilla"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6614002"/>
+      <display value="Antibody to single stranded DNA measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6615001"/>
+      <display value="Electroretinography"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6622009"/>
+      <display value="Add clasp to existing partial denture"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6634001"/>
+      <display value="Destruction of hemorrhoids, internal"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6639006"/>
+      <display value="Replacement of obstructed valve in shunt system"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6650009"/>
+      <display value="Radionuclide lacrimal flow study"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6656003"/>
+      <display value="Acoustic stimulation test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6657007"/>
+      <display value="Maintenance drug therapy for mental disorder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6658002"/>
+      <display value="Removal of foreign body from alveolus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6661001"/>
+      <display value="King-Steelquist hindquarter operation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6668007"/>
+      <display value="Fibrinogen assay, quantitative"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6670003"/>
+      <display value="Closure of external fistula of trachea"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6682007"/>
+      <display value="Reattachment of amputated ear"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6689003"/>
+      <display value="Immunodiffusion, qualitative"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6690007"/>
+      <display value="Sulfonamide measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6704000"/>
+      <display value="Repair of parasternal diaphragmatic hernia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6708002"/>
+      <display value="Intrauterine cordocentesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6712008"/>
+      <display value="Piercing of nail"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6722002"/>
+      <display value="Nephrolithotomy for removal of calculus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6726004"/>
+      <display value="Incision and drainage of appendiceal abscess by transabdominal approach"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6727008"/>
+      <display value="Excision of lesion of bone of humerus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6732009"/>
+      <display value="Type II, early periodontitis, moderate pocket therapy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6737003"/>
+      <display value="Irrigation of ventricular shunt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6745008"/>
+      <display value="Indirect laryngoscopy with removal of foreign body"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6748005"/>
+      <display value="Electron microscopy technique, glass knife making"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6759001"/>
+      <display value="Esophagojejunostomy by thoracic approach"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6760006"/>
+      <display value="Excision of lesion of phalanges of foot"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6763008"/>
+      <display value="Manual reduction of closed fracture of acetabulum (procedure)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6774004"/>
+      <display value="Closure of tracheostomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6776002"/>
+      <display value="Auricular aneurysmectomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6778001"/>
+      <display value="Stereotactic biopsy of lesion of spinal cord"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6779009"/>
+      <display value="Open treatment of slipped femoral epiphysis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6782004"/>
+      <display value="Methylene blue plating test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6794008"/>
+      <display value="Biopsy of soft tissue of wrist, superficial"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6801000"/>
+      <display value="Resection of mesentery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6812000"/>
+      <display value="Mohs' chemosurgery, fixed tissue technique"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6818001"/>
+      <display value="Excision of buccal mucosa"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6832004"/>
+      <display value="Atherectomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6833009"/>
+      <display value="Closed osteotomy of mandibular angle"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6846004"/>
+      <display value="Incision of pituitary gland"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6853008"/>
+      <display value="Nasogastric tube aspiration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6862005"/>
+      <display value="Preoperative education"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6872008"/>
+      <display value="Perfusion chemotherapy for malignant neoplasm"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6880001"/>
+      <display value="C3e receptor measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6889000"/>
+      <display value="Shortening of sclera by scleral buckling"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6898002"/>
+      <display value="Arthroscopically aided posterior cruciate ligament reconstruction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6903003"/>
+      <display value="Metabolic monitoring procedure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6909004"/>
+      <display value="Excisional biopsy of peripheral nerve ganglion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6943008"/>
+      <display value="Aldosterone measurement, normal salt diet, urine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6948004"/>
+      <display value="Removal of calcareous deposit of tendon of hand"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6951006"/>
+      <display value="Aponeurorrhaphy of hand"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6967000"/>
+      <display value="Open reduction of separation of epiphysis of fibula"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6968005"/>
+      <display value="Cannulation of cisterna chyli"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6976007"/>
+      <display value="Craniocervical spinal fusion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6979000"/>
+      <display value="Removal of elastic bandage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6986008"/>
+      <display value="Precipitin test for blood group, species identification"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7001008"/>
+      <display value="Incision of lingual frenum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7012008"/>
+      <display value="Coagulation or electrocoagulation of spinal cord lesion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7017002"/>
+      <display value="Ligation of internal jugular vein"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7026004"/>
+      <display value="Transfer of pectoralis major tendon"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7040003"/>
+      <display value="Lysis of adhesions of nerve ganglion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7043001"/>
+      <display value="Repair of inguinal hernia with spermatocelectomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7053000"/>
+      <display value="Puncture and drainage of spleen"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7082004"/>
+      <display value="Reduction of fracture of hand with internal fixation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7098006"/>
+      <display value="Removal of foreign body from vertebra"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7103008"/>
+      <display value="Trypsin, duodenal fluid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7105001"/>
+      <display value="Bosworth operation arthroplasty for acromioclavicular separation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7108004"/>
+      <display value="Osteoclasis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7122004"/>
+      <display value="Embolectomy of abdominal vein"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7128000"/>
+      <display value="Supply of spectacles"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7133001"/>
+      <display value="Psychiatric day care by day"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7164004"/>
+      <display value="Toxoplasmosis dye test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7171009"/>
+      <display value="Shortening of round ligament of uterus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7174001"/>
+      <display value="Ultrasound peripheral imaging, B-scan"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7177008"/>
+      <display value="Horizontal osteotomy of mandible"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7189005"/>
+      <display value="Injection of skin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7190001"/>
+      <display value="Mandibular condylectomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7216000"/>
+      <display value="Aneurysmectomy with graft replacement of head and neck artery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7218004"/>
+      <display value="Thrombectomy with catheter of vena cava by abdominal incision"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7221002"/>
+      <display value="Formation of tubed pedicle graft, head and neck"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7223004"/>
+      <display value="Take-down of stoma of large intestine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7239006"/>
+      <display value="Proctosigmoidoscopy for dilation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7240008"/>
+      <display value="Total laryngectomy with partial pharyngectomy and synchronous tracheostomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7241007"/>
+      <display value="Application of dressing, major"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7246002"/>
+      <display value="Kidney biopsy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7249009"/>
+      <display value="Initial drug therapy for mental disorder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7256003"/>
+      <display value="Countercurrent electrophoresis measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7260000"/>
+      <display value="Open biopsy of gallbladder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7268007"/>
+      <display value="Injection of vitreous substitute"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7288006"/>
+      <display value="Febrile agglutinins, qualitative"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7298000"/>
+      <display value="Fulguration of skin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7301001"/>
+      <display value="Haptoglobin measurement, chemical"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7304009"/>
+      <display value="Lysis of adhesions of vagina"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7306006"/>
+      <display value="Partial ostectomy of tibia and fibula"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7316003"/>
+      <display value="Bone marrow aspiration procedure, tibia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7334004"/>
+      <display value="Kinetic activities for coordination"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7338001"/>
+      <display value="Ipecac emesis administration and observation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7364007"/>
+      <display value="Ligature of femoral vein, complete"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7365008"/>
+      <display value="Ligation of abdominal artery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7367000"/>
+      <display value="Musculoskeletal system procedure on abdomen"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7375006"/>
+      <display value="Bronchoscopy through tracheostomy with biopsy of bronchus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7383000"/>
+      <display value="Anastomosis of intrathoracic artery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7388009"/>
+      <display value="Repair of graft-enteric fistula"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7412000"/>
+      <display value="Incision of lymphangioma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7414004"/>
+      <display value="Intraoperative transluminal aortic angioplasty"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7418001"/>
+      <display value="Suture of fascia to skeletal attachment of hand"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7419009"/>
+      <display value="Destruction of cranial nerve"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7421004"/>
+      <display value="Bone marrow imaging, limited area"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7430007"/>
+      <display value="Cryotherapy of skin lesion with liquid nitrogen"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7443007"/>
+      <display value="Insertion of oropharyngeal airway"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7447008"/>
+      <display value="Immunosuppressive therapy for transplant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7459007"/>
+      <display value="Revision of arteriovenous fistula with thrombectomy with autogenous graft"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7468009"/>
+      <display value="Strapping of hip"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7476006"/>
+      <display value="Special care of dentures"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7486007"/>
+      <display value="Reattachment of muscle"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7495004"/>
+      <display value="Stromeyer-Little operation hepatotomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7510005"/>
+      <display value="Color vision examination"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7534000"/>
+      <display value="Repair of perineourethroscrotal fistula"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7541006"/>
+      <display value="Incision and exploration of testis"/>
+    </contains>
+  </expansion>
+</ValueSet>

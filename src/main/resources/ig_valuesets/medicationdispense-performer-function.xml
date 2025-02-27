@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="medicationdispense-performer-function"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="phx"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/medicationdispense-performer-function"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.1318"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="MedicationDispense Performer Function Codes"/>
+  <title value="Medication dispense  performer  function  codes"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="MedicationDispense Performer Function Codes"/>
+  <immutable value="true"/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/medicationdispense-performer-function"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:6341a694-7b94-4dde-a84d-a30349af6f4f"/>
+    <timestamp value="2025-01-17T09:53:38-07:00"/>
+    <total value="5"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/medicationdispense-performer-function|1.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/medicationdispense-performer-function"/>
+      <code value="dataenterer"/>
+      <display value="Data Enterer"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/medicationdispense-performer-function"/>
+      <code value="packager"/>
+      <display value="Packager"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/medicationdispense-performer-function"/>
+      <code value="checker"/>
+      <display value="Checker"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/medicationdispense-performer-function"/>
+      <code value="finalchecker"/>
+      <display value="Final Checker"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/medicationdispense-performer-function"/>
+      <code value="counsellor"/>
+      <display value="Counsellor"/>
+    </contains>
+  </expansion>
+</ValueSet>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="immunization-recommendation-date-criterion"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="pher"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/immunization-recommendation-date-criterion"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.308"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="ImmunizationRecommendationDateCriterionCodes"/>
+  <title value="Immunization Recommendation Date Criterion Codes"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="The value set to instantiate this attribute should be drawn from a terminologically robust code system that consists of or contains concepts to support the definition of dates relevant to recommendations for future doses of vaccines. This value set is provided as a suggestive example."/>
+  <copyright value="This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use."/>
+  <compose>
+    <include>
+      <system value="http://loinc.org"/>
+      <concept>
+        <code value="30981-5"/>
+      </concept>
+      <concept>
+        <code value="30980-7"/>
+      </concept>
+      <concept>
+        <code value="59777-3"/>
+      </concept>
+      <concept>
+        <code value="59778-1"/>
+      </concept>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:f3e2b700-3384-48a8-a08c-14b34e0da4ad"/>
+    <timestamp value="2025-01-17T09:53:38-07:00"/>
+    <total value="4"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-valueset"/>
+      <valueUri value="null"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://loinc.org|2.78"/>
+    </parameter>
+    <parameter>
+      <name value="version"/>
+      <valueUri value="http://loinc.org|2.78"/>
+    </parameter>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="30981-5"/>
+      <display value="Earliest date to give"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="30980-7"/>
+      <display value="Date vaccine due"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="59777-3"/>
+      <display value="Latest date to give immunization"/>
+    </contains>
+    <contains>
+      <system value="http://loinc.org"/>
+      <code value="59778-1"/>
+      <display value="Date when overdue for immunization"/>
+    </contains>
+  </expansion>
+</ValueSet>

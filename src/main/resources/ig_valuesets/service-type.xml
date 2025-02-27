@@ -1,0 +1,3045 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="service-type"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="pa"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/service-type"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.518"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="ServiceType"/>
+  <title value="Service type"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="This value set defines an example set of codes of service-types."/>
+  <immutable value="true"/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:431fd5e5-b547-4e32-b0e8-082be374c395"/>
+    <timestamp value="2025-01-17T09:53:39-07:00"/>
+    <total value="596"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/service-type|1.1.1"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="1"/>
+      <display value="Adoption/Permanent Care Info/Support"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="2"/>
+      <display value="Aged Care Assessment"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="3"/>
+      <display value="Aged Care Information/Referral"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="4"/>
+      <display value="Aged Residential Care"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="5"/>
+      <display value="Case Management for Older Persons"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="6"/>
+      <display value="Delivered Meals (Meals On Wheels)"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="7"/>
+      <display value="Friendly Visiting"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="8"/>
+      <display value="Home Care/Housekeeping Assistance"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="9"/>
+      <display value="Home Maintenance and Repair"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="10"/>
+      <display value="Personal Alarms/Alerts"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="11"/>
+      <display value="Personal Care for Older Persons"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="12"/>
+      <display value="Planned Activity Groups"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="13"/>
+      <display value="Acupuncture"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="14"/>
+      <display value="Alexander Technique Therapy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="15"/>
+      <display value="Aromatherapy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="16"/>
+      <display value="Biorhythm Services"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="17"/>
+      <display value="Bowen Therapy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="18"/>
+      <display value="Chinese Herbal Medicine"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="19"/>
+      <display value="Feldenkrais"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="20"/>
+      <display value="Homoeopathy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="21"/>
+      <display value="Hydrotherapy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="22"/>
+      <display value="Hypnotherapy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="23"/>
+      <display value="Kinesiology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="24"/>
+      <display value="Magnetic Therapy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="25"/>
+      <display value="Massage Therapy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="26"/>
+      <display value="Meditation"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="27"/>
+      <display value="Myotherapy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="28"/>
+      <display value="Naturopathy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="29"/>
+      <display value="Reflexology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="30"/>
+      <display value="Reiki"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="31"/>
+      <display value="Relaxation Therapy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="32"/>
+      <display value="Shiatsu"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="33"/>
+      <display value="Western Herbal Medicine"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="34"/>
+      <display value="Family Day care"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="35"/>
+      <display value="Holiday Programs"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="36"/>
+      <display value="Kindergarten Inclusion Support"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="37"/>
+      <display value="Kindergarten/Preschool"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="38"/>
+      <display value="Long Day Child Care"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="39"/>
+      <display value="Occasional Child Care"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="40"/>
+      <display value="Outside School Hours Care"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="41"/>
+      <display value="Children's Play Programs"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="42"/>
+      <display value="Parenting/Family Support/Education"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="43"/>
+      <display value="Playgroup"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="44"/>
+      <display value="School Nursing"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="45"/>
+      <display value="Toy Library"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="46"/>
+      <display value="Child Protection/Child Abuse Report"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="47"/>
+      <display value="Foster Care"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="48"/>
+      <display value="Residential/Out-of-Home Care"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="49"/>
+      <display value="Support - Young People Leaving Care"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="50"/>
+      <display value="Audiology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="51"/>
+      <display value="Blood Donation"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="52"/>
+      <display value="Chiropractic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="53"/>
+      <display value="Dietetics"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="54"/>
+      <display value="Family Planning"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="55"/>
+      <display value="Health Advocacy/Liaison Service"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="56"/>
+      <display value="Health Information/Referral"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="57"/>
+      <display value="Immunization"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="58"/>
+      <display value="Maternal &amp; Child Health"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="59"/>
+      <display value="Nursing"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="60"/>
+      <display value="Nutrition"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="61"/>
+      <display value="Occupational Therapy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="62"/>
+      <display value="Optometry"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="63"/>
+      <display value="Osteopathy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="64"/>
+      <display value="Pharmacy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="65"/>
+      <display value="Physiotherapy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="66"/>
+      <display value="Podiatry"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="67"/>
+      <display value="Sexual Health"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="68"/>
+      <display value="Speech Pathology/Therapy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="69"/>
+      <display value="Bereavement Counselling"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="70"/>
+      <display value="Crisis Counselling"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="71"/>
+      <display value="Family Counselling/Therapy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="72"/>
+      <display value="Family Violence Counselling"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="73"/>
+      <display value="Financial Counselling"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="74"/>
+      <display value="Generalist Counselling"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="75"/>
+      <display value="Genetic Counselling"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="76"/>
+      <display value="Health Counselling"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="77"/>
+      <display value="Mediation"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="78"/>
+      <display value="Problem Gambling Counselling"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="79"/>
+      <display value="Relationship Counselling"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="80"/>
+      <display value="Sexual Assault Counselling"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="81"/>
+      <display value="Trauma Counselling"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="82"/>
+      <display value="Victims of Crime Counselling"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="83"/>
+      <display value="Cemetery Operation"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="84"/>
+      <display value="Cremation"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="85"/>
+      <display value="Death Service Information"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="86"/>
+      <display value="Funeral Services"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="87"/>
+      <display value="Endodontic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="88"/>
+      <display value="General Dental"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="89"/>
+      <display value="Oral Medicine"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="90"/>
+      <display value="Oral Surgery"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="91"/>
+      <display value="Orthodontic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="92"/>
+      <display value="Paediatric Dentistry"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="93"/>
+      <display value="Periodontic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="94"/>
+      <display value="Prosthodontic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="95"/>
+      <display value="Acquired Brain Injury Info/Referral"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="96"/>
+      <display value="Disability Advocacy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="97"/>
+      <display value="Disability Aids &amp; Equipment"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="98"/>
+      <display value="Disability Case Management"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="99"/>
+      <display value="Disability Day Programs/Activities"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="100"/>
+      <display value="Disability Information/Referral"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="101"/>
+      <display value="Disability Support Packages"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="102"/>
+      <display value="Disability Supported Accommodation"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="103"/>
+      <display value="Early Childhood Intervention"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="104"/>
+      <display value="Hearing Aids &amp; Equipment"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="105"/>
+      <display value="Drug and/or Alcohol Counselling"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="106"/>
+      <display value="Drug/Alcohol Information/Referral"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="107"/>
+      <display value="Needle &amp; Syringe Exchange"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="108"/>
+      <display value="Non-resid. Alcohol/Drug Treatment"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="109"/>
+      <display value="Pharmacotherapy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="110"/>
+      <display value="Quit Program"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="111"/>
+      <display value="Residential Alcohol/Drug Treatment"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="112"/>
+      <display value="Adult/Community Education"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="113"/>
+      <display value="Higher Education"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="114"/>
+      <display value="Primary Education"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="115"/>
+      <display value="Secondary Education"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="116"/>
+      <display value="Training &amp; Vocational Education"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="117"/>
+      <display value="Emergency Medical"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="118"/>
+      <display value="Employment Placement and/or Support"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="119"/>
+      <display value="Vocational Rehabilitation"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="120"/>
+      <display value="Work Safety/Accident Prevention"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="121"/>
+      <display value="Financial Assistance"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="122"/>
+      <display value="Financial Information/Advice"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="123"/>
+      <display value="Material Aid"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="124"/>
+      <display value="General Practice"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="125"/>
+      <display value="Accommodation Placement/Support"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="126"/>
+      <display value="Crisis/Emergency Accommodation"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="127"/>
+      <display value="Homelessness Support"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="128"/>
+      <display value="Housing Information/Referral"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="129"/>
+      <display value="Public Rental Housing"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="130"/>
+      <display value="Interpreting/Multilingual Service"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="131"/>
+      <display value="Juvenile Justice"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="132"/>
+      <display value="Legal Advocacy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="133"/>
+      <display value="Legal Information/Advice/Referral"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="134"/>
+      <display value="Mental Health Advocacy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="135"/>
+      <display value="Mental Health Assess/Triage/Crisis Response"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="136"/>
+      <display value="Mental Health Case Management"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="137"/>
+      <display value="Mental Health Information/Referral"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="138"/>
+      <display value="Mental Health Inpatient Services"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="139"/>
+      <display value="Mental Health Non-residential Rehab"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="140"/>
+      <display value="Mental Health Residential Rehab/CCU"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="141"/>
+      <display value="Psychiatry (Requires Referral)"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="142"/>
+      <display value="Psychology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="143"/>
+      <display value="Martial Arts"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="144"/>
+      <display value="Personal Fitness Training"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="145"/>
+      <display value="Physical Activity Group"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="146"/>
+      <display value="Physical Activity Programs"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="147"/>
+      <display value="Physical Fitness Testing"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="148"/>
+      <display value="Pilates"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="149"/>
+      <display value="Self-Defence"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="150"/>
+      <display value="Sporting Club"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="151"/>
+      <display value="Yoga"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="152"/>
+      <display value="Food Safety"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="153"/>
+      <display value="Health Regulatory /Inspection /Cert."/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="154"/>
+      <display value="Work Health/Safety Inspection/Cert."/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="155"/>
+      <display value="Carer Support"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="156"/>
+      <display value="Respite Care"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="157"/>
+      <display value="Anatomical Pathology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="158"/>
+      <display value="Pathology - Clinical Chemistry"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="159"/>
+      <display value="Pathology - General"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="160"/>
+      <display value="Pathology - Genetics"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="161"/>
+      <display value="Pathology - Haematology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="162"/>
+      <display value="Pathology - Immunology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="163"/>
+      <display value="Pathology - Microbiology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="164"/>
+      <display value="Anaesthesiology - Pain Medicine"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="165"/>
+      <display value="Cardiology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="166"/>
+      <display value="Clinical Genetics"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="167"/>
+      <display value="Clinical Pharmacology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="168"/>
+      <display value="Dermatology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="169"/>
+      <display value="Endocrinology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="170"/>
+      <display value="Gastroenterology &amp; Hepatology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="171"/>
+      <display value="Geriatric Medicine"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="172"/>
+      <display value="Immunology &amp; Allergy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="173"/>
+      <display value="Infectious Diseases"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="174"/>
+      <display value="Intensive Care Medicine"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="175"/>
+      <display value="Medical Oncology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="176"/>
+      <display value="Nephrology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="177"/>
+      <display value="Neurology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="178"/>
+      <display value="Occupational Medicine"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="179"/>
+      <display value="Palliative Medicine"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="180"/>
+      <display value="Public Health Medicine"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="181"/>
+      <display value="Rehabilitation Medicine"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="182"/>
+      <display value="Rheumatology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="183"/>
+      <display value="Sleep Medicine"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="184"/>
+      <display value="Thoracic Medicine"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="185"/>
+      <display value="Gynaecological Oncology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="186"/>
+      <display value="Obstetrics &amp; Gynaecology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="187"/>
+      <display value="Reproductive Endocrinology/Infertility"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="188"/>
+      <display value="Urogynaecology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="189"/>
+      <display value="Neonatology &amp; Perinatology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="190"/>
+      <display value="Paediatric Cardiology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="191"/>
+      <display value="Paediatric Clinical Genetics"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="192"/>
+      <display value="Paediatric Clinical Pharmacology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="193"/>
+      <display value="Paediatric Endocrinology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="194"/>
+      <display value="Paed. Gastroenterology/Hepatology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="195"/>
+      <display value="Paediatric Haematology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="196"/>
+      <display value="Paediatric Immunology &amp; Allergy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="197"/>
+      <display value="Paediatric Infectious Diseases"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="198"/>
+      <display value="Paediatric Intensive Care Medicine"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="199"/>
+      <display value="Paediatric Medical Oncology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="200"/>
+      <display value="Paediatric Medicine"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="201"/>
+      <display value="Paediatric Nephrology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="202"/>
+      <display value="Paediatric Neurology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="203"/>
+      <display value="Paediatric Nuclear Medicine"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="204"/>
+      <display value="Paediatric Rehabilitation Medicine"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="205"/>
+      <display value="Paediatric Rheumatology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="206"/>
+      <display value="Paediatric Sleep Medicine"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="207"/>
+      <display value="Paediatric Surgery"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="208"/>
+      <display value="Paediatric Thoracic Medicine"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="209"/>
+      <display value="Diag. Radiology /Xray /CT /Fluoroscopy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="210"/>
+      <display value="Diagnostic Ultrasound"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="211"/>
+      <display value="Magnetic Resonance Imaging (MRI)"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="212"/>
+      <display value="Nuclear Medicine"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="213"/>
+      <display value="Obstetric/Gynaecological Ultrasound"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="214"/>
+      <display value="Radiation Oncology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="215"/>
+      <display value="Cardiothoracic Surgery"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="216"/>
+      <display value="Neurosurgery"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="217"/>
+      <display value="Ophthalmology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="218"/>
+      <display value="Orthopaedic Surgery"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="219"/>
+      <display value="Otolaryngology/Head &amp; Neck Surgery"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="220"/>
+      <display value="Plastic &amp; Reconstructive Surgery"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="221"/>
+      <display value="Surgery - General"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="222"/>
+      <display value="Urology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="223"/>
+      <display value="Vascular Surgery"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="224"/>
+      <display value="Support Groups"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="225"/>
+      <display value="Air ambulance"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="226"/>
+      <display value="Ambulance"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="227"/>
+      <display value="Blood Transport"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="228"/>
+      <display value="Community Bus"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="229"/>
+      <display value="Flying Doctor Service"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="230"/>
+      <display value="Patient Transport"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="231"/>
+      <display value="A&amp;E"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="232"/>
+      <display value="A&amp;EP"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="233"/>
+      <display value="Abuse"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="234"/>
+      <display value="ACAS"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="235"/>
+      <display value="Access"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="236"/>
+      <display value="Accident"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="237"/>
+      <display value="Acute Inpatient Serv"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="238"/>
+      <display value="Adult Day Programs"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="239"/>
+      <display value="Adult Mental Health Services"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="240"/>
+      <display value="Advice"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="241"/>
+      <display value="Advocacy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="242"/>
+      <display value="Aged Persons Mental"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="243"/>
+      <display value="Aged Persons Mental"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="244"/>
+      <display value="Aged Persons Mental"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="245"/>
+      <display value="Aids"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="246"/>
+      <display value="Al-Anon"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="247"/>
+      <display value="Alcohol"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="248"/>
+      <display value="Al-Teen"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="249"/>
+      <display value="Antenatal"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="250"/>
+      <display value="Anxiety"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="251"/>
+      <display value="Arthritis"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="252"/>
+      <display value="Assessment"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="253"/>
+      <display value="Assistance"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="254"/>
+      <display value="Asthma"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="255"/>
+      <display value="ATSS"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="256"/>
+      <display value="Attendant Care"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="257"/>
+      <display value="Babies"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="258"/>
+      <display value="Bathroom Modificatio"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="259"/>
+      <display value="Behavior"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="260"/>
+      <display value="Behavior Interventi"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="261"/>
+      <display value="Bereavement"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="262"/>
+      <display value="Bipolar"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="263"/>
+      <display value="Birth"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="264"/>
+      <display value="Birth Control"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="265"/>
+      <display value="Birthing Options"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="266"/>
+      <display value="BIST"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="267"/>
+      <display value="Blood"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="268"/>
+      <display value="Bone"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="269"/>
+      <display value="Bowel"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="270"/>
+      <display value="Brain"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="271"/>
+      <display value="Breast Feeding"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="272"/>
+      <display value="Breast Screen"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="273"/>
+      <display value="Brokerage"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="274"/>
+      <display value="Cancer"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="275"/>
+      <display value="Cancer Support"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="276"/>
+      <display value="Cardiovascular Disea"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="277"/>
+      <display value="Care Packages"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="278"/>
+      <display value="Carer"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="279"/>
+      <display value="Case Management"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="280"/>
+      <display value="Casualty"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="281"/>
+      <display value="Centrelink"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="282"/>
+      <display value="Chemists"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="283"/>
+      <display value="Child And Adolescent"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="284"/>
+      <display value="Child Care"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="285"/>
+      <display value="Child Services"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="286"/>
+      <display value="Children"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="287"/>
+      <display value="Children's Services"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="288"/>
+      <display value="Cholesterol"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="289"/>
+      <display value="Clothing"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="290"/>
+      <display value="Community Based Acco"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="291"/>
+      <display value="Community Care Unit"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="292"/>
+      <display value="Community Child And"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="293"/>
+      <display value="Community Health"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="294"/>
+      <display value="Community Residentia"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="295"/>
+      <display value="Community Transport"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="296"/>
+      <display value="Companion Visiting"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="297"/>
+      <display value="Companionship"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="298"/>
+      <display value="Consumer Advice"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="299"/>
+      <display value="Consumer Issues"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="300"/>
+      <display value="Continuing Care Serv"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="301"/>
+      <display value="Contraception Inform"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="302"/>
+      <display value="Coordinating Bodies"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="303"/>
+      <display value="Correctional Service"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="304"/>
+      <display value="Council Environmenta"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="305"/>
+      <display value="Counselling"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="306"/>
+      <display value="Criminal"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="307"/>
+      <display value="Crises"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="308"/>
+      <display value="Crisis Assessment An"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="309"/>
+      <display value="Crisis Assistance"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="310"/>
+      <display value="Crisis Refuge"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="311"/>
+      <display value="Day Program"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="312"/>
+      <display value="Deaf"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="313"/>
+      <display value="Dental Hygiene"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="314"/>
+      <display value="Dentistry"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="315"/>
+      <display value="Dentures"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="316"/>
+      <display value="Depression"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="317"/>
+      <display value="Detoxification"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="318"/>
+      <display value="Diabetes"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="319"/>
+      <display value="Diaphragm Fitting"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="320"/>
+      <display value="Dieticians"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="321"/>
+      <display value="Disabled Parking"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="322"/>
+      <display value="District Nursing"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="323"/>
+      <display value="Divorce"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="324"/>
+      <display value="Doctors"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="325"/>
+      <display value="Drink-Drive"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="326"/>
+      <display value="Dual Diagnosis Servi"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="327"/>
+      <display value="Early Choice"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="328"/>
+      <display value="Eating Disorder"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="330"/>
+      <display value="Emergency Relief"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="331"/>
+      <display value="Employment And Train"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="332"/>
+      <display value="Environment"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="333"/>
+      <display value="Equipment"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="334"/>
+      <display value="Exercise"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="335"/>
+      <display value="Facility"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="336"/>
+      <display value="Family Choice"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="337"/>
+      <display value="Family Law"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="338"/>
+      <display value="Family Options"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="339"/>
+      <display value="Family Services"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="340"/>
+      <display value="FFYA"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="341"/>
+      <display value="Financial Aid"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="342"/>
+      <display value="Fitness"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="343"/>
+      <display value="Flexible Care Packag"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="344"/>
+      <display value="Food"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="345"/>
+      <display value="Food Vouchers"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="346"/>
+      <display value="Forensic Mental Heal"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="347"/>
+      <display value="Futures"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="348"/>
+      <display value="Futures For Young Ad"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="349"/>
+      <display value="General Practitioner"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="350"/>
+      <display value="Grants"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="351"/>
+      <display value="Grief"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="352"/>
+      <display value="Grief Counselling"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="353"/>
+      <display value="HACC"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="354"/>
+      <display value="Heart Disease"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="355"/>
+      <display value="Help"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="356"/>
+      <display value="High Blood Pressure"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="357"/>
+      <display value="Home Help"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="358"/>
+      <display value="Home Nursing"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="359"/>
+      <display value="Homefirst"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="360"/>
+      <display value="Hospice Care"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="361"/>
+      <display value="Hospital Services"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="362"/>
+      <display value="Hospital To Home"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="364"/>
+      <display value="Hostel"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="365"/>
+      <display value="Hostel Accommodation"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="366"/>
+      <display value="Household Items"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="367"/>
+      <display value="Hypertension"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="368"/>
+      <display value="Illness"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="369"/>
+      <display value="Independent Living"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="370"/>
+      <display value="Information"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="371"/>
+      <display value="Injury"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="372"/>
+      <display value="Intake"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="373"/>
+      <display value="Intensive Mobile You"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="374"/>
+      <display value="Intervention"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="375"/>
+      <display value="Job Searching"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="376"/>
+      <display value="Justice"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="377"/>
+      <display value="Leisure"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="378"/>
+      <display value="Loans"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="379"/>
+      <display value="Low Income Earners"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="380"/>
+      <display value="Lung"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="381"/>
+      <display value="Making A Difference"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="382"/>
+      <display value="Medical Services"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="383"/>
+      <display value="Medical Specialists"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="384"/>
+      <display value="Medication Administr"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="385"/>
+      <display value="Menstrual Informatio"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="386"/>
+      <display value="Methadone"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="387"/>
+      <display value="Mobile Support And T"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="388"/>
+      <display value="Motor Neurone"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="389"/>
+      <display value="Multiple Sclerosis"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="390"/>
+      <display value="Neighbourhood House"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="391"/>
+      <display value="Nursing Home"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="392"/>
+      <display value="Nursing Mothers"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="393"/>
+      <display value="Obesity"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="394"/>
+      <display value="Occupational Health"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="395"/>
+      <display value="Optometrist"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="396"/>
+      <display value="Oral Hygiene"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="397"/>
+      <display value="Outpatients"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="398"/>
+      <display value="Outreach Service"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="399"/>
+      <display value="PADP"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="400"/>
+      <display value="Pain"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="401"/>
+      <display value="Pap Smear"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="402"/>
+      <display value="Parenting"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="403"/>
+      <display value="Peak Organizations"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="404"/>
+      <display value="Personal Care"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="405"/>
+      <display value="Pharmacies"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="406"/>
+      <display value="Phobias"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="407"/>
+      <display value="Physical"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="408"/>
+      <display value="Physical Activity"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="409"/>
+      <display value="Postnatal"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="410"/>
+      <display value="Pregnancy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="411"/>
+      <display value="Pregnancy Tests"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="412"/>
+      <display value="Preschool"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="413"/>
+      <display value="Prescriptions"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="414"/>
+      <display value="Primary Mental Healt"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="415"/>
+      <display value="Property Maintenance"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="416"/>
+      <display value="Prostate"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="417"/>
+      <display value="Psychiatric"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="418"/>
+      <display value="Psychiatric Disabili"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="419"/>
+      <display value="Psychiatric Disabili"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="420"/>
+      <display value="Psychiatric Disabili"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="421"/>
+      <display value="Psychiatric Disabili"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="422"/>
+      <display value="Psychiatric Disabili"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="423"/>
+      <display value="Psychiatric Support"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="424"/>
+      <display value="Recreation"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="425"/>
+      <display value="Referral"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="426"/>
+      <display value="Refuge"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="427"/>
+      <display value="Rent Assistance"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="428"/>
+      <display value="Residential Faciliti"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="429"/>
+      <display value="Residential Respite"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="430"/>
+      <display value="Respiratory"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="431"/>
+      <display value="Response"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="432"/>
+      <display value="Rooming Houses"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="433"/>
+      <display value="Safe Sex"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="434"/>
+      <display value="Secure Extended Care"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="435"/>
+      <display value="Self Help"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="436"/>
+      <display value="Separation"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="437"/>
+      <display value="Services"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="438"/>
+      <display value="Sex Education"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="439"/>
+      <display value="Sexual Abuse"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="440"/>
+      <display value="Sexual Issues"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="441"/>
+      <display value="Sexually Transmitted"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="442"/>
+      <display value="SIDS"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="443"/>
+      <display value="Social Support"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="444"/>
+      <display value="Socialisation"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="445"/>
+      <display value="Special Needs"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="446"/>
+      <display value="Speech Therapist"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="447"/>
+      <display value="Splinting"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="448"/>
+      <display value="Sport"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="449"/>
+      <display value="Statewide And Specia"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="450"/>
+      <display value="STD"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="451"/>
+      <display value="STI"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="452"/>
+      <display value="Stillbirth"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="453"/>
+      <display value="Stomal Care"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="454"/>
+      <display value="Stroke"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="455"/>
+      <display value="Substance Abuse"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="456"/>
+      <display value="Support"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="457"/>
+      <display value="Syringes"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="458"/>
+      <display value="Teeth"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="459"/>
+      <display value="Tenancy Advice"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="460"/>
+      <display value="Terminal Illness"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="461"/>
+      <display value="Therapy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="462"/>
+      <display value="Transcription"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="463"/>
+      <display value="Translating Services"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="464"/>
+      <display value="Translator"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="465"/>
+      <display value="Transport"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="466"/>
+      <display value="Vertebrae"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="467"/>
+      <display value="Violence"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="468"/>
+      <display value="Vocational Guidance"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="469"/>
+      <display value="Weight"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="470"/>
+      <display value="Welfare Assistance"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="471"/>
+      <display value="Welfare Counselling"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="472"/>
+      <display value="Wheelchairs"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="473"/>
+      <display value="Wound Management"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="474"/>
+      <display value="Young People At Risk"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="475"/>
+      <display value="Further Desc. - Community Health Care"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="476"/>
+      <display value="Library"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="477"/>
+      <display value="Community Hours"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="478"/>
+      <display value="Further Desc. - Specialist Medical"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="479"/>
+      <display value="Hepatology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="480"/>
+      <display value="Gastroenterology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="481"/>
+      <display value="Gynaecology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="482"/>
+      <display value="Obstetrics"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="483"/>
+      <display value="Further Desc. - Specialist Surgical"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="484"/>
+      <display value="Placement Protection"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="485"/>
+      <display value="Family Violence"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="486"/>
+      <display value="Integrated Family Services"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="488"/>
+      <display value="Diabetes Educator"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="489"/>
+      <display value="Kinship Care"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="490"/>
+      <display value="General Mental Health Services"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="491"/>
+      <display value="Exercise Physiology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="492"/>
+      <display value="Medical Research"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="493"/>
+      <display value="Youth"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="494"/>
+      <display value="Youth Services"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="495"/>
+      <display value="Youth Health"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="496"/>
+      <display value="Child and Family Ser"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="497"/>
+      <display value="Home Visits"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="498"/>
+      <display value="Mobile Services"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="500"/>
+      <display value="Before and/or After"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="501"/>
+      <display value="Cancer Services"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="502"/>
+      <display value="Integrated Cancer Se"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="503"/>
+      <display value="Multidisciplinary Se"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="504"/>
+      <display value="Multidisciplinary Ca"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="505"/>
+      <display value="Meetings"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="506"/>
+      <display value="Blood pressure monit"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="507"/>
+      <display value="Dose administration"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="508"/>
+      <display value="Medical Equipment Hi"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="509"/>
+      <display value="Parenting/Family Support/Education"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="510"/>
+      <display value="Deputising Service"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="513"/>
+      <display value="Cancer Support Groups"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="514"/>
+      <display value="Community Cancer Services"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="530"/>
+      <display value="Disability Care Transport"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="531"/>
+      <display value="Aged Care Transport"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="532"/>
+      <display value="Diabetes Education s"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="533"/>
+      <display value="Cardiac Rehabilitati"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="534"/>
+      <display value="Young Adult Diabetes"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="535"/>
+      <display value="Pulmonary Rehabilita"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="536"/>
+      <display value="Art therapy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="537"/>
+      <display value="Medication Reviews"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="538"/>
+      <display value="Telephone Counselling"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="539"/>
+      <display value="Telephone Help Line"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="540"/>
+      <display value="Online Service"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="541"/>
+      <display value="Crisis - Mental Health"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="542"/>
+      <display value="Youth Crisis"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="543"/>
+      <display value="Sexual Assault"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="544"/>
+      <display value="GPAH Other"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="545"/>
+      <display value="Paediatric Dermatology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="546"/>
+      <display value="Veterans Services"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="547"/>
+      <display value="Veterans"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="548"/>
+      <display value="Food Relief/Food/Meals"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="550"/>
+      <display value="Dementia Care"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="551"/>
+      <display value="Alzheimer"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="552"/>
+      <display value="Drug and/or Alcohol Support Groups"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="553"/>
+      <display value="1-on-1 Support /Mentoring /Coaching"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="554"/>
+      <display value="Chronic Disease Management"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="555"/>
+      <display value="Liaison Services"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="556"/>
+      <display value="Walk-in Centre /Non-Emergency"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="557"/>
+      <display value="Inpatients"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="558"/>
+      <display value="Spiritual Counselling"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="559"/>
+      <display value="Women's Health"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="560"/>
+      <display value="Men's Health"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="561"/>
+      <display value="Health Education/Awareness Program"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="562"/>
+      <display value="Test Message"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="563"/>
+      <display value="Remedial Massage"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="564"/>
+      <display value="Adolescent Mental Health Services"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="565"/>
+      <display value="Youth Drop In/Assistance/Support"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="566"/>
+      <display value="Aboriginal Health Worker"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="567"/>
+      <display value="Women's Health Clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="568"/>
+      <display value="Men's Health Clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="569"/>
+      <display value="Migrant Health Clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="570"/>
+      <display value="Refugee Health Clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="571"/>
+      <display value="Aboriginal Health Clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="572"/>
+      <display value="Nurse Practitioner Lead Clinic/s"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="573"/>
+      <display value="Nurse Lead Clinic/s"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="574"/>
+      <display value="Culturally Tailored Support Groups"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="575"/>
+      <display value="Culturally Tailored Health Promotion"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="576"/>
+      <display value="Rehabilitation"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="577"/>
+      <display value="Education Information/Referral"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="580"/>
+      <display value="Social Work"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="581"/>
+      <display value="Haematology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="582"/>
+      <display value="Maternity Shared Car"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="583"/>
+      <display value="Rehabilitation Servi"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="584"/>
+      <display value="Cranio-sacral Therapy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="585"/>
+      <display value="Prosthetics &amp; Orthotics"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="589"/>
+      <display value="Home Medicine Review"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="590"/>
+      <display value="GPAH - Medical"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="591"/>
+      <display value="Music Therapy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="593"/>
+      <display value="Falls Prevention"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="599"/>
+      <display value="Accommodation/Tenancy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="600"/>
+      <display value="Assess-Skill, Ability, Needs"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="601"/>
+      <display value="Assist Access/Maintain Employ"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="602"/>
+      <display value="Assist Prod-Pers Care/Safety"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="603"/>
+      <display value="Assist-Integrate School/Ed"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="604"/>
+      <display value="Assist-Life Stage, Transition"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="605"/>
+      <display value="Assist-Personal Activities"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="606"/>
+      <display value="Assist-Travel/Transport"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="607"/>
+      <display value="Assistive Equip-General Tasks"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="608"/>
+      <display value="Assistive Equip-Recreation"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="609"/>
+      <display value="Assistive Prod-Household Task"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="610"/>
+      <display value="Behavior Support"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="611"/>
+      <display value="Comms &amp; Info Equipment"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="612"/>
+      <display value="Community Nursing Care"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="613"/>
+      <display value="Daily Tasks/Shared Living"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="614"/>
+      <display value="Development-Life Skills"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="615"/>
+      <display value="Early Childhood Supports"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="616"/>
+      <display value="Equipment Special Assess Setup"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="617"/>
+      <display value="Hearing Equipment"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="618"/>
+      <display value="Home Modification"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="619"/>
+      <display value="Household Tasks"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="620"/>
+      <display value="Interpret/Translate"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="621"/>
+      <display value="Other Innovative Supports"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="622"/>
+      <display value="Participate Community"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="623"/>
+      <display value="Personal Mobility Equipment"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="624"/>
+      <display value="Physical Wellbeing"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="625"/>
+      <display value="Plan Management"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="626"/>
+      <display value="Therapeutic Supports"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="627"/>
+      <display value="Training-Travel Independence"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="628"/>
+      <display value="Vehicle modifications"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/service-type"/>
+      <code value="629"/>
+      <display value="Vision Equipment"/>
+    </contains>
+  </expansion>
+</ValueSet>

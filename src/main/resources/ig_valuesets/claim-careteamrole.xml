@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="claim-careteamrole"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="fm"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/claim-careteamrole"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.586"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="ClaimCareTeamRoleCodes"/>
+  <title value="Claim Care Team Role Codes"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="Financial Management"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="This value set includes sample Claim Care Team Role codes."/>
+  <immutable value="true"/>
+  <copyright value="This is an example set."/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/claimcareteamrole"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:570bc1bb-db93-4217-a2fd-6141b12d4ff3"/>
+    <timestamp value="2025-01-17T09:53:37-07:00"/>
+    <total value="11"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/claimcareteamrole|1.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/claimcareteamrole"/>
+      <code value="primary"/>
+      <display value="Primary provider"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/claimcareteamrole"/>
+      <code value="assist"/>
+      <display value="Assisting Provider"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/claimcareteamrole"/>
+      <code value="supervisor"/>
+      <display value="Supervising Provider"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/claimcareteamrole"/>
+      <code value="attending"/>
+      <display value="Attending"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/claimcareteamrole"/>
+      <code value="referring"/>
+      <display value="Referring"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/claimcareteamrole"/>
+      <code value="operating"/>
+      <display value="Operating"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/claimcareteamrole"/>
+      <code value="otheroperating"/>
+      <display value="Other Operating"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/claimcareteamrole"/>
+      <code value="prescribing"/>
+      <display value="Prescribing provider"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/claimcareteamrole"/>
+      <code value="purchasedservice"/>
+      <display value="Purchased Service"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/claimcareteamrole"/>
+      <code value="rendering"/>
+      <display value="Rendering provider"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/claimcareteamrole"/>
+      <code value="other"/>
+      <display value="Other"/>
+    </contains>
+  </expansion>
+</ValueSet>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="medicationrequest-intent"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="phx"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="trial-use"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="3"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/medicationrequest-intent"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.1321"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="medicationRequest Intent"/>
+  <title value="Medication request  intent"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="MedicationRequest Intent Codes"/>
+  <immutable value="true"/>
+  <compose>
+    <include>
+      <system value="http://hl7.org/fhir/CodeSystem/medicationrequest-intent"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:e710b36a-bbf6-499d-88ae-bbf31247211c"/>
+    <timestamp value="2025-01-17T09:53:38-07:00"/>
+    <total value="8"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://hl7.org/fhir/CodeSystem/medicationrequest-intent|4.0.1"/>
+    </parameter>
+    <contains>
+      <system value="http://hl7.org/fhir/CodeSystem/medicationrequest-intent"/>
+      <code value="proposal"/>
+      <display value="Proposal"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/CodeSystem/medicationrequest-intent"/>
+      <code value="plan"/>
+      <display value="Plan"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/CodeSystem/medicationrequest-intent"/>
+      <code value="order"/>
+      <display value="Order"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/CodeSystem/medicationrequest-intent"/>
+      <code value="original-order"/>
+      <display value="Original Order"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/CodeSystem/medicationrequest-intent"/>
+      <code value="reflex-order"/>
+      <display value="Reflex Order"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/CodeSystem/medicationrequest-intent"/>
+      <code value="filler-order"/>
+      <display value="Filler Order"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/CodeSystem/medicationrequest-intent"/>
+      <code value="instance-order"/>
+      <display value="Instance Order"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/CodeSystem/medicationrequest-intent"/>
+      <code value="option"/>
+      <display value="Option"/>
+    </contains>
+  </expansion>
+</ValueSet>

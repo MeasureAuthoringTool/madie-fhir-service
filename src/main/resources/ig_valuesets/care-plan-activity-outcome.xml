@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="care-plan-activity-outcome"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="pc"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/care-plan-activity-outcome"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.149"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="CarePlanActivityOutcome"/>
+  <title value="Care Plan Activity Outcome"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="HL7 International - Patient Care WG"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://www.hl7.org/Special/committees/patientcare/"/>
+    </telecom>
+  </contact>
+  <description value="Example codes indicating the outcome of a care plan activity. Note that these are in no way complete and might not even be appropriate for some uses."/>
+  <copyright value="This resource includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyright of the International Health Terminology Standards Development Organisation (IHTSDO). Implementers of these specifications must have the appropriate SNOMED CT Affiliate license - for more information contact http://www.snomed.org/snomed-ct/get-snomed-ct or info@snomed.org"/>
+  <compose>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="397640006"/>
+      </filter>
+    </include>
+  </compose>
+  <expansion>
+    <extension url="http://hl7.org/fhir/StructureDefinition/valueset-unclosed">
+      <valueBoolean value="true"/>
+    </extension>
+    <identifier value="urn:uuid:bfda3188-ac0f-4ea2-8775-3d8243e296ca"/>
+    <timestamp value="2025-01-17T09:53:37-07:00"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-valueset"/>
+      <valueUri value="null"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801"/>
+    </parameter>
+    <parameter>
+      <name value="version"/>
+      <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801"/>
+    </parameter>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="397640006"/>
+      <display value="Healthcare knowledge finding (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129862009"/>
+      <display value="Deficient knowledge: diagnostic test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129863004"/>
+      <display value="Deficient knowledge of dietary regimen"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129864005"/>
+      <display value="Deficient knowledge: disease process"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129865006"/>
+      <display value="Deficient knowledge of fluid volume management"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129866007"/>
+      <display value="Deficient knowledge: medication regimen"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129868008"/>
+      <display value="Deficient knowledge: therapeutic regimen"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182891003"/>
+      <display value="Patient misunderstood treatment instructions"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="397588000"/>
+      <display value="Demonstrates knowledge of expected responses to operative procedure (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="397598006"/>
+      <display value="Demonstrates knowledge of nutritional requirements related to operative procedure (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="397675006"/>
+      <display value="Demonstrates knowledge of wound healing process (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="397699006"/>
+      <display value="Demonstrates knowledge of medication management (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="397724004"/>
+      <display value="Demonstrates knowledge of pain management (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="408364003"/>
+      <display value="Patient does not understand why taking all medication (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="423875000"/>
+      <display value="Deficient knowledge of family planning methods (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="424537004"/>
+      <display value="Deficient knowledge of preconception health practices (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="704375003"/>
+      <display value="Deficient knowledge of breastfeeding (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="704377006"/>
+      <display value="Deficient knowledge of peritoneal dialysis (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="704379009"/>
+      <display value="Deficient knowledge of sexual behavior"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="704381006"/>
+      <display value="Deficient knowledge of oral hygiene (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="704383009"/>
+      <display value="Deficient knowledge of child development"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="704400005"/>
+      <display value="Deficient knowledge of community services"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="704402002"/>
+      <display value="Deficient knowledge of physical therapy (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="704403007"/>
+      <display value="Deficient knowledge of fall prevention (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="704404001"/>
+      <display value="Deficient knowledge of pain management"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="704406004"/>
+      <display value="Deficient knowledge of symptom"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="704446005"/>
+      <display value="Deficient knowledge of exercise (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="704680001"/>
+      <display value="Deficient knowledge of behavior change process (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="705086000"/>
+      <display value="Deficient knowledge of patient controlled analgesia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="706869001"/>
+      <display value="Deficient knowledge of medication (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="708571001"/>
+      <display value="Demonstrates knowledge of who to contact in medical emergency (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="713398008"/>
+      <display value="Deficient knowledge of travel health (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="713447003"/>
+      <display value="Deficient knowledge of parenting (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="713448008"/>
+      <display value="Deficient knowledge of infant feeding (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="713449000"/>
+      <display value="Deficient knowledge of infant care (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="713451001"/>
+      <display value="Deficient knowledge of childbirth"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="713452008"/>
+      <display value="Deficient knowledge of fetal development (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="714670007"/>
+      <display value="Deficient knowledge of pregnancy (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="716391009"/>
+      <display value="Able to adapt to sensory changes in body part (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="716438000"/>
+      <display value="Able to recognize need for pressure area care (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1141650007"/>
+      <display value="Demonstrates knowledge of behavior change process (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1141651006"/>
+      <display value="Demonstrates knowledge of labor and delivery (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1141652004"/>
+      <display value="Demonstrates knowledge of community services"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1141688009"/>
+      <display value="Demonstrates knowledge of contraception (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1141689001"/>
+      <display value="Demonstrates knowledge of fall prevention (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1141690005"/>
+      <display value="Demonstrates knowledge of foetal development"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1141691009"/>
+      <display value="Demonstrates knowledge of infant care"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1141692002"/>
+      <display value="Demonstrates knowledge of infant feeding"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1141693007"/>
+      <display value="Demonstrates knowledge of oral hygiene (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1141694001"/>
+      <display value="Demonstrates knowledge of parenting"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1141695000"/>
+      <display value="Demonstrates knowledge of patient controlled analgesia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1141696004"/>
+      <display value="Demonstrates knowledge of pregnancy (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1141697008"/>
+      <display value="Demonstrates knowledge of disease process"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1141698003"/>
+      <display value="Demonstrates knowledge of exercise (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1141700007"/>
+      <display value="Demonstrates knowledge of wound care"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1144472003"/>
+      <display value="Demonstrates knowledge of alcohol abuse (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1144475001"/>
+      <display value="Demonstrates knowledge of drug abuse (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1144478004"/>
+      <display value="Demonstrates knowledge of medication"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1144885005"/>
+      <display value="Demonstrates knowledge of diagnostic testing (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1144886006"/>
+      <display value="Demonstrates knowledge of procedure (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1145004001"/>
+      <display value="Demonstrates knowledge of diet regime (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1145005000"/>
+      <display value="Demonstrates knowledge of fluid regime"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1145007008"/>
+      <display value="Demonstrates knowledge of treatment regime (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1145036008"/>
+      <display value="Demonstrates knowledge of psychosocial response to procedure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1149369006"/>
+      <display value="Deficient knowledge of food and/or nutrition"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1149391004"/>
+      <display value="Demonstrates knowledge of sexual behaviour"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1157354009"/>
+      <display value="Demonstrates knowledge of physical therapy (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1217126006"/>
+      <display value="Deficient knowledge of fluid regime"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1231385002"/>
+      <display value="Demonstrates knowledge of complementary therapy (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1231386001"/>
+      <display value="Deficient knowledge of complementary therapy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1343676003"/>
+      <display value="Deficient knowledge of who to contact in medical emergency (finding)"/>
+    </contains>
+  </expansion>
+</ValueSet>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="claim-modifiers"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="fm"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/claim-modifiers"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.536"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="ModifierTypeCodes"/>
+  <title value="Modifier type Codes"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="Financial Management"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="This value set includes sample Modifier type codes."/>
+  <immutable value="true"/>
+  <copyright value="This is an example set."/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/modifiers"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:bec2535d-2988-4572-bf84-0643cc2b2bf4"/>
+    <timestamp value="2025-01-17T09:53:37-07:00"/>
+    <total value="6"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/modifiers|1.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/modifiers"/>
+      <code value="a"/>
+      <display value="Repair of prior service or installation"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/modifiers"/>
+      <code value="b"/>
+      <display value="Temporary service or installation"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/modifiers"/>
+      <code value="c"/>
+      <display value="TMJ treatment"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/modifiers"/>
+      <code value="e"/>
+      <display value="Implant or associated with an implant"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/modifiers"/>
+      <code value="rooh"/>
+      <display value="Rush or Outside of office hours"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/modifiers"/>
+      <code value="x"/>
+      <display value="None"/>
+    </contains>
+  </expansion>
+</ValueSet>

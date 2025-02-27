@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="encounter-participant-type"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="pa"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="trial-use"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="3"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/encounter-participant-type"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.250"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="ParticipantType"/>
+  <title value="Participant type"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="This value set defines a set of codes that can be used to indicate how an individual participates in an encounter."/>
+  <immutable value="true"/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="_ParticipationAncillary"/>
+      </filter>
+    </include>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"/>
+      <concept>
+        <code value="SPRF"/>
+      </concept>
+      <concept>
+        <code value="PPRF"/>
+      </concept>
+      <concept>
+        <code value="PART"/>
+      </concept>
+    </include>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/participant-type"/>
+    </include>
+    <exclude>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"/>
+      <concept>
+        <code value="_ParticipationAncillary"/>
+      </concept>
+    </exclude>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:8434e395-2f12-43ef-b94c-abef1bab686e"/>
+    <timestamp value="2025-01-17T09:53:37-07:00"/>
+    <total value="12"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/v3-ParticipationType|5.0.0"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/participant-type|1.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"/>
+      <code value="ADM"/>
+      <display value="admitter"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"/>
+      <code value="ATND"/>
+      <display value="attender"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"/>
+      <code value="CALLBCK"/>
+      <display value="callback contact"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"/>
+      <code value="CON"/>
+      <display value="consultant"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"/>
+      <code value="DIS"/>
+      <display value="discharger"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"/>
+      <code value="ESC"/>
+      <display value="escort"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"/>
+      <code value="REF"/>
+      <display value="referrer"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"/>
+      <code value="SPRF"/>
+      <display value="secondary performer"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"/>
+      <code value="PPRF"/>
+      <display value="primary performer"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"/>
+      <code value="PART"/>
+      <display value="Participation"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/participant-type"/>
+      <code value="translator"/>
+      <display value="Translator"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/participant-type"/>
+      <code value="emergency"/>
+      <display value="Emergency"/>
+    </contains>
+  </expansion>
+</ValueSet>

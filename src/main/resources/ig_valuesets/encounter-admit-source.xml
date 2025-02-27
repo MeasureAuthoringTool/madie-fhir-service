@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="encounter-admit-source"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="pa"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/encounter-admit-source"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.257"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="AdmitSource"/>
+  <title value="Admit source"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="This value set defines a set of codes that can be used to indicate from where the patient came in."/>
+  <immutable value="true"/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/admit-source"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:ad44f240-173e-4171-a312-89910148ea44"/>
+    <timestamp value="2025-01-17T09:53:37-07:00"/>
+    <total value="10"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/admit-source|1.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/admit-source"/>
+      <code value="hosp-trans"/>
+      <display value="Transferred from other hospital"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/admit-source"/>
+      <code value="emd"/>
+      <display value="From accident/emergency department"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/admit-source"/>
+      <code value="outp"/>
+      <display value="From outpatient department"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/admit-source"/>
+      <code value="born"/>
+      <display value="Born in hospital"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/admit-source"/>
+      <code value="gp"/>
+      <display value="General Practitioner referral"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/admit-source"/>
+      <code value="mp"/>
+      <display value="Medical Practitioner/physician referral"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/admit-source"/>
+      <code value="nursing"/>
+      <display value="From nursing home"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/admit-source"/>
+      <code value="psych"/>
+      <display value="From psychiatric hospital"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/admit-source"/>
+      <code value="rehab"/>
+      <display value="From rehabilitation facility"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/admit-source"/>
+      <code value="other"/>
+      <display value="Other"/>
+    </contains>
+  </expansion>
+</ValueSet>

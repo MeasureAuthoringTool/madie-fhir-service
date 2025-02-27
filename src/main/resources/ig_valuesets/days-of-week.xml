@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="days-of-week"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="fhir"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="normative"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+    <valueCode value="4.0.0"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="5"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/days-of-week"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.512"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="DaysOfWeek"/>
+  <title value="DaysOfWeek"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="HL7 (FHIR Project)"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+    <telecom>
+      <system value="email"/>
+      <value value="fhir@lists.hl7.org"/>
+    </telecom>
+  </contact>
+  <description value="The days of the week."/>
+  <immutable value="true"/>
+  <compose>
+    <include>
+      <system value="http://hl7.org/fhir/days-of-week"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:c400c7c7-2614-4332-b680-79c1e0df00b4"/>
+    <timestamp value="2025-01-17T09:53:37-07:00"/>
+    <total value="7"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://hl7.org/fhir/days-of-week|4.0.1"/>
+    </parameter>
+    <contains>
+      <system value="http://hl7.org/fhir/days-of-week"/>
+      <code value="mon"/>
+      <display value="Monday"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/days-of-week"/>
+      <code value="tue"/>
+      <display value="Tuesday"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/days-of-week"/>
+      <code value="wed"/>
+      <display value="Wednesday"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/days-of-week"/>
+      <code value="thu"/>
+      <display value="Thursday"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/days-of-week"/>
+      <code value="fri"/>
+      <display value="Friday"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/days-of-week"/>
+      <code value="sat"/>
+      <display value="Saturday"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/days-of-week"/>
+      <code value="sun"/>
+      <display value="Sunday"/>
+    </contains>
+  </expansion>
+</ValueSet>

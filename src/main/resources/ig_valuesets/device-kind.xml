@@ -1,0 +1,5080 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="device-kind"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="oo"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/device-kind"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.208"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="FHIRDeviceTypes"/>
+  <title value="FHIR Device Types"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="HL7 Orders and Observations Workgroup"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="Codes used to identify medical devices. Includes concepts from SNOMED CT (http://www.snomed.org/) where concept is-a 49062001 (Device)  and is provided as a suggestive example."/>
+  <copyright value="This resource includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyright of the International Health Terminology Standards Development Organisation (IHTSDO). Implementers of these specifications must have the appropriate SNOMED CT Affiliate license - for more information contact http://www.snomed.org/snomed-ct/get-snomed-ct or info@snomed.org"/>
+  <compose>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="49062001"/>
+      </filter>
+    </include>
+  </compose>
+  <expansion>
+    <extension url="http://hl7.org/fhir/StructureDefinition/valueset-unclosed">
+      <valueBoolean value="true"/>
+    </extension>
+    <identifier value="urn:uuid:6752db18-c564-4c3f-b787-2ab123de477d"/>
+    <timestamp value="2025-01-17T09:53:37-07:00"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-valueset"/>
+      <valueUri value="null"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801"/>
+    </parameter>
+    <parameter>
+      <name value="version"/>
+      <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801"/>
+    </parameter>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="49062001"/>
+      <display value="Device"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="156009"/>
+      <display value="Spine board"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="271003"/>
+      <display value="Bone plate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="287000"/>
+      <display value="Air receiver"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="291005"/>
+      <display value="Atomizer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="678001"/>
+      <display value="Epilator"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="739006"/>
+      <display value="Bicycle ergometer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="793009"/>
+      <display value="Mechanical power press"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="882002"/>
+      <display value="Diagnostic implant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="972002"/>
+      <display value="Air filter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="989005"/>
+      <display value="Linen cloth"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="994005"/>
+      <display value="Brush"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="995006"/>
+      <display value="Farm tool"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1211003"/>
+      <display value="Treadmill"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1333003"/>
+      <display value="Emesis basin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1422002"/>
+      <display value="Plastic mold"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1579007"/>
+      <display value="Surgical drill"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1766001"/>
+      <display value="Toboggan"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1941006"/>
+      <display value="Silk cloth"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1962007"/>
+      <display value="Dike"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2248009"/>
+      <display value="Endotracheal tube cuff"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2282003"/>
+      <display value="Breast prosthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2287009"/>
+      <display value="Nail file"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2468001"/>
+      <display value="Breath analyzer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2478003"/>
+      <display value="Glass eye"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2491002"/>
+      <display value="Intra-aortic balloon catheter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3201004"/>
+      <display value="Tent"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3319006"/>
+      <display value="Artificial liver"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3385008"/>
+      <display value="Cigarette lighter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4408003"/>
+      <display value="Endoscopic camera"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4502000"/>
+      <display value="Garbage disposal appliance"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4632004"/>
+      <display value="Hair cloth"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4816004"/>
+      <display value="Metal device"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4909001"/>
+      <display value="Kitchen sink"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5041003"/>
+      <display value="Adhesive strip"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5042005"/>
+      <display value="Patient scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5159002"/>
+      <display value="Physiologic monitoring system"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5679009"/>
+      <display value="Bed sheet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6012004"/>
+      <display value="Hearing aid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6097006"/>
+      <display value="T-tube"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6822006"/>
+      <display value="Microwave oven"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6919005"/>
+      <display value="Protective clothing material"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6972009"/>
+      <display value="Lithotripter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7007007"/>
+      <display value="Radiographic-fluoroscopic unit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7402007"/>
+      <display value="Probe"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7406005"/>
+      <display value="Crib"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7704007"/>
+      <display value="Stabilizing appliance"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7733008"/>
+      <display value="Hydrocephalic shunt catheter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7968002"/>
+      <display value="Three-wheeled all-terrain vehicle"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7971005"/>
+      <display value="Fogarty catheter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8060009"/>
+      <display value="Denture"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8118007"/>
+      <display value="Crane"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8170008"/>
+      <display value="Adhesive"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8384009"/>
+      <display value="Band saw"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8407004"/>
+      <display value="Bile collection bag"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8434001"/>
+      <display value="Jail"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8451008"/>
+      <display value="Intramedullary rod"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8615009"/>
+      <display value="Blood electrolyte analyzer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8643000"/>
+      <display value="Mortising machine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8682003"/>
+      <display value="Protective shield"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9017009"/>
+      <display value="Ventricular intracranial catheter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9096001"/>
+      <display value="Support"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9129003"/>
+      <display value="Feeding catheter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9419002"/>
+      <display value="Bobsled"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9458007"/>
+      <display value="Elastic bandage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9611009"/>
+      <display value="Dermatotome"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9883003"/>
+      <display value="Cargo handling gear"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10172004"/>
+      <display value="Heater"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10244001"/>
+      <display value="Needle guide"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10371004"/>
+      <display value="Electrostimulating analgesia unit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10507000"/>
+      <display value="Toeboard"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10826000"/>
+      <display value="Industrial saw"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10850003"/>
+      <display value="Radiographic-therapeutic unit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10906003"/>
+      <display value="Vein stripper"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11141007"/>
+      <display value="Bone growth stimulator"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11158002"/>
+      <display value="Electromyographic monitor and recorder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11358008"/>
+      <display value="Prosthetic valve"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11987000"/>
+      <display value="Clinical chemistry analyzer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12121004"/>
+      <display value="Clothes dryer, device (physical object)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12150006"/>
+      <display value="Cannula"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12183004"/>
+      <display value="Arm prosthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12198002"/>
+      <display value="Ice skate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12953007"/>
+      <display value="File"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13118005"/>
+      <display value="Wool cloth"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13219008"/>
+      <display value="Gastroscope"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13268008"/>
+      <display value="Home furnace"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13288007"/>
+      <display value="Monitor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13459008"/>
+      <display value="Temporary artificial heart prosthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13764006"/>
+      <display value="Uterine sound"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13855007"/>
+      <display value="Pillow"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13905003"/>
+      <display value="Tennis ball"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14106009"/>
+      <display value="Cardiac pacemaker"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14108005"/>
+      <display value="Cage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14116001"/>
+      <display value="Analgesia unit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14208000"/>
+      <display value="Oil well"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14288003"/>
+      <display value="Nasal septum button"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14339000"/>
+      <display value="Button"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14364002"/>
+      <display value="Camera"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14397001"/>
+      <display value="Shower bath"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14519003"/>
+      <display value="Aspirator"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14548009"/>
+      <display value="Harrington rod"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14762000"/>
+      <display value="Alloy steel chain sling"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14789005"/>
+      <display value="Prosthetic implant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15000008"/>
+      <display value="Air-conditioner"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15340005"/>
+      <display value="Wood's light"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15447007"/>
+      <display value="Joint prosthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15644007"/>
+      <display value="Anesthesia unit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15869005"/>
+      <display value="Dosimeter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15873008"/>
+      <display value="Boiler"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15922004"/>
+      <display value="Gown"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16056004"/>
+      <display value="Boots"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16127002"/>
+      <display value="Clothes wringer, device (physical object)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16349000"/>
+      <display value="Orthopedic device"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16417001"/>
+      <display value="Commercial breathing supply hoses diving operation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16470007"/>
+      <display value="Electrode"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16497000"/>
+      <display value="Electric clipper"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16524003"/>
+      <display value="Cotton cloth"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16540000"/>
+      <display value="Umbrella catheter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16650009"/>
+      <display value="Splint"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17102003"/>
+      <display value="Nasogastric tube"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17107009"/>
+      <display value="Mitral valve prosthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17207004"/>
+      <display value="Mattress"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17306006"/>
+      <display value="Hernia belt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17404008"/>
+      <display value="Cardiac compression board"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17472008"/>
+      <display value="Knife"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18100009"/>
+      <display value="Electrical outlet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18151003"/>
+      <display value="Punch"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18153000"/>
+      <display value="Fluorescence immunoassay analyzer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18411005"/>
+      <display value="Chisel"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18492004"/>
+      <display value="Canister"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18666004"/>
+      <display value="Finespun glass"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19257004"/>
+      <display value="Defibrillator"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19328000"/>
+      <display value="Blanket"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19443004"/>
+      <display value="Radioactive implant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19627002"/>
+      <display value="Leather"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19762002"/>
+      <display value="Leather belt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19817005"/>
+      <display value="Fan blade"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19892000"/>
+      <display value="Scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19923001"/>
+      <display value="Catheter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19966008"/>
+      <display value="Farm machine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20032007"/>
+      <display value="Bathinette"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20195009"/>
+      <display value="Leg prosthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20235003"/>
+      <display value="Toothbrush"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20273004"/>
+      <display value="Industrial machine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20359006"/>
+      <display value="Contraceptive diaphragm"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20406008"/>
+      <display value="Back rests"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20428008"/>
+      <display value="Oxygen tent"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20513005"/>
+      <display value="Power tool"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20568009"/>
+      <display value="Urinary catheter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20613002"/>
+      <display value="Cystoscope"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20861007"/>
+      <display value="Plug pack"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20867006"/>
+      <display value="Experimental implant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20873007"/>
+      <display value="Plastic cloth-like material"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20909006"/>
+      <display value="Combine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20997002"/>
+      <display value="Hand tool"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21079000"/>
+      <display value="Carbon monoxide analyzer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21546008"/>
+      <display value="Refrigerator"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21870002"/>
+      <display value="Transluminal extraction catheter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21944004"/>
+      <display value="Abdominal binder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22251003"/>
+      <display value="Timer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22283009"/>
+      <display value="Artificial membrane"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22566001"/>
+      <display value="Cytology brush"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22662007"/>
+      <display value="Retaining harness"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22679001"/>
+      <display value="Handcuffs"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22744006"/>
+      <display value="Artificial hair wig"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23076004"/>
+      <display value="Household furniture"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23228005"/>
+      <display value="Arthroscope"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23366006"/>
+      <display value="Motorized wheelchair device (physical object)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23562009"/>
+      <display value="Household ventilator, device (physical object)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23699001"/>
+      <display value="Baseball"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23785007"/>
+      <display value="Arthroscopic irrigation/distension pump"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23973005"/>
+      <display value="Indwelling urinary catheter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24110008"/>
+      <display value="Anoscope"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24174009"/>
+      <display value="Bronchoscope"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24230000"/>
+      <display value="Vibrator"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24290003"/>
+      <display value="Biologic cardiac valve prosthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24402003"/>
+      <display value="Stepladder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24470005"/>
+      <display value="Wrench"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24513003"/>
+      <display value="Plastic boots"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24697008"/>
+      <display value="Ostomy belt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24767007"/>
+      <display value="Eustachian tube prosthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25005004"/>
+      <display value="Snare"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25062003"/>
+      <display value="Feeding tube"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25152007"/>
+      <display value="Squeeze cage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25510005"/>
+      <display value="Cardiac valve prosthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25632005"/>
+      <display value="Hockey puck"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25680008"/>
+      <display value="Scaffold"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25742001"/>
+      <display value="Orthodontic appliance"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25937001"/>
+      <display value="Neurostimulator"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26128008"/>
+      <display value="Bougie"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26239002"/>
+      <display value="Soccer ball"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26334009"/>
+      <display value="Dockboard"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26397000"/>
+      <display value="Breathing bag"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26412008"/>
+      <display value="Endotracheal tube"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26579007"/>
+      <display value="Holter valve"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26719000"/>
+      <display value="Celestin tube"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26882005"/>
+      <display value="Rongeur"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27042007"/>
+      <display value="Needle adapter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27065002"/>
+      <display value="Surgical suture"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27091001"/>
+      <display value="Dumbwaiter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27126002"/>
+      <display value="Power belt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27229001"/>
+      <display value="Spray booth"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27606000"/>
+      <display value="Dental prosthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27785006"/>
+      <display value="Athletic supporter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27812008"/>
+      <display value="Electric heating pad"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27976001"/>
+      <display value="Woodworking machinery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27991004"/>
+      <display value="Thermometer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28026003"/>
+      <display value="Hairbrush"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28519005"/>
+      <display value="Side-delivery hay rake"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="29292008"/>
+      <display value="Fur garment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="29319002"/>
+      <display value="Forceps"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="29396008"/>
+      <display value="Resuscitator"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30002008"/>
+      <display value="Fireplace"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30012001"/>
+      <display value="Elevator"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30070001"/>
+      <display value="Multistage suspension scaffolding"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30115002"/>
+      <display value="Shield"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30176005"/>
+      <display value="Baseball bat"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30234008"/>
+      <display value="Medical laboratory analyzer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30610008"/>
+      <display value="Epidural catheter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30661003"/>
+      <display value="Cosmetic prosthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30784000"/>
+      <display value="Aerosol sprayer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30929000"/>
+      <display value="Ligator"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30968007"/>
+      <display value="Drainage bag"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31030004"/>
+      <display value="Peritoneal catheter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31031000"/>
+      <display value="Orthopedic internal fixation system"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31174004"/>
+      <display value="Lumbosacral belt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31791005"/>
+      <display value="Traction belt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31878003"/>
+      <display value="Surgical scissors"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32033000"/>
+      <display value="Arterial pressure monitor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32356002"/>
+      <display value="Machine guarding"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32504006"/>
+      <display value="Screwdriver"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32634007"/>
+      <display value="Fixed ladder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32667006"/>
+      <display value="Oropharyngeal airway device"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32711007"/>
+      <display value="Ostomy collection bag"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32712000"/>
+      <display value="Drain"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32871007"/>
+      <display value="Tweezer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33194000"/>
+      <display value="Welding equipment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33336008"/>
+      <display value="Matches"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33352006"/>
+      <display value="Ax"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33388001"/>
+      <display value="Carbon dioxide analyzer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33482001"/>
+      <display value="Rubber boots"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33686008"/>
+      <display value="Stylet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33690005"/>
+      <display value="Sharp instrument"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33802005"/>
+      <display value="Enema bag"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33894003"/>
+      <display value="Experimental device"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33918000"/>
+      <display value="Rubberized cloth"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34160005"/>
+      <display value="Lamp"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34164001"/>
+      <display value="Plaster cast"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34234003"/>
+      <display value="Plastic tube"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34263000"/>
+      <display value="Medical balloon"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34362008"/>
+      <display value="Vascular device"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34759008"/>
+      <display value="Urethral catheter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35398009"/>
+      <display value="Ostomy appliance"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35593004"/>
+      <display value="Wire ligature"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35870000"/>
+      <display value="Cerebrospinal catheter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36011000"/>
+      <display value="Spike harrow"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36365007"/>
+      <display value="Ice-pick"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36370000"/>
+      <display value="Aspirator trap bottle"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36645008"/>
+      <display value="Stimulator"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36761001"/>
+      <display value="Natural hair wig"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36965003"/>
+      <display value="Hemodialysis machine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36977008"/>
+      <display value="Peripheral neurostimulator"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37189001"/>
+      <display value="Magnetic detector"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37270008"/>
+      <display value="Endoscope"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37284003"/>
+      <display value="Bag"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37311003"/>
+      <display value="Stone retrieval basket"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37347002"/>
+      <display value="Dildo"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37360008"/>
+      <display value="Patient isolator"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37503007"/>
+      <display value="Protective blind"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37759000"/>
+      <display value="Surgical instrument"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37874008"/>
+      <display value="Continuing positive airway pressure unit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37953008"/>
+      <display value="Bedside rails"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38126007"/>
+      <display value="Protective glasses"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38141007"/>
+      <display value="Tourniquet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38277008"/>
+      <display value="Protective device"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38806006"/>
+      <display value="Hockey stick"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38862006"/>
+      <display value="Brake"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38871002"/>
+      <display value="Metallic cloth"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39590006"/>
+      <display value="Air compressor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39661006"/>
+      <display value="Light anywhere matches"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39690000"/>
+      <display value="Sphygmomanometer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39768008"/>
+      <display value="Rasp"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39790008"/>
+      <display value="Non-electric heating pad"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39802000"/>
+      <display value="Tongue blade"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39821008"/>
+      <display value="Positron emission tomography unit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39869006"/>
+      <display value="Alarm"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40188005"/>
+      <display value="Household accessory"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40388003"/>
+      <display value="Implant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40519001"/>
+      <display value="Binder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="41157002"/>
+      <display value="Immobilizer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="41323003"/>
+      <display value="Urinary collection bag"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="41684000"/>
+      <display value="Industrial tool"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="42152006"/>
+      <display value="Metal tube"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="42305009"/>
+      <display value="Ambulation device"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="42380001"/>
+      <display value="Ear plug"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="42451009"/>
+      <display value="Blood warmer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="42716000"/>
+      <display value="Wool"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="42882002"/>
+      <display value="Hypodermic spray"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="43192004"/>
+      <display value="Bone pencil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="43252007"/>
+      <display value="Cochlear prosthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="43725001"/>
+      <display value="Airway device"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="43770009"/>
+      <display value="Doppler device"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="43983001"/>
+      <display value="Shoes"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="44056008"/>
+      <display value="Caliper"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="44396004"/>
+      <display value="Magnet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="44492001"/>
+      <display value="Industrial robot"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="44668000"/>
+      <display value="Pump"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="44738004"/>
+      <display value="Laryngoscope"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="44806002"/>
+      <display value="Esophageal bougie"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="44845007"/>
+      <display value="Golf ball"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="44907005"/>
+      <display value="Four-wheeled all-terrain vehicle"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="44959004"/>
+      <display value="Angioplasty balloon catheter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="45633005"/>
+      <display value="Peritoneal dialyzer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="45901004"/>
+      <display value="Penrose drain"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="45984009"/>
+      <display value="Hospital shower bath"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="46181005"/>
+      <display value="Automatic fire extinguisher system"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="46265007"/>
+      <display value="Artificial lashes"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="46299005"/>
+      <display value="Sanitary belt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="46364009"/>
+      <display value="Clamp"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="46440007"/>
+      <display value="Basketball"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="46625003"/>
+      <display value="Pessary"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="46666003"/>
+      <display value="Chain"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="46949002"/>
+      <display value="Deck machinery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="47162009"/>
+      <display value="Mirror"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="47326004"/>
+      <display value="Electrical utilization equipment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="47424002"/>
+      <display value="Apgar scoring timer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="47528002"/>
+      <display value="Ureteral catheter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="47731004"/>
+      <display value="Birthing chair"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="47734007"/>
+      <display value="Catgut suture"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="47776004"/>
+      <display value="Hand mitt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="47942000"/>
+      <display value="Proctoscope"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="48066006"/>
+      <display value="Circular portable saw"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="48096001"/>
+      <display value="Bathtub rails"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="48240003"/>
+      <display value="Training equipment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="48246009"/>
+      <display value="Stud gun, device (physical object)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="48295009"/>
+      <display value="Vascular filter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="48473008"/>
+      <display value="Protective body armor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="48545009"/>
+      <display value="Fireplace lighter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="48990009"/>
+      <display value="Strap"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="49448001"/>
+      <display value="Razor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="49890001"/>
+      <display value="Hospital cart"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="49980008"/>
+      <display value="Farm tractor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="50121007"/>
+      <display value="Eye glasses, device (physical object)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="50457005"/>
+      <display value="Workover rig service to oil well"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="50483000"/>
+      <display value="Oil well rig"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="50851003"/>
+      <display value="Penile tumescence monitor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="51016001"/>
+      <display value="Hammer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="51086006"/>
+      <display value="Shower curtain"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="51324004"/>
+      <display value="Stripper"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="51685009"/>
+      <display value="Roller skate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="51791000"/>
+      <display value="Measuring tape"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="51832004"/>
+      <display value="Valved tube"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="51883004"/>
+      <display value="Sling"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="52065008"/>
+      <display value="Diaper"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="52124006"/>
+      <display value="Central venous catheter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="52161002"/>
+      <display value="Molten lava"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="52291003"/>
+      <display value="Glove"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="52325000"/>
+      <display value="Hay wagon"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="52520009"/>
+      <display value="Ladder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="52537002"/>
+      <display value="Aspirator collection canister"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="52624007"/>
+      <display value="Radiofrequency generator"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="52773007"/>
+      <display value="Ski"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="52809000"/>
+      <display value="Nasopharyngeal catheter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="52893008"/>
+      <display value="Blood gas/pH analyzer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="53167006"/>
+      <display value="Platform suspended boom"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="53177008"/>
+      <display value="Nasal balloon"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="53217009"/>
+      <display value="Artificial lung"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="53350007"/>
+      <display value="Prosthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="53535004"/>
+      <display value="Retractor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="53639001"/>
+      <display value="Stethoscope"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="53671008"/>
+      <display value="Gastric balloon"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="53996008"/>
+      <display value="Penile prosthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="54234007"/>
+      <display value="Cryogenic analgesia unit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="54638004"/>
+      <display value="Towel"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="54953005"/>
+      <display value="Computerized axial tomography scanner"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="55091003"/>
+      <display value="Blood coagulation analyzer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="55206006"/>
+      <display value="Suture button"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="55216003"/>
+      <display value="Amnioscope"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="55337009"/>
+      <display value="Auscultoscope"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="55567004"/>
+      <display value="Bassinet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="55658008"/>
+      <display value="Hot object"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="55986002"/>
+      <display value="Tong"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="56144002"/>
+      <display value="Back braces"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="56353002"/>
+      <display value="Staple"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="56547001"/>
+      <display value="Trephine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="56896002"/>
+      <display value="Pacemaker catheter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="56961003"/>
+      <display value="Cardiac transvenous pacemaker"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="57118008"/>
+      <display value="Perfusion pump"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="57134006"/>
+      <display value="Instrument"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="57368009"/>
+      <display value="Contact lenses"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="57395004"/>
+      <display value="Physical restraint equipment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="57730005"/>
+      <display value="Abrasive grinding"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="58153004"/>
+      <display value="Android"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="58253008"/>
+      <display value="Suction catheter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="58514003"/>
+      <display value="Infant scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="58878002"/>
+      <display value="Protective vest"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="58938008"/>
+      <display value="WC - Wheelchair"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="59102007"/>
+      <display value="Ice bag"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="59127000"/>
+      <display value="Apnea alarm"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="59153008"/>
+      <display value="Barge"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="59160002"/>
+      <display value="Chipguard"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="59181002"/>
+      <display value="Oxygen analyzer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="59432006"/>
+      <display value="Ligature"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="59647009"/>
+      <display value="Safety matches"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="59746007"/>
+      <display value="Needle holder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="59772003"/>
+      <display value="Culdoscope"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="59782002"/>
+      <display value="Speculum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="59833007"/>
+      <display value="Collapsible balloon"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="60054005"/>
+      <display value="Seat belt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="60110001"/>
+      <display value="Wig"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="60150003"/>
+      <display value="Ski pole, device (physical object)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="60161006"/>
+      <display value="Acupuncture needle"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="60185003"/>
+      <display value="Carbon dioxide absorber"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="60311007"/>
+      <display value="Leather boots"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="60773001"/>
+      <display value="Injector"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="60806001"/>
+      <display value="Whirlpool bath"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="60957001"/>
+      <display value="Otoscope"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="60977008"/>
+      <display value="Harrow"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="61284002"/>
+      <display value="Machine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="61330002"/>
+      <display value="Nasopharyngeal airway device"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="61433001"/>
+      <display value="Glassware"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="61512008"/>
+      <display value="Tennis racket"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="61835000"/>
+      <display value="Dilator"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="61968008"/>
+      <display value="Syringe"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="61979003"/>
+      <display value="Antiembolic device"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="62336005"/>
+      <display value="Electric cable"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="62495008"/>
+      <display value="Gamma counter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="62614002"/>
+      <display value="Overhead and gantry crane"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="62980002"/>
+      <display value="Tubular bandage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="63112008"/>
+      <display value="Bone wire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="63173005"/>
+      <display value="Hat band"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="63289001"/>
+      <display value="Bone nail"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="63336000"/>
+      <display value="Bone plug"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="63548003"/>
+      <display value="Derrick"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="63562005"/>
+      <display value="Cervical collar"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="63619003"/>
+      <display value="Fiberoptic cable"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="63653004"/>
+      <display value="Medical device"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="63797009"/>
+      <display value="Traction unit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="63839002"/>
+      <display value="Electroejaculator"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="63995005"/>
+      <display value="Bandage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="64174005"/>
+      <display value="Snowmobile"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="64255007"/>
+      <display value="Esophageal balloon"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="64565002"/>
+      <display value="Air tool"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="64571008"/>
+      <display value="Hair clipper"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="64883003"/>
+      <display value="Inhalation analgesia unit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="64973003"/>
+      <display value="Scissors"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="64989000"/>
+      <display value="Escalator"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="65053001"/>
+      <display value="Electrical battery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="65105002"/>
+      <display value="Surgical drapes"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="65268008"/>
+      <display value="Chart recorder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="65473004"/>
+      <display value="Microscope"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="65577000"/>
+      <display value="X-ray shield"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="65818007"/>
+      <display value="Stent"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="66222000"/>
+      <display value="Hospital robot"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="66415006"/>
+      <display value="Audiometric testing equipment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="66435007"/>
+      <display value="Electric bed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="66494009"/>
+      <display value="Face cloth"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="67270000"/>
+      <display value="Hip prosthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="67387001"/>
+      <display value="Coronary perfusion catheter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="67604003"/>
+      <display value="Household appliance"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="67670006"/>
+      <display value="Radiographic-tomographic unit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="67777003"/>
+      <display value="Moving walk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="67829007"/>
+      <display value="Esophagoscope"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="67920005"/>
+      <display value="Aerial lift"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="67966000"/>
+      <display value="Enema tube"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="68080007"/>
+      <display value="Radiographic unit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="68181008"/>
+      <display value="Vibrating electric heating pad"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="68183006"/>
+      <display value="Bone screw"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="68276009"/>
+      <display value="Bottle"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="68325009"/>
+      <display value="Sound"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="68597009"/>
+      <display value="Support belt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="68685003"/>
+      <display value="Household robot"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="68842005"/>
+      <display value="Gastroduodenoscope"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="69805005"/>
+      <display value="Insulin pump"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="69922008"/>
+      <display value="Tracheostomy button"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="70080007"/>
+      <display value="Bayonet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="70300000"/>
+      <display value="Skull tongs"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="70303003"/>
+      <display value="Freezer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="70453008"/>
+      <display value="Sled"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="70665002"/>
+      <display value="Blood pressure cuff"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="70793005"/>
+      <display value="Recreation equipment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="70872004"/>
+      <display value="Wash basin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="71384000"/>
+      <display value="Warmer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="71483007"/>
+      <display value="Diving stage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="71545009"/>
+      <display value="Humidifier"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="71601002"/>
+      <display value="Proctosigmoidoscope"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="71667001"/>
+      <display value="Bone wax"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="71948003"/>
+      <display value="Autoclave"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="72070000"/>
+      <display value="Ring"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="72188006"/>
+      <display value="Tissue expander"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="72302000"/>
+      <display value="Lead cable"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="72506001"/>
+      <display value="Implantable defibrillator"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="72742007"/>
+      <display value="Aspirator collection bottle"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="73027007"/>
+      <display value="Infant incubator"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="73368009"/>
+      <display value="Foley catheter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="73534004"/>
+      <display value="Artificial skin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="73562006"/>
+      <display value="Transilluminator"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="73571002"/>
+      <display value="Intravenous analgesia unit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="73618007"/>
+      <display value="Power saw"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="73878004"/>
+      <display value="Hand saw"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="73985004"/>
+      <display value="Face protection in construction industry"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="74094004"/>
+      <display value="Belt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="74108008"/>
+      <display value="Recorder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="74300007"/>
+      <display value="Sanitary pad"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="74444006"/>
+      <display value="Limb prosthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="74453004"/>
+      <display value="Electric razor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="74566002"/>
+      <display value="Crutch"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="74884005"/>
+      <display value="Boatswain's chair"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="75075000"/>
+      <display value="Shoring and bracing (masonry and woodwork)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="75192006"/>
+      <display value="Arterial cannula"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="75751006"/>
+      <display value="Manual respirator"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="75780002"/>
+      <display value="Artificial kidney"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="75926004"/>
+      <display value="Lighter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="75963008"/>
+      <display value="Skateboard"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="75988000"/>
+      <display value="Bathtub"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="76091005"/>
+      <display value="Stainless steel wire suture"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="76123001"/>
+      <display value="Glass tube"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="76433001"/>
+      <display value="Apron"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="76664007"/>
+      <display value="Artificial pancreas"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="76705002"/>
+      <display value="Applicator stick"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="76757002"/>
+      <display value="Disc harrow"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="76825006"/>
+      <display value="Abrasive wheel machinery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="76937009"/>
+      <display value="Guillotine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="77444004"/>
+      <display value="Bone pin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="77541009"/>
+      <display value="Band"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="77720000"/>
+      <display value="Clip"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="77755003"/>
+      <display value="Chemical fiber cloth"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="77777004"/>
+      <display value="Bone staple"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="78279003"/>
+      <display value="Nail clipper"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="78412001"/>
+      <display value="Clothes washer, device (physical object)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="78498003"/>
+      <display value="Testicular prosthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="78641001"/>
+      <display value="Nylon suture"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="78886001"/>
+      <display value="Electronic monitor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="79068005"/>
+      <display value="Needle"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="79218005"/>
+      <display value="Vehicle-mounted work platform"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="79287008"/>
+      <display value="Tampon"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="79401009"/>
+      <display value="Chute"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="79438009"/>
+      <display value="Foot protection"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="79481007"/>
+      <display value="Swing or sliding cut-off saw"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="79593001"/>
+      <display value="Transvenous electrode"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="79618001"/>
+      <display value="Storage tank"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="79811009"/>
+      <display value="Electric blanket"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="80278003"/>
+      <display value="Pediatric bed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="80404000"/>
+      <display value="Chain fall"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="80617005"/>
+      <display value="Analyzer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="80664005"/>
+      <display value="Motor home"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="80853009"/>
+      <display value="Reflex hammer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="80950008"/>
+      <display value="Oven"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="81293006"/>
+      <display value="Cloth"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="81317009"/>
+      <display value="Socket wrench"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="81320001"/>
+      <display value="Enzyme immunoassay analyzer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="81381000"/>
+      <display value="Hay rake"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="81826000"/>
+      <display value="All-terrain vehicle"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="81892008"/>
+      <display value="Radial saw"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="82379000"/>
+      <display value="Hemostat"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="82449006"/>
+      <display value="Peripheral intravenous catheter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="82657000"/>
+      <display value="Bony tissue forceps"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="82830000"/>
+      <display value="Robotic arm"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="82879008"/>
+      <display value="Safety belt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="82924004"/>
+      <display value="Power chopper"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="83059008"/>
+      <display value="Tube"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="83315005"/>
+      <display value="Audio analgesia unit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="83320005"/>
+      <display value="Dip tank"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="83369007"/>
+      <display value="Plastic shoes"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="83517001"/>
+      <display value="Robot"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="83903000"/>
+      <display value="Man lift"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="84023008"/>
+      <display value="Ski tow"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="84330009"/>
+      <display value="Pliers"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="84444002"/>
+      <display value="Chain saw"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="84546002"/>
+      <display value="Barricade"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="84599008"/>
+      <display value="Detonating cord"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="84610002"/>
+      <display value="Implantable dental prosthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="84683006"/>
+      <display value="Aortic valve prosthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="84756000"/>
+      <display value="Adhesive tape"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="85106006"/>
+      <display value="Boring machine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="85329008"/>
+      <display value="Abortion pump"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="85455005"/>
+      <display value="Cart"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="85590000"/>
+      <display value="Lawnmower"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="85684007"/>
+      <display value="Engraving press"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="86056006"/>
+      <display value="Golf club"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="86174004"/>
+      <display value="Laparoscope"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="86184003"/>
+      <display value="Electrocardiographic monitor and recorder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="86407004"/>
+      <display value="Table"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="86453006"/>
+      <display value="Defibrillator paddle"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="86572008"/>
+      <display value="Arteriovenous shunt catheter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="86768006"/>
+      <display value="Balloon pump"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="86816008"/>
+      <display value="Diving ladder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="86967005"/>
+      <display value="Tool"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="87088005"/>
+      <display value="Soldering iron"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="87140005"/>
+      <display value="Clothing material"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="87405001"/>
+      <display value="Cane"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="87710003"/>
+      <display value="Physical restraint structure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="87717000"/>
+      <display value="Tester"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="87851008"/>
+      <display value="Blood cell counter and analyzer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="88063004"/>
+      <display value="Footwear"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="88168006"/>
+      <display value="Maximum security cell"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="88765001"/>
+      <display value="Artificial tissue"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="88959008"/>
+      <display value="Hypodermic needle"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="89149003"/>
+      <display value="Stretcher"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="89236003"/>
+      <display value="Leather shoes"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="89509004"/>
+      <display value="Blood culture analyzer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="90003000"/>
+      <display value="Magnetic resonance imaging unit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="90035000"/>
+      <display value="Alcohol sponge"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="90082007"/>
+      <display value="Cast cutter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="90134004"/>
+      <display value="Metal periosteal implant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="90412006"/>
+      <display value="Colonoscope"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="90504001"/>
+      <display value="Ear prosthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="90913005"/>
+      <display value="Rubber shoes"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="90948003"/>
+      <display value="Abrasive blast by cleaning nozzles"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="91294003"/>
+      <display value="Thomas collar"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="91318002"/>
+      <display value="Hyperbaric chamber"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="91535004"/>
+      <display value="Basin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="91537007"/>
+      <display value="Hospital bed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="91582006"/>
+      <display value="Hay bailer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="91656009"/>
+      <display value="Stove"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102303004"/>
+      <display value="Vascular prosthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102304005"/>
+      <display value="Measuring ruler"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102305006"/>
+      <display value="Intramedullary reamer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102306007"/>
+      <display value="Reamer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102307003"/>
+      <display value="Surgical knife"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102308008"/>
+      <display value="Scalpel"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102309000"/>
+      <display value="Surgical saw"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102310005"/>
+      <display value="Gigli's wire saw"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102311009"/>
+      <display value="Starck dilator"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102312002"/>
+      <display value="Atherectomy device"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102313007"/>
+      <display value="Rotational atherectomy device"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102314001"/>
+      <display value="Embolization coil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102315000"/>
+      <display value="Embolization ball"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102316004"/>
+      <display value="Embolization particulate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102317008"/>
+      <display value="Guiding catheter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102318003"/>
+      <display value="Implantable venous catheter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102319006"/>
+      <display value="Percutaneous transluminal angioplasty balloon"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102320000"/>
+      <display value="Detachable balloon"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102321001"/>
+      <display value="Operating microscope"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102322008"/>
+      <display value="External prosthesis for sonographic procedure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102323003"/>
+      <display value="Water bag prosthesis for imaging procedure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102324009"/>
+      <display value="Saline bag prosthesis for imaging procedure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102325005"/>
+      <display value="Gel prosthesis for imaging procedure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102326006"/>
+      <display value="Dagger"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102327002"/>
+      <display value="Dirk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102328007"/>
+      <display value="Sword"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102384007"/>
+      <display value="Motor vehicle airbag"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102385008"/>
+      <display value="Front airbag"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102386009"/>
+      <display value="Front driver airbag"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102387000"/>
+      <display value="Front passenger airbag"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102388005"/>
+      <display value="Side airbag"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102402008"/>
+      <display value="Snowboard"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102403003"/>
+      <display value="Water ski"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="105784003"/>
+      <display value="Life support equipment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="105787005"/>
+      <display value="Belt AND/OR binder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="105788000"/>
+      <display value="Probe, sound, bougie AND/OR airway"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="105789008"/>
+      <display value="Cannula, tube AND/OR catheter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="105790004"/>
+      <display value="Bag, balloon AND/OR bottle"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="105791000"/>
+      <display value="Pump, injector AND/OR aspirator"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="105792007"/>
+      <display value="Analgesia AND/OR anesthesia unit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="105794008"/>
+      <display value="Scope AND/OR camera"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="105799003"/>
+      <display value="Household device"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="105809003"/>
+      <display value="Physical restraint equipment AND/OR structure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="108874005"/>
+      <display value="Silicone plug"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="109226007"/>
+      <display value="Dental pin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="109227003"/>
+      <display value="Hand joint prosthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="109228008"/>
+      <display value="Knee joint prosthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="111041008"/>
+      <display value="Artificial nails"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="111042001"/>
+      <display value="Artificial organ"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="111043006"/>
+      <display value="Medical tuning fork"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="111044000"/>
+      <display value="Bone tap"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="111045004"/>
+      <display value="Exerciser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="111047007"/>
+      <display value="Urethral bougie"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="111048002"/>
+      <display value="Rhinoscope"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="111052002"/>
+      <display value="Protective breast plate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="111053007"/>
+      <display value="Clothes iron, device (physical object)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="111054001"/>
+      <display value="Snowblower"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="111060001"/>
+      <display value="Industrial sewing machine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="111062009"/>
+      <display value="Food waste disposal equipment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="115961006"/>
+      <display value="Soft Cast"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="115962004"/>
+      <display value="Fiberglass cast"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="116146000"/>
+      <display value="Blood product unit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="116204000"/>
+      <display value="Catheter tip"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="116205004"/>
+      <display value="Blood bag"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="116206003"/>
+      <display value="Plasma bag"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="116250002"/>
+      <display value="Filter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="116251003"/>
+      <display value="Wick"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118294000"/>
+      <display value="Solid-state laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118295004"/>
+      <display value="Gas laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118296003"/>
+      <display value="Chemical laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118297007"/>
+      <display value="Excimer laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118298002"/>
+      <display value="Dye laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118299005"/>
+      <display value="Diode laser device"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118301003"/>
+      <display value="Nd:YVO&gt;4&lt; laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118302005"/>
+      <display value="Nd:YLF laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118303000"/>
+      <display value="Nd:Glass laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118304006"/>
+      <display value="Chromium sapphire laser device"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118305007"/>
+      <display value="Er:Glass laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118306008"/>
+      <display value="Er:YAG laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118307004"/>
+      <display value="Ho:YLF laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118308009"/>
+      <display value="Ho:YAG laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118309001"/>
+      <display value="Ti:sapphire laser device"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118310006"/>
+      <display value="Alexandrite laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118311005"/>
+      <display value="Argon ion laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118312003"/>
+      <display value="CO&gt;2&lt; laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118313008"/>
+      <display value="He laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118314002"/>
+      <display value="Helium cadmium laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118315001"/>
+      <display value="HeNe laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118316000"/>
+      <display value="Krypton gas laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118317009"/>
+      <display value="Neon gas laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118318004"/>
+      <display value="Nitrogen gas laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118319007"/>
+      <display value="Xenon gas laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118320001"/>
+      <display value="Copper vapor laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118321002"/>
+      <display value="Gold vapor laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118322009"/>
+      <display value="DF laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118323004"/>
+      <display value="DF-CO&gt;2&lt; laser device"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118324005"/>
+      <display value="HF laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118325006"/>
+      <display value="ArF laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118326007"/>
+      <display value="KrF laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118327003"/>
+      <display value="KrCl laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118328008"/>
+      <display value="XeCl laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118329000"/>
+      <display value="XeFl laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118330005"/>
+      <display value="Free electron laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118331009"/>
+      <display value="Tunable dye laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118332002"/>
+      <display value="Tunable dye argon laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118333007"/>
+      <display value="Gallium arsenide laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118334001"/>
+      <display value="Gallium aluminum arsenide laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118335000"/>
+      <display value="Lead-salt laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118336004"/>
+      <display value="Rhodamine 6G dye laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118337008"/>
+      <display value="Coumarin C30 dye laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118338003"/>
+      <display value="Coumarin 102 dye laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118342000"/>
+      <display value="Diode pumped laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118343005"/>
+      <display value="Flashlamp pumped laser device"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118346002"/>
+      <display value="Pulsed dye laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118347006"/>
+      <display value="QS laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118348001"/>
+      <display value="Flashlamp pulsed dye laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118349009"/>
+      <display value="CW CO&gt;2&lt; laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118350009"/>
+      <display value="High energy pulsed CO&gt;2&lt; laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118351008"/>
+      <display value="Frequency doubled Nd:YAG laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118354000"/>
+      <display value="Continuous wave laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118355004"/>
+      <display value="Pulsed laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118356003"/>
+      <display value="Metal vapor laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118357007"/>
+      <display value="KTP laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118371004"/>
+      <display value="Ion laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118372006"/>
+      <display value="Plastic implant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118373001"/>
+      <display value="Silastic implant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118374007"/>
+      <display value="Silicone implant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118375008"/>
+      <display value="Cardiac septum prosthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118376009"/>
+      <display value="Thermocouple"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118377000"/>
+      <display value="Biopsy needle"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118378005"/>
+      <display value="Pacemaker pulse generator"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118379002"/>
+      <display value="Automatic implantable cardioverter sensing electrodes"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118380004"/>
+      <display value="Implantable defibrillator leads"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118381000"/>
+      <display value="Implantable cardioverter leads"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118383002"/>
+      <display value="External fixation device"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118384008"/>
+      <display value="Long arm splint"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118385009"/>
+      <display value="Short arm splint"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118386005"/>
+      <display value="Figure of eight plaster cast"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118387001"/>
+      <display value="Halo cast"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118388006"/>
+      <display value="Body cast, shoulder to hips"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118389003"/>
+      <display value="Body cast, shoulder to hips including head, Minerva type"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118390007"/>
+      <display value="Body cast, shoulder to hips including one thigh"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118391006"/>
+      <display value="Body cast, shoulder to hips including both thighs"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118392004"/>
+      <display value="Shoulder cast"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118393009"/>
+      <display value="Full arm cast"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118394003"/>
+      <display value="Below elbow cast"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118396001"/>
+      <display value="Cylinder cast, thigh to ankle"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118397005"/>
+      <display value="Long leg cast"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118398000"/>
+      <display value="Long leg cast, walker or ambulatory type"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118399008"/>
+      <display value="Long leg cast, brace type"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118400001"/>
+      <display value="Short leg cast below knee to toes"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118401002"/>
+      <display value="Short leg cast below knee to toes, walking or ambulatory type"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118402009"/>
+      <display value="Clubfoot cast"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118403004"/>
+      <display value="Clubfoot cast, short leg"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118404005"/>
+      <display value="Clubfoot cast, long leg"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118405006"/>
+      <display value="Spica cast"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118406007"/>
+      <display value="Hip spica cast, both legs"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118407003"/>
+      <display value="Hip spica cast, one leg"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118408008"/>
+      <display value="Hip spica cast, one and one-half spica"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118409000"/>
+      <display value="Patellar tendon bearing cast"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118410005"/>
+      <display value="Boot cast"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118411009"/>
+      <display value="Sugar tong cast"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118412002"/>
+      <display value="Gauntlet cast"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118413007"/>
+      <display value="Body cast"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118414001"/>
+      <display value="Pressure dressing"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118415000"/>
+      <display value="Packing material"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118416004"/>
+      <display value="Wound packing material"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118418003"/>
+      <display value="Trocar"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118419006"/>
+      <display value="Umbrella device"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118420000"/>
+      <display value="Atrial septal umbrella"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118421001"/>
+      <display value="King-Mills umbrella device"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118422008"/>
+      <display value="Mobitz-Uddin umbrella device"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118423003"/>
+      <display value="Rashkind umbrella device"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118424009"/>
+      <display value="Reservoir device"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118425005"/>
+      <display value="Ventricular reservoir"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118426006"/>
+      <display value="Ommaya reservoir"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118427002"/>
+      <display value="Rickham reservoir"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118428007"/>
+      <display value="Flexible fiberoptic endoscope"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118429004"/>
+      <display value="Flexible fiberoptic laryngoscope with strobe"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="118643004"/>
+      <display value="Cast"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="122456005"/>
+      <display value="Laser"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="123636009"/>
+      <display value="Silk suture"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="126065006"/>
+      <display value="Jejunostomy tube"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="128981007"/>
+      <display value="Baffle"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129113006"/>
+      <display value="Intra-aortic balloon pump"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129121000"/>
+      <display value="Tracheostomy tube"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129247000"/>
+      <display value="Fine biopsy needle"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129248005"/>
+      <display value="Core biopsy needle"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129460009"/>
+      <display value="Compression paddle"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129462001"/>
+      <display value="Catheter guide wire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129463006"/>
+      <display value="J wire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129464000"/>
+      <display value="Medical administrative equipment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129465004"/>
+      <display value="Medical record"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129466003"/>
+      <display value="Patient chart"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129467007"/>
+      <display value="Identification plate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129468002"/>
+      <display value="Gas stove"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="129469005"/>
+      <display value="Wood stove"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="134823007"/>
+      <display value="Sterile absorbent dressing pad"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="134963007"/>
+      <display value="Wound drainage pouch dressing"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170615005"/>
+      <display value="Home nebulizer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182562006"/>
+      <display value="Plaster jacket"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182563001"/>
+      <display value="Shoulder spica"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182564007"/>
+      <display value="Humeral U-slab"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182565008"/>
+      <display value="Long arm slab"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182566009"/>
+      <display value="Humeral hanging slab"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182567000"/>
+      <display value="Forearm slab"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182568005"/>
+      <display value="Scaphoid cast"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182569002"/>
+      <display value="Bennett cast"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182570001"/>
+      <display value="Hip spica"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182571002"/>
+      <display value="Long leg spica"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182572009"/>
+      <display value="Below knee non-weight-bearing cast"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182573004"/>
+      <display value="Below knee weight-bearing cast"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182574005"/>
+      <display value="Plaster stripper"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182576007"/>
+      <display value="Humeral brace"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182577003"/>
+      <display value="Functional elbow brace"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182578008"/>
+      <display value="Forearm brace"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182579000"/>
+      <display value="Hip brace"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182580002"/>
+      <display value="Femoral brace"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182581003"/>
+      <display value="Tibial brace"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182587004"/>
+      <display value="Body support"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182588009"/>
+      <display value="Spinal frame"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182589001"/>
+      <display value="Corset support"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182590005"/>
+      <display value="Cardiac bed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182591009"/>
+      <display value="Water bed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182592002"/>
+      <display value="High air loss bed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182839003"/>
+      <display value="Automated drug microinjector"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183116000"/>
+      <display value="Dental aid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183125006"/>
+      <display value="Ear fitting hearing aid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183135000"/>
+      <display value="Mobility aids"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183141007"/>
+      <display value="Inshoe orthosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183143005"/>
+      <display value="Surgical stockings"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183144004"/>
+      <display value="Antiembolic stockings"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183146002"/>
+      <display value="ZF - Zimmer frame"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183147006"/>
+      <display value="Tripod"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183148001"/>
+      <display value="RGO - Reciprocating gait orthosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183149009"/>
+      <display value="Hip guidance orthosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183150009"/>
+      <display value="Standing frame"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183152001"/>
+      <display value="Hip abduction orthosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183153006"/>
+      <display value="Hip-knee-ankle-foot orthosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183154000"/>
+      <display value="Knee-ankle-foot orthosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183155004"/>
+      <display value="Flexible knee support"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183156003"/>
+      <display value="Collateral ligament brace"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183157007"/>
+      <display value="Anterior cruciate ligament brace"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183158002"/>
+      <display value="Posterior cruciate ligament brace"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183159005"/>
+      <display value="Ground reaction orthosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183160000"/>
+      <display value="Rigid ankle-foot orthosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183161001"/>
+      <display value="Flexible ankle-foot orthosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183162008"/>
+      <display value="Double below-knee iron"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183164009"/>
+      <display value="Inside iron"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183165005"/>
+      <display value="Outside iron"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183166006"/>
+      <display value="Inside T-strap"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183170003"/>
+      <display value="Hindquarter prosthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183171004"/>
+      <display value="Hip disarticulation prosthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183172006"/>
+      <display value="Above knee prosthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183173001"/>
+      <display value="Through knee prosthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183174007"/>
+      <display value="Below knee prosthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183175008"/>
+      <display value="Syme's prosthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183176009"/>
+      <display value="Midfoot amputation prosthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183177000"/>
+      <display value="Shoe filler"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183183002"/>
+      <display value="Milwaukee brace"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183184008"/>
+      <display value="Boston brace"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183185009"/>
+      <display value="Jewett brace"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183187001"/>
+      <display value="Halo device"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183188006"/>
+      <display value="Four poster brace"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183189003"/>
+      <display value="Rigid collar"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183190007"/>
+      <display value="Flexible collar"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183192004"/>
+      <display value="Shoulder abduction brace"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183193009"/>
+      <display value="Elbow brace"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183194003"/>
+      <display value="Passive wrist extension splint"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183195002"/>
+      <display value="Active wrist extension splint"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183196001"/>
+      <display value="Passive finger extension splint"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183197005"/>
+      <display value="Active finger extension splint"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183198000"/>
+      <display value="Kleinert traction (physical object)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183199008"/>
+      <display value="Passive thumb splint"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183200006"/>
+      <display value="Active thumb splint"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183202003"/>
+      <display value="Shin splint"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183204002"/>
+      <display value="Excretory control aid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183235008"/>
+      <display value="Facial non-surgical prosthesis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183240000"/>
+      <display value="Self-propelled wheelchair"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183241001"/>
+      <display value="Pedal powered wheelchair"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183248007"/>
+      <display value="Attendant powered wheelchair"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183249004"/>
+      <display value="Wheelchair seating"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183250004"/>
+      <display value="Moulded wheelchair seat"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183251000"/>
+      <display value="Matrix seat"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="201706006"/>
+      <display value="Intracranial pressure transducer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="223371002"/>
+      <display value="Domestic heating appliances and fires"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="223394001"/>
+      <display value="Equipment for positioning (physical object)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="224684009"/>
+      <display value="Top security prison"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="224685005"/>
+      <display value="Category B prison"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="224686006"/>
+      <display value="Low security prison"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="224823002"/>
+      <display value="Street lighting"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="224824008"/>
+      <display value="Sign posting"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="224825009"/>
+      <display value="Street name sign"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="224826005"/>
+      <display value="Building name sign"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="224827001"/>
+      <display value="Pedestrian direction sign"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="224828006"/>
+      <display value="Traffic sign"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="224898003"/>
+      <display value="Orthotic device"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="224899006"/>
+      <display value="Walking aid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="224900001"/>
+      <display value="Communication aid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228167008"/>
+      <display value="Corset"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228180006"/>
+      <display value="Suspenders"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228235002"/>
+      <display value="Slippers"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228236001"/>
+      <display value="Mules"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228237005"/>
+      <display value="Slippersox"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228239008"/>
+      <display value="Trainers"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228240005"/>
+      <display value="Plimsolls"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228241009"/>
+      <display value="Sandals"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228242002"/>
+      <display value="Wellingtons"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228243007"/>
+      <display value="Chappel"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228259007"/>
+      <display value="Fastenings"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228260002"/>
+      <display value="Velcro"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228261003"/>
+      <display value="Buckle"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228262005"/>
+      <display value="Zip"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228267004"/>
+      <display value="Press stud"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228268009"/>
+      <display value="Hook and eye"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228270000"/>
+      <display value="Laces"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228271001"/>
+      <display value="Shoe laces"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228731007"/>
+      <display value="Radiotherapy equipment and appliances"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228732000"/>
+      <display value="Beam direction shell"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228733005"/>
+      <display value="Head and neck beam direction shell"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228734004"/>
+      <display value="Body beam direction shell"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228735003"/>
+      <display value="Beam modifier"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228736002"/>
+      <display value="Surface bolus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228737006"/>
+      <display value="Surface compensator"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228738001"/>
+      <display value="Cutout"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228739009"/>
+      <display value="Shielding block"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228740006"/>
+      <display value="Lung block"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228741005"/>
+      <display value="Humerus block"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228742003"/>
+      <display value="Scrotal block"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228743008"/>
+      <display value="Kidney block"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228744002"/>
+      <display value="Eye block"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228745001"/>
+      <display value="Bite block"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228746000"/>
+      <display value="Wedge filter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228747009"/>
+      <display value="Kilovoltage grid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228748004"/>
+      <display value="Brachytherapy implant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228749007"/>
+      <display value="Single plane implant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228750007"/>
+      <display value="Two plane implant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228751006"/>
+      <display value="Semicircular implant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228752004"/>
+      <display value="Regular volume implant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228753009"/>
+      <display value="Irregular volume implant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228754003"/>
+      <display value="Brachytherapy surface mold"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228755002"/>
+      <display value="Two plane mould"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228756001"/>
+      <display value="Single plane mold"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228757005"/>
+      <display value="Cylinder mould"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228759008"/>
+      <display value="Adhesive felt mould"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228760003"/>
+      <display value="Elastoplast mold"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228761004"/>
+      <display value="Collimator (physical object)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228762006"/>
+      <display value="Multileaf collimator"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228763001"/>
+      <display value="Asymmetric jaws collimator"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228765008"/>
+      <display value="Standard collimator"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228766009"/>
+      <display value="Form of brachytherapy source"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228767000"/>
+      <display value="Wire source"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228768005"/>
+      <display value="Seeds source"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228770001"/>
+      <display value="Hairpins source"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228771002"/>
+      <display value="Needles source"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228772009"/>
+      <display value="Pellets source"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228773004"/>
+      <display value="Capsules source"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228774005"/>
+      <display value="Trains source"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228775006"/>
+      <display value="Tubes source"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228776007"/>
+      <display value="Rods source"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228777003"/>
+      <display value="Grains source"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228778008"/>
+      <display value="Plaque source"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="228869008"/>
+      <display value="Manual wheelchair"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="229772003"/>
+      <display value="Bed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="229839006"/>
+      <display value="Functional foot orthosis (physical object)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="229840008"/>
+      <display value="Non-functional foot orthosis (physical object)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="229841007"/>
+      <display value="Detachable pad for the foot"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="229842000"/>
+      <display value="Detachable toe prop"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="229843005"/>
+      <display value="Detachable horseshoe pad"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="243135003"/>
+      <display value="Spacer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="243719003"/>
+      <display value="Near low vision aid - integral spectacle magnifier"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="243720009"/>
+      <display value="Near low vision aid - clip-on spectacle magnifier"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="243722001"/>
+      <display value="Near low vision aid - integral spectacle telescope"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="243723006"/>
+      <display value="Near low vision aid - clip-on spectacle telescope"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="255296002"/>
+      <display value="Wedge"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="255712000"/>
+      <display value="Television"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="255716002"/>
+      <display value="Latex rubber gloves"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="256245006"/>
+      <display value="Textiles"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="256246007"/>
+      <display value="Cotton - textile"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="256247003"/>
+      <display value="Flax"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="256562002"/>
+      <display value="Cotton wool"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="256563007"/>
+      <display value="Cotton wool roll"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="256564001"/>
+      <display value="Cotton wool pledget"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="256589007"/>
+      <display value="Dental rubber dam"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="256590003"/>
+      <display value="Endodontic sponge"/>
+    </contains>
+  </expansion>
+</ValueSet>

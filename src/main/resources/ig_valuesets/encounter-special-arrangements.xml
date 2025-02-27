@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="encounter-special-arrangements"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="pa"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/encounter-special-arrangements"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.253"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="SpecialArrangements"/>
+  <title value="Special arrangements"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="This value set defines a set of codes that can be used to indicate the kinds of special arrangements in place for a patients visit."/>
+  <immutable value="true"/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/encounter-special-arrangements"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:7bc551d3-2c2d-4d9f-9c6e-f9a5084ed94e"/>
+    <timestamp value="2025-01-17T09:53:37-07:00"/>
+    <total value="5"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/encounter-special-arrangements|1.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/encounter-special-arrangements"/>
+      <code value="wheel"/>
+      <display value="Wheelchair"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/encounter-special-arrangements"/>
+      <code value="add-bed"/>
+      <display value="Additional bedding"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/encounter-special-arrangements"/>
+      <code value="int"/>
+      <display value="Interpreter"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/encounter-special-arrangements"/>
+      <code value="att"/>
+      <display value="Attendant"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/encounter-special-arrangements"/>
+      <code value="dog"/>
+      <display value="Guide dog"/>
+    </contains>
+  </expansion>
+</ValueSet>

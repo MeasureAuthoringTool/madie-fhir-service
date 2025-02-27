@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="v3-RaceAsian"/>
+  <language value="en"/>
+  <text>
+    <status value="generated"/>
+    <div xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+      <ul>
+        <li>Include codes from 
+          <a href="CodeSystem-v3-Race.html">
+            <code>http://terminology.hl7.org/CodeSystem/v3-Race</code>
+          </a> where concept  is-a  
+          <a href="CodeSystem-v3-Race.html#v3-Race-2028-9">2028-9</a>
+        </li>
+      </ul>
+    </div>
+  </text>
+  <url value="http://terminology.hl7.org/ValueSet/v3-RaceAsian"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.1.11.15743"/>
+  </identifier>
+  <version value="3.0.0"/>
+  <name value="RaceAsian"/>
+  <title value="RaceAsian"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2014-03-26"/>
+  <publisher value="Health Level Seven International"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org"/>
+    </telecom>
+    <telecom>
+      <system value="email"/>
+      <value value="hq@HL7.org"/>
+    </telecom>
+  </contact>
+  <description value="***No description***"/>
+  <copyright value="This material derives from the HL7 Terminology THO. THO is copyright ©1989+ Health Level Seven International and is made available under the CC0 designation. For more licensing information see: https://terminology.hl7.org/license"/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="2028-9"/>
+      </filter>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:c909e811-604e-4a22-ae4e-da30dae41d78"/>
+    <timestamp value="2025-01-17T09:53:42-07:00"/>
+    <total value="25"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/v3-Race|4.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2028-9"/>
+      <display value="Asian"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2029-7"/>
+      <display value="Asian Indian"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2030-5"/>
+      <display value="Bangladeshi"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2031-3"/>
+      <display value="Bhutanese"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2032-1"/>
+      <display value="Burmese"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2033-9"/>
+      <display value="Cambodian"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2034-7"/>
+      <display value="Chinese"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2035-4"/>
+      <display value="Taiwanese"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2036-2"/>
+      <display value="Filipino"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2037-0"/>
+      <display value="Hmong"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2038-8"/>
+      <display value="Indonesian"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2039-6"/>
+      <display value="Japanese"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2040-4"/>
+      <display value="Korean"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2041-2"/>
+      <display value="Laotian"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2042-0"/>
+      <display value="Malaysian"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2043-8"/>
+      <display value="Okinawan"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2044-6"/>
+      <display value="Pakistani"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2045-3"/>
+      <display value="Sri Lankan"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2046-1"/>
+      <display value="Thai"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2047-9"/>
+      <display value="Vietnamese"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2048-7"/>
+      <display value="Iwo Jiman"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2049-5"/>
+      <display value="Maldivian"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2050-3"/>
+      <display value="Nepalese"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2051-1"/>
+      <display value="Singaporean"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-Race"/>
+      <code value="2052-9"/>
+      <display value="Madagascar"/>
+    </contains>
+  </expansion>
+</ValueSet>

@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="v2-2.7-0360"/>
+  <meta>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <language value="en"/>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="pa"/>
+  </extension>
+  <url value="http://terminology.hl7.org/ValueSet/v2-2.7-0360"/>
+  <version value="0360"/>
+  <name value="v2.0360.2.7"/>
+  <title value="v2 table 0360, Version 2.7"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <publisher value="HL7, Inc"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org"/>
+    </telecom>
+  </contact>
+  <description value="FHIR Value set/code system definition for HL7 v2 table 0360 ver 2.9 ( Degree/License/Certificate)"/>
+  <immutable value="true"/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:8b07b4a2-4112-46eb-b397-543e73a020c7"/>
+    <timestamp value="2025-01-17T09:53:42-07:00"/>
+    <total value="61"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/v2-0360|2.1.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="PN"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="AAS"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="AA"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="ABA"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="AE"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="AS"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="BA"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="BBA"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="BE"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="BFA"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="BN"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="BS"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="BSL"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="BSN"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="BT"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="CER"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="CANP"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="CMA"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="CNP"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="CNM"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="CRN"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="CNS"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="CPNP"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="CTR"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="DIP"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="DBA"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="DED"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="PharmD"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="PHE"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="PHD"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="PHS"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="MD"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="DO"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="EMT"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="EMTP"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="FPNP"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="HS"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="JD"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="MA"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="MBA"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="MCE"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="MDI"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="MED"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="MEE"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="ME"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="MFA"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="MME"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="MS"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="MSL"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="MSN"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="MTH"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="MDA"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="MT"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="NG"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="NP"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="PA"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="RMA"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="RN"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="RPH"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="SEC"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0360|2.7"/>
+      <code value="TS"/>
+    </contains>
+  </expansion>
+</ValueSet>

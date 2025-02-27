@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="us-core-screening-assessment-condition-category"/>
+  <text>
+    <status value="generated"/>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <ul>
+        <li>Include all codes defined in 
+          <a href="CodeSystem-us-core-category.html">
+            <code>http://hl7.org/fhir/us/core/CodeSystem/us-core-category</code>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </text>
+  <url value="http://hl7.org/fhir/us/core/ValueSet/us-core-screening-assessment-condition-category"/>
+  <version value="6.1.0"/>
+  <name value="USCoreScreeningAssessmentConditionCategory"/>
+  <title value="US Core Screening Assessment Condition Category"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2023-04-05"/>
+  <publisher value="HL7 International - Cross-Group Projects"/>
+  <contact>
+    <name value="HL7 International - Cross-Group Projects"/>
+    <telecom>
+      <system value="url"/>
+      <value value="http://www.hl7.org/Special/committees/cgp"/>
+    </telecom>
+    <telecom>
+      <system value="email"/>
+      <value value="cgp@lists.HL7.org"/>
+    </telecom>
+  </contact>
+  <description value="Category codes used in the US Core Condition Screening Assessment Profile to help identify the type of USCDI Health Status/Assessment data class being reported."/>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="US"/>
+    </coding>
+  </jurisdiction>
+  <copyright value="Used by permission of HL7 International, all rights reserved Creative Commons License"/>
+  <compose>
+    <include>
+      <system value="http://hl7.org/fhir/us/core/CodeSystem/us-core-category"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:9e2784c4-c981-4cc2-b8a6-dd4215776194"/>
+    <timestamp value="2025-01-17T09:53:41-07:00"/>
+    <total value="4"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://hl7.org/fhir/us/core/CodeSystem/us-core-category|6.1.0"/>
+    </parameter>
+    <contains>
+      <system value="http://hl7.org/fhir/us/core/CodeSystem/us-core-category"/>
+      <code value="sdoh"/>
+      <display value="SDOH"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/us/core/CodeSystem/us-core-category"/>
+      <code value="functional-status"/>
+      <display value="Functional Status"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/us/core/CodeSystem/us-core-category"/>
+      <code value="disability-status"/>
+      <display value="Disability Status"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/us/core/CodeSystem/us-core-category"/>
+      <code value="cognitive-status"/>
+      <display value="Cognitive Status"/>
+    </contains>
+  </expansion>
+</ValueSet>

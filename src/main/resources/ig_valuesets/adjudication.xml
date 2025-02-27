@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="adjudication"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="fm"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/adjudication"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.596"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="AdjudicationValueCodes"/>
+  <title value="Adjudication Value Codes"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="This value set includes a smattering of Adjudication Value codes which includes codes to indicate the amounts eligible under the plan, the amount of benefit, copays etc."/>
+  <immutable value="true"/>
+  <copyright value="This is an example set."/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/adjudication"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:26a69118-1a52-46e7-97ad-6a4105269959"/>
+    <timestamp value="2025-01-17T09:53:37-07:00"/>
+    <total value="8"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/adjudication|1.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/adjudication"/>
+      <code value="submitted"/>
+      <display value="Submitted Amount"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/adjudication"/>
+      <code value="copay"/>
+      <display value="CoPay"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/adjudication"/>
+      <code value="eligible"/>
+      <display value="Eligible Amount"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/adjudication"/>
+      <code value="deductible"/>
+      <display value="Deductible"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/adjudication"/>
+      <code value="unallocdeduct"/>
+      <display value="Unallocated Deductible"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/adjudication"/>
+      <code value="eligpercent"/>
+      <display value="Eligible %"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/adjudication"/>
+      <code value="tax"/>
+      <display value="Tax"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/adjudication"/>
+      <code value="benefit"/>
+      <display value="Benefit Amount"/>
+    </contains>
+  </expansion>
+</ValueSet>

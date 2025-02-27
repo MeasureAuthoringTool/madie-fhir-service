@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="note-type"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="fm"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="trial-use"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="2"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/note-type"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.15"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="NoteType"/>
+  <title value="NoteType"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="HL7 (FHIR Project)"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+    <telecom>
+      <system value="email"/>
+      <value value="fhir@lists.hl7.org"/>
+    </telecom>
+  </contact>
+  <description value="The presentation types of notes."/>
+  <immutable value="true"/>
+  <compose>
+    <include>
+      <system value="http://hl7.org/fhir/note-type"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:d80c6002-2de5-49b6-b92a-616f74663579"/>
+    <timestamp value="2025-01-17T09:53:38-07:00"/>
+    <total value="3"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://hl7.org/fhir/note-type|4.0.1"/>
+    </parameter>
+    <contains>
+      <system value="http://hl7.org/fhir/note-type"/>
+      <code value="display"/>
+      <display value="Display"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/note-type"/>
+      <code value="print"/>
+      <display value="Print (Form)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/note-type"/>
+      <code value="printoper"/>
+      <display value="Print (Operator)"/>
+    </contains>
+  </expansion>
+</ValueSet>

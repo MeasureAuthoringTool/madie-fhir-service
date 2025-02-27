@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="ex-diagnosistype"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="fm"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/ex-diagnosistype"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.590"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="ExampleDiagnosisTypeCodes"/>
+  <title value="Example Diagnosis Type Codes"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="Financial Management"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="This value set includes example Diagnosis Type codes."/>
+  <immutable value="true"/>
+  <copyright value="This is an example set."/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-diagnosistype"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:b094eabc-3254-4f34-b53b-632f98cc616a"/>
+    <timestamp value="2025-01-17T09:53:37-07:00"/>
+    <total value="12"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/ex-diagnosistype|1.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-diagnosistype"/>
+      <code value="admitting"/>
+      <display value="Admitting Diagnosis"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-diagnosistype"/>
+      <code value="clinical"/>
+      <display value="Clinical Diagnosis"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-diagnosistype"/>
+      <code value="differential"/>
+      <display value="Differential Diagnosis"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-diagnosistype"/>
+      <code value="discharge"/>
+      <display value="Discharge Diagnosis"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-diagnosistype"/>
+      <code value="laboratory"/>
+      <display value="Laboratory Diagnosis"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-diagnosistype"/>
+      <code value="nursing"/>
+      <display value="Nursing Diagnosis"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-diagnosistype"/>
+      <code value="prenatal"/>
+      <display value="Prenatal Diagnosis"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-diagnosistype"/>
+      <code value="principal"/>
+      <display value="Principal Diagnosis"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-diagnosistype"/>
+      <code value="radiology"/>
+      <display value="Radiology Diagnosis"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-diagnosistype"/>
+      <code value="remote"/>
+      <display value="Remote Diagnosis"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-diagnosistype"/>
+      <code value="retrospective"/>
+      <display value="Retrospective Diagnosis"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-diagnosistype"/>
+      <code value="self"/>
+      <display value="Self Diagnosis"/>
+    </contains>
+  </expansion>
+</ValueSet>

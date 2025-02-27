@@ -1,0 +1,2063 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="procedure-not-performed-reason"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="pc"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/procedure-not-performed-reason"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.431"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="ProcedureNotPerformedReason(SNOMED-CT)"/>
+  <title value="Procedure Not Performed Reason (SNOMED-CT)"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="Health Level Seven, Inc. - CQI WG"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/special/committees/CQI"/>
+    </telecom>
+  </contact>
+  <description value="Situation codes describing the reason that a procedure, which might otherwise be expected, was not performed, or a procedure that was started and was not completed. Consists of SNOMED CT codes, children of procedure contraindicated (183932001), procedure discontinued (416406003), procedure not done (416237000), procedure not indicated (428119001), procedure not offered (416064006), procedure not wanted (416432009), procedure refused (183944003), and procedure stopped (394908001)."/>
+  <copyright value="This resource includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyright of the International Health Terminology Standards Development Organisation (IHTSDO). Implementers of these specifications must have the appropriate SNOMED CT Affiliate license - for more information contact http://www.snomed.org/snomed-ct/get-snomed-ct or info@snomed.org"/>
+  <compose>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="183932001"/>
+      </filter>
+    </include>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="416406003"/>
+      </filter>
+    </include>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="416237000"/>
+      </filter>
+    </include>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="428119001"/>
+      </filter>
+    </include>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="416064006"/>
+      </filter>
+    </include>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="416432009"/>
+      </filter>
+    </include>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="183944003"/>
+      </filter>
+    </include>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="394908001"/>
+      </filter>
+    </include>
+  </compose>
+  <expansion>
+    <extension url="http://hl7.org/fhir/StructureDefinition/valueset-unclosed">
+      <valueBoolean value="true"/>
+    </extension>
+    <identifier value="urn:uuid:5ea83f23-6825-4505-95c7-ff7e0cc86437"/>
+    <timestamp value="2025-01-17T09:53:38-07:00"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-valueset"/>
+      <valueUri value="null"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801"/>
+    </parameter>
+    <parameter>
+      <name value="version"/>
+      <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801"/>
+    </parameter>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183932001"/>
+      <display value="Procedure contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="135809002"/>
+      <display value="Nitrate contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="135811006"/>
+      <display value="Diuretic contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="135822005"/>
+      <display value="Lipid lowering therapy contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="135823000"/>
+      <display value="Calcium channel blocker contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="169551000"/>
+      <display value="Contraception contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170954008"/>
+      <display value="HRT contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="171277005"/>
+      <display value="Sensitivity contraindicated - immunisation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="171284002"/>
+      <display value="Pertussis vaccine contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183934000"/>
+      <display value="Sensitivity C/I to procedure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183936003"/>
+      <display value="Contraindication to live immunisation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="266757004"/>
+      <display value="Medical contraindication to procedure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="266758009"/>
+      <display value="Immunisation contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="275935009"/>
+      <display value="Surgery contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="275974002"/>
+      <display value="MMR (measles, mumps, and rubella) vaccine contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="312451002"/>
+      <display value="Aspirin prophylaxis contra-indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="315061006"/>
+      <display value="Warfarin contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="315062004"/>
+      <display value="Beta blocker contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="315363002"/>
+      <display value="Statins contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="315364008"/>
+      <display value="Angiotensin converting enzyme inhibitors contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="315591006"/>
+      <display value="Fibrates contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="390795005"/>
+      <display value="Pneumococcal vaccination contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="390796006"/>
+      <display value="Influenza vaccination contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="390910005"/>
+      <display value="Thrombolysis contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="394987009"/>
+      <display value="Angiotensin II receptor antagonists contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="395174005"/>
+      <display value="Nicotine replacement therapy contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="395175006"/>
+      <display value="Bupropion contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="395675007"/>
+      <display value="Oral contraceptive pill contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="407582002"/>
+      <display value="Clopidogrel contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="413558003"/>
+      <display value="Anticoagulation contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="414055003"/>
+      <display value="Drug dependence home detoxification contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="414159007"/>
+      <display value="Exercise tolerance test contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="414677003"/>
+      <display value="Metformin contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="415571003"/>
+      <display value="Spirometry reversibility testing contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="415666001"/>
+      <display value="Administration of sulfonylurea contraindicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="416091008"/>
+      <display value="Glitazones contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="416475003"/>
+      <display value="Combined calcium and vitamin D3 preparation contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="416704001"/>
+      <display value="DXA scan contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="416759002"/>
+      <display value="Non-steroidal anti-inflammatory drugs contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="416996000"/>
+      <display value="Strontium ranelate contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="417101006"/>
+      <display value="Selective estrogen receptor modulator contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="417128001"/>
+      <display value="Bisphosphonates contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="438767006"/>
+      <display value="Termination of pregnancy contraindicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="438833006"/>
+      <display value="Administration of drug or medicament contraindicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="698468005"/>
+      <display value="Bisoprolol contraindicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="698521002"/>
+      <display value="Simvastatin contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="699037006"/>
+      <display value="Hepatitis B vaccination contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="703997000"/>
+      <display value="Teriparatide contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="703999002"/>
+      <display value="Raloxifene contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="707298000"/>
+      <display value="Phosphodiesterase-5 inhibitor contraindicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="715163003"/>
+      <display value="Diphtheria vaccination contraindicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="715166006"/>
+      <display value="Bacillus Calmette-Guerin vaccination contraindicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="719320000"/>
+      <display value="Yellow fever vaccination contraindicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="719324009"/>
+      <display value="Combined hepatitis A and B vaccination contraindicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="719325005"/>
+      <display value="Smallpox vaccination contraindicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="719330009"/>
+      <display value="Hepatitis A vaccination contraindicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="719457005"/>
+      <display value="Tick-borne encephalitis vaccination contraindicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="719458000"/>
+      <display value="Japanese encephalitis vaccination contraindicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="719467000"/>
+      <display value="Measles vaccination contraindicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="719469002"/>
+      <display value="Cholera vaccination contraindicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="719470001"/>
+      <display value="Typhoid vaccination contraindicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="719472009"/>
+      <display value="Rabies vaccination contraindicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="719473004"/>
+      <display value="Rubella vaccination contraindicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="719474005"/>
+      <display value="Tetanus vaccination contraindicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="719476007"/>
+      <display value="Poliomyelitis vaccination contraindicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="719598000"/>
+      <display value="Meningitis C vaccination contraindicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="719603008"/>
+      <display value="Rabies post exposure prophylaxis contraindicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="719886001"/>
+      <display value="Haemophilus influenzae type b vaccination contraindicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="736004008"/>
+      <display value="Nebivolol contraindicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="736006005"/>
+      <display value="Carvedilol contraindicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="761844008"/>
+      <display value="Human papilloma virus vaccination contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="762450006"/>
+      <display value="Procedure not done because contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="840598000"/>
+      <display value="Platelet aggregation inhibitor therapy contraindicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1145022003"/>
+      <display value="SARS-CoV-2 mRNA vaccine contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1145023008"/>
+      <display value="Severe acute respiratory syndrome coronavirus 2 antigen vaccine contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1145035007"/>
+      <display value="Second dose of SARS-CoV-2 mRNA vaccine contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1156265005"/>
+      <display value="COVID-19 vaccine contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1157110005"/>
+      <display value="2019 novel coronavirus non-replicating viral vector vaccine contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1157113007"/>
+      <display value="Second dose of 2019 novel coronavirus non-replicating viral vector vaccine contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1157198004"/>
+      <display value="Inactivated whole SARS-CoV-2 antigen vaccine contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1157199007"/>
+      <display value="Second dose of inactivated whole COVID-19 antigen vaccine contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1162647000"/>
+      <display value="COVID-19 recombinant spike protein antigen vaccine contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1162648005"/>
+      <display value="Second dose of recombinant spike protein 2019 novel coronavirus antigen vaccine contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1179498004"/>
+      <display value="Severe acute respiratory syndrome coronavirus 2 virus-like particle antigen vaccine contraindicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1179499007"/>
+      <display value="Second dose of virus-like particle SARS-CoV-2 antigen vaccine contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1193584006"/>
+      <display value="Severe acute respiratory syndrome coronavirus 2 deoxyribonucleic acid plasmid encoding spike protein vaccine contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1287500003"/>
+      <display value="Adrenergic receptor agonist contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7611000175100"/>
+      <display value="Dipyridamole contraindicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="50070151000188100"/>
+      <display value="General anaesthesia contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="416406003"/>
+      <display value="Procedure discontinued"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170624001"/>
+      <display value="Oral steroids stopped"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170688000"/>
+      <display value="Lithium stopped"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170689008"/>
+      <display value="Injectable phenothiazine stopped"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170919001"/>
+      <display value="Warfarin therapy stopped"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170958006"/>
+      <display value="HRT stopped"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182840001"/>
+      <display value="Drug treatment stopped - medical advice"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182841002"/>
+      <display value="Dr stopped drugs - ineffective"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182842009"/>
+      <display value="Doctor stopped drugs - side effect"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182843004"/>
+      <display value="Dr stopped drugs -inconvenient"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182844005"/>
+      <display value="Doctor stopped drugs - patient dislikes"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182845006"/>
+      <display value="Doctor stopped drugs - avoid interaction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182846007"/>
+      <display value="Doctor stopped drugs - medical aim achieved"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="274512008"/>
+      <display value="Drug therapy discontinued"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="309841001"/>
+      <display value="Thyroxine treatment stopped"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="394909009"/>
+      <display value="Syringe driver discontinued"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="395006008"/>
+      <display value="Medication stopped - interaction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="395007004"/>
+      <display value="Medication stopped - ineffective"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="395008009"/>
+      <display value="Medication stopped - contra-indication"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="395009001"/>
+      <display value="Medication stopped - side effect"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="412782003"/>
+      <display value="Inappropriate medication stopped"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="425519007"/>
+      <display value="Cardiopulmonary resuscitation discontinued due to medical control order (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="425921008"/>
+      <display value="Cardiopulmonary resuscitation discontinued due to do not resuscitate order (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="426970003"/>
+      <display value="Cardiopulmonary resuscitation discontinued due to return of spontaneous circulation (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="426999008"/>
+      <display value="Cardiopulmonary resuscitation discontinued due to signs of death (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="427569000"/>
+      <display value="Cardiopulmonary resuscitation discontinued as per protocol (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="430279008"/>
+      <display value="Drug treatment stopped at end of clinical trial (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="438604008"/>
+      <display value="Peritoneal dialysis therapy discontinued (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="439516000"/>
+      <display value="Hemodialysis therapy discontinued (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="710765004"/>
+      <display value="Wound drain discontinued"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="713246009"/>
+      <display value="Procedure discontinued by healthcare professional (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="713247000"/>
+      <display value="Procedure discontinued by patient"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="713248005"/>
+      <display value="Procedure discontinued by doctor (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="866267001"/>
+      <display value="Artificial respiration discontinued"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1303375008"/>
+      <display value="Intensive care discontinued (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="70732231000132107"/>
+      <display value="Duplicate drug therapy stopped"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="416237000"/>
+      <display value="Procedure not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="145572004"/>
+      <display value="Helicobacter not tested"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="162650008"/>
+      <display value="Patient not examined"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="162675007"/>
+      <display value="General examination not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="162882008"/>
+      <display value="Respiratory system not examined"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="162980001"/>
+      <display value="CVS not examined"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="163128002"/>
+      <display value="GIT not examined"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="163348001"/>
+      <display value="GU system not examined"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="163582008"/>
+      <display value="Nervous system not examined"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="164176006"/>
+      <display value="ENT examination not performed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="164503006"/>
+      <display value="Orthopaedic exam. not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="164713001"/>
+      <display value="Neurological diagnostic procedure - not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="164725003"/>
+      <display value="Visual testing not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="164746007"/>
+      <display value="Auditory/vestibular test not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="164766003"/>
+      <display value="Special ENT procedure not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="164776000"/>
+      <display value="Special CVS test not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="164786004"/>
+      <display value="Special GIT test not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="164795007"/>
+      <display value="Special urinary test not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="164808009"/>
+      <display value="Special female test not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="164823004"/>
+      <display value="Special male test not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="164831009"/>
+      <display value="Musculoskeletal test not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="164853006"/>
+      <display value="ECG not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="164964005"/>
+      <display value="Susceptibility skin test not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="164978006"/>
+      <display value="Mantoux test not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="164985005"/>
+      <display value="Kveim test not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="164997006"/>
+      <display value="Hypersensitivity skin test not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="165008002"/>
+      <display value="Allergy testing not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="165017002"/>
+      <display value="Lung function testing not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="165026004"/>
+      <display value="Lung volume test not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="165035006"/>
+      <display value="Respiratory flow rate not measured"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="165074004"/>
+      <display value="Cardiac function test not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="165081006"/>
+      <display value="Exercise tolerance test not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="165104002"/>
+      <display value="Metabolic function not tested"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="165122004"/>
+      <display value="Non-surgical biopsy not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="165139002"/>
+      <display value="Endoscopy not carried out"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="165343008"/>
+      <display value="Laboratory test requested - not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="165377003"/>
+      <display value="Hematology test request - not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="165393007"/>
+      <display value="Haemoglobin not estimated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="167219008"/>
+      <display value="Urine not examined"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="167260001"/>
+      <display value="Urine glucose test not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="167272007"/>
+      <display value="Urine protein test not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="167286006"/>
+      <display value="Urine ketone test not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="167296002"/>
+      <display value="Urine blood test not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="167306007"/>
+      <display value="Urine pH test not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="167317008"/>
+      <display value="Urine bacteria test not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="167322008"/>
+      <display value="Urine urobilinogen not tested"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="167594003"/>
+      <display value="Feces not examined"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="167701000"/>
+      <display value="CSF: not examined"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="167728005"/>
+      <display value="CSF chemistry - not tested"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="169607004"/>
+      <display value="No antenatal care"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="169611005"/>
+      <display value="No antenatal care: not known pregnant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="169699008"/>
+      <display value="Antenatal syphilis screening not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="169704000"/>
+      <display value="Antenatal blood group screening not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="169708002"/>
+      <display value="Antenatal sickle screening not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170100005"/>
+      <display value="Child not examined at birth"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170108003"/>
+      <display value="Child not examined at 10 days"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182849000"/>
+      <display value="No drug therapy prescribed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183928007"/>
+      <display value="Residence remote from medical care"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183929004"/>
+      <display value="No home medical services"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="266756008"/>
+      <display value="Medical care unavailable"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="266881002"/>
+      <display value="History not obtained"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="314374001"/>
+      <display value="360 degree sweep of cervix not performed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="315604002"/>
+      <display value="Missed contraceptive pill"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="371900001"/>
+      <display value="Medication not administered"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="373147003"/>
+      <display value="Medication not administered because contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="373148008"/>
+      <display value="Thrombolytic agent not administered because contraindicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="390848004"/>
+      <display value="Retinae not examined"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="391016008"/>
+      <display value="Osteoporosis risk assessment defaulted"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="394965000"/>
+      <display value="Urine leucocyte test not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="396781004"/>
+      <display value="No chemotherapy AND/OR radiation therapy prior to lymphadenectomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="397004005"/>
+      <display value="Immunophenotypic analysis not performed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="397399004"/>
+      <display value="Cell phenotyping not performed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="399538001"/>
+      <display value="Cytogenetic study not performed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="401179006"/>
+      <display value="No previous immunisations"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="401318002"/>
+      <display value="Shuttle walking test not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="408836004"/>
+      <display value="Sample not obtained"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="408837008"/>
+      <display value="Amniocentesis sample not obtained"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="416128008"/>
+      <display value="No past history of procedure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="418014008"/>
+      <display value="Procedure not ordered"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="418731009"/>
+      <display value="No stain applied"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="428348004"/>
+      <display value="Cardiopulmonary resuscitation not attempted (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="439867009"/>
+      <display value="Determination of pattern of resistance to antiviral agent not done (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="441989008"/>
+      <display value="Delayed hypersensitivity skin test for histoplasmin not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="698569004"/>
+      <display value="Postnatal depression not discussed (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="698753008"/>
+      <display value="No history of cervical smear (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="699231000"/>
+      <display value="Domestic abuse not discussed (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="703942005"/>
+      <display value="No history of mammogram (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="712751006"/>
+      <display value="Radiation therapy not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="712985002"/>
+      <display value="Chemotherapy not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="713207007"/>
+      <display value="Neck dissection not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="715621003"/>
+      <display value="Heart failure education not done (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="715622005"/>
+      <display value="Warfarin not prescribed (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="719072001"/>
+      <display value="Biopsy of kidney not done (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="719828003"/>
+      <display value="Autopsy not done (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="722825000"/>
+      <display value="Bowel preparation not done (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1269470004"/>
+      <display value="Individual dose of drug or medicament not taken (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1295422009"/>
+      <display value="Plain X-ray not requested (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1295423004"/>
+      <display value="Plain X-ray not done (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1297349006"/>
+      <display value="No history of induced termination of pregnancy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4431000175103"/>
+      <display value="Asthma medication not prescribed (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4451000175106"/>
+      <display value="Asthma action plan not done (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4461000175108"/>
+      <display value="Cervical cancer screening not done (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4471000175100"/>
+      <display value="Colorectal cancer screening not done (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4481000175102"/>
+      <display value="Diabetes mellitus screening not done (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4501000175108"/>
+      <display value="Hemoglobin A1C test not done (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4511000175106"/>
+      <display value="Lipid screening test not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4521000175102"/>
+      <display value="Measles mumps and rubella vaccination not done (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4531000175104"/>
+      <display value="Tobacco cessation education not done (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4541000175105"/>
+      <display value="Spirometry not done (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4551000175107"/>
+      <display value="Diabetic foot exam not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4571000175101"/>
+      <display value="Lipid lowering medication not prescribed (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4581000175103"/>
+      <display value="Diabetic retinal eye exam not done (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4591000175100"/>
+      <display value="Bone density screening not done (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5991000175105"/>
+      <display value="Peak expiratory flow not done (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6001000175106"/>
+      <display value="Systemic corticosteroid not prescribed (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6011000175109"/>
+      <display value="Inhaled bronchodilator not prescribed (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6021000175100"/>
+      <display value="Vaccination for diphtheria, pertussis, and tetanus not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6031000175102"/>
+      <display value="Varicella vaccination not done (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6041000175108"/>
+      <display value="Hepatitis A vaccination not done (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6051000175105"/>
+      <display value="Hepatitis B vaccination not done (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11991000175106"/>
+      <display value="Child not examined"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21311000175107"/>
+      <display value="Disease modifying antirheumatic drug not prescribed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21641000175100"/>
+      <display value="Adult not examined (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21661000175101"/>
+      <display value="Antibiotic prophylaxis not prescribed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21691000175105"/>
+      <display value="Antihypertensive therapy not prescribed (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34351000175108"/>
+      <display value="Human anti-D immunoglobulin not administered (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36751000175103"/>
+      <display value="Renin-angiotensin system antagonist not prescribed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="49191000087107"/>
+      <display value="No history of colonoscopy (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="90351000119108"/>
+      <display value="Vaccination not done (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="568351000005106"/>
+      <display value="Antibody screen not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="577921000005107"/>
+      <display value="Referral to smoking cessation assistance not done"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="428119001"/>
+      <display value="Procedure not indicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="134390006"/>
+      <display value="Angiotensin converting enzyme inhibitor not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="134391005"/>
+      <display value="Statin not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="134392003"/>
+      <display value="Warfarin not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="134394002"/>
+      <display value="Aspirin not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="135805008"/>
+      <display value="Nitrate not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="135806009"/>
+      <display value="Calcium channel blocker not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="135807000"/>
+      <display value="Lipid lowering therapy not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="135808005"/>
+      <display value="Diuretic not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183964008"/>
+      <display value="Treatment not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183965009"/>
+      <display value="Surgery not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183966005"/>
+      <display value="Drug treatment not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="315214003"/>
+      <display value="Beta blocker not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="407571005"/>
+      <display value="Clopidogrel not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="407572003"/>
+      <display value="Angiotensin II receptor antagonist not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="407573008"/>
+      <display value="Influenza vaccination not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="408339001"/>
+      <display value="Thrombolysis therapy not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="408396006"/>
+      <display value="Diabetic retinopathy screening not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="408397002"/>
+      <display value="Diabetic foot examination not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="408398007"/>
+      <display value="Smoking review not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="413167008"/>
+      <display value="Compression bandaging not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="413560001"/>
+      <display value="Anticoagulation not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="413812009"/>
+      <display value="Cervical smear not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="415119001"/>
+      <display value="Pneumococcal vaccination not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="415570002"/>
+      <display value="Spirometry not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="415667005"/>
+      <display value="Administration of sulfonylurea not indicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="416664005"/>
+      <display value="Selective estrogen receptor modulator not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="416670004"/>
+      <display value="Glitazones not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="416678006"/>
+      <display value="Combined calcium and vitamin D3 preparation not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="416741000"/>
+      <display value="Strontium ranelate not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="417013004"/>
+      <display value="DXA scan not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="417218000"/>
+      <display value="Carotid ultrasound not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="417434004"/>
+      <display value="Bisphosphonates not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="699048004"/>
+      <display value="Exercise tolerance test not indicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="700384008"/>
+      <display value="Antibiotic prophylaxis not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="703971006"/>
+      <display value="Hepatitis A vaccination not indicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="703996009"/>
+      <display value="Teriparatide not indicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="704000000"/>
+      <display value="Raloxifene not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="704033005"/>
+      <display value="Phosphodiesterase 5 inhibitor not indicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="704052004"/>
+      <display value="Referral to cardiac rehabilitation program not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="704096004"/>
+      <display value="Referral to heart failure exercise program not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="707287001"/>
+      <display value="Hepatitis B vaccination not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="707853004"/>
+      <display value="Testing for Ebola virus not indicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="709198003"/>
+      <display value="Education not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="712740006"/>
+      <display value="Medication monitoring not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="736005009"/>
+      <display value="Histology not indicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="833323000"/>
+      <display value="Evaluation procedure not indicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="874932008"/>
+      <display value="Carvedilol not indicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="874933003"/>
+      <display value="Nebivolol not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="874934009"/>
+      <display value="Bisoprolol not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1145029007"/>
+      <display value="2019 novel coronavirus mRNA vaccination not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1145030002"/>
+      <display value="Severe acute respiratory syndrome coronavirus 2 antigen vaccination not indicated (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1156267002"/>
+      <display value="Severe acute respiratory syndrome coronavirus 2 vaccination not indicated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="71911000119106"/>
+      <display value="No vaginal PAP smear required due to history of hysterectomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <inactive value="true"/>
+      <code value="416064006"/>
+      <display value="Procedure not offered"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="416432009"/>
+      <display value="Procedure not wanted"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="169609001"/>
+      <display value="Antenatal care: not wanted"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="169635000"/>
+      <display value="Parent craft not wanted"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="169649009"/>
+      <display value="Antenatal amniocentesis - not wanted (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="169660000"/>
+      <display value="Antenatal ultrasound scan not wanted (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="169687001"/>
+      <display value="AFP blood test not wanted"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="169693009"/>
+      <display value="Rubella screening not wanted"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="169795009"/>
+      <display value="Triple test not wanted"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="169796005"/>
+      <display value="Double test not wanted"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170116007"/>
+      <display value="Child 6 week examination not wanted"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170125001"/>
+      <display value="8-9 month exam not wanted"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170134006"/>
+      <display value="18 month examination not wanted"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170143002"/>
+      <display value="2.5 year examination not wanted"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170152006"/>
+      <display value="3.5 year examination not wanted"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170161006"/>
+      <display value="4.5 year examination not wanted"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170170009"/>
+      <display value="10 year examination not wanted (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170179005"/>
+      <display value="15 year examination not wanted"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170256002"/>
+      <display value="Child 1 year examination not wanted"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170265009"/>
+      <display value="Child 6 month examination not wanted"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170274006"/>
+      <display value="Child 21 month examination not wanted"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170283001"/>
+      <display value="Child 3 year exam not wanted"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170292003"/>
+      <display value="Child 39 month examination not wanted"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170302007"/>
+      <display value="Child 8 week examination not wanted"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="171034000"/>
+      <display value="Health education not wanted"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="171103002"/>
+      <display value="Screening not wanted"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="171152003"/>
+      <display value="Screening for malignant neoplasm of cervix not wanted (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="184163005"/>
+      <display value="Child surveillance not wanted"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="408505004"/>
+      <display value="Child 7 month examination not wanted"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="871868000"/>
+      <display value="Immunization hesitancy by patient"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="871879005"/>
+      <display value="Immunisation hesitancy by parent"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="567971000005103"/>
+      <display value="Antenatal ultrasound scan in first trimester not wanted (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="567991000005102"/>
+      <display value="Antenatal ultrasound scan in second trimester not wanted"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="568001000005105"/>
+      <display value="Antenatal risk assessment not wanted (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <inactive value="true"/>
+      <code value="183944003"/>
+      <display value="Procedure refused"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="394908001"/>
+      <display value="Procedure stopped"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="168533005"/>
+      <display value="Radiotherapy stopped"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170585007"/>
+      <display value="Cardiac disease treatment stopped"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170588009"/>
+      <display value="Treatment for hypertension stopped (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170620005"/>
+      <display value="Respiratory disease treatment stopped (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170621009"/>
+      <display value="Home oxygen supply stopped"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170675003"/>
+      <display value="GIT treatment stopped"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170687005"/>
+      <display value="Psychiatric treatment stopped"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170700002"/>
+      <display value="Neurological disorder treatment stopped"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170712003"/>
+      <display value="Epilepsy treatment stopped"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170725006"/>
+      <display value="Ophthalmological treatment stopped"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170800007"/>
+      <display value="Treatment of obesity stopped"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170816009"/>
+      <display value="Endocrine disease treatment stopped"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170826002"/>
+      <display value="B12 injections stopped"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170834008"/>
+      <display value="Blood disorder treatment stopped"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170843004"/>
+      <display value="Allergic disorder treatment stopped"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170854009"/>
+      <display value="Rheumatology disorder treatment stopped"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170863006"/>
+      <display value="Skin disorder treatment stopped"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170872003"/>
+      <display value="Gynecological disorder treatment stopped"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170882002"/>
+      <display value="Urinary disorder treatment stopped"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170894006"/>
+      <display value="ENT disease treatment stopped"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170904002"/>
+      <display value="Ostomy - treatment stopped"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170912005"/>
+      <display value="High risk treatment stopped"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="170929008"/>
+      <display value="Repeat prescription treatment stopped"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="180863000"/>
+      <display value="Operation abandoned"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="268521004"/>
+      <display value="Thyroid disease treatment stopped"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="288120003"/>
+      <display value="Operation abandoned before onset"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="391021006"/>
+      <display value="Osteoporosis treatment stopped"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="397023003"/>
+      <display value="Operation not completed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="414120003"/>
+      <display value="ERCP not completed due to anatomical derangements from previous surgery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="698459008"/>
+      <display value="Antidepressant drug treatment stopped"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="700110004"/>
+      <display value="Bisphosphonate prophylaxis suspended"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="708000007"/>
+      <display value="Insulin treatment stopped (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="719857004"/>
+      <display value="Telehealth monitoring suspended (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="733035008"/>
+      <display value="Previously initiated dental therapy not completed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="763327008"/>
+      <display value="Failed mask ventilation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="764637000"/>
+      <display value="Lipid-lowering therapy stopped (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1137454002"/>
+      <display value="Laparoscopic cholecystectomy using robotic assistance not completed (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1340210007"/>
+      <display value="Orthodontic treatment stopped (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35031000087105"/>
+      <display value="Life-sustaining treatment stopped"/>
+    </contains>
+  </expansion>
+</ValueSet>

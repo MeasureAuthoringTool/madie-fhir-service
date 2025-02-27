@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="medication-admin-status"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="phx"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="trial-use"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="2"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/medication-admin-status"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.340"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="MedicationAdministration Status Codes"/>
+  <title value="Medication administration  status  codes"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="MedicationAdministration Status Codes"/>
+  <immutable value="true"/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/medication-admin-status"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:e28d2b86-f99a-406f-845b-6bc1f10cbe2c"/>
+    <timestamp value="2025-01-17T09:53:38-07:00"/>
+    <total value="7"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/medication-admin-status|4.0.1"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/medication-admin-status"/>
+      <code value="in-progress"/>
+      <display value="In Progress"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/medication-admin-status"/>
+      <code value="not-done"/>
+      <display value="Not Done"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/medication-admin-status"/>
+      <code value="on-hold"/>
+      <display value="On Hold"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/medication-admin-status"/>
+      <code value="completed"/>
+      <display value="Completed"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/medication-admin-status"/>
+      <code value="entered-in-error"/>
+      <display value="Entered in Error"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/medication-admin-status"/>
+      <code value="stopped"/>
+      <display value="Stopped"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/medication-admin-status"/>
+      <code value="unknown"/>
+      <display value="Unknown"/>
+    </contains>
+  </expansion>
+</ValueSet>

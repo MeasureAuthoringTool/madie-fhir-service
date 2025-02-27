@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="questionnaire-answers-status"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="fhir"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="trial-use"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="3"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/questionnaire-answers-status"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:required"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="QuestionnaireResponseStatus"/>
+  <title value="QuestionnaireResponseStatus"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="HL7 (FHIR Project)"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+    <telecom>
+      <system value="email"/>
+      <value value="fhir@lists.hl7.org"/>
+    </telecom>
+  </contact>
+  <description value="Lifecycle status of the questionnaire response."/>
+  <immutable value="true"/>
+  <compose>
+    <include>
+      <system value="http://hl7.org/fhir/questionnaire-answers-status"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:03db424f-a4ac-4622-8cba-152bad800fa4"/>
+    <timestamp value="2025-01-17T09:53:38-07:00"/>
+    <total value="5"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://hl7.org/fhir/questionnaire-answers-status|4.0.1"/>
+    </parameter>
+    <contains>
+      <system value="http://hl7.org/fhir/questionnaire-answers-status"/>
+      <code value="in-progress"/>
+      <display value="In Progress"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/questionnaire-answers-status"/>
+      <code value="completed"/>
+      <display value="Completed"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/questionnaire-answers-status"/>
+      <code value="amended"/>
+      <display value="Amended"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/questionnaire-answers-status"/>
+      <code value="entered-in-error"/>
+      <display value="Entered in Error"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/questionnaire-answers-status"/>
+      <code value="stopped"/>
+      <display value="Stopped"/>
+    </contains>
+  </expansion>
+</ValueSet>
