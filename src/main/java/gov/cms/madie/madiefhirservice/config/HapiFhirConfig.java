@@ -6,6 +6,7 @@ import ca.uhn.fhir.context.support.IValidationSupport;
 import ca.uhn.fhir.parser.IParser;
 import ca.uhn.fhir.validation.FhirValidator;
 import ca.uhn.fhir.validation.IValidatorModule;
+import gov.cms.madie.madiefhirservice.utils.CustomQiCoreInMemoryValidationSupport;
 import gov.cms.madie.madiefhirservice.utils.ResourceUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.hl7.fhir.common.hapi.validation.support.*;
@@ -75,7 +76,6 @@ public class HapiFhirConfig {
       @Autowired FhirContext qicore6FhirContext) throws IOException {
     NpmPackageValidationSupport npmPackageSupport =
         new NpmPackageValidationSupport(qicore6FhirContext);
-    //    getPrePopulatedValidationSupport(qicore6FhirContext, npmPackageSupport);
     npmPackageSupport.loadPackageFromClasspath("classpath:packages/hl7.fhir.us.qicore-6.0.0.tgz");
     npmPackageSupport.loadPackageFromClasspath("classpath:packages/hl7.fhir.us.core-6.1.0.tgz");
     npmPackageSupport.loadPackageFromClasspath(
@@ -91,8 +91,8 @@ public class HapiFhirConfig {
         npmPackageSupport,
         new DefaultProfileValidationSupport(qicore6FhirContext),
         prePopulatedValidationSupport,
+        new CustomQiCoreInMemoryValidationSupport(qicore6FhirContext),
         new InMemoryTerminologyServerValidationSupport(qicore6FhirContext),
-        //        new QiCoreLenientTerminologyValidator(qicore6FhirContext),
         new CommonCodeSystemsTerminologyService(qicore6FhirContext));
   }
 
@@ -144,16 +144,33 @@ public class HapiFhirConfig {
       FhirContext qicore6FhirContext) throws IOException {
     PrePopulatedValidationSupport prePopulatedValidationSupport =
         new PrePopulatedValidationSupport(qicore6FhirContext);
-    IParser parser = qicore6FhirContext.newXmlParser();
+    IParser xmlParser = qicore6FhirContext.newXmlParser();
     Resource resource = new ClassPathResource("ig_valuesets");
     Stream.of(Objects.requireNonNull(resource.getFile().listFiles()))
         .forEach(
             (file) -> {
               String data = ResourceUtils.getData("/ig_valuesets/" + file.getName());
-              IBaseResource baseResource = parser.parseResource(data);
+              IBaseResource baseResource = xmlParser.parseResource(data);
               if (baseResource instanceof ValueSet) {
-                prePopulatedValidationSupport.addResource(baseResource);
+                prePopulatedValidationSupport.addValueSet(baseResource);
+                //                ValueSet valueSet = (ValueSet)
+                // npmPackageSupport.fetchValueSet(((ValueSet) baseResource).getUrl());
+                //                if (valueSet == null) {
+                //                  npmPackageSupport.addValueSet(baseResource);
+                //                } else {
+                //                  valueSet.setExpansion(((ValueSet) baseResource).getExpansion());
+                //                }
               }
+            });
+
+    resource = new ClassPathResource("profiles");
+    IParser jsonParser = qicore6FhirContext.newJsonParser();
+    Stream.of(Objects.requireNonNull(resource.getFile().listFiles()))
+        .forEach(
+            (file) -> {
+              String data = ResourceUtils.getData("/profiles/" + file.getName());
+              IBaseResource baseResource = jsonParser.parseResource(data);
+              prePopulatedValidationSupport.addStructureDefinition(baseResource);
             });
     return prePopulatedValidationSupport;
   }

@@ -12,6 +12,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import gov.cms.madie.madiefhirservice.dto.MadieFeatureFlag;
 import gov.cms.madie.madiefhirservice.factories.ModelAwareFhirFactory;
 import gov.cms.madie.madiefhirservice.services.AppConfigService;
+import gov.cms.madie.madiefhirservice.services.StructureDefinitionService;
 import gov.cms.madie.models.common.ModelType;
 import gov.cms.madie.models.measure.HapiOperationOutcome;
 import gov.cms.madie.madiefhirservice.exceptions.HapiJsonException;
@@ -45,6 +46,7 @@ import static gov.cms.madie.madiefhirservice.utils.ModelEndpointMap.QICORE_VERSI
 public class ValidationController {
 
   private ResourceValidationService validationService;
+  private StructureDefinitionService structureDefinitionService;
   private ModelAwareFhirFactory validatorFactory;
   private AppConfigService appConfigService;
 
