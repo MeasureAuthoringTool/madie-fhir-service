@@ -11,6 +11,8 @@ import org.hl7.fhir.common.hapi.validation.support.InMemoryTerminologyServerVali
 import org.hl7.fhir.instance.model.api.IBaseResource;
 import org.hl7.fhir.r4.model.ValueSet;
 
+import java.util.Collections;
+
 import static org.apache.commons.lang3.StringUtils.*;
 
 public class CustomQiCoreInMemoryValidationSupport
@@ -49,23 +51,51 @@ public class CustomQiCoreInMemoryValidationSupport
       for (var contains : valueSet.getExpansion().getContains()) {
         if (StringUtils.equals(theCode, contains.getCode())) {
           IssueSeverity severity = null;
+          // always assume code system is valid and check for equality
           if (theOptions.isInferSystem()
               || (StringUtils.equals(codeSystemUrlToValidate, contains.getSystem())
                   && (codeSystemVersionToValidate == null
                       || StringUtils.equals(codeSystemVersionToValidate, contains.getVersion())))) {
-            if (theOptions.isValidateDisplay()) {
+            // check if display matches
+            if (StringUtils.isNotBlank(theDisplay)) {
               if (!StringUtils.equals(theDisplay, contains.getDisplay())) {
-                severity = getIssueSeverityForCodeDisplayMismatch();
+                severity = IssueSeverity.ERROR;
               }
             }
+            CodeValidationResult validationResult =
+              createCodeValidationResult(
+                theCode,
+                theDisplay,
+                codeSystemUrlToValidate,
+                codeSystemVersionToValidate,
+                vsUrl,
+                severity);
+            if (severity != null) {
+              String message =
+                getFhirContext()
+                  .getLocalizer()
+                  .getMessage(
+                    InMemoryTerminologyServerValidationSupport.class,
+                    "displayMismatch",
+                    theDisplay,
+                    contains.getDisplay(),
+                    theCodeSystemUrlAndVersion,
+                    theCode)
+                  + " for in-memory expansion of ValueSet: "
+                  + vsUrl;
+              validationResult.setIssues(
+                Collections.singletonList(
+                  new CodeValidationIssue(
+                    message,
+                    severity,
+                    CodeValidationIssueCode.INVALID,
+                    CodeValidationIssueCoding.INVALID_DISPLAY)));
+              if (isNotBlank(message)) {
+                validationResult.setSourceDetails(message);
+              }
+            }
+            return validationResult;
           }
-          return createCodeValidationResult(
-              theCode,
-              contains.getDisplay(),
-              contains.getSystem(),
-              contains.getVersion(),
-              vsUrl,
-              severity);
         }
       }
     }
