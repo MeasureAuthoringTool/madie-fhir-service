@@ -71,7 +71,7 @@ public class HapiFhirConfig {
         new NpmPackageValidationSupport(qicore6FhirContext);
     npmPackageSupport.loadPackageFromClasspath("classpath:packages/hl7.fhir.us.qicore-6.0.0.tgz");
     npmPackageSupport.loadPackageFromClasspath("classpath:packages/hl7.fhir.us.core-6.1.0.tgz");
-    npmPackageSupport.loadPackageFromClasspath("classpath:packages/hl7.fhir.uv.extensions.r4-5.1.0.tgz");
+    npmPackageSupport.loadPackageFromClasspath("classpath:packages/hl7.fhir.uv.extensions.r4-5.2.0.tgz");
     npmPackageSupport.loadPackageFromClasspath(
         "classpath:packages/hl7.fhir.xver-extensions-0.1.0.tgz");
 
