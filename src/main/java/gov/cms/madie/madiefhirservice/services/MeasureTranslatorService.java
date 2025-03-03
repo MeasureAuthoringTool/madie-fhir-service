@@ -15,21 +15,12 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.hl7.fhir.r4.model.Identifier.IdentifierUse;
 import org.hl7.fhir.instance.model.api.IBaseDatatype;
-import org.hl7.fhir.r4.model.CanonicalType;
-import org.hl7.fhir.r4.model.CodeableConcept;
-import org.hl7.fhir.r4.model.Coding;
-import org.hl7.fhir.r4.model.ContactDetail;
-import org.hl7.fhir.r4.model.ContactPoint;
 import org.hl7.fhir.r4.model.Enumerations.PublicationStatus;
-import org.hl7.fhir.r4.model.Expression;
-import org.hl7.fhir.r4.model.Extension;
 import org.hl7.fhir.r4.model.Measure.MeasureGroupComponent;
 import org.hl7.fhir.r4.model.Measure.MeasureGroupPopulationComponent;
 import org.hl7.fhir.r4.model.Measure.MeasureGroupStratifierComponent;
 import org.hl7.fhir.r4.model.Measure.MeasureSupplementalDataComponent;
-import org.hl7.fhir.r4.model.Period;
 import org.hl7.fhir.r4.model.Reference;
-import org.hl7.fhir.r4.model.StringType;
 import org.hl7.fhir.r4.model.*;
 import org.springframework.stereotype.Service;
 import ca.uhn.fhir.model.api.TemporalPrecisionEnum;
@@ -48,7 +39,6 @@ public class MeasureTranslatorService {
     Organization steward = madieMeasure.getMeasureMetaData().getSteward();
     String copyright = madieMeasure.getMeasureMetaData().getCopyright();
     String disclaimer = madieMeasure.getMeasureMetaData().getDisclaimer();
-    String rationale = madieMeasure.getMeasureMetaData().getRationale();
     Instant approvalDate = madieMeasure.getReviewMetaData().getApprovalDate();
     Instant lastReviewDate = madieMeasure.getReviewMetaData().getLastReviewDate();
     String version = madieMeasure.getVersion().toString();
@@ -71,9 +61,10 @@ public class MeasureTranslatorService {
         .setLastReviewDate(lastReviewDate != null ? Date.from(lastReviewDate) : null)
         .setPublisher(getStewardName(steward))
         .setGuidance(madieMeasure.getMeasureMetaData().getGuidance())
+        .setDefinition(buildDefinitions(madieMeasure))
         .setCopyright(StringUtils.isBlank(copyright) ? UNKNOWN : copyright)
         .setDisclaimer(StringUtils.isBlank(disclaimer) ? UNKNOWN : disclaimer)
-        .setRationale(rationale)
+        .setRationale(madieMeasure.getMeasureMetaData().getRationale())
         .setPurpose(madieMeasure.getMeasureMetaData().getPurpose())
         .setLibrary(
             Collections.singletonList(
@@ -700,5 +691,21 @@ public class MeasureTranslatorService {
     return new Extension(
         UriConstants.CqfMeasures.INCLUDE_IN_REPORT_TYPE_URI,
         new CodeType(measureReportType.toCode()));
+  }
+
+  private List<MarkdownType> buildDefinitions(Measure madieMeasure) {
+    List<MarkdownType> definitions = null;
+    if (madieMeasure.getMeasureMetaData() != null
+        && !CollectionUtils.isEmpty(madieMeasure.getMeasureMetaData().getMeasureDefinitions())) {
+      definitions =
+          madieMeasure.getMeasureMetaData().getMeasureDefinitions().stream()
+              .map(
+                  definition -> {
+                    return new MarkdownType(
+                        definition.getTerm() + " - " + definition.getDefinition() + "\n");
+                  })
+              .collect(Collectors.toList());
+    }
+    return definitions;
   }
 }
