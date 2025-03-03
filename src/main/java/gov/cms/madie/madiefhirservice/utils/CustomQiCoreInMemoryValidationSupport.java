@@ -13,8 +13,6 @@ import org.hl7.fhir.r4.model.ValueSet;
 
 import java.util.Collections;
 
-import static org.apache.commons.lang3.StringUtils.*;
-
 public class CustomQiCoreInMemoryValidationSupport
     extends InMemoryTerminologyServerValidationSupport {
   /**
@@ -63,34 +61,34 @@ public class CustomQiCoreInMemoryValidationSupport
               }
             }
             CodeValidationResult validationResult =
-              createCodeValidationResult(
-                theCode,
-                theDisplay,
-                codeSystemUrlToValidate,
-                codeSystemVersionToValidate,
-                vsUrl,
-                severity);
+                createCodeValidationResult(
+                    theCode,
+                    theDisplay,
+                    codeSystemUrlToValidate,
+                    codeSystemVersionToValidate,
+                    vsUrl,
+                    severity);
             if (severity != null) {
               String message =
-                getFhirContext()
-                  .getLocalizer()
-                  .getMessage(
-                    InMemoryTerminologyServerValidationSupport.class,
-                    "displayMismatch",
-                    theDisplay,
-                    contains.getDisplay(),
-                    theCodeSystemUrlAndVersion,
-                    theCode)
-                  + " for in-memory expansion of ValueSet: "
-                  + vsUrl;
+                  getFhirContext()
+                          .getLocalizer()
+                          .getMessage(
+                              InMemoryTerminologyServerValidationSupport.class,
+                              "displayMismatch",
+                              theDisplay,
+                              contains.getDisplay(),
+                              theCodeSystemUrlAndVersion,
+                              theCode)
+                      + " for in-memory expansion of ValueSet: "
+                      + vsUrl;
               validationResult.setIssues(
-                Collections.singletonList(
-                  new CodeValidationIssue(
-                    message,
-                    severity,
-                    CodeValidationIssueCode.INVALID,
-                    CodeValidationIssueCoding.INVALID_DISPLAY)));
-              if (isNotBlank(message)) {
+                  Collections.singletonList(
+                      new CodeValidationIssue(
+                          message,
+                          severity,
+                          CodeValidationIssueCode.INVALID,
+                          CodeValidationIssueCoding.INVALID_DISPLAY)));
+              if (StringUtils.isNotBlank(message)) {
                 validationResult.setSourceDetails(message);
               }
             }
@@ -116,7 +114,7 @@ public class CustomQiCoreInMemoryValidationSupport
             .setCodeSystemName(theCodeSystem)
             .setCodeSystemVersion(theCodeSystemVersion)
             .setSeverity(theSeverity);
-    if (isNotBlank(vsUrl)) {
+    if (StringUtils.isNotBlank(vsUrl)) {
       codeValidationResult.setSourceDetails(
           "Code was validated against in-memory expansion of ValueSet: " + vsUrl);
     }
