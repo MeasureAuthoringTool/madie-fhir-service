@@ -55,10 +55,9 @@ public class CustomQiCoreInMemoryValidationSupport
                   && (codeSystemVersionToValidate == null
                       || StringUtils.equals(codeSystemVersionToValidate, contains.getVersion())))) {
             // check if display matches
-            if (StringUtils.isNotBlank(theDisplay)) {
-              if (!StringUtils.equals(theDisplay, contains.getDisplay())) {
-                severity = IssueSeverity.ERROR;
-              }
+            if (StringUtils.isNotBlank(theDisplay)
+                && !StringUtils.equals(theDisplay, contains.getDisplay())) {
+              severity = IssueSeverity.ERROR;
             }
             CodeValidationResult validationResult =
                 createCodeValidationResult(
