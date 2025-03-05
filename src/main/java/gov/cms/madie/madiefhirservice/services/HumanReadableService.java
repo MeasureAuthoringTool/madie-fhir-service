@@ -139,6 +139,8 @@ public class HumanReadableService extends ResourceUtils {
     escapeSupplementalProperties(measure);
     escapeContainedProperties(measure);
     escapeIdentifiers(measure);
+    // MAT-6170
+    escapeDefinitions(measure);
     // logic definitions, effective data requirements
     // risk factors and supplemental data guidance
     measure
@@ -386,5 +388,14 @@ public class HumanReadableService extends ResourceUtils {
     extension.setUrl(CqfMeasures.EFFECTIVE_DATA_REQUIREMENT_URL);
     extension.getValueReference().setReference("#effective-data-requirements");
     return extension;
+  }
+
+  private void escapeDefinitions(org.hl7.fhir.r5.model.Measure measure) {
+    measure
+        .getTerm()
+        .forEach(
+            measureTermComponent -> {
+              measureTermComponent.setDefinition(escapeStr(measureTermComponent.getDefinition()));
+            });
   }
 }
