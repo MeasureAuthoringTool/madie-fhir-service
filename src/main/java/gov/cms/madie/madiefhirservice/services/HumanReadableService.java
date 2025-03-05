@@ -139,7 +139,6 @@ public class HumanReadableService extends ResourceUtils {
     escapeSupplementalProperties(measure);
     escapeContainedProperties(measure);
     escapeIdentifiers(measure);
-    // MAT-6170
     escapeDefinitions(measure);
     // logic definitions, effective data requirements
     // risk factors and supplemental data guidance
