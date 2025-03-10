@@ -54,7 +54,10 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
     var visitor = new LibraryCqlVisitorFactory().visit(exm1234Cql);
     when(libCqlVisitorFactory.visit(anyString())).thenReturn(visitor);
     when(elmTranslatorClient.getModuleDefinitionLibrary(
-            any(CqlLibraryDetails.class), anyBoolean(), anyString(), CqlCompilerException.ErrorSeverity.Info))
+            any(CqlLibraryDetails.class),
+            anyBoolean(),
+            anyString(),
+            eq(CqlCompilerException.ErrorSeverity.Info)))
         .thenReturn(r5Library);
 
     Library library = libraryTranslatorService.convertToFhirLibrary(cqlLibrary, null, TOKEN);
@@ -81,7 +84,10 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
     var visitor = new LibraryCqlVisitorFactory().visit(exm1234Cql);
     when(libCqlVisitorFactory.visit(anyString())).thenReturn(visitor);
     when(elmTranslatorClient.getModuleDefinitionLibrary(
-            any(CqlLibraryDetails.class), anyBoolean(), anyString(), CqlCompilerException.ErrorSeverity.Info))
+            any(CqlLibraryDetails.class),
+            anyBoolean(),
+            anyString(),
+            eq(CqlCompilerException.ErrorSeverity.Info)))
         .thenReturn(r5Library);
 
     cqlLibrary.setElmJson("ELMJSON");
@@ -100,7 +106,10 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
     var visitor = new LibraryCqlVisitorFactory().visit(cql);
     when(libCqlVisitorFactory.visit(anyString())).thenReturn(visitor);
     when(elmTranslatorClient.getModuleDefinitionLibrary(
-            any(CqlLibraryDetails.class), anyBoolean(), anyString(), CqlCompilerException.ErrorSeverity.Info))
+            any(CqlLibraryDetails.class),
+            anyBoolean(),
+            anyString(),
+            eq(CqlCompilerException.ErrorSeverity.Info)))
         .thenReturn(r5Library);
     CqlLibrary cqlLib = createCqlLibrary(cql);
     cqlLib.setElmJson("ELMJSON");

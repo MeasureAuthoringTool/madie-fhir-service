@@ -27,7 +27,10 @@ public class ElmTranslatorClient {
   private final FhirContext fhirContextForR5;
 
   public Library getModuleDefinitionLibrary(
-          CqlLibraryDetails libraryDetails, boolean recursive, String accessToken, CqlCompilerException.ErrorSeverity errorSeverity) {
+      CqlLibraryDetails libraryDetails,
+      boolean recursive,
+      String accessToken,
+      CqlCompilerException.ErrorSeverity errorSeverity) {
     try {
       log.info(
           "Getting Module Definition Library for library: {}", libraryDetails.getLibraryName());
@@ -36,7 +39,7 @@ public class ElmTranslatorClient {
                   elmTranslatorClientConfig.getCqlElmServiceBaseUrl()
                       + elmTranslatorClientConfig.getEffectiveDataRequirementsDataUri())
               .queryParam("recursive", recursive)
-                  .queryParam("errorSeverity", errorSeverity)
+              .queryParam("errorSeverity", errorSeverity)
               .build()
               .encode()
               .toUri();
@@ -76,7 +79,10 @@ public class ElmTranslatorClient {
   }
 
   public Library getEffectiveDataRequirements(
-      CqlLibraryDetails libraryDetails, boolean recursive, String accessToken, CqlCompilerException.ErrorSeverity errorSeverity) {
+      CqlLibraryDetails libraryDetails,
+      boolean recursive,
+      String accessToken,
+      CqlCompilerException.ErrorSeverity errorSeverity) {
     Library effectiveDataRequirements =
         getModuleDefinitionLibrary(libraryDetails, recursive, accessToken, errorSeverity);
     // effectiveDataRequirements needs to have fixed id: effective-data-requirements

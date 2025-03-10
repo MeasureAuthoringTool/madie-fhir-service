@@ -28,7 +28,11 @@ public class ExportService {
 
     Bundle bundle =
         measureBundleService.createMeasureBundle(
-            madieMeasure, principal, BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT, accessToken, CqlCompilerException.ErrorSeverity.Info);
+            madieMeasure,
+            principal,
+            BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT,
+            accessToken,
+            CqlCompilerException.ErrorSeverity.Info);
 
     PackagingUtility utility;
     try {

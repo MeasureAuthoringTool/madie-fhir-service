@@ -44,7 +44,11 @@ public class MeasureBundleService {
    * Creates measure bundle that contains measure, main library, and included libraries resources
    */
   public Bundle createMeasureBundle(
-          Measure madieMeasure, Principal principal, String bundleType, String accessToken, CqlCompilerException.ErrorSeverity errorSeverity) {
+      Measure madieMeasure,
+      Principal principal,
+      String bundleType,
+      String accessToken,
+      CqlCompilerException.ErrorSeverity errorSeverity) {
     log.info(
         "Generating measure bundle of type [{}] for measure {}", bundleType, madieMeasure.getId());
     madieMeasure.setCql(CqlFormatter.formatCql(madieMeasure.getCql(), principal));
@@ -79,7 +83,8 @@ public class MeasureBundleService {
       // get effective DataRequirements
       log.info("Getting effective data requirements for measure: {}", measure.getId());
       org.hl7.fhir.r5.model.Library effectiveDataRequirements =
-          elmTranslatorClient.getEffectiveDataRequirements(libraryDetails, true, accessToken, errorSeverity);
+          elmTranslatorClient.getEffectiveDataRequirements(
+              libraryDetails, true, accessToken, errorSeverity);
       // get human-readable for measure
       String humanReadable =
           humanReadableService.generateMeasureHumanReadable(

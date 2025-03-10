@@ -87,7 +87,8 @@ public class LibraryTranslatorService {
   private Library retrieveLibraryModuleDefinition(
       CqlLibraryDetails cqlLibraryDetails, String accessToken) {
     org.hl7.fhir.r5.model.Library r5moduleDefinition =
-        elmTranslatorClient.getModuleDefinitionLibrary(cqlLibraryDetails, false, accessToken, CqlCompilerException.ErrorSeverity.Info);
+        elmTranslatorClient.getModuleDefinitionLibrary(
+            cqlLibraryDetails, false, accessToken, CqlCompilerException.ErrorSeverity.Info);
     var versionConvertor_40_50 = new VersionConvertor_40_50(new BaseAdvisor_40_50());
     return (Library) versionConvertor_40_50.convertResource(r5moduleDefinition);
   }

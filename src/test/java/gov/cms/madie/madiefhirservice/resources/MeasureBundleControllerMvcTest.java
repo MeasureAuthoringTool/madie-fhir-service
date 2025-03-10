@@ -26,8 +26,7 @@ import java.security.Principal;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -59,7 +58,11 @@ public class MeasureBundleControllerMvcTest implements ResourceFileUtil {
     Bundle testBundle = MeasureTestHelper.createTestMeasureBundle();
 
     when(measureBundleService.createMeasureBundle(
-            any(Measure.class), any(Principal.class), anyString(), anyString(), CqlCompilerException.ErrorSeverity.Info))
+            any(Measure.class),
+            any(Principal.class),
+            anyString(),
+            anyString(),
+            eq(CqlCompilerException.ErrorSeverity.Info)))
         .thenReturn(testBundle);
     when(fhirContext.newJsonParser()).thenReturn(FhirContext.forR4().newJsonParser());
 
@@ -77,7 +80,12 @@ public class MeasureBundleControllerMvcTest implements ResourceFileUtil {
         .andExpect(jsonPath("$.entry[0].resource.name").value("TestCMS0001"))
         .andExpect(jsonPath("$.entry[0].resource.version").value("0.0.001"));
     verify(measureBundleService, times(1))
-        .createMeasureBundle(any(Measure.class), any(Principal.class), anyString(), anyString(), CqlCompilerException.ErrorSeverity.Info);
+        .createMeasureBundle(
+            any(Measure.class),
+            any(Principal.class),
+            anyString(),
+            anyString(),
+            eq(CqlCompilerException.ErrorSeverity.Info));
   }
 
   @Test
@@ -86,7 +94,11 @@ public class MeasureBundleControllerMvcTest implements ResourceFileUtil {
     Bundle testBundle = MeasureTestHelper.createTestMeasureBundle();
 
     when(measureBundleService.createMeasureBundle(
-            any(Measure.class), any(Principal.class), anyString(), anyString(), CqlCompilerException.ErrorSeverity.Info))
+            any(Measure.class),
+            any(Principal.class),
+            anyString(),
+            anyString(),
+            eq(CqlCompilerException.ErrorSeverity.Info)))
         .thenReturn(testBundle);
     when(fhirContext.newXmlParser()).thenReturn(FhirContext.forR4().newXmlParser());
 
@@ -96,13 +108,20 @@ public class MeasureBundleControllerMvcTest implements ResourceFileUtil {
                 .with(user(TEST_USER_ID))
                 .with(csrf())
                 .header(HttpHeaders.AUTHORIZATION, "test-okta")
+                .queryParam(
+                    "errorSeverity", String.valueOf(CqlCompilerException.ErrorSeverity.Info))
                 .accept(MediaType.APPLICATION_XML)
                 .content(madieMeasureJson)
                 .contentType(MediaType.APPLICATION_JSON_VALUE))
         .andExpect(status().isOk())
         .andExpect(content().contentType(MediaType.APPLICATION_XML));
     verify(measureBundleService, times(1))
-        .createMeasureBundle(any(Measure.class), any(Principal.class), anyString(), anyString(), CqlCompilerException.ErrorSeverity.Info);
+        .createMeasureBundle(
+            any(Measure.class),
+            any(Principal.class),
+            anyString(),
+            anyString(),
+            eq(CqlCompilerException.ErrorSeverity.Info));
   }
 
   @Test

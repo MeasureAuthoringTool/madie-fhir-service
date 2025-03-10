@@ -49,7 +49,9 @@ public class ElmTranslatorClientTest {
   public void testGetEffectiveDataRequirementsThrowsException() {
     assertThrows(
         CqlElmTranslationServiceException.class,
-        () -> elmTranslatorClient.getEffectiveDataRequirements(null, false, "TEST_TOKEN", CqlCompilerException.ErrorSeverity.Error));
+        () ->
+            elmTranslatorClient.getEffectiveDataRequirements(
+                null, false, "TEST_TOKEN", CqlCompilerException.ErrorSeverity.Error));
   }
 
   @Test
@@ -79,7 +81,8 @@ public class ElmTranslatorClientTest {
     when(elmTranslatorClientConfig.getMadieUrl()).thenReturn("http://test.url");
 
     Library output =
-        elmTranslatorClient.getEffectiveDataRequirements(libraryDetails, false, "TEST_TOKEN",CqlCompilerException.ErrorSeverity.Error);
+        elmTranslatorClient.getEffectiveDataRequirements(
+            libraryDetails, false, "TEST_TOKEN", CqlCompilerException.ErrorSeverity.Error);
     assertThat(output.getId(), is(equalTo("effective-data-requirements")));
     assertThat(output.getRelatedArtifact().size(), is(equalTo(1)));
     assertThat(

@@ -4,8 +4,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -89,7 +88,11 @@ class ExportServiceTest implements ResourceFileUtil {
     Bundle testBundle = MeasureTestHelper.createTestMeasureBundle();
 
     when(measureBundleService.createMeasureBundle(
-            any(Measure.class), any(Principal.class), anyString(), anyString(), CqlCompilerException.ErrorSeverity.Info))
+            any(Measure.class),
+            any(Principal.class),
+            anyString(),
+            anyString(),
+            eq(CqlCompilerException.ErrorSeverity.Info)))
         .thenReturn(testBundle);
     PackagingUtilityImpl utility = Mockito.mock(PackagingUtilityImpl.class);
 
