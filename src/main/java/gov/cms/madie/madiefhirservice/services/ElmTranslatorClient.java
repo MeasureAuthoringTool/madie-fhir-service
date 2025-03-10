@@ -6,6 +6,7 @@ import gov.cms.madie.madiefhirservice.dto.CqlLibraryDetails;
 import gov.cms.madie.madiefhirservice.exceptions.CqlElmTranslationServiceException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.cqframework.cql.cql2elm.CqlCompilerException;
 import org.hl7.fhir.r5.model.Library;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -26,7 +27,7 @@ public class ElmTranslatorClient {
   private final FhirContext fhirContextForR5;
 
   public Library getModuleDefinitionLibrary(
-      CqlLibraryDetails libraryDetails, boolean recursive, String accessToken) {
+          CqlLibraryDetails libraryDetails, boolean recursive, String accessToken, CqlCompilerException.ErrorSeverity errorSeverity) {
     try {
       log.info(
           "Getting Module Definition Library for library: {}", libraryDetails.getLibraryName());
@@ -35,6 +36,7 @@ public class ElmTranslatorClient {
                   elmTranslatorClientConfig.getCqlElmServiceBaseUrl()
                       + elmTranslatorClientConfig.getEffectiveDataRequirementsDataUri())
               .queryParam("recursive", recursive)
+                  .queryParam("errorSeverity", errorSeverity)
               .build()
               .encode()
               .toUri();
@@ -74,9 +76,9 @@ public class ElmTranslatorClient {
   }
 
   public Library getEffectiveDataRequirements(
-      CqlLibraryDetails libraryDetails, boolean recursive, String accessToken) {
+      CqlLibraryDetails libraryDetails, boolean recursive, String accessToken, CqlCompilerException.ErrorSeverity errorSeverity) {
     Library effectiveDataRequirements =
-        getModuleDefinitionLibrary(libraryDetails, recursive, accessToken);
+        getModuleDefinitionLibrary(libraryDetails, recursive, accessToken, errorSeverity);
     // effectiveDataRequirements needs to have fixed id: effective-data-requirements
     effectiveDataRequirements.setId("effective-data-requirements");
     return effectiveDataRequirements;
