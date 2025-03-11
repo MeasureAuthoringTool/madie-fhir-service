@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 
 import lombok.extern.slf4j.Slf4j;
+import org.cqframework.cql.cql2elm.CqlCompilerException;
 import org.hl7.fhir.r4.model.Bundle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -42,13 +43,14 @@ public class MeasureBundleController {
       @RequestBody @Validated(Measure.ValidationSequence.class) Measure measure,
       @RequestHeader(value = HttpHeaders.ACCEPT, required = false) String accept,
       @RequestHeader("Authorization") String accessToken,
+      @RequestParam(defaultValue = "Info") CqlCompilerException.ErrorSeverity errorSeverity,
       @RequestParam(required = false, defaultValue = "calculation", name = "bundleType")
           String bundleType) {
 
     try {
       Bundle bundle =
           measureBundleService.createMeasureBundle(
-              measure, request.getUserPrincipal(), bundleType, accessToken);
+              measure, request.getUserPrincipal(), bundleType, accessToken, errorSeverity);
 
       if (accept != null
           && accept.toUpperCase().contains(MediaType.APPLICATION_XML_VALUE.toUpperCase())) {
