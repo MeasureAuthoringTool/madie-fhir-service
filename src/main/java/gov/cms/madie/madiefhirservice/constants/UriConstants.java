@@ -57,6 +57,15 @@ public final class UriConstants {
     public static final String APPLIES_TO_URI =
         "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-appliesTo";
 
+    public static final String CQL_MEASURE_PROFILE_URI =
+        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cql-measure-cqfm";
+
+    public static final String ELM_MEASURE_PROFILE_URI =
+        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/elm-measure-cqfm";
+
+    public static final String SHAREABLE_MEASURE_PROFILE_URI =
+        "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-shareablemeasure";
+
     public static final String COMPUTABLE_MEASURE_PROFILE_URI =
         "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm";
 

@@ -1,5 +1,6 @@
 package gov.cms.madie.madiefhirservice.services;
 
+import gov.cms.madie.madiefhirservice.constants.UriConstants;
 import gov.cms.madie.madiefhirservice.cql.LibraryCqlVisitorFactory;
 import gov.cms.madie.madiefhirservice.dto.CqlLibraryDetails;
 import gov.cms.madie.madiefhirservice.utils.LibraryHelper;
@@ -73,6 +74,21 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
     assertThat(
         library.getRelatedArtifact().get(0).getDisplay(),
         is(equalTo(r5Library.getRelatedArtifact().get(0).getDisplay())));
+    assertThat(library.getMeta().getProfile().size(), is(equalTo(7)));
+    assertThat(
+            library.getMeta().hasProfile("http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-shareablelibrary"), is(true));
+    assertThat(
+            library.getMeta().hasProfile("http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-computablelibrary"), is(true));
+    assertThat(
+            library.getMeta().hasProfile("http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-publishablelibrary"), is(true));
+    assertThat(
+            library.getMeta().hasProfile("http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-executablelibrary"), is(true));
+    assertThat(
+            library.getMeta().hasProfile("http://hl7.org/fhir/uv/cql/StructureDefinition/cql-library"), is(true));
+    assertThat(
+            library.getMeta().hasProfile("http://hl7.org/fhir/uv/cql/StructureDefinition/elm-json-library"), is(true));
+    assertThat(
+            library.getMeta().hasProfile("http://hl7.org/fhir/uv/cql/StructureDefinition/elm-xml-library"), is(true));
   }
 
   @Test
@@ -91,6 +107,21 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
     assertThat(library.getContent(), is(notNullValue()));
     assertThat(library.getContent().size(), is(equalTo(3)));
     assertThat(library.getExtension().size(), is(equalTo(1)));
+    assertThat(library.getMeta().getProfile().size(), is(equalTo(7)));
+    assertThat(
+            library.getMeta().hasProfile("http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-shareablelibrary"), is(true));
+    assertThat(
+            library.getMeta().hasProfile("http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-computablelibrary"), is(true));
+    assertThat(
+            library.getMeta().hasProfile("http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-publishablelibrary"), is(true));
+    assertThat(
+            library.getMeta().hasProfile("http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-executablelibrary"), is(true));
+    assertThat(
+            library.getMeta().hasProfile("http://hl7.org/fhir/uv/cql/StructureDefinition/cql-library"), is(true));
+    assertThat(
+            library.getMeta().hasProfile("http://hl7.org/fhir/uv/cql/StructureDefinition/elm-json-library"), is(true));
+    assertThat(
+            library.getMeta().hasProfile("http://hl7.org/fhir/uv/cql/StructureDefinition/elm-xml-library"), is(true));
   }
 
   @Test
@@ -110,5 +141,20 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
     assertThat(library.getContent(), is(notNullValue()));
     assertThat(library.getContent().size(), is(equalTo(3)));
     assertThat(library.getExtension().size(), is(equalTo(2)));
+    assertThat(library.getMeta().getProfile().size(), is(equalTo(7)));
+    assertThat(
+            library.getMeta().hasProfile("http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-shareablelibrary"), is(true));
+    assertThat(
+            library.getMeta().hasProfile("http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-computablelibrary"), is(true));
+    assertThat(
+            library.getMeta().hasProfile("http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-publishablelibrary"), is(true));
+    assertThat(
+            library.getMeta().hasProfile("http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-executablelibrary"), is(true));
+    assertThat(
+            library.getMeta().hasProfile("http://hl7.org/fhir/uv/cql/StructureDefinition/cql-library"), is(true));
+    assertThat(
+            library.getMeta().hasProfile("http://hl7.org/fhir/uv/cql/StructureDefinition/elm-json-library"), is(true));
+    assertThat(
+            library.getMeta().hasProfile("http://hl7.org/fhir/uv/cql/StructureDefinition/elm-xml-library"), is(true));
   }
 }
