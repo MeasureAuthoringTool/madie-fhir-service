@@ -408,6 +408,10 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertThat(measure.getUseContext().get(0).hasValue(), is(equalTo(true)));
     assertFalse(measure.getSupplementalData().get(2).getUsage().get(0).getCoding().isEmpty());
     assertEquals("0.0.000", measure.getVersion());
+
+    assertEquals(measure.getDefinition().size(), 2);
+    assertEquals(measure.getDefinition().get(0).toString(), "test term1 - test definition1" + "\n");
+    assertEquals(measure.getDefinition().get(1).toString(), "test term2 - test definition2" + "\n");
   }
 
   @Test
