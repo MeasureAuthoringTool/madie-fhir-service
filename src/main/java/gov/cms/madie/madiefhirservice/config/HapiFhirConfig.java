@@ -4,10 +4,12 @@ import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.context.support.DefaultProfileValidationSupport;
 import ca.uhn.fhir.context.support.IValidationSupport;
 import ca.uhn.fhir.parser.IParser;
+import ca.uhn.fhir.rest.client.interceptor.BasicAuthInterceptor;
 import ca.uhn.fhir.validation.FhirValidator;
 import ca.uhn.fhir.validation.IValidatorModule;
-import gov.cms.madie.madiefhirservice.utils.CustomQiCoreInMemoryValidationSupport;
+import gov.cms.madie.madiefhirservice.validators.CustomQiCoreInMemoryValidationSupport;
 import gov.cms.madie.madiefhirservice.utils.ResourceUtils;
+import gov.cms.madie.madiefhirservice.validators.CustomRemoteTerminologyServiceValidationSupport;
 import lombok.extern.slf4j.Slf4j;
 import org.hl7.fhir.common.hapi.validation.support.*;
 import org.hl7.fhir.common.hapi.validation.validator.FhirInstanceValidator;
@@ -17,6 +19,7 @@ import org.hl7.fhir.r5.context.SimpleWorkerContext;
 import org.hl7.fhir.r5.utils.LiquidEngine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
@@ -29,6 +32,12 @@ import java.util.stream.Stream;
 @Slf4j
 @Configuration
 public class HapiFhirConfig {
+
+  @Value("${vsac.api-key}")
+  private String vsacApiKey;
+
+  @Value("${vsac.terminology-server-url}")
+  private String terminologyServerBase;
 
   @Bean
   @Qualifier("qicoreFhirContext")
@@ -87,14 +96,18 @@ public class HapiFhirConfig {
         IValidationSupport.IssueSeverity.WARNING);
     PrePopulatedValidationSupport prePopulatedValidationSupport =
         getPrePopulatedValidationSupport(qicore6FhirContext);
+    RemoteTerminologyServiceValidationSupport remoteTerminologyServiceValidationSupport =
+        getRemoteTerminologyServiceValidationSupport(qicore6FhirContext);
 
-    return new ValidationSupportChain(
-        npmPackageSupport,
-        new DefaultProfileValidationSupport(qicore6FhirContext),
-        prePopulatedValidationSupport,
-        new CustomQiCoreInMemoryValidationSupport(qicore6FhirContext),
-        new InMemoryTerminologyServerValidationSupport(qicore6FhirContext),
-        new CommonCodeSystemsTerminologyService(qicore6FhirContext));
+    return new CachingValidationSupport(
+        new ValidationSupportChain(
+            prePopulatedValidationSupport,
+            npmPackageSupport,
+            new DefaultProfileValidationSupport(qicore6FhirContext),
+            new CustomQiCoreInMemoryValidationSupport(qicore6FhirContext),
+            new CommonCodeSystemsTerminologyService(qicore6FhirContext),
+            remoteTerminologyServiceValidationSupport,
+            unknownCodeSystemWarningValidationSupport));
   }
 
   @Bean
@@ -157,5 +170,15 @@ public class HapiFhirConfig {
               }
             });
     return prePopulatedValidationSupport;
+  }
+
+  public RemoteTerminologyServiceValidationSupport getRemoteTerminologyServiceValidationSupport(
+      FhirContext qicore6FhirContext) {
+    CustomRemoteTerminologyServiceValidationSupport remoteTerminologyValidationSupport =
+        new CustomRemoteTerminologyServiceValidationSupport(
+            qicore6FhirContext, terminologyServerBase);
+    remoteTerminologyValidationSupport.addClientInterceptor(
+        new BasicAuthInterceptor("apikey", vsacApiKey));
+    return remoteTerminologyValidationSupport;
   }
 }

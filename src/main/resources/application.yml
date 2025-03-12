@@ -32,6 +32,10 @@ okta:
     issuer: ${OKTA_ISSUER:https://dev-18092578.okta.com/oauth2/default}
     audience: ${OKTA_AUDIENCE:api://default}
 
+vsac:
+  terminology-server-url: https://cts.nlm.nih.gov/fhir
+  api-key: ${VSAC_API_KEY:TEST}
+
 caching:
   spring:
     libraries:

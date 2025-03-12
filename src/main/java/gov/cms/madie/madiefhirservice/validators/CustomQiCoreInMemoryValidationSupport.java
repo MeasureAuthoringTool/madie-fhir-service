@@ -1,4 +1,4 @@
-package gov.cms.madie.madiefhirservice.utils;
+package gov.cms.madie.madiefhirservice.validators;
 
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.context.support.ConceptValidationOptions;
