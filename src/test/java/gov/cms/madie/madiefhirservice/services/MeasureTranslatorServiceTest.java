@@ -37,16 +37,11 @@ import java.util.Collections;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.time.DateFormatUtils;
-import org.hl7.fhir.r4.model.CodeableConcept;
+import org.hl7.fhir.r4.model.*;
 import org.hl7.fhir.r4.model.Enumerations.PublicationStatus;
-import org.hl7.fhir.r4.model.Expression;
-import org.hl7.fhir.r4.model.Extension;
-import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.Measure.MeasureGroupComponent;
 import org.hl7.fhir.r4.model.Measure.MeasureGroupPopulationComponent;
 import org.hl7.fhir.r4.model.Measure.MeasureGroupStratifierComponent;
-import org.hl7.fhir.r4.model.Meta;
-import org.hl7.fhir.r4.model.Type;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -101,7 +96,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertThat(
         DateFormatUtils.format(measure.getLastReviewDate(), "MM/dd/yyyy"),
         is(equalTo("02/13/2023")));
-    assertThat(measure.getMeta().getProfile().size(), is(equalTo(3)));
+    assertThat(measure.getMeta().getProfile().size(), is(equalTo(7)));
     assertThat(
         measure.getMeta().hasProfile(UriConstants.CqfMeasures.EXECUTABLE_MEASURE_PROFILE_URI),
         is(true));
@@ -111,6 +106,14 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertThat(
         measure.getMeta().hasProfile(UriConstants.CqfMeasures.EXECUTABLE_MEASURE_PROFILE_URI),
         is(true));
+    assertThat(
+        measure.getMeta().hasProfile(UriConstants.CqfMeasures.SHAREABLE_MEASURE_PROFILE_URI),
+        is(true));
+    assertThat(
+        measure.getMeta().hasProfile(UriConstants.CqfMeasures.CQL_MEASURE_PROFILE_URI), is(true));
+    assertThat(
+        measure.getMeta().hasProfile(UriConstants.CqfMeasures.ELM_MEASURE_PROFILE_URI), is(true));
+    assertThat(measure.getMeta().hasProfile(UriConstants.CqfMeasures.RATIO_PROFILE_URI), is(true));
     assertThat(measure.getGroup().size(), is(equalTo(madieMeasure.getGroups().size())));
     assertThat(measure.getStatus(), is(equalTo(PublicationStatus.ACTIVE)));
     assertThat(
@@ -453,7 +456,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertThat(
         DateFormatUtils.format(measure.getLastReviewDate(), "MM/dd/yyyy"),
         is(equalTo("02/13/2023")));
-    assertThat(measure.getMeta().getProfile().size(), is(equalTo(3)));
+    assertThat(measure.getMeta().getProfile().size(), is(equalTo(7)));
     assertThat(
         measure.getMeta().hasProfile(UriConstants.CqfMeasures.EXECUTABLE_MEASURE_PROFILE_URI),
         is(true));
@@ -463,6 +466,14 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertThat(
         measure.getMeta().hasProfile(UriConstants.CqfMeasures.EXECUTABLE_MEASURE_PROFILE_URI),
         is(true));
+    assertThat(
+        measure.getMeta().hasProfile(UriConstants.CqfMeasures.SHAREABLE_MEASURE_PROFILE_URI),
+        is(true));
+    assertThat(
+        measure.getMeta().hasProfile(UriConstants.CqfMeasures.CQL_MEASURE_PROFILE_URI), is(true));
+    assertThat(
+        measure.getMeta().hasProfile(UriConstants.CqfMeasures.ELM_MEASURE_PROFILE_URI), is(true));
+    assertThat(measure.getMeta().hasProfile(UriConstants.CqfMeasures.RATIO_PROFILE_URI), is(true));
     assertThat(measure.getStatus(), is(equalTo(PublicationStatus.ACTIVE)));
     assertThat(
         measure.getDescription(),
@@ -578,7 +589,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
         is(equalTo("01/01/2023")));
     assertNull(measure.getApprovalDate());
     assertNull(measure.getLastReviewDate());
-    assertThat(measure.getMeta().getProfile().size(), is(equalTo(3)));
+    assertThat(measure.getMeta().getProfile().size(), is(equalTo(7)));
     assertThat(
         measure.getMeta().hasProfile(UriConstants.CqfMeasures.EXECUTABLE_MEASURE_PROFILE_URI),
         is(true));
@@ -588,6 +599,14 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertThat(
         measure.getMeta().hasProfile(UriConstants.CqfMeasures.EXECUTABLE_MEASURE_PROFILE_URI),
         is(true));
+    assertThat(
+        measure.getMeta().hasProfile(UriConstants.CqfMeasures.SHAREABLE_MEASURE_PROFILE_URI),
+        is(true));
+    assertThat(
+        measure.getMeta().hasProfile(UriConstants.CqfMeasures.CQL_MEASURE_PROFILE_URI), is(true));
+    assertThat(
+        measure.getMeta().hasProfile(UriConstants.CqfMeasures.ELM_MEASURE_PROFILE_URI), is(true));
+    assertThat(measure.getMeta().hasProfile(UriConstants.CqfMeasures.CV_PROFILE_URI), is(true));
     assertThat(measure.getUseContext(), is(Collections.emptyList()));
     assertThat(measure.getGroup().size(), is(equalTo(madieCVMeasure.getGroups().size())));
 
@@ -954,8 +973,9 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
 
   @Test
   void testBuildMeasureMetaHandlesValidInput() {
-    Measure measure = new Measure();
-    final Meta output = measureTranslatorService.buildMeasureMeta();
+    final Meta output =
+        measureTranslatorService.buildMeasureMeta(
+            List.of(Group.builder().scoring("Proportion").build()));
     assertThat(output, is(notNullValue()));
     assertThat(output.hasProfile(), is(true));
     assertThat(
@@ -964,6 +984,67 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
         output.hasProfile(UriConstants.CqfMeasures.PUBLISHABLE_MEASURE_PROFILE_URI), is(true));
     assertThat(
         output.hasProfile(UriConstants.CqfMeasures.EXECUTABLE_MEASURE_PROFILE_URI), is(true));
+    assertThat(output.hasProfile(UriConstants.CqfMeasures.SHAREABLE_MEASURE_PROFILE_URI), is(true));
+    assertThat(output.hasProfile(UriConstants.CqfMeasures.CQL_MEASURE_PROFILE_URI), is(true));
+    assertThat(output.hasProfile(UriConstants.CqfMeasures.ELM_MEASURE_PROFILE_URI), is(true));
+    assertThat(output.hasProfile(UriConstants.CqfMeasures.PROPORTION_PROFILE_URI), is(true));
+  }
+
+  @Test
+  void testBuildMeasureMetaHandlesEmptyInput() {
+    final Meta output = measureTranslatorService.buildMeasureMeta(Collections.emptyList());
+    assertThat(output, is(notNullValue()));
+    assertThat(output.hasProfile(), is(true));
+    assertThat(
+        output.hasProfile(UriConstants.CqfMeasures.EXECUTABLE_MEASURE_PROFILE_URI), is(true));
+    assertThat(
+        output.hasProfile(UriConstants.CqfMeasures.PUBLISHABLE_MEASURE_PROFILE_URI), is(true));
+    assertThat(
+        output.hasProfile(UriConstants.CqfMeasures.EXECUTABLE_MEASURE_PROFILE_URI), is(true));
+    assertThat(output.hasProfile(UriConstants.CqfMeasures.SHAREABLE_MEASURE_PROFILE_URI), is(true));
+    assertThat(output.hasProfile(UriConstants.CqfMeasures.CQL_MEASURE_PROFILE_URI), is(true));
+    assertThat(output.hasProfile(UriConstants.CqfMeasures.ELM_MEASURE_PROFILE_URI), is(true));
+  }
+
+  @Test
+  void testBuildMeasureMetaHandlesMultipleScoring() {
+    final Meta output =
+        measureTranslatorService.buildMeasureMeta(
+            List.of(
+                Group.builder().scoring("Proportion").build(),
+                Group.builder().scoring("Ratio").build()));
+    assertThat(output, is(notNullValue()));
+    assertThat(output.hasProfile(), is(true));
+    assertThat(
+        output.hasProfile(UriConstants.CqfMeasures.EXECUTABLE_MEASURE_PROFILE_URI), is(true));
+    assertThat(
+        output.hasProfile(UriConstants.CqfMeasures.PUBLISHABLE_MEASURE_PROFILE_URI), is(true));
+    assertThat(
+        output.hasProfile(UriConstants.CqfMeasures.EXECUTABLE_MEASURE_PROFILE_URI), is(true));
+    assertThat(output.hasProfile(UriConstants.CqfMeasures.SHAREABLE_MEASURE_PROFILE_URI), is(true));
+    assertThat(output.hasProfile(UriConstants.CqfMeasures.CQL_MEASURE_PROFILE_URI), is(true));
+    assertThat(output.hasProfile(UriConstants.CqfMeasures.ELM_MEASURE_PROFILE_URI), is(true));
+  }
+
+  @Test
+  void testBuildMeasureMetaHandlesMultipleOfSameScoring() {
+    final Meta output =
+        measureTranslatorService.buildMeasureMeta(
+            List.of(
+                Group.builder().scoring("Cohort").build(),
+                Group.builder().scoring("Cohort").build()));
+    assertThat(output, is(notNullValue()));
+    assertThat(output.hasProfile(), is(true));
+    assertThat(
+        output.hasProfile(UriConstants.CqfMeasures.EXECUTABLE_MEASURE_PROFILE_URI), is(true));
+    assertThat(
+        output.hasProfile(UriConstants.CqfMeasures.PUBLISHABLE_MEASURE_PROFILE_URI), is(true));
+    assertThat(
+        output.hasProfile(UriConstants.CqfMeasures.EXECUTABLE_MEASURE_PROFILE_URI), is(true));
+    assertThat(output.hasProfile(UriConstants.CqfMeasures.SHAREABLE_MEASURE_PROFILE_URI), is(true));
+    assertThat(output.hasProfile(UriConstants.CqfMeasures.CQL_MEASURE_PROFILE_URI), is(true));
+    assertThat(output.hasProfile(UriConstants.CqfMeasures.ELM_MEASURE_PROFILE_URI), is(true));
+    assertThat(output.hasProfile(UriConstants.CqfMeasures.COHORT_PROFILE_URI), is(true));
   }
 
   @Test

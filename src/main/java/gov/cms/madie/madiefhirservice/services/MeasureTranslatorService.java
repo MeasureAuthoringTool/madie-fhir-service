@@ -84,7 +84,7 @@ public class MeasureTranslatorService {
         .setClinicalRecommendationStatement(
             madieMeasure.getMeasureMetaData().getClinicalRecommendation())
         .setDate(Date.from(madieMeasure.getLastModifiedAt()))
-        .setMeta(buildMeasureMeta())
+        .setMeta(buildMeasureMeta(madieMeasure.getGroups()))
         .setId(madieMeasure.getCqlLibraryName());
     for (Extension ext : buildExtensions(madieMeasure)) {
       measure.addExtension(ext);
@@ -214,11 +214,38 @@ public class MeasureTranslatorService {
     return identifier;
   }
 
-  public Meta buildMeasureMeta() {
+  public Meta buildMeasureMeta(List<Group> madieGroups) {
     final Meta meta = new Meta();
-    meta.addProfile(UriConstants.CqfMeasures.COMPUTABLE_MEASURE_PROFILE_URI);
-    meta.addProfile(UriConstants.CqfMeasures.PUBLISHABLE_MEASURE_PROFILE_URI);
-    meta.addProfile(UriConstants.CqfMeasures.EXECUTABLE_MEASURE_PROFILE_URI);
+    meta.addProfile(UriConstants.CqfMeasures.SHAREABLE_MEASURE_PROFILE_URI)
+        .addProfile(UriConstants.CqfMeasures.COMPUTABLE_MEASURE_PROFILE_URI)
+        .addProfile(UriConstants.CqfMeasures.PUBLISHABLE_MEASURE_PROFILE_URI)
+        .addProfile(UriConstants.CqfMeasures.EXECUTABLE_MEASURE_PROFILE_URI)
+        .addProfile(UriConstants.CqfMeasures.CQL_MEASURE_PROFILE_URI)
+        .addProfile(UriConstants.CqfMeasures.ELM_MEASURE_PROFILE_URI);
+
+    if (!madieGroups.isEmpty()) {
+      String score = madieGroups.get(0).getScoring();
+      if (madieGroups.stream().map(Group::getScoring).allMatch(s -> s.equals(score))) {
+        switch (score) {
+          case "Cohort":
+            meta.addProfile(UriConstants.CqfMeasures.COHORT_PROFILE_URI);
+            break;
+          case "Proportion":
+            meta.addProfile(UriConstants.CqfMeasures.PROPORTION_PROFILE_URI);
+            break;
+          case "Ratio":
+            meta.addProfile(UriConstants.CqfMeasures.RATIO_PROFILE_URI);
+            break;
+          case "Continuous Variable":
+            meta.addProfile(UriConstants.CqfMeasures.CV_PROFILE_URI);
+            break;
+          default:
+            break;
+            // do nothing
+        }
+      }
+    }
+
     return meta;
   }
 
