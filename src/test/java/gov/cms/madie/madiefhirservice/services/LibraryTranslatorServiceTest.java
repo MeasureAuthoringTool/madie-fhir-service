@@ -1,10 +1,12 @@
 package gov.cms.madie.madiefhirservice.services;
 
+import gov.cms.madie.madiefhirservice.constants.UriConstants;
 import gov.cms.madie.madiefhirservice.cql.LibraryCqlVisitorFactory;
 import gov.cms.madie.madiefhirservice.dto.CqlLibraryDetails;
 import gov.cms.madie.madiefhirservice.utils.LibraryHelper;
 import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
 import gov.cms.madie.models.library.CqlLibrary;
+import org.cqframework.cql.cql2elm.CqlCompilerException;
 import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.Library;
 import org.hl7.fhir.r4.model.Identifier.IdentifierUse;
@@ -53,7 +55,10 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
     var visitor = new LibraryCqlVisitorFactory().visit(exm1234Cql);
     when(libCqlVisitorFactory.visit(anyString())).thenReturn(visitor);
     when(elmTranslatorClient.getModuleDefinitionLibrary(
-            any(CqlLibraryDetails.class), anyBoolean(), anyString()))
+            any(CqlLibraryDetails.class),
+            anyBoolean(),
+            anyString(),
+            eq(CqlCompilerException.ErrorSeverity.Info)))
         .thenReturn(r5Library);
 
     Library library = libraryTranslatorService.convertToFhirLibrary(cqlLibrary, null, TOKEN);
@@ -73,6 +78,15 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
     assertThat(
         library.getRelatedArtifact().get(0).getDisplay(),
         is(equalTo(r5Library.getRelatedArtifact().get(0).getDisplay())));
+    assertThat(library.getMeta().getProfile().size(), is(equalTo(7)));
+    assertThat(library.getMeta().hasProfile(UriConstants.Library.SHAREABLE_LIBRARY_URI), is(true));
+    assertThat(library.getMeta().hasProfile(UriConstants.Library.COMPUTABLE_LIBRARY_URI), is(true));
+    assertThat(
+        library.getMeta().hasProfile(UriConstants.Library.PUBLISHABLE_LIBRARY_URI), is(true));
+    assertThat(library.getMeta().hasProfile(UriConstants.Library.EXECUTABLE_LIBRARY_URI), is(true));
+    assertThat(library.getMeta().hasProfile(UriConstants.Library.CQL_LIBRARY_URI), is(true));
+    assertThat(library.getMeta().hasProfile(UriConstants.Library.ELM_JSON_LIBRARY_URI), is(true));
+    assertThat(library.getMeta().hasProfile(UriConstants.Library.ELM_XML_LIBRARY_URI), is(true));
   }
 
   @Test
@@ -80,7 +94,10 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
     var visitor = new LibraryCqlVisitorFactory().visit(exm1234Cql);
     when(libCqlVisitorFactory.visit(anyString())).thenReturn(visitor);
     when(elmTranslatorClient.getModuleDefinitionLibrary(
-            any(CqlLibraryDetails.class), anyBoolean(), anyString()))
+            any(CqlLibraryDetails.class),
+            anyBoolean(),
+            anyString(),
+            eq(CqlCompilerException.ErrorSeverity.Info)))
         .thenReturn(r5Library);
 
     cqlLibrary.setElmJson("ELMJSON");
@@ -91,6 +108,15 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
     assertThat(library.getContent(), is(notNullValue()));
     assertThat(library.getContent().size(), is(equalTo(3)));
     assertThat(library.getExtension().size(), is(equalTo(1)));
+    assertThat(library.getMeta().getProfile().size(), is(equalTo(7)));
+    assertThat(library.getMeta().hasProfile(UriConstants.Library.SHAREABLE_LIBRARY_URI), is(true));
+    assertThat(library.getMeta().hasProfile(UriConstants.Library.COMPUTABLE_LIBRARY_URI), is(true));
+    assertThat(
+        library.getMeta().hasProfile(UriConstants.Library.PUBLISHABLE_LIBRARY_URI), is(true));
+    assertThat(library.getMeta().hasProfile(UriConstants.Library.EXECUTABLE_LIBRARY_URI), is(true));
+    assertThat(library.getMeta().hasProfile(UriConstants.Library.CQL_LIBRARY_URI), is(true));
+    assertThat(library.getMeta().hasProfile(UriConstants.Library.ELM_JSON_LIBRARY_URI), is(true));
+    assertThat(library.getMeta().hasProfile(UriConstants.Library.ELM_XML_LIBRARY_URI), is(true));
   }
 
   @Test
@@ -99,7 +125,10 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
     var visitor = new LibraryCqlVisitorFactory().visit(cql);
     when(libCqlVisitorFactory.visit(anyString())).thenReturn(visitor);
     when(elmTranslatorClient.getModuleDefinitionLibrary(
-            any(CqlLibraryDetails.class), anyBoolean(), anyString()))
+            any(CqlLibraryDetails.class),
+            anyBoolean(),
+            anyString(),
+            eq(CqlCompilerException.ErrorSeverity.Info)))
         .thenReturn(r5Library);
     CqlLibrary cqlLib = createCqlLibrary(cql);
     cqlLib.setElmJson("ELMJSON");
@@ -110,5 +139,14 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
     assertThat(library.getContent(), is(notNullValue()));
     assertThat(library.getContent().size(), is(equalTo(3)));
     assertThat(library.getExtension().size(), is(equalTo(2)));
+    assertThat(library.getMeta().getProfile().size(), is(equalTo(7)));
+    assertThat(library.getMeta().hasProfile(UriConstants.Library.SHAREABLE_LIBRARY_URI), is(true));
+    assertThat(library.getMeta().hasProfile(UriConstants.Library.COMPUTABLE_LIBRARY_URI), is(true));
+    assertThat(
+        library.getMeta().hasProfile(UriConstants.Library.PUBLISHABLE_LIBRARY_URI), is(true));
+    assertThat(library.getMeta().hasProfile(UriConstants.Library.EXECUTABLE_LIBRARY_URI), is(true));
+    assertThat(library.getMeta().hasProfile(UriConstants.Library.CQL_LIBRARY_URI), is(true));
+    assertThat(library.getMeta().hasProfile(UriConstants.Library.ELM_JSON_LIBRARY_URI), is(true));
+    assertThat(library.getMeta().hasProfile(UriConstants.Library.ELM_XML_LIBRARY_URI), is(true));
   }
 }

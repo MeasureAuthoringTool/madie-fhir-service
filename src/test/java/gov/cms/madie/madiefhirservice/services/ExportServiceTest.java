@@ -4,8 +4,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -14,6 +13,7 @@ import java.io.IOException;
 import java.security.Principal;
 import java.time.Instant;
 
+import org.cqframework.cql.cql2elm.CqlCompilerException;
 import org.hl7.fhir.r4.model.Bundle;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -88,7 +88,11 @@ class ExportServiceTest implements ResourceFileUtil {
     Bundle testBundle = MeasureTestHelper.createTestMeasureBundle();
 
     when(measureBundleService.createMeasureBundle(
-            any(Measure.class), any(Principal.class), anyString(), anyString()))
+            any(Measure.class),
+            any(Principal.class),
+            anyString(),
+            anyString(),
+            eq(CqlCompilerException.ErrorSeverity.Info)))
         .thenReturn(testBundle);
     PackagingUtilityImpl utility = Mockito.mock(PackagingUtilityImpl.class);
 

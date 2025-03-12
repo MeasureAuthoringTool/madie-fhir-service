@@ -318,7 +318,17 @@
          "codeSystem": "http://hl7.org/fhir/us/cqfmeasures/CodeSystem/intended-venue-codes",
          "display": "EC",
          "definition": "An eligible clinician is a clinician who is eligible to participate in a quality measurement intiative."
-      }
+      },
+      "measureDefinitions": [
+      	{
+      	  "term": "test term1",
+      	  "definition": "test definition1"
+      	},
+      	{
+      	  "term": "test term2",
+      	  "definition": "test definition2"
+      	}
+      ]
    },
    "supplementalData": [
       {

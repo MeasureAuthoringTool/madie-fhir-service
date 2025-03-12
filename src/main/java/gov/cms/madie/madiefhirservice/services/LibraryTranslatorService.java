@@ -7,6 +7,7 @@ import gov.cms.madie.madiefhirservice.utils.FhirResourceHelpers;
 import gov.cms.madie.models.library.CqlLibrary;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.cqframework.cql.cql2elm.CqlCompilerException;
 import org.hl7.fhir.convertors.advisors.impl.BaseAdvisor_40_50;
 import org.hl7.fhir.convertors.conv40_50.VersionConvertor_40_50;
 import org.hl7.fhir.r4.model.Attachment;
@@ -86,7 +87,8 @@ public class LibraryTranslatorService {
   private Library retrieveLibraryModuleDefinition(
       CqlLibraryDetails cqlLibraryDetails, String accessToken) {
     org.hl7.fhir.r5.model.Library r5moduleDefinition =
-        elmTranslatorClient.getModuleDefinitionLibrary(cqlLibraryDetails, false, accessToken);
+        elmTranslatorClient.getModuleDefinitionLibrary(
+            cqlLibraryDetails, false, accessToken, CqlCompilerException.ErrorSeverity.Info);
     var versionConvertor_40_50 = new VersionConvertor_40_50(new BaseAdvisor_40_50());
     return (Library) versionConvertor_40_50.convertResource(r5moduleDefinition);
   }
@@ -96,8 +98,13 @@ public class LibraryTranslatorService {
     // work.
     // For now, it is just computable until we resolve this.
     return new Meta()
-        .addProfile(
-            "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-library-cqfm");
+        .addProfile(UriConstants.Library.SHAREABLE_LIBRARY_URI)
+        .addProfile(UriConstants.Library.COMPUTABLE_LIBRARY_URI)
+        .addProfile(UriConstants.Library.PUBLISHABLE_LIBRARY_URI)
+        .addProfile(UriConstants.Library.EXECUTABLE_LIBRARY_URI)
+        .addProfile(UriConstants.Library.CQL_LIBRARY_URI)
+        .addProfile(UriConstants.Library.ELM_JSON_LIBRARY_URI)
+        .addProfile(UriConstants.Library.ELM_XML_LIBRARY_URI);
   }
 
   /**
