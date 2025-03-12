@@ -98,8 +98,13 @@ public class LibraryTranslatorService {
     // work.
     // For now, it is just computable until we resolve this.
     return new Meta()
-        .addProfile(
-            "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-library-cqfm");
+        .addProfile(UriConstants.Library.SHAREABLE_LIBRARY_URI)
+        .addProfile(UriConstants.Library.COMPUTABLE_LIBRARY_URI)
+        .addProfile(UriConstants.Library.PUBLISHABLE_LIBRARY_URI)
+        .addProfile(UriConstants.Library.EXECUTABLE_LIBRARY_URI)
+        .addProfile(UriConstants.Library.CQL_LIBRARY_URI)
+        .addProfile(UriConstants.Library.ELM_JSON_LIBRARY_URI)
+        .addProfile(UriConstants.Library.ELM_XML_LIBRARY_URI);
   }
 
   /**

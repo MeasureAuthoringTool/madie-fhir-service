@@ -1,5 +1,6 @@
 package gov.cms.madie.madiefhirservice.services;
 
+import gov.cms.madie.madiefhirservice.constants.UriConstants;
 import gov.cms.madie.madiefhirservice.cql.LibraryCqlVisitorFactory;
 import gov.cms.madie.madiefhirservice.dto.CqlLibraryDetails;
 import gov.cms.madie.madiefhirservice.utils.LibraryHelper;
@@ -77,6 +78,15 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
     assertThat(
         library.getRelatedArtifact().get(0).getDisplay(),
         is(equalTo(r5Library.getRelatedArtifact().get(0).getDisplay())));
+    assertThat(library.getMeta().getProfile().size(), is(equalTo(7)));
+    assertThat(library.getMeta().hasProfile(UriConstants.Library.SHAREABLE_LIBRARY_URI), is(true));
+    assertThat(library.getMeta().hasProfile(UriConstants.Library.COMPUTABLE_LIBRARY_URI), is(true));
+    assertThat(
+        library.getMeta().hasProfile(UriConstants.Library.PUBLISHABLE_LIBRARY_URI), is(true));
+    assertThat(library.getMeta().hasProfile(UriConstants.Library.EXECUTABLE_LIBRARY_URI), is(true));
+    assertThat(library.getMeta().hasProfile(UriConstants.Library.CQL_LIBRARY_URI), is(true));
+    assertThat(library.getMeta().hasProfile(UriConstants.Library.ELM_JSON_LIBRARY_URI), is(true));
+    assertThat(library.getMeta().hasProfile(UriConstants.Library.ELM_XML_LIBRARY_URI), is(true));
   }
 
   @Test
@@ -98,6 +108,15 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
     assertThat(library.getContent(), is(notNullValue()));
     assertThat(library.getContent().size(), is(equalTo(3)));
     assertThat(library.getExtension().size(), is(equalTo(1)));
+    assertThat(library.getMeta().getProfile().size(), is(equalTo(7)));
+    assertThat(library.getMeta().hasProfile(UriConstants.Library.SHAREABLE_LIBRARY_URI), is(true));
+    assertThat(library.getMeta().hasProfile(UriConstants.Library.COMPUTABLE_LIBRARY_URI), is(true));
+    assertThat(
+        library.getMeta().hasProfile(UriConstants.Library.PUBLISHABLE_LIBRARY_URI), is(true));
+    assertThat(library.getMeta().hasProfile(UriConstants.Library.EXECUTABLE_LIBRARY_URI), is(true));
+    assertThat(library.getMeta().hasProfile(UriConstants.Library.CQL_LIBRARY_URI), is(true));
+    assertThat(library.getMeta().hasProfile(UriConstants.Library.ELM_JSON_LIBRARY_URI), is(true));
+    assertThat(library.getMeta().hasProfile(UriConstants.Library.ELM_XML_LIBRARY_URI), is(true));
   }
 
   @Test
@@ -120,5 +139,14 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
     assertThat(library.getContent(), is(notNullValue()));
     assertThat(library.getContent().size(), is(equalTo(3)));
     assertThat(library.getExtension().size(), is(equalTo(2)));
+    assertThat(library.getMeta().getProfile().size(), is(equalTo(7)));
+    assertThat(library.getMeta().hasProfile(UriConstants.Library.SHAREABLE_LIBRARY_URI), is(true));
+    assertThat(library.getMeta().hasProfile(UriConstants.Library.COMPUTABLE_LIBRARY_URI), is(true));
+    assertThat(
+        library.getMeta().hasProfile(UriConstants.Library.PUBLISHABLE_LIBRARY_URI), is(true));
+    assertThat(library.getMeta().hasProfile(UriConstants.Library.EXECUTABLE_LIBRARY_URI), is(true));
+    assertThat(library.getMeta().hasProfile(UriConstants.Library.CQL_LIBRARY_URI), is(true));
+    assertThat(library.getMeta().hasProfile(UriConstants.Library.ELM_JSON_LIBRARY_URI), is(true));
+    assertThat(library.getMeta().hasProfile(UriConstants.Library.ELM_XML_LIBRARY_URI), is(true));
   }
 }
