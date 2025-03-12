@@ -96,13 +96,13 @@ public class LibraryTranslatorService {
     // work.
     // For now, it is just computable until we resolve this.
     return new Meta()
-        .addProfile("http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-shareablelibrary")
-        .addProfile("http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-computablelibrary")
-        .addProfile("http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-publishablelibrary")
-        .addProfile("http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-executablelibrary")
-        .addProfile("http://hl7.org/fhir/uv/cql/StructureDefinition/cql-library")
-        .addProfile("http://hl7.org/fhir/uv/cql/StructureDefinition/elm-json-library")
-        .addProfile("http://hl7.org/fhir/uv/cql/StructureDefinition/elm-xml-library");
+        .addProfile(UriConstants.Library.SHAREABLE_LIBRARY_URI)
+        .addProfile(UriConstants.Library.COMPUTABLE_LIBRARY_URI)
+        .addProfile(UriConstants.Library.PUBLISHABLE_LIBRARY_URI)
+        .addProfile(UriConstants.Library.EXECUTABLE_LIBRARY_URI)
+        .addProfile(UriConstants.Library.CQL_LIBRARY_URI)
+        .addProfile(UriConstants.Library.ELM_JSON_LIBRARY_URI)
+        .addProfile(UriConstants.Library.ELM_XML_LIBRARY_URI);
   }
 
   /**

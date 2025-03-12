@@ -120,4 +120,27 @@ public final class UriConstants {
     public static final String SHORT_NAME = "https://madie.cms.gov/measure/shortName";
     public static final String CBE_ID = "https://madie.cms.gov/measure/cbeId";
   }
+
+  public static final class Library {
+    public static String SHAREABLE_LIBRARY_URI =
+        "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-shareablelibrary";
+
+    public static String COMPUTABLE_LIBRARY_URI =
+        "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-computablelibrary";
+
+    public static String PUBLISHABLE_LIBRARY_URI =
+        "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-publishablelibrary";
+
+    public static String EXECUTABLE_LIBRARY_URI =
+        "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-executablelibrary";
+
+    public static String CQL_LIBRARY_URI =
+        "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-library";
+
+    public static String ELM_JSON_LIBRARY_URI =
+        "http://hl7.org/fhir/uv/cql/StructureDefinition/elm-json-library";
+
+    public static String ELM_XML_LIBRARY_URI =
+        "http://hl7.org/fhir/uv/cql/StructureDefinition/elm-xml-library";
+  }
 }
