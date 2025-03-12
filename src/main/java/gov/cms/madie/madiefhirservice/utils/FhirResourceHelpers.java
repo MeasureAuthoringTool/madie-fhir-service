@@ -91,7 +91,7 @@ public class FhirResourceHelpers {
       TestCaseStratificationValue testCaseStratificationValue,
       Boolean valueIndex,
       boolean isPatientBased,
-      List<gov.cms.madie.models.measure.Group> groups,
+      List<Group> groups,
       String populationGroupId) {
     var measureTestCaseStratificationComponents =
         testCaseStratificationValue.getPopulationValues().stream()
