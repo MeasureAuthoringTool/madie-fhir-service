@@ -54,7 +54,9 @@ import gov.cms.madie.madiefhirservice.utils.FhirResourceHelpers;
 import gov.cms.madie.madiefhirservice.utils.MeasureTestHelper;
 import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
 import gov.cms.madie.models.common.BundleType;
+import gov.cms.madie.models.measure.Group;
 import gov.cms.madie.models.measure.Measure;
+import gov.cms.madie.models.measure.Stratification;
 import gov.cms.madie.models.measure.TestCase;
 import gov.cms.madie.packaging.utils.PackagingUtilityFactory;
 import gov.cms.madie.packaging.utils.qicore411.PackagingUtilityImpl;
@@ -249,6 +251,24 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
             p -> "initial-population".equalsIgnoreCase(p.getCode().getCoding().get(0).getCode()))
         .findFirst()
         .ifPresent(e -> assertEquals(0, e.getCount()));
+    assertEquals(1, measureReport.getGroup().size());
+    assertEquals("Group_1", measureReport.getGroup().get(0).getId());
+    assertEquals(6, measureReport.getGroup().get(0).getPopulation().size());
+    assertEquals(
+        "InitialPopulation_1_1", measureReport.getGroup().get(0).getPopulation().get(0).getId());
+    assertEquals(
+        "InitialPopulation_1_2", measureReport.getGroup().get(0).getPopulation().get(1).getId());
+    assertEquals("Denominator_1", measureReport.getGroup().get(0).getPopulation().get(2).getId());
+    assertEquals(
+        "DenominatorExclusion_1", measureReport.getGroup().get(0).getPopulation().get(3).getId());
+    assertEquals("Numerator_1", measureReport.getGroup().get(0).getPopulation().get(4).getId());
+    assertEquals(
+        "NumeratorExclusion_1", measureReport.getGroup().get(0).getPopulation().get(5).getId());
+    assertEquals(2, measureReport.getGroup().get(0).getStratifier().size());
+    assertEquals(
+        "Stratification_1_1", measureReport.getGroup().get(0).getStratifier().get(0).getId());
+    assertEquals(
+        "Stratification_1_2", measureReport.getGroup().get(0).getStratifier().get(1).getId());
 
     // evaluated resources
     assertEquals(4, measureReport.getEvaluatedResource().size());
@@ -312,6 +332,24 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
             p -> "initial-population".equalsIgnoreCase(p.getCode().getCoding().get(0).getCode()))
         .findFirst()
         .ifPresent(e -> assertEquals(0, e.getCount()));
+    assertEquals(1, measureReport.getGroup().size());
+    assertEquals("Group_1", measureReport.getGroup().get(0).getId());
+    assertEquals(6, measureReport.getGroup().get(0).getPopulation().size());
+    assertEquals(
+        "InitialPopulation_1_1", measureReport.getGroup().get(0).getPopulation().get(0).getId());
+    assertEquals(
+        "InitialPopulation_1_2", measureReport.getGroup().get(0).getPopulation().get(1).getId());
+    assertEquals("Denominator_1", measureReport.getGroup().get(0).getPopulation().get(2).getId());
+    assertEquals(
+        "DenominatorExclusion_1", measureReport.getGroup().get(0).getPopulation().get(3).getId());
+    assertEquals("Numerator_1", measureReport.getGroup().get(0).getPopulation().get(4).getId());
+    assertEquals(
+        "NumeratorExclusion_1", measureReport.getGroup().get(0).getPopulation().get(5).getId());
+    assertEquals(2, measureReport.getGroup().get(0).getStratifier().size());
+    assertEquals(
+        "Stratification_1_1", measureReport.getGroup().get(0).getStratifier().get(0).getId());
+    assertEquals(
+        "Stratification_1_2", measureReport.getGroup().get(0).getStratifier().get(1).getId());
 
     // evaluated resources
     assertEquals(4, measureReport.getEvaluatedResource().size());
@@ -462,5 +500,54 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
       zipInputStream.closeEntry();
     }
     return zipContents;
+  }
+
+  @Test
+  void testGetGroupDisplayIdGroupNotFound() {
+    Group group1 = Group.builder().id("1").build();
+    String groupDisplayId = testCaseBundleService.getGroupDisplayId(List.of(group1), "2");
+    assertEquals("2", groupDisplayId);
+  }
+
+  @Test
+  void testGetGroupPopulationDisplayIdGroupNotFound() {
+    Group group1 = Group.builder().id("1").build();
+    String popDisplayId =
+        testCaseBundleService.getGroupPopulationDisplayId(List.of(group1), "2", "popId");
+    assertEquals("popId", popDisplayId);
+  }
+
+  @Test
+  void testGetGroupPopulationDisplayIdNoPopulatiobs() {
+    Group group1 = Group.builder().id("1").build();
+    String popDisplayId =
+        testCaseBundleService.getGroupPopulationDisplayId(List.of(group1), "1", "popId");
+    assertEquals("popId", popDisplayId);
+  }
+
+  @Test
+  void testGetGroupStratificationDisplayIdGroupNotFound() {
+    Group group1 = Group.builder().id("1").build();
+    String stratDisplayId =
+        testCaseBundleService.getGroupStratificationDisplayId(List.of(group1), "2", "stratId");
+    assertEquals("stratId", stratDisplayId);
+  }
+
+  @Test
+  void testGetGroupStratificationDisplayIdNoStratifications() {
+    Group group1 = Group.builder().id("1").build();
+    String stratDisplayId =
+        testCaseBundleService.getGroupStratificationDisplayId(List.of(group1), "1", "stratId");
+    assertEquals("stratId", stratDisplayId);
+  }
+
+  @Test
+  void testGetGroupStratificationDisplayIdStratificationNotFound() {
+    Stratification strat = Stratification.builder().id("stratId").build();
+    Group group1 = Group.builder().id("1").stratifications(List.of(strat)).build();
+    String stratDisplayId =
+        testCaseBundleService.getGroupStratificationDisplayId(
+            List.of(group1), "1", "anotherStratId");
+    assertEquals("anotherStratId", stratDisplayId);
   }
 }

@@ -15,23 +15,27 @@
           "id": "id1",
           "name": "initialPopulation",
           "definition": "ipp",
-          "associationType": "Denominator"
+          "associationType": "Denominator",
+          "displayId": "InitialPopulation_1_1"
         },
         {
           "id": "id4",
           "name": "initialPopulation",
           "definition": "ipp2",
-          "associationType": "Numerator"
+          "associationType": "Numerator",
+          "displayId": "InitialPopulation_1_2"
         },
         {
           "id": "id2",
           "name": "denominator",
-          "definition": "denom"
+          "definition": "denom",
+          "displayId": "Denominator_1"
         },
         {
           "id": "id3",
           "name": "numerator",
-          "definition": "num"
+          "definition": "num",
+          "displayId": "Numerator_1"
         }
       ],
       "measureGroupTypes": [
@@ -42,7 +46,8 @@
           "id": "6c7c52bd-0060-45d8-9c42-cfedbd40d148",
           "definition": "fun",
           "criteriaReference": "id2",
-          "aggregateMethod": "Minimum"
+          "aggregateMethod": "Minimum",
+          "displayId": "MeasureObservation_1"
         }
       ],
       "groupDescription": "test 4495 group 1",
@@ -57,6 +62,22 @@
         }
       },
       "stratifications": [
+        {
+		  "id": "62bf4e30-2232-41a7-8100-5d79f3b9ad1a",
+		  "cqlDefinition": "Encounter With Comfort Measures During Hospitalization For Patients With Documented Ischemic Stroke",
+		  "displayId": "Stratification_1_1",
+		  "associations": [
+		  	"initialPopulation"
+		  ]
+		},
+		{
+		  "id": "c11c71fc-3eb8-4ff0-96cf-246871d81428",
+		  "cqlDefinition": "Encounter With Documented Reason For No Antithrombotic At Discharge",
+		  "displayId": "Stratification_1_2",
+		  "associations": [
+		  	"denominator"
+		  ]
+		}
       ],
       "populationBasis": "Account"
     }

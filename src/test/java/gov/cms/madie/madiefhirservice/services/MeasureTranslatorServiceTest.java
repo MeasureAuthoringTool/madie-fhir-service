@@ -150,7 +150,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
 
     assertThat(measure.getGroup().get(0), is(notNullValue()));
     MeasureGroupComponent group1 = measure.getGroup().get(0);
-    assertThat(group1.getId(), is(equalTo("62f66b2e02b96d3a6ababefb")));
+    assertThat(group1.getId(), is(equalTo("Group_1")));
     assertThat(
         group1.getExtensionByUrl(UriConstants.CqfMeasures.POPULATION_BASIS), is(notNullValue()));
     assertThat(
@@ -248,7 +248,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
 
     assertThat(measure.getGroup().get(1), is(notNullValue()));
     MeasureGroupComponent group2 = measure.getGroup().get(1);
-    assertThat(group2.getId(), is(equalTo("62fb788bfb3c765290171e75")));
+    assertThat(group2.getId(), is(equalTo("Group_2")));
     assertThat(
         group2.getExtensionByUrl(UriConstants.CqfMeasures.POPULATION_BASIS), is(notNullValue()));
     assertThat(
@@ -509,6 +509,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
         groupPopComponent.getCode().getCoding().get(0).getCode(),
         is(equalTo("initial-population")));
     assertThat(groupPopComponent.getId(), is(notNullValue()));
+    assertEquals("InitialPopulation_1_1", groupPopComponent.getId());
 
     MeasureGroupPopulationComponent groupPopComponent2 = group1.getPopulation().get(1);
     assertThat(groupPopComponent2.getCriteria().getLanguage(), is(equalTo("text/cql-identifier")));
@@ -520,6 +521,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
         groupPopComponent2.getCode().getCoding().get(0).getCode(),
         is(equalTo("initial-population")));
     assertThat(groupPopComponent2.getId(), is(notNullValue()));
+    assertEquals("InitialPopulation_1_2", groupPopComponent2.getId());
 
     MeasureGroupPopulationComponent groupPopComponent3 = group1.getPopulation().get(2);
     assertThat(groupPopComponent3.getCriteria().getLanguage(), is(equalTo("text/cql-identifier")));
@@ -529,6 +531,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertThat(
         groupPopComponent3.getCode().getCoding().get(0).getCode(), is(equalTo("denominator")));
     assertThat(groupPopComponent3.getId(), is(notNullValue()));
+    assertEquals("Denominator_1", groupPopComponent3.getId());
 
     MeasureGroupPopulationComponent groupPopComponent4 = group1.getPopulation().get(3);
     assertThat(groupPopComponent4.getCriteria().getLanguage(), is(equalTo("text/cql-identifier")));
@@ -537,6 +540,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
         groupPopComponent4.getCode().getCoding().get(0).getDisplay(), is(equalTo("Numerator")));
     assertThat(groupPopComponent4.getCode().getCoding().get(0).getCode(), is(equalTo("numerator")));
     assertThat(groupPopComponent4.getId(), is(notNullValue()));
+    assertEquals("Numerator_1", groupPopComponent4.getId());
 
     MeasureGroupPopulationComponent groupPopComponentObs = group1.getPopulation().get(4);
     assertThat(
@@ -549,6 +553,12 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
         groupPopComponentObs.getCode().getCoding().get(0).getCode(),
         is(equalTo("measure-observation")));
     assertThat(groupPopComponentObs.getId(), is(notNullValue()));
+    assertEquals("MeasureObservation_1", groupPopComponentObs.getId());
+
+    List<MeasureGroupStratifierComponent> strats = group1.getStratifier();
+    assertEquals(2, strats.size());
+    assertEquals("Stratification_1_1", strats.get(0).getId());
+    assertEquals("Stratification_1_2", strats.get(1).getId());
   }
 
   @Test

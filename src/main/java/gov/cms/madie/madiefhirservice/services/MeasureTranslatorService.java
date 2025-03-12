@@ -271,15 +271,16 @@ public class MeasureTranslatorService {
             ? "boolean"
             : madieGroup.getPopulationBasis();
     final CodeableConcept scoringUnit = getScoringUnitCode(madieGroup.getScoringUnit());
-
     final List<CodeableConcept> types = getMeasureTypes(madieGroup.getMeasureGroupTypes());
-
     Element element =
         new MeasureGroupComponent()
             .setDescription(madieGroup.getGroupDescription())
             .setPopulation(measurePopulations)
             .setStratifier(measureStratifications)
-            .setId(madieGroup.getId())
+            .setId(
+                StringUtils.isNotBlank(madieGroup.getDisplayId())
+                    ? madieGroup.getDisplayId()
+                    : madieGroup.getId())
             .addExtension(
                 new Extension(
                     UriConstants.CqfMeasures.SCORING_URI,
@@ -369,7 +370,10 @@ public class MeasureTranslatorService {
                                   populationDisplay))
                           .setCriteria(
                               buildExpression("text/cql-identifier", population.getDefinition()))
-                          .setId(population.getId()))
+                          .setId(
+                              StringUtils.isNotBlank(population.getDisplayId())
+                                  ? population.getDisplayId()
+                                  : population.getId()))
                       .addExtension(buildPopulationTypeExtension(population, madieGroup));
               // TODO: Add an extension for measure observations
             })
@@ -400,7 +404,10 @@ public class MeasureTranslatorService {
                               new Extension(
                                   UriConstants.CqfMeasures.AGGREGATE_METHOD_URI,
                                   new StringType(measureObservation.getAggregateMethod())))
-                          .setId(measureObservation.getId()));
+                          .setId(
+                              StringUtils.isNotBlank(measureObservation.getDisplayId())
+                                  ? measureObservation.getDisplayId()
+                                  : measureObservation.getId()));
               if (measureObservation.getCriteriaReference() != null
                   && StringUtils.isNotBlank(measureObservation.getCriteriaReference())) {
                 observationPopulation.addExtension(
@@ -449,8 +456,8 @@ public class MeasureTranslatorService {
                                       buildExpression(
                                           "text/cql-identifier", strat.getCqlDefinition()))
                                   .setId(
-                                      StringUtils.isNotBlank(strat.getId())
-                                          ? strat.getId()
+                                      StringUtils.isNotBlank(strat.getDisplayId())
+                                          ? strat.getDisplayId()
                                           : i.get().toString());
                       for (Extension extension : extensionList) {
                         stratComponent.addExtension(extension);
