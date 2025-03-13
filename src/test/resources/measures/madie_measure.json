@@ -105,6 +105,7 @@
             {
                "groupId":"62fb788bfb3c765290171e75",
                "scoring":"Ratio",
+               "populationBasis": "boolean",
                "populationValues":[
                   {
                      "id": "12b60c2c-e9ee-4bac-bba3-dc2df691f3ac",

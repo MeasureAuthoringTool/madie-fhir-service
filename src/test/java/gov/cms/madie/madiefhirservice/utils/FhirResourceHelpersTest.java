@@ -53,8 +53,7 @@ public class FhirResourceHelpersTest {
             .build();
 
     List<MeasureReport.StratifierGroupPopulationComponent> stratifierGroupPopulationComponents =
-        FhirResourceHelpers.buildStratumPopulation(
-            stratValue1, true, true, List.of(group1), "group1Id");
+        FhirResourceHelpers.buildStratumPopulation(stratValue1, true, true, group1);
 
     assertEquals(stratifierGroupPopulationComponents.size(), 3);
     assertEquals(
@@ -108,8 +107,7 @@ public class FhirResourceHelpersTest {
             .build();
 
     List<MeasureReport.StratifierGroupPopulationComponent> stratifierGroupPopulationComponents =
-        FhirResourceHelpers.buildStratumPopulation(
-            stratValue1, false, true, List.of(group1), "group1Id");
+        FhirResourceHelpers.buildStratumPopulation(stratValue1, false, true, group1);
 
     assertEquals(stratifierGroupPopulationComponents.size(), 3);
     assertEquals(
@@ -163,8 +161,7 @@ public class FhirResourceHelpersTest {
             .build();
 
     List<MeasureReport.StratifierGroupPopulationComponent> stratifierGroupPopulationComponents =
-        FhirResourceHelpers.buildStratumPopulation(
-            stratValue1, null, false, List.of(group1), "group1Id");
+        FhirResourceHelpers.buildStratumPopulation(stratValue1, null, false, group1);
 
     assertEquals(stratifierGroupPopulationComponents.size(), 3);
     assertEquals(
@@ -186,25 +183,6 @@ public class FhirResourceHelpersTest {
   }
 
   @Test
-  void testGetGroupStratificationDisplayIdGroupNotFound() {
-    Population pop1 = Population.builder().id("1").displayId("InitialPopulation_1").build();
-    Population pop2 = Population.builder().id("2").displayId("Denominator_1").build();
-    Population pop3 = Population.builder().id("3").displayId("Numerator_1").build();
-    Group group1 =
-        Group.builder()
-            .id("group1Id")
-            .displayId("Group_1")
-            .populations(List.of(pop1, pop2, pop3))
-            .build();
-
-    String result =
-        FhirResourceHelpers.getGroupStratificationPopulationDisplayId(
-            List.of(group1), "group1IdNotFound", "1");
-
-    assertEquals("1", result);
-  }
-
-  @Test
   void testGetGroupStratificationDisplayIdPopulationsNotFound() {
     Group group1 =
         Group.builder()
@@ -213,9 +191,7 @@ public class FhirResourceHelpersTest {
             .populations(Collections.emptyList())
             .build();
 
-    String result =
-        FhirResourceHelpers.getGroupStratificationPopulationDisplayId(
-            List.of(group1), "group1Id", "1");
+    String result = FhirResourceHelpers.getGroupStratificationPopulationDisplayId(group1, "1");
 
     assertEquals("1", result);
   }
@@ -233,8 +209,7 @@ public class FhirResourceHelpersTest {
             .build();
 
     String result =
-        FhirResourceHelpers.getGroupStratificationPopulationDisplayId(
-            List.of(group1), "group1Id", "populationId");
+        FhirResourceHelpers.getGroupStratificationPopulationDisplayId(group1, "populationId");
 
     assertEquals("populationId", result);
   }

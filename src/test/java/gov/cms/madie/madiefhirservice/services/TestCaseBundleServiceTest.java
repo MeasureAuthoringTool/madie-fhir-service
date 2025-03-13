@@ -503,41 +503,18 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
   }
 
   @Test
-  void testGetGroupDisplayIdGroupNotFound() {
-    Group group1 = Group.builder().id("1").build();
-    String groupDisplayId = testCaseBundleService.getGroupDisplayId(List.of(group1), "2");
-    assertEquals("2", groupDisplayId);
-  }
-
-  @Test
-  void testGetGroupPopulationDisplayIdGroupNotFound() {
-    Group group1 = Group.builder().id("1").build();
-    String popDisplayId =
-        testCaseBundleService.getGroupPopulationDisplayId(List.of(group1), "2", "popId");
-    assertEquals("popId", popDisplayId);
-  }
-
-  @Test
   void testGetGroupPopulationDisplayIdNoPopulatiobs() {
     Group group1 = Group.builder().id("1").build();
-    String popDisplayId =
-        testCaseBundleService.getGroupPopulationDisplayId(List.of(group1), "1", "popId");
-    assertEquals("popId", popDisplayId);
-  }
+    String popDisplayId = testCaseBundleService.getGroupPopulationDisplayId(group1, "popId");
 
-  @Test
-  void testGetGroupStratificationDisplayIdGroupNotFound() {
-    Group group1 = Group.builder().id("1").build();
-    String stratDisplayId =
-        testCaseBundleService.getGroupStratificationDisplayId(List.of(group1), "2", "stratId");
-    assertEquals("stratId", stratDisplayId);
+    assertEquals("popId", popDisplayId);
   }
 
   @Test
   void testGetGroupStratificationDisplayIdNoStratifications() {
     Group group1 = Group.builder().id("1").build();
     String stratDisplayId =
-        testCaseBundleService.getGroupStratificationDisplayId(List.of(group1), "1", "stratId");
+        testCaseBundleService.getGroupStratificationDisplayId(group1, "stratId");
     assertEquals("stratId", stratDisplayId);
   }
 
@@ -546,8 +523,14 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
     Stratification strat = Stratification.builder().id("stratId").build();
     Group group1 = Group.builder().id("1").stratifications(List.of(strat)).build();
     String stratDisplayId =
-        testCaseBundleService.getGroupStratificationDisplayId(
-            List.of(group1), "1", "anotherStratId");
+        testCaseBundleService.getGroupStratificationDisplayId(group1, "anotherStratId");
     assertEquals("anotherStratId", stratDisplayId);
+  }
+
+  @Test
+  void testGetGroupThrowsException() {
+    Group group = Group.builder().id("1").build();
+    assertThrows(
+        ResourceNotFoundException.class, () -> testCaseBundleService.getGroup(List.of(group), "2"));
   }
 }

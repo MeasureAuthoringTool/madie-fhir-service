@@ -91,8 +91,7 @@ public class FhirResourceHelpers {
       TestCaseStratificationValue testCaseStratificationValue,
       Boolean valueIndex,
       boolean isPatientBased,
-      List<Group> groups,
-      String populationGroupId) {
+      Group group) {
     var measureTestCaseStratificationComponents =
         testCaseStratificationValue.getPopulationValues().stream()
             .map(
@@ -102,8 +101,7 @@ public class FhirResourceHelpers {
                           new MeasureReport.StratifierGroupPopulationComponent();
 
                   stratifierGroupPopulationComponent.setId(
-                      getGroupStratificationPopulationDisplayId(
-                          groups, populationGroupId, populationValue.getId()));
+                      getGroupStratificationPopulationDisplayId(group, populationValue.getId()));
                   stratifierGroupPopulationComponent.setCode(
                       buildCodeableConcept(
                           populationValue.getName().toCode(),
@@ -131,18 +129,13 @@ public class FhirResourceHelpers {
     return madieUrl + "/" + resourceType + "/" + resourceName;
   }
 
-  static String getGroupStratificationPopulationDisplayId(
-      List<Group> groups, String groupId, String popId) {
+  static String getGroupStratificationPopulationDisplayId(Group group, String popId) {
     String popDisplayId = popId;
-    Optional<Group> groupOpt = groups.stream().filter(g -> groupId.equals(g.getId())).findFirst();
-    if (groupOpt.isPresent()) {
-      Group group = groupOpt.get();
-      if (!CollectionUtils.isEmpty(group.getPopulations())) {
-        Optional<gov.cms.madie.models.measure.Population> population =
-            group.getPopulations().stream().filter(pop -> popId.equals(pop.getId())).findFirst();
-        if (population.isPresent()) {
-          popDisplayId = population.get().getDisplayId();
-        }
+    if (!CollectionUtils.isEmpty(group.getPopulations())) {
+      Optional<gov.cms.madie.models.measure.Population> population =
+          group.getPopulations().stream().filter(pop -> popId.equals(pop.getId())).findFirst();
+      if (population.isPresent()) {
+        popDisplayId = population.get().getDisplayId();
       }
     }
     return popDisplayId;

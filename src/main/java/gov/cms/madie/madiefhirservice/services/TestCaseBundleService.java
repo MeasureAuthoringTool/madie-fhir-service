@@ -248,7 +248,8 @@ public class TestCaseBundleService {
         .map(
             population -> {
               var measureReportGroupComponent = new MeasureReport.MeasureReportGroupComponent();
-              measureReportGroupComponent.setId(getGroupDisplayId(groups, population.getGroupId()));
+              Group matchingGroup = getGroup(groups, population.getGroupId());
+              measureReportGroupComponent.setId(matchingGroup.getDisplayId());
               // adding populations
               if (population.getPopulationValues() != null) {
                 var measureReportGroupPopulationComponents =
@@ -267,9 +268,7 @@ public class TestCaseBundleService {
                                               testCasePopulationValue.getExpected()));
                               groupComponent.setId(
                                   getGroupPopulationDisplayId(
-                                      groups,
-                                      population.getGroupId(),
-                                      testCasePopulationValue.getId()));
+                                      matchingGroup, testCasePopulationValue.getId()));
                               return groupComponent;
                             })
                         .collect(Collectors.toList());
@@ -286,12 +285,10 @@ public class TestCaseBundleService {
               if (population.getStratificationValues() != null) {
                 if (StringUtils.equalsIgnoreCase("boolean", population.getPopulationBasis())) {
                   measureReportGroupComponent.setStratifier(
-                      buildGroupStratifierComponent(
-                          population, groups, population.getGroupId(), true));
+                      buildGroupStratifierComponent(population, true, matchingGroup));
                 } else {
                   measureReportGroupComponent.setStratifier(
-                      buildGroupStratifierComponent(
-                          population, groups, population.getGroupId(), false));
+                      buildGroupStratifierComponent(population, false, matchingGroup));
                 }
               }
               return measureReportGroupComponent;
@@ -300,18 +297,14 @@ public class TestCaseBundleService {
   }
 
   private List<MeasureReport.MeasureReportGroupStratifierComponent> buildGroupStratifierComponent(
-      TestCaseGroupPopulation population,
-      List<Group> groups,
-      String populationGroupId,
-      boolean isPatientBased) {
+      TestCaseGroupPopulation population, boolean isPatientBased, Group group) {
     return population.getStratificationValues().stream()
         .map(
             testCaseStratificationValue -> {
               List<CodeableConcept> code = new ArrayList<CodeableConcept>();
               var codeText =
                   isPatientBased
-                      ? getStratificationDefinition(
-                          groups, populationGroupId, testCaseStratificationValue.getId())
+                      ? getStratificationDefinition(group, testCaseStratificationValue.getId())
                       : testCaseStratificationValue.getName();
               code.add(new CodeableConcept().setText(codeText));
 
@@ -323,39 +316,27 @@ public class TestCaseBundleService {
                               testCaseStratificationValue,
                               isPatientBased,
                               testCaseStratificationValue.getName(),
-                              groups,
-                              populationGroupId));
+                              group));
               stratifierComponent.setId(
-                  getGroupStratificationDisplayId(
-                      groups, populationGroupId, testCaseStratificationValue.getId()));
+                  getGroupStratificationDisplayId(group, testCaseStratificationValue.getId()));
               return stratifierComponent;
             })
         .collect(Collectors.toList());
   }
 
-  private String getStratificationDefinition(
-      List<Group> groups, String populationId, String testCaseStratificationId) {
-    Group filteredGroup =
-        groups.stream()
-            .filter(group -> group.getId().equals(populationId))
-            .findFirst()
-            .orElse(null);
-    if (filteredGroup != null) {
-      return filteredGroup.getStratifications().stream()
-          .filter(stratification -> stratification.getId().equals(testCaseStratificationId))
-          .map(selectedStratification -> selectedStratification.getCqlDefinition())
-          .findFirst()
-          .orElse(null);
-    }
-    return null;
+  private String getStratificationDefinition(Group group, String testCaseStratificationId) {
+    return group.getStratifications().stream()
+        .filter(stratification -> stratification.getId().equals(testCaseStratificationId))
+        .map(selectedStratification -> selectedStratification.getCqlDefinition())
+        .findFirst()
+        .orElse(null);
   }
 
   private List<MeasureReport.StratifierGroupComponent> buildStratum(
       TestCaseStratificationValue testCaseStratificationValue,
       boolean isPatientBased,
       String testCaseStratificationName,
-      List<Group> groups,
-      String populationGroupId) {
+      Group group) {
 
     // stratum
     List<MeasureReport.StratifierGroupComponent> stratum =
@@ -369,7 +350,7 @@ public class TestCaseBundleService {
       stratifierGroupComponent.setValue(new CodeableConcept().setText("true"));
       stratifierGroupComponent.setPopulation(
           FhirResourceHelpers.buildStratumPopulation(
-              testCaseStratificationValue, true, true, groups, populationGroupId));
+              testCaseStratificationValue, true, true, group));
       stratum.add(stratifierGroupComponent);
 
       // when value is false (i.e., inverted )
@@ -378,14 +359,14 @@ public class TestCaseBundleService {
       stratifierGroupComponentForInvertedValue.setValue(new CodeableConcept().setText("false"));
       stratifierGroupComponentForInvertedValue.setPopulation(
           FhirResourceHelpers.buildStratumPopulation(
-              testCaseStratificationValue, false, true, groups, populationGroupId));
+              testCaseStratificationValue, false, true, group));
       stratum.add(stratifierGroupComponentForInvertedValue);
     } else {
       // Non-patient based measures
       stratifierGroupComponent.setValue(new CodeableConcept().setText(testCaseStratificationName));
       stratifierGroupComponent.setPopulation(
           FhirResourceHelpers.buildStratumPopulation(
-              testCaseStratificationValue, null, false, groups, populationGroupId));
+              testCaseStratificationValue, null, false, group));
       stratum.add(stratifierGroupComponent);
     }
     return stratum;
@@ -524,44 +505,39 @@ public class TestCaseBundleService {
     }
   }
 
-  String getGroupDisplayId(List<Group> groups, String groupId) {
+  Group getGroup(List<Group> groups, String groupId) {
     Optional<Group> groupOpt = groups.stream().filter(g -> groupId.equals(g.getId())).findFirst();
-    return groupOpt.isPresent() ? groupOpt.get().getDisplayId() : groupId;
+    if (groupOpt.isEmpty()) {
+      throw new ResourceNotFoundException("TestCase", "Group Populations", groupId);
+    }
+    return groupOpt.get();
   }
 
-  String getGroupPopulationDisplayId(List<Group> groups, String groupId, String groupPopId) {
+  String getGroupPopulationDisplayId(Group group, String groupPopId) {
     String populationDisplayId = groupPopId;
-    Optional<Group> groupOpt = groups.stream().filter(g -> groupId.equals(g.getId())).findFirst();
-    if (groupOpt.isPresent()) {
-      Group group = groupOpt.get();
-      if (!CollectionUtils.isEmpty(group.getPopulations())) {
-        Optional<Population> population =
-            group.getPopulations().stream()
-                .filter(pop -> groupPopId.equals(pop.getId()))
-                .findFirst();
-        if (population.isPresent()) {
-          populationDisplayId = population.get().getDisplayId();
-        }
+    if (!CollectionUtils.isEmpty(group.getPopulations())) {
+      Optional<Population> population =
+          group.getPopulations().stream().filter(pop -> groupPopId.equals(pop.getId())).findFirst();
+      if (population.isPresent()) {
+        populationDisplayId = population.get().getDisplayId();
       }
     }
     return populationDisplayId;
   }
 
-  String getGroupStratificationDisplayId(List<Group> groups, String groupId, String groupStratId) {
+  String getGroupStratificationDisplayId(Group group, String groupStratId) {
     String stratificationDisplayId = groupStratId;
-    Optional<Group> groupOpt = groups.stream().filter(g -> groupId.equals(g.getId())).findFirst();
-    if (groupOpt.isPresent()) {
-      Group group = groupOpt.get();
-      if (!CollectionUtils.isEmpty(group.getStratifications())) {
-        Optional<Stratification> stratification =
-            group.getStratifications().stream()
-                .filter(strat -> groupStratId.equals(strat.getId()))
-                .findFirst();
-        if (stratification.isPresent()) {
-          stratificationDisplayId = stratification.get().getDisplayId();
-        }
+
+    if (!CollectionUtils.isEmpty(group.getStratifications())) {
+      Optional<Stratification> stratification =
+          group.getStratifications().stream()
+              .filter(strat -> groupStratId.equals(strat.getId()))
+              .findFirst();
+      if (stratification.isPresent()) {
+        stratificationDisplayId = stratification.get().getDisplayId();
       }
     }
+
     return stratificationDisplayId;
   }
 }
