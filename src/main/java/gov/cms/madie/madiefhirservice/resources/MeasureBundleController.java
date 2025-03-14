@@ -76,6 +76,16 @@ public class MeasureBundleController {
     }
   }
 
+  /**
+   * Export API outside measure-service so that FHIR model interactions only occur in this service.
+   *
+   * @param request Web Request
+   * @param measure Source measure
+   * @param elmErrorSeverity "Info" or "Error" expected, flag is passed to ELM Translator to set its error severity
+   *     level.
+   * @param accessToken
+   * @return zip export as byte[]
+   */
   @PutMapping(
       value = "/export",
       produces = {
@@ -87,6 +97,7 @@ public class MeasureBundleController {
   public ResponseEntity<byte[]> generateMeasureExport(
       HttpServletRequest request,
       @RequestBody @Validated(Measure.ValidationSequence.class) Measure measure,
+      @RequestParam(defaultValue = "Info") CqlCompilerException.ErrorSeverity elmErrorSeverity,
       @RequestHeader("Authorization") String accessToken) {
 
     return ResponseEntity.ok()
@@ -94,6 +105,8 @@ public class MeasureBundleController {
             HttpHeaders.CONTENT_DISPOSITION,
             "attachment;filename=\"" + ExportFileNamesUtil.getExportFileName(measure) + ".zip\"")
         .contentType(MediaType.APPLICATION_OCTET_STREAM)
-        .body(exportService.createExport(measure, request.getUserPrincipal(), accessToken));
+        .body(
+            exportService.createExport(
+                measure, request.getUserPrincipal(), elmErrorSeverity, accessToken));
   }
 }

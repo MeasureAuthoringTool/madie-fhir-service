@@ -179,7 +179,7 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
     PackagingUtilityImpl utility = Mockito.mock(PackagingUtilityImpl.class);
 
     factory.when(() -> PackagingUtilityFactory.getInstance("QI-Core v4.1.1")).thenReturn(utility);
-    doReturn("THis is a test".getBytes()).when(utility).getZipBundle(any(), isNull());
+    doReturn("This is a test".getBytes()).when(utility).getZipBundle(any(), isNull());
     IParser parser =
         fhirContext
             .newJsonParser()
@@ -443,12 +443,7 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
   //  @Disabled
   @Test
   void zipTestCaseContents()
-      throws IOException,
-          ClassNotFoundException,
-          InvocationTargetException,
-          InstantiationException,
-          IllegalAccessException,
-          NoSuchMethodException {
+      throws IOException {
 
     Map<String, Bundle> testCaseBundleMap = new HashMap<>();
     testCaseBundleMap.put(
