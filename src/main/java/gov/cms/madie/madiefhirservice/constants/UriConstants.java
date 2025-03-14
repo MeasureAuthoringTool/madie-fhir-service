@@ -30,7 +30,7 @@ public final class UriConstants {
 
   public static final class CqfMeasures {
     public static final String EFFECTIVE_DATA_REQUIREMENT_URL =
-        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-effectiveDataRequirements";
+        "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-effectiveDataRequirements";
     public static final String SCORING_URI =
         "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-scoring";
     public static final String SCORING_UNIT_URI =
@@ -82,7 +82,7 @@ public final class UriConstants {
         "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType";
 
     public static final String DIRECT_REFERENCE_CODE_URI =
-        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode";
+        "http://hl7.org/fhir/StructureDefinition/cqf-directReferenceCode";
 
     public static final String RATE_AGGREGATION_URI =
         "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-rateAggregation";
@@ -100,7 +100,7 @@ public final class UriConstants {
     public static final String IS_TEST_CASE =
         "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-isTestCase";
     public static final String CQFM_INPUT_PARAMETERS =
-        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-inputParameters";
+        "http://hl7.org/fhir/StructureDefinition/cqf-inputParameters";
     public static final String CQFM_TEST_CASE_DESCRIPTION =
         "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-testCaseDescription";
   }
