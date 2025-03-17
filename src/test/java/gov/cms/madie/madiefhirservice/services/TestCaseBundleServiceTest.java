@@ -503,14 +503,6 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
   }
 
   @Test
-  void testGetGroupPopulationDisplayIdNoPopulatiobs() {
-    Group group1 = Group.builder().id("1").build();
-    String popDisplayId = testCaseBundleService.getGroupPopulationDisplayId(group1, "popId");
-
-    assertEquals("popId", popDisplayId);
-  }
-
-  @Test
   void testGetGroupStratificationDisplayIdNoStratifications() {
     Group group1 = Group.builder().id("1").build();
     String stratDisplayId =

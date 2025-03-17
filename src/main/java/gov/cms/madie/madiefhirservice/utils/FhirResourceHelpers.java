@@ -101,7 +101,7 @@ public class FhirResourceHelpers {
                           new MeasureReport.StratifierGroupPopulationComponent();
 
                   stratifierGroupPopulationComponent.setId(
-                      getGroupStratificationPopulationDisplayId(group, populationValue.getId()));
+                      getGroupPopulationDisplayId(group, populationValue.getId()));
                   stratifierGroupPopulationComponent.setCode(
                       buildCodeableConcept(
                           populationValue.getName().toCode(),
@@ -129,7 +129,7 @@ public class FhirResourceHelpers {
     return madieUrl + "/" + resourceType + "/" + resourceName;
   }
 
-  static String getGroupStratificationPopulationDisplayId(Group group, String popId) {
+  public static String getGroupPopulationDisplayId(Group group, String popId) {
     String popDisplayId = popId;
     if (!CollectionUtils.isEmpty(group.getPopulations())) {
       Optional<gov.cms.madie.models.measure.Population> population =

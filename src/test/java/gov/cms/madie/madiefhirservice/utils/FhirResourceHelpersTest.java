@@ -191,7 +191,7 @@ public class FhirResourceHelpersTest {
             .populations(Collections.emptyList())
             .build();
 
-    String result = FhirResourceHelpers.getGroupStratificationPopulationDisplayId(group1, "1");
+    String result = FhirResourceHelpers.getGroupPopulationDisplayId(group1, "1");
 
     assertEquals("1", result);
   }
@@ -208,8 +208,7 @@ public class FhirResourceHelpersTest {
             .populations(List.of(pop1, pop2, pop3))
             .build();
 
-    String result =
-        FhirResourceHelpers.getGroupStratificationPopulationDisplayId(group1, "populationId");
+    String result = FhirResourceHelpers.getGroupPopulationDisplayId(group1, "populationId");
 
     assertEquals("populationId", result);
   }

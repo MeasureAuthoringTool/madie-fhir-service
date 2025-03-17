@@ -27,7 +27,6 @@ import gov.cms.madie.models.dto.TestCaseExportMetaData;
 import gov.cms.madie.models.measure.*;
 import gov.cms.madie.models.measure.Group;
 import gov.cms.madie.models.measure.Measure;
-import gov.cms.madie.models.measure.Population;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
@@ -267,7 +266,7 @@ public class TestCaseBundleService {
                                           FhirResourceHelpers.getExpectedValue(
                                               testCasePopulationValue.getExpected()));
                               groupComponent.setId(
-                                  getGroupPopulationDisplayId(
+                                  FhirResourceHelpers.getGroupPopulationDisplayId(
                                       matchingGroup, testCasePopulationValue.getId()));
                               return groupComponent;
                             })
@@ -511,18 +510,6 @@ public class TestCaseBundleService {
       throw new ResourceNotFoundException("TestCase", "Group Populations", groupId);
     }
     return groupOpt.get();
-  }
-
-  String getGroupPopulationDisplayId(Group group, String groupPopId) {
-    String populationDisplayId = groupPopId;
-    if (!CollectionUtils.isEmpty(group.getPopulations())) {
-      Optional<Population> population =
-          group.getPopulations().stream().filter(pop -> groupPopId.equals(pop.getId())).findFirst();
-      if (population.isPresent()) {
-        populationDisplayId = population.get().getDisplayId();
-      }
-    }
-    return populationDisplayId;
   }
 
   String getGroupStratificationDisplayId(Group group, String groupStratId) {
