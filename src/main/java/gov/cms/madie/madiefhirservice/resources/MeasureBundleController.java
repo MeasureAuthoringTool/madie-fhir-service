@@ -43,14 +43,14 @@ public class MeasureBundleController {
       @RequestBody @Validated(Measure.ValidationSequence.class) Measure measure,
       @RequestHeader(value = HttpHeaders.ACCEPT, required = false) String accept,
       @RequestHeader("Authorization") String accessToken,
-      @RequestParam(defaultValue = "Info") CqlCompilerException.ErrorSeverity errorSeverity,
+      @RequestParam(defaultValue = "Info") CqlCompilerException.ErrorSeverity elmErrorSeverity,
       @RequestParam(required = false, defaultValue = "calculation", name = "bundleType")
           String bundleType) {
 
     try {
       Bundle bundle =
           measureBundleService.createMeasureBundle(
-              measure, request.getUserPrincipal(), bundleType, accessToken, errorSeverity);
+              measure, request.getUserPrincipal(), bundleType, accessToken, elmErrorSeverity);
 
       if (accept != null
           && accept.toUpperCase().contains(MediaType.APPLICATION_XML_VALUE.toUpperCase())) {
@@ -81,8 +81,8 @@ public class MeasureBundleController {
    *
    * @param request Web Request
    * @param measure Source measure
-   * @param elmErrorSeverity "Info" or "Error" expected, flag is passed to ELM Translator to set its error severity
-   *     level.
+   * @param elmErrorSeverity "Info" or "Error" expected, flag is passed to ELM Translator to set its
+   *     error severity level.
    * @param accessToken
    * @return zip export as byte[]
    */
