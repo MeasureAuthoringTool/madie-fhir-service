@@ -4,6 +4,7 @@ import gov.cms.madie.madiefhirservice.exceptions.CqlLibraryNotFoundException;
 import gov.cms.madie.models.library.CqlLibrary;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.cqframework.cql.cql2elm.CqlCompilerException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpEntity;
@@ -31,8 +32,12 @@ public class CqlLibraryService {
   private String librariesVersionedUri;
 
   @Cacheable(value = "libraries", key = "{ #root.methodName, #name, #version }")
-  public CqlLibrary getLibrary(String name, String version, String accessToken) {
-    URI uri = buildMadieLibraryServiceUri(name, version);
+  public CqlLibrary getLibrary(
+      String name,
+      String version,
+      String accessToken,
+      CqlCompilerException.ErrorSeverity errorSeverity) {
+    URI uri = buildMadieLibraryServiceUri(name, version, errorSeverity);
     HttpHeaders headers = new HttpHeaders();
     headers.add("Authorization", accessToken);
 
@@ -58,10 +63,12 @@ public class CqlLibraryService {
     return null;
   }
 
-  private URI buildMadieLibraryServiceUri(String name, String version) {
+  private URI buildMadieLibraryServiceUri(
+      String name, String version, CqlCompilerException.ErrorSeverity errorSeverity) {
     return UriComponentsBuilder.fromHttpUrl(madieLibraryService + librariesVersionedUri)
         .queryParam("name", name)
         .queryParam("version", version)
+        .queryParam("errorSeverity", errorSeverity)
         .build()
         .encode()
         .toUri();

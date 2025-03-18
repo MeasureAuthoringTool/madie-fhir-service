@@ -88,7 +88,12 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
               return null;
             })
         .when(libraryService)
-        .getIncludedLibraries(anyString(), anyMap(), anyString(), anyString());
+        .getIncludedLibraries(
+            anyString(),
+            anyMap(),
+            anyString(),
+            any(CqlCompilerException.ErrorSeverity.class),
+            anyString());
 
     Bundle bundle =
         measureBundleService.createMeasureBundle(
@@ -136,7 +141,12 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
 
     doThrow(new CqlLibraryNotFoundException("FHIRHelpers", "4.0.001"))
         .when(libraryService)
-        .getIncludedLibraries(anyString(), any(), anyString(), anyString());
+        .getIncludedLibraries(
+            anyString(),
+            any(),
+            anyString(),
+            any(CqlCompilerException.ErrorSeverity.class),
+            anyString());
     Exception exception =
         Assertions.assertThrows(
             CqlLibraryNotFoundException.class,
@@ -169,7 +179,12 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
               return null;
             })
         .when(libraryService)
-        .getIncludedLibraries(anyString(), anyMap(), anyString(), anyString());
+        .getIncludedLibraries(
+            anyString(),
+            anyMap(),
+            anyString(),
+            any(CqlCompilerException.ErrorSeverity.class),
+            anyString());
 
     when(elmTranslatorClient.getEffectiveDataRequirements(
             any(CqlLibraryDetails.class),
