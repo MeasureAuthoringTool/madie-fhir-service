@@ -23,7 +23,11 @@ public class ExportService {
 
   private final MeasureBundleService measureBundleService;
 
-  public byte[] createExport(Measure madieMeasure, Principal principal, String accessToken) {
+  public byte[] createExport(
+      Measure madieMeasure,
+      Principal principal,
+      CqlCompilerException.ErrorSeverity errorSeverity,
+      String accessToken) {
     String exportFileName = ExportFileNamesUtil.getExportFileName(madieMeasure);
 
     Bundle bundle =
@@ -32,7 +36,7 @@ public class ExportService {
             principal,
             BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT,
             accessToken,
-            CqlCompilerException.ErrorSeverity.Info);
+            errorSeverity);
 
     PackagingUtility utility;
     try {

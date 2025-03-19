@@ -97,13 +97,15 @@ class ExportServiceTest implements ResourceFileUtil {
     PackagingUtilityImpl utility = Mockito.mock(PackagingUtilityImpl.class);
 
     factory.when(() -> PackagingUtilityFactory.getInstance("QI-Core v4.1.1")).thenReturn(utility);
-    doReturn("THis is a test".getBytes())
+    doReturn("This is a test".getBytes())
         .when(utility)
         .getZipBundle(any(Bundle.class), any(String.class));
 
-    byte[] result = exportService.createExport(madieMeasure, principal, "Bearer TOKEN");
+    byte[] result =
+        exportService.createExport(
+            madieMeasure, principal, CqlCompilerException.ErrorSeverity.Info, "Bearer TOKEN");
 
-    assertThat(result, is(equalTo("THis is a test".getBytes())));
+    assertThat(result, is(equalTo("This is a test".getBytes())));
   }
 
   @Test
@@ -118,7 +120,12 @@ class ExportServiceTest implements ResourceFileUtil {
     Exception ex =
         assertThrows(
             RuntimeException.class,
-            () -> exportService.createExport(madieMeasure, principal, "Bearer TOKEN"));
+            () ->
+                exportService.createExport(
+                    madieMeasure,
+                    principal,
+                    CqlCompilerException.ErrorSeverity.Info,
+                    "Bearer TOKEN"));
     assertThat(
         ex.getMessage(),
         is(equalTo("Unexpected error while generating exports for measureID: xyz-p13r-13ert")));

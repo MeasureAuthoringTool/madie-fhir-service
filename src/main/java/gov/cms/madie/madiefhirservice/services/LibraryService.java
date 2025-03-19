@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Pair;
+import org.cqframework.cql.cql2elm.CqlCompilerException;
 import org.hl7.fhir.r4.model.Attachment;
 import org.hl7.fhir.r4.model.Library;
 import org.hl7.fhir.r4.model.Narrative;
@@ -40,6 +41,7 @@ public class LibraryService {
       String cql,
       Map<String, Library> libraryMap,
       final String bundleType,
+      CqlCompilerException.ErrorSeverity errorSeverity,
       final String accessToken) {
     if (StringUtils.isBlank(cql) || libraryMap == null) {
       log.error("Invalid method arguments provided to getIncludedLibraries");
@@ -52,12 +54,16 @@ public class LibraryService {
       if (!libraryMap.containsKey(key)) {
         CqlLibrary cqlLibrary =
             cqlLibraryService.getLibrary(
-                libraryNameValuePair.getLeft(), libraryNameValuePair.getRight(), accessToken);
+                libraryNameValuePair.getLeft(),
+                libraryNameValuePair.getRight(),
+                accessToken,
+                errorSeverity);
         Library library = cqlLibraryToFhirLibrary(cqlLibrary, bundleType, accessToken);
         libraryMap.put(key, library);
 
         Attachment attachment = findCqlAttachment(library);
-        getIncludedLibraries(new String(attachment.getData()), libraryMap, bundleType, accessToken);
+        getIncludedLibraries(
+            new String(attachment.getData()), libraryMap, bundleType, errorSeverity, accessToken);
       }
     }
   }

@@ -3,6 +3,7 @@ package gov.cms.madie.madiefhirservice.services;
 import gov.cms.madie.madiefhirservice.exceptions.CqlLibraryNotFoundException;
 import gov.cms.madie.models.common.Version;
 import gov.cms.madie.models.library.CqlLibrary;
+import org.cqframework.cql.cql2elm.CqlCompilerException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -51,7 +52,9 @@ class CqlLibraryServiceTest {
     when(restTemplate.exchange(
             any(URI.class), any(HttpMethod.class), any(HttpEntity.class), any(Class.class)))
         .thenReturn(response);
-    CqlLibrary output = cqlLibraryService.getLibrary("FHIRHelpers", "4.0.001", "OKTA_TOKEN");
+    CqlLibrary output =
+        cqlLibraryService.getLibrary(
+            "FHIRHelpers", "4.0.001", "OKTA_TOKEN", CqlCompilerException.ErrorSeverity.Info);
     assertThat(output, is(notNullValue()));
     assertThat(output, is(equalTo(theLibrary)));
   }
@@ -65,7 +68,12 @@ class CqlLibraryServiceTest {
     Exception ex =
         assertThrows(
             CqlLibraryNotFoundException.class,
-            () -> cqlLibraryService.getLibrary("FHIRHelpers", "4.0.001", "OKTA_TOKEN"));
+            () ->
+                cqlLibraryService.getLibrary(
+                    "FHIRHelpers",
+                    "4.0.001",
+                    "OKTA_TOKEN",
+                    CqlCompilerException.ErrorSeverity.Info));
     assertThat(
         ex.getMessage(),
         is(equalTo("Cannot find a CQL Library with name: FHIRHelpers, version: 4.0.001")));
@@ -77,7 +85,9 @@ class CqlLibraryServiceTest {
     when(restTemplate.exchange(
             any(URI.class), any(HttpMethod.class), any(HttpEntity.class), any(Class.class)))
         .thenReturn(response);
-    CqlLibrary output = cqlLibraryService.getLibrary("FHIRHelpers", "4.0.001", "OKTA_TOKEN");
+    CqlLibrary output =
+        cqlLibraryService.getLibrary(
+            "FHIRHelpers", "4.0.001", "OKTA_TOKEN", CqlCompilerException.ErrorSeverity.Info);
     assertThat(output, is(nullValue()));
   }
 
@@ -87,7 +97,9 @@ class CqlLibraryServiceTest {
     when(restTemplate.exchange(
             any(URI.class), any(HttpMethod.class), any(HttpEntity.class), any(Class.class)))
         .thenReturn(response);
-    CqlLibrary output = cqlLibraryService.getLibrary("FHIRHelpers", "4.0.001", "OKTA_TOKEN");
+    CqlLibrary output =
+        cqlLibraryService.getLibrary(
+            "FHIRHelpers", "4.0.001", "OKTA_TOKEN", CqlCompilerException.ErrorSeverity.Info);
     assertThat(output, is(nullValue()));
   }
 }
