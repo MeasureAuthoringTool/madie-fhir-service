@@ -12,6 +12,7 @@ import java.security.Principal;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import org.cqframework.cql.cql2elm.CqlCompilerException;
 import org.hl7.fhir.convertors.advisors.impl.BaseAdvisor_40_50;
 import org.hl7.fhir.convertors.conv40_50.VersionConvertor_40_50;
 import org.hl7.fhir.r4.model.Bundle;
@@ -43,7 +44,11 @@ public class MeasureBundleService {
    * Creates measure bundle that contains measure, main library, and included libraries resources
    */
   public Bundle createMeasureBundle(
-      Measure madieMeasure, Principal principal, String bundleType, String accessToken) {
+      Measure madieMeasure,
+      Principal principal,
+      String bundleType,
+      String accessToken,
+      CqlCompilerException.ErrorSeverity errorSeverity) {
     log.info(
         "Generating measure bundle of type [{}] for measure {}", bundleType, madieMeasure.getId());
     madieMeasure.setCql(CqlFormatter.formatCql(madieMeasure.getCql(), principal));
@@ -64,7 +69,7 @@ public class MeasureBundleService {
     // Bundle entries for all the library resources of a MADiE Measure
     List<Bundle.BundleEntryComponent> libraryEntryComponents =
         createBundleComponentsForLibrariesOfMadieMeasure(
-            expressions, madieMeasure, bundleType, accessToken);
+            expressions, madieMeasure, bundleType, errorSeverity, accessToken);
     libraryEntryComponents.forEach(bundle::addEntry);
     log.info("Included library components created successfully {}", madieMeasure.getId());
 
@@ -78,7 +83,8 @@ public class MeasureBundleService {
       // get effective DataRequirements
       log.info("Getting effective data requirements for measure: {}", measure.getId());
       org.hl7.fhir.r5.model.Library effectiveDataRequirements =
-          elmTranslatorClient.getEffectiveDataRequirements(libraryDetails, true, accessToken);
+          elmTranslatorClient.getEffectiveDataRequirements(
+              libraryDetails, true, accessToken, errorSeverity);
       // get human-readable for measure
       String humanReadable =
           humanReadableService.generateMeasureHumanReadable(
@@ -106,6 +112,7 @@ public class MeasureBundleService {
       Set<String> expressions,
       Measure madieMeasure,
       final String bundleType,
+      CqlCompilerException.ErrorSeverity errorSeverity,
       final String accessToken) {
     Library library =
         getMeasureLibraryResourceForMadieMeasure(expressions, madieMeasure, accessToken);
@@ -116,7 +123,7 @@ public class MeasureBundleService {
         FhirResourceHelpers.getBundleEntryComponent(library, "Transaction");
     Map<String, Library> includedLibraryMap = new HashMap<>();
     libraryService.getIncludedLibraries(
-        madieMeasure.getCql(), includedLibraryMap, bundleType, accessToken);
+        madieMeasure.getCql(), includedLibraryMap, bundleType, errorSeverity, accessToken);
     List<Bundle.BundleEntryComponent> libraryBundleComponents =
         includedLibraryMap.values().stream()
             .map((lib) -> FhirResourceHelpers.getBundleEntryComponent(lib, "Transaction"))

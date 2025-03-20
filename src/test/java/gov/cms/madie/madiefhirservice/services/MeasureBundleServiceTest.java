@@ -10,6 +10,7 @@ import gov.cms.madie.madiefhirservice.utils.MeasureTestHelper;
 import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
 import gov.cms.madie.models.library.CqlLibrary;
 import gov.cms.madie.models.measure.Measure;
+import org.cqframework.cql.cql2elm.CqlCompilerException;
 import org.hl7.fhir.instance.model.api.IIdType;
 import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.Library;
@@ -28,10 +29,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyBoolean;
-import static org.mockito.ArgumentMatchers.anyMap;
-import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
@@ -90,14 +88,20 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
               return null;
             })
         .when(libraryService)
-        .getIncludedLibraries(anyString(), anyMap(), anyString(), anyString());
+        .getIncludedLibraries(
+            anyString(),
+            anyMap(),
+            anyString(),
+            any(CqlCompilerException.ErrorSeverity.class),
+            anyString());
 
     Bundle bundle =
         measureBundleService.createMeasureBundle(
             madieMeasure,
             mock(Principal.class),
             BundleUtil.MEASURE_BUNDLE_TYPE_CALCULATION,
-            "token");
+            "token",
+            CqlCompilerException.ErrorSeverity.Error);
 
     assertThat(bundle.getEntry().size(), is(3));
     assertThat(bundle.getType(), is(equalTo(Bundle.BundleType.TRANSACTION)));
@@ -137,7 +141,12 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
 
     doThrow(new CqlLibraryNotFoundException("FHIRHelpers", "4.0.001"))
         .when(libraryService)
-        .getIncludedLibraries(anyString(), any(), anyString(), anyString());
+        .getIncludedLibraries(
+            anyString(),
+            any(),
+            anyString(),
+            any(CqlCompilerException.ErrorSeverity.class),
+            anyString());
     Exception exception =
         Assertions.assertThrows(
             CqlLibraryNotFoundException.class,
@@ -146,7 +155,8 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
                     madieMeasure,
                     mock(Principal.class),
                     BundleUtil.MEASURE_BUNDLE_TYPE_CALCULATION,
-                    "token"));
+                    "token",
+                    CqlCompilerException.ErrorSeverity.Error));
 
     assertThat(
         exception.getMessage(),
@@ -169,10 +179,18 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
               return null;
             })
         .when(libraryService)
-        .getIncludedLibraries(anyString(), anyMap(), anyString(), anyString());
+        .getIncludedLibraries(
+            anyString(),
+            anyMap(),
+            anyString(),
+            any(CqlCompilerException.ErrorSeverity.class),
+            anyString());
 
     when(elmTranslatorClient.getEffectiveDataRequirements(
-            any(CqlLibraryDetails.class), anyBoolean(), anyString()))
+            any(CqlLibraryDetails.class),
+            anyBoolean(),
+            anyString(),
+            eq(CqlCompilerException.ErrorSeverity.Info)))
         .thenReturn(effectiveDataRequirements);
 
     when(humanReadableService.generateMeasureHumanReadable(
@@ -184,7 +202,11 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
 
     Bundle bundle =
         measureBundleService.createMeasureBundle(
-            madieMeasure, mock(Principal.class), BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT, "token");
+            madieMeasure,
+            mock(Principal.class),
+            BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT,
+            "token",
+            CqlCompilerException.ErrorSeverity.Info);
 
     assertThat(bundle.getEntry().size(), is(3));
     assertThat(bundle.getType(), is(equalTo(Bundle.BundleType.TRANSACTION)));

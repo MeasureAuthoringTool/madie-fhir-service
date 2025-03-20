@@ -7,6 +7,7 @@ import gov.cms.madie.madiefhirservice.utils.LibraryHelper;
 import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
 import gov.cms.madie.models.common.Version;
 import gov.cms.madie.models.library.CqlLibrary;
+import org.cqframework.cql.cql2elm.CqlCompilerException;
 import org.hl7.fhir.r4.model.Attachment;
 import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.Library;
@@ -81,14 +82,19 @@ class LibraryServiceTest implements LibraryHelper, ResourceFileUtil {
             .build();
 
     when(libCqlVisitorFactory.visit(anyString())).thenReturn(visitor1).thenReturn(visitor2);
-    when(cqlLibraryService.getLibrary(anyString(), anyString(), anyString()))
+    when(cqlLibraryService.getLibrary(
+            anyString(), anyString(), anyString(), any(CqlCompilerException.ErrorSeverity.class)))
         .thenReturn(cqlLibrary);
     when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class), any(), anyString()))
         .thenReturn(library);
 
     Map<String, Library> includedLibraryMap = new HashMap<>();
     libraryService.getIncludedLibraries(
-        mainLibrary, includedLibraryMap, BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT, "TOKEN");
+        mainLibrary,
+        includedLibraryMap,
+        BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT,
+        CqlCompilerException.ErrorSeverity.Info,
+        "TOKEN");
     assertThat(includedLibraryMap.size(), is(equalTo(1)));
     assertNotNull(includedLibraryMap.get("IncludedLibrary0.1.000"));
   }
@@ -103,7 +109,11 @@ class LibraryServiceTest implements LibraryHelper, ResourceFileUtil {
             IllegalArgumentException.class,
             () ->
                 libraryService.getIncludedLibraries(
-                    mainLibrary, libraries, BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT, "TOKEN"));
+                    mainLibrary,
+                    libraries,
+                    BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT,
+                    CqlCompilerException.ErrorSeverity.Info,
+                    "TOKEN"));
 
     assertThat(exception.getMessage(), is(equalTo("Please provide valid arguments.")));
   }
@@ -122,7 +132,8 @@ class LibraryServiceTest implements LibraryHelper, ResourceFileUtil {
     var visitor2 = new LibraryCqlVisitorFactory().visit(includedLibrary);
 
     when(libCqlVisitorFactory.visit(anyString())).thenReturn(visitor1).thenReturn(visitor2);
-    when(cqlLibraryService.getLibrary(anyString(), anyString(), anyString()))
+    when(cqlLibraryService.getLibrary(
+            anyString(), anyString(), anyString(), any(CqlCompilerException.ErrorSeverity.class)))
         .thenThrow(new CqlLibraryNotFoundException("Test Exception Here!", "0.1.000"));
 
     Map<String, Library> libraries = new HashMap<>();
@@ -131,7 +142,11 @@ class LibraryServiceTest implements LibraryHelper, ResourceFileUtil {
             CqlLibraryNotFoundException.class,
             () ->
                 libraryService.getIncludedLibraries(
-                    mainLibrary, libraries, BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT, "TOKEN"));
+                    mainLibrary,
+                    libraries,
+                    BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT,
+                    CqlCompilerException.ErrorSeverity.Info,
+                    "TOKEN"));
 
     assertThat(
         exception.getMessage(),

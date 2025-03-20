@@ -2,15 +2,18 @@ package gov.cms.madie.madiefhirservice.utils;
 
 import ca.uhn.fhir.model.api.TemporalPrecisionEnum;
 import gov.cms.madie.madiefhirservice.constants.UriConstants;
+import gov.cms.madie.models.measure.Group;
 import gov.cms.madie.models.measure.TestCaseStratificationValue;
 import org.apache.commons.lang3.StringUtils;
 import org.hl7.fhir.r4.model.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
@@ -87,7 +90,8 @@ public class FhirResourceHelpers {
   public static List<MeasureReport.StratifierGroupPopulationComponent> buildStratumPopulation(
       TestCaseStratificationValue testCaseStratificationValue,
       Boolean valueIndex,
-      boolean isPatientBased) {
+      boolean isPatientBased,
+      Group group) {
     var measureTestCaseStratificationComponents =
         testCaseStratificationValue.getPopulationValues().stream()
             .map(
@@ -96,7 +100,8 @@ public class FhirResourceHelpers {
                       stratifierGroupPopulationComponent =
                           new MeasureReport.StratifierGroupPopulationComponent();
 
-                  stratifierGroupPopulationComponent.setId(populationValue.getId());
+                  stratifierGroupPopulationComponent.setId(
+                      getGroupPopulationDisplayId(group, populationValue.getId()));
                   stratifierGroupPopulationComponent.setCode(
                       buildCodeableConcept(
                           populationValue.getName().toCode(),
@@ -122,5 +127,17 @@ public class FhirResourceHelpers {
 
   public static String buildResourceFullUrl(String resourceType, String resourceName) {
     return madieUrl + "/" + resourceType + "/" + resourceName;
+  }
+
+  public static String getGroupPopulationDisplayId(Group group, String popId) {
+    String popDisplayId = popId;
+    if (!CollectionUtils.isEmpty(group.getPopulations())) {
+      Optional<gov.cms.madie.models.measure.Population> population =
+          group.getPopulations().stream().filter(pop -> popId.equals(pop.getId())).findFirst();
+      if (population.isPresent()) {
+        popDisplayId = population.get().getDisplayId();
+      }
+    }
+    return popDisplayId;
   }
 }

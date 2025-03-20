@@ -4,6 +4,7 @@ import ca.uhn.fhir.context.FhirContext;
 import gov.cms.madie.madiefhirservice.config.ElmTranslatorClientConfig;
 import gov.cms.madie.madiefhirservice.dto.CqlLibraryDetails;
 import gov.cms.madie.madiefhirservice.exceptions.CqlElmTranslationServiceException;
+import org.cqframework.cql.cql2elm.CqlCompilerException;
 import org.hl7.fhir.r5.model.Library;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -48,7 +49,9 @@ public class ElmTranslatorClientTest {
   public void testGetEffectiveDataRequirementsThrowsException() {
     assertThrows(
         CqlElmTranslationServiceException.class,
-        () -> elmTranslatorClient.getEffectiveDataRequirements(null, false, "TEST_TOKEN"));
+        () ->
+            elmTranslatorClient.getEffectiveDataRequirements(
+                null, false, "TEST_TOKEN", CqlCompilerException.ErrorSeverity.Error));
   }
 
   @Test
@@ -78,7 +81,8 @@ public class ElmTranslatorClientTest {
     when(elmTranslatorClientConfig.getMadieUrl()).thenReturn("http://test.url");
 
     Library output =
-        elmTranslatorClient.getEffectiveDataRequirements(libraryDetails, false, "TEST_TOKEN");
+        elmTranslatorClient.getEffectiveDataRequirements(
+            libraryDetails, false, "TEST_TOKEN", CqlCompilerException.ErrorSeverity.Error);
     assertThat(output.getId(), is(equalTo("effective-data-requirements")));
     assertThat(output.getRelatedArtifact().size(), is(equalTo(1)));
     assertThat(

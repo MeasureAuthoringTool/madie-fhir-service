@@ -17,6 +17,7 @@ import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.r4.model.Attachment;
 import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.Library;
+import org.hl7.fhir.r4.model.MarkdownType;
 import org.hl7.fhir.r4.model.Period;
 import org.hl7.fhir.r4.model.Resource;
 import org.hl7.fhir.r5.context.SimpleWorkerContext;
@@ -30,6 +31,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -59,6 +61,10 @@ class HumanReadableServiceTest
   private org.hl7.fhir.r5.model.Library effectiveDataRequirements;
 
   private String humanReadable;
+
+  List<MarkdownType> terms = new ArrayList<>();
+  MarkdownType term1 = new MarkdownType("Term1 - Definition1");
+  MarkdownType term2 = new MarkdownType("Term2 - Definition2");
 
   @BeforeEach
   void setUp() {
@@ -93,6 +99,8 @@ class HumanReadableServiceTest
             .groups(List.of(measureGroup1))
             .build();
 
+    terms.add(term1);
+    terms.add(term2);
     measure =
         new org.hl7.fhir.r4.model.Measure()
             .setName(madieMeasure.getCqlLibraryName())
@@ -105,7 +113,8 @@ class HumanReadableServiceTest
                     madieMeasure.getMeasurementPeriodStart(),
                     madieMeasure.getMeasurementPeriodEnd()))
             .setCopyright(madieMeasure.getMeasureMetaData().getCopyright())
-            .setDisclaimer(madieMeasure.getMeasureMetaData().getDisclaimer());
+            .setDisclaimer(madieMeasure.getMeasureMetaData().getDisclaimer())
+            .setDefinition(terms);
 
     String cqlData = ResourceUtils.getData("/test-cql/cv_populations.cql");
     library =

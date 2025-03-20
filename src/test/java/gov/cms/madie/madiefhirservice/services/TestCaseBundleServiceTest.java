@@ -14,7 +14,6 @@ import static org.mockito.Mockito.doReturn;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -54,7 +53,9 @@ import gov.cms.madie.madiefhirservice.utils.FhirResourceHelpers;
 import gov.cms.madie.madiefhirservice.utils.MeasureTestHelper;
 import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
 import gov.cms.madie.models.common.BundleType;
+import gov.cms.madie.models.measure.Group;
 import gov.cms.madie.models.measure.Measure;
+import gov.cms.madie.models.measure.Stratification;
 import gov.cms.madie.models.measure.TestCase;
 import gov.cms.madie.packaging.utils.PackagingUtilityFactory;
 import gov.cms.madie.packaging.utils.qicore411.PackagingUtilityImpl;
@@ -177,7 +178,7 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
     PackagingUtilityImpl utility = Mockito.mock(PackagingUtilityImpl.class);
 
     factory.when(() -> PackagingUtilityFactory.getInstance("QI-Core v4.1.1")).thenReturn(utility);
-    doReturn("THis is a test".getBytes()).when(utility).getZipBundle(any(), isNull());
+    doReturn("This is a test".getBytes()).when(utility).getZipBundle(any(), isNull());
     IParser parser =
         fhirContext
             .newJsonParser()
@@ -249,6 +250,24 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
             p -> "initial-population".equalsIgnoreCase(p.getCode().getCoding().get(0).getCode()))
         .findFirst()
         .ifPresent(e -> assertEquals(0, e.getCount()));
+    assertEquals(1, measureReport.getGroup().size());
+    assertEquals("Group_1", measureReport.getGroup().get(0).getId());
+    assertEquals(6, measureReport.getGroup().get(0).getPopulation().size());
+    assertEquals(
+        "InitialPopulation_1_1", measureReport.getGroup().get(0).getPopulation().get(0).getId());
+    assertEquals(
+        "InitialPopulation_1_2", measureReport.getGroup().get(0).getPopulation().get(1).getId());
+    assertEquals("Denominator_1", measureReport.getGroup().get(0).getPopulation().get(2).getId());
+    assertEquals(
+        "DenominatorExclusion_1", measureReport.getGroup().get(0).getPopulation().get(3).getId());
+    assertEquals("Numerator_1", measureReport.getGroup().get(0).getPopulation().get(4).getId());
+    assertEquals(
+        "NumeratorExclusion_1", measureReport.getGroup().get(0).getPopulation().get(5).getId());
+    assertEquals(2, measureReport.getGroup().get(0).getStratifier().size());
+    assertEquals(
+        "Stratification_1_1", measureReport.getGroup().get(0).getStratifier().get(0).getId());
+    assertEquals(
+        "Stratification_1_2", measureReport.getGroup().get(0).getStratifier().get(1).getId());
 
     // evaluated resources
     assertEquals(4, measureReport.getEvaluatedResource().size());
@@ -312,6 +331,24 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
             p -> "initial-population".equalsIgnoreCase(p.getCode().getCoding().get(0).getCode()))
         .findFirst()
         .ifPresent(e -> assertEquals(0, e.getCount()));
+    assertEquals(1, measureReport.getGroup().size());
+    assertEquals("Group_1", measureReport.getGroup().get(0).getId());
+    assertEquals(6, measureReport.getGroup().get(0).getPopulation().size());
+    assertEquals(
+        "InitialPopulation_1_1", measureReport.getGroup().get(0).getPopulation().get(0).getId());
+    assertEquals(
+        "InitialPopulation_1_2", measureReport.getGroup().get(0).getPopulation().get(1).getId());
+    assertEquals("Denominator_1", measureReport.getGroup().get(0).getPopulation().get(2).getId());
+    assertEquals(
+        "DenominatorExclusion_1", measureReport.getGroup().get(0).getPopulation().get(3).getId());
+    assertEquals("Numerator_1", measureReport.getGroup().get(0).getPopulation().get(4).getId());
+    assertEquals(
+        "NumeratorExclusion_1", measureReport.getGroup().get(0).getPopulation().get(5).getId());
+    assertEquals(2, measureReport.getGroup().get(0).getStratifier().size());
+    assertEquals(
+        "Stratification_1_1", measureReport.getGroup().get(0).getStratifier().get(0).getId());
+    assertEquals(
+        "Stratification_1_2", measureReport.getGroup().get(0).getStratifier().get(1).getId());
 
     // evaluated resources
     assertEquals(4, measureReport.getEvaluatedResource().size());
@@ -404,13 +441,7 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
 
   //  @Disabled
   @Test
-  void zipTestCaseContents()
-      throws IOException,
-          ClassNotFoundException,
-          InvocationTargetException,
-          InstantiationException,
-          IllegalAccessException,
-          NoSuchMethodException {
+  void zipTestCaseContents() throws IOException {
 
     Map<String, Bundle> testCaseBundleMap = new HashMap<>();
     testCaseBundleMap.put(
@@ -462,5 +493,29 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
       zipInputStream.closeEntry();
     }
     return zipContents;
+  }
+
+  @Test
+  void testGetGroupStratificationDisplayIdNoStratifications() {
+    Group group1 = Group.builder().id("1").build();
+    String stratDisplayId =
+        testCaseBundleService.getGroupStratificationDisplayId(group1, "stratId");
+    assertEquals("stratId", stratDisplayId);
+  }
+
+  @Test
+  void testGetGroupStratificationDisplayIdStratificationNotFound() {
+    Stratification strat = Stratification.builder().id("stratId").build();
+    Group group1 = Group.builder().id("1").stratifications(List.of(strat)).build();
+    String stratDisplayId =
+        testCaseBundleService.getGroupStratificationDisplayId(group1, "anotherStratId");
+    assertEquals("anotherStratId", stratDisplayId);
+  }
+
+  @Test
+  void testGetGroupThrowsException() {
+    Group group = Group.builder().id("1").build();
+    assertThrows(
+        ResourceNotFoundException.class, () -> testCaseBundleService.getGroup(List.of(group), "2"));
   }
 }

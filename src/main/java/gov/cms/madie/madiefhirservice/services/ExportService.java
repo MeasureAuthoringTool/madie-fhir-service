@@ -3,6 +3,7 @@ package gov.cms.madie.madiefhirservice.services;
 import java.lang.reflect.InvocationTargetException;
 import java.security.Principal;
 
+import org.cqframework.cql.cql2elm.CqlCompilerException;
 import org.hl7.fhir.r4.model.Bundle;
 import org.springframework.stereotype.Service;
 
@@ -22,12 +23,20 @@ public class ExportService {
 
   private final MeasureBundleService measureBundleService;
 
-  public byte[] createExport(Measure madieMeasure, Principal principal, String accessToken) {
+  public byte[] createExport(
+      Measure madieMeasure,
+      Principal principal,
+      CqlCompilerException.ErrorSeverity errorSeverity,
+      String accessToken) {
     String exportFileName = ExportFileNamesUtil.getExportFileName(madieMeasure);
 
     Bundle bundle =
         measureBundleService.createMeasureBundle(
-            madieMeasure, principal, BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT, accessToken);
+            madieMeasure,
+            principal,
+            BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT,
+            accessToken,
+            errorSeverity);
 
     PackagingUtility utility;
     try {
