@@ -7,6 +7,8 @@ import static gov.cms.madie.madiefhirservice.constants.IdentifierType.CODE_PUBLI
 import static gov.cms.madie.madiefhirservice.constants.IdentifierType.CODE_SHORT_NAME;
 import static gov.cms.madie.madiefhirservice.constants.IdentifierType.CODE_VERSION_INDEPENDENT;
 import static gov.cms.madie.madiefhirservice.constants.IdentifierType.CODE_VERSION_SPECIFIC;
+import static gov.cms.madie.madiefhirservice.utils.BundleUtil.MEASURE_BUNDLE_TYPE_CALCULATION;
+import static gov.cms.madie.madiefhirservice.utils.BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -75,7 +77,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
   @Test
   public void testCreateFhirMeasureForMadieMeasure() {
     org.hl7.fhir.r4.model.Measure measure =
-        measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure);
+        measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure, MEASURE_BUNDLE_TYPE_EXPORT);
 
     assertThat(measure.getName(), is(equalTo(madieMeasure.getCqlLibraryName())));
     assertThat(measure.getGuidance(), is(equalTo(madieMeasure.getMeasureMetaData().getGuidance())));
@@ -425,7 +427,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     madieRatioMeasure.getMeasureMetaData().setCopyright("testCopyright");
     madieRatioMeasure.getMeasureMetaData().setDisclaimer("testDisclaimer");
     org.hl7.fhir.r4.model.Measure measure =
-        measureTranslatorService.createFhirMeasureForMadieMeasure(madieRatioMeasure);
+        measureTranslatorService.createFhirMeasureForMadieMeasure(madieRatioMeasure, MEASURE_BUNDLE_TYPE_EXPORT);
 
     assertThat(measure.getName(), is(equalTo(madieMeasure.getCqlLibraryName())));
     assertFalse(measure.getExperimental());
@@ -579,7 +581,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
   @Test
   public void testCreateFhirMeasureForMadieCVMeasure() {
     org.hl7.fhir.r4.model.Measure measure =
-        measureTranslatorService.createFhirMeasureForMadieMeasure(madieCVMeasure);
+        measureTranslatorService.createFhirMeasureForMadieMeasure(madieCVMeasure, MEASURE_BUNDLE_TYPE_CALCULATION);
 
     assertThat(measure.getName(), is(equalTo(madieCVMeasure.getCqlLibraryName())));
     assertThat(
@@ -744,7 +746,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     List<Group> groups = new ArrayList<>();
     groups.add(group);
 
-    List<MeasureGroupComponent> groupComponent = measureTranslatorService.buildGroups(groups);
+    List<MeasureGroupComponent> groupComponent = measureTranslatorService.buildGroups(groups, MEASURE_BUNDLE_TYPE_CALCULATION);
     assertNotNull(groupComponent);
 
     groupComponent.forEach(
@@ -833,7 +835,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     List<Group> groups = new ArrayList<>();
     groups.add(group);
 
-    List<MeasureGroupComponent> groupComponent = measureTranslatorService.buildGroups(groups);
+    List<MeasureGroupComponent> groupComponent = measureTranslatorService.buildGroups(groups, MEASURE_BUNDLE_TYPE_CALCULATION);
     assertNotNull(groupComponent);
 
     assertThat(groupComponent.size(), is(equalTo(1)));
@@ -902,7 +904,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     List<Group> groups = new ArrayList<>();
     groups.add(group);
 
-    List<MeasureGroupComponent> groupComponent = measureTranslatorService.buildGroups(groups);
+    List<MeasureGroupComponent> groupComponent = measureTranslatorService.buildGroups(groups, MEASURE_BUNDLE_TYPE_CALCULATION);
     assertNotNull(groupComponent);
 
     assertThat(groupComponent.size(), is(equalTo(1)));
@@ -968,7 +970,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     List<Group> groups = new ArrayList<>();
     groups.add(group);
 
-    List<MeasureGroupComponent> groupComponent = measureTranslatorService.buildGroups(groups);
+    List<MeasureGroupComponent> groupComponent = measureTranslatorService.buildGroups(groups, MEASURE_BUNDLE_TYPE_CALCULATION);
     assertNotNull(groupComponent);
 
     assertThat(groupComponent.size(), is(equalTo(1)));
@@ -1257,7 +1259,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
   @Test
   public void testBuildGroupsWithNull() {
     List<MeasureGroupComponent> listOfComponent =
-        measureTranslatorService.buildGroups(new ArrayList<>());
+        measureTranslatorService.buildGroups(new ArrayList<>(), MEASURE_BUNDLE_TYPE_CALCULATION);
     assertNull(listOfComponent);
   }
 
@@ -1279,7 +1281,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
   public void testCreateFhirMeasureForDraftMadieMeasure() {
     madieMeasure.getMeasureMetaData().setDraft(true);
     org.hl7.fhir.r4.model.Measure measure =
-        measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure);
+        measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure, MEASURE_BUNDLE_TYPE_CALCULATION);
     assertEquals("Draft based on 0.0.000", measure.getVersion());
   }
 }

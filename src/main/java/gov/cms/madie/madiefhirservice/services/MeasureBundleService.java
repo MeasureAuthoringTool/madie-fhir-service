@@ -55,7 +55,7 @@ public class MeasureBundleService {
 
     log.info("CQL formatting completed successfully for measure {}", madieMeasure.getId());
     org.hl7.fhir.r4.model.Measure measure =
-        measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure);
+        measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure, bundleType);
     Set<String> expressions = getExpressions(measure);
 
     log.info(
