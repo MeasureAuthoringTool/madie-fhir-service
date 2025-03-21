@@ -293,7 +293,7 @@ public class FhirResourceHelpersTest {
   }
 
   @Test
-  public void testGetGroupObservationDisplayId_withNoMatchingObservation() {
+  public void testGetGroupObservationDisplayIdWithNoMatchingObservation() {
     // Given
     TestCasePopulationValue populationValue = TestCasePopulationValue
         .builder()
@@ -309,7 +309,7 @@ public class FhirResourceHelpersTest {
   }
 
   @Test
-  public void testGetGroupObservationDisplayId_withNullObservations() {
+  public void testGetGroupObservationDisplayIdWithNullObservations() {
     // Given
     TestCasePopulationValue populationValue = TestCasePopulationValue
         .builder()
@@ -327,7 +327,7 @@ public class FhirResourceHelpersTest {
   }
 
   @Test
-  public void testGetGroupObservationDisplayId_withEmptyObservations() {
+  public void testGetGroupObservationDisplayIdWithEmptyObservations() {
     // Given
     TestCasePopulationValue populationValue = TestCasePopulationValue
         .builder()
