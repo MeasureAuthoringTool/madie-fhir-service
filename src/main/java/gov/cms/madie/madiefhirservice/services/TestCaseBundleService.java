@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.TimeZone;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -243,6 +244,11 @@ public class TestCaseBundleService {
     if (CollectionUtils.isEmpty(testCase.getGroupPopulations())) {
       return List.of();
     }
+
+    // track number of observations per group+observation type for building friendly observation
+    // display ID
+    final Map<String, AtomicInteger> observationCounts = new HashMap<>();
+
     return testCase.getGroupPopulations().stream()
         .map(
             population -> {
@@ -255,19 +261,12 @@ public class TestCaseBundleService {
                     population.getPopulationValues().stream()
                         .map(
                             testCasePopulationValue -> {
-                              var groupComponent =
-                                  (new MeasureReport.MeasureReportGroupPopulationComponent())
-                                      .setCode(
-                                          FhirResourceHelpers.buildCodeableConcept(
-                                              testCasePopulationValue.getName().toCode(),
-                                              UriConstants.CodeSystem.POPULATION_SYSTEM_URI,
-                                              testCasePopulationValue.getName().getDisplay()))
-                                      .setCount(
-                                          FhirResourceHelpers.getExpectedValue(
-                                              testCasePopulationValue.getExpected()));
-                              groupComponent.setId(
-                                  FhirResourceHelpers.getGroupPopulationDisplayId(
-                                      matchingGroup, testCasePopulationValue.getId()));
+                              MeasureReport.MeasureReportGroupPopulationComponent groupComponent =
+                                  getMeasureReportGroupPopulationComponent(testCasePopulationValue);
+                              String groupPopulationDisplayId =
+                                  getDisplayId(
+                                      observationCounts, matchingGroup, testCasePopulationValue);
+                              groupComponent.setId(groupPopulationDisplayId);
                               return groupComponent;
                             })
                         .collect(Collectors.toList());
@@ -293,6 +292,50 @@ public class TestCaseBundleService {
               return measureReportGroupComponent;
             })
         .collect(Collectors.toList());
+  }
+
+  /**
+   * Warning - this method modifies input parameters: observationCounts map
+   *
+   * @param observationCounts map representing count of group/observation -> current count in test
+   *     case populations
+   * @param group MADiE group object
+   * @param testCasePopulationValue current test case population value
+   * @return
+   */
+  protected String getDisplayId(
+      Map<String, AtomicInteger> observationCounts,
+      Group group,
+      TestCasePopulationValue testCasePopulationValue) {
+    boolean testCaseObservation =
+        FhirResourceHelpers.isTestCaseObservation(testCasePopulationValue.getName());
+    String groupPopulationDisplayId;
+    if (testCaseObservation) {
+      String obsCountKey = group.getId() + testCasePopulationValue.getName().toCode();
+      AtomicInteger obsCount = observationCounts.get(obsCountKey);
+      if (obsCount == null) {
+        obsCount = new AtomicInteger(0);
+        observationCounts.put(obsCountKey, obsCount);
+      }
+      groupPopulationDisplayId =
+          FhirResourceHelpers.getGroupObservationDisplayId(
+              group, testCasePopulationValue, obsCount.incrementAndGet());
+    } else {
+      groupPopulationDisplayId =
+          FhirResourceHelpers.getGroupPopulationDisplayId(group, testCasePopulationValue.getId());
+    }
+    return groupPopulationDisplayId;
+  }
+
+  private MeasureReport.MeasureReportGroupPopulationComponent
+      getMeasureReportGroupPopulationComponent(TestCasePopulationValue testCasePopulationValue) {
+    return (new MeasureReport.MeasureReportGroupPopulationComponent())
+        .setCode(
+            FhirResourceHelpers.buildCodeableConcept(
+                testCasePopulationValue.getName().toCode(),
+                UriConstants.CodeSystem.POPULATION_SYSTEM_URI,
+                testCasePopulationValue.getName().getDisplay()))
+        .setCount(FhirResourceHelpers.getExpectedValue(testCasePopulationValue.getExpected()));
   }
 
   private List<MeasureReport.MeasureReportGroupStratifierComponent> buildGroupStratifierComponent(

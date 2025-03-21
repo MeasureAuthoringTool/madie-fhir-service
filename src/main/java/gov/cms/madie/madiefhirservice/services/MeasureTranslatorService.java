@@ -28,6 +28,8 @@ import gov.cms.madie.madiefhirservice.constants.UriConstants;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import static gov.cms.madie.madiefhirservice.utils.BundleUtil.MEASURE_BUNDLE_TYPE_CALCULATION;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -35,7 +37,8 @@ public class MeasureTranslatorService {
   public static final String UNKNOWN = "UNKNOWN";
   private final AppConfigService appConfigService;
 
-  public org.hl7.fhir.r4.model.Measure createFhirMeasureForMadieMeasure(Measure madieMeasure) {
+  public org.hl7.fhir.r4.model.Measure createFhirMeasureForMadieMeasure(
+      Measure madieMeasure, String bundleType) {
     Organization steward = madieMeasure.getMeasureMetaData().getSteward();
     String copyright = madieMeasure.getMeasureMetaData().getCopyright();
     String disclaimer = madieMeasure.getMeasureMetaData().getDisclaimer();
@@ -72,7 +75,7 @@ public class MeasureTranslatorService {
                     FhirResourceHelpers.buildResourceFullUrl(
                         "Library", madieMeasure.getCqlLibraryName()))))
         .setContact(buildContactDetail(madieMeasure.getMeasureMetaData().getSteward(), false))
-        .setGroup(buildGroups(madieMeasure.getGroups()))
+        .setGroup(buildGroups(madieMeasure.getGroups(), bundleType))
         .setSupplementalData(buildSupplementalData(madieMeasure))
         .setStatus(
             madieMeasure.getMeasureMetaData().isDraft()
@@ -249,9 +252,11 @@ public class MeasureTranslatorService {
     return meta;
   }
 
-  public List<MeasureGroupComponent> buildGroups(List<Group> madieGroups) {
+  public List<MeasureGroupComponent> buildGroups(List<Group> madieGroups, String bundleType) {
     if (CollectionUtils.isNotEmpty(madieGroups)) {
-      return madieGroups.stream().map(this::buildGroup).collect(Collectors.toList());
+      return madieGroups.stream()
+          .map(group -> this.buildGroup(group, bundleType))
+          .collect(Collectors.toList());
     } else {
       return null;
     }
@@ -278,10 +283,12 @@ public class MeasureTranslatorService {
     }
   }
 
-  public MeasureGroupComponent buildGroup(Group madieGroup) {
-    List<MeasureGroupPopulationComponent> measurePopulations = buildPopulations(madieGroup);
-    measurePopulations.addAll(buildObservations(madieGroup));
-    List<MeasureGroupStratifierComponent> measureStratifications = buildStratifications(madieGroup);
+  public MeasureGroupComponent buildGroup(Group madieGroup, String bundleType) {
+    List<MeasureGroupPopulationComponent> measurePopulations =
+        buildPopulations(madieGroup, bundleType);
+    measurePopulations.addAll(buildObservations(madieGroup, bundleType));
+    List<MeasureGroupStratifierComponent> measureStratifications =
+        buildStratifications(madieGroup, bundleType);
     // seems FHIR spec and fqm-execution want lowercase 'boolean', while other popBasis have
     // capitalized first letter
     final String popBasisValue =
@@ -291,21 +298,8 @@ public class MeasureTranslatorService {
     final CodeableConcept scoringUnit = getScoringUnitCode(madieGroup.getScoringUnit());
     final List<CodeableConcept> types = getMeasureTypes(madieGroup.getMeasureGroupTypes());
     Element element =
-        new MeasureGroupComponent()
-            .setDescription(madieGroup.getGroupDescription())
-            .setPopulation(measurePopulations)
-            .setStratifier(measureStratifications)
-            .setId(
-                StringUtils.isNotBlank(madieGroup.getDisplayId())
-                    ? madieGroup.getDisplayId()
-                    : madieGroup.getId())
-            .addExtension(
-                new Extension(
-                    UriConstants.CqfMeasures.SCORING_URI,
-                    buildScoringConcept(madieGroup.getScoring())))
-            .addExtension(
-                new Extension(
-                    UriConstants.CqfMeasures.POPULATION_BASIS, new CodeType(popBasisValue)));
+        buildMeasureGroupComponent(
+            madieGroup, bundleType, measurePopulations, measureStratifications, popBasisValue);
     if (scoringUnit != null) {
       element.addExtension(new Extension(UriConstants.CqfMeasures.SCORING_UNIT_URI, scoringUnit));
     }
@@ -337,6 +331,28 @@ public class MeasureTranslatorService {
       }
     }
     return (MeasureGroupComponent) element;
+  }
+
+  private Element buildMeasureGroupComponent(
+      Group madieGroup,
+      String bundleType,
+      List<MeasureGroupPopulationComponent> measurePopulations,
+      List<MeasureGroupStratifierComponent> measureStratifications,
+      String popBasisValue) {
+    return new MeasureGroupComponent()
+        .setDescription(madieGroup.getGroupDescription())
+        .setPopulation(measurePopulations)
+        .setStratifier(measureStratifications)
+        .setId(
+            StringUtils.isNotBlank(madieGroup.getDisplayId())
+                    && !StringUtils.equals(bundleType, "calculation")
+                ? madieGroup.getDisplayId()
+                : madieGroup.getId())
+        .addExtension(
+            new Extension(
+                UriConstants.CqfMeasures.SCORING_URI, buildScoringConcept(madieGroup.getScoring())))
+        .addExtension(
+            new Extension(UriConstants.CqfMeasures.POPULATION_BASIS, new CodeType(popBasisValue)));
   }
 
   private CodeableConcept buildImprovementNotation(String improvementNotation) {
@@ -371,7 +387,8 @@ public class MeasureTranslatorService {
     return types;
   }
 
-  private List<MeasureGroupPopulationComponent> buildPopulations(Group madieGroup) {
+  private List<MeasureGroupPopulationComponent> buildPopulations(
+      Group madieGroup, String bundleType) {
     return madieGroup.getPopulations().stream()
         .filter(population -> StringUtils.isNotBlank(population.getDefinition()))
         .map(
@@ -390,6 +407,8 @@ public class MeasureTranslatorService {
                               buildExpression("text/cql-identifier", population.getDefinition()))
                           .setId(
                               StringUtils.isNotBlank(population.getDisplayId())
+                                      && !StringUtils.equals(
+                                          MEASURE_BUNDLE_TYPE_CALCULATION, bundleType)
                                   ? population.getDisplayId()
                                   : population.getId()))
                       .addExtension(buildPopulationTypeExtension(population, madieGroup));
@@ -398,7 +417,8 @@ public class MeasureTranslatorService {
         .collect(Collectors.toList());
   }
 
-  private List<MeasureGroupPopulationComponent> buildObservations(Group madieGroup) {
+  private List<MeasureGroupPopulationComponent> buildObservations(
+      Group madieGroup, String bundleType) {
     if (madieGroup.getMeasureObservations() == null
         || madieGroup.getMeasureObservations().isEmpty()) {
       return List.of();
@@ -424,6 +444,8 @@ public class MeasureTranslatorService {
                                   new StringType(measureObservation.getAggregateMethod())))
                           .setId(
                               StringUtils.isNotBlank(measureObservation.getDisplayId())
+                                      && !StringUtils.equals(
+                                          bundleType, MEASURE_BUNDLE_TYPE_CALCULATION)
                                   ? measureObservation.getDisplayId()
                                   : measureObservation.getId()));
               if (measureObservation.getCriteriaReference() != null
@@ -438,7 +460,8 @@ public class MeasureTranslatorService {
         .toList();
   }
 
-  private List<MeasureGroupStratifierComponent> buildStratifications(Group madieGroup) {
+  private List<MeasureGroupStratifierComponent> buildStratifications(
+      Group madieGroup, String bundleType) {
     List<MeasureGroupStratifierComponent> measureStratifications = null;
     if (madieGroup.getStratifications() != null && !madieGroup.getStratifications().isEmpty()) {
       AtomicReference<Integer> i = new AtomicReference<>();
@@ -475,6 +498,8 @@ public class MeasureTranslatorService {
                                           "text/cql-identifier", strat.getCqlDefinition()))
                                   .setId(
                                       StringUtils.isNotBlank(strat.getDisplayId())
+                                              && !StringUtils.equals(
+                                                  bundleType, MEASURE_BUNDLE_TYPE_CALCULATION)
                                           ? strat.getDisplayId()
                                           : i.get().toString());
                       for (Extension extension : extensionList) {

@@ -3,6 +3,8 @@ package gov.cms.madie.madiefhirservice.utils;
 import ca.uhn.fhir.model.api.TemporalPrecisionEnum;
 import gov.cms.madie.madiefhirservice.constants.UriConstants;
 import gov.cms.madie.models.measure.Group;
+import gov.cms.madie.models.measure.PopulationType;
+import gov.cms.madie.models.measure.TestCasePopulationValue;
 import gov.cms.madie.models.measure.TestCaseStratificationValue;
 import org.apache.commons.lang3.StringUtils;
 import org.hl7.fhir.r4.model.*;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -139,5 +142,25 @@ public class FhirResourceHelpers {
       }
     }
     return popDisplayId;
+  }
+
+  public static String getGroupObservationDisplayId(
+      Group group, TestCasePopulationValue populationValue, int observationCount) {
+    return Optional.ofNullable(group.getMeasureObservations()).stream()
+        .flatMap(Collection::stream)
+        .filter(
+            obs ->
+                StringUtils.equals(
+                    obs.getCriteriaReference(), populationValue.getCriteriaReference()))
+        .findFirst()
+        .map(o -> o.getDisplayId() + "_" + observationCount)
+        .orElse(populationValue.getId());
+  }
+
+  public static boolean isTestCaseObservation(PopulationType populationType) {
+    return populationType == PopulationType.MEASURE_OBSERVATION
+        || populationType == PopulationType.MEASURE_POPULATION_OBSERVATION
+        || populationType == PopulationType.DENOMINATOR_OBSERVATION
+        || populationType == PopulationType.NUMERATOR_OBSERVATION;
   }
 }
