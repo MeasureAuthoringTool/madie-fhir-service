@@ -76,7 +76,8 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
 
   @Test
   public void testCreateMeasureBundle() {
-    when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure, BundleUtil.MEASURE_BUNDLE_TYPE_CALCULATION))
+    when(measureTranslatorService.createFhirMeasureForMadieMeasure(
+            madieMeasure, BundleUtil.MEASURE_BUNDLE_TYPE_CALCULATION))
         .thenReturn(measure);
 
     when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class), any(), anyString()))
@@ -134,7 +135,8 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
 
   @Test
   public void testCreateMeasureBundleWhenIncludedLibraryNotFound() {
-    when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure, BundleUtil.MEASURE_BUNDLE_TYPE_CALCULATION))
+    when(measureTranslatorService.createFhirMeasureForMadieMeasure(
+            madieMeasure, BundleUtil.MEASURE_BUNDLE_TYPE_CALCULATION))
         .thenReturn(measure);
 
     when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class), any(), anyString()))
@@ -166,7 +168,8 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
 
   @Test
   public void testCreateMeasureBundleForExport() {
-    when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure, MEASURE_BUNDLE_TYPE_EXPORT))
+    when(measureTranslatorService.createFhirMeasureForMadieMeasure(
+            madieMeasure, MEASURE_BUNDLE_TYPE_EXPORT))
         .thenReturn(measure);
 
     when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class), any(), anyString()))
