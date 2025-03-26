@@ -501,7 +501,9 @@ public class MeasureTranslatorService {
                                               && !StringUtils.equals(
                                                   bundleType, MEASURE_BUNDLE_TYPE_CALCULATION)
                                           ? strat.getDisplayId()
-                                          : i.get().toString());
+                                          : StringUtils.isNotBlank(strat.getId())
+                                              ? strat.getId()
+                                              : i.get().toString());
                       for (Extension extension : extensionList) {
                         stratComponent.addExtension(extension);
                       }
