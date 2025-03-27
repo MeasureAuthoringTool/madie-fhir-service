@@ -137,6 +137,19 @@
 			<groupId>com.okta.spring</groupId>
 			<artifactId>okta-spring-boot-starter</artifactId>
 			<version>3.0.7</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-security</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- Explicit use of spring-boot-starter-security version to resolve critical security vulnerabilities-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+			<version>3.4.4</version>
 		</dependency>
 
 		<dependency>
