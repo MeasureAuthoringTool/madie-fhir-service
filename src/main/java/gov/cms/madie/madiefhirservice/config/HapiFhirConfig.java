@@ -12,12 +12,15 @@ import org.hl7.fhir.common.hapi.validation.support.*;
 import org.hl7.fhir.common.hapi.validation.validator.FhirInstanceValidator;
 import org.hl7.fhir.r5.context.SimpleWorkerContext;
 import org.hl7.fhir.r5.utils.LiquidEngine;
+import org.hl7.fhir.utilities.npm.NpmPackage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Objects;
 
 @Slf4j
 @Configuration
@@ -117,8 +120,19 @@ public class HapiFhirConfig {
 
   @Bean
   public LiquidEngine liquidEngine() throws IOException {
-    SimpleWorkerContext context = new SimpleWorkerContext.SimpleWorkerContextBuilder().build();
-    LiquidEngine liquidEngine = new LiquidEngine(context, null);
+    // WorkerContext based on NPM package used per guidance provided in
+    // https://github.com/cqframework/sample-content-ig/issues/121#issuecomment-2725717942
+    NpmPackage pkg =
+        NpmPackage.fromPackage(
+            new FileInputStream(
+                Objects.requireNonNull(
+                        getClass().getClassLoader().getResource("packages/hl7.fhir.r5.core.tgz"))
+                    .getFile()));
+    var ctx =
+        new SimpleWorkerContext.SimpleWorkerContextBuilder()
+            .withAllowLoadingDuplicates(true)
+            .fromPackage(pkg);
+    LiquidEngine liquidEngine = new LiquidEngine(ctx, null);
     liquidEngine.setIncludeResolver(new IncludeResolver());
 
     return liquidEngine;
