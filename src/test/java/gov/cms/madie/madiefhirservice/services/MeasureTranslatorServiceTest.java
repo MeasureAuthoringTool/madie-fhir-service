@@ -860,7 +860,8 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertThat(measureGroupStratifierComponent.getId(), is(equalTo("testStrat1Id")));
     MeasureGroupStratifierComponent measureGroupStratifierComponent2 = stratifier.get(1);
     assertThat(measureGroupStratifierComponent2, is(notNullValue()));
-    assertThat(measureGroupStratifierComponent2.getDescription(), is(equalTo("strat2-description")));
+    assertThat(
+        measureGroupStratifierComponent2.getDescription(), is(equalTo("strat2-description")));
     assertThat(measureGroupStratifierComponent2.getId(), is(equalTo("testStrat2Id")));
     Expression expression = measureGroupStratifierComponent.getCriteria();
     assertThat(expression, is(notNullValue()));
