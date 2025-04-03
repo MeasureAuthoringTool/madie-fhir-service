@@ -272,7 +272,21 @@ public class FhirResourceHelpersTest {
 
     // When
     final String output =
-        FhirResourceHelpers.getGroupObservationDisplayId(ratioGroup, populationValue);
+        FhirResourceHelpers.getGroupObservationDisplayId(ratioGroup, populationValue, 1, false);
+
+    // Then
+    assertThat(output, is(equalTo("MeasureObservation_1_1_1")));
+  }
+
+  @Test
+  public void testGetGroupObservationDisplayIdWithMatchingObservationForDenomObsPatientBased() {
+    // Given
+    TestCasePopulationValue populationValue =
+        TestCasePopulationValue.builder().criteriaReference("group1_denom_id").build();
+
+    // When
+    final String output =
+        FhirResourceHelpers.getGroupObservationDisplayId(ratioGroup, populationValue, 1, true);
 
     // Then
     assertThat(output, is(equalTo("MeasureObservation_1_1")));
@@ -286,10 +300,10 @@ public class FhirResourceHelpersTest {
 
     // When
     final String output =
-        FhirResourceHelpers.getGroupObservationDisplayId(ratioGroup, populationValue);
+        FhirResourceHelpers.getGroupObservationDisplayId(ratioGroup, populationValue, 1, false);
 
     // Then
-    assertThat(output, is(equalTo("MeasureObservation_1_2")));
+    assertThat(output, is(equalTo("MeasureObservation_1_2_1")));
   }
 
   @Test
@@ -303,7 +317,7 @@ public class FhirResourceHelpersTest {
 
     // When
     final String output =
-        FhirResourceHelpers.getGroupObservationDisplayId(ratioGroup, populationValue);
+        FhirResourceHelpers.getGroupObservationDisplayId(ratioGroup, populationValue, 2, false);
 
     // Then
     assertThat(output, is(equalTo("measurePopulationObservation0")));
@@ -321,7 +335,7 @@ public class FhirResourceHelpersTest {
 
     // When
     final String output =
-        FhirResourceHelpers.getGroupObservationDisplayId(ratioGroup, populationValue);
+        FhirResourceHelpers.getGroupObservationDisplayId(ratioGroup, populationValue, 2, false);
 
     // Then
     assertThat(output, is(equalTo("measurePopulationObservation0")));
@@ -339,7 +353,7 @@ public class FhirResourceHelpersTest {
 
     // When
     final String output =
-        FhirResourceHelpers.getGroupObservationDisplayId(ratioGroup, populationValue);
+        FhirResourceHelpers.getGroupObservationDisplayId(ratioGroup, populationValue, 2, true);
 
     // Then
     assertThat(output, is(equalTo("measurePopulationObservation0")));

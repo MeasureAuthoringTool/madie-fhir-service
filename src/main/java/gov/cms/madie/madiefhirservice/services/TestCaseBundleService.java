@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.TimeZone;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -239,10 +240,15 @@ public class TestCaseBundleService {
   }
 
   private List<MeasureReport.MeasureReportGroupComponent> buildMeasureReportGroupComponents(
+      //      TestCase testCase, List<Group> groups) {
       TestCase testCase, List<Group> groups) {
     if (CollectionUtils.isEmpty(testCase.getGroupPopulations())) {
       return List.of();
     }
+
+    // track number of observations per group+observation type for building friendly observation
+    // display ID
+    final Map<String, AtomicInteger> observationCounts = new HashMap<>();
 
     return testCase.getGroupPopulations().stream()
         .map(
@@ -259,7 +265,8 @@ public class TestCaseBundleService {
                               MeasureReport.MeasureReportGroupPopulationComponent groupComponent =
                                   getMeasureReportGroupPopulationComponent(testCasePopulationValue);
                               String groupPopulationDisplayId =
-                                  getDisplayId(matchingGroup, testCasePopulationValue);
+                                  getDisplayId(
+                                      observationCounts, matchingGroup, testCasePopulationValue);
                               groupComponent.setId(groupPopulationDisplayId);
                               return groupComponent;
                             })
@@ -297,13 +304,24 @@ public class TestCaseBundleService {
    * @param testCasePopulationValue current test case population value
    * @return
    */
-  protected String getDisplayId(Group group, TestCasePopulationValue testCasePopulationValue) {
+  protected String getDisplayId(
+      Map<String, AtomicInteger> observationCounts,
+      Group group,
+      TestCasePopulationValue testCasePopulationValue) {
     boolean testCaseObservation =
         FhirResourceHelpers.isTestCaseObservation(testCasePopulationValue.getName());
     String groupPopulationDisplayId;
     if (testCaseObservation) {
+      String obsCountKey = group.getId() + testCasePopulationValue.getName().toCode();
+      AtomicInteger obsCount = observationCounts.get(obsCountKey);
+      if (obsCount == null) {
+        obsCount = new AtomicInteger(0);
+        observationCounts.put(obsCountKey, obsCount);
+      }
+      boolean patientBased = StringUtils.equalsIgnoreCase("boolean", group.getPopulationBasis());
       groupPopulationDisplayId =
-          FhirResourceHelpers.getGroupObservationDisplayId(group, testCasePopulationValue);
+          FhirResourceHelpers.getGroupObservationDisplayId(
+              group, testCasePopulationValue, obsCount.incrementAndGet(), patientBased);
     } else {
       groupPopulationDisplayId =
           FhirResourceHelpers.getGroupPopulationDisplayId(group, testCasePopulationValue.getId());

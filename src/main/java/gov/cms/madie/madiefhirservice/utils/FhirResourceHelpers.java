@@ -145,7 +145,10 @@ public class FhirResourceHelpers {
   }
 
   public static String getGroupObservationDisplayId(
-      Group group, TestCasePopulationValue populationValue) {
+      Group group,
+      TestCasePopulationValue populationValue,
+      int observationCount,
+      boolean patientBased) {
     return Optional.ofNullable(group.getMeasureObservations()).stream()
         .flatMap(Collection::stream)
         .filter(
@@ -153,7 +156,7 @@ public class FhirResourceHelpers {
                 StringUtils.equals(
                     obs.getCriteriaReference(), populationValue.getCriteriaReference()))
         .findFirst()
-        .map(o -> o.getDisplayId())
+        .map(o -> o.getDisplayId() + (patientBased ? "" : "_" + observationCount))
         .orElse(populationValue.getId());
   }
 
