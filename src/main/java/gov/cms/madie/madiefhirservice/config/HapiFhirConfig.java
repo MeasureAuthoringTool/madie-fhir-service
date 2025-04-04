@@ -3,6 +3,7 @@ package gov.cms.madie.madiefhirservice.config;
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.context.support.DefaultProfileValidationSupport;
 import ca.uhn.fhir.context.support.IValidationSupport;
+import ca.uhn.fhir.util.ClasspathUtil;
 import ca.uhn.fhir.validation.FhirValidator;
 import ca.uhn.fhir.validation.IValidatorModule;
 import gov.cms.madie.madiefhirservice.utils.QiCoreLenientTerminologyValidator;
@@ -18,9 +19,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Objects;
+import java.io.InputStream;
 
 @Slf4j
 @Configuration
@@ -122,20 +122,17 @@ public class HapiFhirConfig {
   public LiquidEngine liquidEngine() throws IOException {
     // WorkerContext based on NPM package used per guidance provided in
     // https://github.com/cqframework/sample-content-ig/issues/121#issuecomment-2725717942
-    NpmPackage pkg =
-        NpmPackage.fromPackage(
-            new FileInputStream(
-                Objects.requireNonNull(
-                        getClass().getClassLoader().getResource("packages/hl7.fhir.r5.core.tgz"))
-                    .getFile()));
-    var ctx =
-        new SimpleWorkerContext.SimpleWorkerContextBuilder()
-            .withAllowLoadingDuplicates(true)
-            .fromPackage(pkg);
-    LiquidEngine liquidEngine = new LiquidEngine(ctx, null);
-    liquidEngine.setIncludeResolver(new IncludeResolver());
+    try (InputStream is =
+        ClasspathUtil.loadResourceAsStream("classpath:packages/hl7.fhir.r5.core.tgz")) {
+      var ctx =
+          new SimpleWorkerContext.SimpleWorkerContextBuilder()
+              .withAllowLoadingDuplicates(true)
+              .fromPackage(NpmPackage.fromPackage(is));
+      LiquidEngine liquidEngine = new LiquidEngine(ctx, null);
+      liquidEngine.setIncludeResolver(new IncludeResolver());
 
-    return liquidEngine;
+      return liquidEngine;
+    }
   }
 
   static class IncludeResolver implements LiquidEngine.ILiquidEngineIncludeResolver {
