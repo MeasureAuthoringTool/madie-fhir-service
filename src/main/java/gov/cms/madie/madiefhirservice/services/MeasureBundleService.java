@@ -73,25 +73,26 @@ public class MeasureBundleService {
     libraryEntryComponents.forEach(bundle::addEntry);
     log.info("Included library components created successfully {}", madieMeasure.getId());
 
+    CqlLibraryDetails libraryDetails =
+        CqlLibraryDetails.builder()
+            .libraryName(madieMeasure.getCqlLibraryName())
+            .cql(madieMeasure.getCql())
+            .expressions(expressions)
+            .build();
+    // get effective DataRequirements
+    log.info("Getting effective data requirements for measure: {}", measure.getId());
+    org.hl7.fhir.r5.model.Library effectiveDataRequirements =
+        elmTranslatorClient.getEffectiveDataRequirements(
+            libraryDetails, true, accessToken, errorSeverity);
+    addEffectiveDataRequirementsToMeasure(measure, effectiveDataRequirements);
+
     if (BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT.equals(bundleType)) {
-      CqlLibraryDetails libraryDetails =
-          CqlLibraryDetails.builder()
-              .libraryName(madieMeasure.getCqlLibraryName())
-              .cql(madieMeasure.getCql())
-              .expressions(expressions)
-              .build();
-      // get effective DataRequirements
-      log.info("Getting effective data requirements for measure: {}", measure.getId());
-      org.hl7.fhir.r5.model.Library effectiveDataRequirements =
-          elmTranslatorClient.getEffectiveDataRequirements(
-              libraryDetails, true, accessToken, errorSeverity);
       // get human-readable for measure
       String humanReadable =
           humanReadableService.generateMeasureHumanReadable(
               madieMeasure, bundle, effectiveDataRequirements);
       // set narrative and effective DataRequirements to measure
       setNarrativeText(measure, humanReadable);
-      addEffectiveDataRequirementsToMeasure(measure, effectiveDataRequirements);
 
       // set narrative to measure library
       var measureLibrary =
