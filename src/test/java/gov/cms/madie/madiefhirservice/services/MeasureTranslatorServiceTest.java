@@ -831,10 +831,15 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
         List.of(PopulationType.INITIAL_POPULATION, PopulationType.MEASURE_POPULATION));
     stratifications.add(strat1);
     Stratification strat2 = new Stratification();
-    strat2.setDescription("strat-description");
-    strat1.setAssociations(
+    strat2.setId("testStrat2Id");
+    strat2.setDescription("strat2-description");
+    strat2.setAssociations(
         List.of(PopulationType.INITIAL_POPULATION, PopulationType.MEASURE_POPULATION));
     stratifications.add(strat2);
+    Stratification strat3 = new Stratification(); // no associations, not included in output
+    strat3.setId("testStrat3Id");
+    strat3.setDescription("strat3-description");
+    stratifications.add(strat3);
     group.setStratifications(stratifications);
     List<Group> groups = new ArrayList<>();
     groups.add(group);
@@ -848,10 +853,16 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertThat(measureGroupComponent, is(notNullValue()));
     List<MeasureGroupStratifierComponent> stratifier = measureGroupComponent.getStratifier();
     assertThat(stratifier, is(notNullValue()));
-    assertThat(stratifier.size(), is(equalTo(2)));
+    assertThat(stratifier.size(), is(equalTo(3)));
     MeasureGroupStratifierComponent measureGroupStratifierComponent = stratifier.get(0);
     assertThat(measureGroupStratifierComponent, is(notNullValue()));
     assertThat(measureGroupStratifierComponent.getDescription(), is(equalTo("strat-description")));
+    assertThat(measureGroupStratifierComponent.getId(), is(equalTo("testStrat1Id")));
+    MeasureGroupStratifierComponent measureGroupStratifierComponent2 = stratifier.get(1);
+    assertThat(measureGroupStratifierComponent2, is(notNullValue()));
+    assertThat(
+        measureGroupStratifierComponent2.getDescription(), is(equalTo("strat2-description")));
+    assertThat(measureGroupStratifierComponent2.getId(), is(equalTo("testStrat2Id")));
     Expression expression = measureGroupStratifierComponent.getCriteria();
     assertThat(expression, is(notNullValue()));
     List<Extension> appliesToExt = measureGroupStratifierComponent.getExtension();

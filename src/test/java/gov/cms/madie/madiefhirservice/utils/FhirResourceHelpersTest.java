@@ -24,43 +24,45 @@ public class FhirResourceHelpersTest {
 
   @BeforeEach
   void beforeEach() {
-    ratioGroup = Group.builder()
-        .id("group1_id")
-        .displayId("Group_1")
-        .populations(List.of(
-            Population.builder()
-                .id("group1_ip_id")
-                .definition("Initial Population")
-                .name(PopulationType.INITIAL_POPULATION)
-                .displayId("InitialPopulation_1")
-                .build(),
-            Population.builder()
-                .id("group1_denom_id")
-                .definition("Denominator")
-                .name(PopulationType.DENOMINATOR)
-                .displayId("Denominator_1")
-                .build(),
-            Population.builder()
-                .id("group1_numer_id")
-                .definition("Numerator")
-                .name(PopulationType.NUMERATOR)
-                .displayId("Numerator_1")
-                .build()
-        ))
-        .measureObservations(List.of(
-            MeasureObservation.builder()
-                .id("group1_denomObs_id")
-                .criteriaReference("group1_denom_id")
-                .definition("Denom Obs")
-                .displayId("MeasureObservation_1_1")
-                .build(),
-            MeasureObservation.builder()
-                .id("group1_numerObs_id")
-                .criteriaReference("group1_numer_id")
-                .definition("Numer Obs")
-                .displayId("MeasureObservation_1_2")
-                .build()
-        )).build();
+    ratioGroup =
+        Group.builder()
+            .id("group1_id")
+            .displayId("Group_1")
+            .populations(
+                List.of(
+                    Population.builder()
+                        .id("group1_ip_id")
+                        .definition("Initial Population")
+                        .name(PopulationType.INITIAL_POPULATION)
+                        .displayId("InitialPopulation_1")
+                        .build(),
+                    Population.builder()
+                        .id("group1_denom_id")
+                        .definition("Denominator")
+                        .name(PopulationType.DENOMINATOR)
+                        .displayId("Denominator_1")
+                        .build(),
+                    Population.builder()
+                        .id("group1_numer_id")
+                        .definition("Numerator")
+                        .name(PopulationType.NUMERATOR)
+                        .displayId("Numerator_1")
+                        .build()))
+            .measureObservations(
+                List.of(
+                    MeasureObservation.builder()
+                        .id("group1_denomObs_id")
+                        .criteriaReference("group1_denom_id")
+                        .definition("Denom Obs")
+                        .displayId("MeasureObservation_1_1")
+                        .build(),
+                    MeasureObservation.builder()
+                        .id("group1_numerObs_id")
+                        .criteriaReference("group1_numer_id")
+                        .definition("Numer Obs")
+                        .displayId("MeasureObservation_1_2")
+                        .build()))
+            .build();
   }
 
   @Test
@@ -265,44 +267,43 @@ public class FhirResourceHelpersTest {
   @Test
   public void testGetGroupObservationDisplayIdWithMatchingObservationForDenomObs() {
     // Given
-    TestCasePopulationValue populationValue = TestCasePopulationValue
-        .builder()
-        .criteriaReference("group1_denom_id")
-        .build();
+    TestCasePopulationValue populationValue =
+        TestCasePopulationValue.builder().criteriaReference("group1_denom_id").build();
 
     // When
-    final String output = FhirResourceHelpers.getGroupObservationDisplayId(ratioGroup, populationValue, 1);
+    final String output =
+        FhirResourceHelpers.getGroupObservationDisplayId(ratioGroup, populationValue);
 
     // Then
-    assertThat(output, is(equalTo("MeasureObservation_1_1_1")));
+    assertThat(output, is(equalTo("MeasureObservation_1_1")));
   }
 
   @Test
   public void testGetGroupObservationDisplayIdWithMatchingObservationForNumerObs() {
     // Given
-    TestCasePopulationValue populationValue = TestCasePopulationValue
-        .builder()
-        .criteriaReference("group1_numer_id")
-        .build();
+    TestCasePopulationValue populationValue =
+        TestCasePopulationValue.builder().criteriaReference("group1_numer_id").build();
 
     // When
-    final String output = FhirResourceHelpers.getGroupObservationDisplayId(ratioGroup, populationValue, 1);
+    final String output =
+        FhirResourceHelpers.getGroupObservationDisplayId(ratioGroup, populationValue);
 
     // Then
-    assertThat(output, is(equalTo("MeasureObservation_1_2_1")));
+    assertThat(output, is(equalTo("MeasureObservation_1_2")));
   }
 
   @Test
   public void testGetGroupObservationDisplayIdWithNoMatchingObservation() {
     // Given
-    TestCasePopulationValue populationValue = TestCasePopulationValue
-        .builder()
-        .id("measurePopulationObservation0")
-        .criteriaReference("group1_measurepop_id")
-        .build();
+    TestCasePopulationValue populationValue =
+        TestCasePopulationValue.builder()
+            .id("measurePopulationObservation0")
+            .criteriaReference("group1_measurepop_id")
+            .build();
 
     // When
-    final String output = FhirResourceHelpers.getGroupObservationDisplayId(ratioGroup, populationValue, 2);
+    final String output =
+        FhirResourceHelpers.getGroupObservationDisplayId(ratioGroup, populationValue);
 
     // Then
     assertThat(output, is(equalTo("measurePopulationObservation0")));
@@ -311,16 +312,16 @@ public class FhirResourceHelpersTest {
   @Test
   public void testGetGroupObservationDisplayIdWithNullObservations() {
     // Given
-    TestCasePopulationValue populationValue = TestCasePopulationValue
-        .builder()
-        .id("measurePopulationObservation0")
-        .criteriaReference("group1_measurepop_id")
-        .build();
+    TestCasePopulationValue populationValue =
+        TestCasePopulationValue.builder()
+            .id("measurePopulationObservation0")
+            .criteriaReference("group1_measurepop_id")
+            .build();
     ratioGroup.setMeasureObservations(null);
 
-
     // When
-    final String output = FhirResourceHelpers.getGroupObservationDisplayId(ratioGroup, populationValue, 2);
+    final String output =
+        FhirResourceHelpers.getGroupObservationDisplayId(ratioGroup, populationValue);
 
     // Then
     assertThat(output, is(equalTo("measurePopulationObservation0")));
@@ -329,16 +330,16 @@ public class FhirResourceHelpersTest {
   @Test
   public void testGetGroupObservationDisplayIdWithEmptyObservations() {
     // Given
-    TestCasePopulationValue populationValue = TestCasePopulationValue
-        .builder()
-        .id("measurePopulationObservation0")
-        .criteriaReference("group1_measurepop_id")
-        .build();
+    TestCasePopulationValue populationValue =
+        TestCasePopulationValue.builder()
+            .id("measurePopulationObservation0")
+            .criteriaReference("group1_measurepop_id")
+            .build();
     ratioGroup.setMeasureObservations(List.of());
 
-
     // When
-    final String output = FhirResourceHelpers.getGroupObservationDisplayId(ratioGroup, populationValue, 2);
+    final String output =
+        FhirResourceHelpers.getGroupObservationDisplayId(ratioGroup, populationValue);
 
     // Then
     assertThat(output, is(equalTo("measurePopulationObservation0")));
