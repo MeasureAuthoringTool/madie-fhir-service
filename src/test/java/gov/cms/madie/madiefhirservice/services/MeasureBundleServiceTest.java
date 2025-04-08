@@ -97,6 +97,13 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
             any(CqlCompilerException.ErrorSeverity.class),
             anyString());
 
+    when(elmTranslatorClient.getEffectiveDataRequirements(
+            any(CqlLibraryDetails.class),
+            anyBoolean(),
+            anyString(),
+            eq(CqlCompilerException.ErrorSeverity.Error)))
+        .thenReturn(effectiveDataRequirements);
+
     Bundle bundle =
         measureBundleService.createMeasureBundle(
             madieMeasure,
@@ -111,6 +118,7 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
     org.hl7.fhir.r4.model.Measure measureResource =
         (org.hl7.fhir.r4.model.Measure) bundle.getEntry().get(0).getResource();
     assertThat(madieMeasure.getCqlLibraryName(), is(equalTo(measureResource.getName())));
+    assertThat(measureResource.getContained(), is(notNullValue()));
     assertThat(
         madieMeasure.getMeasureMetaData().getGuidance(),
         is(equalTo(measureResource.getGuidance())));
