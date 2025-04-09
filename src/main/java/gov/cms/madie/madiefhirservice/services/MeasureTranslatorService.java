@@ -63,7 +63,6 @@ public class MeasureTranslatorService {
         .setApprovalDate(approvalDate != null ? Date.from(approvalDate) : null)
         .setLastReviewDate(lastReviewDate != null ? Date.from(lastReviewDate) : null)
         .setPublisher(getStewardName(steward))
-        .setGuidance(madieMeasure.getMeasureMetaData().getGuidance())
         .setDefinition(buildDefinitions(madieMeasure))
         .setCopyright(StringUtils.isBlank(copyright) ? UNKNOWN : copyright)
         .setDisclaimer(StringUtils.isBlank(disclaimer) ? UNKNOWN : disclaimer)
