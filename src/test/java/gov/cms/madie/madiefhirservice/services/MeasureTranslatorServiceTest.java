@@ -81,7 +81,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
             madieMeasure, MEASURE_BUNDLE_TYPE_EXPORT);
 
     assertThat(measure.getName(), is(equalTo(madieMeasure.getCqlLibraryName())));
-    assertThat(measure.getGuidance(), is(equalTo(madieMeasure.getMeasureMetaData().getGuidance())));
+    assertThat(measure.getUsage(), is(equalTo(madieMeasure.getMeasureMetaData().getGuidance())));
     assertThat(
         measure.getRationale(), is(equalTo(madieMeasure.getMeasureMetaData().getRationale())));
     assertThat(measure.getPurpose(), is(equalTo(madieMeasure.getMeasureMetaData().getPurpose())));
@@ -433,7 +433,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
 
     assertThat(measure.getName(), is(equalTo(madieMeasure.getCqlLibraryName())));
     assertFalse(measure.getExperimental());
-    assertThat(measure.getGuidance(), is(equalTo(madieMeasure.getMeasureMetaData().getGuidance())));
+    assertThat(measure.getUsage(), is(equalTo(madieMeasure.getMeasureMetaData().getGuidance())));
     assertThat(
         measure.getRationale(), is(equalTo(madieMeasure.getMeasureMetaData().getRationale())));
     assertThat(measure.getPurpose(), is(equalTo(null)));
