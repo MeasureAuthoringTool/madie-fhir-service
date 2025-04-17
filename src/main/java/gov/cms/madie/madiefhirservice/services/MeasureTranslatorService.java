@@ -778,17 +778,15 @@ public class MeasureTranslatorService {
       List<gov.cms.madie.models.measure.Reference> references) {
     return references.stream()
         .map(
-            reference -> {
-              RelatedArtifact relatedArtifact = new RelatedArtifact();
-              relatedArtifact.setType(
-                  RelatedArtifactType.fromCode(
-                      !"unknown".equalsIgnoreCase(reference.getReferenceType())
-                          ? reference.getReferenceType().toLowerCase()
-                          : ""));
-              relatedArtifact.setCitation(
-                  reference.getReferenceType() + " - " + reference.getReferenceText() + "\n");
-              return relatedArtifact;
-            })
+            reference ->
+                new RelatedArtifact()
+                    .setType(
+                        RelatedArtifactType.fromCode(
+                            !"unknown".equalsIgnoreCase(reference.getReferenceType())
+                                ? reference.getReferenceType().toLowerCase()
+                                : ""))
+                    .setCitation(
+                        reference.getReferenceType() + " - " + reference.getReferenceText() + "\n"))
         .collect(Collectors.toList());
   }
 }

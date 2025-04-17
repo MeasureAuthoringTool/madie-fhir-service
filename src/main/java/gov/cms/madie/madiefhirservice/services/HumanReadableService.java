@@ -65,9 +65,8 @@ public class HumanReadableService extends ResourceUtils {
       measure.setRelatedArtifact(
           measure.getRelatedArtifact().stream()
               .map(
-                  relatedArtifact -> {
-                    return relatedArtifact.setCitation(escapeStr(relatedArtifact.getCitation()));
-                  })
+                  relatedArtifact ->
+                      relatedArtifact.setCitation(escapeStr(relatedArtifact.getCitation())))
               .collect(Collectors.toList()));
     }
   }
