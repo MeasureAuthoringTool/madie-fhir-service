@@ -782,12 +782,10 @@ public class MeasureTranslatorService {
               RelatedArtifact relatedArtifact = new RelatedArtifact();
               relatedArtifact.setType(
                   RelatedArtifactType.fromCode(
-                      !"unknown".equalsIgnoreCase(reference.getReferenceType().toLowerCase())
+                      !"unknown".equalsIgnoreCase(reference.getReferenceType())
                           ? reference.getReferenceType().toLowerCase()
                           : ""));
               relatedArtifact.setCitation(
-                  reference.getReferenceType() + " - " + reference.getReferenceText() + "\n");
-              relatedArtifact.setUrl(
                   reference.getReferenceType() + " - " + reference.getReferenceText() + "\n");
               return relatedArtifact;
             })
