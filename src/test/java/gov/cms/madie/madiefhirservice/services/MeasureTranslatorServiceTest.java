@@ -1303,4 +1303,32 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
             madieMeasure, MEASURE_BUNDLE_TYPE_CALCULATION);
     assertEquals("Draft based on 0.0.000", measure.getVersion());
   }
+
+  @Test
+  public void testCreateFhirMeasureWithReferences() {
+    gov.cms.madie.models.measure.Reference reference1 =
+        gov.cms.madie.models.measure.Reference.builder()
+            .referenceType("CITATION")
+            .referenceText(
+                "Ference, B.A. (2015, March 10). Statins and the risk of developing new-onset Type 2 diabetes: "
+                    + "Expert analysis. "
+                    + "Retrieved from https://www.acc.org/latest-in-cardiology/articles/2015/03/10/08/10/"
+                    + "statins-and-the-risk-of-developing-new-onset-type-2-diabetes")
+            .build();
+    gov.cms.madie.models.measure.Reference reference2 =
+        gov.cms.madie.models.measure.Reference.builder()
+            .referenceType("UNKNOWN")
+            .referenceText("text for unknown")
+            .build();
+
+    madieMeasure.getMeasureMetaData().setReferences(List.of(reference1, reference2));
+    org.hl7.fhir.r4.model.Measure measure =
+        measureTranslatorService.createFhirMeasureForMadieMeasure(
+            madieMeasure, MEASURE_BUNDLE_TYPE_CALCULATION);
+    assertEquals(2, measure.getRelatedArtifact().size());
+    assertEquals(
+        "CITATION - Ference, B.A. (2015, March 10). Statins and the risk of developing new-onset Type 2 diabetes: Expert analysis. Retrieved from https://www.acc.org/latest-in-cardiology/articles/2015/03/10/08/10/statins-and-the-risk-of-developing-new-onset-type-2-diabetes\n",
+        measure.getRelatedArtifact().get(0).getCitation());
+    assertEquals("UNKNOWN - text for unknown\n", measure.getRelatedArtifact().get(1).getCitation());
+  }
 }

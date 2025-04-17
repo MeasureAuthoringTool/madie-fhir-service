@@ -61,6 +61,14 @@ public class HumanReadableService extends ResourceUtils {
                   })
               .collect(Collectors.toList()));
     }
+    if (CollectionUtils.isNotEmpty(measure.getRelatedArtifact())) {
+      measure.setRelatedArtifact(
+          measure.getRelatedArtifact().stream()
+              .map(
+                  relatedArtifact ->
+                      relatedArtifact.setCitation(escapeStr(relatedArtifact.getCitation())))
+              .collect(Collectors.toList()));
+    }
   }
 
   private void escapeIdentifiers(org.hl7.fhir.r5.model.Measure measure) {

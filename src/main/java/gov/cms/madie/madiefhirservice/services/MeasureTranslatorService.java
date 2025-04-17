@@ -21,6 +21,7 @@ import org.hl7.fhir.r4.model.Measure.MeasureGroupPopulationComponent;
 import org.hl7.fhir.r4.model.Measure.MeasureGroupStratifierComponent;
 import org.hl7.fhir.r4.model.Measure.MeasureSupplementalDataComponent;
 import org.hl7.fhir.r4.model.Reference;
+import org.hl7.fhir.r4.model.RelatedArtifact.RelatedArtifactType;
 import org.hl7.fhir.r4.model.*;
 import org.springframework.stereotype.Service;
 import ca.uhn.fhir.model.api.TemporalPrecisionEnum;
@@ -94,6 +95,10 @@ public class MeasureTranslatorService {
     if (madieMeasure.getMeasureMetaData().getIntendedVenue() != null) {
       measure.addUseContext(
           buildIntendedVenue(madieMeasure.getMeasureMetaData().getIntendedVenue()));
+    }
+    if (CollectionUtils.isNotEmpty(madieMeasure.getMeasureMetaData().getReferences())) {
+      measure.setRelatedArtifact(
+          buildRelatedArtifacts(madieMeasure.getMeasureMetaData().getReferences()));
     }
     return measure;
   }
@@ -767,5 +772,21 @@ public class MeasureTranslatorService {
               .collect(Collectors.toList());
     }
     return definitions;
+  }
+
+  private List<RelatedArtifact> buildRelatedArtifacts(
+      List<gov.cms.madie.models.measure.Reference> references) {
+    return references.stream()
+        .map(
+            reference ->
+                new RelatedArtifact()
+                    .setType(
+                        RelatedArtifactType.fromCode(
+                            !"unknown".equalsIgnoreCase(reference.getReferenceType())
+                                ? reference.getReferenceType().toLowerCase()
+                                : ""))
+                    .setCitation(
+                        reference.getReferenceType() + " - " + reference.getReferenceText() + "\n"))
+        .collect(Collectors.toList());
   }
 }
