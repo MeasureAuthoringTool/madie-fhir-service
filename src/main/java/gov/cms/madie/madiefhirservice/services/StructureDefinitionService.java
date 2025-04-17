@@ -64,7 +64,7 @@ public class StructureDefinitionService {
             .stream()
             .filter(
                 resource -> {
-                  // if Extension resource is not Active & non-experimental
+                  // if Extension resource is Active & non-experimental
                   boolean match =
                       ("Extension".equals(((StructureDefinition) resource).getType())
                           && PublicationStatus.ACTIVE.equals(
