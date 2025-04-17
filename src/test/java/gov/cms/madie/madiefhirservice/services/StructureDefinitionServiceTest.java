@@ -6,6 +6,8 @@ import gov.cms.madie.madiefhirservice.constants.UriConstants;
 import gov.cms.madie.madiefhirservice.dto.ResourceIdentifier;
 import gov.cms.madie.madiefhirservice.dto.StructureDefinitionDto;
 import gov.cms.madie.madiefhirservice.exceptions.ResourceNotFoundException;
+
+import org.hl7.fhir.r4.model.Enumerations.PublicationStatus;
 import org.hl7.fhir.r4.model.Extension;
 import org.hl7.fhir.r4.model.StringType;
 import org.hl7.fhir.r4.model.StructureDefinition;
@@ -81,6 +83,8 @@ class StructureDefinitionServiceTest {
     def2.setType("Extension");
     def2.setKind(StructureDefinition.StructureDefinitionKind.COMPLEXTYPE);
     def2.setId("qicore-keyelement");
+    def2.setStatus(PublicationStatus.ACTIVE);
+    def2.setExperimental(false);
 
     StructureDefinition.StructureDefinitionContextComponent context =
         new StructureDefinition.StructureDefinitionContextComponent();
@@ -102,6 +106,88 @@ class StructureDefinitionServiceTest {
     List<StructureDefinitionDto> extension =
         structureDefinitionService.getExtensionsForTargetPath("test", "element");
     assertNotNull(extension);
+    assertEquals(1, extension.size());
+  }
+
+  @Test
+  void testGetExtensionsForTargetPathExperiementalStatus() {
+    StructureDefinition def1 = new StructureDefinition();
+    def1.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
+    def1.setTitle("QICore Patient");
+    def1.setId("qicore-patient");
+    StructureDefinition def3 = new StructureDefinition();
+    def3.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
+    def3.setTitle("US Core Practitioner Profile");
+    def3.setId("us-core-practitioner");
+    StructureDefinition def2 = new StructureDefinition();
+    def2.setType("Extension");
+    def2.setKind(StructureDefinition.StructureDefinitionKind.COMPLEXTYPE);
+    def2.setId("qicore-keyelement");
+    def2.setStatus(PublicationStatus.ACTIVE);
+    def2.setExperimental(true);
+
+    StructureDefinition.StructureDefinitionContextComponent context =
+        new StructureDefinition.StructureDefinitionContextComponent();
+    context.setExpressionElement(new StringType("Element"));
+
+    context.setType(StructureDefinition.ExtensionContextType.ELEMENT);
+    List<StructureDefinition.StructureDefinitionContextComponent> contexts =
+        new ArrayList<StructureDefinition.StructureDefinitionContextComponent>() {
+          {
+            this.add(context);
+          }
+        };
+    def2.setContext(contexts);
+
+    when(validationSupportChainQiCore600.fetchAllStructureDefinitions())
+        .thenReturn(List.of(def1, def2, def3));
+    when(validationSupportChainQiCore600.getFhirContext()).thenReturn(fhirContextQiCoreStu600);
+
+    List<StructureDefinitionDto> extension =
+        structureDefinitionService.getExtensionsForTargetPath("test", "element");
+    assertNotNull(extension);
+    assertEquals(0, extension.size());
+  }
+
+  @Test
+  void testGetExtensionsForTargetPathNotValidStatus() {
+    StructureDefinition def1 = new StructureDefinition();
+    def1.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
+    def1.setTitle("QICore Patient");
+    def1.setId("qicore-patient");
+    StructureDefinition def3 = new StructureDefinition();
+    def3.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
+    def3.setTitle("US Core Practitioner Profile");
+    def3.setId("us-core-practitioner");
+
+    StructureDefinition def2 = new StructureDefinition();
+    def2.setType("Extension");
+    def2.setKind(StructureDefinition.StructureDefinitionKind.COMPLEXTYPE);
+    def2.setId("qicore-keyelement");
+    def2.setStatus(PublicationStatus.RETIRED);
+    def2.setExperimental(true);
+
+    StructureDefinition.StructureDefinitionContextComponent context =
+        new StructureDefinition.StructureDefinitionContextComponent();
+    context.setExpressionElement(new StringType("Element"));
+
+    context.setType(StructureDefinition.ExtensionContextType.ELEMENT);
+    List<StructureDefinition.StructureDefinitionContextComponent> contexts =
+        new ArrayList<StructureDefinition.StructureDefinitionContextComponent>() {
+          {
+            this.add(context);
+          }
+        };
+    def2.setContext(contexts);
+
+    when(validationSupportChainQiCore600.fetchAllStructureDefinitions())
+        .thenReturn(List.of(def1, def2, def3));
+    when(validationSupportChainQiCore600.getFhirContext()).thenReturn(fhirContextQiCoreStu600);
+
+    List<StructureDefinitionDto> extension =
+        structureDefinitionService.getExtensionsForTargetPath("test", "element");
+    assertNotNull(extension);
+    assertEquals(0, extension.size());
   }
 
   @Test
@@ -115,6 +201,7 @@ class StructureDefinitionServiceTest {
     def2.setKind(StructureDefinition.StructureDefinitionKind.COMPLEXTYPE);
     def2.setTitle("QI-Core Key Element Extension");
     def2.setId("qicore-keyelement");
+    def2.setStatus(PublicationStatus.ACTIVE);
     StructureDefinition def3 = new StructureDefinition();
     def3.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
     def3.setTitle("US Core Practitioner Profile");

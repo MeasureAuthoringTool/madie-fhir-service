@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.hl7.fhir.instance.model.api.IBaseResource;
+import org.hl7.fhir.r4.model.Enumerations.PublicationStatus;
 import org.hl7.fhir.r4.model.Extension;
 import org.hl7.fhir.r4.model.StructureDefinition;
 import org.springframework.stereotype.Service;
@@ -63,7 +64,13 @@ public class StructureDefinitionService {
             .stream()
             .filter(
                 resource -> {
-                  boolean match = "Extension".equals(((StructureDefinition) resource).getType());
+                  // if Extension resource is not Active & non-experimental
+                  boolean match =
+                      ("Extension".equals(((StructureDefinition) resource).getType())
+                          && PublicationStatus.ACTIVE.equals(
+                              ((StructureDefinition) resource).getStatus())
+                          && !((StructureDefinition) resource).getExperimental());
+
                   return match;
                 })
             .map(
