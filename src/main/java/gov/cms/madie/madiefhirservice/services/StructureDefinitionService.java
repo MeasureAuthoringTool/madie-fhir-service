@@ -111,12 +111,7 @@ public class StructureDefinitionService {
                       ctx.hasExpression()
                           && (target.equals(ctx.getExpressionElement().getValueAsString())
                               || targetKind.equalsIgnoreCase(ctx.getType().name()));
-                  ctx.getModifierExtension().stream()
-                      .anyMatch(
-                          ext -> {
-                            log.info("extension.getValue() {}", ext.getExtensionString(targetKind));
-                            return false;
-                          });
+                  ctx.getModifierExtension().stream().anyMatch(ext -> false);
                   return matched;
                 });
   }
