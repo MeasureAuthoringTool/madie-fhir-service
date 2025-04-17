@@ -67,8 +67,6 @@ class HumanReadableServiceTest
 
   private org.hl7.fhir.r5.model.Library effectiveDataRequirements;
 
-  // private String humanReadable;
-
   List<MarkdownType> terms = new ArrayList<>();
   MarkdownType term1 = new MarkdownType("Term1 - Definition1");
   MarkdownType term2 = new MarkdownType("Term2 - Definition2");
@@ -136,8 +134,6 @@ class HumanReadableServiceTest
         convertToFhirR5Resource(
             org.hl7.fhir.r5.model.Library.class,
             getStringFromTestResource("/humanReadable/effective-data-requirements.json"));
-
-    // humanReadable = getStringFromTestResource("/humanReadable/humanReadable_test");
   }
 
   public Bundle.BundleEntryComponent getBundleEntryComponent(Resource resource) {
@@ -361,8 +357,7 @@ class HumanReadableServiceTest
     r5Measure.addSupplementalData().setCriteria(expression);
 
     org.hl7.fhir.r5.model.Library lib = new org.hl7.fhir.r5.model.Library();
-    org.hl7.fhir.r5.model.ParameterDefinition parameter =
-        new org.hl7.fhir.r5.model.ParameterDefinition();
+    ParameterDefinition parameter = new ParameterDefinition();
     parameter.setName("test name");
     lib.addParameter(parameter);
 
