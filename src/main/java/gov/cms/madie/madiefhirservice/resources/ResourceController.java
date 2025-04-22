@@ -30,12 +30,14 @@ public class ResourceController {
     return structureDefinitionService.getValueSetDefinition(url);
   }
 
-  @GetMapping(
-      value="/extensions/{targetPath}",
-      produces = MediaType.APPLICATION_JSON_VALUE)
-  public List<StructureDefinitionDto> getExtensionsForTargetPath(@PathVariable String targetPath) {
+  @GetMapping(value = "/extensions", produces = MediaType.APPLICATION_JSON_VALUE)
+  public List<StructureDefinitionDto> getExtensionsForTargetPath(
+      @RequestParam(name = "targetPath") String targetPath,
+      @RequestParam(name = "kind") String targetKind) {
+
     log.info("targetPath: [{}]", targetPath);
-    return structureDefinitionService.getExtensionsForTargetPath(targetPath);
+    log.info("kind: [{}]", targetKind);
+    return structureDefinitionService.getExtensionsForTargetPath(targetPath, targetKind);
   }
 
   @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
