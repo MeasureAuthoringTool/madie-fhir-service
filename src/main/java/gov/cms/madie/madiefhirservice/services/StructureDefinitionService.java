@@ -59,21 +59,17 @@ public class StructureDefinitionService {
 
   public List<StructureDefinitionDto> getExtensionsForTargetPath(
       String targetPath, String targetKind) {
-    List<org.hl7.fhir.r4.model.StructureDefinition> collect =
+    List<StructureDefinition> collect =
         Objects.requireNonNull(validationSupportChainQiCore600.fetchAllStructureDefinitions())
             .stream()
+            .map(resource -> (StructureDefinition) resource)
             .filter(
                 resource -> {
                   // if Extension resource is Active & non-experimental
-                  boolean match =
-                      ("Extension".equals(((StructureDefinition) resource).getType())
-                          && PublicationStatus.ACTIVE.equals(
-                              ((StructureDefinition) resource).getStatus())
-                          && !((StructureDefinition) resource).getExperimental());
-
-                  return match;
+                  return "Extension".equals((resource).getType())
+                      && PublicationStatus.ACTIVE.equals(resource.getStatus())
+                      && !resource.getExperimental();
                 })
-            .map(resource -> (org.hl7.fhir.r4.model.StructureDefinition) resource)
             .filter(structureDef -> contextApplies(structureDef, targetPath, targetKind))
             .toList();
 
