@@ -59,6 +59,7 @@ public class StructureDefinitionService {
    * @param url of the value set definition
    */
   public String getValueSetDefinition(String url) {
+    log.info("Fetching value set definition for url: {}", url);
     IBaseResource structureDefinition = validationSupportChainQiCore600.fetchValueSet(url);
     IParser parser =
         validationSupportChainQiCore600
