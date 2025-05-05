@@ -9,14 +9,19 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.times;
@@ -31,7 +36,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class ResourceControllerMvcTest implements ResourceFileUtil {
   private static final String TEST_USER_ID = "john_doe";
 
-  @MockBean private StructureDefinitionService structureDefinitionService;
+  @MockitoBean private StructureDefinitionService structureDefinitionService;
   @Autowired private MockMvc mockMvc;
 
   @Test
@@ -138,5 +143,82 @@ public class ResourceControllerMvcTest implements ResourceFileUtil {
     // then
     verify(structureDefinitionService, times(1)).getValueSetDefinition(eq(url));
     Assertions.assertThat(result.getResponse().getContentAsString()).isEqualTo(valueSetDefinition);
+  }
+
+  @Test
+  void testGetExtensionsForTargetPathReturnsSuccessfully() throws Exception {
+    // given
+    List<StructureDefinitionDto> extensions =
+        List.of(
+            StructureDefinitionDto.builder()
+                .definition(
+                    "{\"resourceType\": \"StructureDefinition\", \"id\": \"ext-1\", \"type\": \"Extension\"}")
+                .build(),
+            StructureDefinitionDto.builder()
+                .definition(
+                    "{\"resourceType\": \"StructureDefinition\", \"id\": \"ext-2\", \"type\": \"Extension\"}")
+                .build());
+    when(structureDefinitionService.getExtensionsForTargetPath("Observation.code", "Element"))
+        .thenReturn(extensions);
+
+    // when
+    mockMvc
+        .perform(
+            MockMvcRequestBuilders.get("/qicore/resources/extensions")
+                .with(user(TEST_USER_ID))
+                .with(csrf())
+                .param("targetPath", "Observation.code")
+                .param("kind", "Element")
+                .contentType(MediaType.APPLICATION_JSON_VALUE))
+        .andDo(
+            (result) -> assertThat(result.getResponse().getContentAsString(), is(notNullValue())))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$", hasSize(2)))
+        .andExpect(jsonPath("$[0].definition.id").value("ext-1"))
+        .andExpect(jsonPath("$[1].definition.id").value("ext-2"));
+
+    // then
+    verify(structureDefinitionService, times(1))
+        .getExtensionsForTargetPath(anyString(), anyString());
+  }
+
+  @Test
+  void testGetExtensionsForTargetPathReturnsEmptyList() throws Exception {
+    // given
+    when(structureDefinitionService.getExtensionsForTargetPath("InvalidPath", "Invalid"))
+        .thenReturn(List.of());
+
+    // when
+    mockMvc
+        .perform(
+            MockMvcRequestBuilders.get("/qicore/resources/extensions")
+                .with(user(TEST_USER_ID))
+                .with(csrf())
+                .param("targetPath", "InvalidPath")
+                .param("kind", "Invalid")
+                .contentType(MediaType.APPLICATION_JSON_VALUE))
+        .andDo(
+            (result) -> assertThat(result.getResponse().getContentAsString(), is(notNullValue())))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$", hasSize(0)));
+
+    // then
+    verify(structureDefinitionService, times(1))
+        .getExtensionsForTargetPath(anyString(), anyString());
+  }
+
+  @Test
+  void testGetExtensionsForTargetPathWithMissingParameters() throws Exception {
+    mockMvc
+        .perform(
+            MockMvcRequestBuilders.get("/qicore/resources/extensions")
+                .with(user(TEST_USER_ID))
+                .with(csrf())
+                .contentType(MediaType.APPLICATION_JSON_VALUE))
+        .andExpect(status().isBadRequest());
+
+    // then
+    verify(structureDefinitionService, times(0))
+        .getExtensionsForTargetPath(anyString(), anyString());
   }
 }

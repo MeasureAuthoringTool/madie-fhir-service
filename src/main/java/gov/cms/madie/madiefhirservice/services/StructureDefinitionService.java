@@ -9,13 +9,16 @@ import gov.cms.madie.madiefhirservice.dto.StructureDefinitionDto;
 import gov.cms.madie.madiefhirservice.exceptions.ResourceNotFoundException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.CollectionUtils;
 import org.hl7.fhir.instance.model.api.IBaseResource;
+import org.hl7.fhir.r4.model.Enumerations.PublicationStatus;
 import org.hl7.fhir.r4.model.Extension;
 import org.hl7.fhir.r4.model.StructureDefinition;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -32,6 +35,7 @@ public class StructureDefinitionService {
    *     qicore-patient
    */
   public StructureDefinitionDto getStructureDefinitionById(String structureDefinitionId) {
+
     IBaseResource structureDefinition =
         Objects.requireNonNull(validationSupportChainQiCore600.fetchAllStructureDefinitions())
             .stream()
@@ -51,6 +55,55 @@ public class StructureDefinitionService {
     return StructureDefinitionDto.builder()
         .definition(parser.encodeResourceToString(structureDefinition))
         .build();
+  }
+
+  public List<StructureDefinitionDto> getExtensionsForTargetPath(
+      String targetPath, String targetKind) {
+    List<StructureDefinition> collect =
+        Objects.requireNonNull(validationSupportChainQiCore600.fetchAllStructureDefinitions())
+            .stream()
+            .map(resource -> (StructureDefinition) resource)
+            .filter(
+                resource -> {
+                  // if Extension resource is Active & non-experimental
+                  return "Extension".equals((resource).getType())
+                      && PublicationStatus.ACTIVE.equals(resource.getStatus())
+                      && !resource.getExperimental();
+                })
+            .filter(structureDef -> contextApplies(structureDef, targetPath, targetKind))
+            .toList();
+
+    // Todo: enhance with model-info, or at least primary code path
+    IParser parser =
+        validationSupportChainQiCore600
+            .getFhirContext()
+            .newJsonParser()
+            .setParserErrorHandler(new StrictErrorHandler())
+            .setPrettyPrint(true);
+
+    return collect.stream()
+        .map(
+            c ->
+                StructureDefinitionDto.builder()
+                    .definition(parser.encodeResourceToString(c))
+                    .build())
+        .collect(Collectors.toList());
+  }
+
+  private boolean contextApplies(StructureDefinition structDefs, String target, String targetKind) {
+    List<StructureDefinition.StructureDefinitionContextComponent> contexts =
+        structDefs.getContext();
+    return CollectionUtils.isNotEmpty(contexts)
+        && contexts.stream()
+            .anyMatch(
+                (ctx) -> {
+                  boolean matched =
+                      ctx.hasExpression()
+                          && (target.equals(ctx.getExpressionElement().getValueAsString())
+                              || targetKind.equalsIgnoreCase(ctx.getType().name()));
+                  ctx.getModifierExtension().stream().anyMatch(ext -> false);
+                  return matched;
+                });
   }
 
   /**
