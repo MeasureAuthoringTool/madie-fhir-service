@@ -30,7 +30,7 @@ public final class UriConstants {
 
   public static final class CqfMeasures {
     public static final String EFFECTIVE_DATA_REQUIREMENT_URL =
-        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-effectiveDataRequirements";
+        "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-effectiveDataRequirements";
     public static final String SCORING_URI =
         "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-scoring";
     public static final String SCORING_UNIT_URI =
@@ -57,6 +57,15 @@ public final class UriConstants {
     public static final String APPLIES_TO_URI =
         "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-appliesTo";
 
+    public static final String CQL_MEASURE_PROFILE_URI =
+        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cql-measure-cqfm";
+
+    public static final String ELM_MEASURE_PROFILE_URI =
+        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/elm-measure-cqfm";
+
+    public static final String SHAREABLE_MEASURE_PROFILE_URI =
+        "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-shareablemeasure";
+
     public static final String COMPUTABLE_MEASURE_PROFILE_URI =
         "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm";
 
@@ -73,7 +82,7 @@ public final class UriConstants {
         "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType";
 
     public static final String DIRECT_REFERENCE_CODE_URI =
-        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode";
+        "http://hl7.org/fhir/StructureDefinition/cqf-directReferenceCode";
 
     public static final String RATE_AGGREGATION_URI =
         "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-rateAggregation";
@@ -91,7 +100,7 @@ public final class UriConstants {
     public static final String IS_TEST_CASE =
         "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-isTestCase";
     public static final String CQFM_INPUT_PARAMETERS =
-        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-inputParameters";
+        "http://hl7.org/fhir/StructureDefinition/cqf-inputParameters";
     public static final String CQFM_TEST_CASE_DESCRIPTION =
         "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-testCaseDescription";
   }
@@ -110,5 +119,28 @@ public final class UriConstants {
     public static final String CMS_ID = "https://madie.cms.gov/measure/cmsId";
     public static final String SHORT_NAME = "https://madie.cms.gov/measure/shortName";
     public static final String CBE_ID = "https://madie.cms.gov/measure/cbeId";
+  }
+
+  public static final class Library {
+    public static String SHAREABLE_LIBRARY_URI =
+        "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-shareablelibrary";
+
+    public static String COMPUTABLE_LIBRARY_URI =
+        "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-computablelibrary";
+
+    public static String PUBLISHABLE_LIBRARY_URI =
+        "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-publishablelibrary";
+
+    public static String EXECUTABLE_LIBRARY_URI =
+        "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-executablelibrary";
+
+    public static String CQL_LIBRARY_URI =
+        "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-library";
+
+    public static String ELM_JSON_LIBRARY_URI =
+        "http://hl7.org/fhir/uv/cql/StructureDefinition/elm-json-library";
+
+    public static String ELM_XML_LIBRARY_URI =
+        "http://hl7.org/fhir/uv/cql/StructureDefinition/elm-xml-library";
   }
 }

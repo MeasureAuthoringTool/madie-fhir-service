@@ -6,12 +6,12 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.4.1</version>
+		<version>3.4.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>gov.cms.madie</groupId>
 	<artifactId>madie-fhir-service</artifactId>
-	<version>0.1.0</version>
+	<version>0.1.1</version>
 	<name>Madie fhir Service</name>
 	<description>Fhir Service for MADiE</description>
 
@@ -19,6 +19,8 @@
 		<java.version>17</java.version>
 		<springfox.version>3.0.0</springfox.version>
 		<hapi.fhir.r4.version>7.6.0</hapi.fhir.r4.version>
+		<cqframework.version>3.22.0</cqframework.version>
+		<org.fhir.ucum.version>1.0.9</org.fhir.ucum.version>
 	</properties>
 
 	<repositories>
@@ -40,6 +42,11 @@
 				<groupId>org.thymeleaf</groupId>
 				<artifactId>thymeleaf</artifactId>
 				<version>3.1.2.RELEASE</version>
+			</dependency>
+			<dependency>
+				<groupId>org.fhir</groupId>
+				<artifactId>ucum</artifactId>
+				<version>${org.fhir.ucum.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -64,7 +71,10 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-cache</artifactId>
@@ -116,6 +126,18 @@
 			<version>${hapi.fhir.r4.version}</version>
 		</dependency>
 
+		<!-- required cqframework dependencies -->
+		<dependency>
+			<groupId>info.cqframework</groupId>
+			<artifactId>cql-to-elm</artifactId>
+			<version>${cqframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>info.cqframework</groupId>
+			<artifactId>cql-formatter</artifactId>
+			<version>${cqframework.version}</version>
+		</dependency>
+
 		<!-- Needed to fix class not found errors when using v2.15.4 - required in HAPI FHIR v7.4.3 -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
@@ -131,14 +153,19 @@
 		<dependency>
 			<groupId>gov.cms.madie</groupId>
 			<artifactId>madie-rest-commons</artifactId>
-			<version>0.0.9-SNAPSHOT</version>
+			<version>1.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.okta.spring</groupId>
 			<artifactId>okta-spring-boot-starter</artifactId>
 			<version>3.0.7</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.security</groupId>
+					<artifactId>spring-security-web</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
@@ -148,7 +175,7 @@
 		<dependency>
 			<groupId>gov.cms.madie</groupId>
 			<artifactId>madie-java-models</artifactId>
-			<version>0.6.81-SNAPSHOT</version>
+			<version>0.6.86-SNAPSHOT</version>
 		</dependency>
 		    <dependency>
       <groupId>com.jayway.jsonpath</groupId>

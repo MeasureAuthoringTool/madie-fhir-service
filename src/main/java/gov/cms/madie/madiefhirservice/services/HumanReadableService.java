@@ -61,6 +61,14 @@ public class HumanReadableService extends ResourceUtils {
                   })
               .collect(Collectors.toList()));
     }
+    if (CollectionUtils.isNotEmpty(measure.getRelatedArtifact())) {
+      measure.setRelatedArtifact(
+          measure.getRelatedArtifact().stream()
+              .map(
+                  relatedArtifact ->
+                      relatedArtifact.setCitation(escapeStr(relatedArtifact.getCitation())))
+              .collect(Collectors.toList()));
+    }
   }
 
   private void escapeIdentifiers(org.hl7.fhir.r5.model.Measure measure) {
@@ -139,6 +147,7 @@ public class HumanReadableService extends ResourceUtils {
     escapeSupplementalProperties(measure);
     escapeContainedProperties(measure);
     escapeIdentifiers(measure);
+    escapeDefinitions(measure);
     // logic definitions, effective data requirements
     // risk factors and supplemental data guidance
     measure
@@ -386,5 +395,14 @@ public class HumanReadableService extends ResourceUtils {
     extension.setUrl(CqfMeasures.EFFECTIVE_DATA_REQUIREMENT_URL);
     extension.getValueReference().setReference("#effective-data-requirements");
     return extension;
+  }
+
+  private void escapeDefinitions(org.hl7.fhir.r5.model.Measure measure) {
+    measure
+        .getTerm()
+        .forEach(
+            measureTermComponent -> {
+              measureTermComponent.setDefinition(escapeStr(measureTermComponent.getDefinition()));
+            });
   }
 }

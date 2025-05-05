@@ -7,6 +7,8 @@ import static gov.cms.madie.madiefhirservice.constants.IdentifierType.CODE_PUBLI
 import static gov.cms.madie.madiefhirservice.constants.IdentifierType.CODE_SHORT_NAME;
 import static gov.cms.madie.madiefhirservice.constants.IdentifierType.CODE_VERSION_INDEPENDENT;
 import static gov.cms.madie.madiefhirservice.constants.IdentifierType.CODE_VERSION_SPECIFIC;
+import static gov.cms.madie.madiefhirservice.utils.BundleUtil.MEASURE_BUNDLE_TYPE_CALCULATION;
+import static gov.cms.madie.madiefhirservice.utils.BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -37,16 +39,11 @@ import java.util.Collections;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.time.DateFormatUtils;
-import org.hl7.fhir.r4.model.CodeableConcept;
+import org.hl7.fhir.r4.model.*;
 import org.hl7.fhir.r4.model.Enumerations.PublicationStatus;
-import org.hl7.fhir.r4.model.Expression;
-import org.hl7.fhir.r4.model.Extension;
-import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.Measure.MeasureGroupComponent;
 import org.hl7.fhir.r4.model.Measure.MeasureGroupPopulationComponent;
 import org.hl7.fhir.r4.model.Measure.MeasureGroupStratifierComponent;
-import org.hl7.fhir.r4.model.Meta;
-import org.hl7.fhir.r4.model.Type;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -80,10 +77,11 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
   @Test
   public void testCreateFhirMeasureForMadieMeasure() {
     org.hl7.fhir.r4.model.Measure measure =
-        measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure);
+        measureTranslatorService.createFhirMeasureForMadieMeasure(
+            madieMeasure, MEASURE_BUNDLE_TYPE_EXPORT);
 
     assertThat(measure.getName(), is(equalTo(madieMeasure.getCqlLibraryName())));
-    assertThat(measure.getGuidance(), is(equalTo(madieMeasure.getMeasureMetaData().getGuidance())));
+    assertThat(measure.getUsage(), is(equalTo(madieMeasure.getMeasureMetaData().getGuidance())));
     assertThat(
         measure.getRationale(), is(equalTo(madieMeasure.getMeasureMetaData().getRationale())));
     assertThat(measure.getPurpose(), is(equalTo(madieMeasure.getMeasureMetaData().getPurpose())));
@@ -101,7 +99,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertThat(
         DateFormatUtils.format(measure.getLastReviewDate(), "MM/dd/yyyy"),
         is(equalTo("02/13/2023")));
-    assertThat(measure.getMeta().getProfile().size(), is(equalTo(3)));
+    assertThat(measure.getMeta().getProfile().size(), is(equalTo(7)));
     assertThat(
         measure.getMeta().hasProfile(UriConstants.CqfMeasures.EXECUTABLE_MEASURE_PROFILE_URI),
         is(true));
@@ -111,6 +109,14 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertThat(
         measure.getMeta().hasProfile(UriConstants.CqfMeasures.EXECUTABLE_MEASURE_PROFILE_URI),
         is(true));
+    assertThat(
+        measure.getMeta().hasProfile(UriConstants.CqfMeasures.SHAREABLE_MEASURE_PROFILE_URI),
+        is(true));
+    assertThat(
+        measure.getMeta().hasProfile(UriConstants.CqfMeasures.CQL_MEASURE_PROFILE_URI), is(true));
+    assertThat(
+        measure.getMeta().hasProfile(UriConstants.CqfMeasures.ELM_MEASURE_PROFILE_URI), is(true));
+    assertThat(measure.getMeta().hasProfile(UriConstants.CqfMeasures.RATIO_PROFILE_URI), is(true));
     assertThat(measure.getGroup().size(), is(equalTo(madieMeasure.getGroups().size())));
     assertThat(measure.getStatus(), is(equalTo(PublicationStatus.ACTIVE)));
     assertThat(
@@ -150,7 +156,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
 
     assertThat(measure.getGroup().get(0), is(notNullValue()));
     MeasureGroupComponent group1 = measure.getGroup().get(0);
-    assertThat(group1.getId(), is(equalTo("62f66b2e02b96d3a6ababefb")));
+    assertThat(group1.getId(), is(equalTo("Group_1")));
     assertThat(
         group1.getExtensionByUrl(UriConstants.CqfMeasures.POPULATION_BASIS), is(notNullValue()));
     assertThat(
@@ -248,7 +254,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
 
     assertThat(measure.getGroup().get(1), is(notNullValue()));
     MeasureGroupComponent group2 = measure.getGroup().get(1);
-    assertThat(group2.getId(), is(equalTo("62fb788bfb3c765290171e75")));
+    assertThat(group2.getId(), is(equalTo("Group_2")));
     assertThat(
         group2.getExtensionByUrl(UriConstants.CqfMeasures.POPULATION_BASIS), is(notNullValue()));
     assertThat(
@@ -408,6 +414,10 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertThat(measure.getUseContext().get(0).hasValue(), is(equalTo(true)));
     assertFalse(measure.getSupplementalData().get(2).getUsage().get(0).getCoding().isEmpty());
     assertEquals("0.0.000", measure.getVersion());
+
+    assertEquals(measure.getDefinition().size(), 2);
+    assertEquals(measure.getDefinition().get(0).toString(), "test term1 - test definition1" + "\n");
+    assertEquals(measure.getDefinition().get(1).toString(), "test term2 - test definition2" + "\n");
   }
 
   @Test
@@ -418,11 +428,12 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     madieRatioMeasure.getMeasureMetaData().setCopyright("testCopyright");
     madieRatioMeasure.getMeasureMetaData().setDisclaimer("testDisclaimer");
     org.hl7.fhir.r4.model.Measure measure =
-        measureTranslatorService.createFhirMeasureForMadieMeasure(madieRatioMeasure);
+        measureTranslatorService.createFhirMeasureForMadieMeasure(
+            madieRatioMeasure, MEASURE_BUNDLE_TYPE_EXPORT);
 
     assertThat(measure.getName(), is(equalTo(madieMeasure.getCqlLibraryName())));
     assertFalse(measure.getExperimental());
-    assertThat(measure.getGuidance(), is(equalTo(madieMeasure.getMeasureMetaData().getGuidance())));
+    assertThat(measure.getUsage(), is(equalTo(madieMeasure.getMeasureMetaData().getGuidance())));
     assertThat(
         measure.getRationale(), is(equalTo(madieMeasure.getMeasureMetaData().getRationale())));
     assertThat(measure.getPurpose(), is(equalTo(null)));
@@ -449,7 +460,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertThat(
         DateFormatUtils.format(measure.getLastReviewDate(), "MM/dd/yyyy"),
         is(equalTo("02/13/2023")));
-    assertThat(measure.getMeta().getProfile().size(), is(equalTo(3)));
+    assertThat(measure.getMeta().getProfile().size(), is(equalTo(7)));
     assertThat(
         measure.getMeta().hasProfile(UriConstants.CqfMeasures.EXECUTABLE_MEASURE_PROFILE_URI),
         is(true));
@@ -459,6 +470,14 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertThat(
         measure.getMeta().hasProfile(UriConstants.CqfMeasures.EXECUTABLE_MEASURE_PROFILE_URI),
         is(true));
+    assertThat(
+        measure.getMeta().hasProfile(UriConstants.CqfMeasures.SHAREABLE_MEASURE_PROFILE_URI),
+        is(true));
+    assertThat(
+        measure.getMeta().hasProfile(UriConstants.CqfMeasures.CQL_MEASURE_PROFILE_URI), is(true));
+    assertThat(
+        measure.getMeta().hasProfile(UriConstants.CqfMeasures.ELM_MEASURE_PROFILE_URI), is(true));
+    assertThat(measure.getMeta().hasProfile(UriConstants.CqfMeasures.RATIO_PROFILE_URI), is(true));
     assertThat(measure.getStatus(), is(equalTo(PublicationStatus.ACTIVE)));
     assertThat(
         measure.getDescription(),
@@ -509,6 +528,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
         groupPopComponent.getCode().getCoding().get(0).getCode(),
         is(equalTo("initial-population")));
     assertThat(groupPopComponent.getId(), is(notNullValue()));
+    assertEquals("InitialPopulation_1_1", groupPopComponent.getId());
 
     MeasureGroupPopulationComponent groupPopComponent2 = group1.getPopulation().get(1);
     assertThat(groupPopComponent2.getCriteria().getLanguage(), is(equalTo("text/cql-identifier")));
@@ -520,6 +540,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
         groupPopComponent2.getCode().getCoding().get(0).getCode(),
         is(equalTo("initial-population")));
     assertThat(groupPopComponent2.getId(), is(notNullValue()));
+    assertEquals("InitialPopulation_1_2", groupPopComponent2.getId());
 
     MeasureGroupPopulationComponent groupPopComponent3 = group1.getPopulation().get(2);
     assertThat(groupPopComponent3.getCriteria().getLanguage(), is(equalTo("text/cql-identifier")));
@@ -529,6 +550,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertThat(
         groupPopComponent3.getCode().getCoding().get(0).getCode(), is(equalTo("denominator")));
     assertThat(groupPopComponent3.getId(), is(notNullValue()));
+    assertEquals("Denominator_1", groupPopComponent3.getId());
 
     MeasureGroupPopulationComponent groupPopComponent4 = group1.getPopulation().get(3);
     assertThat(groupPopComponent4.getCriteria().getLanguage(), is(equalTo("text/cql-identifier")));
@@ -537,6 +559,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
         groupPopComponent4.getCode().getCoding().get(0).getDisplay(), is(equalTo("Numerator")));
     assertThat(groupPopComponent4.getCode().getCoding().get(0).getCode(), is(equalTo("numerator")));
     assertThat(groupPopComponent4.getId(), is(notNullValue()));
+    assertEquals("Numerator_1", groupPopComponent4.getId());
 
     MeasureGroupPopulationComponent groupPopComponentObs = group1.getPopulation().get(4);
     assertThat(
@@ -549,12 +572,19 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
         groupPopComponentObs.getCode().getCoding().get(0).getCode(),
         is(equalTo("measure-observation")));
     assertThat(groupPopComponentObs.getId(), is(notNullValue()));
+    assertEquals("MeasureObservation_1", groupPopComponentObs.getId());
+
+    List<MeasureGroupStratifierComponent> strats = group1.getStratifier();
+    assertEquals(2, strats.size());
+    assertEquals("Stratification_1_1", strats.get(0).getId());
+    assertEquals("Stratification_1_2", strats.get(1).getId());
   }
 
   @Test
   public void testCreateFhirMeasureForMadieCVMeasure() {
     org.hl7.fhir.r4.model.Measure measure =
-        measureTranslatorService.createFhirMeasureForMadieMeasure(madieCVMeasure);
+        measureTranslatorService.createFhirMeasureForMadieMeasure(
+            madieCVMeasure, MEASURE_BUNDLE_TYPE_CALCULATION);
 
     assertThat(measure.getName(), is(equalTo(madieCVMeasure.getCqlLibraryName())));
     assertThat(
@@ -574,7 +604,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
         is(equalTo("01/01/2023")));
     assertNull(measure.getApprovalDate());
     assertNull(measure.getLastReviewDate());
-    assertThat(measure.getMeta().getProfile().size(), is(equalTo(3)));
+    assertThat(measure.getMeta().getProfile().size(), is(equalTo(7)));
     assertThat(
         measure.getMeta().hasProfile(UriConstants.CqfMeasures.EXECUTABLE_MEASURE_PROFILE_URI),
         is(true));
@@ -584,6 +614,14 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertThat(
         measure.getMeta().hasProfile(UriConstants.CqfMeasures.EXECUTABLE_MEASURE_PROFILE_URI),
         is(true));
+    assertThat(
+        measure.getMeta().hasProfile(UriConstants.CqfMeasures.SHAREABLE_MEASURE_PROFILE_URI),
+        is(true));
+    assertThat(
+        measure.getMeta().hasProfile(UriConstants.CqfMeasures.CQL_MEASURE_PROFILE_URI), is(true));
+    assertThat(
+        measure.getMeta().hasProfile(UriConstants.CqfMeasures.ELM_MEASURE_PROFILE_URI), is(true));
+    assertThat(measure.getMeta().hasProfile(UriConstants.CqfMeasures.CV_PROFILE_URI), is(true));
     assertThat(measure.getUseContext(), is(Collections.emptyList()));
     assertThat(measure.getGroup().size(), is(equalTo(madieCVMeasure.getGroups().size())));
 
@@ -711,7 +749,8 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     List<Group> groups = new ArrayList<>();
     groups.add(group);
 
-    List<MeasureGroupComponent> groupComponent = measureTranslatorService.buildGroups(groups);
+    List<MeasureGroupComponent> groupComponent =
+        measureTranslatorService.buildGroups(groups, MEASURE_BUNDLE_TYPE_CALCULATION);
     assertNotNull(groupComponent);
 
     groupComponent.forEach(
@@ -792,15 +831,21 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
         List.of(PopulationType.INITIAL_POPULATION, PopulationType.MEASURE_POPULATION));
     stratifications.add(strat1);
     Stratification strat2 = new Stratification();
-    strat2.setDescription("strat-description");
-    strat1.setAssociations(
+    strat2.setId("testStrat2Id");
+    strat2.setDescription("strat2-description");
+    strat2.setAssociations(
         List.of(PopulationType.INITIAL_POPULATION, PopulationType.MEASURE_POPULATION));
     stratifications.add(strat2);
+    Stratification strat3 = new Stratification(); // no associations, not included in output
+    strat3.setId("testStrat3Id");
+    strat3.setDescription("strat3-description");
+    stratifications.add(strat3);
     group.setStratifications(stratifications);
     List<Group> groups = new ArrayList<>();
     groups.add(group);
 
-    List<MeasureGroupComponent> groupComponent = measureTranslatorService.buildGroups(groups);
+    List<MeasureGroupComponent> groupComponent =
+        measureTranslatorService.buildGroups(groups, MEASURE_BUNDLE_TYPE_CALCULATION);
     assertNotNull(groupComponent);
 
     assertThat(groupComponent.size(), is(equalTo(1)));
@@ -808,10 +853,16 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertThat(measureGroupComponent, is(notNullValue()));
     List<MeasureGroupStratifierComponent> stratifier = measureGroupComponent.getStratifier();
     assertThat(stratifier, is(notNullValue()));
-    assertThat(stratifier.size(), is(equalTo(2)));
+    assertThat(stratifier.size(), is(equalTo(3)));
     MeasureGroupStratifierComponent measureGroupStratifierComponent = stratifier.get(0);
     assertThat(measureGroupStratifierComponent, is(notNullValue()));
     assertThat(measureGroupStratifierComponent.getDescription(), is(equalTo("strat-description")));
+    assertThat(measureGroupStratifierComponent.getId(), is(equalTo("testStrat1Id")));
+    MeasureGroupStratifierComponent measureGroupStratifierComponent2 = stratifier.get(1);
+    assertThat(measureGroupStratifierComponent2, is(notNullValue()));
+    assertThat(
+        measureGroupStratifierComponent2.getDescription(), is(equalTo("strat2-description")));
+    assertThat(measureGroupStratifierComponent2.getId(), is(equalTo("testStrat2Id")));
     Expression expression = measureGroupStratifierComponent.getCriteria();
     assertThat(expression, is(notNullValue()));
     List<Extension> appliesToExt = measureGroupStratifierComponent.getExtension();
@@ -869,7 +920,8 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     List<Group> groups = new ArrayList<>();
     groups.add(group);
 
-    List<MeasureGroupComponent> groupComponent = measureTranslatorService.buildGroups(groups);
+    List<MeasureGroupComponent> groupComponent =
+        measureTranslatorService.buildGroups(groups, MEASURE_BUNDLE_TYPE_CALCULATION);
     assertNotNull(groupComponent);
 
     assertThat(groupComponent.size(), is(equalTo(1)));
@@ -935,7 +987,8 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     List<Group> groups = new ArrayList<>();
     groups.add(group);
 
-    List<MeasureGroupComponent> groupComponent = measureTranslatorService.buildGroups(groups);
+    List<MeasureGroupComponent> groupComponent =
+        measureTranslatorService.buildGroups(groups, MEASURE_BUNDLE_TYPE_CALCULATION);
     assertNotNull(groupComponent);
 
     assertThat(groupComponent.size(), is(equalTo(1)));
@@ -950,8 +1003,9 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
 
   @Test
   void testBuildMeasureMetaHandlesValidInput() {
-    Measure measure = new Measure();
-    final Meta output = measureTranslatorService.buildMeasureMeta();
+    final Meta output =
+        measureTranslatorService.buildMeasureMeta(
+            List.of(Group.builder().scoring("Proportion").build()));
     assertThat(output, is(notNullValue()));
     assertThat(output.hasProfile(), is(true));
     assertThat(
@@ -960,6 +1014,67 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
         output.hasProfile(UriConstants.CqfMeasures.PUBLISHABLE_MEASURE_PROFILE_URI), is(true));
     assertThat(
         output.hasProfile(UriConstants.CqfMeasures.EXECUTABLE_MEASURE_PROFILE_URI), is(true));
+    assertThat(output.hasProfile(UriConstants.CqfMeasures.SHAREABLE_MEASURE_PROFILE_URI), is(true));
+    assertThat(output.hasProfile(UriConstants.CqfMeasures.CQL_MEASURE_PROFILE_URI), is(true));
+    assertThat(output.hasProfile(UriConstants.CqfMeasures.ELM_MEASURE_PROFILE_URI), is(true));
+    assertThat(output.hasProfile(UriConstants.CqfMeasures.PROPORTION_PROFILE_URI), is(true));
+  }
+
+  @Test
+  void testBuildMeasureMetaHandlesEmptyInput() {
+    final Meta output = measureTranslatorService.buildMeasureMeta(Collections.emptyList());
+    assertThat(output, is(notNullValue()));
+    assertThat(output.hasProfile(), is(true));
+    assertThat(
+        output.hasProfile(UriConstants.CqfMeasures.EXECUTABLE_MEASURE_PROFILE_URI), is(true));
+    assertThat(
+        output.hasProfile(UriConstants.CqfMeasures.PUBLISHABLE_MEASURE_PROFILE_URI), is(true));
+    assertThat(
+        output.hasProfile(UriConstants.CqfMeasures.EXECUTABLE_MEASURE_PROFILE_URI), is(true));
+    assertThat(output.hasProfile(UriConstants.CqfMeasures.SHAREABLE_MEASURE_PROFILE_URI), is(true));
+    assertThat(output.hasProfile(UriConstants.CqfMeasures.CQL_MEASURE_PROFILE_URI), is(true));
+    assertThat(output.hasProfile(UriConstants.CqfMeasures.ELM_MEASURE_PROFILE_URI), is(true));
+  }
+
+  @Test
+  void testBuildMeasureMetaHandlesMultipleScoring() {
+    final Meta output =
+        measureTranslatorService.buildMeasureMeta(
+            List.of(
+                Group.builder().scoring("Proportion").build(),
+                Group.builder().scoring("Ratio").build()));
+    assertThat(output, is(notNullValue()));
+    assertThat(output.hasProfile(), is(true));
+    assertThat(
+        output.hasProfile(UriConstants.CqfMeasures.EXECUTABLE_MEASURE_PROFILE_URI), is(true));
+    assertThat(
+        output.hasProfile(UriConstants.CqfMeasures.PUBLISHABLE_MEASURE_PROFILE_URI), is(true));
+    assertThat(
+        output.hasProfile(UriConstants.CqfMeasures.EXECUTABLE_MEASURE_PROFILE_URI), is(true));
+    assertThat(output.hasProfile(UriConstants.CqfMeasures.SHAREABLE_MEASURE_PROFILE_URI), is(true));
+    assertThat(output.hasProfile(UriConstants.CqfMeasures.CQL_MEASURE_PROFILE_URI), is(true));
+    assertThat(output.hasProfile(UriConstants.CqfMeasures.ELM_MEASURE_PROFILE_URI), is(true));
+  }
+
+  @Test
+  void testBuildMeasureMetaHandlesMultipleOfSameScoring() {
+    final Meta output =
+        measureTranslatorService.buildMeasureMeta(
+            List.of(
+                Group.builder().scoring("Cohort").build(),
+                Group.builder().scoring("Cohort").build()));
+    assertThat(output, is(notNullValue()));
+    assertThat(output.hasProfile(), is(true));
+    assertThat(
+        output.hasProfile(UriConstants.CqfMeasures.EXECUTABLE_MEASURE_PROFILE_URI), is(true));
+    assertThat(
+        output.hasProfile(UriConstants.CqfMeasures.PUBLISHABLE_MEASURE_PROFILE_URI), is(true));
+    assertThat(
+        output.hasProfile(UriConstants.CqfMeasures.EXECUTABLE_MEASURE_PROFILE_URI), is(true));
+    assertThat(output.hasProfile(UriConstants.CqfMeasures.SHAREABLE_MEASURE_PROFILE_URI), is(true));
+    assertThat(output.hasProfile(UriConstants.CqfMeasures.CQL_MEASURE_PROFILE_URI), is(true));
+    assertThat(output.hasProfile(UriConstants.CqfMeasures.ELM_MEASURE_PROFILE_URI), is(true));
+    assertThat(output.hasProfile(UriConstants.CqfMeasures.COHORT_PROFILE_URI), is(true));
   }
 
   @Test
@@ -1162,7 +1277,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
   @Test
   public void testBuildGroupsWithNull() {
     List<MeasureGroupComponent> listOfComponent =
-        measureTranslatorService.buildGroups(new ArrayList<>());
+        measureTranslatorService.buildGroups(new ArrayList<>(), MEASURE_BUNDLE_TYPE_CALCULATION);
     assertNull(listOfComponent);
   }
 
@@ -1184,7 +1299,36 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
   public void testCreateFhirMeasureForDraftMadieMeasure() {
     madieMeasure.getMeasureMetaData().setDraft(true);
     org.hl7.fhir.r4.model.Measure measure =
-        measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure);
+        measureTranslatorService.createFhirMeasureForMadieMeasure(
+            madieMeasure, MEASURE_BUNDLE_TYPE_CALCULATION);
     assertEquals("Draft based on 0.0.000", measure.getVersion());
+  }
+
+  @Test
+  public void testCreateFhirMeasureWithReferences() {
+    gov.cms.madie.models.measure.Reference reference1 =
+        gov.cms.madie.models.measure.Reference.builder()
+            .referenceType("CITATION")
+            .referenceText(
+                "Ference, B.A. (2015, March 10). Statins and the risk of developing new-onset Type 2 diabetes: "
+                    + "Expert analysis. "
+                    + "Retrieved from https://www.acc.org/latest-in-cardiology/articles/2015/03/10/08/10/"
+                    + "statins-and-the-risk-of-developing-new-onset-type-2-diabetes")
+            .build();
+    gov.cms.madie.models.measure.Reference reference2 =
+        gov.cms.madie.models.measure.Reference.builder()
+            .referenceType("UNKNOWN")
+            .referenceText("text for unknown")
+            .build();
+
+    madieMeasure.getMeasureMetaData().setReferences(List.of(reference1, reference2));
+    org.hl7.fhir.r4.model.Measure measure =
+        measureTranslatorService.createFhirMeasureForMadieMeasure(
+            madieMeasure, MEASURE_BUNDLE_TYPE_CALCULATION);
+    assertEquals(2, measure.getRelatedArtifact().size());
+    assertEquals(
+        "CITATION - Ference, B.A. (2015, March 10). Statins and the risk of developing new-onset Type 2 diabetes: Expert analysis. Retrieved from https://www.acc.org/latest-in-cardiology/articles/2015/03/10/08/10/statins-and-the-risk-of-developing-new-onset-type-2-diabetes\n",
+        measure.getRelatedArtifact().get(0).getCitation());
+    assertEquals("UNKNOWN - text for unknown\n", measure.getRelatedArtifact().get(1).getCitation());
   }
 }

@@ -36,34 +36,52 @@
                "scoring":"Ratio",
                "populationValues":[
                   {
+                     "id": "12b60c2c-e9ee-4bac-bba3-dc2df691f3ac",
                      "name":"initialPopulation",
                      "expected":null,
                      "actual":null
                   },
                   {
+                      "id": "1",
                      "name":"initialPopulation",
                      "expected":" ",
                      "actual":null
                   },
                   {
+                     "id": "dd775fb3-19ff-44c0-9083-7ad4bfa39b8c",
                      "name":"denominator",
                      "expected":0,
                      "actual":0
                   },
                   {
+                     "id": "87d0d6c9-bc96-43aa-a151-b520409a10b8",
                      "name":"denominatorExclusion",
                      "expected":false,
                      "actual":false
                   },
                   {
+                     "id": "deb34843-05e3-4b29-aa63-1b0a4439eeac",
                      "name":"numerator",
                      "expected":false,
                      "actual":false
                   },
                   {
+                     "id": "7790db4c-0f7f-48dc-8dc2-871b42ab3abf",
                      "name":"numeratorExclusion",
                      "expected":false,
                      "actual":false
+                  }
+               ],
+               "stratificationValues":[
+                  {
+                     "id": "62bf4e30-2232-41a7-8100-5d79f3b9ad1a",
+                     "name":"Strata-1",
+                     "populationValues": []
+                  },
+                  {
+                      "id": "c11c71fc-3eb8-4ff0-96cf-246871d81428",
+                     "name":"Strata-2",
+                     "populationValues": []
                   }
                ]
             }
@@ -85,40 +103,48 @@
          "patientId":"0ec1197a-4895-43ed-b2eb-27971f8fb95b",
          "groupPopulations":[
             {
-               "groupId":"62f66b2e02b96d3a6ababefb",
+               "groupId":"62fb788bfb3c765290171e75",
                "scoring":"Ratio",
+               "populationBasis": "boolean",
                "populationValues":[
                   {
+                     "id": "12b60c2c-e9ee-4bac-bba3-dc2df691f3ac",
                      "name":"initialPopulation",
                      "expected":false,
                      "actual":false
                   },
                   {
+                     "id": "1",
                      "name":"initialPopulation",
                      "expected":false,
                      "actual":false
                   },
                   {
+                     "id": "dd775fb3-19ff-44c0-9083-7ad4bfa39b8c",
                      "name":"denominator",
                      "expected":true,
                      "actual":false
                   },
                   {
+                     "id": "87d0d6c9-bc96-43aa-a151-b520409a10b8",
                      "name":"denominatorExclusion",
                      "expected":false,
                      "actual":false
                   },
                   {
+                     "id": "deb34843-05e3-4b29-aa63-1b0a4439eeac",
                      "name":"numerator",
                      "expected":false,
                      "actual":false
                   },
                   {
+                     "id": "7790db4c-0f7f-48dc-8dc2-871b42ab3abf",
                      "name":"numeratorExclusion",
                      "expected":false,
                      "actual":false
                   }
-               ]
+               ],
+               "stratificationValues":[]
             }
          ]
       }
@@ -126,43 +152,50 @@
    "groups":[
       {
          "id":"62f66b2e02b96d3a6ababefb",
+         "displayId": "Group_1",
          "scoring":"Ratio",
          "populations":[
             {
                "id":"12b60c2c-e9ee-4bac-bba3-dc2df691f3ac",
                "name":"initialPopulation",
                "definition":"SDE Ethnicity",
-               "associationType":"Denominator"
+               "associationType":"Denominator",
+               "displayId": "InitialPopulation_1_1"
             },
             {
                "id":"1",
                "name":"initialPopulation",
                "definition":"SDE Ethnicity",
-               "associationType":"Numerator"
+               "associationType":"Numerator",
+               "displayId": "InitialPopulation_1_2"
             },
             {
                "id":"dd775fb3-19ff-44c0-9083-7ad4bfa39b8c",
                "name":"denominator",
                "definition":"Pap Test Within 3 Years",
-               "associationType":null
+               "associationType":null,
+               "displayId": "Denominator_1"
             },
             {
                "id":"87d0d6c9-bc96-43aa-a151-b520409a10b8",
                "name":"denominatorExclusion",
                "definition":"Pap Test with Results",
-               "associationType":null
+               "associationType":null,
+               "displayId": "DenominatorExclusion_1"
             },
             {
                "id":"deb34843-05e3-4b29-aa63-1b0a4439eeac",
                "name":"numerator",
                "definition":"Pap Test with Results",
-               "associationType":null
+               "associationType":null,
+               "displayId": "Numerator_1"
             },
             {
                "id":"7790db4c-0f7f-48dc-8dc2-871b42ab3abf",
                "name":"numeratorExclusion",
                "definition": null,
-               "associationType":null
+               "associationType":null,
+               "displayId": "NumeratorExclusion_1"
             }
          ],
          "measureGroupTypes":[
@@ -184,44 +217,59 @@
             }
          },
          "stratifications":[
-
+			{
+			  "id": "62bf4e30-2232-41a7-8100-5d79f3b9ad1a",
+			  "cqlDefinition": "Encounter With Comfort Measures During Hospitalization For Patients With Documented Ischemic Stroke",
+			  "displayId": "Stratification_1_1"
+			},
+			{
+			  "id": "c11c71fc-3eb8-4ff0-96cf-246871d81428",
+			  "cqlDefinition": "Encounter With Documented Reason For No Antithrombotic At Discharge",
+			  "displayId": "Stratification_1_2"
+			}
          ],
          "populationBasis":"Account",
          "scoringPrecision": 2
       },
       {
          "id":"62fb788bfb3c765290171e75",
+         "displayId": "Group_2",
          "scoring":"Ratio",
          "populations":[
             {
                "id":"545d860e-f9af-4efc-8587-fc3018673082",
                "name":"initialPopulation",
                "definition":"SDE Payer",
-               "associationType":"Denominator"
+               "associationType":"Denominator",
+               "displayId": "InitialPopulation_2"
             },
             {
                "id":"ba763149-00b8-49ed-9159-594e30e02c70",
                "name":"denominator",
                "definition":"Initial Population",
-               "associationType":null
+               "associationType":null,
+               "displayId": "Denominator_2"
             },
             {
                "id":"a9036584-04d6-4e61-964f-423aad9120d9",
                "name":"denominatorExclusion",
                "definition":"Denominator",
-               "associationType":null
+               "associationType":null,
+               "displayId": "DenominatorExclusion_2"
             },
             {
                "id":"5e898288-88a4-4ed6-970b-c5848a812851",
                "name":"numerator",
                "definition":"Absence of Cervix",
-               "associationType":null
+               "associationType":null,
+               "displayId": "Numerator_2"
             },
             {
                "id":"c38e28f7-632f-4f4f-9e94-c2dda446e5ed",
                "name":"numeratorExclusion",
                "definition":"Pap Test with Results",
-               "associationType":null
+               "associationType":null,
+               "displayId": "NumeratorExclusion_2"
             }
          ],
          "measureObservations":null,
@@ -271,7 +319,17 @@
          "codeSystem": "http://hl7.org/fhir/us/cqfmeasures/CodeSystem/intended-venue-codes",
          "display": "EC",
          "definition": "An eligible clinician is a clinician who is eligible to participate in a quality measurement intiative."
-      }
+      },
+      "measureDefinitions": [
+      	{
+      	  "term": "test term1",
+      	  "definition": "test definition1"
+      	},
+      	{
+      	  "term": "test term2",
+      	  "definition": "test definition2"
+      	}
+      ]
    },
    "supplementalData": [
       {

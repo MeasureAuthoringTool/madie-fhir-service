@@ -3,6 +3,7 @@ package gov.cms.madie.madiefhirservice.config;
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.context.support.DefaultProfileValidationSupport;
 import ca.uhn.fhir.context.support.IValidationSupport;
+import ca.uhn.fhir.util.ClasspathUtil;
 import ca.uhn.fhir.validation.FhirValidator;
 import ca.uhn.fhir.validation.IValidatorModule;
 import gov.cms.madie.madiefhirservice.utils.QiCoreLenientTerminologyValidator;
@@ -12,12 +13,14 @@ import org.hl7.fhir.common.hapi.validation.support.*;
 import org.hl7.fhir.common.hapi.validation.validator.FhirInstanceValidator;
 import org.hl7.fhir.r5.context.SimpleWorkerContext;
 import org.hl7.fhir.r5.utils.LiquidEngine;
+import org.hl7.fhir.utilities.npm.NpmPackage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.io.IOException;
+import java.io.InputStream;
 
 @Slf4j
 @Configuration
@@ -119,11 +122,19 @@ public class HapiFhirConfig {
 
   @Bean
   public LiquidEngine liquidEngine() throws IOException {
-    SimpleWorkerContext context = new SimpleWorkerContext.SimpleWorkerContextBuilder().build();
-    LiquidEngine liquidEngine = new LiquidEngine(context, null);
-    liquidEngine.setIncludeResolver(new IncludeResolver());
+    // WorkerContext based on NPM package used per guidance provided in
+    // https://github.com/cqframework/sample-content-ig/issues/121#issuecomment-2725717942
+    try (InputStream is =
+        ClasspathUtil.loadResourceAsStream("classpath:packages/hl7.fhir.r5.core.tgz")) {
+      var ctx =
+          new SimpleWorkerContext.SimpleWorkerContextBuilder()
+              .withAllowLoadingDuplicates(true)
+              .fromPackage(NpmPackage.fromPackage(is));
+      LiquidEngine liquidEngine = new LiquidEngine(ctx, null);
+      liquidEngine.setIncludeResolver(new IncludeResolver());
 
-    return liquidEngine;
+      return liquidEngine;
+    }
   }
 
   static class IncludeResolver implements LiquidEngine.ILiquidEngineIncludeResolver {

@@ -9,7 +9,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Pair;
 import org.cqframework.cql.gen.cqlBaseVisitor;
 import org.cqframework.cql.gen.cqlParser;
-import org.hl7.fhir.r4.model.CodeableConcept;
 import org.hl7.fhir.r4.model.Coding;
 import org.hl7.fhir.r4.model.DataRequirement;
 import org.hl7.fhir.r4.model.Extension;
@@ -138,7 +137,7 @@ public class LibraryCqlVisitor extends cqlBaseVisitor<String> {
 
               Extension ext = new Extension(UriConstants.CqfMeasures.DIRECT_REFERENCE_CODE_URI);
 
-              ext.setValue(buildCoding(code, csUri, codeName));
+              ext.setValue(buildCoding(code, csUri, codeName, csVersionUri));
 
               this.getDrcExtensions().add(ext);
               readableArtifacts
@@ -287,15 +286,8 @@ public class LibraryCqlVisitor extends cqlBaseVisitor<String> {
     dataRequirements.add(result);
   }
 
-  private CodeableConcept buildCodeableConcept(String code, String system, String display) {
-    CodeableConcept codeableConcept = new CodeableConcept();
-    codeableConcept.setCoding(new ArrayList<>());
-    codeableConcept.getCoding().add(buildCoding(code, system, display));
-    return codeableConcept;
-  }
-
-  private Coding buildCoding(String code, String system, String display) {
-    return new Coding().setCode(code).setSystem(system).setDisplay(display);
+  private Coding buildCoding(String code, String system, String display, String version) {
+    return new Coding().setCode(code).setSystem(system).setVersion(version).setDisplay(display);
   }
 
   public ValuesetModel getValueSetUrl(String valueSetName) {

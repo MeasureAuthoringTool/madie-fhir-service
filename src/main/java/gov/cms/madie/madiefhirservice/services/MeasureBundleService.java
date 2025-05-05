@@ -3,15 +3,16 @@ package gov.cms.madie.madiefhirservice.services;
 import gov.cms.madie.madiefhirservice.constants.UriConstants;
 import gov.cms.madie.madiefhirservice.dto.CqlLibraryDetails;
 import gov.cms.madie.madiefhirservice.utils.BundleUtil;
+import gov.cms.madie.madiefhirservice.utils.CqlFormatter;
 import gov.cms.madie.madiefhirservice.utils.FhirResourceHelpers;
 import gov.cms.madie.madiefhirservice.utils.ResourceUtils;
 import gov.cms.madie.models.library.CqlLibrary;
 import gov.cms.madie.models.measure.Measure;
-import gov.cms.mat.cql.CqlFormatter;
 import java.security.Principal;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import org.cqframework.cql.cql2elm.CqlCompilerException;
 import org.hl7.fhir.convertors.advisors.impl.BaseAdvisor_40_50;
 import org.hl7.fhir.convertors.conv40_50.VersionConvertor_40_50;
 import org.hl7.fhir.r4.model.Bundle;
@@ -43,14 +44,18 @@ public class MeasureBundleService {
    * Creates measure bundle that contains measure, main library, and included libraries resources
    */
   public Bundle createMeasureBundle(
-      Measure madieMeasure, Principal principal, String bundleType, String accessToken) {
+      Measure madieMeasure,
+      Principal principal,
+      String bundleType,
+      String accessToken,
+      CqlCompilerException.ErrorSeverity errorSeverity) {
     log.info(
         "Generating measure bundle of type [{}] for measure {}", bundleType, madieMeasure.getId());
     madieMeasure.setCql(CqlFormatter.formatCql(madieMeasure.getCql(), principal));
 
     log.info("CQL formatting completed successfully for measure {}", madieMeasure.getId());
     org.hl7.fhir.r4.model.Measure measure =
-        measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure);
+        measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure, bundleType);
     Set<String> expressions = getExpressions(measure);
 
     log.info(
@@ -64,28 +69,30 @@ public class MeasureBundleService {
     // Bundle entries for all the library resources of a MADiE Measure
     List<Bundle.BundleEntryComponent> libraryEntryComponents =
         createBundleComponentsForLibrariesOfMadieMeasure(
-            expressions, madieMeasure, bundleType, accessToken);
+            expressions, madieMeasure, bundleType, errorSeverity, accessToken);
     libraryEntryComponents.forEach(bundle::addEntry);
     log.info("Included library components created successfully {}", madieMeasure.getId());
 
+    CqlLibraryDetails libraryDetails =
+        CqlLibraryDetails.builder()
+            .libraryName(madieMeasure.getCqlLibraryName())
+            .cql(madieMeasure.getCql())
+            .expressions(expressions)
+            .build();
+    // get effective DataRequirements
+    log.info("Getting effective data requirements for measure: {}", measure.getId());
+    org.hl7.fhir.r5.model.Library effectiveDataRequirements =
+        elmTranslatorClient.getEffectiveDataRequirements(
+            libraryDetails, true, accessToken, errorSeverity);
+    addEffectiveDataRequirementsToMeasure(measure, effectiveDataRequirements);
+
     if (BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT.equals(bundleType)) {
-      CqlLibraryDetails libraryDetails =
-          CqlLibraryDetails.builder()
-              .libraryName(madieMeasure.getCqlLibraryName())
-              .cql(madieMeasure.getCql())
-              .expressions(expressions)
-              .build();
-      // get effective DataRequirements
-      log.info("Getting effective data requirements for measure: {}", measure.getId());
-      org.hl7.fhir.r5.model.Library effectiveDataRequirements =
-          elmTranslatorClient.getEffectiveDataRequirements(libraryDetails, true, accessToken);
       // get human-readable for measure
       String humanReadable =
           humanReadableService.generateMeasureHumanReadable(
               madieMeasure, bundle, effectiveDataRequirements);
       // set narrative and effective DataRequirements to measure
       setNarrativeText(measure, humanReadable);
-      addEffectiveDataRequirementsToMeasure(measure, effectiveDataRequirements);
 
       // set narrative to measure library
       var measureLibrary =
@@ -106,6 +113,7 @@ public class MeasureBundleService {
       Set<String> expressions,
       Measure madieMeasure,
       final String bundleType,
+      CqlCompilerException.ErrorSeverity errorSeverity,
       final String accessToken) {
     Library library =
         getMeasureLibraryResourceForMadieMeasure(expressions, madieMeasure, accessToken);
@@ -116,7 +124,7 @@ public class MeasureBundleService {
         FhirResourceHelpers.getBundleEntryComponent(library, "Transaction");
     Map<String, Library> includedLibraryMap = new HashMap<>();
     libraryService.getIncludedLibraries(
-        madieMeasure.getCql(), includedLibraryMap, bundleType, accessToken);
+        madieMeasure.getCql(), includedLibraryMap, bundleType, errorSeverity, accessToken);
     List<Bundle.BundleEntryComponent> libraryBundleComponents =
         includedLibraryMap.values().stream()
             .map((lib) -> FhirResourceHelpers.getBundleEntryComponent(lib, "Transaction"))

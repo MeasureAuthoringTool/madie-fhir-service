@@ -1,6 +1,7 @@
 package gov.cms.madie.madiefhirservice.services;
 
 import ca.uhn.fhir.model.api.TemporalPrecisionEnum;
+import gov.cms.madie.madiefhirservice.constants.UriConstants.CqfMeasures;
 import gov.cms.madie.madiefhirservice.exceptions.HumanReadableGenerationException;
 import gov.cms.madie.madiefhirservice.exceptions.ResourceNotFoundException;
 import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
@@ -13,11 +14,18 @@ import gov.cms.madie.models.measure.MeasureMetaData;
 import gov.cms.madie.models.measure.MeasureScoring;
 import gov.cms.madie.models.measure.Population;
 import gov.cms.madie.models.measure.PopulationType;
+import gov.cms.madie.models.measure.Stratification;
+
 import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.r4.model.Attachment;
 import org.hl7.fhir.r4.model.Bundle;
+import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.Library;
+import org.hl7.fhir.r4.model.MarkdownType;
 import org.hl7.fhir.r4.model.Period;
+import org.hl7.fhir.r4.model.Reference;
+import org.hl7.fhir.r4.model.RelatedArtifact;
+import org.hl7.fhir.r4.model.RelatedArtifact.RelatedArtifactType;
 import org.hl7.fhir.r4.model.Resource;
 import org.hl7.fhir.r5.context.SimpleWorkerContext;
 import org.hl7.fhir.r5.model.ParameterDefinition;
@@ -30,6 +38,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -58,7 +67,9 @@ class HumanReadableServiceTest
 
   private org.hl7.fhir.r5.model.Library effectiveDataRequirements;
 
-  private String humanReadable;
+  List<MarkdownType> terms = new ArrayList<>();
+  MarkdownType term1 = new MarkdownType("Term1 - Definition1");
+  MarkdownType term2 = new MarkdownType("Term2 - Definition2");
 
   @BeforeEach
   void setUp() {
@@ -77,7 +88,9 @@ class HumanReadableServiceTest
                         .description(null)
                         .build()))
             .build();
-    measureGroup1.setStratifications(null);
+    Stratification stratification =
+        Stratification.builder().cqlDefinition("Stratification 1").build();
+    measureGroup1.setStratifications(List.of(stratification));
 
     madieMeasure =
         Measure.builder()
@@ -93,6 +106,8 @@ class HumanReadableServiceTest
             .groups(List.of(measureGroup1))
             .build();
 
+    terms.add(term1);
+    terms.add(term2);
     measure =
         new org.hl7.fhir.r4.model.Measure()
             .setName(madieMeasure.getCqlLibraryName())
@@ -105,7 +120,8 @@ class HumanReadableServiceTest
                     madieMeasure.getMeasurementPeriodStart(),
                     madieMeasure.getMeasurementPeriodEnd()))
             .setCopyright(madieMeasure.getMeasureMetaData().getCopyright())
-            .setDisclaimer(madieMeasure.getMeasureMetaData().getDisclaimer());
+            .setDisclaimer(madieMeasure.getMeasureMetaData().getDisclaimer())
+            .setDefinition(terms);
 
     String cqlData = ResourceUtils.getData("/test-cql/cv_populations.cql");
     library =
@@ -118,8 +134,6 @@ class HumanReadableServiceTest
         convertToFhirR5Resource(
             org.hl7.fhir.r5.model.Library.class,
             getStringFromTestResource("/humanReadable/effective-data-requirements.json"));
-
-    humanReadable = getStringFromTestResource("/humanReadable/humanReadable_test");
   }
 
   public Bundle.BundleEntryComponent getBundleEntryComponent(Resource resource) {
@@ -134,6 +148,17 @@ class HumanReadableServiceTest
 
   @Test
   public void generateMeasureHumanReadable() {
+    RelatedArtifact relatedArtifact = new RelatedArtifact();
+    relatedArtifact.setType(RelatedArtifactType.CITATION);
+    relatedArtifact.setCitation("test reference text");
+    measure.setRelatedArtifact(List.of(relatedArtifact));
+    measure.addAuthor().setName("test contact details");
+    Reference reference = new Reference();
+    reference.setDisplay("test display reference");
+    Identifier identifier = new Identifier();
+    identifier.setAssigner(reference);
+    measure.setIdentifier(List.of(identifier));
+
     Bundle.BundleEntryComponent measureBundleEntryComponent = getBundleEntryComponent(measure);
     Bundle.BundleEntryComponent libraryBundleEntryComponent = getBundleEntryComponent(library);
     Bundle bundle =
@@ -267,6 +292,16 @@ class HumanReadableServiceTest
   @Test
   public void testGetHumanReadableForLibrary() {
     String hrText = "<div>test hr text for library</div>";
+    library.addRelatedArtifact();
+    org.hl7.fhir.r4.model.DataRequirement dataRequirement =
+        new org.hl7.fhir.r4.model.DataRequirement();
+    org.hl7.fhir.r4.model.DataRequirement.DataRequirementCodeFilterComponent codeFilter =
+        new org.hl7.fhir.r4.model.DataRequirement.DataRequirementCodeFilterComponent();
+    org.hl7.fhir.r4.model.Coding coding = new org.hl7.fhir.r4.model.Coding();
+    coding.setDisplay("test display");
+    codeFilter.addCode(coding);
+    dataRequirement.setCodeFilter(List.of(codeFilter));
+    library.addDataRequirement(dataRequirement);
     when(liquidEngine.parse(anyString(), anyString()))
         .thenReturn(new LiquidEngine.LiquidDocument());
 
@@ -307,5 +342,75 @@ class HumanReadableServiceTest
   @Override
   public String fetchInclude(LiquidEngine engine, String name) {
     return gov.cms.madie.madiefhirservice.utils.ResourceUtils.getData("/templates/" + name);
+  }
+
+  @Test
+  public void testEscapeMeasure() {
+    org.hl7.fhir.r5.model.Measure r5Measure = new org.hl7.fhir.r5.model.Measure();
+
+    org.hl7.fhir.r5.model.Expression expression = new org.hl7.fhir.r5.model.Expression();
+    expression.setDescription("test description");
+    org.hl7.fhir.r5.model.Measure.MeasureSupplementalDataComponent supplementalData =
+        new org.hl7.fhir.r5.model.Measure.MeasureSupplementalDataComponent();
+    supplementalData.setCriteria(expression);
+    supplementalData.setDescription("test description");
+    r5Measure.addSupplementalData().setCriteria(expression);
+
+    org.hl7.fhir.r5.model.Library lib = new org.hl7.fhir.r5.model.Library();
+    ParameterDefinition parameter = new ParameterDefinition();
+    parameter.setName("test name");
+    lib.addParameter(parameter);
+
+    org.hl7.fhir.r5.model.Extension topLevelExtension = new org.hl7.fhir.r5.model.Extension();
+    org.hl7.fhir.r5.model.Extension secondLevelExtension = new org.hl7.fhir.r5.model.Extension();
+    secondLevelExtension.setValue(new org.hl7.fhir.r5.model.StringType("test string"));
+    topLevelExtension.addExtension(secondLevelExtension);
+    lib.addExtension(topLevelExtension);
+
+    org.hl7.fhir.r5.model.RelatedArtifact r5RelatedArtifact =
+        new org.hl7.fhir.r5.model.RelatedArtifact();
+    r5RelatedArtifact.setCitation("test reference text");
+    r5RelatedArtifact.setLabel("test label");
+    r5RelatedArtifact.setDisplay("test display &");
+    r5RelatedArtifact.setResource("test resource");
+    lib.addRelatedArtifact(r5RelatedArtifact);
+
+    r5Measure.addContained(lib);
+
+    org.hl7.fhir.r5.model.Measure.MeasureTermComponent term =
+        new org.hl7.fhir.r5.model.Measure.MeasureTermComponent();
+    term.setDefinition("test definition");
+    r5Measure.addTerm(term);
+
+    r5Measure.addExtension(topLevelExtension);
+
+    org.hl7.fhir.r5.model.Measure.MeasureGroupComponent group =
+        new org.hl7.fhir.r5.model.Measure.MeasureGroupComponent();
+    group.setDescription("test description");
+    org.hl7.fhir.r5.model.Measure.MeasureGroupPopulationComponent population =
+        new org.hl7.fhir.r5.model.Measure.MeasureGroupPopulationComponent();
+    population.setDescription("test population description");
+    org.hl7.fhir.r5.model.Expression criteria = new org.hl7.fhir.r5.model.Expression();
+    criteria.setExpression("test expression");
+    population.setCriteria(criteria);
+    group.addPopulation(population);
+    org.hl7.fhir.r5.model.Measure.MeasureGroupStratifierComponent stratifier =
+        new org.hl7.fhir.r5.model.Measure.MeasureGroupStratifierComponent();
+    stratifier.setCriteria(criteria);
+    stratifier.setDescription("test stratifier description");
+    group.setStratifier(List.of(stratifier));
+    org.hl7.fhir.r5.model.Extension extension = new org.hl7.fhir.r5.model.Extension();
+    extension.setUrl(CqfMeasures.RATE_AGGREGATION_URI);
+    extension.setValue((new org.hl7.fhir.r5.model.StringType(CqfMeasures.RATE_AGGREGATION_URI)));
+    group.addExtension(extension);
+    r5Measure.addGroup(group);
+
+    r5Measure.addRelatedArtifact(r5RelatedArtifact);
+
+    org.hl7.fhir.r5.model.Measure result = humanReadableService.escapeMeasure(r5Measure);
+    assertNotNull(result);
+    assertNotNull(result.getRelatedArtifact());
+    assertEquals(1, result.getRelatedArtifact().size());
+    assertEquals("test display &amp;", result.getRelatedArtifact().get(0).getDisplay());
   }
 }
