@@ -73,14 +73,8 @@ public class StructureDefinitionService {
 
                   return match;
                 })
-            .map(
-                resource -> {
-                  return (org.hl7.fhir.r4.model.StructureDefinition) resource;
-                })
-            .filter(
-                structureDef -> {
-                  return contextApplies(structureDef, targetPath, targetKind);
-                })
+            .map(resource -> (org.hl7.fhir.r4.model.StructureDefinition) resource)
+            .filter(structureDef -> contextApplies(structureDef, targetPath, targetKind))
             .toList();
 
     // Todo: enhance with model-info, or at least primary code path

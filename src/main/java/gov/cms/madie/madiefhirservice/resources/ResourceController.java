@@ -34,9 +34,6 @@ public class ResourceController {
   public List<StructureDefinitionDto> getExtensionsForTargetPath(
       @RequestParam(name = "targetPath") String targetPath,
       @RequestParam(name = "kind") String targetKind) {
-
-    log.info("targetPath: [{}]", targetPath);
-    log.info("kind: [{}]", targetKind);
     return structureDefinitionService.getExtensionsForTargetPath(targetPath, targetKind);
   }
 
