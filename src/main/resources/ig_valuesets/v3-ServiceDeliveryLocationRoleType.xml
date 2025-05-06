@@ -1,0 +1,714 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="v3-ServiceDeliveryLocationRoleType"/>
+  <language value="en"/>
+  <text>
+    <status value="generated"/>
+    <div xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+      <ul>
+        <li>Include codes from 
+          <a href="CodeSystem-v3-RoleCode.html">
+            <code>http://terminology.hl7.org/CodeSystem/v3-RoleCode</code>
+          </a> where concept  descends from  
+          <a href="CodeSystem-v3-RoleCode.html#v3-RoleCode-_ServiceDeliveryLocationRoleType">_ServiceDeliveryLocationRoleType</a>
+        </li>
+      </ul>
+    </div>
+  </text>
+  <url value="http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.1.11.17660"/>
+  </identifier>
+  <version value="3.0.0"/>
+  <name value="ServiceDeliveryLocationRoleType"/>
+  <title value="ServiceDeliveryLocationRoleType"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2014-03-26"/>
+  <publisher value="Health Level Seven International"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org"/>
+    </telecom>
+    <telecom>
+      <system value="email"/>
+      <value value="hq@HL7.org"/>
+    </telecom>
+  </contact>
+  <description value="A role of a place that further classifies the setting (e.g., accident site, road side, work site, community location) in which services are delivered."/>
+  <copyright value="This material derives from the HL7 Terminology THO. THO is copyright ©1989+ Health Level Seven International and is made available under the CC0 designation. For more licensing information see: https://terminology.hl7.org/license"/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <filter>
+        <property value="concept"/>
+        <op value="descendent-of"/>
+        <value value="_ServiceDeliveryLocationRoleType"/>
+      </filter>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:d44b9d78-0b6b-497e-9b20-7cc84c33bbed"/>
+    <timestamp value="2025-01-17T09:53:42-07:00"/>
+    <total value="127"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/v3-RoleCode|3.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <abstract value="true"/>
+      <code value="_DedicatedServiceDeliveryLocationRoleType"/>
+      <display value="DedicatedServiceDeliveryLocationRoleType"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <abstract value="true"/>
+      <code value="_DedicatedClinicalLocationRoleType"/>
+      <display value="DedicatedClinicalLocationRoleType"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="DX"/>
+      <display value="Diagnostics or therapeutics unit"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="CVDX"/>
+      <display value="Cardiovascular diagnostics or therapeutics unit"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="CATH"/>
+      <display value="Cardiac catheterization lab"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="ECHO"/>
+      <display value="Echocardiography lab"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="GIDX"/>
+      <display value="Gastroenterology diagnostics or therapeutics lab"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="ENDOS"/>
+      <display value="Endoscopy lab"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="RADDX"/>
+      <display value="Radiology diagnostics or therapeutics unit"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="RADO"/>
+      <display value="Radiation oncology unit"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="RNEU"/>
+      <display value="Neuroradiology unit"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="HOSP"/>
+      <display value="Hospital"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="CHR"/>
+      <display value="Chronic Care Facility"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="GACH"/>
+      <display value="Hospitals; General Acute Care Hospital"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="MHSP"/>
+      <display value="Military Hospital"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="PSYCHF"/>
+      <display value="Psychatric Care Facility"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="RH"/>
+      <display value="Rehabilitation hospital"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="RHAT"/>
+      <display value="addiction treatment center"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="RHII"/>
+      <display value="intellectual impairment center"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="RHMAD"/>
+      <display value="parents with adjustment difficulties center"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="RHPI"/>
+      <display value="physical impairment center"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="RHPIH"/>
+      <display value="physical impairment - hearing center"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="RHPIMS"/>
+      <display value="physical impairment - motor skills center"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="RHPIVS"/>
+      <display value="physical impairment - visual skills center"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="RHYAD"/>
+      <display value="youths with adjustment difficulties center"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="HU"/>
+      <display value="Hospital unit"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="BMTU"/>
+      <display value="Bone marrow transplant unit"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="CCU"/>
+      <display value="Coronary care unit"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="CHEST"/>
+      <display value="Chest unit"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="EPIL"/>
+      <display value="Epilepsy unit"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="ER"/>
+      <display value="Emergency room"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="ETU"/>
+      <display value="Emergency trauma unit"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="HD"/>
+      <display value="Hemodialysis unit"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="HLAB"/>
+      <display value="hospital laboratory"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="INLAB"/>
+      <display value="inpatient laboratory"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="OUTLAB"/>
+      <display value="outpatient laboratory"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="HRAD"/>
+      <display value="radiology unit"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="HUSCS"/>
+      <display value="specimen collection site"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="ICU"/>
+      <display value="Intensive care unit"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="PEDICU"/>
+      <display value="Pediatric intensive care unit"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="PEDNICU"/>
+      <display value="Pediatric neonatal intensive care unit"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="INPHARM"/>
+      <display value="inpatient pharmacy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="MBL"/>
+      <display value="medical laboratory"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="NCCS"/>
+      <display value="Neurology critical care and stroke unit"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="NS"/>
+      <display value="Neurosurgery unit"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="OUTPHARM"/>
+      <display value="outpatient pharmacy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="PEDU"/>
+      <display value="Pediatric unit"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="PHU"/>
+      <display value="Psychiatric hospital unit"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="RHU"/>
+      <display value="Rehabilitation hospital unit"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="SLEEP"/>
+      <display value="Sleep disorders unit"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="NCCF"/>
+      <display value="Nursing or custodial care facility"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="SNF"/>
+      <display value="Skilled nursing facility"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="OF"/>
+      <display value="Outpatient facility"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="ALL"/>
+      <display value="Allergy clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="AMPUT"/>
+      <display value="Amputee clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="BMTC"/>
+      <display value="Bone marrow transplant clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="BREAST"/>
+      <display value="Breast clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="CANC"/>
+      <display value="Child and adolescent neurology clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="CAPC"/>
+      <display value="Child and adolescent psychiatry clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="CARD"/>
+      <display value="Ambulatory Health Care Facilities; Clinic/Center; Rehabilitation: Cardiac Facilities"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="PEDCARD"/>
+      <display value="Pediatric cardiology clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="COAG"/>
+      <display value="Coagulation clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="CRS"/>
+      <display value="Colon and rectal surgery clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="DERM"/>
+      <display value="Dermatology clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="ENDO"/>
+      <display value="Endocrinology clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="PEDE"/>
+      <display value="Pediatric endocrinology clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="ENT"/>
+      <display value="Otorhinolaryngology clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="FMC"/>
+      <display value="Family medicine clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="GI"/>
+      <display value="Gastroenterology clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="PEDGI"/>
+      <display value="Pediatric gastroenterology clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="GIM"/>
+      <display value="General internal medicine clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="GYN"/>
+      <display value="Gynecology clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="HEM"/>
+      <display value="Hematology clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="PEDHEM"/>
+      <display value="Pediatric hematology clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="HTN"/>
+      <display value="Hypertension clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="IEC"/>
+      <display value="Impairment evaluation center"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="INFD"/>
+      <display value="Infectious disease clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="PEDID"/>
+      <display value="Pediatric infectious disease clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="INV"/>
+      <display value="Infertility clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="LYMPH"/>
+      <display value="Lympedema clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="MGEN"/>
+      <display value="Medical genetics clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="NEPH"/>
+      <display value="Nephrology clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="PEDNEPH"/>
+      <display value="Pediatric nephrology clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="NEUR"/>
+      <display value="Neurology clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="OB"/>
+      <display value="Obstetrics clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="OMS"/>
+      <display value="Oral and maxillofacial surgery clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="ONCL"/>
+      <display value="Medical oncology clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="PEDHO"/>
+      <display value="Pediatric oncology clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="OPH"/>
+      <display value="Opthalmology clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="OPTC"/>
+      <display value="optometry clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="ORTHO"/>
+      <display value="Orthopedics clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="HAND"/>
+      <display value="Hand clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="PAINCL"/>
+      <display value="Pain clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="PC"/>
+      <display value="Primary care clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="PEDC"/>
+      <display value="Pediatrics clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="PEDRHEUM"/>
+      <display value="Pediatric rheumatology clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="POD"/>
+      <display value="Podiatry clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="PREV"/>
+      <display value="Preventive medicine clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="PROCTO"/>
+      <display value="Proctology clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="PROFF"/>
+      <display value="Provider's Office"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="PROS"/>
+      <display value="Prosthodontics clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="PSI"/>
+      <display value="Psychology clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="PSY"/>
+      <display value="Psychiatry clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="RHEUM"/>
+      <display value="Rheumatology clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="SPMED"/>
+      <display value="Sports medicine clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="SU"/>
+      <display value="Surgery clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="PLS"/>
+      <display value="Plastic surgery clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="URO"/>
+      <display value="Urology clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="TR"/>
+      <display value="Transplant clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="TRAVEL"/>
+      <display value="Travel and geographic medicine clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="WND"/>
+      <display value="Wound clinic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="RTF"/>
+      <display value="Residential treatment facility"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="PRC"/>
+      <display value="Pain rehabilitation center"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="SURF"/>
+      <display value="Substance use rehabilitation facility"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <abstract value="true"/>
+      <code value="_DedicatedNonClinicalLocationRoleType"/>
+      <display value="DedicatedNonClinicalLocationRoleType"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="DADDR"/>
+      <display value="Delivery Address"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="MOBL"/>
+      <display value="Mobile Unit"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="AMB"/>
+      <display value="Ambulance"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="PHARM"/>
+      <display value="Pharmacy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <abstract value="true"/>
+      <code value="_IncidentalServiceDeliveryLocationRoleType"/>
+      <display value="IncidentalServiceDeliveryLocationRoleType"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="ACC"/>
+      <display value="accident site"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="COMM"/>
+      <display value="Community Location"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="CSC"/>
+      <display value="community service center"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="PTRES"/>
+      <display value="Patient's Residence"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="SCHOOL"/>
+      <display value="school"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="UPC"/>
+      <display value="underage protection center"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
+      <code value="WORK"/>
+      <display value="work site"/>
+    </contains>
+  </expansion>
+</ValueSet>

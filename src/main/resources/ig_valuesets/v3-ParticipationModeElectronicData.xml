@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="v3-ParticipationModeElectronicData"/>
+  <language value="en"/>
+  <text>
+    <status value="generated"/>
+    <div xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+      <ul>
+        <li>Include codes from 
+          <a href="CodeSystem-v3-ParticipationMode.html">
+            <code>http://terminology.hl7.org/CodeSystem/v3-ParticipationMode</code>
+          </a> where concept  is-a  
+          <a href="CodeSystem-v3-ParticipationMode.html#v3-ParticipationMode-ELECTRONIC">ELECTRONIC</a>
+        </li>
+      </ul>
+    </div>
+  </text>
+  <url value="http://terminology.hl7.org/ValueSet/v3-ParticipationModeElectronicData"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.1.11.16554"/>
+  </identifier>
+  <version value="3.0.0"/>
+  <name value="ParticipationModeElectronicData"/>
+  <title value="ParticipationModeElectronicData"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2014-03-26"/>
+  <publisher value="Health Level Seven International"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org"/>
+    </telecom>
+    <telecom>
+      <system value="email"/>
+      <value value="hq@HL7.org"/>
+    </telecom>
+  </contact>
+  <description value="Participation by non-human-languaged based electronic signal"/>
+  <copyright value="This material derives from the HL7 Terminology THO. THO is copyright ©1989+ Health Level Seven International and is made available under the CC0 designation. For more licensing information see: https://terminology.hl7.org/license"/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationMode"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="ELECTRONIC"/>
+      </filter>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:eef2386a-8232-4476-8b44-c255f209dc89"/>
+    <timestamp value="2025-01-17T09:53:42-07:00"/>
+    <total value="1"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/v3-ParticipationMode|4.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationMode"/>
+      <code value="ELECTRONIC"/>
+      <display value="electronic data"/>
+    </contains>
+  </expansion>
+</ValueSet>

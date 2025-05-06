@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="request-priority"/>
+  <meta>
+    <lastUpdated value="2019-10-31T22:29:23.356+00:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="pc"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="trial-use"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="3"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/request-priority"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.115"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="RequestPriority"/>
+  <title value="Request priority"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2016-07-17T18:04:27+00:00"/>
+  <publisher value="HL7 (FHIR Project)"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+    <telecom>
+      <system value="email"/>
+      <value value="fhir@lists.hl7.org"/>
+    </telecom>
+  </contact>
+  <description value="The clinical priority of a diagnostic order."/>
+  <compose>
+    <include>
+      <system value="http://hl7.org/fhir/request-priority"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:2ca5cdc6-f20f-4bb5-b501-42545940630d"/>
+    <timestamp value="2025-01-17T09:53:39-07:00"/>
+    <total value="4"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://hl7.org/fhir/request-priority|4.0.1"/>
+    </parameter>
+    <contains>
+      <system value="http://hl7.org/fhir/request-priority"/>
+      <code value="routine"/>
+      <display value="Routine"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/request-priority"/>
+      <code value="urgent"/>
+      <display value="Urgent"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/request-priority"/>
+      <code value="asap"/>
+      <display value="ASAP"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/request-priority"/>
+      <code value="stat"/>
+      <display value="STAT"/>
+    </contains>
+  </expansion>
+</ValueSet>

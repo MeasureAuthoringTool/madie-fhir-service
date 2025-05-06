@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="reason-medication-status-codes"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="phx"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/reason-medication-status-codes"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.369"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="SNOMEDCTDrugTherapyStatusCodes"/>
+  <title value="SNOMED CT Drug Therapy Status codes "/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="This value set includes some taken and not taken reason codes from SNOMED CT - provided as an exemplar"/>
+  <copyright value="This value set includes content from SNOMED CT, which is copyright © 2002+ International Health Terminology Standards Development Organisation (IHTSDO), and distributed by agreement between IHTSDO and HL7. Implementer use of SNOMED CT is not covered by this agreement"/>
+  <compose>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="266710000"/>
+      </filter>
+    </include>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="410684002"/>
+      </filter>
+    </include>
+  </compose>
+  <expansion>
+    <extension url="http://hl7.org/fhir/StructureDefinition/valueset-unclosed">
+      <valueBoolean value="true"/>
+    </extension>
+    <identifier value="urn:uuid:be134bb4-04b9-475a-aa60-063fc863af20"/>
+    <timestamp value="2025-01-17T09:53:38-07:00"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-valueset"/>
+      <valueUri value="null"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801"/>
+    </parameter>
+    <parameter>
+      <name value="version"/>
+      <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801"/>
+    </parameter>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="266710000"/>
+      <display value="Drugs not taken/completed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182862001"/>
+      <display value="Drug not taken - dislike taste"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182863006"/>
+      <display value="Drug not taken - dislike form"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182864000"/>
+      <display value="Drug not taken - side-effects"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182865004"/>
+      <display value="Drug not taken - inconvenient"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182868002"/>
+      <display value="Treatment stopped - alternative therapy undertaken"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182869005"/>
+      <display value="Drug not taken - patient lost tablets"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182870006"/>
+      <display value="Drug discontinued - reason unknown"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182871005"/>
+      <display value="Drug discontinued - patient fear/risk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182872003"/>
+      <display value="Drug discontinued - too expensive"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182873008"/>
+      <display value="Drug treatment stopped - patient ran out of tablets"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182874002"/>
+      <display value="Treatment stopped - patient unable to concentrate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="266711001"/>
+      <display value="Drug not taken - problem swallowing"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="275929009"/>
+      <display value="Tablets too large to swallow"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="315604002"/>
+      <display value="Missed contraceptive pill"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1269470004"/>
+      <display value="Individual dose of drug or medicament not taken (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12371000175103"/>
+      <display value="Drug treatment stopped patient ran out of medication"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="152741000146103"/>
+      <display value="Medication spat out by patient"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <inactive value="true"/>
+      <code value="410684002"/>
+      <display value="Drug therapy status"/>
+    </contains>
+  </expansion>
+</ValueSet>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="adverse-event-outcome"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="pc"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="trial-use"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="0"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/adverse-event-outcome"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.836"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="AdverseEventOutcome"/>
+  <title value="AdverseEventOutcome"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="HL7 (FHIR Project)"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+    <telecom>
+      <system value="email"/>
+      <value value="fhir@lists.hl7.org"/>
+    </telecom>
+  </contact>
+  <description value="TODO (and should this be required?)."/>
+  <immutable value="true"/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/adverse-event-outcome"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:a550a3e3-b395-4d83-aaf3-05d06a960d50"/>
+    <timestamp value="2025-01-17T09:53:37-07:00"/>
+    <total value="6"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/adverse-event-outcome|4.0.1"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/adverse-event-outcome"/>
+      <code value="resolved"/>
+      <display value="Resolved"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/adverse-event-outcome"/>
+      <code value="recovering"/>
+      <display value="Recovering"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/adverse-event-outcome"/>
+      <code value="ongoing"/>
+      <display value="Ongoing"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/adverse-event-outcome"/>
+      <code value="resolvedWithSequelae"/>
+      <display value="Resolved with Sequelae"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/adverse-event-outcome"/>
+      <code value="fatal"/>
+      <display value="Fatal"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/adverse-event-outcome"/>
+      <code value="unknown"/>
+      <display value="Unknown"/>
+    </contains>
+  </expansion>
+</ValueSet>

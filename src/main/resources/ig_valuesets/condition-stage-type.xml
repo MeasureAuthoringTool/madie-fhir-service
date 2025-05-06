@@ -1,0 +1,5094 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="condition-stage-type"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="pc"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/condition-stage-type"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.171"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="ConditionStageType"/>
+  <title value="Condition Stage Type"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="HL7 International - Patient Care WG"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://www.hl7.org/Special/committees/patientcare/"/>
+    </telecom>
+  </contact>
+  <description value="Example value set for the type of stages of cancer and other conditions"/>
+  <copyright value="This resource includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyright of the International Health Terminology Standards Development Organisation (IHTSDO). Implementers of these specifications must have the appropriate SNOMED CT Affiliate license - for more information contact http://www.snomed.org/snomed-ct/get-snomed-ct or info@snomed.org"/>
+  <compose>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <concept>
+        <code value="261023001"/>
+        <display value="Pathological staging (qualifier value)"/>
+      </concept>
+    </include>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <concept>
+        <code value="260998006"/>
+        <display value="Clinical staging (qualifier value)"/>
+      </concept>
+    </include>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="254291000"/>
+      </filter>
+    </include>
+  </compose>
+  <expansion>
+    <extension url="http://hl7.org/fhir/StructureDefinition/valueset-unclosed">
+      <valueBoolean value="true"/>
+    </extension>
+    <identifier value="urn:uuid:d92cc79a-d5de-45b9-af58-348148cd2b29"/>
+    <timestamp value="2025-01-17T09:53:37-07:00"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-valueset"/>
+      <valueUri value="null"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801"/>
+    </parameter>
+    <parameter>
+      <name value="version"/>
+      <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801"/>
+    </parameter>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="261023001"/>
+      <display value="Pathological staging"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="260998006"/>
+      <display value="cS - Clinical staging"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="254291000"/>
+      <display value="Staging and scales"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13808002"/>
+      <display value="WR stage 3"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15972002"/>
+      <display value="WR stage 2"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="42114005"/>
+      <display value="WR stage 1"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="66470009"/>
+      <display value="WR stage 5"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="74542008"/>
+      <display value="WR stage 4"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="83200007"/>
+      <display value="WR stage 6"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="106241006"/>
+      <display value="Gleason grading for prostatic cancer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="106242004"/>
+      <display value="Walter Reed staging of prostatic cancer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="106244003"/>
+      <display value="FIGO staging of endometrial carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="106245002"/>
+      <display value="FIGO staging of vulvar carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="106246001"/>
+      <display value="FIGO staging of vulvar melanoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="106247005"/>
+      <display value="FIGO staging for epithelial tumor of ovary"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="106250008"/>
+      <display value="FIGO staging of cervical carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="106252000"/>
+      <display value="Staging classification for lymphoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="110375007"/>
+      <display value="Overlapping tumor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="134438001"/>
+      <display value="Canadian Cardiovascular Society classification of angina"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="135831005"/>
+      <display value="Cardiovascular Limitations and Symptoms Profile angina score"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="135832003"/>
+      <display value="CLASP ankle swelling score"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="135833008"/>
+      <display value="CLASP shortness of breath score"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="135877001"/>
+      <display value="Stroke risk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="160723003"/>
+      <display value="Housing dependency scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="165270003"/>
+      <display value="Physical disability assessment score"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="165271004"/>
+      <display value="Physical disability admission score"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="165272006"/>
+      <display value="Physical disability inpatient score"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="165273001"/>
+      <display value="Physical disability discharge score"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="165274007"/>
+      <display value="Physical disability outpatient score"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="165275008"/>
+      <display value="Physical disability DV score"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="251893009"/>
+      <display value="Symptom ratings"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="251894003"/>
+      <display value="Exertion rating"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="251895002"/>
+      <display value="Leg fatigue rating"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="251896001"/>
+      <display value="Breathlessness rating"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="251897005"/>
+      <display value="Chest pain rating"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="254292007"/>
+      <display value="Tumor staging"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="254360008"/>
+      <display value="Dukes staging system"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="254361007"/>
+      <display value="Astler-Coller staging system"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="254362000"/>
+      <display value="Modified Astler-Coller staging system"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="254363005"/>
+      <display value="International neuroblastoma staging system"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="254364004"/>
+      <display value="NWTS - National Wilms' tumour study staging system"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="254365003"/>
+      <display value="Siopel liver staging system"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="254366002"/>
+      <display value="Stannard staging system for retinoblastoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="254368001"/>
+      <display value="United Kingdom children's cancer study group central nervous system tumor staging system"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="254370005"/>
+      <display value="St Jude's malignant histiocytosis tumour staging system"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="254371009"/>
+      <display value="St Jude's non-Hodgkin's lymphoma staging system"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="254372002"/>
+      <display value="Ann Arbor lymphoma staging system"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="254373007"/>
+      <display value="Ann Arbor Hodgkin's disease tumor staging system"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="254374001"/>
+      <display value="Ann Arbor non-Hodgkin's lymphoma tumour staging system"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="254375000"/>
+      <display value="Cotswolds Hodgkin's disease tumor staging system"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="254376004"/>
+      <display value="Testicular tumour staging systems"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="254378003"/>
+      <display value="Walter Reed testicular tumor staging system"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="254379006"/>
+      <display value="Indiana University testicular tumour staging system"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="254380009"/>
+      <display value="Marshall Modification of Jewett-Strong staging system for urinary bladder tumor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="254381008"/>
+      <display value="American Urological Association staging system for prostate cancer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="254382001"/>
+      <display value="Trophoblastic malignancy staging system"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="254383006"/>
+      <display value="Federation internationale de gynecologie et d'obstetrique staging of gynaecological malignancy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="254384000"/>
+      <display value="FIGO Vaginal tumor staging"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="254385004"/>
+      <display value="Federation internationale de gynecologie et d'obstetrique staging of corpus uteri malignancy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="254386003"/>
+      <display value="Federation Internationale de gynecologie et d'obstetrique staging of ovarian malignancy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="254387007"/>
+      <display value="HIV - Human immunodeficiency virus infection classification systems"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258233007"/>
+      <display value="Generic tumor staging descriptor (tumor staging)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258234001"/>
+      <display value="TNM tumor staging classifications"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258244004"/>
+      <display value="G status"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258246002"/>
+      <display value="Lymphatic tumour invasion status stages"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258247006"/>
+      <display value="V status"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258257007"/>
+      <display value="Additional tumor staging descriptor (tumor staging)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258258002"/>
+      <display value="(f)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258259005"/>
+      <display value="is"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258260000"/>
+      <display value="(d)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258267002"/>
+      <display value="Generic tumour risk status stages"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258268007"/>
+      <display value="Low risk tumor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258269004"/>
+      <display value="Medium risk tumour"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258270003"/>
+      <display value="High risk tumor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258271004"/>
+      <display value="Specific tumor staging descriptor (tumor staging)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258272006"/>
+      <display value="Liver tumor staging descriptor (tumor staging)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258273001"/>
+      <display value="Liver tumor size index"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258276009"/>
+      <display value="Timing of liver tumour staging"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258279002"/>
+      <display value="Lymphoma staging symptom status values"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258280004"/>
+      <display value="Lymphomatous extranodal involvement status values"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258281000"/>
+      <display value="S+ minimal"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258282007"/>
+      <display value="S+ extensive"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258283002"/>
+      <display value="Lymphomatous nodal involvement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258284008"/>
+      <display value="Stannards retinoblastoma stages"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258285009"/>
+      <display value="Optic nerve tumour invasion status in retinoblastoma staging"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258286005"/>
+      <display value="Choroidal tumor invasion status in retinoblastoma staging"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258292004"/>
+      <display value="Lymph nodal tumour invasion status in retinoblastoma staging"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258293009"/>
+      <display value="Brain tumor invasion status in retinoblastoma staging"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258301001"/>
+      <display value="Langerhans cell histiocytosis stage (tumor staging)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258302008"/>
+      <display value="Number of organ systems involved with Langerhans cell histiocytosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258303003"/>
+      <display value="Single system involvement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258304009"/>
+      <display value="Multisystem involvement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258305005"/>
+      <display value="Organ failure due to Langerhans cell histiocytosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258306006"/>
+      <display value="Vital organ failure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258307002"/>
+      <display value="Non-vital organ failure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258309004"/>
+      <display value="Generic lymph node tumor invasion status stage (tumor staging)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258310009"/>
+      <display value="Neck node tumor involvement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258311008"/>
+      <display value="Mediastinal lymph node tumour involvement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258312001"/>
+      <display value="Axillary lymph node level"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258313006"/>
+      <display value="Level I"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258314000"/>
+      <display value="Midaxilla"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258315004"/>
+      <display value="Level III"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258316003"/>
+      <display value="Retroperitoneal lymph node tumor invasion status"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258318002"/>
+      <display value="Generic anatomical site tumor invasion status"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258319005"/>
+      <display value="Lung involvement stages"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258320004"/>
+      <display value="Lung stage L2"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258321000"/>
+      <display value="Lung stage L3"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258322007"/>
+      <display value="H+"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258323002"/>
+      <display value="Liver sectors"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258324008"/>
+      <display value="Liver sector 1"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258325009"/>
+      <display value="Liver sector 2"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258326005"/>
+      <display value="Liver sector 3"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258327001"/>
+      <display value="Liver sector 4"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="258328006"/>
+      <display value="Markers for liver tumour staging"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="261731003"/>
+      <display value="CNS metastases"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="261789009"/>
+      <display value="Extra CNS metastases"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="261985008"/>
+      <display value="No metastases"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="263487004"/>
+      <display value="Borg scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="263638005"/>
+      <display value="Endometriosis classification of American Fertility Society"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273249006"/>
+      <display value="Assessment scales"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273251005"/>
+      <display value="Aachen aphasia test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273252003"/>
+      <display value="ABC chart"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273253008"/>
+      <display value="ABC test for movement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273254002"/>
+      <display value="AIS - Abbreviated injury scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273255001"/>
+      <display value="AMT - Abbreviated mental test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273256000"/>
+      <display value="AIMS - Abnormal involuntary movement scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273257009"/>
+      <display value="Acute physiology and chronic health evaluation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273258004"/>
+      <display value="APACHE II - Acute physiology and chronic health evaluation II"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273259007"/>
+      <display value="Acute physiology and chronic health evaluation III"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273260002"/>
+      <display value="Addiction severity index"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273261003"/>
+      <display value="Adult personality rating schedule"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273262005"/>
+      <display value="ABS - Affect balance scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273263000"/>
+      <display value="AIDS Risk Behavior Knowledge Test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273264006"/>
+      <display value="ADS - Alcohol dependence scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273265007"/>
+      <display value="Alcohol use disorders identification test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273266008"/>
+      <display value="Alcohol use inventory"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273267004"/>
+      <display value="Allen cognitive level screening tool"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273269001"/>
+      <display value="ADAS - Alzheimer's Disease Assessment Scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273270000"/>
+      <display value="American Society of Anesthesiologists physical status classification (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273271001"/>
+      <display value="Amsterdam-Nijmegen Everyday Language Test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273273003"/>
+      <display value="Anomalous sentence test - Kopelman"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273274009"/>
+      <display value="Anorexic attitudes questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273275005"/>
+      <display value="Anorexic behaviour scales"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273276006"/>
+      <display value="Aphasia language performance scales"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273277002"/>
+      <display value="Whurr - Aphasia screening test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273279004"/>
+      <display value="Apraxia battery for adults"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273280001"/>
+      <display value="Arizona battery for communication disorders of dementia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273282009"/>
+      <display value="Arthritis Impact Measurement Scales 2 (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273283004"/>
+      <display value="ASEPSIS score for wound infection"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273284005"/>
+      <display value="Ashworth assessment scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273286007"/>
+      <display value="Assessment and therapy programme for dysfluent children"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273288008"/>
+      <display value="Assessment of motor and process skills"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273289000"/>
+      <display value="AOF - Assessment of occupational function"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273290009"/>
+      <display value="Assessment protocol of pragmatic linguistic skills"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273291008"/>
+      <display value="Aston index"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273292001"/>
+      <display value="Attributional style questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273293006"/>
+      <display value="Auditory comprehension test for sentences"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273294000"/>
+      <display value="Augmentative communication profile"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273295004"/>
+      <display value="Autistic features checklist"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273296003"/>
+      <display value="Autobiographical memory interview"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273298002"/>
+      <display value="Bamford Kowal and Bench non-picture related"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273299005"/>
+      <display value="BKBPR - Bamford Kowal and Bench picture related"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273300002"/>
+      <display value="Bangor dyslexia test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273301003"/>
+      <display value="Bankson language test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273302005"/>
+      <display value="Barthel index"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273305007"/>
+      <display value="Bayley scale of infant development"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273306008"/>
+      <display value="Beck depression inventory"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273307004"/>
+      <display value="Beck anxiety standardised rating scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273308009"/>
+      <display value="BEST - Bedside evaluation and screening test of aphasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273309001"/>
+      <display value="Beery-Buktenica test of visual motor integration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273310006"/>
+      <display value="Behavior and mood disturbance scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273311005"/>
+      <display value="Behavior Assessment Battery (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273312003"/>
+      <display value="Behavior problem checklist"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273313008"/>
+      <display value="Behaviour rating scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273314002"/>
+      <display value="Behavioral inattention test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273315001"/>
+      <display value="BOS - Behavioral observation schedule"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273316000"/>
+      <display value="Behavioural screening questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273317009"/>
+      <display value="Bennett's test of manual dexterity"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273319007"/>
+      <display value="Bexley-Maudsley automated psychological screening"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273320001"/>
+      <display value="Binge eating scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273321002"/>
+      <display value="BORB - Birmingham object recognition battery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273322009"/>
+      <display value="Blakely dyspraxia assessment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273323004"/>
+      <display value="Blessed dementia rating scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273324005"/>
+      <display value="Blissymbols test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273325006"/>
+      <display value="Body shape questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273326007"/>
+      <display value="Boehm test of basic concepts"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273327003"/>
+      <display value="Booker heterotopic ossification score"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273328008"/>
+      <display value="Boston aphasia scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273329000"/>
+      <display value="Boston diagnostic aphasia examination"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273330005"/>
+      <display value="Boston naming test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273331009"/>
+      <display value="Bracken test of basic concept scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273332002"/>
+      <display value="Brief activities of daily living"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273333007"/>
+      <display value="BDRS - Brief depression rating scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273334001"/>
+      <display value="Bristol language assessment scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273335000"/>
+      <display value="British ability scales"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273337008"/>
+      <display value="British ability scales reading test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273338003"/>
+      <display value="BAS - British ability scales spelling test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273339006"/>
+      <display value="British isles lupus assessment group score"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273341007"/>
+      <display value="Bryant and Bradley rhyming task"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273342000"/>
+      <display value="Buffalo assessment profile - Wilson"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273343005"/>
+      <display value="Bulimia test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273344004"/>
+      <display value="Bulimic investigation test - Edinburgh"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273345003"/>
+      <display value="Bus story"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273347006"/>
+      <display value="Cage questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273348001"/>
+      <display value="California personality inventory"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273349009"/>
+      <display value="Callier-Azusa scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273350009"/>
+      <display value="Camberwell family interview"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273351008"/>
+      <display value="CAB - Cambridge apraxia battery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273352001"/>
+      <display value="Cantril ladder assessment (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273353006"/>
+      <display value="Carrow elicited language inventory"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273354000"/>
+      <display value="Carrow screening test of auditory comprehension"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273355004"/>
+      <display value="Chailey Heritage lying assessment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273356003"/>
+      <display value="Chailey Heritage seating assessment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273357007"/>
+      <display value="Checklist of communicative competence"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273358002"/>
+      <display value="Checklist of conversational abilities"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273359005"/>
+      <display value="Checklist of listening behaviors"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273360000"/>
+      <display value="OT - Chessington occupational therapy neurological assessment battery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273361001"/>
+      <display value="Child assessment schedule"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273362008"/>
+      <display value="CDS - Child depression scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273363003"/>
+      <display value="Children's coma scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273364009"/>
+      <display value="Crohn's Disease Activity Index (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273365005"/>
+      <display value="CAPE - Clifton assessment procedures for the elderly"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273366006"/>
+      <display value="Clinical anxiety scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273367002"/>
+      <display value="Clinical dementia rating scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273368007"/>
+      <display value="CEDRI - Clinical eating disorder rating instrument"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273369004"/>
+      <display value="Clinical evaluation of language function revised"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273370003"/>
+      <display value="Clinical evaluation of language function revised - screening test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273371004"/>
+      <display value="Clinical evaluation of language function revised - preschool test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273372006"/>
+      <display value="Clinical observation of motor and postural skills (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273373001"/>
+      <display value="CAAP - Cocaine abuse assessment profile"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273374007"/>
+      <display value="Cognitions questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273375008"/>
+      <display value="Cognitive failures questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273376009"/>
+      <display value="Communication Assessment Profile (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273378005"/>
+      <display value="CIDI - Composite international diagnostic interview"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273379002"/>
+      <display value="Comprehensive drinker profile"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273380004"/>
+      <display value="CRIS - Comprehensive injury scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273381000"/>
+      <display value="Comprehensive occupational therapy evaluation scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273382007"/>
+      <display value="CES - Compulsive eating scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273383002"/>
+      <display value="Constant and Murley shoulder assessment score (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273384008"/>
+      <display value="Consumer satisfaction questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273385009"/>
+      <display value="Co-op function charts"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273386005"/>
+      <display value="PFCT - Cooper personalized fluency control therapy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273387001"/>
+      <display value="Coping behaviour inventory"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273388006"/>
+      <display value="Crichton vocabulary scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273389003"/>
+      <display value="Daily activities questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273390007"/>
+      <display value="Dallas pain questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273391006"/>
+      <display value="Daniels and Diack reading tests (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273392004"/>
+      <display value="Daniels and Diack graded word spelling test (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273393009"/>
+      <display value="De Gangi-Berk sensory functioning in infants"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273394003"/>
+      <display value="Delighted-terrible faces scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273395002"/>
+      <display value="Denver development scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273396001"/>
+      <display value="Denver developmental subscale - gross motor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273397005"/>
+      <display value="Denver developmental subscale - language"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273398000"/>
+      <display value="Denver developmental subscale - personal/social"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273399008"/>
+      <display value="Denver developmental subscale - fine motor/adaptive"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273400001"/>
+      <display value="Denver development scale screening test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273401002"/>
+      <display value="Denver development scale screening test - schedule for growing skills"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273402009"/>
+      <display value="Depression anxiety scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273403004"/>
+      <display value="Depression self rating scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273408008"/>
+      <display value="Dermatology life quality index"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273409000"/>
+      <display value="DSFI - Derogatis sexual functioning inventory"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273411009"/>
+      <display value="Diabetes clinic satisfaction questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273412002"/>
+      <display value="DTSQ - Diabetes treatment satisfaction questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273413007"/>
+      <display value="Diabetes wellbeing questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273414001"/>
+      <display value="DICA - Diagnostic interview for children and adolescents"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273415000"/>
+      <display value="Diagnostic interview schedule"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273416004"/>
+      <display value="DSDT - Diagnostic speech discrimination test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273417008"/>
+      <display value="DSED - Diagnostic survey for eating disorders"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273418003"/>
+      <display value="DINE - Dietary instrument for nutrition education questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273419006"/>
+      <display value="Digit sequence learning"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273421001"/>
+      <display value="Disability rating scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273422008"/>
+      <display value="Discourse abilities profile"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273423003"/>
+      <display value="Dol scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273424009"/>
+      <display value="Doyle articular index"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273425005"/>
+      <display value="Drinking problem scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273426006"/>
+      <display value="DAST - Drug abuse screening test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273427002"/>
+      <display value="Dubowitz score"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273428007"/>
+      <display value="Duke UNC health profile"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273430009"/>
+      <display value="Durrell test of listening comprehension"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273431008"/>
+      <display value="Eakin index"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273432001"/>
+      <display value="Eating attitudes test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273433006"/>
+      <display value="EAT 26 - Abbreviated eating attitudes test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273434000"/>
+      <display value="EBRS - Eating behavior rating scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273435004"/>
+      <display value="Eating disorders inventory"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273436003"/>
+      <display value="Eating inventory"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273437007"/>
+      <display value="ECOG scale for physical assessment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273438002"/>
+      <display value="Edinburgh articulation test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273439005"/>
+      <display value="EFCP - Edinburgh functional communication profile"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273440007"/>
+      <display value="Revised Edinburgh functional communication profile"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273441006"/>
+      <display value="Edinburgh postnatal depression scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273442004"/>
+      <display value="Edmans ADL index - Edmans activities of daily living index"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273443009"/>
+      <display value="Elia normogram"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273444003"/>
+      <display value="English picture vocabulary test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273445002"/>
+      <display value="Enthesitis index"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273446001"/>
+      <display value="European Organisation for Research and Treatment of Cancer - Quality of Life questionnaire (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273447005"/>
+      <display value="EuroQOL (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273448000"/>
+      <display value="Extended activities of daily living scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273449008"/>
+      <display value="EPI - Eysenck personality inventory"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273450008"/>
+      <display value="Facial recognition test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273451007"/>
+      <display value="Fagerstrom tolerance questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273452000"/>
+      <display value="RTQ - Revised tolerance questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273453005"/>
+      <display value="Fagerstrom test for nicotine dependence"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273454004"/>
+      <display value="FAIDSS - Fear of AIDS scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273455003"/>
+      <display value="Fear survey schedule"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273456002"/>
+      <display value="Feeding assessment schedule"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273457006"/>
+      <display value="Feelings of fatness questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273458001"/>
+      <display value="FTT - Finger tapping test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273459009"/>
+      <display value="FIRST screening test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273460004"/>
+      <display value="Frankel grading system for spinal cord injury"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273461000"/>
+      <display value="FAI - Frenchay activities index"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273462007"/>
+      <display value="Frenchay aphasia screening test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273463002"/>
+      <display value="FDA - Frenchay dysarthria assessment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273465009"/>
+      <display value="Fullerton language test for adolescents (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273466005"/>
+      <display value="Functional assessment measure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273467001"/>
+      <display value="Functional communication assessment for physically handicapped children"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273468006"/>
+      <display value="Functional communication profile"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273469003"/>
+      <display value="FIM - Functional independence measure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273470002"/>
+      <display value="Functional limitation profile"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273471003"/>
+      <display value="FMPS - Functional meal preparation scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273472005"/>
+      <display value="Functional status index"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273473000"/>
+      <display value="FSST - Fundamental speech skills test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273474006"/>
+      <display value="Galveston orientation and amnesia test (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273477004"/>
+      <display value="General assessment of neurological impairment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273478009"/>
+      <display value="General clerical test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273479001"/>
+      <display value="General health questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273480003"/>
+      <display value="GWBS - General wellbeing schedule"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273481004"/>
+      <display value="Geriatric depression scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273482006"/>
+      <display value="German test of wordfinding"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273483001"/>
+      <display value="Glasgow abbreviated mental test score"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273484007"/>
+      <display value="Glasgow outcome scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273485008"/>
+      <display value="Goldman cardiac risk index"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273486009"/>
+      <display value="Goldman-Fristoe test (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273487000"/>
+      <display value="Golombrok-Rust inventory of sexual satisfaction (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273488005"/>
+      <display value="Goodenough draw-a-man test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273489002"/>
+      <display value="Goodenough norms"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273490006"/>
+      <display value="GRBAS scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273492003"/>
+      <display value="Graded naming test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273493008"/>
+      <display value="Graham-Kendall memory for designs test (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273494002"/>
+      <display value="Grammatical analysis of elicited language"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273495001"/>
+      <display value="Grammatical contrasts test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273496000"/>
+      <display value="Gunzberg primary progress assessment chart of social development"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273497009"/>
+      <display value="Gunzberg progress assessment chart of social development number 1"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273498004"/>
+      <display value="Gunzberg progress assessment chart of social development number 2"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273499007"/>
+      <display value="Hachinski ischemia score"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273500003"/>
+      <display value="Hall and Baker rehabilitation evaluation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273501004"/>
+      <display value="Halstead-Reitan battery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273502006"/>
+      <display value="Hamb hip score"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273503001"/>
+      <display value="Hamilton rating scale for depression"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273504007"/>
+      <display value="Lorr's modified multidimensional scale for rating psychiatric patients (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273505008"/>
+      <display value="Hampshire assessment for living with others (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273508005"/>
+      <display value="Harvey and Bradshaw index"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273509002"/>
+      <display value="Hauser ambulatory categories"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273510007"/>
+      <display value="Health assessment questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273511006"/>
+      <display value="MHAQ - Modified health assessment questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273512004"/>
+      <display value="Healthcare assessment questionnaire - Sidney Benjamin (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273513009"/>
+      <display value="Health of the Nation Outcome Scale (generic version)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273514003"/>
+      <display value="Health status index"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273515002"/>
+      <display value="Hearing handicap inventory for the elderly"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273516001"/>
+      <display value="HHS - Hearing handicap scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273517005"/>
+      <display value="Hidden figures test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273520002"/>
+      <display value="Hopelessness scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273521003"/>
+      <display value="Hopkins symptom checklist"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273522005"/>
+      <display value="Hornsby articulation test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273523000"/>
+      <display value="Hornsby test of language development"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273524006"/>
+      <display value="Hospital anxiety and depression scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273525007"/>
+      <display value="Hospital trauma index"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273526008"/>
+      <display value="Human interaction assessment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273527004"/>
+      <display value="Illinois test of psycholinguistic abilities (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273528009"/>
+      <display value="IISI - Illness-injury severity index"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273529001"/>
+      <display value="Illness behavior questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273530006"/>
+      <display value="Impact of event scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273531005"/>
+      <display value="Index of activities of daily living"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273533008"/>
+      <display value="Injury Severity Score (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273534002"/>
+      <display value="Instrumental activities of daily living"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273535001"/>
+      <display value="INREAL - Inter-reactive language analysis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273536000"/>
+      <display value="Interaction checklist for augmentative communication (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273537009"/>
+      <display value="Interest checklist"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273538004"/>
+      <display value="IOWA low back rating scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273539007"/>
+      <display value="IOWA structured psychiatric interview"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273540009"/>
+      <display value="Ischemia score"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273542001"/>
+      <display value="Jarman index"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273543006"/>
+      <display value="Jebsen hand function test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273544000"/>
+      <display value="Jones word order test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273546003"/>
+      <display value="Karnofsky performance status"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273547007"/>
+      <display value="Katz activities of daily living"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273548002"/>
+      <display value="KASR - Katz adjustment scale - relatives form"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273549005"/>
+      <display value="Kendrick battery for detection of dementia in the elderly"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273550005"/>
+      <display value="Kenny index of ADL"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273551009"/>
+      <display value="Kielhofner role checklist"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273552002"/>
+      <display value="Kirwan Thompson articular index"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273553007"/>
+      <display value="Klein-Bell ADL scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273554001"/>
+      <display value="Kurtzke multiple sclerosis rating scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273555000"/>
+      <display value="LCS - Lambeth communication scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273556004"/>
+      <display value="Lambeth disability screening questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273557008"/>
+      <display value="Lamh assessment checklist"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273558003"/>
+      <display value="Language assessment remediation and screening procedure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273559006"/>
+      <display value="Lansbury articular index"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273560001"/>
+      <display value="Last six months of drinking questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273561002"/>
+      <display value="Learning development aids - handwriting assessment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273562009"/>
+      <display value="Leeds scales for the self-assessment of anxiety and depression (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273564005"/>
+      <display value="Leiter international performance scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273565006"/>
+      <display value="Lequesne index (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273566007"/>
+      <display value="Lequesne index - hip (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273567003"/>
+      <display value="Lequesne index - knee (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273568008"/>
+      <display value="Letter cancellation test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273569000"/>
+      <display value="Life events and difficulties scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273570004"/>
+      <display value="Life events inventory"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273571000"/>
+      <display value="Life satisfaction index"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273572007"/>
+      <display value="LSIA - Life satisfaction index A"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273573002"/>
+      <display value="Life satisfaction index B"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273574008"/>
+      <display value="LSIZ - Life satisfaction index Z"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273575009"/>
+      <display value="Likert scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273576005"/>
+      <display value="Lincoln rehabilitation assessment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273577001"/>
+      <display value="Lindamood auditory conceptualisation test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273578006"/>
+      <display value="Loewenstein Occupational Therapy Cognitive Assessment (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273580000"/>
+      <display value="London hospital pain chart assessment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273581001"/>
+      <display value="Luria neuropsychological battery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273582008"/>
+      <display value="MacAndrew scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273584009"/>
+      <display value="Make-a-picture story test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273585005"/>
+      <display value="Mallampati score"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273586006"/>
+      <display value="Master questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273587002"/>
+      <display value="Revised Master questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273588007"/>
+      <display value="Matson assessment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273589004"/>
+      <display value="McConkey score"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273590008"/>
+      <display value="McCormick miniature toy discrimination test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273591007"/>
+      <display value="McCormick miniature toy discrimination test - automated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273592000"/>
+      <display value="McCormick miniature toy discrimination test - manual"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273593005"/>
+      <display value="McGill pain chart questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273594004"/>
+      <display value="MHIQ - McMaster health index questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273595003"/>
+      <display value="McTears assessment of conversation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273596002"/>
+      <display value="Medical outcomes study short form general health survey"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273597006"/>
+      <display value="Medical outcomes study short form general health survey - 36"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273598001"/>
+      <display value="MOS SF - 20 - Medical outcomes study short form general health survey - 20"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273599009"/>
+      <display value="Medical Research Council motor power scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273600007"/>
+      <display value="Medical Research Council questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273601006"/>
+      <display value="Mental status questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273602004"/>
+      <display value="Mental test quotient"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273603009"/>
+      <display value="Mental test score - long version"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273604003"/>
+      <display value="Merle d'Aubigne - Charnley hip score (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273608000"/>
+      <display value="Michigan alcoholism screening test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273609008"/>
+      <display value="BMAST - Brief Michigan alcoholism screening test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273610003"/>
+      <display value="Short Michigan alcoholism screening test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273611004"/>
+      <display value="MEAMS - Middlesex elderly assessment of mental state"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273613001"/>
+      <display value="Midlands spelling test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273614007"/>
+      <display value="Mill Hill vocabulary scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273615008"/>
+      <display value="Miller assessment for preschoolers (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273616009"/>
+      <display value="Milwaukee evaluation of daily living skills (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273617000"/>
+      <display value="Mini-mental state examination"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273619002"/>
+      <display value="Modified mini-mental state examination"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273621007"/>
+      <display value="Minnesota test for differential diagnosis of aphasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273622000"/>
+      <display value="Shortened Schuell - Shortened Minnesota test for differential diagnosis of aphasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273623005"/>
+      <display value="Modified card sorting test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273624004"/>
+      <display value="MISS - Modified injury severity scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273625003"/>
+      <display value="Modified word learning test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273627006"/>
+      <display value="Mood adjective checklist (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273628001"/>
+      <display value="Morgan-Barry auditory discrimination and attention test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273629009"/>
+      <display value="Morningside rehabilitation status scale (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273630004"/>
+      <display value="Mortality probability model"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273631000"/>
+      <display value="Mortality prediction model II"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273632007"/>
+      <display value="MFS - Motives for smoking scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273633002"/>
+      <display value="Motor assessment scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273634008"/>
+      <display value="Motricity index"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273635009"/>
+      <display value="Mount Wilga high level language screening assessment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273636005"/>
+      <display value="Movement of upper limb evaluation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273637001"/>
+      <display value="Multilevel informal language inventory"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273638006"/>
+      <display value="Multilingual aphasia examination"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273639003"/>
+      <display value="Munich alcoholism test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273640001"/>
+      <display value="NART - National adult reading test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273641002"/>
+      <display value="Neale analysis of reading ability"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273642009"/>
+      <display value="Nelson schedule of growing skills"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273643004"/>
+      <display value="Neurobehavioral cognitive status examination"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273644005"/>
+      <display value="Neuropsychological battery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273645006"/>
+      <display value="Newcastle articulation test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273646007"/>
+      <display value="Newcastle dyspraxia assessment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273647003"/>
+      <display value="Newcastle phonology assessment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273648008"/>
+      <display value="Nine hole peg test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273649000"/>
+      <display value="Norris functional scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273651001"/>
+      <display value="Northwick Park index of independence in ADL"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273652008"/>
+      <display value="NHP - Nottingham health profile"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273654009"/>
+      <display value="Nuffield dyspraxia assessment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273656006"/>
+      <display value="Object naming test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273657002"/>
+      <display value="Occasions for smoking scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273658007"/>
+      <display value="Occupational case analysis interview and rating scale (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273659004"/>
+      <display value="Occupational performance history interview"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273660009"/>
+      <display value="Odstock hand assessment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273661008"/>
+      <display value="OPCS disability scales"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273662001"/>
+      <display value="OPCS behaviour disability scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273663006"/>
+      <display value="OPCS communication disability scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273664000"/>
+      <display value="OPCS consciousness disability scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273665004"/>
+      <display value="OPCS continence disability scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273666003"/>
+      <display value="OPCS dexterity disability scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273667007"/>
+      <display value="OPCS disfigurement disability scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273668002"/>
+      <display value="OPCS eating, drinking and digestion disability scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273669005"/>
+      <display value="OPCS hearing disability scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273670006"/>
+      <display value="OPCS intellectual functioning disability scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273671005"/>
+      <display value="OPCS locomotion disability scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273672003"/>
+      <display value="OPCS personal care disability scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273673008"/>
+      <display value="OPCS reaching and stretching disability scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273674002"/>
+      <display value="OPCS seeing disability scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273675001"/>
+      <display value="Oswestry disability index"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273677009"/>
+      <display value="Oxford grading scale for muscle strength"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273680005"/>
+      <display value="Padua inventory"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273681009"/>
+      <display value="Pediatric clinical test of sensory integration and balance (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273682002"/>
+      <display value="Paediatric oral skills profile"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273683007"/>
+      <display value="PRISM - Pediatric risk of mortality"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273684001"/>
+      <display value="Paediatric trauma score"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273685000"/>
+      <display value="Pain diary"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273686004"/>
+      <display value="Pantomime test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273687008"/>
+      <display value="Partners in augmentative communication training"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273688003"/>
+      <display value="Patient activity checklist"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273689006"/>
+      <display value="Patient satisfaction score"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273690002"/>
+      <display value="16PF - Personality factor questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273691003"/>
+      <display value="PETAL speech assessment procedure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273692005"/>
+      <display value="Peabody picture vocabulary test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273693000"/>
+      <display value="PSI - Perceptions of stuttering inventory"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273694006"/>
+      <display value="Performance test of activities of daily living"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273695007"/>
+      <display value="Personality assessment schedule"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273696008"/>
+      <display value="PGCMS - Philadelphia geriatric centre morale scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273697004"/>
+      <display value="Phonological assessment of child speech (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273699001"/>
+      <display value="PIP developmental charts"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273701001"/>
+      <display value="Picture pointing test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273702008"/>
+      <display value="Porch index of communicative ability"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273703003"/>
+      <display value="PANSS - Positive and negative syndrome scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273704009"/>
+      <display value="Pragmatics profile"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273705005"/>
+      <display value="Pragmatics profile of early communication skills"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273706006"/>
+      <display value="Preschool behavior check list (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273707002"/>
+      <display value="Pre-school Boehm"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273709004"/>
+      <display value="Pre-speech assessment scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273711008"/>
+      <display value="Preschool language scale (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273712001"/>
+      <display value="Previous IQ assessment by pronunciation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273713006"/>
+      <display value="Probability of death score"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273714000"/>
+      <display value="Problem oriented medical record"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273715004"/>
+      <display value="PRISM - Profile in semantics"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273716003"/>
+      <display value="Profile of communicative appropriateness"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273717007"/>
+      <display value="Profile of mood states"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273718002"/>
+      <display value="PALPA - Psycholinguistic assessments of language processing in aphasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273719005"/>
+      <display value="Psychological adjustment to illness scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273720004"/>
+      <display value="PULSES profile"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273721000"/>
+      <display value="Purdue pegboard scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273722007"/>
+      <display value="Pyramids and palm trees test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273723002"/>
+      <display value="Quadriplegia index of function"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273724008"/>
+      <display value="QALYs - Quality adjusted life years"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273725009"/>
+      <display value="Quality of life scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273726005"/>
+      <display value="Quality of wellbeing scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273728006"/>
+      <display value="Rand functional limitations battery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273729003"/>
+      <display value="Rankin scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273730008"/>
+      <display value="Rappaport disability rating scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273731007"/>
+      <display value="Rating communicative behavior in head injured adults"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273732000"/>
+      <display value="Raven's Colored Progressive Matrices"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273733005"/>
+      <display value="Raven Standard Progressive Matrices (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273735003"/>
+      <display value="Read word discrimination test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273736002"/>
+      <display value="Reading comprehension battery for aphasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273737006"/>
+      <display value="RFES - Reasons for eating scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273738001"/>
+      <display value="Reasons for smoking scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273739009"/>
+      <display value="Receptive expressive emergent language scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273740006"/>
+      <display value="RMT - Recognition memory test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273741005"/>
+      <display value="RSS - Relative Stress Scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273742003"/>
+      <display value="RI - Renal index"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273743008"/>
+      <display value="Renfrew action picture test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273744002"/>
+      <display value="Renfrew articulation test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273745001"/>
+      <display value="Renfrew wordfinding"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273746000"/>
+      <display value="Repertory grid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273747009"/>
+      <display value="Reporters tests"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273748004"/>
+      <display value="Resistance to change grid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273749007"/>
+      <display value="Respiratory index"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273750007"/>
+      <display value="Restrained eating inventory"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273751006"/>
+      <display value="Revised Iowa scale for rating severity"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273752004"/>
+      <display value="Reynell developmental language scales"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273753009"/>
+      <display value="Reynell receptive language assessment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273754003"/>
+      <display value="Reynell expressive language assessment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273756001"/>
+      <display value="Reynell Zinkin language scale for the visually impaired"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273757005"/>
+      <display value="Right hemisphere battery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273758000"/>
+      <display value="Ritchie articular index"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273761004"/>
+      <display value="RBMT - Rivermead behavioral memory test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273762006"/>
+      <display value="RMA - Rivermead motor assessment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273763001"/>
+      <display value="Rivermead perceptual assessment battery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273764007"/>
+      <display value="Robertson dysarthria assessment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273765008"/>
+      <display value="Robertson dysarthria profile"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273766009"/>
+      <display value="Roehampton ADL for amputees"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273767000"/>
+      <display value="Rose Summers pragmatic profile"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273768005"/>
+      <display value="Ross information processing assessment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273769002"/>
+      <display value="Rosser's classification of illness states"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273770001"/>
+      <display value="Roth and Spekman list of communicative intentions"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273771002"/>
+      <display value="Rotterdam symptom check list"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273772009"/>
+      <display value="Routine task inventory"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273774005"/>
+      <display value="Rutter Behaviour Questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273775006"/>
+      <display value="Rutter A scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273776007"/>
+      <display value="Rutter B scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273777003"/>
+      <display value="Rutter B2 scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273778008"/>
+      <display value="S scale Andrews and Cutler"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273779000"/>
+      <display value="Salford reading test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273780002"/>
+      <display value="Samaritan orientation test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273781003"/>
+      <display value="Sandwell bilingual comprehension test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273782005"/>
+      <display value="Santa Clara valley medical centre functional assessment measure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273783000"/>
+      <display value="Savary Miller scale (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273784006"/>
+      <display value="SECS - Scale of early communication skills"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273785007"/>
+      <display value="Schwachmann score (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273786008"/>
+      <display value="Schedules for clinical assessment in neuropsychiatry"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273787004"/>
+      <display value="Schnijders Ooman test for deaf children (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273788009"/>
+      <display value="Schofield equation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273791009"/>
+      <display value="Scissor skills checklist"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273792002"/>
+      <display value="Screening for developmental apraxia of speech"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273793007"/>
+      <display value="Screening test for auditory processing disorders"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273795000"/>
+      <display value="SIPT - Sensory Integration and Praxis Test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273797008"/>
+      <display value="SCT - Sentence comprehension test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273798003"/>
+      <display value="Serial sevens test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273799006"/>
+      <display value="Severity of alcohol dependence questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273800005"/>
+      <display value="SODQ - Severity of opiate dependence questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273801009"/>
+      <display value="Shaper index"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273802002"/>
+      <display value="Short alcohol dependence data"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273803007"/>
+      <display value="Short Orientation - Memory - Concentration Test (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273804001"/>
+      <display value="Short orientation-memory-concentration test - alternative version"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273805000"/>
+      <display value="Short-term memory test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273806004"/>
+      <display value="Shulman test of pragmatic skills"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273807008"/>
+      <display value="Sickness impact profile"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273809006"/>
+      <display value="Silvers cerebral function test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273811002"/>
+      <display value="Simplified Acute Physiology Score (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273812009"/>
+      <display value="Simplified acute physiology scale II"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273813004"/>
+      <display value="SCQ - Situational confidence questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273814005"/>
+      <display value="Situations for eating scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273815006"/>
+      <display value="Smith cognitive questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273816007"/>
+      <display value="Social adjustment scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273817003"/>
+      <display value="SAS II - Social adjustment scale II"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273818008"/>
+      <display value="Social adjustment scale self - report"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273819000"/>
+      <display value="Social behavior assessment scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273820006"/>
+      <display value="Social support questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273822003"/>
+      <display value="STAP - South Tyneside assessment of phonology"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273823008"/>
+      <display value="South Tyneside assessment of syntactic structures"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273824002"/>
+      <display value="FGP - Southern California figure ground visual perception test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273825001"/>
+      <display value="Southern California postrotary nystagmus test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273826000"/>
+      <display value="Southern California sensory integration test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273827009"/>
+      <display value="Spare time activities questionnaire (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273828004"/>
+      <display value="Special hospitals assessment of personality"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273829007"/>
+      <display value="Speech intelligibility assessment procedure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273830002"/>
+      <display value="Spielberger state-trait anxiety inventory (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273831003"/>
+      <display value="Quality of life index"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273833000"/>
+      <display value="St George's hospital respiratory questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273834006"/>
+      <display value="St Thomas's disability questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273835007"/>
+      <display value="SAP - Standardized assessment of personality"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273836008"/>
+      <display value="Stanford Binet intelligence scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273837004"/>
+      <display value="Steinbrocker functional classification (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273838009"/>
+      <display value="Stimulus response inventory"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273839001"/>
+      <display value="Stocker probe technique for diagnosis and treatment of stuttering in young children (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273840004"/>
+      <display value="Stockton geriatric rating scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273841000"/>
+      <display value="Story completion test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273842007"/>
+      <display value="Structured observation test of function (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273843002"/>
+      <display value="SCID - Structured clinical interview for DSM-III-R"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273844008"/>
+      <display value="Structured interview for DSM-III personality disorders"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273845009"/>
+      <display value="Stuttering intervention program"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273846005"/>
+      <display value="Stuttering prediction instrument"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273847001"/>
+      <display value="Stuttering severity instrument"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273848006"/>
+      <display value="Stycar hearing test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273849003"/>
+      <display value="Subjective global assessment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273850003"/>
+      <display value="Substance use disorder diagnostic schedule"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273852006"/>
+      <display value="Suicide risk scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273853001"/>
+      <display value="Sunnybrook cord injury scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273854007"/>
+      <display value="Supplementary language test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273856009"/>
+      <display value="Swollen joint count"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273857000"/>
+      <display value="Symbol digit modalities test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273858005"/>
+      <display value="Symbolic play test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273859002"/>
+      <display value="Symptom checklist"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273860007"/>
+      <display value="SLT - Synonym learning test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273861006"/>
+      <display value="Systematic fluency training for young children"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273862004"/>
+      <display value="Systemic lupus activity measure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273863009"/>
+      <display value="SLEDAI - Systemic lupus erythematosus disease activity index"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273864003"/>
+      <display value="Tamb test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273865002"/>
+      <display value="Tender joint count"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273867005"/>
+      <display value="Test for auditory perception of speech"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273868000"/>
+      <display value="TACL - Test of auditory comprehension of language"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273869008"/>
+      <display value="Test of auditory discrimination"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273870009"/>
+      <display value="Test of language competence"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273871008"/>
+      <display value="Test of language development 2"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273872001"/>
+      <display value="Test of motor impairment - Stott-Moyes-Henderson (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273873006"/>
+      <display value="Test of pragmatic skills"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273874000"/>
+      <display value="Test of reception of grammar"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273875004"/>
+      <display value="TSA - Test of syntactic abilities"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273876003"/>
+      <display value="Test of word finding in discourse"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273877007"/>
+      <display value="Test of word knowledge"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273878002"/>
+      <display value="Therapeutic intervention scoring system"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273879005"/>
+      <display value="TLFB - Time line follow back"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273880008"/>
+      <display value="Time trade off analysis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273881007"/>
+      <display value="Token test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273882000"/>
+      <display value="Trail making test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273883005"/>
+      <display value="Trauma index"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273884004"/>
+      <display value="Trauma score"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273885003"/>
+      <display value="RTS - Revised trauma score"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273886002"/>
+      <display value="Trauma and injury severity score"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273887006"/>
+      <display value="Triage index"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273888001"/>
+      <display value="Valentine auditory memory test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273889009"/>
+      <display value="Valpar 17 pre-vocational readiness battery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273891001"/>
+      <display value="Vernon Cloze procedure reading test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273892008"/>
+      <display value="Vernon graded word reading test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273893003"/>
+      <display value="Vineland maturity scales adapted for the blind"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273894009"/>
+      <display value="Vineland social maturity scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273895005"/>
+      <display value="Vineland subquotient - general self-help"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273896006"/>
+      <display value="Vineland subquotient - communication"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273897002"/>
+      <display value="Vineland subquotient - locomotion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273898007"/>
+      <display value="Vineland subquotient - occupation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273899004"/>
+      <display value="Vineland subquotient - self-help in eating"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273900009"/>
+      <display value="Vineland subquotient - socialization"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273901008"/>
+      <display value="Vineland behavioural assessment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273902001"/>
+      <display value="Visick symptom grade"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273903006"/>
+      <display value="VAS - Visual analog scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273904000"/>
+      <display value="Visual analogue pain scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273905004"/>
+      <display value="Visual and perceptual assessment program"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273906003"/>
+      <display value="Visual object and spatial perception test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273908002"/>
+      <display value="Voice assessment sheet - Martin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273909005"/>
+      <display value="Voice evaluation form"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273910000"/>
+      <display value="Voice skills assessment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273912008"/>
+      <display value="Waddell disability index"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273913003"/>
+      <display value="Wakefield self-assessment depression inventory"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273914009"/>
+      <display value="Ward behavior rating scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273915005"/>
+      <display value="Warner dysphagia assessment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273916006"/>
+      <display value="Wechsler adult intelligence scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273917002"/>
+      <display value="Wechsler adult intelligence test - revised"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273918007"/>
+      <display value="Wechsler intelligence scale for children"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273919004"/>
+      <display value="Wechsler intelligence non-verbal performance assessment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273920005"/>
+      <display value="Wechsler intelligence verbal assessment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273921009"/>
+      <display value="Wechsler memory scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273922002"/>
+      <display value="Wechsler pre-school and primary scale of intelligence"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273923007"/>
+      <display value="Weigl - Goldstein - Scheerer color form sorting test (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273924001"/>
+      <display value="Wepman digit span test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273925000"/>
+      <display value="Wepman test of auditory processing disorders"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273926004"/>
+      <display value="Wessex revised portage language checklist (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273927008"/>
+      <display value="Western aphasia battery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273928003"/>
+      <display value="Westmead Post-Traumatic Amnesia Scale (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273929006"/>
+      <display value="WHO depression scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273930001"/>
+      <display value="WHO handicap scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273931002"/>
+      <display value="WHO classification of impairments, disabilities and handicap scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273932009"/>
+      <display value="WHO economic self-sufficiency handicap scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273933004"/>
+      <display value="WHO mobility handicap scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273934005"/>
+      <display value="WHO occupation handicap scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273935006"/>
+      <display value="WHO orientation handicap scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273936007"/>
+      <display value="WHO physical independence handicap scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273937003"/>
+      <display value="WHO social integration handicap scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273938008"/>
+      <display value="Winslow feeding checklist"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273939000"/>
+      <display value="Wisconsin card sorting test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273940003"/>
+      <display value="SDS - Zung self-rating depression scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273941004"/>
+      <display value="Zung's anxiety status inventory"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="273942006"/>
+      <display value="Zung's self-rating anxiety scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="277318003"/>
+      <display value="(m)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="277457005"/>
+      <display value="Histological grading systems"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="277459008"/>
+      <display value="Daumas-Duport grading system"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="277460003"/>
+      <display value="WHO CNS tumour grading system"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="277645005"/>
+      <display value="Additional TNM descriptors"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="278241006"/>
+      <display value="Node stage G1"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="278242004"/>
+      <display value="Node stage G2"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="278247005"/>
+      <display value="Lung stage L1"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="278699003"/>
+      <display value="Parsonnet score"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="278896008"/>
+      <display value="Short form McGill pain questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="278897004"/>
+      <display value="Waterlow pressure sore risk score"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="278898009"/>
+      <display value="Norton Scale (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="279101002"/>
+      <display value="Verbal rating scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="281113000"/>
+      <display value="Health of the Nation Outcome Scale - summated (generic version)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="281114006"/>
+      <display value="Health of the Nation Outcome Scale subscale (generic version)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="281115007"/>
+      <display value="Health of the Nation Outcome Scale item 1 - aggressive/disruptive behavior"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="281116008"/>
+      <display value="Health of the Nation Outcome Scale item 2 - non-accidental self injury"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="281117004"/>
+      <display value="HoNOS item 3 - alcohol/drug problem"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="281118009"/>
+      <display value="Health of the Nation Outcome Scale item 4 - cognitive problems"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="281119001"/>
+      <display value="HoNOS item 5"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="281120007"/>
+      <display value="Health of the Nation Outcome Scale item 6 - hallucinations/delusions"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="281121006"/>
+      <display value="HoNOS item 7"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="281122004"/>
+      <display value="Health of the Nation Outcome Scale item 8 - other mental/behavioral problems"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="281123009"/>
+      <display value="HoNOS item 9"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="281124003"/>
+      <display value="HoNOS item 10"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="281125002"/>
+      <display value="Health of the Nation Outcome scale item 11 - living conditions"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="281126001"/>
+      <display value="HoNOS item 12"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="281400004"/>
+      <display value="Ramsay sedation scale (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="281692008"/>
+      <display value="Griffiths mental developmental scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="281693003"/>
+      <display value="Gessell developmental scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="281844006"/>
+      <display value="Health of the Nation Outcome subscale A"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="281845007"/>
+      <display value="HoNOS subscale B"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="281846008"/>
+      <display value="Health of the Nation Outcome subscale C"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="281848009"/>
+      <display value="HoNOS subscale D"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="281849001"/>
+      <display value="Health of the Nation Outcome Scale item (generic version)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="282402005"/>
+      <display value="V - Hepatic vein marker"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="282403000"/>
+      <display value="P - Portal vein marker"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="282404006"/>
+      <display value="E - Extrahepatic marker"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="282405007"/>
+      <display value="M - Metastatic marker"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="282436004"/>
+      <display value="E - Extralymphatic organ involvement marker"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="282437008"/>
+      <display value="S - Splenic involvement marker"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="282466006"/>
+      <display value="Suicide intent score scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="282467002"/>
+      <display value="Suicide intent score scale - summated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="282468007"/>
+      <display value="Suicide intent score subscale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="282469004"/>
+      <display value="Suicide intent score subscale - attempt circumstances"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="282470003"/>
+      <display value="Suicide intent score subscale - self report"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="282471004"/>
+      <display value="Suicide intent score subscale - risk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="284061009"/>
+      <display value="GAF - Global assessment of functioning - 1993 DSMIV adaptation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="284064001"/>
+      <display value="BPRS - Brief psychiatric rating scale - 1962"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="284464005"/>
+      <display value="Health of the Nation Outcome Scales"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="285713000"/>
+      <display value="Guide to early movement skills checklist"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="285714006"/>
+      <display value="BSTS - Bereweeke skill teaching system checklist"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="300991009"/>
+      <display value="Webster Scale (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="303807002"/>
+      <display value="Rule of nines"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304705008"/>
+      <display value="AAMR adaptive behavior scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304706009"/>
+      <display value="Acceptance of illness scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304707000"/>
+      <display value="Anomalous sentences repetition test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304708005"/>
+      <display value="Arthritis impact measurement scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304709002"/>
+      <display value="Attitudes towards doctors and medicine scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304710007"/>
+      <display value="Beck hopelessness scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304711006"/>
+      <display value="Beck anxiety inventory"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304712004"/>
+      <display value="Beck scale for suicide ideation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304713009"/>
+      <display value="BPCQ - Beliefs about pain control questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304714003"/>
+      <display value="Bellak children's apperception test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304715002"/>
+      <display value="Bender visual motor gestalt test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304716001"/>
+      <display value="Bruininks-Oseretsky test of motor proficiency (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304717005"/>
+      <display value="Cancer attitude inventory"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304718000"/>
+      <display value="Child depression scale, second research edition"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304719008"/>
+      <display value="Children's health locus of control scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304720002"/>
+      <display value="CECS - Courtauld emotional control scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304721003"/>
+      <display value="Crown-crisp experiential index"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304722005"/>
+      <display value="Culture-free self-esteem inventory"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304723000"/>
+      <display value="Delusions-symptoms-states inventory"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304724006"/>
+      <display value="Eysenck personality questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304725007"/>
+      <display value="Family relations test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304726008"/>
+      <display value="Forced choice ratings of health-related attributes"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304727004"/>
+      <display value="Framingham anger measure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304728009"/>
+      <display value="Framingham type A behavior pattern measure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304729001"/>
+      <display value="Fuld object memory evaluation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304730006"/>
+      <display value="Functional performance record"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304731005"/>
+      <display value="GPHB - General preventative health behaviours checklist"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304732003"/>
+      <display value="Hassles scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304733008"/>
+      <display value="Health knowledge measurement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304734002"/>
+      <display value="Health value scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304735001"/>
+      <display value="Illinois test of psycholinguistic abilities, revised edition (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304736000"/>
+      <display value="Inventory of drinking situations"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304738004"/>
+      <display value="Kaufman assessment battery for children"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304739007"/>
+      <display value="Life experiences checklist"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304740009"/>
+      <display value="LOT - Life orientation test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304741008"/>
+      <display value="Luria-Nebraska neuropsychological battery, children's revision"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304742001"/>
+      <display value="Luria-Nebraska neuropsychological battery, form 1"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304743006"/>
+      <display value="Marlow-Crowne scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304744000"/>
+      <display value="MISS - Medical interview satisfaction scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304745004"/>
+      <display value="Mental adjustment to cancer scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304746003"/>
+      <display value="Merril-Palmer preschool performance scale (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304747007"/>
+      <display value="Motivation analysis test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304748002"/>
+      <display value="Multidimensional health locus of control scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304749005"/>
+      <display value="Object relations technique"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304750005"/>
+      <display value="Pain coping strategies questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304751009"/>
+      <display value="PILL - Pennebaker inventory of linguid languidness"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304752002"/>
+      <display value="Perceived control of insulin-dependent diabetes"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304753007"/>
+      <display value="PSS - Perceived stress scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304754001"/>
+      <display value="Personality deviance scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304755000"/>
+      <display value="PANAS - Positive and negative affect schedule"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304756004"/>
+      <display value="Prejudicial evaluation and social interaction scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304757008"/>
+      <display value="Profile of mood states, bipolar"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304758003"/>
+      <display value="Quick neurological screening test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304759006"/>
+      <display value="Raven's progressive matrices and vocabulary scales"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304760001"/>
+      <display value="RLOC - Recovery locus of control scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304761002"/>
+      <display value="Reported health behaviors checklist"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304762009"/>
+      <display value="Revised token test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304763004"/>
+      <display value="Reynell developmental language scales, second revision"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304764005"/>
+      <display value="Reynell Zinkin scale for young visually handicapped children"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304765006"/>
+      <display value="Rogers personal adjustment inventory, revised"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304766007"/>
+      <display value="RSES - Rosenberg self-esteem scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304767003"/>
+      <display value="Rust Inventory of Schizotypal Cognitions (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304768008"/>
+      <display value="Satisfaction with life scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304769000"/>
+      <display value="Screening test for the Luria-Nebraska neuropsychological battery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304770004"/>
+      <display value="Short form social support questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304771000"/>
+      <display value="SOS - Significant others scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304772007"/>
+      <display value="Snijders-Oomen non-verbal intelligence scale, revised"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304773002"/>
+      <display value="Stanford Binet intelligence scale, fourth edition"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304774008"/>
+      <display value="Stanford Binet form L/M"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304775009"/>
+      <display value="State-trait anger expression inventory"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304776005"/>
+      <display value="Stroop neuropsychological screening test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304777001"/>
+      <display value="Symbolic play test, second edition"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304778006"/>
+      <display value="Token test for children"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304779003"/>
+      <display value="Uplifts scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304780000"/>
+      <display value="PPQ - Varni-Thompson paediatric pain questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304781001"/>
+      <display value="Vineland adaptive behaviour scales"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="304915008"/>
+      <display value="Duke's coronary artery disease score"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="307791002"/>
+      <display value="Strange situation test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="307792009"/>
+      <display value="Rey figure test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="307793004"/>
+      <display value="Test of everyday attention"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="307794005"/>
+      <display value="Test of everyday attention - adult"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="307795006"/>
+      <display value="Test of everyday attention - child"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="307801002"/>
+      <display value="Rivermead behavioral memory test - adult version"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="307802009"/>
+      <display value="Rivermead behavioral memory test - child version"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="307803004"/>
+      <display value="Wechsler objective numerical dimensions test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="307804005"/>
+      <display value="WOLD - Wechsler objective language dimensions test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="307805006"/>
+      <display value="Health of the Nation Outcome Scale for children"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="307806007"/>
+      <display value="Health of the Nation Outcome Scale for adolescents"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="307807003"/>
+      <display value="Maudsley addiction profile"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="309593006"/>
+      <display value="Education score - diabetes"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="311404002"/>
+      <display value="Attention process training questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="311405001"/>
+      <display value="Rating scale of attentional behaviour"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="311406000"/>
+      <display value="Everyday memory questionnaire"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="311457001"/>
+      <display value="Behavior assessment of the dysexecutive syndrome (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="311458006"/>
+      <display value="Doors and people assessment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="311472002"/>
+      <display value="Alphabet number alteration test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="311473007"/>
+      <display value="Vigil/W test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="311474001"/>
+      <display value="Attentional capacity test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="311475000"/>
+      <display value="Consonant trigrams test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="311477008"/>
+      <display value="Buschke selective reminding test (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="311478003"/>
+      <display value="California verbal learning test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="311480009"/>
+      <display value="Williams memory assessment scales"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="311481008"/>
+      <display value="Wechsler memory scale revised"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="311483006"/>
+      <display value="Association for neuropsychological research and development prospective memory test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="311484000"/>
+      <display value="PASAT - Paced auditory serial addition test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="311485004"/>
+      <display value="Category test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="311486003"/>
+      <display value="Profile of executive control system"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="311512008"/>
+      <display value="Brixton test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="311513003"/>
+      <display value="Hayling test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="311514009"/>
+      <display value="MicroCog Assessment of Cognitive Function (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="311515005"/>
+      <display value="Computerized Assessment of Response Bias (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="311516006"/>
+      <display value="Symptom validity test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="311521009"/>
+      <display value="Rey complex figure test (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="311777009"/>
+      <display value="Military skills assessment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="311807004"/>
+      <display value="Measurement of cognitive linguistic ability"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="311851008"/>
+      <display value="Attention process training test"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="311854000"/>
+      <display value="Life science associates assessment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="311855004"/>
+      <display value="Speeded reading of word lists (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="311856003"/>
+      <display value="REACT - reaction tester"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="311858002"/>
+      <display value="SEARCH - searching for patterns"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="311860000"/>
+      <display value="Search a word"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="311861001"/>
+      <display value="DETECT - error detection"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="311863003"/>
+      <display value="BISECT - line bisection"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="311865005"/>
+      <display value="JUMP - eye movement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="311866006"/>
+      <display value="MATCH - shape matching"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="311868007"/>
+      <display value="Search for the odd shape"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="315037004"/>
+      <display value="Sheffield risk score"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="315038009"/>
+      <display value="Framingham coronary heart disease 5 year risk score"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="315039001"/>
+      <display value="Framingham coronary heart disease 10 year risk score"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="315290008"/>
+      <display value="Coronary heart disease risk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="315609007"/>
+      <display value="Pack years"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="315628000"/>
+      <display value="CLASP score"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="373801008"/>
+      <display value="WHO performance status scale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="385345007"/>
+      <display value="Clark system for melanoma staging (tumor staging)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="385346008"/>
+      <display value="Breslow system for melanoma staging (tumor staging)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="385359000"/>
+      <display value="Modified Dukes staging system (tumor staging)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="386554004"/>
+      <display value="Glasgow coma scale (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="395070003"/>
+      <display value="Elderly at risk rating scale (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="396192007"/>
+      <display value="Fuhrman nuclear grading system (staging scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="396215004"/>
+      <display value="Developmental test of visual perception (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="396216003"/>
+      <display value="Motor free visual perception test (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="396241005"/>
+      <display value="Merrill Palmer scale (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="396244002"/>
+      <display value="Physical self maintenance scale (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="396295000"/>
+      <display value="Nottingham extended ADL index"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="396296004"/>
+      <display value="Nottingham ten-point ADL index"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="397759004"/>
+      <display value="Spectral edge frequency (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="398204001"/>
+      <display value="Bispectral index (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="398210001"/>
+      <display value="Bromage Scale (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="404934007"/>
+      <display value="Tinetti assessment scale (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="404945005"/>
+      <display value="Elderly mobility scale (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="405646004"/>
+      <display value="Preventability scale (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="406529000"/>
+      <display value="Pneumonia severity index (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="407600003"/>
+      <display value="Pocock risk score (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="407612004"/>
+      <display value="Framingham coronary heart disease 10 year adjusted risk score (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="408846002"/>
+      <display value="Stages of retinopathy of prematurity (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="414648004"/>
+      <display value="Malnutrition universal screening tool (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="414879002"/>
+      <display value="Nottingham prognostic index (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="417957003"/>
+      <display value="Uveal metastasis (tumor staging)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="418118008"/>
+      <display value="Ranson's criteria score (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="420417005"/>
+      <display value="Liver tumor size index more than 0.05 (tumor staging)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="420483003"/>
+      <display value="Abdominal lymph node tumor invasion status A (tumor staging)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="420533005"/>
+      <display value="Choroidal invasion stage C1 in retinoblastoma (tumor staging)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="420728008"/>
+      <display value="Timing of liver tumor staging at diagnosis (tumor staging)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="420816009"/>
+      <display value="New York Heart Association Classification (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="420841002"/>
+      <display value="Choroidal invasion stage C0 in retinoblastoma (tumor staging)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="420889006"/>
+      <display value="Liver tumor size index less than 0.05 (tumor staging)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="420969009"/>
+      <display value="Lymphoma staging symptom status A (tumor staging)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421074006"/>
+      <display value="Central nervous system stage B3 in retinoblastoma (tumor staging)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421174009"/>
+      <display value="Choroidal invasion stage C2 in retinoblastoma (tumor staging)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421188008"/>
+      <display value="Tumor staging descriptor r (tumor staging)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421211000"/>
+      <display value="Lymphoma staging symptom status B (tumor staging)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421294007"/>
+      <display value="Timing of liver tumor staging pre-surgery (tumor staging)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421426001"/>
+      <display value="Tumor staging descriptor a (tumor staging)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421432006"/>
+      <display value="Choroidal invasion stage C3 in retinoblastoma (tumor staging)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421655002"/>
+      <display value="Optic nerve invasion stage N1 in retinoblastoma (tumor staging)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421683000"/>
+      <display value="Optic nerve invasion stage N0 in retinoblastoma (tumor staging)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421745006"/>
+      <display value="Choroidal invasion stage C4 in retinoblastoma (tumor staging)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421755005"/>
+      <display value="Tumor staging descriptor y (tumor staging)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421824005"/>
+      <display value="Tumor staging descriptor p (tumor staging)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421838003"/>
+      <display value="Optic nerve invasion stage N3 in retinoblastoma (tumor staging)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421923000"/>
+      <display value="Central nervous system stage B2 in retinoblastoma (tumor staging)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="422196000"/>
+      <display value="Tumor staging descriptor D (tumor staging)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="422203007"/>
+      <display value="Central nervous system stage B1 in retinoblastoma (tumor staging)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="423549006"/>
+      <display value="Chronic illness perception assessment scale (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="424772004"/>
+      <display value="Burns weaning assessment program (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="425401001"/>
+      <display value="Pain intensity rating scale (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="425759007"/>
+      <display value="Braden Q assessment scale (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="426757001"/>
+      <display value="French Federation of Cancer Centers Sarcoma Group (FNCLCC) grading system"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="426938003"/>
+      <display value="Morse falls risk assessment (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="427196009"/>
+      <display value="National Cancer Institute (NCI) histologic grading system"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="428203000"/>
+      <display value="Berg Balance Scale (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="428208009"/>
+      <display value="Bristol stool form scale (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="428433009"/>
+      <display value="International prostate symptom score (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="429389007"/>
+      <display value="Pierce suicide intent scale (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="429501006"/>
+      <display value="Alcohol withdrawal scale (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="429712009"/>
+      <display value="Bath Ankylosing Spondylitis Disease Activity Index (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="438367009"/>
+      <display value="Congestive heart failure, hypertension, age 75 years or older, diabetes, and previous stroke or transient ischemic attack risk score (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="438501007"/>
+      <display value="Joint protection knowledge assessment (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="438502000"/>
+      <display value="Occupational therapy role checklist (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="438621004"/>
+      <display value="Elderly Assessment System (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="438622006"/>
+      <display value="Perceived efficacy and goal setting system (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="438766002"/>
+      <display value="Arnadottir occupational therapy activities of daily living neurobehavioral evaluation (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="438776004"/>
+      <display value="Community dependency index (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="438780009"/>
+      <display value="Mayers lifestyle questionnaire 1 (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="439312002"/>
+      <display value="Occupational circumstances assessment interview and rating scale forensic mental health version 4.0 (assessment scale)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="439313007"/>
+      <display value="Canadian occupational performance measure (assessment scale)"/>
+    </contains>
+  </expansion>
+</ValueSet>

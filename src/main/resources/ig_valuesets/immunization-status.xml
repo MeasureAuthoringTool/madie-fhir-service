@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="immunization-status"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="pher"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="trial-use"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="3"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/immunization-status"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.295"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="ImmunizationStatusCodes"/>
+  <title value="Immunization Status Codes"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="The value set to instantiate this attribute should be drawn from a terminologically robust code system that consists of or contains concepts to support describing the current status of the administered dose of vaccine."/>
+  <compose>
+    <include>
+      <system value="http://hl7.org/fhir/event-status"/>
+      <concept>
+        <code value="completed"/>
+      </concept>
+      <concept>
+        <code value="entered-in-error"/>
+      </concept>
+      <concept>
+        <code value="not-done"/>
+      </concept>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:0723e6ce-d696-48e6-9d8a-f9aa88eadc96"/>
+    <timestamp value="2025-01-17T09:53:38-07:00"/>
+    <total value="3"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://hl7.org/fhir/event-status|4.0.1"/>
+    </parameter>
+    <contains>
+      <system value="http://hl7.org/fhir/event-status"/>
+      <code value="completed"/>
+      <display value="Completed"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/event-status"/>
+      <code value="entered-in-error"/>
+      <display value="Entered in Error"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/event-status"/>
+      <code value="not-done"/>
+      <display value="Not Done"/>
+    </contains>
+  </expansion>
+</ValueSet>

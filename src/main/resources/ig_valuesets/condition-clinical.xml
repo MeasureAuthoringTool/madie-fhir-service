@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="condition-clinical"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="pc"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="trial-use"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="3"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/condition-clinical"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.164"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="ConditionClinicalStatusCodes"/>
+  <title value="Condition Clinical Status Codes"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="Preferred value set for Condition Clinical Status."/>
+  <immutable value="true"/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/condition-clinical"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:708ec227-0667-4df0-accd-6e4a1c0358e5"/>
+    <timestamp value="2025-01-17T09:53:37-07:00"/>
+    <total value="7"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/condition-clinical|3.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/condition-clinical"/>
+      <code value="active"/>
+      <display value="Active"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/condition-clinical"/>
+      <code value="recurrence"/>
+      <display value="Recurrence"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/condition-clinical"/>
+      <code value="relapse"/>
+      <display value="Relapse"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/condition-clinical"/>
+      <code value="inactive"/>
+      <display value="Inactive"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/condition-clinical"/>
+      <code value="remission"/>
+      <display value="Remission"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/condition-clinical"/>
+      <code value="resolved"/>
+      <display value="Resolved"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/condition-clinical"/>
+      <code value="unknown"/>
+      <display value="Unknown"/>
+    </contains>
+  </expansion>
+</ValueSet>

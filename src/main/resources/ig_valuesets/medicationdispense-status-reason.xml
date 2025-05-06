@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="medicationdispense-status-reason"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="phx"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/medicationdispense-status-reason"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.1316"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="MedicationDispense Status Reason Codes"/>
+  <title value="Medication dispense  status  reason  codes"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="MedicationDispense Status Codes"/>
+  <immutable value="true"/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:51acfa74-3017-4a8d-b79c-aeb2d5a848c6"/>
+    <timestamp value="2025-01-17T09:53:38-07:00"/>
+    <total value="21"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason|4.0.1"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason"/>
+      <code value="frr01"/>
+      <display value="Order Stopped"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason"/>
+      <code value="frr02"/>
+      <display value="Stale-dated Order"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason"/>
+      <code value="frr03"/>
+      <display value="Incomplete data"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason"/>
+      <code value="frr04"/>
+      <display value="Product unavailable"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason"/>
+      <code value="frr05"/>
+      <display value="Ethical/religious"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason"/>
+      <code value="frr06"/>
+      <display value="Unable to provide care"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason"/>
+      <code value="altchoice"/>
+      <display value="Try another treatment first"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason"/>
+      <code value="clarif"/>
+      <display value="Prescription/Request requires clarification"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason"/>
+      <code value="drughigh"/>
+      <display value="Drug level too high"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason"/>
+      <code value="hospadm"/>
+      <display value="Admission to hospital"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason"/>
+      <code value="labint"/>
+      <display value="Lab interference issues"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason"/>
+      <code value="non-avail"/>
+      <display value="Patient not available"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason"/>
+      <code value="preg"/>
+      <display value="Patient is pregnant or breastfeeding"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason"/>
+      <code value="saig"/>
+      <display value="Allergy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason"/>
+      <code value="sddi"/>
+      <display value="Drug interacts with another drug"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason"/>
+      <code value="sdupther"/>
+      <display value="Duplicate therapy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason"/>
+      <code value="sintol"/>
+      <display value="Suspected intolerance"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason"/>
+      <code value="surg"/>
+      <display value="Patient scheduled for surgery"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason"/>
+      <code value="washout"/>
+      <display value="Washout"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason"/>
+      <code value="outofstock"/>
+      <display value="Drug not available - out of stock"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason"/>
+      <code value="offmarket"/>
+      <display value="Drug not available - off market"/>
+    </contains>
+  </expansion>
+</ValueSet>

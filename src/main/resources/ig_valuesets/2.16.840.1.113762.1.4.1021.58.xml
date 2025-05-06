@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="2.16.840.1.113762.1.4.1021.58"/>
+  <meta>
+    <versionId value="6"/>
+    <lastUpdated value="2019-12-12T01:00:20.000-05:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+    <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/publishable-valueset-cqfm"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/valueset-author">
+    <valueString value="MD Partners Author"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate">
+    <valueDate value="2022-12-15"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/valueset-effectiveDate">
+    <valueDate value="2019-12-12"/>
+  </extension>
+  <url value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1021.58"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113762.1.4.1021.58"/>
+  </identifier>
+  <version value="20191212"/>
+  <name value="PatientReasonNotDoneSCT"/>
+  <title value="Patient Reason Not Done SCT"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2019-12-12T01:00:20-05:00"/>
+  <publisher value="MD Partners Steward"/>
+  <jurisdiction>
+    <extension url="http://hl7.org/fhir/StructureDefinition/data-absent-reason">
+      <valueString value="UNKNOWN"/>
+    </extension>
+  </jurisdiction>
+  <purpose value="(Clinical Focus: Contains concepts that represent a reason for patient refusal.),(Data Element Scope: May use the Quality Data Model (QDM) attribute related to Negation Rationale.),(Inclusion Criteria: Includes only relevant concepts associated with identifying a patient's reason for refusing treatment.),(Exclusion Criteria: None.)"/>
+  <compose>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <concept>
+        <code value="105480006"/>
+        <display value="Refusal of treatment by patient (situation)"/>
+      </concept>
+      <concept>
+        <code value="134397009"/>
+        <display value="Angiotensin converting enzyme inhibitor declined (situation)"/>
+      </concept>
+      <concept>
+        <code value="160932005"/>
+        <display value="Financial problem (finding)"/>
+      </concept>
+      <concept>
+        <code value="160934006"/>
+        <display value="Financial circumstances change (finding)"/>
+      </concept>
+      <concept>
+        <code value="182890002"/>
+        <display value="Patient requests alternative treatment (finding)"/>
+      </concept>
+      <concept>
+        <code value="182895007"/>
+        <display value="Drug declined by patient (situation)"/>
+      </concept>
+      <concept>
+        <code value="182896008"/>
+        <display value="Drug declined by patient - dislikes taste (situation)"/>
+      </concept>
+      <concept>
+        <code value="182897004"/>
+        <display value="Drug declined by patient - side effects (situation)"/>
+      </concept>
+      <concept>
+        <code value="182898009"/>
+        <display value="Drug declined by patient - inconvenient (situation)"/>
+      </concept>
+      <concept>
+        <code value="182900006"/>
+        <display value="Drug declined by patient - patient beliefs (situation)"/>
+      </concept>
+      <concept>
+        <code value="182901005"/>
+        <display value="Drug declined by patient - alternative therapy (situation)"/>
+      </concept>
+      <concept>
+        <code value="182902003"/>
+        <display value="Drug declined by patient - cannot pay script (situation)"/>
+      </concept>
+      <concept>
+        <code value="182903008"/>
+        <display value="Drug declined by patient - reason unknown (situation)"/>
+      </concept>
+      <concept>
+        <code value="183944003"/>
+        <display value="Procedure refused (situation)"/>
+      </concept>
+      <concept>
+        <code value="183945002"/>
+        <display value="Procedure refused for religious reason (situation)"/>
+      </concept>
+      <concept>
+        <code value="183946001"/>
+        <display value="Procedure refused - uncooperative (situation)"/>
+      </concept>
+      <concept>
+        <code value="183947005"/>
+        <display value="Refused procedure - after thought (situation)"/>
+      </concept>
+      <concept>
+        <code value="183948000"/>
+        <display value="Refused procedure - parent's wish (situation)"/>
+      </concept>
+      <concept>
+        <code value="184081006"/>
+        <display value="Patient has moved away (finding)"/>
+      </concept>
+      <concept>
+        <code value="185479006"/>
+        <display value="Patient dissatisfied with result (finding)"/>
+      </concept>
+      <concept>
+        <code value="185481008"/>
+        <display value="Dissatisfied with doctor (finding)"/>
+      </concept>
+      <concept>
+        <code value="224187001"/>
+        <display value="Variable income (finding)"/>
+      </concept>
+      <concept>
+        <code value="225928004"/>
+        <display value="Patient self-discharge against medical advice (procedure)"/>
+      </concept>
+      <concept>
+        <code value="266710000"/>
+        <display value="Drugs not taken/completed (situation)"/>
+      </concept>
+      <concept>
+        <code value="266966009"/>
+        <display value="Family illness (situation)"/>
+      </concept>
+      <concept>
+        <code value="275694009"/>
+        <display value="Patient defaulted from follow-up (finding)"/>
+      </concept>
+      <concept>
+        <code value="275936005"/>
+        <display value="Patient noncompliance - general (situation)"/>
+      </concept>
+      <concept>
+        <code value="281399006"/>
+        <display value="Did not attend (finding)"/>
+      </concept>
+      <concept>
+        <code value="310343007"/>
+        <display value="Further opinion sought (finding)"/>
+      </concept>
+      <concept>
+        <code value="315640000"/>
+        <display value="Influenza vaccination declined (situation)"/>
+      </concept>
+      <concept>
+        <code value="371138003"/>
+        <display value="Refusal of treatment by parents (situation)"/>
+      </concept>
+      <concept>
+        <code value="373787003"/>
+        <display value="Treatment delay - patient choice (finding)"/>
+      </concept>
+      <concept>
+        <code value="401084003"/>
+        <display value="Angiotensin II receptor antagonist declined (situation)"/>
+      </concept>
+      <concept>
+        <code value="406149000"/>
+        <display value="Medication refused (situation)"/>
+      </concept>
+      <concept>
+        <code value="408367005"/>
+        <display value="Patient forgets to take medication (finding)"/>
+      </concept>
+      <concept>
+        <code value="413310006"/>
+        <display value="Patient non-compliant - refused access to services (situation)"/>
+      </concept>
+      <concept>
+        <code value="413311005"/>
+        <display value="Patient non-compliant - refused intervention / support (situation)"/>
+      </concept>
+      <concept>
+        <code value="413312003"/>
+        <display value="Patient non-compliant - refused service (situation)"/>
+      </concept>
+      <concept>
+        <code value="416432009"/>
+        <display value="Procedure not wanted (situation)"/>
+      </concept>
+      <concept>
+        <code value="423656007"/>
+        <display value="Income insufficient to buy necessities (finding)"/>
+      </concept>
+      <concept>
+        <code value="424739004"/>
+        <display value="Income sufficient to buy only necessities (finding)"/>
+      </concept>
+      <concept>
+        <code value="443390004"/>
+        <display value="Refused (qualifier value)"/>
+      </concept>
+      <concept>
+        <code value="609589008"/>
+        <display value="Refused by parents of subject (qualifier value)"/>
+      </concept>
+      <concept>
+        <code value="713247000"/>
+        <display value="Procedure discontinued by patient (situation)"/>
+      </concept>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:b40537d1-de0a-42cb-950e-1374998632d3"/>
+    <timestamp value="2023-06-29T19:13:00-04:00"/>
+    <total value="38"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="105480006"/>
+      <display value="Procedure declined by patient (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="134397009"/>
+      <display value="Angiotensin converting enzyme inhibitor declined (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="160932005"/>
+      <display value="Financial problem (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="160934006"/>
+      <display value="Financial circumstances change (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="182890002"/>
+      <display value="Patient requests alternative treatment (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="182895007"/>
+      <display value="Drug declined by patient (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="182896008"/>
+      <display value="Drug declined by patient - dislikes taste (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="182897004"/>
+      <display value="Drug declined by patient - side effects (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="182898009"/>
+      <display value="Drug declined by patient - inconvenient (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="182900006"/>
+      <display value="Drug declined by patient - patient beliefs (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="182901005"/>
+      <display value="Drug declined by patient - alternative therapy (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="182902003"/>
+      <display value="Drug declined by patient - cannot pay script (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="182903008"/>
+      <display value="Drug declined by patient - reason unknown (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="183945002"/>
+      <display value="Procedure declined for religious reason (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="183946001"/>
+      <display value="Procedure declined - uncooperative (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="183948000"/>
+      <display value="Procedure declined by parent (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="184081006"/>
+      <display value="Patient has moved away (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="185479006"/>
+      <display value="Patient dissatisfied with result (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="185481008"/>
+      <display value="Dissatisfied with doctor (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224187001"/>
+      <display value="Variable income (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="225928004"/>
+      <display value="Patient self-discharge against medical advice (procedure)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="266710000"/>
+      <display value="Drugs not taken/completed (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="266966009"/>
+      <display value="Family illness (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="275694009"/>
+      <display value="Patient defaulted from follow-up (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="275936005"/>
+      <display value="Patient noncompliance - general (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="281399006"/>
+      <display value="Did not attend (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="310343007"/>
+      <display value="Further opinion sought (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="315640000"/>
+      <display value="Influenza vaccination declined (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="373787003"/>
+      <display value="Treatment delay - patient choice (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="401084003"/>
+      <display value="Angiotensin II receptor antagonist declined (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="406149000"/>
+      <display value="Medication declined (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="408367005"/>
+      <display value="Patient forgets to take medication (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="413311005"/>
+      <display value="Patient non-compliant - declined intervention / support (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="416432009"/>
+      <display value="Procedure not wanted (situation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="423656007"/>
+      <display value="Income insufficient to buy necessities (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="424739004"/>
+      <display value="Income sufficient to buy only necessities (finding)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="443390004"/>
+      <display value="Refused (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="713247000"/>
+      <display value="Procedure discontinued by patient (situation)"/>
+    </contains>
+  </expansion>
+</ValueSet>

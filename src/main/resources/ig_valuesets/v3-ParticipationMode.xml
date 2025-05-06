@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="v3-ParticipationMode"/>
+  <language value="en"/>
+  <text>
+    <status value="extensions"/>
+    <div xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+      <p>This value set includes codes based on the following rules:</p>
+      <ul>
+        <li>Include these codes as defined in 
+          <a href="CodeSystem-v3-ParticipationMode.html">
+            <code>http://terminology.hl7.org/CodeSystem/v3-ParticipationMode</code>
+          </a>
+          <table class="none">
+            <tr>
+              <td style="white-space:nowrap">
+                <b>Code</b>
+              </td>
+              <td>
+                <b>Display</b>
+              </td>
+              <td>
+                <b>Definition</b>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="CodeSystem-v3-ParticipationMode.html#v3-ParticipationMode-PHYSICAL">PHYSICAL</a>
+              </td>
+              <td style="color: #cccccc">physical presence</td>
+              <td>Participation by direct action where subject and actor are in the same location. (The participation involves more than communication.)</td>
+            </tr>
+            <tr>
+              <td>
+                <a href="CodeSystem-v3-ParticipationMode.html#v3-ParticipationMode-REMOTE">REMOTE</a>
+              </td>
+              <td style="color: #cccccc">remote presence</td>
+              <td>Participation by direct action where subject and actor are in separate locations, and the actions of the actor are transmitted by electronic or mechanical means. (The participation involves more than communication.)</td>
+            </tr>
+          </table>
+        </li>
+        <li>Import all the codes that are contained in 
+          <a href="ValueSet-v3-ParticipationModeVerbal.html">ParticipationModeVerbal</a>
+        </li>
+        <li>Import all the codes that are contained in 
+          <a href="ValueSet-v3-ParticipationModeWritten.html">ParticipationModeWritten</a>
+        </li>
+        <li>Import all the codes that are contained in 
+          <a href="ValueSet-v3-ParticipationModeElectronicData.html">ParticipationModeElectronicData</a>
+        </li>
+        <li>Import all the codes that are contained in 
+          <a href="ValueSet-v3-xPhysicalVerbalParticipationMode.html">x_PhysicalVerbalParticipationMode</a>
+        </li>
+      </ul>
+    </div>
+  </text>
+  <url value="http://terminology.hl7.org/ValueSet/v3-ParticipationMode"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.1.11.16543"/>
+  </identifier>
+  <version value="3.0.0"/>
+  <name value="ParticipationMode"/>
+  <title value="ParticipationMode"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2014-03-26"/>
+  <publisher value="Health Level Seven International"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org"/>
+    </telecom>
+    <telecom>
+      <system value="email"/>
+      <value value="hq@HL7.org"/>
+    </telecom>
+  </contact>
+  <description value="Identifies the primary means by which an Entity participates in an Act."/>
+  <copyright value="This material derives from the HL7 Terminology THO. THO is copyright ©1989+ Health Level Seven International and is made available under the CC0 designation. For more licensing information see: https://terminology.hl7.org/license"/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationMode"/>
+      <concept>
+        <code value="PHYSICAL"/>
+      </concept>
+      <concept>
+        <code value="REMOTE"/>
+      </concept>
+    </include>
+    <include>
+      <valueSet value="http://terminology.hl7.org/ValueSet/v3-ParticipationModeVerbal"/>
+    </include>
+    <include>
+      <valueSet value="http://terminology.hl7.org/ValueSet/v3-ParticipationModeWritten"/>
+    </include>
+    <include>
+      <valueSet value="http://terminology.hl7.org/ValueSet/v3-ParticipationModeElectronicData"/>
+    </include>
+    <include>
+      <valueSet value="http://terminology.hl7.org/ValueSet/v3-xPhysicalVerbalParticipationMode"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:f8af1114-4365-4c08-a95a-ca02c2243236"/>
+    <timestamp value="2025-01-17T09:53:42-07:00"/>
+    <total value="19"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/v3-ParticipationMode|4.0.0"/>
+    </parameter>
+    <parameter>
+      <name value="used-valueset"/>
+      <valueUri value="http://terminology.hl7.org/ValueSet/v3-ParticipationModeVerbal|3.0.0"/>
+    </parameter>
+    <parameter>
+      <name value="used-valueset"/>
+      <valueUri value="http://terminology.hl7.org/ValueSet/v3-ParticipationModeWritten|3.0.0"/>
+    </parameter>
+    <parameter>
+      <name value="used-valueset"/>
+      <valueUri value="http://terminology.hl7.org/ValueSet/v3-ParticipationModeElectronicData|3.0.0"/>
+    </parameter>
+    <parameter>
+      <name value="used-valueset"/>
+      <valueUri value="http://terminology.hl7.org/ValueSet/v3-xPhysicalVerbalParticipationMode|3.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationMode"/>
+      <code value="PHYSICAL"/>
+      <display value="physical presence"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationMode"/>
+      <code value="REMOTE"/>
+      <display value="remote presence"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationMode"/>
+      <code value="VERBAL"/>
+      <display value="verbal"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationMode"/>
+      <code value="DICTATE"/>
+      <display value="dictated"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationMode"/>
+      <code value="FACE"/>
+      <display value="face-to-face"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationMode"/>
+      <code value="PHONE"/>
+      <display value="telephone"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationMode"/>
+      <code value="VIDEOCONF"/>
+      <display value="videoconferencing"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationMode"/>
+      <code value="WRITTEN"/>
+      <display value="written"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationMode"/>
+      <code value="FAXWRIT"/>
+      <display value="telefax"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationMode"/>
+      <code value="HANDWRIT"/>
+      <display value="handwritten"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationMode"/>
+      <code value="MAILWRIT"/>
+      <display value="mail"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationMode"/>
+      <code value="ONLINEWRIT"/>
+      <display value="online written"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationMode"/>
+      <code value="EMAILWRIT"/>
+      <display value="email"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationMode"/>
+      <code value="TYPEWRIT"/>
+      <display value="typewritten"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationMode"/>
+      <code value="MSGWRIT"/>
+      <display value="messaging"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationMode"/>
+      <code value="SMSWRIT"/>
+      <display value="SMS message"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationMode"/>
+      <code value="MMSWRIT"/>
+      <display value="MMS message"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationMode"/>
+      <code value="APPWRIT"/>
+      <display value="messaging app"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationMode"/>
+      <code value="ELECTRONIC"/>
+      <display value="electronic data"/>
+    </contains>
+  </expansion>
+</ValueSet>

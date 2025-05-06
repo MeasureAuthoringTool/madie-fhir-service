@@ -1,0 +1,5669 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="2.16.840.1.113762.1.4.1186.1"/>
+  <meta>
+    <versionId value="6"/>
+    <lastUpdated value="2018-05-03T01:00:04.000-04:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+    <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/publishable-valueset-cqfm"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/valueset-author">
+    <valueString value="HL7 Patient Care WG Author"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate">
+    <valueDate value="2022-12-15"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/valueset-effectiveDate">
+    <valueDate value="2018-05-03"/>
+  </extension>
+  <url value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1186.1"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113762.1.4.1186.1"/>
+  </identifier>
+  <version value="20180503"/>
+  <name value="CommonDrugSubstancesForAllergyAndIntoleranceDocumentation"/>
+  <title value="Common drug substances for allergy and intolerance documentation"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2018-05-03T01:00:04-04:00"/>
+  <publisher value="HL7 Patient Care WG Steward"/>
+  <jurisdiction>
+    <extension url="http://hl7.org/fhir/StructureDefinition/data-absent-reason">
+      <valueString value="UNKNOWN"/>
+    </extension>
+  </jurisdiction>
+  <purpose value="(Clinical Focus: Documentation of a medication substance commonly suspected of causing an allergy or intolerance reaction in an individual),(Data Element Scope: Reactant element of allergy or intolerance record),(Inclusion Criteria: RxNorm substances of term type ingredient (IN) or multiple ingredient (MIN)),(Exclusion Criteria: Other RxNorm term types)"/>
+  <compose>
+    <include>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <concept>
+        <code value="1002293"/>
+        <display value="formoterol / Mometasone"/>
+      </concept>
+      <concept>
+        <code value="1007388"/>
+        <display value="Lactase / rennet"/>
+      </concept>
+      <concept>
+        <code value="1008298"/>
+        <display value="Acetaminophen / Caffeine / Chlorpheniramine / Hydrocodone / Phenylephrine"/>
+      </concept>
+      <concept>
+        <code value="1008519"/>
+        <display value="guaiacolsulfonate / Hydrocodone"/>
+      </concept>
+      <concept>
+        <code value="1009148"/>
+        <display value="Ampicillin / Sulbactam"/>
+      </concept>
+      <concept>
+        <code value="10109"/>
+        <display value="Streptomycin"/>
+      </concept>
+      <concept>
+        <code value="10154"/>
+        <display value="Succinylcholine"/>
+      </concept>
+      <concept>
+        <code value="10156"/>
+        <display value="Sucralfate"/>
+      </concept>
+      <concept>
+        <code value="10169"/>
+        <display value="Sulfacetamide"/>
+      </concept>
+      <concept>
+        <code value="10171"/>
+        <display value="Sulfadiazine"/>
+      </concept>
+      <concept>
+        <code value="10180"/>
+        <display value="Sulfamethoxazole"/>
+      </concept>
+      <concept>
+        <code value="10207"/>
+        <display value="Sulfisoxazole"/>
+      </concept>
+      <concept>
+        <code value="10223"/>
+        <display value="Sulfur"/>
+      </concept>
+      <concept>
+        <code value="10237"/>
+        <display value="Sulindac"/>
+      </concept>
+      <concept>
+        <code value="10324"/>
+        <display value="Tamoxifen"/>
+      </concept>
+      <concept>
+        <code value="10355"/>
+        <display value="Temazepam"/>
+      </concept>
+      <concept>
+        <code value="10368"/>
+        <display value="Terbutaline"/>
+      </concept>
+      <concept>
+        <code value="1037042"/>
+        <display value="dabigatran etexilate"/>
+      </concept>
+      <concept>
+        <code value="10379"/>
+        <display value="Testosterone"/>
+      </concept>
+      <concept>
+        <code value="10395"/>
+        <display value="Tetracycline"/>
+      </concept>
+      <concept>
+        <code value="103990"/>
+        <display value="Carbidopa / Levodopa"/>
+      </concept>
+      <concept>
+        <code value="1040028"/>
+        <display value="lurasidone"/>
+      </concept>
+      <concept>
+        <code value="10438"/>
+        <display value="Theophylline"/>
+      </concept>
+      <concept>
+        <code value="10472"/>
+        <display value="Thimerosal"/>
+      </concept>
+      <concept>
+        <code value="10493"/>
+        <display value="Thiopental"/>
+      </concept>
+      <concept>
+        <code value="10502"/>
+        <display value="Thioridazine"/>
+      </concept>
+      <concept>
+        <code value="10510"/>
+        <display value="Thiothixene"/>
+      </concept>
+      <concept>
+        <code value="10582"/>
+        <display value="levothyroxine"/>
+      </concept>
+      <concept>
+        <code value="10594"/>
+        <display value="Ticlopidine"/>
+      </concept>
+      <concept>
+        <code value="10600"/>
+        <display value="Timolol"/>
+      </concept>
+      <concept>
+        <code value="10627"/>
+        <display value="Tobramycin"/>
+      </concept>
+      <concept>
+        <code value="10636"/>
+        <display value="Tolmetin"/>
+      </concept>
+      <concept>
+        <code value="10689"/>
+        <display value="Tramadol"/>
+      </concept>
+      <concept>
+        <code value="10737"/>
+        <display value="Trazodone"/>
+      </concept>
+      <concept>
+        <code value="10759"/>
+        <display value="Triamcinolone"/>
+      </concept>
+      <concept>
+        <code value="107602"/>
+        <display value="Epinephrine / Lidocaine"/>
+      </concept>
+      <concept>
+        <code value="10763"/>
+        <display value="Triamterene"/>
+      </concept>
+      <concept>
+        <code value="10767"/>
+        <display value="Triazolam"/>
+      </concept>
+      <concept>
+        <code value="10800"/>
+        <display value="Trifluoperazine"/>
+      </concept>
+      <concept>
+        <code value="108118"/>
+        <display value="Mometasone"/>
+      </concept>
+      <concept>
+        <code value="10829"/>
+        <display value="Trimethoprim"/>
+      </concept>
+      <concept>
+        <code value="10831"/>
+        <display value="Sulfamethoxazole / Trimethoprim"/>
+      </concept>
+      <concept>
+        <code value="11124"/>
+        <display value="Vancomycin"/>
+      </concept>
+      <concept>
+        <code value="1114195"/>
+        <display value="rivaroxaban"/>
+      </concept>
+      <concept>
+        <code value="1116632"/>
+        <display value="Ticagrelor"/>
+      </concept>
+      <concept>
+        <code value="11170"/>
+        <display value="Verapamil"/>
+      </concept>
+      <concept>
+        <code value="11248"/>
+        <display value="Vitamin B 12"/>
+      </concept>
+      <concept>
+        <code value="11253"/>
+        <display value="Vitamin D"/>
+      </concept>
+      <concept>
+        <code value="11256"/>
+        <display value="Vitamin E"/>
+      </concept>
+      <concept>
+        <code value="11289"/>
+        <display value="Warfarin"/>
+      </concept>
+      <concept>
+        <code value="113588"/>
+        <display value="Erythromycin / Sulfisoxazole"/>
+      </concept>
+      <concept>
+        <code value="11416"/>
+        <display value="Zinc"/>
+      </concept>
+      <concept>
+        <code value="11423"/>
+        <display value="Zinc Oxide"/>
+      </concept>
+      <concept>
+        <code value="114477"/>
+        <display value="Levetiracetam"/>
+      </concept>
+      <concept>
+        <code value="114970"/>
+        <display value="zafirlukast"/>
+      </concept>
+      <concept>
+        <code value="114979"/>
+        <display value="rabeprazole"/>
+      </concept>
+      <concept>
+        <code value="1151"/>
+        <display value="Ascorbic Acid"/>
+      </concept>
+      <concept>
+        <code value="115264"/>
+        <display value="Ibandronate"/>
+      </concept>
+      <concept>
+        <code value="115552"/>
+        <display value="trovafloxacin"/>
+      </concept>
+      <concept>
+        <code value="115698"/>
+        <display value="ziprasidone"/>
+      </concept>
+      <concept>
+        <code value="1191"/>
+        <display value="Aspirin"/>
+      </concept>
+      <concept>
+        <code value="119565"/>
+        <display value="tolterodine"/>
+      </concept>
+      <concept>
+        <code value="1202"/>
+        <display value="Atenolol"/>
+      </concept>
+      <concept>
+        <code value="121191"/>
+        <display value="rituximab"/>
+      </concept>
+      <concept>
+        <code value="1223"/>
+        <display value="Atropine"/>
+      </concept>
+      <concept>
+        <code value="1256"/>
+        <display value="Azathioprine"/>
+      </concept>
+      <concept>
+        <code value="1272"/>
+        <display value="Aztreonam"/>
+      </concept>
+      <concept>
+        <code value="1291"/>
+        <display value="Bacitracin"/>
+      </concept>
+      <concept>
+        <code value="1292"/>
+        <display value="Baclofen"/>
+      </concept>
+      <concept>
+        <code value="1310171"/>
+        <display value="Gadolinium"/>
+      </concept>
+      <concept>
+        <code value="1311085"/>
+        <display value="xanthine"/>
+      </concept>
+      <concept>
+        <code value="1311524"/>
+        <display value="Aspartame"/>
+      </concept>
+      <concept>
+        <code value="1311629"/>
+        <display value="nickel"/>
+      </concept>
+      <concept>
+        <code value="1314891"/>
+        <display value="Latex"/>
+      </concept>
+      <concept>
+        <code value="1331"/>
+        <display value="Barium Sulfate"/>
+      </concept>
+      <concept>
+        <code value="134615"/>
+        <display value="brimonidine"/>
+      </concept>
+      <concept>
+        <code value="1347"/>
+        <display value="Beclomethasone"/>
+      </concept>
+      <concept>
+        <code value="135447"/>
+        <display value="donepezil"/>
+      </concept>
+      <concept>
+        <code value="135775"/>
+        <display value="zolmitriptan"/>
+      </concept>
+      <concept>
+        <code value="1359"/>
+        <display value="Belladonna Alkaloids"/>
+      </concept>
+      <concept>
+        <code value="1362879"/>
+        <display value="Sulfur Dioxide"/>
+      </concept>
+      <concept>
+        <code value="1363043"/>
+        <display value="ethyl ether"/>
+      </concept>
+      <concept>
+        <code value="136411"/>
+        <display value="sildenafil"/>
+      </concept>
+      <concept>
+        <code value="1364430"/>
+        <display value="apixaban"/>
+      </concept>
+      <concept>
+        <code value="138099"/>
+        <display value="gemifloxacin"/>
+      </concept>
+      <concept>
+        <code value="139462"/>
+        <display value="moxifloxacin"/>
+      </concept>
+      <concept>
+        <code value="1399"/>
+        <display value="Benzocaine"/>
+      </concept>
+      <concept>
+        <code value="140587"/>
+        <display value="celecoxib"/>
+      </concept>
+      <concept>
+        <code value="1406"/>
+        <display value="benzoin resin"/>
+      </concept>
+      <concept>
+        <code value="141626"/>
+        <display value="colesevelam"/>
+      </concept>
+      <concept>
+        <code value="1418"/>
+        <display value="Benzoyl Peroxide"/>
+      </concept>
+      <concept>
+        <code value="1424"/>
+        <display value="Benztropine"/>
+      </concept>
+      <concept>
+        <code value="1514"/>
+        <display value="Betamethasone"/>
+      </concept>
+      <concept>
+        <code value="153970"/>
+        <display value="Hyoscyamine"/>
+      </concept>
+      <concept>
+        <code value="1596450"/>
+        <display value="Gentamicin"/>
+      </concept>
+      <concept>
+        <code value="15996"/>
+        <display value="Mirtazapine"/>
+      </concept>
+      <concept>
+        <code value="161"/>
+        <display value="Acetaminophen"/>
+      </concept>
+      <concept>
+        <code value="16681"/>
+        <display value="Acarbose"/>
+      </concept>
+      <concept>
+        <code value="167"/>
+        <display value="Acetazolamide"/>
+      </concept>
+      <concept>
+        <code value="17128"/>
+        <display value="lansoprazole"/>
+      </concept>
+      <concept>
+        <code value="1727875"/>
+        <display value="Tetanus immune globulin"/>
+      </concept>
+      <concept>
+        <code value="17300"/>
+        <display value="alfuzosin"/>
+      </concept>
+      <concept>
+        <code value="17767"/>
+        <display value="Amlodipine"/>
+      </concept>
+      <concept>
+        <code value="1827"/>
+        <display value="Buspirone"/>
+      </concept>
+      <concept>
+        <code value="183379"/>
+        <display value="rivastigmine"/>
+      </concept>
+      <concept>
+        <code value="1841"/>
+        <display value="Butorphanol"/>
+      </concept>
+      <concept>
+        <code value="18631"/>
+        <display value="Azithromycin"/>
+      </concept>
+      <concept>
+        <code value="187832"/>
+        <display value="pregabalin"/>
+      </concept>
+      <concept>
+        <code value="1886"/>
+        <display value="Caffeine"/>
+      </concept>
+      <concept>
+        <code value="18867"/>
+        <display value="benazepril"/>
+      </concept>
+      <concept>
+        <code value="1895"/>
+        <display value="Calcium"/>
+      </concept>
+      <concept>
+        <code value="1897"/>
+        <display value="Calcium Carbonate"/>
+      </concept>
+      <concept>
+        <code value="18993"/>
+        <display value="benzonatate"/>
+      </concept>
+      <concept>
+        <code value="190376"/>
+        <display value="linezolid"/>
+      </concept>
+      <concept>
+        <code value="191831"/>
+        <display value="infliximab"/>
+      </concept>
+      <concept>
+        <code value="19478"/>
+        <display value="bismuth subsalicylate"/>
+      </concept>
+      <concept>
+        <code value="19552"/>
+        <display value="cefprozil"/>
+      </concept>
+      <concept>
+        <code value="19711"/>
+        <display value="Amoxicillin / Clavulanate"/>
+      </concept>
+      <concept>
+        <code value="19831"/>
+        <display value="Budesonide"/>
+      </concept>
+      <concept>
+        <code value="1998"/>
+        <display value="Captopril"/>
+      </concept>
+      <concept>
+        <code value="2002"/>
+        <display value="Carbamazepine"/>
+      </concept>
+      <concept>
+        <code value="20352"/>
+        <display value="carvedilol"/>
+      </concept>
+      <concept>
+        <code value="20481"/>
+        <display value="cefepime"/>
+      </concept>
+      <concept>
+        <code value="20489"/>
+        <display value="cefpodoxime"/>
+      </concept>
+      <concept>
+        <code value="20610"/>
+        <display value="Cetirizine"/>
+      </concept>
+      <concept>
+        <code value="2101"/>
+        <display value="Carisoprodol"/>
+      </concept>
+      <concept>
+        <code value="21107"/>
+        <display value="cilostazol"/>
+      </concept>
+      <concept>
+        <code value="21183"/>
+        <display value="Citric Acid"/>
+      </concept>
+      <concept>
+        <code value="21212"/>
+        <display value="Clarithromycin"/>
+      </concept>
+      <concept>
+        <code value="214130"/>
+        <display value="Acetaminophen / butalbital / Caffeine"/>
+      </concept>
+      <concept>
+        <code value="214153"/>
+        <display value="Acetaminophen / dichloralphenazone / isometheptene"/>
+      </concept>
+      <concept>
+        <code value="214159"/>
+        <display value="Aspirin / butalbital / Caffeine"/>
+      </concept>
+      <concept>
+        <code value="214160"/>
+        <display value="Aspirin / butalbital / Caffeine / Codeine"/>
+      </concept>
+      <concept>
+        <code value="214181"/>
+        <display value="Acetaminophen / Diphenhydramine"/>
+      </concept>
+      <concept>
+        <code value="214182"/>
+        <display value="Acetaminophen / Hydrocodone"/>
+      </concept>
+      <concept>
+        <code value="214183"/>
+        <display value="Acetaminophen / Oxycodone"/>
+      </concept>
+      <concept>
+        <code value="214199"/>
+        <display value="Albuterol / Ipratropium"/>
+      </concept>
+      <concept>
+        <code value="214223"/>
+        <display value="Amlodipine / benazepril"/>
+      </concept>
+      <concept>
+        <code value="214250"/>
+        <display value="Aspirin / Caffeine"/>
+      </concept>
+      <concept>
+        <code value="214256"/>
+        <display value="Aspirin / Oxycodone"/>
+      </concept>
+      <concept>
+        <code value="214257"/>
+        <display value="Aspirin / Pentazocine"/>
+      </concept>
+      <concept>
+        <code value="214317"/>
+        <display value="Bisoprolol / Hydrochlorothiazide"/>
+      </concept>
+      <concept>
+        <code value="214336"/>
+        <display value="Caffeine / Ergotamine"/>
+      </concept>
+      <concept>
+        <code value="214354"/>
+        <display value="candesartan"/>
+      </concept>
+      <concept>
+        <code value="214364"/>
+        <display value="carbinoxamine / Pseudoephedrine"/>
+      </concept>
+      <concept>
+        <code value="214392"/>
+        <display value="Chlorpheniramine / Hydrocodone"/>
+      </concept>
+      <concept>
+        <code value="214442"/>
+        <display value="Codeine / Guaifenesin"/>
+      </concept>
+      <concept>
+        <code value="214445"/>
+        <display value="Codeine / Pseudoephedrine"/>
+      </concept>
+      <concept>
+        <code value="214488"/>
+        <display value="Dextromethorphan / Guaifenesin"/>
+      </concept>
+      <concept>
+        <code value="214502"/>
+        <display value="Diclofenac / Misoprostol"/>
+      </concept>
+      <concept>
+        <code value="214555"/>
+        <display value="Etanercept"/>
+      </concept>
+      <concept>
+        <code value="214558"/>
+        <display value="Ethinyl Estradiol / Levonorgestrel"/>
+      </concept>
+      <concept>
+        <code value="214565"/>
+        <display value="fexofenadine / Pseudoephedrine"/>
+      </concept>
+      <concept>
+        <code value="214599"/>
+        <display value="Guaifenesin / Pseudoephedrine"/>
+      </concept>
+      <concept>
+        <code value="214614"/>
+        <display value="homatropine / Hydrocodone"/>
+      </concept>
+      <concept>
+        <code value="214617"/>
+        <display value="Hydrochlorothiazide / irbesartan"/>
+      </concept>
+      <concept>
+        <code value="214618"/>
+        <display value="Hydrochlorothiazide / Lisinopril"/>
+      </concept>
+      <concept>
+        <code value="214619"/>
+        <display value="Hydrochlorothiazide / Losartan"/>
+      </concept>
+      <concept>
+        <code value="214626"/>
+        <display value="Hydrochlorothiazide / valsartan"/>
+      </concept>
+      <concept>
+        <code value="214627"/>
+        <display value="Hydrocodone / Ibuprofen"/>
+      </concept>
+      <concept>
+        <code value="214631"/>
+        <display value="Hydrocodone / Pseudoephedrine"/>
+      </concept>
+      <concept>
+        <code value="214682"/>
+        <display value="Loratadine / Pseudoephedrine"/>
+      </concept>
+      <concept>
+        <code value="214721"/>
+        <display value="Naloxone / Pentazocine"/>
+      </concept>
+      <concept>
+        <code value="214807"/>
+        <display value="Pseudoephedrine / Triprolidine"/>
+      </concept>
+      <concept>
+        <code value="2176"/>
+        <display value="Cefaclor"/>
+      </concept>
+      <concept>
+        <code value="217627"/>
+        <display value="Hydrocortisone / Neomycin / Polymyxin B"/>
+      </concept>
+      <concept>
+        <code value="2177"/>
+        <display value="Cefadroxil"/>
+      </concept>
+      <concept>
+        <code value="2180"/>
+        <display value="Cefazolin"/>
+      </concept>
+      <concept>
+        <code value="2189"/>
+        <display value="Cefoxitin"/>
+      </concept>
+      <concept>
+        <code value="2191"/>
+        <display value="Ceftazidime"/>
+      </concept>
+      <concept>
+        <code value="2193"/>
+        <display value="Ceftriaxone"/>
+      </concept>
+      <concept>
+        <code value="219314"/>
+        <display value="Polymyxin B / Trimethoprim"/>
+      </concept>
+      <concept>
+        <code value="219315"/>
+        <display value="Iron polysaccharide"/>
+      </concept>
+      <concept>
+        <code value="2194"/>
+        <display value="Cefuroxime"/>
+      </concept>
+      <concept>
+        <code value="21949"/>
+        <display value="cyclobenzaprine"/>
+      </concept>
+      <concept>
+        <code value="221147"/>
+        <display value="POLYETHYLENE GLYCOL 3350"/>
+      </concept>
+      <concept>
+        <code value="22299"/>
+        <display value="Daptomycin"/>
+      </concept>
+      <concept>
+        <code value="2231"/>
+        <display value="Cephalexin"/>
+      </concept>
+      <concept>
+        <code value="226716"/>
+        <display value="Aspirin / Dipyridamole"/>
+      </concept>
+      <concept>
+        <code value="228476"/>
+        <display value="gatifloxacin"/>
+      </concept>
+      <concept>
+        <code value="228790"/>
+        <display value="Dutasteride"/>
+      </concept>
+      <concept>
+        <code value="232158"/>
+        <display value="rofecoxib"/>
+      </concept>
+      <concept>
+        <code value="233698"/>
+        <display value="dronedarone"/>
+      </concept>
+      <concept>
+        <code value="2348"/>
+        <display value="Chloramphenicol"/>
+      </concept>
+      <concept>
+        <code value="2356"/>
+        <display value="Chlordiazepoxide"/>
+      </concept>
+      <concept>
+        <code value="2358"/>
+        <display value="Chlorhexidine"/>
+      </concept>
+      <concept>
+        <code value="236778"/>
+        <display value="Trospium"/>
+      </concept>
+      <concept>
+        <code value="237159"/>
+        <display value="Levalbuterol"/>
+      </concept>
+      <concept>
+        <code value="2393"/>
+        <display value="Chloroquine"/>
+      </concept>
+      <concept>
+        <code value="2400"/>
+        <display value="Chlorpheniramine"/>
+      </concept>
+      <concept>
+        <code value="2403"/>
+        <display value="Chlorpromazine"/>
+      </concept>
+      <concept>
+        <code value="2409"/>
+        <display value="Chlorthalidone"/>
+      </concept>
+      <concept>
+        <code value="2410"/>
+        <display value="Chlorzoxazone"/>
+      </concept>
+      <concept>
+        <code value="2418"/>
+        <display value="Cholecalciferol"/>
+      </concept>
+      <concept>
+        <code value="2447"/>
+        <display value="Cholestyramine Resin"/>
+      </concept>
+      <concept>
+        <code value="24605"/>
+        <display value="Etodolac"/>
+      </concept>
+      <concept>
+        <code value="24947"/>
+        <display value="ferrous sulfate"/>
+      </concept>
+      <concept>
+        <code value="25025"/>
+        <display value="Finasteride"/>
+      </concept>
+      <concept>
+        <code value="25033"/>
+        <display value="Cefixime"/>
+      </concept>
+      <concept>
+        <code value="25037"/>
+        <display value="cefdinir"/>
+      </concept>
+      <concept>
+        <code value="25120"/>
+        <display value="flunisolide"/>
+      </concept>
+      <concept>
+        <code value="25255"/>
+        <display value="formoterol"/>
+      </concept>
+      <concept>
+        <code value="253157"/>
+        <display value="Bee pollen"/>
+      </concept>
+      <concept>
+        <code value="2541"/>
+        <display value="Cimetidine"/>
+      </concept>
+      <concept>
+        <code value="25480"/>
+        <display value="gabapentin"/>
+      </concept>
+      <concept>
+        <code value="2551"/>
+        <display value="Ciprofloxacin"/>
+      </concept>
+      <concept>
+        <code value="2556"/>
+        <display value="Citalopram"/>
+      </concept>
+      <concept>
+        <code value="25789"/>
+        <display value="glimepiride"/>
+      </concept>
+      <concept>
+        <code value="2582"/>
+        <display value="Clindamycin"/>
+      </concept>
+      <concept>
+        <code value="258337"/>
+        <display value="Hydrochlorothiazide / Triamterene"/>
+      </concept>
+      <concept>
+        <code value="2598"/>
+        <display value="Clonazepam"/>
+      </concept>
+      <concept>
+        <code value="2599"/>
+        <display value="Clonidine"/>
+      </concept>
+      <concept>
+        <code value="260101"/>
+        <display value="Oseltamivir"/>
+      </concept>
+      <concept>
+        <code value="26225"/>
+        <display value="Ondansetron"/>
+      </concept>
+      <concept>
+        <code value="2623"/>
+        <display value="Clotrimazole"/>
+      </concept>
+      <concept>
+        <code value="2670"/>
+        <display value="Codeine"/>
+      </concept>
+      <concept>
+        <code value="2683"/>
+        <display value="Colchicine"/>
+      </concept>
+      <concept>
+        <code value="2685"/>
+        <display value="Colestipol"/>
+      </concept>
+      <concept>
+        <code value="27169"/>
+        <display value="leflunomide"/>
+      </concept>
+      <concept>
+        <code value="274783"/>
+        <display value="Insulin Glargine"/>
+      </concept>
+      <concept>
+        <code value="274786"/>
+        <display value="telithromycin"/>
+      </concept>
+      <concept>
+        <code value="27723"/>
+        <display value="iodinated glycerol"/>
+      </concept>
+      <concept>
+        <code value="278567"/>
+        <display value="valdecoxib"/>
+      </concept>
+      <concept>
+        <code value="28031"/>
+        <display value="Itraconazole"/>
+      </concept>
+      <concept>
+        <code value="281"/>
+        <display value="Acyclovir"/>
+      </concept>
+      <concept>
+        <code value="283742"/>
+        <display value="Esomeprazole"/>
+      </concept>
+      <concept>
+        <code value="283809"/>
+        <display value="travoprost"/>
+      </concept>
+      <concept>
+        <code value="28439"/>
+        <display value="lamotrigine"/>
+      </concept>
+      <concept>
+        <code value="284635"/>
+        <display value="fluticasone / salmeterol"/>
+      </concept>
+      <concept>
+        <code value="2878"/>
+        <display value="Cortisone"/>
+      </concept>
+      <concept>
+        <code value="28889"/>
+        <display value="Loratadine"/>
+      </concept>
+      <concept>
+        <code value="28981"/>
+        <display value="loracarbef"/>
+      </concept>
+      <concept>
+        <code value="29046"/>
+        <display value="Lisinopril"/>
+      </concept>
+      <concept>
+        <code value="29542"/>
+        <display value="Mercury, Ammoniated"/>
+      </concept>
+      <concept>
+        <code value="29561"/>
+        <display value="meropenem"/>
+      </concept>
+      <concept>
+        <code value="296"/>
+        <display value="Adenosine"/>
+      </concept>
+      <concept>
+        <code value="3008"/>
+        <display value="Cyclosporine"/>
+      </concept>
+      <concept>
+        <code value="301542"/>
+        <display value="rosuvastatin"/>
+      </concept>
+      <concept>
+        <code value="306674"/>
+        <display value="vardenafil"/>
+      </concept>
+      <concept>
+        <code value="3108"/>
+        <display value="Dapsone"/>
+      </concept>
+      <concept>
+        <code value="3143"/>
+        <display value="prasterone"/>
+      </concept>
+      <concept>
+        <code value="31448"/>
+        <display value="nabumetone"/>
+      </concept>
+      <concept>
+        <code value="31555"/>
+        <display value="nebivolol"/>
+      </concept>
+      <concept>
+        <code value="31565"/>
+        <display value="nefazodone"/>
+      </concept>
+      <concept>
+        <code value="31738"/>
+        <display value="nickel sulfate"/>
+      </concept>
+      <concept>
+        <code value="318340"/>
+        <display value="Aloe vera preparation"/>
+      </concept>
+      <concept>
+        <code value="321064"/>
+        <display value="olmesartan"/>
+      </concept>
+      <concept>
+        <code value="321988"/>
+        <display value="Escitalopram"/>
+      </concept>
+      <concept>
+        <code value="322167"/>
+        <display value="Solifenacin"/>
+      </concept>
+      <concept>
+        <code value="3247"/>
+        <display value="Desipramine"/>
+      </concept>
+      <concept>
+        <code value="325642"/>
+        <display value="ertapenem"/>
+      </concept>
+      <concept>
+        <code value="32592"/>
+        <display value="oxaliplatin"/>
+      </concept>
+      <concept>
+        <code value="32613"/>
+        <display value="oxaprozin"/>
+      </concept>
+      <concept>
+        <code value="32624"/>
+        <display value="oxcarbazepine"/>
+      </concept>
+      <concept>
+        <code value="3264"/>
+        <display value="Dexamethasone"/>
+      </concept>
+      <concept>
+        <code value="32675"/>
+        <display value="oxybutynin"/>
+      </concept>
+      <concept>
+        <code value="327361"/>
+        <display value="adalimumab"/>
+      </concept>
+      <concept>
+        <code value="3289"/>
+        <display value="Dextromethorphan"/>
+      </concept>
+      <concept>
+        <code value="32937"/>
+        <display value="Paroxetine"/>
+      </concept>
+      <concept>
+        <code value="32968"/>
+        <display value="clopidogrel"/>
+      </concept>
+      <concept>
+        <code value="3322"/>
+        <display value="Diazepam"/>
+      </concept>
+      <concept>
+        <code value="33408"/>
+        <display value="phenyltoloxamine"/>
+      </concept>
+      <concept>
+        <code value="3355"/>
+        <display value="Diclofenac"/>
+      </concept>
+      <concept>
+        <code value="3356"/>
+        <display value="Dicloxacillin"/>
+      </concept>
+      <concept>
+        <code value="3361"/>
+        <display value="Dicyclomine"/>
+      </concept>
+      <concept>
+        <code value="33738"/>
+        <display value="pioglitazone"/>
+      </concept>
+      <concept>
+        <code value="3393"/>
+        <display value="Diflunisal"/>
+      </concept>
+      <concept>
+        <code value="3407"/>
+        <display value="Digoxin"/>
+      </concept>
+      <concept>
+        <code value="341248"/>
+        <display value="ezetimibe"/>
+      </concept>
+      <concept>
+        <code value="3418"/>
+        <display value="Dihydroergotamine"/>
+      </concept>
+      <concept>
+        <code value="3423"/>
+        <display value="Hydromorphone"/>
+      </concept>
+      <concept>
+        <code value="3443"/>
+        <display value="Diltiazem"/>
+      </concept>
+      <concept>
+        <code value="3444"/>
+        <display value="Dimenhydrinate"/>
+      </concept>
+      <concept>
+        <code value="3498"/>
+        <display value="Diphenhydramine"/>
+      </concept>
+      <concept>
+        <code value="35208"/>
+        <display value="quinapril"/>
+      </concept>
+      <concept>
+        <code value="3521"/>
+        <display value="Dipyridamole"/>
+      </concept>
+      <concept>
+        <code value="352362"/>
+        <display value="Acetaminophen / Tramadol"/>
+      </concept>
+      <concept>
+        <code value="35296"/>
+        <display value="Ramipril"/>
+      </concept>
+      <concept>
+        <code value="35382"/>
+        <display value="resorcinol"/>
+      </concept>
+      <concept>
+        <code value="35636"/>
+        <display value="Risperidone"/>
+      </concept>
+      <concept>
+        <code value="358263"/>
+        <display value="tadalafil"/>
+      </concept>
+      <concept>
+        <code value="35827"/>
+        <display value="Ketorolac"/>
+      </concept>
+      <concept>
+        <code value="35829"/>
+        <display value="ranolazine"/>
+      </concept>
+      <concept>
+        <code value="36108"/>
+        <display value="Salsalate"/>
+      </concept>
+      <concept>
+        <code value="36117"/>
+        <display value="salmeterol"/>
+      </concept>
+      <concept>
+        <code value="3616"/>
+        <display value="Dobutamine"/>
+      </concept>
+      <concept>
+        <code value="3638"/>
+        <display value="Doxepin"/>
+      </concept>
+      <concept>
+        <code value="3640"/>
+        <display value="Doxycycline"/>
+      </concept>
+      <concept>
+        <code value="36437"/>
+        <display value="Sertraline"/>
+      </concept>
+      <concept>
+        <code value="3648"/>
+        <display value="Droperidol"/>
+      </concept>
+      <concept>
+        <code value="36567"/>
+        <display value="Simvastatin"/>
+      </concept>
+      <concept>
+        <code value="37418"/>
+        <display value="Sumatriptan"/>
+      </concept>
+      <concept>
+        <code value="37617"/>
+        <display value="tazobactam"/>
+      </concept>
+      <concept>
+        <code value="37798"/>
+        <display value="Terazosin"/>
+      </concept>
+      <concept>
+        <code value="37801"/>
+        <display value="terbinafine"/>
+      </concept>
+      <concept>
+        <code value="3827"/>
+        <display value="Enalapril"/>
+      </concept>
+      <concept>
+        <code value="3829"/>
+        <display value="Enalaprilat"/>
+      </concept>
+      <concept>
+        <code value="38400"/>
+        <display value="atomoxetine"/>
+      </concept>
+      <concept>
+        <code value="38404"/>
+        <display value="topiramate"/>
+      </concept>
+      <concept>
+        <code value="38413"/>
+        <display value="torsemide"/>
+      </concept>
+      <concept>
+        <code value="38574"/>
+        <display value="trichloroacetaldehyde"/>
+      </concept>
+      <concept>
+        <code value="38685"/>
+        <display value="trimethobenzamide"/>
+      </concept>
+      <concept>
+        <code value="389132"/>
+        <display value="Budesonide / formoterol"/>
+      </concept>
+      <concept>
+        <code value="3966"/>
+        <display value="Ephedrine"/>
+      </concept>
+      <concept>
+        <code value="39786"/>
+        <display value="venlafaxine"/>
+      </concept>
+      <concept>
+        <code value="3992"/>
+        <display value="Epinephrine"/>
+      </concept>
+      <concept>
+        <code value="39993"/>
+        <display value="zolpidem"/>
+      </concept>
+      <concept>
+        <code value="39998"/>
+        <display value="zonisamide"/>
+      </concept>
+      <concept>
+        <code value="40048"/>
+        <display value="Carboplatin"/>
+      </concept>
+      <concept>
+        <code value="400674"/>
+        <display value="dexbrompheniramine / Pseudoephedrine"/>
+      </concept>
+      <concept>
+        <code value="4025"/>
+        <display value="Ergotamine"/>
+      </concept>
+      <concept>
+        <code value="40254"/>
+        <display value="Valproate"/>
+      </concept>
+      <concept>
+        <code value="4053"/>
+        <display value="Erythromycin"/>
+      </concept>
+      <concept>
+        <code value="40575"/>
+        <display value="zileuton"/>
+      </concept>
+      <concept>
+        <code value="40790"/>
+        <display value="pantoprazole"/>
+      </concept>
+      <concept>
+        <code value="4083"/>
+        <display value="Estradiol"/>
+      </concept>
+      <concept>
+        <code value="4099"/>
+        <display value="Estrogens, Conjugated (USP)"/>
+      </concept>
+      <concept>
+        <code value="41126"/>
+        <display value="fluticasone"/>
+      </concept>
+      <concept>
+        <code value="41127"/>
+        <display value="fluvastatin"/>
+      </concept>
+      <concept>
+        <code value="4124"/>
+        <display value="Ethinyl Estradiol"/>
+      </concept>
+      <concept>
+        <code value="41397"/>
+        <display value="Lactase"/>
+      </concept>
+      <concept>
+        <code value="41493"/>
+        <display value="meloxicam"/>
+      </concept>
+      <concept>
+        <code value="42330"/>
+        <display value="Terfenadine"/>
+      </concept>
+      <concept>
+        <code value="42331"/>
+        <display value="Misoprostol"/>
+      </concept>
+      <concept>
+        <code value="42347"/>
+        <display value="Bupropion"/>
+      </concept>
+      <concept>
+        <code value="42351"/>
+        <display value="Lithium Carbonate"/>
+      </concept>
+      <concept>
+        <code value="42372"/>
+        <display value="Mupirocin"/>
+      </concept>
+      <concept>
+        <code value="42463"/>
+        <display value="Pravastatin"/>
+      </concept>
+      <concept>
+        <code value="4278"/>
+        <display value="Famotidine"/>
+      </concept>
+      <concept>
+        <code value="4316"/>
+        <display value="Felodipine"/>
+      </concept>
+      <concept>
+        <code value="4337"/>
+        <display value="Fentanyl"/>
+      </concept>
+      <concept>
+        <code value="435"/>
+        <display value="Albuterol"/>
+      </concept>
+      <concept>
+        <code value="43611"/>
+        <display value="latanoprost"/>
+      </concept>
+      <concept>
+        <code value="4419"/>
+        <display value="Fish Oils"/>
+      </concept>
+      <concept>
+        <code value="4441"/>
+        <display value="Flecainide"/>
+      </concept>
+      <concept>
+        <code value="4450"/>
+        <display value="Fluconazole"/>
+      </concept>
+      <concept>
+        <code value="448"/>
+        <display value="Ethanol"/>
+      </concept>
+      <concept>
+        <code value="4492"/>
+        <display value="Fluorouracil"/>
+      </concept>
+      <concept>
+        <code value="4493"/>
+        <display value="Fluoxetine"/>
+      </concept>
+      <concept>
+        <code value="4496"/>
+        <display value="Fluphenazine"/>
+      </concept>
+      <concept>
+        <code value="4500"/>
+        <display value="Flurandrenolide"/>
+      </concept>
+      <concept>
+        <code value="4530"/>
+        <display value="Formaldehyde"/>
+      </concept>
+      <concept>
+        <code value="4603"/>
+        <display value="Furosemide"/>
+      </concept>
+      <concept>
+        <code value="46041"/>
+        <display value="Alendronate"/>
+      </concept>
+      <concept>
+        <code value="461016"/>
+        <display value="Eszopiclone"/>
+      </concept>
+      <concept>
+        <code value="4637"/>
+        <display value="Galantamine"/>
+      </concept>
+      <concept>
+        <code value="465397"/>
+        <display value="Ciprofloxacin / Dexamethasone"/>
+      </concept>
+      <concept>
+        <code value="466522"/>
+        <display value="Diphenhydramine / Zinc Acetate"/>
+      </concept>
+      <concept>
+        <code value="466541"/>
+        <display value="Neomycin / Polymyxin B"/>
+      </concept>
+      <concept>
+        <code value="466549"/>
+        <display value="Aspirin / Caffeine / Orphenadrine"/>
+      </concept>
+      <concept>
+        <code value="466553"/>
+        <display value="penicillin G benzathine / penicillin G procaine"/>
+      </concept>
+      <concept>
+        <code value="466566"/>
+        <display value="Acetaminophen / Dextromethorphan / Diphenhydramine / Pseudoephedrine"/>
+      </concept>
+      <concept>
+        <code value="466584"/>
+        <display value="Acetaminophen / Aspirin / Caffeine"/>
+      </concept>
+      <concept>
+        <code value="4719"/>
+        <display value="Gemfibrozil"/>
+      </concept>
+      <concept>
+        <code value="475968"/>
+        <display value="liraglutide"/>
+      </concept>
+      <concept>
+        <code value="4815"/>
+        <display value="Glyburide"/>
+      </concept>
+      <concept>
+        <code value="48203"/>
+        <display value="Clavulanate"/>
+      </concept>
+      <concept>
+        <code value="4821"/>
+        <display value="Glipizide"/>
+      </concept>
+      <concept>
+        <code value="48274"/>
+        <display value="Acetaminophen / Propoxyphene"/>
+      </concept>
+      <concept>
+        <code value="484139"/>
+        <display value="Chlorhexidine / Isopropyl Alcohol"/>
+      </concept>
+      <concept>
+        <code value="484211"/>
+        <display value="ezetimibe / Simvastatin"/>
+      </concept>
+      <concept>
+        <code value="4850"/>
+        <display value="Glucose"/>
+      </concept>
+      <concept>
+        <code value="4917"/>
+        <display value="Nitroglycerin"/>
+      </concept>
+      <concept>
+        <code value="49276"/>
+        <display value="Doxazosin"/>
+      </concept>
+      <concept>
+        <code value="50166"/>
+        <display value="Fosinopril"/>
+      </concept>
+      <concept>
+        <code value="5021"/>
+        <display value="Griseofulvin"/>
+      </concept>
+      <concept>
+        <code value="5032"/>
+        <display value="Guaifenesin"/>
+      </concept>
+      <concept>
+        <code value="5093"/>
+        <display value="Haloperidol"/>
+      </concept>
+      <concept>
+        <code value="51272"/>
+        <display value="quetiapine"/>
+      </concept>
+      <concept>
+        <code value="519"/>
+        <display value="Allopurinol"/>
+      </concept>
+      <concept>
+        <code value="52175"/>
+        <display value="Losartan"/>
+      </concept>
+      <concept>
+        <code value="5224"/>
+        <display value="heparin"/>
+      </concept>
+      <concept>
+        <code value="52582"/>
+        <display value="mesalamine"/>
+      </concept>
+      <concept>
+        <code value="5470"/>
+        <display value="Hydralazine"/>
+      </concept>
+      <concept>
+        <code value="5487"/>
+        <display value="Hydrochlorothiazide"/>
+      </concept>
+      <concept>
+        <code value="5489"/>
+        <display value="Hydrocodone"/>
+      </concept>
+      <concept>
+        <code value="5492"/>
+        <display value="Hydrocortisone"/>
+      </concept>
+      <concept>
+        <code value="5499"/>
+        <display value="Hydrogen Peroxide"/>
+      </concept>
+      <concept>
+        <code value="5521"/>
+        <display value="Hydroxychloroquine"/>
+      </concept>
+      <concept>
+        <code value="5553"/>
+        <display value="Hydroxyzine"/>
+      </concept>
+      <concept>
+        <code value="5640"/>
+        <display value="Ibuprofen"/>
+      </concept>
+      <concept>
+        <code value="5691"/>
+        <display value="Imipramine"/>
+      </concept>
+      <concept>
+        <code value="56946"/>
+        <display value="Paclitaxel"/>
+      </concept>
+      <concept>
+        <code value="57258"/>
+        <display value="tizanidine"/>
+      </concept>
+      <concept>
+        <code value="5764"/>
+        <display value="Indapamide"/>
+      </concept>
+      <concept>
+        <code value="5781"/>
+        <display value="Indomethacin"/>
+      </concept>
+      <concept>
+        <code value="588250"/>
+        <display value="milnacipran"/>
+      </concept>
+      <concept>
+        <code value="59078"/>
+        <display value="metaxalone"/>
+      </concept>
+      <concept>
+        <code value="591622"/>
+        <display value="varenicline"/>
+      </concept>
+      <concept>
+        <code value="5933"/>
+        <display value="Iodine"/>
+      </concept>
+      <concept>
+        <code value="593411"/>
+        <display value="sitagliptin"/>
+      </concept>
+      <concept>
+        <code value="594040"/>
+        <display value="Atropine / Diphenoxylate"/>
+      </concept>
+      <concept>
+        <code value="5956"/>
+        <display value="Iohexol"/>
+      </concept>
+      <concept>
+        <code value="596"/>
+        <display value="Alprazolam"/>
+      </concept>
+      <concept>
+        <code value="596723"/>
+        <display value="cerivastatin"/>
+      </concept>
+      <concept>
+        <code value="597142"/>
+        <display value="brimonidine / Timolol"/>
+      </concept>
+      <concept>
+        <code value="5992"/>
+        <display value="Iron-Dextran Complex"/>
+      </concept>
+      <concept>
+        <code value="60207"/>
+        <display value="dorzolamide"/>
+      </concept>
+      <concept>
+        <code value="6038"/>
+        <display value="isoniazid"/>
+      </concept>
+      <concept>
+        <code value="60548"/>
+        <display value="exenatide"/>
+      </concept>
+      <concept>
+        <code value="6057"/>
+        <display value="Isosorbide"/>
+      </concept>
+      <concept>
+        <code value="6058"/>
+        <display value="Isosorbide Dinitrate"/>
+      </concept>
+      <concept>
+        <code value="611854"/>
+        <display value="Chlordiazepoxide / clidinium"/>
+      </concept>
+      <concept>
+        <code value="6130"/>
+        <display value="Ketamine"/>
+      </concept>
+      <concept>
+        <code value="6135"/>
+        <display value="Ketoconazole"/>
+      </concept>
+      <concept>
+        <code value="61381"/>
+        <display value="olanzapine"/>
+      </concept>
+      <concept>
+        <code value="6142"/>
+        <display value="Ketoprofen"/>
+      </concept>
+      <concept>
+        <code value="6185"/>
+        <display value="Labetalol"/>
+      </concept>
+      <concept>
+        <code value="620"/>
+        <display value="Amantadine"/>
+      </concept>
+      <concept>
+        <code value="6218"/>
+        <display value="Lactulose"/>
+      </concept>
+      <concept>
+        <code value="6227"/>
+        <display value="Lanolin"/>
+      </concept>
+      <concept>
+        <code value="6387"/>
+        <display value="Lidocaine"/>
+      </concept>
+      <concept>
+        <code value="6398"/>
+        <display value="Lincomycin"/>
+      </concept>
+      <concept>
+        <code value="6448"/>
+        <display value="Lithium"/>
+      </concept>
+      <concept>
+        <code value="645555"/>
+        <display value="Bacitracin / Polymyxin B"/>
+      </concept>
+      <concept>
+        <code value="6468"/>
+        <display value="Loperamide"/>
+      </concept>
+      <concept>
+        <code value="6470"/>
+        <display value="Lorazepam"/>
+      </concept>
+      <concept>
+        <code value="6472"/>
+        <display value="Lovastatin"/>
+      </concept>
+      <concept>
+        <code value="6574"/>
+        <display value="Magnesium"/>
+      </concept>
+      <concept>
+        <code value="6585"/>
+        <display value="Magnesium Sulfate"/>
+      </concept>
+      <concept>
+        <code value="662263"/>
+        <display value="dorzolamide / Timolol"/>
+      </concept>
+      <concept>
+        <code value="6676"/>
+        <display value="Meclizine"/>
+      </concept>
+      <concept>
+        <code value="6691"/>
+        <display value="Medroxyprogesterone"/>
+      </concept>
+      <concept>
+        <code value="67108"/>
+        <display value="Enoxaparin"/>
+      </concept>
+      <concept>
+        <code value="6711"/>
+        <display value="Melatonin"/>
+      </concept>
+      <concept>
+        <code value="6719"/>
+        <display value="Memantine"/>
+      </concept>
+      <concept>
+        <code value="6750"/>
+        <display value="Menthol"/>
+      </concept>
+      <concept>
+        <code value="6754"/>
+        <display value="Meperidine"/>
+      </concept>
+      <concept>
+        <code value="6809"/>
+        <display value="Metformin"/>
+      </concept>
+      <concept>
+        <code value="6813"/>
+        <display value="Methadone"/>
+      </concept>
+      <concept>
+        <code value="6835"/>
+        <display value="Methimazole"/>
+      </concept>
+      <concept>
+        <code value="6845"/>
+        <display value="Methocarbamol"/>
+      </concept>
+      <concept>
+        <code value="6851"/>
+        <display value="Methotrexate"/>
+      </concept>
+      <concept>
+        <code value="6876"/>
+        <display value="Methyldopa"/>
+      </concept>
+      <concept>
+        <code value="689"/>
+        <display value="Aminophylline"/>
+      </concept>
+      <concept>
+        <code value="689467"/>
+        <display value="Oxytetracycline / Polymyxin B"/>
+      </concept>
+      <concept>
+        <code value="689518"/>
+        <display value="Aspirin / Caffeine / Propoxyphene"/>
+      </concept>
+      <concept>
+        <code value="689556"/>
+        <display value="Acetaminophen / Aspirin / Phenylpropanolamine"/>
+      </concept>
+      <concept>
+        <code value="689558"/>
+        <display value="Acetaminophen / Brompheniramine / Pseudoephedrine"/>
+      </concept>
+      <concept>
+        <code value="689561"/>
+        <display value="Acetaminophen / butalbital / Caffeine / Codeine"/>
+      </concept>
+      <concept>
+        <code value="689582"/>
+        <display value="Acetaminophen / Chlorpheniramine / Dextromethorphan / Pseudoephedrine"/>
+      </concept>
+      <concept>
+        <code value="689606"/>
+        <display value="Atropine / Hyoscyamine / Phenobarbital / Scopolamine"/>
+      </concept>
+      <concept>
+        <code value="689623"/>
+        <display value="Bacitracin / Hydrocortisone / Neomycin / Polymyxin B"/>
+      </concept>
+      <concept>
+        <code value="690077"/>
+        <display value="Benzalkonium / Lidocaine"/>
+      </concept>
+      <concept>
+        <code value="6901"/>
+        <display value="Methylphenidate"/>
+      </concept>
+      <concept>
+        <code value="6902"/>
+        <display value="Methylprednisolone"/>
+      </concept>
+      <concept>
+        <code value="690693"/>
+        <display value="Diphenhydramine / Phenylephrine"/>
+      </concept>
+      <concept>
+        <code value="690808"/>
+        <display value="Brompheniramine / Dextromethorphan / Pseudoephedrine"/>
+      </concept>
+      <concept>
+        <code value="69120"/>
+        <display value="tiotropium"/>
+      </concept>
+      <concept>
+        <code value="6915"/>
+        <display value="Metoclopramide"/>
+      </concept>
+      <concept>
+        <code value="6916"/>
+        <display value="Metolazone"/>
+      </concept>
+      <concept>
+        <code value="6918"/>
+        <display value="Metoprolol"/>
+      </concept>
+      <concept>
+        <code value="6922"/>
+        <display value="Metronidazole"/>
+      </concept>
+      <concept>
+        <code value="692572"/>
+        <display value="Bacitracin / Neomycin / Polymyxin B"/>
+      </concept>
+      <concept>
+        <code value="692794"/>
+        <display value="Gramicidin / Neomycin / Polymyxin B"/>
+      </concept>
+      <concept>
+        <code value="6932"/>
+        <display value="Miconazole"/>
+      </concept>
+      <concept>
+        <code value="6960"/>
+        <display value="Midazolam"/>
+      </concept>
+      <concept>
+        <code value="69749"/>
+        <display value="valsartan"/>
+      </concept>
+      <concept>
+        <code value="6980"/>
+        <display value="Minocycline"/>
+      </concept>
+      <concept>
+        <code value="6984"/>
+        <display value="Minoxidil"/>
+      </concept>
+      <concept>
+        <code value="703"/>
+        <display value="Amiodarone"/>
+      </concept>
+      <concept>
+        <code value="704"/>
+        <display value="Amitriptyline"/>
+      </concept>
+      <concept>
+        <code value="7052"/>
+        <display value="Morphine"/>
+      </concept>
+      <concept>
+        <code value="705258"/>
+        <display value="Acetaminophen / Dextromethorphan / Doxylamine"/>
+      </concept>
+      <concept>
+        <code value="7213"/>
+        <display value="Ipratropium"/>
+      </concept>
+      <concept>
+        <code value="72143"/>
+        <display value="Raloxifene"/>
+      </concept>
+      <concept>
+        <code value="72236"/>
+        <display value="fosphenytoin"/>
+      </concept>
+      <concept>
+        <code value="723"/>
+        <display value="Amoxicillin"/>
+      </concept>
+      <concept>
+        <code value="72302"/>
+        <display value="ropinirole"/>
+      </concept>
+      <concept>
+        <code value="7233"/>
+        <display value="Nafcillin"/>
+      </concept>
+      <concept>
+        <code value="7238"/>
+        <display value="Nalbuphine"/>
+      </concept>
+      <concept>
+        <code value="7243"/>
+        <display value="Naltrexone"/>
+      </concept>
+      <concept>
+        <code value="725"/>
+        <display value="Amphetamine"/>
+      </concept>
+      <concept>
+        <code value="7258"/>
+        <display value="Naproxen"/>
+      </concept>
+      <concept>
+        <code value="72625"/>
+        <display value="duloxetine"/>
+      </concept>
+      <concept>
+        <code value="7299"/>
+        <display value="Neomycin"/>
+      </concept>
+      <concept>
+        <code value="73056"/>
+        <display value="Risedronate"/>
+      </concept>
+      <concept>
+        <code value="733"/>
+        <display value="Ampicillin"/>
+      </concept>
+      <concept>
+        <code value="73494"/>
+        <display value="telmisartan"/>
+      </concept>
+      <concept>
+        <code value="73645"/>
+        <display value="valacyclovir"/>
+      </concept>
+      <concept>
+        <code value="7393"/>
+        <display value="Niacin"/>
+      </concept>
+      <concept>
+        <code value="7407"/>
+        <display value="Nicotine"/>
+      </concept>
+      <concept>
+        <code value="74169"/>
+        <display value="Piperacillin / tazobactam"/>
+      </concept>
+      <concept>
+        <code value="7417"/>
+        <display value="Nifedipine"/>
+      </concept>
+      <concept>
+        <code value="7454"/>
+        <display value="Nitrofurantoin"/>
+      </concept>
+      <concept>
+        <code value="746741"/>
+        <display value="Pramipexole"/>
+      </concept>
+      <concept>
+        <code value="7486"/>
+        <display value="Nitrous Oxide"/>
+      </concept>
+      <concept>
+        <code value="7517"/>
+        <display value="Norfloxacin"/>
+      </concept>
+      <concept>
+        <code value="7531"/>
+        <display value="Nortriptyline"/>
+      </concept>
+      <concept>
+        <code value="7597"/>
+        <display value="Nystatin"/>
+      </concept>
+      <concept>
+        <code value="7623"/>
+        <display value="Ofloxacin"/>
+      </concept>
+      <concept>
+        <code value="7646"/>
+        <display value="Omeprazole"/>
+      </concept>
+      <concept>
+        <code value="7676"/>
+        <display value="Opium"/>
+      </concept>
+      <concept>
+        <code value="7715"/>
+        <display value="Orphenadrine"/>
+      </concept>
+      <concept>
+        <code value="77492"/>
+        <display value="tamsulosin"/>
+      </concept>
+      <concept>
+        <code value="7804"/>
+        <display value="Oxycodone"/>
+      </concept>
+      <concept>
+        <code value="7821"/>
+        <display value="Oxytetracycline"/>
+      </concept>
+      <concept>
+        <code value="787390"/>
+        <display value="tapentadol"/>
+      </concept>
+      <concept>
+        <code value="7975"/>
+        <display value="Penicillamine"/>
+      </concept>
+      <concept>
+        <code value="797541"/>
+        <display value="Isopropyl Alcohol"/>
+      </concept>
+      <concept>
+        <code value="7980"/>
+        <display value="Penicillin G"/>
+      </concept>
+      <concept>
+        <code value="7984"/>
+        <display value="Penicillin V"/>
+      </concept>
+      <concept>
+        <code value="7994"/>
+        <display value="Pentamidine"/>
+      </concept>
+      <concept>
+        <code value="8001"/>
+        <display value="Pentazocine"/>
+      </concept>
+      <concept>
+        <code value="8120"/>
+        <display value="Phenazopyridine"/>
+      </concept>
+      <concept>
+        <code value="8134"/>
+        <display value="Phenobarbital"/>
+      </concept>
+      <concept>
+        <code value="815166"/>
+        <display value="Dextromethorphan / Doxylamine"/>
+      </concept>
+      <concept>
+        <code value="8163"/>
+        <display value="Phenylephrine"/>
+      </concept>
+      <concept>
+        <code value="816346"/>
+        <display value="dexlansoprazole"/>
+      </concept>
+      <concept>
+        <code value="8175"/>
+        <display value="Phenylpropanolamine"/>
+      </concept>
+      <concept>
+        <code value="817579"/>
+        <display value="Acetaminophen / Codeine"/>
+      </concept>
+      <concept>
+        <code value="817958"/>
+        <display value="Aspirin / Calcium Carbonate"/>
+      </concept>
+      <concept>
+        <code value="8183"/>
+        <display value="Phenytoin"/>
+      </concept>
+      <concept>
+        <code value="82122"/>
+        <display value="Levofloxacin"/>
+      </concept>
+      <concept>
+        <code value="822929"/>
+        <display value="Amphetamine aspartate / Amphetamine Sulfate / Dextroamphetamine saccharate / Dextroamphetamine Sulfate"/>
+      </concept>
+      <concept>
+        <code value="83367"/>
+        <display value="atorvastatin"/>
+      </concept>
+      <concept>
+        <code value="8356"/>
+        <display value="Piroxicam"/>
+      </concept>
+      <concept>
+        <code value="83818"/>
+        <display value="irbesartan"/>
+      </concept>
+      <concept>
+        <code value="84108"/>
+        <display value="rosiglitazone"/>
+      </concept>
+      <concept>
+        <code value="8536"/>
+        <display value="Polymyxin B"/>
+      </concept>
+      <concept>
+        <code value="857974"/>
+        <display value="saxagliptin"/>
+      </concept>
+      <concept>
+        <code value="8588"/>
+        <display value="Potassium"/>
+      </concept>
+      <concept>
+        <code value="8591"/>
+        <display value="Potassium Chloride"/>
+      </concept>
+      <concept>
+        <code value="8610"/>
+        <display value="Povidone"/>
+      </concept>
+      <concept>
+        <code value="8611"/>
+        <display value="Povidone-Iodine"/>
+      </concept>
+      <concept>
+        <code value="861634"/>
+        <display value="pitavastatin"/>
+      </concept>
+      <concept>
+        <code value="8629"/>
+        <display value="Prazosin"/>
+      </concept>
+      <concept>
+        <code value="8638"/>
+        <display value="prednisolone"/>
+      </concept>
+      <concept>
+        <code value="8640"/>
+        <display value="Prednisone"/>
+      </concept>
+      <concept>
+        <code value="8687"/>
+        <display value="Primaquine"/>
+      </concept>
+      <concept>
+        <code value="8691"/>
+        <display value="Primidone"/>
+      </concept>
+      <concept>
+        <code value="8698"/>
+        <display value="Probenecid"/>
+      </concept>
+      <concept>
+        <code value="8700"/>
+        <display value="Procainamide"/>
+      </concept>
+      <concept>
+        <code value="8701"/>
+        <display value="Procaine"/>
+      </concept>
+      <concept>
+        <code value="8703"/>
+        <display value="Fenofibrate"/>
+      </concept>
+      <concept>
+        <code value="8704"/>
+        <display value="Prochlorperazine"/>
+      </concept>
+      <concept>
+        <code value="8727"/>
+        <display value="Progesterone"/>
+      </concept>
+      <concept>
+        <code value="8745"/>
+        <display value="Promethazine"/>
+      </concept>
+      <concept>
+        <code value="8754"/>
+        <display value="Propafenone"/>
+      </concept>
+      <concept>
+        <code value="87636"/>
+        <display value="fexofenadine"/>
+      </concept>
+      <concept>
+        <code value="8782"/>
+        <display value="Propofol"/>
+      </concept>
+      <concept>
+        <code value="8785"/>
+        <display value="Propoxyphene"/>
+      </concept>
+      <concept>
+        <code value="8787"/>
+        <display value="Propranolol"/>
+      </concept>
+      <concept>
+        <code value="8794"/>
+        <display value="Propylthiouracil"/>
+      </concept>
+      <concept>
+        <code value="88014"/>
+        <display value="rizatriptan"/>
+      </concept>
+      <concept>
+        <code value="88249"/>
+        <display value="montelukast"/>
+      </concept>
+      <concept>
+        <code value="883815"/>
+        <display value="Dexamethasone / Tobramycin"/>
+      </concept>
+      <concept>
+        <code value="8896"/>
+        <display value="Pseudoephedrine"/>
+      </concept>
+      <concept>
+        <code value="89013"/>
+        <display value="aripiprazole"/>
+      </concept>
+      <concept>
+        <code value="8928"/>
+        <display value="Psyllium"/>
+      </concept>
+      <concept>
+        <code value="8948"/>
+        <display value="Purified Protein Derivative of Tuberculin"/>
+      </concept>
+      <concept>
+        <code value="90176"/>
+        <display value="Iron"/>
+      </concept>
+      <concept>
+        <code value="9068"/>
+        <display value="Quinidine"/>
+      </concept>
+      <concept>
+        <code value="9071"/>
+        <display value="Quinine"/>
+      </concept>
+      <concept>
+        <code value="91263"/>
+        <display value="Aloe Extract"/>
+      </concept>
+      <concept>
+        <code value="9143"/>
+        <display value="Ranitidine"/>
+      </concept>
+      <concept>
+        <code value="9384"/>
+        <display value="Rifampin"/>
+      </concept>
+      <concept>
+        <code value="9524"/>
+        <display value="Sulfasalazine"/>
+      </concept>
+      <concept>
+        <code value="9601"/>
+        <display value="Scopolamine"/>
+      </concept>
+      <concept>
+        <code value="9778"/>
+        <display value="Silicones"/>
+      </concept>
+      <concept>
+        <code value="9793"/>
+        <display value="silver sulfadiazine"/>
+      </concept>
+      <concept>
+        <code value="9947"/>
+        <display value="Sotalol"/>
+      </concept>
+      <concept>
+        <code value="9997"/>
+        <display value="Spironolactone"/>
+      </concept>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:a9a207ca-5f35-4fa9-8147-df50849ebce2"/>
+    <timestamp value="2023-06-29T16:29:15-04:00"/>
+    <total value="560"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1002293"/>
+      <display value="formoterol / mometasone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1007388"/>
+      <display value="lactase / rennet"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1008298"/>
+      <display value="acetaminophen / caffeine / chlorpheniramine / hydrocodone / phenylephrine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1008519"/>
+      <display value="guaiacolsulfonate / hydrocodone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1009148"/>
+      <display value="ampicillin / sulbactam"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="10109"/>
+      <display value="streptomycin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="10154"/>
+      <display value="succinylcholine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="10156"/>
+      <display value="sucralfate"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="10169"/>
+      <display value="sulfacetamide"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="10171"/>
+      <display value="sulfadiazine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="10180"/>
+      <display value="sulfamethoxazole"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="10207"/>
+      <display value="sulfisoxazole"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="10223"/>
+      <display value="sulfur"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="10237"/>
+      <display value="sulindac"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="10324"/>
+      <display value="tamoxifen"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="10355"/>
+      <display value="temazepam"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="10368"/>
+      <display value="terbutaline"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1037042"/>
+      <display value="dabigatran etexilate"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="10379"/>
+      <display value="testosterone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="10395"/>
+      <display value="tetracycline"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="103990"/>
+      <display value="carbidopa / levodopa"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1040028"/>
+      <display value="lurasidone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="10438"/>
+      <display value="theophylline"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="10472"/>
+      <display value="thimerosal"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="10493"/>
+      <display value="thiopental"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="10502"/>
+      <display value="thioridazine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="10510"/>
+      <display value="thiothixene"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="10582"/>
+      <display value="levothyroxine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="10594"/>
+      <display value="ticlopidine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="10600"/>
+      <display value="timolol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="10627"/>
+      <display value="tobramycin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="10636"/>
+      <display value="tolmetin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="10689"/>
+      <display value="tramadol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="10737"/>
+      <display value="trazodone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="10759"/>
+      <display value="triamcinolone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="107602"/>
+      <display value="epinephrine / lidocaine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="10763"/>
+      <display value="triamterene"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="10767"/>
+      <display value="triazolam"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="10800"/>
+      <display value="trifluoperazine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="108118"/>
+      <display value="mometasone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="10829"/>
+      <display value="trimethoprim"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="10831"/>
+      <display value="sulfamethoxazole / trimethoprim"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="11124"/>
+      <display value="vancomycin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1114195"/>
+      <display value="rivaroxaban"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1116632"/>
+      <display value="ticagrelor"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="11170"/>
+      <display value="verapamil"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="11248"/>
+      <display value="vitamin B12"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="11253"/>
+      <display value="vitamin D"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="11256"/>
+      <display value="vitamin E"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="11289"/>
+      <display value="warfarin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="113588"/>
+      <display value="erythromycin / sulfisoxazole"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="11416"/>
+      <display value="zinc"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="11423"/>
+      <display value="zinc oxide"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="114477"/>
+      <display value="levetiracetam"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="114970"/>
+      <display value="zafirlukast"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="114979"/>
+      <display value="rabeprazole"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1151"/>
+      <display value="ascorbic acid"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="115264"/>
+      <display value="ibandronate"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="115552"/>
+      <display value="trovafloxacin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="115698"/>
+      <display value="ziprasidone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1191"/>
+      <display value="aspirin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="119565"/>
+      <display value="tolterodine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1202"/>
+      <display value="atenolol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="121191"/>
+      <display value="rituximab"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1223"/>
+      <display value="atropine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1256"/>
+      <display value="azathioprine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1272"/>
+      <display value="aztreonam"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1291"/>
+      <display value="bacitracin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1292"/>
+      <display value="baclofen"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1310171"/>
+      <display value="gadolinium"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1311085"/>
+      <display value="xanthine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1311524"/>
+      <display value="aspartame"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1311629"/>
+      <display value="nickel"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1314891"/>
+      <display value="latex"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1331"/>
+      <display value="barium sulfate"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="134615"/>
+      <display value="brimonidine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1347"/>
+      <display value="beclomethasone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="135447"/>
+      <display value="donepezil"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="135775"/>
+      <display value="zolmitriptan"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1359"/>
+      <display value="belladonna alkaloids"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1362879"/>
+      <display value="sulfur dioxide"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1363043"/>
+      <display value="ethyl ether"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="136411"/>
+      <display value="sildenafil"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1364430"/>
+      <display value="apixaban"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="138099"/>
+      <display value="gemifloxacin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="139462"/>
+      <display value="moxifloxacin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1399"/>
+      <display value="benzocaine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="140587"/>
+      <display value="celecoxib"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1406"/>
+      <display value="benzoin resin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="141626"/>
+      <display value="colesevelam"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1418"/>
+      <display value="benzoyl peroxide"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1424"/>
+      <display value="benztropine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1514"/>
+      <display value="betamethasone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="153970"/>
+      <display value="hyoscyamine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1596450"/>
+      <display value="gentamicin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="15996"/>
+      <display value="mirtazapine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="161"/>
+      <display value="acetaminophen"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="16681"/>
+      <display value="acarbose"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="167"/>
+      <display value="acetazolamide"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="17128"/>
+      <display value="lansoprazole"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1727875"/>
+      <display value="tetanus immune globulin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="17300"/>
+      <display value="alfuzosin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="17767"/>
+      <display value="amlodipine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1827"/>
+      <display value="buspirone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="183379"/>
+      <display value="rivastigmine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1841"/>
+      <display value="butorphanol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="18631"/>
+      <display value="azithromycin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="187832"/>
+      <display value="pregabalin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1886"/>
+      <display value="caffeine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="18867"/>
+      <display value="benazepril"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1895"/>
+      <display value="calcium"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1897"/>
+      <display value="calcium carbonate"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="18993"/>
+      <display value="benzonatate"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="190376"/>
+      <display value="linezolid"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="191831"/>
+      <display value="infliximab"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="19478"/>
+      <display value="bismuth subsalicylate"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="19552"/>
+      <display value="cefprozil"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="19711"/>
+      <display value="amoxicillin / clavulanate"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="19831"/>
+      <display value="budesonide"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="1998"/>
+      <display value="captopril"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="2002"/>
+      <display value="carbamazepine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="20352"/>
+      <display value="carvedilol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="20481"/>
+      <display value="cefepime"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="20489"/>
+      <display value="cefpodoxime"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="20610"/>
+      <display value="cetirizine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="2101"/>
+      <display value="carisoprodol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="21107"/>
+      <display value="cilostazol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="21183"/>
+      <display value="citric acid"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="21212"/>
+      <display value="clarithromycin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="214130"/>
+      <display value="acetaminophen / butalbital / caffeine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="214153"/>
+      <display value="acetaminophen / dichloralphenazone / isometheptene"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="214160"/>
+      <display value="aspirin / butalbital / caffeine / codeine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="214181"/>
+      <display value="acetaminophen / diphenhydramine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="214182"/>
+      <display value="acetaminophen / hydrocodone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="214183"/>
+      <display value="acetaminophen / oxycodone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="214199"/>
+      <display value="albuterol / ipratropium"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="214223"/>
+      <display value="amlodipine / benazepril"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="214250"/>
+      <display value="aspirin / caffeine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="214256"/>
+      <display value="aspirin / oxycodone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="214257"/>
+      <display value="aspirin / pentazocine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="214317"/>
+      <display value="bisoprolol / hydrochlorothiazide"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="214336"/>
+      <display value="caffeine / ergotamine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="214354"/>
+      <display value="candesartan"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="214364"/>
+      <display value="carbinoxamine / pseudoephedrine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="214392"/>
+      <display value="chlorpheniramine / hydrocodone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="214442"/>
+      <display value="codeine / guaifenesin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="214445"/>
+      <display value="codeine / pseudoephedrine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="214488"/>
+      <display value="dextromethorphan / guaifenesin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="214502"/>
+      <display value="diclofenac / misoprostol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="214555"/>
+      <display value="etanercept"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="214558"/>
+      <display value="ethinyl estradiol / levonorgestrel"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="214565"/>
+      <display value="fexofenadine / pseudoephedrine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="214599"/>
+      <display value="guaifenesin / pseudoephedrine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="214614"/>
+      <display value="homatropine / hydrocodone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="214617"/>
+      <display value="hydrochlorothiazide / irbesartan"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="214618"/>
+      <display value="hydrochlorothiazide / lisinopril"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="214619"/>
+      <display value="hydrochlorothiazide / losartan"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="214626"/>
+      <display value="hydrochlorothiazide / valsartan"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="214627"/>
+      <display value="hydrocodone / ibuprofen"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="214631"/>
+      <display value="hydrocodone / pseudoephedrine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="214682"/>
+      <display value="loratadine / pseudoephedrine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="214721"/>
+      <display value="naloxone / pentazocine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="214807"/>
+      <display value="pseudoephedrine / triprolidine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="2176"/>
+      <display value="cefaclor"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="217627"/>
+      <display value="hydrocortisone / neomycin / polymyxin B"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="2177"/>
+      <display value="cefadroxil"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="2180"/>
+      <display value="cefazolin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="2189"/>
+      <display value="cefoxitin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="2191"/>
+      <display value="ceftazidime"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="2193"/>
+      <display value="ceftriaxone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="219314"/>
+      <display value="polymyxin B / trimethoprim"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="219315"/>
+      <display value="iron polysaccharide"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="2194"/>
+      <display value="cefuroxime"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="21949"/>
+      <display value="cyclobenzaprine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="221147"/>
+      <display value="polyethylene glycol 3350"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="22299"/>
+      <display value="daptomycin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="2231"/>
+      <display value="cephalexin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="226716"/>
+      <display value="aspirin / dipyridamole"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="228476"/>
+      <display value="gatifloxacin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="228790"/>
+      <display value="dutasteride"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="232158"/>
+      <display value="rofecoxib"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="233698"/>
+      <display value="dronedarone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="2348"/>
+      <display value="chloramphenicol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="2356"/>
+      <display value="chlordiazepoxide"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="2358"/>
+      <display value="chlorhexidine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="236778"/>
+      <display value="trospium"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="237159"/>
+      <display value="levalbuterol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="2393"/>
+      <display value="chloroquine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="2400"/>
+      <display value="chlorpheniramine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="2403"/>
+      <display value="chlorpromazine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="2409"/>
+      <display value="chlorthalidone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="2410"/>
+      <display value="chlorzoxazone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="2418"/>
+      <display value="cholecalciferol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="2447"/>
+      <display value="cholestyramine resin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="24605"/>
+      <display value="etodolac"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="24947"/>
+      <display value="ferrous sulfate"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="25025"/>
+      <display value="finasteride"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="25033"/>
+      <display value="cefixime"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="25037"/>
+      <display value="cefdinir"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="25120"/>
+      <display value="flunisolide"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="25255"/>
+      <display value="formoterol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="253157"/>
+      <display value="bee pollen"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="2541"/>
+      <display value="cimetidine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="25480"/>
+      <display value="gabapentin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="2551"/>
+      <display value="ciprofloxacin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="2556"/>
+      <display value="citalopram"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="25789"/>
+      <display value="glimepiride"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="2582"/>
+      <display value="clindamycin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="258337"/>
+      <display value="hydrochlorothiazide / triamterene"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="2598"/>
+      <display value="clonazepam"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="2599"/>
+      <display value="clonidine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="260101"/>
+      <display value="oseltamivir"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="26225"/>
+      <display value="ondansetron"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="2623"/>
+      <display value="clotrimazole"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="2670"/>
+      <display value="codeine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="2683"/>
+      <display value="colchicine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="2685"/>
+      <display value="colestipol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="27169"/>
+      <display value="leflunomide"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="274783"/>
+      <display value="insulin glargine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="274786"/>
+      <display value="telithromycin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="27723"/>
+      <display value="iodinated glycerol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="278567"/>
+      <display value="valdecoxib"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="28031"/>
+      <display value="itraconazole"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="281"/>
+      <display value="acyclovir"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="283742"/>
+      <display value="esomeprazole"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="283809"/>
+      <display value="travoprost"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="28439"/>
+      <display value="lamotrigine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="284635"/>
+      <display value="fluticasone / salmeterol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="2878"/>
+      <display value="cortisone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="28889"/>
+      <display value="loratadine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="28981"/>
+      <display value="loracarbef"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="29046"/>
+      <display value="lisinopril"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="29542"/>
+      <display value="mercury, ammoniated"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="29561"/>
+      <display value="meropenem"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="296"/>
+      <display value="adenosine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="3008"/>
+      <display value="cyclosporine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="301542"/>
+      <display value="rosuvastatin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="306674"/>
+      <display value="vardenafil"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="3108"/>
+      <display value="dapsone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="3143"/>
+      <display value="prasterone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="31448"/>
+      <display value="nabumetone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="31555"/>
+      <display value="nebivolol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="31565"/>
+      <display value="nefazodone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="31738"/>
+      <display value="nickel sulfate"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="318340"/>
+      <display value="Aloe vera preparation"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="321064"/>
+      <display value="olmesartan"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="321988"/>
+      <display value="escitalopram"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="322167"/>
+      <display value="solifenacin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="3247"/>
+      <display value="desipramine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="325642"/>
+      <display value="ertapenem"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="32592"/>
+      <display value="oxaliplatin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="32613"/>
+      <display value="oxaprozin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="32624"/>
+      <display value="oxcarbazepine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="3264"/>
+      <display value="dexamethasone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="32675"/>
+      <display value="oxybutynin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="327361"/>
+      <display value="adalimumab"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="3289"/>
+      <display value="dextromethorphan"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="32937"/>
+      <display value="paroxetine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="32968"/>
+      <display value="clopidogrel"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="3322"/>
+      <display value="diazepam"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="33408"/>
+      <display value="phenyltoloxamine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="3355"/>
+      <display value="diclofenac"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="3356"/>
+      <display value="dicloxacillin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="3361"/>
+      <display value="dicyclomine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="33738"/>
+      <display value="pioglitazone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="3393"/>
+      <display value="diflunisal"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="3407"/>
+      <display value="digoxin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="341248"/>
+      <display value="ezetimibe"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="3418"/>
+      <display value="dihydroergotamine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="3423"/>
+      <display value="hydromorphone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="3443"/>
+      <display value="diltiazem"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="3444"/>
+      <display value="dimenhydrinate"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="3498"/>
+      <display value="diphenhydramine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="35208"/>
+      <display value="quinapril"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="3521"/>
+      <display value="dipyridamole"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="352362"/>
+      <display value="acetaminophen / tramadol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="35296"/>
+      <display value="ramipril"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="35382"/>
+      <display value="resorcinol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="35636"/>
+      <display value="risperidone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="358263"/>
+      <display value="tadalafil"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="35827"/>
+      <display value="ketorolac"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="35829"/>
+      <display value="ranolazine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="36108"/>
+      <display value="salsalate"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="36117"/>
+      <display value="salmeterol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="3616"/>
+      <display value="dobutamine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="3638"/>
+      <display value="doxepin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="3640"/>
+      <display value="doxycycline"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="36437"/>
+      <display value="sertraline"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="3648"/>
+      <display value="droperidol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="36567"/>
+      <display value="simvastatin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="37418"/>
+      <display value="sumatriptan"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="37617"/>
+      <display value="tazobactam"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="37798"/>
+      <display value="terazosin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="37801"/>
+      <display value="terbinafine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="3827"/>
+      <display value="enalapril"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="3829"/>
+      <display value="enalaprilat"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="38400"/>
+      <display value="atomoxetine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="38404"/>
+      <display value="topiramate"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="38413"/>
+      <display value="torsemide"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="38574"/>
+      <display value="trichloroacetaldehyde"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="38685"/>
+      <display value="trimethobenzamide"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="389132"/>
+      <display value="budesonide / formoterol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="3966"/>
+      <display value="ephedrine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="39786"/>
+      <display value="venlafaxine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="3992"/>
+      <display value="epinephrine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="39993"/>
+      <display value="zolpidem"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="39998"/>
+      <display value="zonisamide"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="40048"/>
+      <display value="carboplatin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="400674"/>
+      <display value="dexbrompheniramine / pseudoephedrine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="4025"/>
+      <display value="ergotamine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="40254"/>
+      <display value="valproate"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="4053"/>
+      <display value="erythromycin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="40575"/>
+      <display value="zileuton"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="40790"/>
+      <display value="pantoprazole"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="4083"/>
+      <display value="estradiol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="4099"/>
+      <display value="estrogens, conjugated (USP)"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="41126"/>
+      <display value="fluticasone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="41127"/>
+      <display value="fluvastatin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="4124"/>
+      <display value="ethinyl estradiol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="41397"/>
+      <display value="lactase"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="41493"/>
+      <display value="meloxicam"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="42330"/>
+      <display value="terfenadine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="42331"/>
+      <display value="misoprostol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="42347"/>
+      <display value="bupropion"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="42351"/>
+      <display value="lithium carbonate"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="42372"/>
+      <display value="mupirocin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="42463"/>
+      <display value="pravastatin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="4278"/>
+      <display value="famotidine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="4316"/>
+      <display value="felodipine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="4337"/>
+      <display value="fentanyl"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="435"/>
+      <display value="albuterol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="43611"/>
+      <display value="latanoprost"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="4419"/>
+      <display value="fish oils"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="4441"/>
+      <display value="flecainide"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="4450"/>
+      <display value="fluconazole"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="448"/>
+      <display value="ethanol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="4492"/>
+      <display value="fluorouracil"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="4493"/>
+      <display value="fluoxetine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="4496"/>
+      <display value="fluphenazine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="4500"/>
+      <display value="flurandrenolide"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="4530"/>
+      <display value="formaldehyde"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="4603"/>
+      <display value="furosemide"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="46041"/>
+      <display value="alendronate"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="461016"/>
+      <display value="eszopiclone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="4637"/>
+      <display value="galantamine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="465397"/>
+      <display value="ciprofloxacin / dexamethasone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="466522"/>
+      <display value="diphenhydramine / zinc acetate"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="466541"/>
+      <display value="neomycin / polymyxin B"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="466549"/>
+      <display value="aspirin / caffeine / orphenadrine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="466553"/>
+      <display value="penicillin G benzathine / penicillin G procaine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="466566"/>
+      <display value="acetaminophen / dextromethorphan / diphenhydramine / pseudoephedrine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="466584"/>
+      <display value="acetaminophen / aspirin / caffeine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="4719"/>
+      <display value="gemfibrozil"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="475968"/>
+      <display value="liraglutide"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="4815"/>
+      <display value="glyburide"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="48203"/>
+      <display value="clavulanate"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="4821"/>
+      <display value="glipizide"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="484139"/>
+      <display value="chlorhexidine / isopropyl alcohol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="484211"/>
+      <display value="ezetimibe / simvastatin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="4850"/>
+      <display value="glucose"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="4917"/>
+      <display value="nitroglycerin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="49276"/>
+      <display value="doxazosin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="50166"/>
+      <display value="fosinopril"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="5021"/>
+      <display value="griseofulvin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="5032"/>
+      <display value="guaifenesin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="5093"/>
+      <display value="haloperidol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="51272"/>
+      <display value="quetiapine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="519"/>
+      <display value="allopurinol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="52175"/>
+      <display value="losartan"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="5224"/>
+      <display value="heparin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="52582"/>
+      <display value="mesalamine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="5470"/>
+      <display value="hydralazine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="5487"/>
+      <display value="hydrochlorothiazide"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="5489"/>
+      <display value="hydrocodone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="5492"/>
+      <display value="hydrocortisone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="5499"/>
+      <display value="hydrogen peroxide"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="5521"/>
+      <display value="hydroxychloroquine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="5553"/>
+      <display value="hydroxyzine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="5640"/>
+      <display value="ibuprofen"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="5691"/>
+      <display value="imipramine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="56946"/>
+      <display value="paclitaxel"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="57258"/>
+      <display value="tizanidine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="5764"/>
+      <display value="indapamide"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="5781"/>
+      <display value="indomethacin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="588250"/>
+      <display value="milnacipran"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="59078"/>
+      <display value="metaxalone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="591622"/>
+      <display value="varenicline"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="5933"/>
+      <display value="iodine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="593411"/>
+      <display value="sitagliptin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="594040"/>
+      <display value="atropine / diphenoxylate"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="5956"/>
+      <display value="iohexol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="596"/>
+      <display value="alprazolam"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="596723"/>
+      <display value="cerivastatin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="597142"/>
+      <display value="brimonidine / timolol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="5992"/>
+      <display value="iron-dextran complex"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="60207"/>
+      <display value="dorzolamide"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6038"/>
+      <display value="isoniazid"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="60548"/>
+      <display value="exenatide"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6057"/>
+      <display value="isosorbide"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6058"/>
+      <display value="isosorbide dinitrate"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="611854"/>
+      <display value="chlordiazepoxide / clidinium"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6130"/>
+      <display value="ketamine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6135"/>
+      <display value="ketoconazole"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="61381"/>
+      <display value="olanzapine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6142"/>
+      <display value="ketoprofen"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6185"/>
+      <display value="labetalol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="620"/>
+      <display value="amantadine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6218"/>
+      <display value="lactulose"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6227"/>
+      <display value="lanolin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6387"/>
+      <display value="lidocaine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6398"/>
+      <display value="lincomycin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6448"/>
+      <display value="lithium"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="645555"/>
+      <display value="bacitracin / polymyxin B"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6468"/>
+      <display value="loperamide"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6470"/>
+      <display value="lorazepam"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6472"/>
+      <display value="lovastatin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6574"/>
+      <display value="magnesium"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6585"/>
+      <display value="magnesium sulfate"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="662263"/>
+      <display value="dorzolamide / timolol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6676"/>
+      <display value="meclizine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6691"/>
+      <display value="medroxyprogesterone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="67108"/>
+      <display value="enoxaparin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6711"/>
+      <display value="melatonin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6719"/>
+      <display value="memantine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6750"/>
+      <display value="menthol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6754"/>
+      <display value="meperidine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6809"/>
+      <display value="metformin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6813"/>
+      <display value="methadone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6835"/>
+      <display value="methimazole"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6845"/>
+      <display value="methocarbamol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6851"/>
+      <display value="methotrexate"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6876"/>
+      <display value="methyldopa"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="689"/>
+      <display value="aminophylline"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="689467"/>
+      <display value="oxytetracycline / polymyxin B"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="689518"/>
+      <display value="aspirin / caffeine / propoxyphene"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="689556"/>
+      <display value="acetaminophen / aspirin / phenylpropanolamine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="689558"/>
+      <display value="acetaminophen / brompheniramine / pseudoephedrine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="689561"/>
+      <display value="acetaminophen / butalbital / caffeine / codeine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="689582"/>
+      <display value="acetaminophen / chlorpheniramine / dextromethorphan / pseudoephedrine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="689606"/>
+      <display value="atropine / hyoscyamine / phenobarbital / scopolamine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="689623"/>
+      <display value="bacitracin / hydrocortisone / neomycin / polymyxin B"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="690077"/>
+      <display value="benzalkonium / lidocaine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6901"/>
+      <display value="methylphenidate"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6902"/>
+      <display value="methylprednisolone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="690693"/>
+      <display value="diphenhydramine / phenylephrine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="690808"/>
+      <display value="brompheniramine / dextromethorphan / pseudoephedrine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="69120"/>
+      <display value="tiotropium"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6915"/>
+      <display value="metoclopramide"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6916"/>
+      <display value="metolazone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6918"/>
+      <display value="metoprolol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6922"/>
+      <display value="metronidazole"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="692794"/>
+      <display value="gramicidin / neomycin / polymyxin B"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6932"/>
+      <display value="miconazole"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6960"/>
+      <display value="midazolam"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="69749"/>
+      <display value="valsartan"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6980"/>
+      <display value="minocycline"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="6984"/>
+      <display value="minoxidil"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="703"/>
+      <display value="amiodarone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="704"/>
+      <display value="amitriptyline"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="7052"/>
+      <display value="morphine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="705258"/>
+      <display value="acetaminophen / dextromethorphan / doxylamine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="7213"/>
+      <display value="ipratropium"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="72143"/>
+      <display value="raloxifene"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="72236"/>
+      <display value="fosphenytoin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="723"/>
+      <display value="amoxicillin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="72302"/>
+      <display value="ropinirole"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="7233"/>
+      <display value="nafcillin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="7238"/>
+      <display value="nalbuphine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="7243"/>
+      <display value="naltrexone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="725"/>
+      <display value="amphetamine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="7258"/>
+      <display value="naproxen"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="72625"/>
+      <display value="duloxetine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="7299"/>
+      <display value="neomycin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="73056"/>
+      <display value="risedronate"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="733"/>
+      <display value="ampicillin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="73494"/>
+      <display value="telmisartan"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="73645"/>
+      <display value="valacyclovir"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="7393"/>
+      <display value="niacin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="7407"/>
+      <display value="nicotine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="74169"/>
+      <display value="piperacillin / tazobactam"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="7417"/>
+      <display value="nifedipine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="7454"/>
+      <display value="nitrofurantoin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="746741"/>
+      <display value="pramipexole"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="7486"/>
+      <display value="nitrous oxide"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="7517"/>
+      <display value="norfloxacin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="7531"/>
+      <display value="nortriptyline"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="7597"/>
+      <display value="nystatin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="7623"/>
+      <display value="ofloxacin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="7646"/>
+      <display value="omeprazole"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="7676"/>
+      <display value="opium"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="7715"/>
+      <display value="orphenadrine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="77492"/>
+      <display value="tamsulosin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="7804"/>
+      <display value="oxycodone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="7821"/>
+      <display value="oxytetracycline"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="787390"/>
+      <display value="tapentadol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="7975"/>
+      <display value="penicillamine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="797541"/>
+      <display value="isopropyl alcohol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="7980"/>
+      <display value="penicillin G"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="7984"/>
+      <display value="penicillin V"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="7994"/>
+      <display value="pentamidine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="8001"/>
+      <display value="pentazocine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="8120"/>
+      <display value="phenazopyridine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="8134"/>
+      <display value="phenobarbital"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="815166"/>
+      <display value="dextromethorphan / doxylamine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="8163"/>
+      <display value="phenylephrine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="816346"/>
+      <display value="dexlansoprazole"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="8175"/>
+      <display value="phenylpropanolamine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="817579"/>
+      <display value="acetaminophen / codeine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="817958"/>
+      <display value="aspirin / calcium carbonate"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="8183"/>
+      <display value="phenytoin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="82122"/>
+      <display value="levofloxacin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="822929"/>
+      <display value="amphetamine aspartate / amphetamine sulfate / dextroamphetamine saccharate / dextroamphetamine sulfate"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="83367"/>
+      <display value="atorvastatin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="8356"/>
+      <display value="piroxicam"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="83818"/>
+      <display value="irbesartan"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="84108"/>
+      <display value="rosiglitazone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="8536"/>
+      <display value="polymyxin B"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="857974"/>
+      <display value="saxagliptin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="8588"/>
+      <display value="potassium"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="8591"/>
+      <display value="potassium chloride"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="8610"/>
+      <display value="povidone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="8611"/>
+      <display value="povidone-iodine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="861634"/>
+      <display value="pitavastatin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="8629"/>
+      <display value="prazosin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="8638"/>
+      <display value="prednisolone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="8640"/>
+      <display value="prednisone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="8687"/>
+      <display value="primaquine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="8691"/>
+      <display value="primidone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="8698"/>
+      <display value="probenecid"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="8700"/>
+      <display value="procainamide"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="8701"/>
+      <display value="procaine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="8703"/>
+      <display value="fenofibrate"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="8704"/>
+      <display value="prochlorperazine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="8727"/>
+      <display value="progesterone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="8745"/>
+      <display value="promethazine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="8754"/>
+      <display value="propafenone"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="87636"/>
+      <display value="fexofenadine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="8782"/>
+      <display value="propofol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="8785"/>
+      <display value="propoxyphene"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="8787"/>
+      <display value="propranolol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="8794"/>
+      <display value="propylthiouracil"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="88014"/>
+      <display value="rizatriptan"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="88249"/>
+      <display value="montelukast"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="883815"/>
+      <display value="dexamethasone / tobramycin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="8896"/>
+      <display value="pseudoephedrine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="89013"/>
+      <display value="aripiprazole"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="8928"/>
+      <display value="psyllium"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="8948"/>
+      <display value="purified protein derivative of tuberculin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="90176"/>
+      <display value="iron"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="9068"/>
+      <display value="quinidine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="9071"/>
+      <display value="quinine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="91263"/>
+      <display value="aloe extract"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="9143"/>
+      <display value="ranitidine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="9384"/>
+      <display value="rifampin"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="9524"/>
+      <display value="sulfasalazine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="9601"/>
+      <display value="scopolamine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="9778"/>
+      <display value="silicones"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="9793"/>
+      <display value="silver sulfadiazine"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="9947"/>
+      <display value="sotalol"/>
+    </contains>
+    <contains>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+      <version value="06052023"/>
+      <code value="9997"/>
+      <display value="spironolactone"/>
+    </contains>
+  </expansion>
+</ValueSet>

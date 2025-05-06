@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="administration-method-codes"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="phx"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/administration-method-codes"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.97"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="SNOMEDCTAdministrationMethodCodes"/>
+  <title value="SNOMED CT Administration Method Codes"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="This value set includes some method codes from SNOMED CT - provided as an exemplar"/>
+  <copyright value="This value set includes content from SNOMED CT, which is copyright © 2002+ International Health Terminology Standards Development Organisation (IHTSDO), and distributed by agreement between IHTSDO and HL7. Implementer use of SNOMED CT is not covered by this agreement"/>
+  <compose>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="422096002"/>
+      </filter>
+    </include>
+  </compose>
+  <expansion>
+    <extension url="http://hl7.org/fhir/StructureDefinition/valueset-unclosed">
+      <valueBoolean value="true"/>
+    </extension>
+    <identifier value="urn:uuid:01cdf132-b1c1-4040-b17d-a539067d06be"/>
+    <timestamp value="2025-01-17T09:53:37-07:00"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-valueset"/>
+      <valueUri value="null"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801"/>
+    </parameter>
+    <parameter>
+      <name value="version"/>
+      <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801"/>
+    </parameter>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="422096002"/>
+      <display value="Dosing instruction fragment (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="417924000"/>
+      <display value="Apply"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="418283001"/>
+      <display value="Administer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="419385000"/>
+      <display value="Use"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="419582001"/>
+      <display value="Give"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="419652001"/>
+      <display value="Take"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="419747000"/>
+      <display value="Chew"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="420045007"/>
+      <display value="Suck"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="420246001"/>
+      <display value="At - dosing instruction fragment (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="420247005"/>
+      <display value="Dosing instruction imperative (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="420295001"/>
+      <display value="Only - dosing instruction fragment (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="420341009"/>
+      <display value="Constant - dosing instruction fragment (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="420360002"/>
+      <display value="Sniff - dosing instruction imperative (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="420484009"/>
+      <display value="Subtract - dosing instruction fragment (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="420503003"/>
+      <display value="As - dosing instruction fragment (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="420561004"/>
+      <display value="Or - dosing instruction fragment (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="420604000"/>
+      <display value="Finish - dosing instruction imperative (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="420606003"/>
+      <display value="Shampoo - dosing instruction imperative (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="420620005"/>
+      <display value="Push - dosing instruction imperative (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="420652005"/>
+      <display value="Until gone - dosing instruction fragment (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="420771004"/>
+      <display value="Upon - dosing instruction fragment (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="420806001"/>
+      <display value="Per - dosing instruction fragment (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="420883007"/>
+      <display value="Sparingly - dosing instruction fragment (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="420942008"/>
+      <display value="Call - dosing instruction fragment (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="420974001"/>
+      <display value="When - dosing instruction fragment (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421035004"/>
+      <display value="To - dosing instruction fragment (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421066005"/>
+      <display value="Place - dosing instruction imperative (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421067001"/>
+      <display value="Then - dosing instruction fragment (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421134003"/>
+      <display value="Inhale - dosing instruction imperative (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421139008"/>
+      <display value="Hold - dosing instruction fragment (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421206002"/>
+      <display value="Multiply - dosing instruction fragment (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421257003"/>
+      <display value="Insert - dosing instruction imperative (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421286000"/>
+      <display value="Discontinue - dosing instruction imperative (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421298005"/>
+      <display value="Swish and swallow - dosing instruction imperative (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421399004"/>
+      <display value="Dilute - dosing instruction imperative (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421463005"/>
+      <display value="With - dosing instruction fragment (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421484000"/>
+      <display value="Then discontinue - dosing instruction fragment (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421521009"/>
+      <display value="Swallow - dosing instruction imperative (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421538008"/>
+      <display value="Instill - dosing instruction imperative (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421548005"/>
+      <display value="Until - dosing instruction fragment (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421612001"/>
+      <display value="Every - dosing instruction fragment (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421682005"/>
+      <display value="Dissolve - dosing instruction imperative (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421718005"/>
+      <display value="Before - dosing instruction fragment (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421723005"/>
+      <display value="Now - dosing instruction fragment (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421769005"/>
+      <display value="Follow directions (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421803000"/>
+      <display value="If - dosing instruction fragment (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421805007"/>
+      <display value="Swish - dosing instruction imperative (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421829000"/>
+      <display value="And - dosing instruction fragment (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421832002"/>
+      <display value="Twice - dosing instruction fragment (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421939007"/>
+      <display value="Follow - dosing instruction imperative (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421984009"/>
+      <display value="Until finished - dosing instruction fragment (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="421994004"/>
+      <display value="During - dosing instruction fragment (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="422033008"/>
+      <display value="Divide - dosing instruction fragment (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="422106007"/>
+      <display value="Add - dosing instruction fragment (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="422114001"/>
+      <display value="Once - dosing instruction fragment (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="422145002"/>
+      <display value="Inject - dosing instruction imperative (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="422152000"/>
+      <display value="Wash - dosing instruction imperative (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="422219000"/>
+      <display value="Sprinkle - dosing instruction imperative (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="422327006"/>
+      <display value="Then stop - dosing instruction fragment (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="769364006"/>
+      <display value="Medication container empty (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="769407000"/>
+      <display value="Thoroughly - dosing instruction fragment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="769408005"/>
+      <display value="Completely - dosing instruction fragment (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="769409002"/>
+      <display value="Deeply - dosing instruction fragment (qualifier value)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="769410007"/>
+      <display value="Repeatedly - dosing instruction fragment (qualifier value)"/>
+    </contains>
+  </expansion>
+</ValueSet>

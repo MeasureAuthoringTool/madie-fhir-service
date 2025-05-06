@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="diagnostic-service-sections"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="oo"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/diagnostic-service-sections"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.234"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="DiagnosticServiceSectionCodes"/>
+  <title value="Diagnostic Service Section Codes"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="This value set includes all the codes in HL7 V2 table 0074."/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:1b96eeda-b7d8-447e-931f-623fb1168d56"/>
+    <timestamp value="2025-01-17T09:53:37-07:00"/>
+    <total value="45"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/v2-0074|2.5.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="AU"/>
+      <display value="Audiology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="BG"/>
+      <display value="Blood Gases"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="BLB"/>
+      <display value="Blood Bank"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="CG"/>
+      <display value="Cytogenetics"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="CUS"/>
+      <display value="Cardiac Ultrasound"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="CTH"/>
+      <display value="Cardiac Catheterization"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="CT"/>
+      <display value="CAT Scan"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="CH"/>
+      <display value="Chemistry"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="CP"/>
+      <display value="Cytopathology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="EC"/>
+      <display value="Electrocardiac (e.g., EKG,  EEC, Holter)"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="EN"/>
+      <display value="Electroneuro (EEG, EMG,EP,PSG)"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="GE"/>
+      <display value="Genetics"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="HM"/>
+      <display value="Hematology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="IMG"/>
+      <display value="Diagnostic Imaging"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="ICU"/>
+      <display value="Bedside ICU Monitoring"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="IMM"/>
+      <display value="Immunology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="LAB"/>
+      <display value="Laboratory"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="MB"/>
+      <display value="Microbiology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="MCB"/>
+      <display value="Mycobacteriology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="MYC"/>
+      <display value="Mycology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="NMS"/>
+      <display value="Nuclear Medicine Scan"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="NMR"/>
+      <display value="Nuclear Magnetic Resonance"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="NRS"/>
+      <display value="Nursing Service Measures"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="OUS"/>
+      <display value="OB Ultrasound"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="OT"/>
+      <display value="Occupational Therapy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="OTH"/>
+      <display value="Other"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="OSL"/>
+      <display value="Outside Lab"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="PAR"/>
+      <display value="Parasitology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="PHR"/>
+      <display value="Pharmacy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="PAT"/>
+      <display value="Pathology (gross &amp; histopath, not surgical)"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="PT"/>
+      <display value="Physical Therapy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="PHY"/>
+      <display value="Physician (Hx. Dx, admission note, etc.)"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="PF"/>
+      <display value="Pulmonary Function"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="RAD"/>
+      <display value="Radiology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="RX"/>
+      <display value="Radiograph"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="RUS"/>
+      <display value="Radiology Ultrasound"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="RC"/>
+      <display value="Respiratory Care (therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="RT"/>
+      <display value="Radiation Therapy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="SR"/>
+      <display value="Serology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="SP"/>
+      <display value="Surgical Pathology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="TX"/>
+      <display value="Toxicology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="VUS"/>
+      <display value="Vascular Ultrasound"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="VR"/>
+      <display value="Virology"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="URN"/>
+      <display value="Urinalysis"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+      <code value="XRC"/>
+      <display value="Cineradiograph"/>
+    </contains>
+  </expansion>
+</ValueSet>

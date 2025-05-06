@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="care-plan-intent"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="pc"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="trial-use"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="2"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/care-plan-intent"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.150"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="CarePlanIntent"/>
+  <title value="Care Plan Intent"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="HL7 International - Patient Care WG"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://www.hl7.org/Special/committees/patientcare/"/>
+    </telecom>
+  </contact>
+  <description value="Codes indicating the degree of authority/intentionality associated with a care plan."/>
+  <compose>
+    <include>
+      <system value="http://hl7.org/fhir/request-intent"/>
+      <concept>
+        <code value="proposal"/>
+      </concept>
+      <concept>
+        <code value="plan"/>
+      </concept>
+      <concept>
+        <code value="order"/>
+      </concept>
+      <concept>
+        <code value="option"/>
+      </concept>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:eab5bae7-c77b-4327-9ebd-ab2cf2281f08"/>
+    <timestamp value="2025-01-17T09:53:37-07:00"/>
+    <total value="4"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://hl7.org/fhir/request-intent|4.0.1"/>
+    </parameter>
+    <contains>
+      <system value="http://hl7.org/fhir/request-intent"/>
+      <code value="proposal"/>
+      <display value="Proposal"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/request-intent"/>
+      <code value="plan"/>
+      <display value="Plan"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/request-intent"/>
+      <code value="order"/>
+      <display value="Order"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/request-intent"/>
+      <code value="option"/>
+      <display value="Option"/>
+    </contains>
+  </expansion>
+</ValueSet>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="POAIndicators"/>
+  <text>
+    <status value="generated"/>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <ul>
+        <li>Include all codes defined in 
+          <a href="CodeSystem-presentOnAdmission.html">
+            <code>https://www.cms.gov/Medicare/Medicare-Fee-for-Service-Payment/HospitalAcqCond/Coding</code>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </text>
+  <extension url="http://hl7.org/fhir/StructureDefinition/valueset-steward">
+    <valueContactDetail>
+      <name value="HL7 Clinical Quality Information Work Group"/>
+    </valueContactDetail>
+  </extension>
+  <url value="http://terminology.hl7.org/ValueSet/POAIndicators"/>
+  <version value="2.0.0"/>
+  <name value="PresentOnAdmissionIndicators"/>
+  <title value="Present on Admission Indicators"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2019-08-26T00:00:00.000-04:00"/>
+  <publisher value="Health Level Seven International"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org"/>
+    </telecom>
+    <telecom>
+      <system value="email"/>
+      <value value="hq@HL7.org"/>
+    </telecom>
+  </contact>
+  <description value="Concepts that describe whether a condition is present when a patient is admitted to a healthcare facility. "/>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="US"/>
+    </coding>
+  </jurisdiction>
+  <compose>
+    <include>
+      <system value="https://www.cms.gov/Medicare/Medicare-Fee-for-Service-Payment/HospitalAcqCond/Coding"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:766282b9-8131-4760-a579-c58af37703c6"/>
+    <timestamp value="2025-01-17T09:53:42-07:00"/>
+    <total value="5"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="https://www.cms.gov/Medicare/Medicare-Fee-for-Service-Payment/HospitalAcqCond/Coding|07/14/2020"/>
+    </parameter>
+    <contains>
+      <system value="https://www.cms.gov/Medicare/Medicare-Fee-for-Service-Payment/HospitalAcqCond/Coding"/>
+      <code value="Y"/>
+    </contains>
+    <contains>
+      <system value="https://www.cms.gov/Medicare/Medicare-Fee-for-Service-Payment/HospitalAcqCond/Coding"/>
+      <code value="N"/>
+    </contains>
+    <contains>
+      <system value="https://www.cms.gov/Medicare/Medicare-Fee-for-Service-Payment/HospitalAcqCond/Coding"/>
+      <code value="U"/>
+    </contains>
+    <contains>
+      <system value="https://www.cms.gov/Medicare/Medicare-Fee-for-Service-Payment/HospitalAcqCond/Coding"/>
+      <code value="W"/>
+    </contains>
+    <contains>
+      <system value="https://www.cms.gov/Medicare/Medicare-Fee-for-Service-Payment/HospitalAcqCond/Coding"/>
+      <code value="1"/>
+    </contains>
+  </expansion>
+</ValueSet>

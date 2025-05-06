@@ -1,0 +1,5080 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="food-type"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="oo"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/food-type"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.384"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="FoodTypeCodes"/>
+  <title value="Food Type Codes"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="FHIR NutritionOrder team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="This value set represents codes for types of foods and is provided as a suggestive example. It include codes from [SNOMED CT](http://snomed.info/sct) where concept is-a 255620007 (Foods (substance))."/>
+  <copyright value="This resource includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyright of the International Health Terminology Standards Development Organisation (IHTSDO). Implementers of these specifications must have the appropriate SNOMED CT Affiliate license - for more information contact http://www.snomed.org/snomed-ct/get-snomed-ct or info@snomed.org"/>
+  <compose>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="255620007"/>
+      </filter>
+    </include>
+  </compose>
+  <expansion>
+    <extension url="http://hl7.org/fhir/StructureDefinition/valueset-unclosed">
+      <valueBoolean value="true"/>
+    </extension>
+    <identifier value="urn:uuid:41bd74c9-f3c7-4ea5-9f0e-9c5d2b522c62"/>
+    <timestamp value="2025-01-17T09:53:37-07:00"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-valueset"/>
+      <valueUri value="null"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801"/>
+    </parameter>
+    <parameter>
+      <name value="version"/>
+      <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801"/>
+    </parameter>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="255620007"/>
+      <display value="Food (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3718001"/>
+      <display value="Cow's milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4289006"/>
+      <display value="Keyhole-limpet hemocyanin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4700006"/>
+      <display value="Beef insulin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4882006"/>
+      <display value="Ichthyoallyeinotoxin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5163009"/>
+      <display value="Scombrotoxin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7661006"/>
+      <display value="Fish bone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7791007"/>
+      <display value="Soya protein"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10827009"/>
+      <display value="Milk protein"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12448007"/>
+      <display value="Whelk poison"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13577000"/>
+      <display value="Nut"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14263006"/>
+      <display value="Prepared fish"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16641007"/>
+      <display value="Bonellinin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19950006"/>
+      <display value="Brevetoxin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20459005"/>
+      <display value="Abalone viscera poison"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22836000"/>
+      <display value="Vegetable"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23182003"/>
+      <display value="Cereal"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23317009"/>
+      <display value="Saxitoxin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24515005"/>
+      <display value="Spice"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25743006"/>
+      <display value="Skim milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26426004"/>
+      <display value="Ciguatoxin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28230009"/>
+      <display value="Poultry"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28647000"/>
+      <display value="Meat"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28942008"/>
+      <display value="Coconut oil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="29516008"/>
+      <display value="Venerupin shellfish toxin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32500002"/>
+      <display value="Shellfish toxin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32627005"/>
+      <display value="Eburnetoxin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35124009"/>
+      <display value="Clupeotoxin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37784002"/>
+      <display value="Striatoxin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39102003"/>
+      <display value="Food particle"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40112002"/>
+      <display value="Ichthyotoxin (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="41317008"/>
+      <display value="Asterosaponin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="41834005"/>
+      <display value="Olive oil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="42244003"/>
+      <display value="Debromoaplysiatoxin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="43708003"/>
+      <display value="Animal feed additive"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="44027008"/>
+      <display value="Seafood"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="44590006"/>
+      <display value="Callistin toxin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="46321002"/>
+      <display value="Asterotoxin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="46329000"/>
+      <display value="Chocolate milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="50479000"/>
+      <display value="Soya protein-iron complex"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="50593009"/>
+      <display value="Casein"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="51905005"/>
+      <display value="Mustard"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="51934004"/>
+      <display value="Hemocyanin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="52800001"/>
+      <display value="Marine toxin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="53875002"/>
+      <display value="Colostrum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="54041009"/>
+      <display value="Safflower oil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="56773009"/>
+      <display value="Ichthyocrinotoxin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="59119009"/>
+      <display value="Ichthyosarcotoxin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="59149006"/>
+      <display value="Tetrodotoxin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="61044003"/>
+      <display value="Acipenserin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="63045006"/>
+      <display value="Berry"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="63766005"/>
+      <display value="Flour"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="64869000"/>
+      <display value="Conotoxin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="66228001"/>
+      <display value="Actinocongestin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="67296003"/>
+      <display value="Pork insulin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="67324005"/>
+      <display value="Rice"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="67938008"/>
+      <display value="Amnesic shellfish poison"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="70813002"/>
+      <display value="Milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="71561006"/>
+      <display value="Chelonitoxin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="72340002"/>
+      <display value="Plotolysin toxin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="72359000"/>
+      <display value="Gonyautoxin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="72511004"/>
+      <display value="Fruit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="73892005"/>
+      <display value="Carmine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="74242007"/>
+      <display value="Food starch"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="77722008"/>
+      <display value="Poultry bone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="80743002"/>
+      <display value="Mustard black"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="80903004"/>
+      <display value="Haplotoxin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="82450006"/>
+      <display value="Cottonseed oil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="82566005"/>
+      <display value="Animal feed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="83595008"/>
+      <display value="Goat's milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="83897009"/>
+      <display value="Paralytic shellfish toxin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="84802001"/>
+      <display value="Equinatoxin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="85668006"/>
+      <display value="Starch powder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="86600008"/>
+      <display value="Fish toxin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="89707004"/>
+      <display value="Sesame oil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="89811004"/>
+      <display value="Gluten"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="89866003"/>
+      <display value="Plotospasmin toxin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="90677004"/>
+      <display value="Mustard white"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="90696000"/>
+      <display value="Neosaxitonin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="91353009"/>
+      <display value="Cephalotoxin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="91677007"/>
+      <display value="Aplysiatoxin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102259006"/>
+      <display value="Citrus fruit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102260001"/>
+      <display value="Peanut butter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102261002"/>
+      <display value="Strawberry"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102262009"/>
+      <display value="Chocolate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102263004"/>
+      <display value="Eggs (edible)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102264005"/>
+      <display value="Cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102270004"/>
+      <display value="Growth stimulant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102271000"/>
+      <display value="Efrotomycin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102697003"/>
+      <display value="Lactalbumin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102698008"/>
+      <display value="Minor lactalbumin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="102699000"/>
+      <display value="Beta-lactalbumin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="126076005"/>
+      <display value="Fish liver oil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="126077001"/>
+      <display value="Burbot liver oil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="126078006"/>
+      <display value="Percomorph liver oil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="126079003"/>
+      <display value="Percoid liver oil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="126080000"/>
+      <display value="Shark liver oil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="126081001"/>
+      <display value="Halibut liver oil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="126082008"/>
+      <display value="Cod liver oil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="127384006"/>
+      <display value="Salmon calcitonin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226017009"/>
+      <display value="Bombay mix"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226021002"/>
+      <display value="Cauliflower cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226022009"/>
+      <display value="Cheese pastry"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226023004"/>
+      <display value="Cheesecake"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226024005"/>
+      <display value="Chocolate digestive biscuit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226037008"/>
+      <display value="Lasagne"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226041007"/>
+      <display value="Mint - sweet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226046002"/>
+      <display value="Plain digestive biscuit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226061001"/>
+      <display value="Tamarind"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226062008"/>
+      <display value="Trail mix"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226367006"/>
+      <display value="Eicosapentaenoic acid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226368001"/>
+      <display value="DHA - Docosahexaenoic acid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226491003"/>
+      <display value="Apple juice"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226492005"/>
+      <display value="Grape juice"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226493000"/>
+      <display value="Grapefruit juice"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226495007"/>
+      <display value="Lemon juice"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226496008"/>
+      <display value="Orange juice"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226497004"/>
+      <display value="Pineapple juice"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226498009"/>
+      <display value="Tomato juice"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226529007"/>
+      <display value="Starchy food"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226530002"/>
+      <display value="Baby cereal"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226531003"/>
+      <display value="Rusk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226532005"/>
+      <display value="Flavored rusk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226533000"/>
+      <display value="Low sugar rusk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226534006"/>
+      <display value="Plain rusk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226535007"/>
+      <display value="Wholemeal rusk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226536008"/>
+      <display value="Rice-based baby cereal"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226537004"/>
+      <display value="Mixed cereal-based baby cereal"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226538009"/>
+      <display value="Wheat-based baby cereal"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226539001"/>
+      <display value="Biscuit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226540004"/>
+      <display value="Chocolate biscuit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226541000"/>
+      <display value="Full coated chocolate biscuit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226542007"/>
+      <display value="Half-coated chocolate biscuit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226543002"/>
+      <display value="Cracker"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226544008"/>
+      <display value="Cream cracker"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226546005"/>
+      <display value="Wholemeal cracker"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226547001"/>
+      <display value="Crispbread"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226548006"/>
+      <display value="Digestive biscuit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226549003"/>
+      <display value="Gingernut biscuit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226550003"/>
+      <display value="Home-made biscuit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226551004"/>
+      <display value="Matzo"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226552006"/>
+      <display value="Oatcake"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226553001"/>
+      <display value="Sandwich biscuit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226554007"/>
+      <display value="Semi-sweet biscuit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226555008"/>
+      <display value="Short-sweet biscuit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226556009"/>
+      <display value="Shortbread biscuit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226557000"/>
+      <display value="Wafer biscuit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226558005"/>
+      <display value="Water biscuit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226559002"/>
+      <display value="Bread"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226560007"/>
+      <display value="Brown bread"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226561006"/>
+      <display value="Brown bread roll"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226562004"/>
+      <display value="Breadcrumbs"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226563009"/>
+      <display value="Chapati"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226564003"/>
+      <display value="White chapati"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226565002"/>
+      <display value="White chapati made with fat"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226566001"/>
+      <display value="White chapati made without fat"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226567005"/>
+      <display value="Wholemeal chapati"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226568000"/>
+      <display value="Wholemeal chapati made with fat"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226569008"/>
+      <display value="Wholemeal chapati made without fat"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226570009"/>
+      <display value="Currant bread"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226571008"/>
+      <display value="Granary bread"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226572001"/>
+      <display value="Granary bread roll"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226574000"/>
+      <display value="Malt bread"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226575004"/>
+      <display value="Naan bread"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226576003"/>
+      <display value="Papadum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226577007"/>
+      <display value="Fried papadum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226578002"/>
+      <display value="Grilled papadum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226579005"/>
+      <display value="Paratha"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226580008"/>
+      <display value="Pitta bread"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226581007"/>
+      <display value="White pitta bread"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226582000"/>
+      <display value="Wholemeal pitta bread"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226583005"/>
+      <display value="Milk bread"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226584004"/>
+      <display value="Rye bread"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226585003"/>
+      <display value="Soda bread"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226587006"/>
+      <display value="Tortilla"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226589009"/>
+      <display value="Wheatgerm bread"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226590000"/>
+      <display value="White bread"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226592008"/>
+      <display value="Fried white bread"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226593003"/>
+      <display value="West Indian white bread"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226595005"/>
+      <display value="White bread roll"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226596006"/>
+      <display value="Wholemeal bread"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226597002"/>
+      <display value="Wholemeal bread roll"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226598007"/>
+      <display value="Breakfast cereal"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226601002"/>
+      <display value="Bran flakes"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226604005"/>
+      <display value="Cornflakes"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226611009"/>
+      <display value="Muesli"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226612002"/>
+      <display value="Muesli Swiss style"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226613007"/>
+      <display value="Muesli with extra fruit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226614001"/>
+      <display value="Muesli with no added sugar"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226616004"/>
+      <display value="Oat and wheat bran"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226617008"/>
+      <display value="Porridge"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226618003"/>
+      <display value="Porridge made with milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226619006"/>
+      <display value="Porridge made with semi-skimmed milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226620000"/>
+      <display value="Porridge made with skimmed milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226621001"/>
+      <display value="Porridge made with whole milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226622008"/>
+      <display value="Porridge made with water"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226639005"/>
+      <display value="Cake"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226640007"/>
+      <display value="All bran loaf"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226641006"/>
+      <display value="Battenburg cake"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226642004"/>
+      <display value="Welsh cheesecake"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226643009"/>
+      <display value="Cherry cake"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226644003"/>
+      <display value="Chinese cake"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226645002"/>
+      <display value="Chinese glutinous rice flour cake"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226647005"/>
+      <display value="Chocolate cake"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226648000"/>
+      <display value="Chocolate cake with butter icing"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226649008"/>
+      <display value="Coconut cake"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226650008"/>
+      <display value="Crispie cake"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226651007"/>
+      <display value="Fancy iced cake"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226652000"/>
+      <display value="Fruit cake"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226653005"/>
+      <display value="Plain fruit cake"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226654004"/>
+      <display value="Rich fruit cake"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226655003"/>
+      <display value="Iced fruit cake"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226656002"/>
+      <display value="Wholemeal fruit cake"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226657006"/>
+      <display value="Gateau"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226658001"/>
+      <display value="Gingerbread"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226659009"/>
+      <display value="Lardy cake"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226660004"/>
+      <display value="Madeira cake"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226661000"/>
+      <display value="Rock cake"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226662007"/>
+      <display value="Sevyiann"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226663002"/>
+      <display value="Sponge cake"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226664008"/>
+      <display value="Fatless sponge cake"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226665009"/>
+      <display value="Frozen sponge cake"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226666005"/>
+      <display value="Jam-filled sponge cake"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226667001"/>
+      <display value="Fresh cream-filled sponge cake"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226668006"/>
+      <display value="Sponge cake with butter icing"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226669003"/>
+      <display value="Sponge cake made with cake mix"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226670002"/>
+      <display value="Swiss roll"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226671003"/>
+      <display value="Chocolate filled swiss roll"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226672005"/>
+      <display value="Jam filled swiss roll"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226673000"/>
+      <display value="Individual swiss roll"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226674006"/>
+      <display value="Welsh cake"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226675007"/>
+      <display value="Individual cakes and pastries"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226676008"/>
+      <display value="Asian pastry"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226677004"/>
+      <display value="Brandy snap"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226678009"/>
+      <display value="Burfi"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226679001"/>
+      <display value="Chelsea bun"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226680003"/>
+      <display value="Choux bun"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226681004"/>
+      <display value="Cream horn"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226682006"/>
+      <display value="Crumpet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226683001"/>
+      <display value="Currant bun"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226684007"/>
+      <display value="Custard tart"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226685008"/>
+      <display value="Danish pastry"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226686009"/>
+      <display value="Doughnut"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226687000"/>
+      <display value="Jam doughnut"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226688005"/>
+      <display value="Ring doughnut"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226689002"/>
+      <display value="Fresh cream doughnut"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226690006"/>
+      <display value="Eccles cake"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226691005"/>
+      <display value="Eclair"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226692003"/>
+      <display value="Flapjack"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226693008"/>
+      <display value="Greek pastry"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226694002"/>
+      <display value="Gulab jamen"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226697009"/>
+      <display value="Hot cross bun"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226699007"/>
+      <display value="Jam tart"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226700008"/>
+      <display value="Jellabi"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226701007"/>
+      <display value="Melting moment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226702000"/>
+      <display value="Mince pie"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226703005"/>
+      <display value="Mincemeat tart"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226704004"/>
+      <display value="Muffin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226705003"/>
+      <display value="Pinni"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226706002"/>
+      <display value="Rum baba"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226707006"/>
+      <display value="Scone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226708001"/>
+      <display value="Cheese scone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226709009"/>
+      <display value="Fruit scone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226710004"/>
+      <display value="Plain scone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226711000"/>
+      <display value="Potato scone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226712007"/>
+      <display value="Wholemeal scone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226713002"/>
+      <display value="Wholemeal fruit scone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226714008"/>
+      <display value="Scotch pancake"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226715009"/>
+      <display value="Shortbread"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226716005"/>
+      <display value="Strawberry tartlet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226717001"/>
+      <display value="Teacake"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226718006"/>
+      <display value="Vanilla slice"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226719003"/>
+      <display value="Waffle"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226720009"/>
+      <display value="Arrowroot"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226721008"/>
+      <display value="Pearl barley"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226722001"/>
+      <display value="Whole grain barley"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226723006"/>
+      <display value="Buckwheat - cereal"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226724000"/>
+      <display value="Bulgur wheat"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226725004"/>
+      <display value="Oatmeal"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226726003"/>
+      <display value="Popcorn"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226727007"/>
+      <display value="Plain popcorn"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226728002"/>
+      <display value="Sweet popcorn"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226729005"/>
+      <display value="Salted popcorn"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226730000"/>
+      <display value="Buttered popcorn"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226731001"/>
+      <display value="Sago"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226732008"/>
+      <display value="Semolina"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226733003"/>
+      <display value="Tapioca"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226734009"/>
+      <display value="Wheatgerm"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226735005"/>
+      <display value="Noodles"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226736006"/>
+      <display value="Egg noodles"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226737002"/>
+      <display value="Fried noodles"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226738007"/>
+      <display value="Plain noodles"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226739004"/>
+      <display value="Pot noodles"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226740002"/>
+      <display value="Pasta"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226741003"/>
+      <display value="Cannelloni"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226742005"/>
+      <display value="Macaroni"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226743000"/>
+      <display value="Ravioli"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226744006"/>
+      <display value="Spaghetti"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226745007"/>
+      <display value="White spaghetti"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226746008"/>
+      <display value="Wholemeal spaghetti"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226747004"/>
+      <display value="Tinned spaghetti"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226748009"/>
+      <display value="Vermicelli"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226749001"/>
+      <display value="Pastry"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226750001"/>
+      <display value="Choux pastry"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226751002"/>
+      <display value="Flaky pastry"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226752009"/>
+      <display value="Flan case pastry"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226753004"/>
+      <display value="Puff pastry"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226754005"/>
+      <display value="Shortcrust pastry"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226755006"/>
+      <display value="Wholemeal pastry"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226756007"/>
+      <display value="Brown rice"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226757003"/>
+      <display value="Red rice"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226758008"/>
+      <display value="Savory rice"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226759000"/>
+      <display value="White rice"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226761009"/>
+      <display value="Gold top milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226762002"/>
+      <display value="Flavored cow's milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226763007"/>
+      <display value="Semi-skimmed milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226764001"/>
+      <display value="Calcium fortified semi-skimmed milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226765000"/>
+      <display value="Calcium fortified skimmed milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226766004"/>
+      <display value="Sterilised milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226767008"/>
+      <display value="Whole milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226768003"/>
+      <display value="Calcium fortified whole milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226769006"/>
+      <display value="Buttermilk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226770007"/>
+      <display value="Whey"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226771006"/>
+      <display value="Dried milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226774003"/>
+      <display value="Buttermilk powder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226775002"/>
+      <display value="Dried goat's milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226776001"/>
+      <display value="Dried cow's milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226777005"/>
+      <display value="Dried semi-skimmed cow's milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226778000"/>
+      <display value="Skimmed milk powder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226779008"/>
+      <display value="Dried skimmed cow's milk with vegetable fat"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226780006"/>
+      <display value="Dried whole milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226781005"/>
+      <display value="Dried soya milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226782003"/>
+      <display value="Dried whey"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226783008"/>
+      <display value="Tinned milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226784002"/>
+      <display value="Condensed milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226785001"/>
+      <display value="Skimmed sweetened condensed milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226786000"/>
+      <display value="Whole sweetened condensed milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226787009"/>
+      <display value="Evaporated milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226788004"/>
+      <display value="Low fat evaporated milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226789007"/>
+      <display value="Breast milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226790003"/>
+      <display value="EBM - Expressed breast milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226791004"/>
+      <display value="Sheep milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226793001"/>
+      <display value="Soya milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226795008"/>
+      <display value="Junior milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226796009"/>
+      <display value="Fresh cream"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226797000"/>
+      <display value="Half-cream"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226798005"/>
+      <display value="Double cream"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226799002"/>
+      <display value="Clotted cream"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226800003"/>
+      <display value="Single cream"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226801004"/>
+      <display value="Soured cream"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226802006"/>
+      <display value="Whipping cream"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226803001"/>
+      <display value="Tinned cream"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226805008"/>
+      <display value="Imitation cream"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226808005"/>
+      <display value="Smatana"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226809002"/>
+      <display value="Cheese spread"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226810007"/>
+      <display value="Plain cheese spread"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226811006"/>
+      <display value="Flavored cheese spread"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226812004"/>
+      <display value="Lactic cheese spread"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226813009"/>
+      <display value="Low fat cheese spread"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226814003"/>
+      <display value="Cottage cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226815002"/>
+      <display value="Plain cottage cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226816001"/>
+      <display value="Very low fat cottage cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226817005"/>
+      <display value="Cottage cheese with additions"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226818000"/>
+      <display value="Hard cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226819008"/>
+      <display value="Caerphilly cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226820002"/>
+      <display value="Cheddar cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226821003"/>
+      <display value="Reduced fat cheddar cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226822005"/>
+      <display value="Vegetarian cheddar cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226823000"/>
+      <display value="Cheshire cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226824006"/>
+      <display value="Reduced fat Cheshire cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226825007"/>
+      <display value="Derby cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226826008"/>
+      <display value="Danish blue cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226827004"/>
+      <display value="Double Gloucester cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226828009"/>
+      <display value="Edam cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226829001"/>
+      <display value="Edam-type cheese reduced fat"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226830006"/>
+      <display value="Emmental cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226831005"/>
+      <display value="Feta cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226832003"/>
+      <display value="Gouda cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226834002"/>
+      <display value="Gruyere cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226835001"/>
+      <display value="Lancashire cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226836000"/>
+      <display value="Leicester cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226837009"/>
+      <display value="Mozzarella cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226838004"/>
+      <display value="Parmesan cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226839007"/>
+      <display value="Red Windsor cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226840009"/>
+      <display value="Roquefort cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226841008"/>
+      <display value="Sage Derby cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226842001"/>
+      <display value="Soya cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226843006"/>
+      <display value="Stilton - white cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226844000"/>
+      <display value="Stilton - blue cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226845004"/>
+      <display value="Wensleydale cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226846003"/>
+      <display value="Processed cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226847007"/>
+      <display value="Smoked processed cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226848002"/>
+      <display value="Soft cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226849005"/>
+      <display value="Cream cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226850005"/>
+      <display value="Medium fat cream cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226851009"/>
+      <display value="Low fat cream cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226852002"/>
+      <display value="Goats milk soft cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226853007"/>
+      <display value="Ricotta cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226854001"/>
+      <display value="Soft mold ripened cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226855000"/>
+      <display value="Brie cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226856004"/>
+      <display value="Camembert cheese"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226857008"/>
+      <display value="Fromage frais"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226858003"/>
+      <display value="Plain fromage frais"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226859006"/>
+      <display value="Flavoured fromage frais"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226860001"/>
+      <display value="Fruit fromage frais"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226861002"/>
+      <display value="Very low fat fromage frais"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226862009"/>
+      <display value="Quark"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226863004"/>
+      <display value="Yoghurt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226864005"/>
+      <display value="Whole milk yogurt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226865006"/>
+      <display value="Whole milk plain yoghurt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226866007"/>
+      <display value="Whole milk fruit yogurt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226867003"/>
+      <display value="Whole milk flavored yoghurt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226868008"/>
+      <display value="Live yogurt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226869000"/>
+      <display value="Organic yoghurt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226870004"/>
+      <display value="Goat's milk yogurt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226871000"/>
+      <display value="Low fat yoghurt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226872007"/>
+      <display value="Plain low fat yogurt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226873002"/>
+      <display value="Flavoured low fat yoghurt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226874008"/>
+      <display value="Fruit low fat yogurt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226875009"/>
+      <display value="Muesli-nut low fat yoghurt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226876005"/>
+      <display value="Low calorie yogurt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226877001"/>
+      <display value="Drinking yoghurt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226878006"/>
+      <display value="Greek yogurt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226879003"/>
+      <display value="Sheep's milk yoghurt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226880000"/>
+      <display value="Soya milk yogurt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226881001"/>
+      <display value="Dried egg"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226882008"/>
+      <display value="BE - Boiled egg"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226883003"/>
+      <display value="Fried egg"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226884009"/>
+      <display value="PE - Poached egg"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226885005"/>
+      <display value="Raw egg"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226886006"/>
+      <display value="Scrambled egg"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226887002"/>
+      <display value="Fat and oil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226888007"/>
+      <display value="Butter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226889004"/>
+      <display value="Blended spread"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226890008"/>
+      <display value="Margarine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226891007"/>
+      <display value="Hard vegetable fat margarine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226892000"/>
+      <display value="Hard animal and vegetable fat margarine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226894004"/>
+      <display value="Soft polyunsaturated fat margarine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226895003"/>
+      <display value="Olive oil margarine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226896002"/>
+      <display value="Low fat spread"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226897006"/>
+      <display value="VLF - Very low fat spread"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226898001"/>
+      <display value="Dripping"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226899009"/>
+      <display value="Lard"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226900004"/>
+      <display value="Suet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226901000"/>
+      <display value="Ghee"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226902007"/>
+      <display value="Butter ghee"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226903002"/>
+      <display value="Palm oil ghee"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226904008"/>
+      <display value="Vegetable oil ghee"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226907001"/>
+      <display value="Palm oil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226908006"/>
+      <display value="Rapeseed oil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226909003"/>
+      <display value="Rapeseed oil high erucic acid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226910008"/>
+      <display value="Rapeseed oil low erucic acid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226911007"/>
+      <display value="Soya oil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226912000"/>
+      <display value="Sunflowerseed oil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226913005"/>
+      <display value="Blended vegetable oil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226914004"/>
+      <display value="Polyunsaturated vegetable oil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226915003"/>
+      <display value="Red meat"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226916002"/>
+      <display value="Beef"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226917006"/>
+      <display value="Beef steak"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226918001"/>
+      <display value="Grilled beef steak"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226919009"/>
+      <display value="Fried beef steak"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226920003"/>
+      <display value="Boiled beef"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226921004"/>
+      <display value="Boiled salt beef"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226922006"/>
+      <display value="Minced beef"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226923001"/>
+      <display value="Stewed minced beef"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226924007"/>
+      <display value="Stewed extra-lean minced beef"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226925008"/>
+      <display value="Roast beef"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226926009"/>
+      <display value="Lean roast beef"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226927000"/>
+      <display value="Stewed beef"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226928005"/>
+      <display value="Bacon"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226929002"/>
+      <display value="Boiled bacon"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226930007"/>
+      <display value="Fried bacon"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226931006"/>
+      <display value="Grilled bacon"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226932004"/>
+      <display value="Gammon"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226933009"/>
+      <display value="Roast ham"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226934003"/>
+      <display value="Pork"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226935002"/>
+      <display value="Fried pork chop"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226936001"/>
+      <display value="Grilled pork chop"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226937005"/>
+      <display value="Minced pork"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226938000"/>
+      <display value="Roast pork"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226939008"/>
+      <display value="Lean roast pork"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226940005"/>
+      <display value="Roast belly pork"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226941009"/>
+      <display value="Boiled ham"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226942002"/>
+      <display value="Lamb"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226943007"/>
+      <display value="Fried lamb chop"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226944001"/>
+      <display value="Grilled lamb chop"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226945000"/>
+      <display value="Minced lamb"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226946004"/>
+      <display value="Roast lamb"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226947008"/>
+      <display value="Lean roast lamb"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226948003"/>
+      <display value="Roast leg of lamb"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226949006"/>
+      <display value="Roast shoulder of lamb"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226950006"/>
+      <display value="Roast breast of lamb"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226951005"/>
+      <display value="Stewed lamb"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226952003"/>
+      <display value="Veal"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226953008"/>
+      <display value="Fried veal"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226954002"/>
+      <display value="Grilled veal"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226955001"/>
+      <display value="Chicken"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226956000"/>
+      <display value="Boiled chicken"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226957009"/>
+      <display value="Fried chicken"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226958004"/>
+      <display value="Fried chicken in batter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226959007"/>
+      <display value="Fried chicken in breadcrumb"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226960002"/>
+      <display value="Fried chicken nuggets"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226961003"/>
+      <display value="Roast chicken"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226962005"/>
+      <display value="Minced chicken"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226963000"/>
+      <display value="Duck - meat"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226964006"/>
+      <display value="Roast duck"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226965007"/>
+      <display value="Goose"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226966008"/>
+      <display value="Roast goose"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226967004"/>
+      <display value="Turkey - meat"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226968009"/>
+      <display value="Roast turkey"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226969001"/>
+      <display value="Stewed turkey"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226970000"/>
+      <display value="Minced turkey"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226971001"/>
+      <display value="Game - meat"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226972008"/>
+      <display value="Grouse - meat"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226973003"/>
+      <display value="Roast grouse"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226974009"/>
+      <display value="Partridge - meat"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226975005"/>
+      <display value="Roast partridge"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226976006"/>
+      <display value="Pheasant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226977002"/>
+      <display value="Roast pheasant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226978007"/>
+      <display value="Roast pigeon"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226979004"/>
+      <display value="Roast venison"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226980001"/>
+      <display value="Stewed hare"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226981002"/>
+      <display value="Stewed rabbit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226982009"/>
+      <display value="Offal"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226983004"/>
+      <display value="Heart - meat"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226984005"/>
+      <display value="Stewed heart"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226985006"/>
+      <display value="Roast heart"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226987003"/>
+      <display value="Kidney - meat"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226988008"/>
+      <display value="Fried kidney"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226989000"/>
+      <display value="Grilled kidney"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226990009"/>
+      <display value="Stewed kidney"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226991008"/>
+      <display value="Liver - meat"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226992001"/>
+      <display value="Fried liver"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226993006"/>
+      <display value="Grilled liver"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226994000"/>
+      <display value="Stewed liver"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226995004"/>
+      <display value="Oxtail"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226996003"/>
+      <display value="Stewed oxtail"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226997007"/>
+      <display value="Sweetbread"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226998002"/>
+      <display value="Fried sweetbread"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="226999005"/>
+      <display value="Tongue - meat"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227000008"/>
+      <display value="Tripe"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227001007"/>
+      <display value="Dressed tripe"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227002000"/>
+      <display value="Dressed stewed tripe"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227003005"/>
+      <display value="Meat products"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227004004"/>
+      <display value="Meat burger"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227005003"/>
+      <display value="Beef burger"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227006002"/>
+      <display value="Pork burger"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227007006"/>
+      <display value="Lamb burger"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227008001"/>
+      <display value="Chicken burger"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227009009"/>
+      <display value="Turkey burger"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227010004"/>
+      <display value="Black pudding"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227011000"/>
+      <display value="Brawn"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227012007"/>
+      <display value="Faggot"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227013002"/>
+      <display value="Haggis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227014008"/>
+      <display value="Liver pate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227015009"/>
+      <display value="LF - Low fat liver pate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227016005"/>
+      <display value="Meat paste"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227017001"/>
+      <display value="Polony"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227018006"/>
+      <display value="Salami"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227019003"/>
+      <display value="Saveloy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227020009"/>
+      <display value="Sausage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227021008"/>
+      <display value="Frankfurter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227022001"/>
+      <display value="LF - Low fat sausage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227023006"/>
+      <display value="Beef sausage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227024000"/>
+      <display value="LF - Low fat beef sausage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227025004"/>
+      <display value="Pork sausage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227026003"/>
+      <display value="LF - Low fat pork sausage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227027007"/>
+      <display value="Turkey sausage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227028002"/>
+      <display value="Low fat turkey sausage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227029005"/>
+      <display value="Liver sausage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227030000"/>
+      <display value="White pudding"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227031001"/>
+      <display value="Processed meat"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227032008"/>
+      <display value="Chicken roll"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227033003"/>
+      <display value="Chopped ham and pork"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227034009"/>
+      <display value="Corned beef"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227036006"/>
+      <display value="Luncheon meat"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227038007"/>
+      <display value="White fish"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227040002"/>
+      <display value="Bele"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227041003"/>
+      <display value="Boal"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227042005"/>
+      <display value="Bream"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227044006"/>
+      <display value="Chinese salted fish"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227045007"/>
+      <display value="Chital"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227046008"/>
+      <display value="Baked cod"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227047004"/>
+      <display value="Poached cod"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227048009"/>
+      <display value="Grilled cod"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227049001"/>
+      <display value="Fried cod"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227050001"/>
+      <display value="Fried cod in batter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227051002"/>
+      <display value="Fried cod in breadcrumbs"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227052009"/>
+      <display value="Fried cod goujons in breadcrumbs"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227053004"/>
+      <display value="Cod in batter baked in the oven"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227054005"/>
+      <display value="Dried salted cod"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227055006"/>
+      <display value="Smoked poached cod"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227058008"/>
+      <display value="Dab"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227060005"/>
+      <display value="Poached haddock"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227061009"/>
+      <display value="Fried haddock"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227062002"/>
+      <display value="Fried haddock in batter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227063007"/>
+      <display value="Fried haddock in breadcrumbs"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227064001"/>
+      <display value="Fried haddock goujons in breadcrumbs"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227065000"/>
+      <display value="Smoked poached haddock"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227066004"/>
+      <display value="Hake"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227067008"/>
+      <display value="Halibut"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227068003"/>
+      <display value="Hoki"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227069006"/>
+      <display value="Fried hoki in batter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227070007"/>
+      <display value="John dory"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227071006"/>
+      <display value="Kalabasu"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227072004"/>
+      <display value="Lemon sole"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227073009"/>
+      <display value="Poached lemon sole"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227074003"/>
+      <display value="Fried lemon sole"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227075002"/>
+      <display value="Fried lemon sole in breadcrumbs"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227076001"/>
+      <display value="Ling"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227078000"/>
+      <display value="Monkfish"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227080006"/>
+      <display value="Grey mullet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227081005"/>
+      <display value="Red mullet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227083008"/>
+      <display value="Plaice"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227084002"/>
+      <display value="Poached plaice"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227085001"/>
+      <display value="Fried plaice"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227086000"/>
+      <display value="Fried plaice in batter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227087009"/>
+      <display value="Fried plaice in breadcrumbs"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227088004"/>
+      <display value="Fried plaice goujons in breadcrumbs"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227089007"/>
+      <display value="Pollack"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227092006"/>
+      <display value="Black pomfret"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227093001"/>
+      <display value="White pomfret"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227096009"/>
+      <display value="Rohu"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227097000"/>
+      <display value="Dogfish"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227098005"/>
+      <display value="Fried rock salmon in batter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227099002"/>
+      <display value="Saithe"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227101009"/>
+      <display value="Shark - food"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227103007"/>
+      <display value="Fried skate in batter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227104001"/>
+      <display value="Tilapia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227105000"/>
+      <display value="Turbot"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227106004"/>
+      <display value="Whiting"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227107008"/>
+      <display value="Poached whiting"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227108003"/>
+      <display value="Fried whiting"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227109006"/>
+      <display value="Fried whiting in breadcrumbs"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227110001"/>
+      <display value="Oily fish"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227111002"/>
+      <display value="Bacha"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227114005"/>
+      <display value="Jellied eel"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227115006"/>
+      <display value="Dried herring"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227116007"/>
+      <display value="Fried herring in oatmeal"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227117003"/>
+      <display value="Grilled herring"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227118008"/>
+      <display value="Pickled herring"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227119000"/>
+      <display value="Hilsa"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227120006"/>
+      <display value="Jackfish"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227121005"/>
+      <display value="Katla"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227122003"/>
+      <display value="Kipper"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227123008"/>
+      <display value="Poached kipper"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227124002"/>
+      <display value="Grilled kipper"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227126000"/>
+      <display value="Fried mackerel"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227127009"/>
+      <display value="Grilled mackerel"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227128004"/>
+      <display value="Smoked mackerel"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227129007"/>
+      <display value="Grilled smoked mackerel"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227130002"/>
+      <display value="Orange roughy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227131003"/>
+      <display value="Pangas"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227132005"/>
+      <display value="Grilled salmon"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227133000"/>
+      <display value="Poached salmon"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227134006"/>
+      <display value="Smoked salmon"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227135007"/>
+      <display value="Salmon en croute"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227136008"/>
+      <display value="Sardine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227137004"/>
+      <display value="Grilled sardine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227138009"/>
+      <display value="Fried sardine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227139001"/>
+      <display value="Sprats"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227141000"/>
+      <display value="Fried trout"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227142007"/>
+      <display value="Baked trout"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227143002"/>
+      <display value="Smoked trout"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227144008"/>
+      <display value="Tuna fish"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227145009"/>
+      <display value="Whitebait fried"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227147001"/>
+      <display value="Cockles"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227148006"/>
+      <display value="Cockles bottled in vinegar"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227150003"/>
+      <display value="Mussel"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227151004"/>
+      <display value="Prawns"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227152006"/>
+      <display value="Boiled prawns"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227153001"/>
+      <display value="Fried prawns"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227154007"/>
+      <display value="Fried prawns in batter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227155008"/>
+      <display value="Dried prawns"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227156009"/>
+      <display value="Scampi"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227157000"/>
+      <display value="Fried scampi in batter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227158005"/>
+      <display value="Fried scampi in breadcrumbs"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227159002"/>
+      <display value="Fried shrimp"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227160007"/>
+      <display value="Dried shrimp"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227164003"/>
+      <display value="Dried squid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227165002"/>
+      <display value="Fried squid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227167005"/>
+      <display value="Fried squid in batter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227168000"/>
+      <display value="Whelks"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227169008"/>
+      <display value="Winkles"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227170009"/>
+      <display value="Fish products"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227171008"/>
+      <display value="Crabstick"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227172001"/>
+      <display value="Fish ball"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227173006"/>
+      <display value="Fishcake"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227174000"/>
+      <display value="Grilled fishcake"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227175004"/>
+      <display value="Fried fishcake"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227176003"/>
+      <display value="Fish fingers"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227177007"/>
+      <display value="Fried fish fingers"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227178002"/>
+      <display value="Grilled fish fingers"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227179005"/>
+      <display value="Fish paste"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227180008"/>
+      <display value="Fish pate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227181007"/>
+      <display value="Fish pie"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227182000"/>
+      <display value="Kedgeree"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227183005"/>
+      <display value="Fish roe"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227184004"/>
+      <display value="Raw hard fish roe"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227185003"/>
+      <display value="Fried hard fish roe"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227186002"/>
+      <display value="Fried hard fish roe in batter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227187006"/>
+      <display value="Raw soft fish roe"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227188001"/>
+      <display value="Fried soft fish roe"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227189009"/>
+      <display value="Seafood cocktail"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227190000"/>
+      <display value="Taramasalata"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227191001"/>
+      <display value="Tinned fish"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227193003"/>
+      <display value="Anchovies canned in oil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227194009"/>
+      <display value="Herring canned in tomato sauce"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227195005"/>
+      <display value="Mackerel canned in tomato sauce"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227196006"/>
+      <display value="Mackerel canned in brine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227197002"/>
+      <display value="Mussels canned in brine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227198007"/>
+      <display value="Pilchards canned in tomato sauce"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227199004"/>
+      <display value="Pilchards canned in brine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227200001"/>
+      <display value="Salmon canned in brine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227201002"/>
+      <display value="Sardines canned in brine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227202009"/>
+      <display value="Sardines canned in oil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227203004"/>
+      <display value="Sardines canned in tomato sauce"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227204005"/>
+      <display value="Tuna canned in brine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227205006"/>
+      <display value="Tuna canned in oil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227206007"/>
+      <display value="Crab canned in brine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227207003"/>
+      <display value="Shrimps canned in brine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227208008"/>
+      <display value="Abalone canned in brine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227209000"/>
+      <display value="Clams canned in brine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227210005"/>
+      <display value="Vegetables pulses herbs and spices"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227212002"/>
+      <display value="Alfalfa sprout"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227213007"/>
+      <display value="Amaranth leaf"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227214001"/>
+      <display value="Arrowhead"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227215000"/>
+      <display value="Artichoke"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227216004"/>
+      <display value="Globe artichoke"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227217008"/>
+      <display value="Jerusalem artichoke"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227218003"/>
+      <display value="Asparagus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227219006"/>
+      <display value="Aubergine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227220000"/>
+      <display value="Beetroot"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227221001"/>
+      <display value="Brassica vegetable"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227225005"/>
+      <display value="Chinese cabbage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227226006"/>
+      <display value="Red cabbage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227227002"/>
+      <display value="Savoy cabbage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227228007"/>
+      <display value="Spring cabbage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227229004"/>
+      <display value="White cabbage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227230009"/>
+      <display value="Curly kale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227231008"/>
+      <display value="Kohl rabi"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227232001"/>
+      <display value="Seakale"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227233006"/>
+      <display value="Breadfruit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227234000"/>
+      <display value="Cassava"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227235004"/>
+      <display value="Celeriac"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227236003"/>
+      <display value="Chard"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227238002"/>
+      <display value="Cho cho"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227239005"/>
+      <display value="Courgette"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227240007"/>
+      <display value="Cole leaf"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227242004"/>
+      <display value="Drumstick leaf"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227244003"/>
+      <display value="Fenugreek"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227245002"/>
+      <display value="Gherkin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227247005"/>
+      <display value="Jackfruit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227249008"/>
+      <display value="Lotus tuber"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227250008"/>
+      <display value="Marrow"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227251007"/>
+      <display value="Matoki"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227253005"/>
+      <display value="Mustard leaf"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227254004"/>
+      <display value="Okra"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227255003"/>
+      <display value="Spring onion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227258001"/>
+      <display value="Patra leaf"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227259009"/>
+      <display value="Plantain"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227260004"/>
+      <display value="Pumpkin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227261000"/>
+      <display value="Raddiccio"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227262007"/>
+      <display value="Radish white - mooli"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227263002"/>
+      <display value="Rape leaf"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227264008"/>
+      <display value="Salsify"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227265009"/>
+      <display value="Seaweed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227266005"/>
+      <display value="Swede"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227268006"/>
+      <display value="Sweetcorn"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227269003"/>
+      <display value="Sweetcorn kernels"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227270002"/>
+      <display value="Sweetcorn on-the-cob"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227271003"/>
+      <display value="Tannia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227272005"/>
+      <display value="Taro"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227273000"/>
+      <display value="Taro leaves"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227274006"/>
+      <display value="Tomato puree"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227275007"/>
+      <display value="Turnip"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227276008"/>
+      <display value="Water chestnut"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227277004"/>
+      <display value="Watercress"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227279001"/>
+      <display value="Boiled potato"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227280003"/>
+      <display value="Potato boiled in salted water"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227281004"/>
+      <display value="Potato boiled in unsalted water"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227282006"/>
+      <display value="Chips"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227283001"/>
+      <display value="Thick cut chips"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227284007"/>
+      <display value="Thin cut chips"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227285008"/>
+      <display value="Crinkle cut chips"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227286009"/>
+      <display value="Chips fried in corn oil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227287000"/>
+      <display value="Chips fried in dripping"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227288005"/>
+      <display value="Chips fried in blended oil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227289002"/>
+      <display value="Chips fried in polyunsaturated oil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227290006"/>
+      <display value="Microwave chips"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227291005"/>
+      <display value="Oven chips"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227292003"/>
+      <display value="Jacket potato"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227294002"/>
+      <display value="Mashed potato"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227295001"/>
+      <display value="Potato mashed with butter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227296000"/>
+      <display value="Potato mashed with margarine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227297009"/>
+      <display value="Potato mashed with milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227298004"/>
+      <display value="Potato mashed with polyunsaturated margarine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227299007"/>
+      <display value="Roast potato"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227300004"/>
+      <display value="Potato roasted in vegetable oil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227301000"/>
+      <display value="Potato roasted in polyunsaturated oil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227302007"/>
+      <display value="Potato roasted in dripping"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227303002"/>
+      <display value="Tinned potato"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227304008"/>
+      <display value="Potato tinned in salted water"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227305009"/>
+      <display value="Potato tinned in unsalted water"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227306005"/>
+      <display value="Instant potato"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227307001"/>
+      <display value="Instant potato made up with water"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227308006"/>
+      <display value="Instant potato made up with semi-skimmed milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227309003"/>
+      <display value="Instant potato made up with skimmed milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227310008"/>
+      <display value="Instant potato made up with whole milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227311007"/>
+      <display value="Potato croquette fried in blended oil"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227312000"/>
+      <display value="Potato waffle"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227313005"/>
+      <display value="Legume"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227314004"/>
+      <display value="Canned beans"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227315003"/>
+      <display value="Baked beans"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227316002"/>
+      <display value="Baked beans canned in tomato sauce"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227317006"/>
+      <display value="Baked beans canned in tomato sauce reduced sugar"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227318001"/>
+      <display value="Baked beans canned in tomato sauce reduced salt"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227319009"/>
+      <display value="Baked beans canned in tomato sauce with burgers"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227320003"/>
+      <display value="Baked beans canned in tomato sauce with pork sausages"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227321004"/>
+      <display value="Balor beans canned"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227322006"/>
+      <display value="Barbecue beans canned in sauce"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227323001"/>
+      <display value="Canned mung beansprouts"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227324007"/>
+      <display value="Canned broad beans"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227325008"/>
+      <display value="Canned butter beans"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227326009"/>
+      <display value="Canned chick peas"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227327000"/>
+      <display value="Canned chilli beans"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227328005"/>
+      <display value="Canned haricot beans"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227329002"/>
+      <display value="Canned lilva beans"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227330007"/>
+      <display value="Canned lentils in tomato sauce"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227331006"/>
+      <display value="Canned papri beans"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227332004"/>
+      <display value="Canned peas"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227333009"/>
+      <display value="Canned garden peas"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227334003"/>
+      <display value="Canned marrowfat peas"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227335002"/>
+      <display value="Canned mushy peas"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227336001"/>
+      <display value="Canned pease pudding"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227337005"/>
+      <display value="Canned red kidney beans"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227338000"/>
+      <display value="Aduki beans"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227339008"/>
+      <display value="Beansprouts"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227340005"/>
+      <display value="Raw mung beansprouts"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227341009"/>
+      <display value="Stir-fried mung beansprouts"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227342002"/>
+      <display value="Black gram beans"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227343007"/>
+      <display value="Blackeye beans"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227346004"/>
+      <display value="Chick peas"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227347008"/>
+      <display value="Cluster beans"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227348003"/>
+      <display value="Haricot beans"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227349006"/>
+      <display value="Hummus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227350006"/>
+      <display value="Lentils"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227351005"/>
+      <display value="Green lentils"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227352003"/>
+      <display value="Brown lentils"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227353008"/>
+      <display value="Red split lentils"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227354002"/>
+      <display value="Miso"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227355001"/>
+      <display value="Mung beans"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227356000"/>
+      <display value="Mung bean dahl"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227357009"/>
+      <display value="Papri beans"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227358004"/>
+      <display value="Pigeon peas"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227359007"/>
+      <display value="Pigeon pea dahl"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227360002"/>
+      <display value="Pinto beans"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227361003"/>
+      <display value="Refried pinto beans"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227362005"/>
+      <display value="Red kidney beans"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227363000"/>
+      <display value="Sword beans"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227364006"/>
+      <display value="Tempeh"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227365007"/>
+      <display value="Tofu"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227366008"/>
+      <display value="Steamed tofu"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227367004"/>
+      <display value="Steamed fried tofu"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227368009"/>
+      <display value="Fu-juk tofu"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227369001"/>
+      <display value="Fresh peas"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227370000"/>
+      <display value="Fresh raw peas"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227371001"/>
+      <display value="Fresh boiled peas"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227372008"/>
+      <display value="Dried boiled peas"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227373003"/>
+      <display value="Dried boiled split peas"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227374009"/>
+      <display value="Herbs and spices"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227375005"/>
+      <display value="Allspice"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227376006"/>
+      <display value="Anise seed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227377002"/>
+      <display value="Asafetida (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227379004"/>
+      <display value="Bay leaf"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227380001"/>
+      <display value="Betel leaf"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227381002"/>
+      <display value="Caraway seed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227382009"/>
+      <display value="Cardamom"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227383004"/>
+      <display value="Celery seed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227384005"/>
+      <display value="Chervil, dried"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227385006"/>
+      <display value="Chilli powder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227386007"/>
+      <display value="Chinese five spice"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227387003"/>
+      <display value="Chive - herb"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227388008"/>
+      <display value="Cinnamon"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227389000"/>
+      <display value="Clove"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227390009"/>
+      <display value="Coriander leaf"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227391008"/>
+      <display value="Coriander seed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227392001"/>
+      <display value="Cumin seed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227393006"/>
+      <display value="Curry leaf"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227395004"/>
+      <display value="Curry powder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227396003"/>
+      <display value="Fennel"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227397007"/>
+      <display value="Fennel seed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227398002"/>
+      <display value="Fenugreek seed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227399005"/>
+      <display value="Garam masala"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227400003"/>
+      <display value="Ginger"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227401004"/>
+      <display value="Ground ginger"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227402006"/>
+      <display value="Root ginger"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227403001"/>
+      <display value="Liquorice powder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227404007"/>
+      <display value="Mace"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227405008"/>
+      <display value="Marjoram"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227406009"/>
+      <display value="Mustard seed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227407000"/>
+      <display value="Oregano"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227408005"/>
+      <display value="Paprika"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227409002"/>
+      <display value="Poppy seed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227410007"/>
+      <display value="Rosemary"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227411006"/>
+      <display value="Sage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227412004"/>
+      <display value="Tarragon"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227413009"/>
+      <display value="Thyme"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227414003"/>
+      <display value="Turmeric"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227415002"/>
+      <display value="Fruit nuts and seeds"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227416001"/>
+      <display value="Fresh fruit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227417005"/>
+      <display value="Bilberry"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227418000"/>
+      <display value="Blackberries"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227419008"/>
+      <display value="Blackcurrant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227420002"/>
+      <display value="Clementine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227421003"/>
+      <display value="Cranberries"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227422005"/>
+      <display value="Damson"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227423000"/>
+      <display value="Phoenix dactylifera (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227424006"/>
+      <display value="Elderberries"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227425007"/>
+      <display value="Figs"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227426008"/>
+      <display value="Fresh fruit salad"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227427004"/>
+      <display value="Gooseberries"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227428009"/>
+      <display value="Greengage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227429001"/>
+      <display value="Guava"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227431005"/>
+      <display value="Kumquat"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227432003"/>
+      <display value="Loganberries"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227433008"/>
+      <display value="Lychee"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227434002"/>
+      <display value="Mulberries"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227435001"/>
+      <display value="Nectarine"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227436000"/>
+      <display value="Olives"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227437009"/>
+      <display value="Ortanique"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227438004"/>
+      <display value="Passion fruit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227439007"/>
+      <display value="Paw-paw"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227441008"/>
+      <display value="Pomegranate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227442001"/>
+      <display value="Pomelo"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227443006"/>
+      <display value="Quince"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227444000"/>
+      <display value="Raspberries"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227445004"/>
+      <display value="Redcurrant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227446003"/>
+      <display value="Satsuma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227447007"/>
+      <display value="Sharon fruit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227448002"/>
+      <display value="White currant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227449005"/>
+      <display value="Dried fruit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227450005"/>
+      <display value="Dried banana"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227451009"/>
+      <display value="Dried apple"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227452002"/>
+      <display value="Dried apricot"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227453007"/>
+      <display value="Currants"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227454001"/>
+      <display value="Dried date"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227455000"/>
+      <display value="Dried fig"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227456004"/>
+      <display value="Dried mixed fruit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227457008"/>
+      <display value="Dried mixed peel"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227458003"/>
+      <display value="Dried peach"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227459006"/>
+      <display value="Dried pear"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227460001"/>
+      <display value="Dried pineapple"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227461002"/>
+      <display value="Glace cherry"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227462009"/>
+      <display value="Prunes"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227463004"/>
+      <display value="Raisin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227464005"/>
+      <display value="Sultanas"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227465006"/>
+      <display value="Canned fruit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227466007"/>
+      <display value="Tinned apple"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227467003"/>
+      <display value="Tinned apricot"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227468008"/>
+      <display value="Tinned blackcurrants"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227469000"/>
+      <display value="Tinned cherries"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227470004"/>
+      <display value="Tinned figs"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227471000"/>
+      <display value="Tinned fruit cocktail"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227472007"/>
+      <display value="Tinned gooseberries"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227473002"/>
+      <display value="Tinned grapefruit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227474008"/>
+      <display value="Tinned guava"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227475009"/>
+      <display value="Tinned kumquat"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227476005"/>
+      <display value="Tinned loganberries"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227477001"/>
+      <display value="Tinned lychees"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227478006"/>
+      <display value="Tinned mandarin oranges"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227479003"/>
+      <display value="Tinned mango"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227480000"/>
+      <display value="Tinned paw-paw"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227481001"/>
+      <display value="Tinned peaches"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227482008"/>
+      <display value="Tinned pears"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227483003"/>
+      <display value="Tinned pineapple"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227484009"/>
+      <display value="Tinned plums"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227485005"/>
+      <display value="Tinned prunes"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227486006"/>
+      <display value="Tinned raspberries"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227487002"/>
+      <display value="Tinned rhubarb"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227488007"/>
+      <display value="Tinned strawberries"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227489004"/>
+      <display value="Tinned fruit pie filling"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227490008"/>
+      <display value="Barcelona nut"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227491007"/>
+      <display value="Betel nuts"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227492000"/>
+      <display value="Breadnut seed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227493005"/>
+      <display value="Cashew nuts"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227495003"/>
+      <display value="Roasted and salted cashew nuts"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227496002"/>
+      <display value="Fresh coconut"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227497006"/>
+      <display value="Creamed coconut"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227498001"/>
+      <display value="Desiccated coconut"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227499009"/>
+      <display value="Coconut cream"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227500000"/>
+      <display value="Coconut milk"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227501001"/>
+      <display value="Macadamia nut"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227502008"/>
+      <display value="Marzipan home-made"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227503003"/>
+      <display value="Marzipan retail"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227504009"/>
+      <display value="Melon seed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227505005"/>
+      <display value="Mixed nuts"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227506006"/>
+      <display value="Mixed nuts and raisins"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227507002"/>
+      <display value="Smooth peanut butter"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="227508007"/>
+      <display value="Crunchy peanut butter"/>
+    </contains>
+  </expansion>
+</ValueSet>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="series-performer-function"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="ii"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="trial-use"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="3"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/series-performer-function"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.989"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="ImagingStudySeriesPerformerFunction"/>
+  <title value="ImagingStudy series performer function"/>
+  <status value="draft"/>
+  <experimental value="true"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="HL7 (FHIR Project)"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="Performer function of an agent in an imaging study series"/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"/>
+      <concept>
+        <code value="CON"/>
+        <display value="consultant"/>
+      </concept>
+      <concept>
+        <code value="VRF"/>
+        <display value="verifier"/>
+      </concept>
+      <concept>
+        <code value="PRF"/>
+        <display value="performer"/>
+      </concept>
+      <concept>
+        <code value="SPRF"/>
+        <display value="secondary performer"/>
+      </concept>
+      <concept>
+        <code value="REF"/>
+        <display value="referrer"/>
+      </concept>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:621f987e-d642-465d-ab1d-b5eead9d0a0b"/>
+    <timestamp value="2025-01-17T09:53:39-07:00"/>
+    <total value="5"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/v3-ParticipationType|5.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"/>
+      <code value="CON"/>
+      <display value="consultant"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"/>
+      <code value="VRF"/>
+      <display value="verifier"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"/>
+      <code value="PRF"/>
+      <display value="performer"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"/>
+      <code value="SPRF"/>
+      <display value="secondary performer"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"/>
+      <code value="REF"/>
+      <display value="referrer"/>
+    </contains>
+  </expansion>
+</ValueSet>

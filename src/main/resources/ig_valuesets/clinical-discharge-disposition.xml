@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="clinical-discharge-disposition"/>
+  <meta>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <text>
+    <status value="extensions"/>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <ul>
+        <li>Include these codes as defined in 
+          <a href="CodeSystem-discharge-disposition.html">
+            <code>http://terminology.hl7.org/CodeSystem/discharge-disposition</code>
+          </a>
+          <table class="none">
+            <tr>
+              <td style="white-space:nowrap">
+                <b>Code</b>
+              </td>
+              <td>
+                <b>Display</b>
+              </td>
+              <td>
+                <b>Definition</b>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="CodeSystem-discharge-disposition.html#discharge-disposition-home">home</a>
+              </td>
+              <td style="color: #cccccc">Home</td>
+              <td>The patient was dicharged and has indicated that they are going to return home afterwards.</td>
+            </tr>
+            <tr>
+              <td>
+                <a href="CodeSystem-discharge-disposition.html#discharge-disposition-alt-home">alt-home</a>
+              </td>
+              <td style="color: #cccccc">Alternative home</td>
+              <td>The patient was discharged and has indicated that they are going to return home afterwards, but not the patient's home - e.g. a family member's home.</td>
+            </tr>
+            <tr>
+              <td>
+                <a href="CodeSystem-discharge-disposition.html#discharge-disposition-other-hcf">other-hcf</a>
+              </td>
+              <td style="color: #cccccc">Other healthcare facility</td>
+              <td>The patient was transferred to another healthcare facility.</td>
+            </tr>
+            <tr>
+              <td>
+                <a href="CodeSystem-discharge-disposition.html#discharge-disposition-hosp">hosp</a>
+              </td>
+              <td style="color: #cccccc">Hospice</td>
+              <td>The patient has been discharged into palliative care.</td>
+            </tr>
+            <tr>
+              <td>
+                <a href="CodeSystem-discharge-disposition.html#discharge-disposition-long">long</a>
+              </td>
+              <td style="color: #cccccc">Long-term care</td>
+              <td>The patient has been discharged into long-term care where is likely to be monitored through an ongoing episode-of-care.</td>
+            </tr>
+            <tr>
+              <td>
+                <a href="CodeSystem-discharge-disposition.html#discharge-disposition-aadvice">aadvice</a>
+              </td>
+              <td style="color: #cccccc">Left against advice</td>
+              <td>The patient self discharged against medical advice.</td>
+            </tr>
+            <tr>
+              <td>
+                <a href="CodeSystem-discharge-disposition.html#discharge-disposition-exp">exp</a>
+              </td>
+              <td style="color: #cccccc">Expired</td>
+              <td>The patient has deceased during this encounter.</td>
+            </tr>
+            <tr>
+              <td>
+                <a href="CodeSystem-discharge-disposition.html#discharge-disposition-psy">psy</a>
+              </td>
+              <td style="color: #cccccc">Psychiatric hospital</td>
+              <td>The patient has been transferred to a psychiatric facility.</td>
+            </tr>
+            <tr>
+              <td>
+                <a href="CodeSystem-discharge-disposition.html#discharge-disposition-rehab">rehab</a>
+              </td>
+              <td style="color: #cccccc">Rehabilitation</td>
+              <td>The patient was discharged and is to receive post acute care rehabilitation services.</td>
+            </tr>
+            <tr>
+              <td>
+                <a href="CodeSystem-discharge-disposition.html#discharge-disposition-snf">snf</a>
+              </td>
+              <td style="color: #cccccc">Skilled nursing facility</td>
+              <td>The patient has been discharged to a skilled nursing facility for the patient to receive additional care.</td>
+            </tr>
+          </table>
+        </li>
+      </ul>
+    </div>
+  </text>
+  <url value="http://terminology.hl7.org/ValueSet/clinical-discharge-disposition"/>
+  <identifier>
+    <use value="old"/>
+    <value value="http://hl7.org/fhir/us/qicore/ValueSet/clinical-discharge-disposition"/>
+  </identifier>
+  <version value="2.0.0"/>
+  <name value="ClinicalDischargeDisposition"/>
+  <title value="Clinical Discharge Disposition"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2022-07-04"/>
+  <publisher value="Health Level Seven International"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org"/>
+    </telecom>
+    <telecom>
+      <system value="email"/>
+      <value value="hq@HL7.org"/>
+    </telecom>
+  </contact>
+  <description value="This value set defines a set of codes that can be used to where the patient left the hospital. Note that this value set explicitly removes 'oth' (Other) to allow the binding strength to be extensible and therefore allow the exchange of additional concepts without requiring mapping to 'oth.'"/>
+  <copyright value="This material derives from the HL7 Terminology THO. THO is copyright ©1989+ Health Level Seven International and is made available under the CC0 designation. For more licensing information see: https://terminology.hl7.org/license"/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/discharge-disposition"/>
+      <concept>
+        <code value="home"/>
+      </concept>
+      <concept>
+        <code value="alt-home"/>
+      </concept>
+      <concept>
+        <code value="other-hcf"/>
+      </concept>
+      <concept>
+        <code value="hosp"/>
+      </concept>
+      <concept>
+        <code value="long"/>
+      </concept>
+      <concept>
+        <code value="aadvice"/>
+      </concept>
+      <concept>
+        <code value="exp"/>
+      </concept>
+      <concept>
+        <code value="psy"/>
+      </concept>
+      <concept>
+        <code value="rehab"/>
+      </concept>
+      <concept>
+        <code value="snf"/>
+      </concept>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:fa41a042-35d8-4383-b4d0-d2d15ff15cd2"/>
+    <timestamp value="2025-01-17T09:53:42-07:00"/>
+    <total value="10"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="warning-draft"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/discharge-disposition|1.0.0"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/discharge-disposition|1.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/discharge-disposition"/>
+      <code value="home"/>
+      <display value="Home"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/discharge-disposition"/>
+      <code value="alt-home"/>
+      <display value="Alternative home"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/discharge-disposition"/>
+      <code value="other-hcf"/>
+      <display value="Other healthcare facility"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/discharge-disposition"/>
+      <code value="hosp"/>
+      <display value="Hospice"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/discharge-disposition"/>
+      <code value="long"/>
+      <display value="Long-term care"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/discharge-disposition"/>
+      <code value="aadvice"/>
+      <display value="Left against advice"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/discharge-disposition"/>
+      <code value="exp"/>
+      <display value="Expired"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/discharge-disposition"/>
+      <code value="psy"/>
+      <display value="Psychiatric hospital"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/discharge-disposition"/>
+      <code value="rehab"/>
+      <display value="Rehabilitation"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/discharge-disposition"/>
+      <code value="snf"/>
+      <display value="Skilled nursing facility"/>
+    </contains>
+  </expansion>
+</ValueSet>

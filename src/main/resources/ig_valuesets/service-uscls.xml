@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="service-uscls"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="fm"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/service-uscls"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.542"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="USCLSCodes"/>
+  <title value="USCLS Codes"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="This value set includes a smattering of USCLS codes."/>
+  <immutable value="true"/>
+  <copyright value="This is an example set."/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-USCLS"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:4c451fc4-887c-480b-982e-06b0217f2860"/>
+    <timestamp value="2025-01-17T09:53:39-07:00"/>
+    <total value="20"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/ex-USCLS|1.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-USCLS"/>
+      <code value="1101"/>
+      <display value="Exam, comp, primary"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-USCLS"/>
+      <code value="1102"/>
+      <display value="Exam, comp, mixed"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-USCLS"/>
+      <code value="1103"/>
+      <display value="Exam, comp, permanent"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-USCLS"/>
+      <code value="1201"/>
+      <display value="Exam, recall"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-USCLS"/>
+      <code value="1205"/>
+      <display value="Exam, emergency"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-USCLS"/>
+      <code value="2101"/>
+      <display value="Radiograph, series (12)"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-USCLS"/>
+      <code value="2102"/>
+      <display value="Radiograph, series (16)"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-USCLS"/>
+      <code value="2141"/>
+      <display value="Radiograph, bitewing"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-USCLS"/>
+      <code value="2601"/>
+      <display value="Radiograph, panoramic"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-USCLS"/>
+      <code value="11101"/>
+      <display value="Polishing, 1 unit"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-USCLS"/>
+      <code value="11102"/>
+      <display value="Polishing, 2 unit"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-USCLS"/>
+      <code value="11103"/>
+      <display value="Polishing, 3 unit"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-USCLS"/>
+      <code value="11104"/>
+      <display value="Polishing, 4 unit"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-USCLS"/>
+      <code value="21211"/>
+      <display value="Amalgam, 1 surface"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-USCLS"/>
+      <code value="21212"/>
+      <display value="Amalgam, 2 surface"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-USCLS"/>
+      <code value="27211"/>
+      <display value="Crown, PFM"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-USCLS"/>
+      <code value="67211"/>
+      <display value="Maryland Bridge"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-USCLS"/>
+      <code value="99111"/>
+      <display value="Lab, commercial"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-USCLS"/>
+      <code value="99333"/>
+      <display value="Lab, in office"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-USCLS"/>
+      <code value="99555"/>
+      <display value="Expense"/>
+    </contains>
+  </expansion>
+</ValueSet>

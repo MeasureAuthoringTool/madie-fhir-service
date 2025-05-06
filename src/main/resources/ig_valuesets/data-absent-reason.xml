@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="data-absent-reason"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="fhir"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="normative"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+    <valueCode value="4.0.0"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="5"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/data-absent-reason"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.5"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="DataAbsentReason"/>
+  <title value="DataAbsentReason"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="HL7 (FHIR Project)"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+    <telecom>
+      <system value="email"/>
+      <value value="fhir@lists.hl7.org"/>
+    </telecom>
+  </contact>
+  <description value="Used to specify why the normally expected content of the data element is missing."/>
+  <immutable value="true"/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/data-absent-reason"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:1372d568-be57-4894-a061-143daaf048fb"/>
+    <timestamp value="2025-01-17T09:53:37-07:00"/>
+    <total value="15"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/data-absent-reason|1.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/data-absent-reason"/>
+      <code value="unknown"/>
+      <display value="Unknown"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/data-absent-reason"/>
+      <code value="asked-unknown"/>
+      <display value="Asked But Unknown"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/data-absent-reason"/>
+      <code value="temp-unknown"/>
+      <display value="Temporarily Unknown"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/data-absent-reason"/>
+      <code value="not-asked"/>
+      <display value="Not Asked"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/data-absent-reason"/>
+      <code value="asked-declined"/>
+      <display value="Asked But Declined"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/data-absent-reason"/>
+      <code value="masked"/>
+      <display value="Masked"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/data-absent-reason"/>
+      <code value="not-applicable"/>
+      <display value="Not Applicable"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/data-absent-reason"/>
+      <code value="unsupported"/>
+      <display value="Unsupported"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/data-absent-reason"/>
+      <code value="as-text"/>
+      <display value="As Text"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/data-absent-reason"/>
+      <code value="error"/>
+      <display value="Error"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/data-absent-reason"/>
+      <code value="not-a-number"/>
+      <display value="Not a Number (NaN)"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/data-absent-reason"/>
+      <code value="negative-infinity"/>
+      <display value="Negative Infinity (NINF)"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/data-absent-reason"/>
+      <code value="positive-infinity"/>
+      <display value="Positive Infinity (PINF)"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/data-absent-reason"/>
+      <code value="not-performed"/>
+      <display value="Not Performed"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/data-absent-reason"/>
+      <code value="not-permitted"/>
+      <display value="Not Permitted"/>
+    </contains>
+  </expansion>
+</ValueSet>

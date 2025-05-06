@@ -1,0 +1,3781 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="2.16.840.1.113762.1.4.1099.30"/>
+  <meta>
+    <versionId value="8"/>
+    <lastUpdated value="2022-04-08T01:02:23.000-04:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+    <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/publishable-valueset-cqfm"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/valueset-author">
+    <valueString value="HL7 Structured Documents WG"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate">
+    <valueDate value="2022-12-15"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/valueset-effectiveDate">
+    <valueDate value="2019-04-18"/>
+  </extension>
+  <url value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1099.30"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113762.1.4.1099.30"/>
+  </identifier>
+  <version value="20190418"/>
+  <name value="CareTeamMemberFunction"/>
+  <title value="Care Team Member Function"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2022-04-08T01:02:23-04:00"/>
+  <publisher value="HL7 Terminology"/>
+  <description value="Created to group the old value set from HL7 code system with the new value set using SNOMEDCT and containing the extended set of care team member roles."/>
+  <jurisdiction>
+    <extension url="http://hl7.org/fhir/StructureDefinition/data-absent-reason">
+      <valueString value="UNKNOWN"/>
+    </extension>
+  </jurisdiction>
+  <purpose value="(Clinical Focus: This set of concepts describes the function performed on a patient-centered care team. This value set contains concepts that describe a functional role played by a member of a care team on a particular care team.),(Data Element Scope: A functional role on a patient's care team.),(Inclusion Criteria: The set of commonly played roles on a patient-centered care team.),(Exclusion Criteria: Functional roles on care teams that are not patient-centered. For example, hospital's may define teams of practitioners who fill roles that are relevant to the function of the hospital's operation. These roles would not be included when they are not roles that would be played on a patient-centered care team.)"/>
+  <compose>
+    <include>
+      <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.1.11.10267"/>
+    </include>
+    <include>
+      <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1099.27"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:8bac4223-26e1-4d9f-8fa1-412da9d09fb4"/>
+    <timestamp value="2023-06-29T16:13:12-04:00"/>
+    <total value="620"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="106289002"/>
+      <display value="Dentist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="106292003"/>
+      <display value="Professional nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="106293008"/>
+      <display value="Nursing personnel (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="106294002"/>
+      <display value="Midwifery personnel (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="106296000"/>
+      <display value="Physiotherapist/occupational therapist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="106310008"/>
+      <display value="Worker in religion (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="106311007"/>
+      <display value="Minister of religion/related member of religious order (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="106330007"/>
+      <display value="Philologist, translator/interpreter (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="11015003"/>
+      <display value="Minister of religion (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="116154003"/>
+      <display value="Patient (person)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="11661002"/>
+      <display value="Neuropathologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="1172950003"/>
+      <display value="Massage therapist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="1186716007"/>
+      <display value="Intellectual disability psychiatrist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="1186914001"/>
+      <display value="Intellectual disability nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="11911009"/>
+      <display value="Nephrologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="119246008"/>
+      <display value="Imam (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="11935004"/>
+      <display value="Obstetrician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="1251537007"/>
+      <display value="Sport medicine specialist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="1251542004"/>
+      <display value="Medical coder (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="1251548000"/>
+      <display value="Neuroradiologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="1254982001"/>
+      <display value="Medical surgical nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="1254983006"/>
+      <display value="Chronic care nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="1254984000"/>
+      <display value="Rehabilitation nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="1255370008"/>
+      <display value="Specialist in naturopathy (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="1255371007"/>
+      <display value="Specialist in homeopathy (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="1255372000"/>
+      <display value="Phytotherapist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="1255373005"/>
+      <display value="Specialist in traditional Chinese medicine (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="1255374004"/>
+      <display value="Clinical nutritionist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="1255514008"/>
+      <display value="Regulatory affairs pharmacist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="1255515009"/>
+      <display value="Pharmacogenomics pharmacist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="1255516005"/>
+      <display value="Clinical analysis pharmacist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="1255517001"/>
+      <display value="Intern in healthcare (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="1255518006"/>
+      <display value="Organizational and social psychologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="1255519003"/>
+      <display value="Cardiopulmonary technician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="1255719001"/>
+      <display value="Neurophysiology technician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="1256114007"/>
+      <display value="Nuclear medicine technologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="1259214004"/>
+      <display value="Immunohemotherapy specialist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="1259964002"/>
+      <display value="Oral medicine specialist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="1271000175101"/>
+      <display value="Primary obstetrician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="133932002"/>
+      <display value="Caregiver (person)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="13580004"/>
+      <display value="School dental assistant (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="1421009"/>
+      <display value="Specialized surgeon (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="14613005"/>
+      <display value="Ordained rabbi (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="14698002"/>
+      <display value="Medical microbiologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="158965000"/>
+      <display value="Medical practitioner (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="158966004"/>
+      <display value="Medical administrator - national (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="158967008"/>
+      <display value="Consultant physician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="158968003"/>
+      <display value="Consultant surgeon (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="158969006"/>
+      <display value="Consultant gynecology/obstetrics (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="158971006"/>
+      <display value="Hospital registrar (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="158972004"/>
+      <display value="House officer (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="158973009"/>
+      <display value="Occupational physician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="158974003"/>
+      <display value="Clinical medical officer (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="158975002"/>
+      <display value="Medical practitioner - teaching (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="158977005"/>
+      <display value="Dental administrator (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="158978000"/>
+      <display value="Dental consultant (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="158979008"/>
+      <display value="Dental general practitioner (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="158980006"/>
+      <display value="Dental practitioner - teaching (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="158983008"/>
+      <display value="Nurse administrator - national (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="158984002"/>
+      <display value="Nursing officer - region (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="158985001"/>
+      <display value="Nursing officer - district (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="158986000"/>
+      <display value="Nursing administrator - professional body (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="158987009"/>
+      <display value="Nursing officer - division (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="158988004"/>
+      <display value="Nurse education director (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="158989007"/>
+      <display value="Occupational health nursing officer (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="158990003"/>
+      <display value="Nursing officer (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="158992006"/>
+      <display value="Midwifery sister (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="158993001"/>
+      <display value="Nursing sister (theater) (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="158994007"/>
+      <display value="Staff nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="158995008"/>
+      <display value="Staff midwife (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="158996009"/>
+      <display value="State enrolled nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="158997000"/>
+      <display value="District nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="158998005"/>
+      <display value="Private nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="158999002"/>
+      <display value="Community midwife (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="159001001"/>
+      <display value="Clinic nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="159002008"/>
+      <display value="Practice nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="159003003"/>
+      <display value="School nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="159004009"/>
+      <display value="Nurse teacher (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="159005005"/>
+      <display value="Student nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="159006006"/>
+      <display value="Dental nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="159007002"/>
+      <display value="Community pediatric nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="159010009"/>
+      <display value="Hospital pharmacist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="159011008"/>
+      <display value="Retail pharmacist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="159012001"/>
+      <display value="Industrial pharmacist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="159014000"/>
+      <display value="Trainee pharmacist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="159016003"/>
+      <display value="Medical radiographer (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="159017007"/>
+      <display value="Diagnostic radiographer (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="159018002"/>
+      <display value="Therapeutic radiographer (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="159019005"/>
+      <display value="Trainee radiographer (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="159021000"/>
+      <display value="Ophthalmic optician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="159022007"/>
+      <display value="Trainee optician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="159025009"/>
+      <display value="Remedial gymnast (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="159026005"/>
+      <display value="Speech/language therapist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="159027001"/>
+      <display value="Orthoptist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="159028006"/>
+      <display value="Trainee remedial therapist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="159033005"/>
+      <display value="Dietitian (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="159034004"/>
+      <display value="Podiatrist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="159035003"/>
+      <display value="Dental auxiliary (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="159036002"/>
+      <display value="Electrocardiogram technician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="159037006"/>
+      <display value="Electroencephalogram technician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="159038001"/>
+      <display value="Artificial limb fitter (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="159039009"/>
+      <display value="Audiology technician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="159040006"/>
+      <display value="Pharmacy technician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="159041005"/>
+      <display value="Trainee medical technician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="159141008"/>
+      <display value="Geneticist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="159148002"/>
+      <display value="Research chemist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="159174008"/>
+      <display value="Civil engineer - research (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="159972006"/>
+      <display value="Surgical corset fitter (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="160008000"/>
+      <display value="Dental technician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="17561000"/>
+      <display value="Cardiologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="18803008"/>
+      <display value="Dermatologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="18850004"/>
+      <display value="Laboratory hematologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="19244007"/>
+      <display value="Gerodontist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="20145008"/>
+      <display value="Removable prosthodontist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="21365001"/>
+      <display value="Specialized dentist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="21450003"/>
+      <display value="Neuropsychiatrist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224529009"/>
+      <display value="Clinical assistant (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224530004"/>
+      <display value="Senior registrar (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224531000"/>
+      <display value="Registrar (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224532007"/>
+      <display value="Senior house officer (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224533002"/>
+      <display value="Medical officer (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224534008"/>
+      <display value="Health visitor, nurse/midwife (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224535009"/>
+      <display value="Registered nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224536005"/>
+      <display value="Midwifery tutor (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224537001"/>
+      <display value="Accident and Emergency nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224538006"/>
+      <display value="Triage nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224540001"/>
+      <display value="Community nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224541002"/>
+      <display value="Nursing continence advisor (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224542009"/>
+      <display value="Coronary care nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224543004"/>
+      <display value="Diabetic nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224544005"/>
+      <display value="Family planning nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224545006"/>
+      <display value="Care of the elderly nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224546007"/>
+      <display value="Infection control nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224547003"/>
+      <display value="Intensive therapy nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224548008"/>
+      <display value="Learning disabilities nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224549000"/>
+      <display value="Neonatal nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224550000"/>
+      <display value="Neurology nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224551001"/>
+      <display value="Industrial nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224552008"/>
+      <display value="Oncology nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224554009"/>
+      <display value="Marie Curie nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224555005"/>
+      <display value="Pain control nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224556006"/>
+      <display value="Palliative care nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224557002"/>
+      <display value="Chemotherapy nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224558007"/>
+      <display value="Radiotherapy nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224559004"/>
+      <display value="Recovery nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224560009"/>
+      <display value="Stoma care nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224562001"/>
+      <display value="Pediatric nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224563006"/>
+      <display value="Mental health nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224564000"/>
+      <display value="Community mental health nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224565004"/>
+      <display value="Renal nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224566003"/>
+      <display value="Hemodialysis nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224567007"/>
+      <display value="Tissue viability nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224569005"/>
+      <display value="Nurse grade (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224570006"/>
+      <display value="Clinical nurse specialist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224571005"/>
+      <display value="Nurse practitioner (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224572003"/>
+      <display value="Nursing sister (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224573008"/>
+      <display value="Charge nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224574002"/>
+      <display value="Ward manager (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224575001"/>
+      <display value="Nursing team leader (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224576000"/>
+      <display value="Nursing assistant (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224577009"/>
+      <display value="Healthcare assistant (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224578004"/>
+      <display value="Nursery nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224579007"/>
+      <display value="Healthcare service manager (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224580005"/>
+      <display value="Occupational health service manager (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224581009"/>
+      <display value="Community nurse manager (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224583007"/>
+      <display value="Behavior therapist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224584001"/>
+      <display value="Behavior therapy assistant (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224585000"/>
+      <display value="Drama therapist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224586004"/>
+      <display value="Domiciliary occupational therapist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224587008"/>
+      <display value="Occupational therapy helper (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224588003"/>
+      <display value="Psychotherapist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224589006"/>
+      <display value="Community-based physiotherapist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224590002"/>
+      <display value="Play therapist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224591003"/>
+      <display value="Play specialist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224592005"/>
+      <display value="Play leader (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224593000"/>
+      <display value="Community-based speech/language therapist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224594006"/>
+      <display value="Speech/language assistant (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224595007"/>
+      <display value="Professional counselor (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224596008"/>
+      <display value="Marriage guidance counselor (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224597004"/>
+      <display value="Trained nurse counselor (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224598009"/>
+      <display value="Trained social worker counselor (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224599001"/>
+      <display value="Trained personnel counselor (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224600003"/>
+      <display value="Psychoanalyst (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224601004"/>
+      <display value="Assistant psychologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224602006"/>
+      <display value="Community-based podiatrist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224603001"/>
+      <display value="Foot care worker (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224604007"/>
+      <display value="Audiometrician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224606009"/>
+      <display value="Technical healthcare occupation (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224607000"/>
+      <display value="Occupational therapy technical instructor (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224608005"/>
+      <display value="Administrative healthcare staff (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224609002"/>
+      <display value="Complementary health worker (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224610007"/>
+      <display value="Supporting services personnel (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224614003"/>
+      <display value="Research associate (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224615002"/>
+      <display value="Research nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224620002"/>
+      <display value="Human aid to communication (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224621003"/>
+      <display value="Palantypist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224622005"/>
+      <display value="Note taker (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224623000"/>
+      <display value="Cuer (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224624006"/>
+      <display value="Lipspeaker (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224625007"/>
+      <display value="Interpreter for British sign language (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224626008"/>
+      <display value="Interpreter for Signs supporting English (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="224936003"/>
+      <display value="General practitioner locum (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="22515006"/>
+      <display value="Medical assistant (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="225725005"/>
+      <display value="Chaplain (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="225726006"/>
+      <display value="Lactation consultant (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="225727002"/>
+      <display value="Midwife counselor (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="22731001"/>
+      <display value="Orthopedic surgeon (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="22983004"/>
+      <display value="Thoracic surgeon (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="23278007"/>
+      <display value="Community health physician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="24430003"/>
+      <display value="Physical medicine specialist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="24590004"/>
+      <display value="Urologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="25941000087102"/>
+      <display value="Adult gerontology primary care nurse practitioner (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="25961008"/>
+      <display value="Electroencephalography specialist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="26031000087100"/>
+      <display value="Pediatric nurse practitioner (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="26042002"/>
+      <display value="Dental hygienist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="26071000087103"/>
+      <display value="Primary health care nurse practitioner (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="26091000087104"/>
+      <display value="Public health nurse practitioner (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="26369006"/>
+      <display value="Public health nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="265937000"/>
+      <display value="Nursing occupation (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="265939002"/>
+      <display value="Medical/dental technicians (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="28229004"/>
+      <display value="Optometrist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="283875005"/>
+      <display value="Parkinson's disease nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="28411006"/>
+      <display value="Neonatologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="28544002"/>
+      <display value="Medical biochemist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="302211009"/>
+      <display value="Specialist registrar (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="303124005"/>
+      <display value="Member of mental health review tribunal (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="303129000"/>
+      <display value="Hospital manager (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="303133007"/>
+      <display value="Responsible medical officer (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="303134001"/>
+      <display value="Independent doctor (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="304291006"/>
+      <display value="Bereavement counselor (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="304292004"/>
+      <display value="Surgeon (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="307988006"/>
+      <display value="Medical technician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="308002005"/>
+      <display value="Remedial therapist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309294001"/>
+      <display value="Emergency department physician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309295000"/>
+      <display value="Clinical oncologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309296004"/>
+      <display value="Family planning doctor (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309322005"/>
+      <display value="Associate general practitioner (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309323000"/>
+      <display value="Partner of general practitioner (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309324006"/>
+      <display value="General practitioner assistant (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309326008"/>
+      <display value="Deputizing general practitioner (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309327004"/>
+      <display value="General practitioner registrar (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309328009"/>
+      <display value="Ambulatory pediatrician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309329001"/>
+      <display value="Community pediatrician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309330006"/>
+      <display value="Pediatric cardiologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309331005"/>
+      <display value="Pediatric endocrinologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309332003"/>
+      <display value="Pediatric gastroenterologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309333008"/>
+      <display value="Pediatric nephrologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309334002"/>
+      <display value="Pediatric neurologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309335001"/>
+      <display value="Pediatric rheumatologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309336000"/>
+      <display value="Pediatric oncologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309337009"/>
+      <display value="Pain management specialist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309338004"/>
+      <display value="Intensive care specialist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309339007"/>
+      <display value="Adult intensive care specialist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309340009"/>
+      <display value="Pediatric intensive care specialist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309341008"/>
+      <display value="Blood transfusion doctor (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309342001"/>
+      <display value="Histopathologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309343006"/>
+      <display value="Physician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309345004"/>
+      <display value="Chest physician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309346003"/>
+      <display value="Thoracic physician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309347007"/>
+      <display value="Clinical hematologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309348002"/>
+      <display value="Clinical neurophysiologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309349005"/>
+      <display value="Clinical physiologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309350005"/>
+      <display value="Diabetologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309351009"/>
+      <display value="Andrologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309352002"/>
+      <display value="Neuroendocrinologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309353007"/>
+      <display value="Reproductive endocrinologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309354001"/>
+      <display value="Thyroidologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309355000"/>
+      <display value="Clinical geneticist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309356004"/>
+      <display value="Clinical cytogeneticist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309357008"/>
+      <display value="Clinical molecular geneticist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309358003"/>
+      <display value="Genitourinary medicine physician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309359006"/>
+      <display value="Palliative care physician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309360001"/>
+      <display value="Rehabilitation physician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309361002"/>
+      <display value="Child and adolescent psychiatrist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309362009"/>
+      <display value="Forensic psychiatrist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309363004"/>
+      <display value="Liaison psychiatrist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309364005"/>
+      <display value="Psychogeriatrician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309366007"/>
+      <display value="Rehabilitation psychiatrist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309367003"/>
+      <display value="Obstetrician and gynecologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309368008"/>
+      <display value="Breast surgeon (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309369000"/>
+      <display value="Cardiothoracic surgeon (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309371000"/>
+      <display value="Cardiac surgeon (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309372007"/>
+      <display value="Ear, nose and throat surgeon (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309373002"/>
+      <display value="Endocrine surgeon (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309374008"/>
+      <display value="Thyroid surgeon (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309375009"/>
+      <display value="Pituitary surgeon (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309376005"/>
+      <display value="Gastrointestinal surgeon (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309377001"/>
+      <display value="General gastrointestinal surgeon (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309378006"/>
+      <display value="Upper gastrointestinal surgeon (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309379003"/>
+      <display value="Colorectal surgeon (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309380000"/>
+      <display value="Hand surgeon (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309381001"/>
+      <display value="Hepatobiliary surgeon (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309382008"/>
+      <display value="Ophthalmic surgeon (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309383003"/>
+      <display value="Pediatric surgeon (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309384009"/>
+      <display value="Pancreatic surgeon (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309385005"/>
+      <display value="Transplant surgeon (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309386006"/>
+      <display value="Trauma surgeon (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309388007"/>
+      <display value="Vascular surgeon (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309389004"/>
+      <display value="Medical practitioner grade (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309390008"/>
+      <display value="Hospital consultant (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309391007"/>
+      <display value="Visiting specialist registrar (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309392000"/>
+      <display value="Research registrar (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309393005"/>
+      <display value="General practitioner grade (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309394004"/>
+      <display value="General practitioner principal (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309395003"/>
+      <display value="Hospital specialist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309396002"/>
+      <display value="Associate specialist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309397006"/>
+      <display value="Research fellow (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309398001"/>
+      <display value="Profession allied to medicine (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309399009"/>
+      <display value="Hospital-based dietitian (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309400002"/>
+      <display value="Domiciliary physiotherapist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309401003"/>
+      <display value="General practitioner-based physiotherapist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309402005"/>
+      <display value="Hospital-based physiotherapist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309403000"/>
+      <display value="Private physiotherapist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309404006"/>
+      <display value="Physiotherapy helper (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309409001"/>
+      <display value="Hospital-based speech and language therapist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309410006"/>
+      <display value="Arts therapist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309411005"/>
+      <display value="Dance therapist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309412003"/>
+      <display value="Music therapist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309413008"/>
+      <display value="Renal dietitian (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309414002"/>
+      <display value="Liver dietitian (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309415001"/>
+      <display value="Oncology dietitian (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309416000"/>
+      <display value="Pediatric dietitian (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309417009"/>
+      <display value="Diabetes dietitian (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309418004"/>
+      <display value="Audiologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309419007"/>
+      <display value="Hearing therapist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309420001"/>
+      <display value="Audiological scientist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309421002"/>
+      <display value="Hearing aid dispenser (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309422009"/>
+      <display value="Community-based occupational therapist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309423004"/>
+      <display value="Hospital-based occupational therapist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309427003"/>
+      <display value="Social services occupational therapist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309428008"/>
+      <display value="Orthotist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309429000"/>
+      <display value="Surgical fitter (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309434001"/>
+      <display value="Hospital-based podiatrist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309435000"/>
+      <display value="Podiatry assistant (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309436004"/>
+      <display value="Lymphedema nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309437008"/>
+      <display value="Community learning disabilities nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309439006"/>
+      <display value="Clinical nurse teacher (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309440008"/>
+      <display value="Community practice nurse teacher (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309441007"/>
+      <display value="Nurse tutor (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309442000"/>
+      <display value="Nurse teacher practitioner (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309443005"/>
+      <display value="Nurse lecturer practitioner (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309444004"/>
+      <display value="Outreach nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309445003"/>
+      <display value="Anesthetic nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309446002"/>
+      <display value="Nurse manager (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309450009"/>
+      <display value="Nurse administrator (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309452001"/>
+      <display value="Midwifery grade (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309453006"/>
+      <display value="Registered midwife (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309454000"/>
+      <display value="Student midwife (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309455004"/>
+      <display value="Parentcraft sister (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309457007"/>
+      <display value="Vicar (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309459005"/>
+      <display value="Healthcare professional grade (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="309460000"/>
+      <display value="Restorative dentist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="310170009"/>
+      <display value="Pediatric audiologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="310171008"/>
+      <display value="Immunopathologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="310172001"/>
+      <display value="Audiological physician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="310173006"/>
+      <display value="Clinical pharmacologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="310174000"/>
+      <display value="Private doctor (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="310175004"/>
+      <display value="Agency nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="310176003"/>
+      <display value="Behavioral therapist nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="310177007"/>
+      <display value="Cardiac rehabilitation nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="310178002"/>
+      <display value="Genitourinary nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="310179005"/>
+      <display value="Rheumatology nurse specialist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="310180008"/>
+      <display value="Continence nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="310181007"/>
+      <display value="Contact tracing nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="310182000"/>
+      <display value="General nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="310184004"/>
+      <display value="Liaison nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="310185003"/>
+      <display value="Diabetic liaison nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="310186002"/>
+      <display value="Nurse psychotherapist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="310187006"/>
+      <display value="Company nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="310188001"/>
+      <display value="Hospital midwife (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="310189009"/>
+      <display value="Genetic counselor (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="310190000"/>
+      <display value="Mental health counselor (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="310191001"/>
+      <display value="Clinical psychologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="310192008"/>
+      <display value="Educational psychologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="310193003"/>
+      <display value="Coroner (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="310194009"/>
+      <display value="Appliance officer (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="310512001"/>
+      <display value="Medical oncologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="311441001"/>
+      <display value="School medical officer (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="312485001"/>
+      <display value="Integrated midwife (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="3430008"/>
+      <display value="Radiation therapist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="36682004"/>
+      <display value="Physiotherapist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="37154003"/>
+      <display value="Periodontist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="372102007"/>
+      <display value="Registered nurse first assist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="373864002"/>
+      <display value="Outpatient (person)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="37504001"/>
+      <display value="Orthodontist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="3842006"/>
+      <display value="Chiropractor (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="387619007"/>
+      <display value="Optician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="394572006"/>
+      <display value="Medical secretary (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="394618009"/>
+      <display value="Hospital nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="39677007"/>
+      <display value="Internal medicine specialist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="397897005"/>
+      <display value="Paramedic (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="397903001"/>
+      <display value="Staff grade obstetrician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="397908005"/>
+      <display value="Staff grade practitioner (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="3981000175106"/>
+      <display value="Nurse complex case manager (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="398130009"/>
+      <display value="Medical student (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="398238009"/>
+      <display value="Acting obstetric registrar (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="40127002"/>
+      <display value="Dietitian (general) (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="40204001"/>
+      <display value="Hematologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="404940000"/>
+      <display value="Physiotherapist technical instructor (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="405277009"/>
+      <display value="Resident physician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="405278004"/>
+      <display value="Certified registered nurse anesthetist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="405279007"/>
+      <display value="Attending physician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="405623001"/>
+      <display value="Assigned practitioner (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="405684005"/>
+      <display value="Professional initiating surgical case (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="405685006"/>
+      <display value="Professional providing staff relief during surgical procedure (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="40570005"/>
+      <display value="Interpreter (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="407542009"/>
+      <display value="Informal caregiver (person)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="407543004"/>
+      <display value="Primary caregiver (person)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="408798009"/>
+      <display value="Consultant pediatrician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="408799001"/>
+      <display value="Consultant neonatologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="409974004"/>
+      <display value="Health educator (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="409975003"/>
+      <display value="Certified health education specialist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="413854007"/>
+      <display value="Circulating nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="415075003"/>
+      <display value="Perioperative nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="415506007"/>
+      <display value="Scrub nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="416034003"/>
+      <display value="Primary screener (person)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="416035002"/>
+      <display value="Secondary screener (person)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="416160000"/>
+      <display value="Fellow of American Academy of Osteopathy (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="4162009"/>
+      <display value="Dental assistant (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="41672002"/>
+      <display value="Respiratory disease specialist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="416800000"/>
+      <display value="Inpatient (person)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="41904004"/>
+      <display value="Medical X-ray technician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="420158005"/>
+      <display value="Performer of method (person)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="420409002"/>
+      <display value="Oculoplastic surgeon (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="420678001"/>
+      <display value="Retinal surgeon (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="421841007"/>
+      <display value="Admitting physician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="422140007"/>
+      <display value="Medical ophthalmologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="422234006"/>
+      <display value="Ophthalmologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="428024001"/>
+      <display value="Clinical trial participant (person)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="429577009"/>
+      <display value="Patient advocate (person)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="432100008"/>
+      <display value="Health coach (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="43702002"/>
+      <display value="Occupational health nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="440051000124108"/>
+      <display value="Medical examiner (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="442251000124100"/>
+      <display value="Licensed practical nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="442867008"/>
+      <display value="Respiratory therapist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="443090005"/>
+      <display value="Podiatric surgeon (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="444912007"/>
+      <display value="Hypnotherapist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="445313000"/>
+      <display value="Asthma nurse specialist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="445451001"/>
+      <display value="Nurse case manager (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="445521000124102"/>
+      <display value="Advanced practice midwife (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="445531000124104"/>
+      <display value="Lay midwife (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="446050000"/>
+      <display value="Primary care physician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="44652006"/>
+      <display value="Pharmaceutical assistant (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="446701002"/>
+      <display value="Addiction medicine specialist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="449161006"/>
+      <display value="Physician assistant (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="450044741000087104"/>
+      <display value="Acupuncturist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="453061000124100"/>
+      <display value="Pharmacist specialist (person)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="453071000124107"/>
+      <display value="Primary care pharmacist (person)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="453081000124105"/>
+      <display value="Infusion pharmacist (person)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="453091000124108"/>
+      <display value="Receiving provider (person)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="453101000124102"/>
+      <display value="Consultant pharmacist (person)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="453111000124104"/>
+      <display value="Dispensing pharmacist (person)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="453121000124107"/>
+      <display value="Emergency department healthcare professional (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="453231000124104"/>
+      <display value="Primary care provider (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="45440000"/>
+      <display value="Rheumatologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="45544007"/>
+      <display value="Neurosurgeon (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="457141000124107"/>
+      <display value="Locum tenens attending physician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="457151000124109"/>
+      <display value="Locum tenens admitting physician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="45956004"/>
+      <display value="Sanitarian (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="46255001"/>
+      <display value="Pharmacist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="471302004"/>
+      <display value="Government midwife (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="48639005"/>
+      <display value="Ordained minister (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="48740002"/>
+      <display value="Philologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="49203003"/>
+      <display value="Dispensing optician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="49993003"/>
+      <display value="Oral surgeon (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="50149000"/>
+      <display value="Endodontist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="5191000124109"/>
+      <display value="Private midwife (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="5275007"/>
+      <display value="Auxiliary nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="53564008"/>
+      <display value="Ordained clergy (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="54503009"/>
+      <display value="Faith healer (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="56397003"/>
+      <display value="Neurologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="56466003"/>
+      <display value="Public health physician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="56542007"/>
+      <display value="Medical record administrator (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="56545009"/>
+      <display value="Cardiovascular surgeon (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="57654006"/>
+      <display value="Fixed prosthodontist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="59058001"/>
+      <display value="General physician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="59169001"/>
+      <display value="Orthopedic technician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="59317003"/>
+      <display value="Dental prosthesis maker and repairer (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="59944000"/>
+      <display value="Psychologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="60008001"/>
+      <display value="Public health nutritionist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="611581000124105"/>
+      <display value="Cognitive neuropsychologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="611601000124100"/>
+      <display value="Neonatal nurse practitioner (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="611611000124102"/>
+      <display value="Counseling psychologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="611621000124105"/>
+      <display value="Clinical neuropsychologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="611631000124108"/>
+      <display value="Neuropsychologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="611701000124107"/>
+      <display value="Sleep psychologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="61207006"/>
+      <display value="Medical pathologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="61246008"/>
+      <display value="Laboratory medicine specialist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="61345009"/>
+      <display value="Otorhinolaryngologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="61894003"/>
+      <display value="Endocrinologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="62247001"/>
+      <display value="Family medicine specialist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="63098009"/>
+      <display value="Clinical immunologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="64220005"/>
+      <display value="Religious worker (member of religious order) (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="651501000124106"/>
+      <display value="Pediatric emergency medicine physician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="65803006"/>
+      <display value="Missionary (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="66476003"/>
+      <display value="Oral pathologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="66862007"/>
+      <display value="Radiologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="671101000124102"/>
+      <display value="Family nurse practitioner (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="6816002"/>
+      <display value="Specialized nurse (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="6868009"/>
+      <display value="Hospital administrator (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="68867008"/>
+      <display value="Public health dentist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="68950000"/>
+      <display value="Prosthodontist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="69280009"/>
+      <display value="Specialized physician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="71838004"/>
+      <display value="Gastroenterologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="720503005"/>
+      <display value="Sleep medicine specialist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="721936008"/>
+      <display value="Occupation medicine specialist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="721937004"/>
+      <display value="Preventive medicine specialist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="721938009"/>
+      <display value="Tropical medicine specialist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="721939001"/>
+      <display value="Vascular medicine specialist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="721940004"/>
+      <display value="Legal medicine specialist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="721941000"/>
+      <display value="Health psychologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="721942007"/>
+      <display value="Cardiovascular perfusionist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="721943002"/>
+      <display value="Clinical immunology and allergy specialist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="73265009"/>
+      <display value="Nursing aid (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="734293001"/>
+      <display value="Clinical pharmacist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="734294007"/>
+      <display value="Pharmacist prescriber (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="75271001"/>
+      <display value="Professional midwife (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="76166008"/>
+      <display value="Practical aid (pharmacy) (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="76231001"/>
+      <display value="Osteopath (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="763292005"/>
+      <display value="Radiation oncologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768730001"/>
+      <display value="Home health aide (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768731002"/>
+      <display value="Home helper (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768732009"/>
+      <display value="School health educator (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768733004"/>
+      <display value="Spiritual advisor (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768734005"/>
+      <display value="Research study coordinator (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768815003"/>
+      <display value="Investigative specialist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768816002"/>
+      <display value="Associate investigator (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768817006"/>
+      <display value="Co-principal investigator (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768818001"/>
+      <display value="Principal investigator (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768819009"/>
+      <display value="Medically responsible investigator (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768820003"/>
+      <display value="Care coordinator (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768821004"/>
+      <display value="Care team coordinator (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768822006"/>
+      <display value="Rehabilitation coordinator (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768825008"/>
+      <display value="Doula (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768826009"/>
+      <display value="Crisis counselor (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768827000"/>
+      <display value="Nutritionist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768828005"/>
+      <display value="Epidemiologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768829002"/>
+      <display value="Community dietician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768832004"/>
+      <display value="Case manager (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768833009"/>
+      <display value="Discharging physician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768834003"/>
+      <display value="Disease manager (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768836001"/>
+      <display value="Patient navigator (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768837005"/>
+      <display value="Hospitalist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768839008"/>
+      <display value="Consultant (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="76899008"/>
+      <display value="Infectious disease specialist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="769038007"/>
+      <display value="Researcher (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="78703002"/>
+      <display value="General surgeon (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="78729002"/>
+      <display value="Diagnostic radiologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="789543004"/>
+      <display value="Sonographer (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="79898004"/>
+      <display value="Auxiliary midwife (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="79918004"/>
+      <display value="Ordained priest (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="80409005"/>
+      <display value="Translator (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="80546007"/>
+      <display value="Occupational therapist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="80584001"/>
+      <display value="Psychiatrist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="80933006"/>
+      <display value="Nuclear medicine specialist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="81464008"/>
+      <display value="Clinical pathologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="82296001"/>
+      <display value="Pediatrician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="83273008"/>
+      <display value="Anatomic pathologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="83685006"/>
+      <display value="Gynecologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="840583002"/>
+      <display value="Allied health assistant (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="840584008"/>
+      <display value="Allied health student (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="85733003"/>
+      <display value="General pathologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="8724009"/>
+      <display value="Plastic surgeon (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="878785002"/>
+      <display value="Clinical respiratory physiologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="878786001"/>
+      <display value="Operating room technician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="878787005"/>
+      <display value="Anesthesia technician (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="88189002"/>
+      <display value="Anesthesiologist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="897187007"/>
+      <display value="Sexual assault nurse examiner (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="90201008"/>
+      <display value="Pedodontist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="90655003"/>
+      <display value="Geriatrics specialist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="9371000175105"/>
+      <display value="Adolescent medicine specialist (occupation)"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="ADMPHYS"/>
+      <display value="admitting physician"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="ANEST"/>
+      <display value="anesthesist"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="ANRS"/>
+      <display value="anesthesia nurse"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="ASSEMBLER"/>
+      <display value="assembly software"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="ATTPHYS"/>
+      <display value="attending physician"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="AUCG"/>
+      <display value="caregiver information receiver"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="AUCOV"/>
+      <display value="consent overrider"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="AUEMROV"/>
+      <display value="emergency overrider"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="AULR"/>
+      <display value="legitimate relationship information receiver"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="AUTM"/>
+      <display value="care team information receiver"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="AUWA"/>
+      <display value="work area information receiver"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="CLMADJ"/>
+      <display value="claims adjudication"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="COMPOSER"/>
+      <display value="composer software"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="DISPHYS"/>
+      <display value="discharging physician"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="ENROLL"/>
+      <display value="enrollment broker"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="FASST"/>
+      <display value="first assistant surgeon"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="FFSMGT"/>
+      <display value="ffs management"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="FULINRD"/>
+      <display value="fully insured"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="GRDCON"/>
+      <display value="legal guardian consent author"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="MCMGT"/>
+      <display value="managed care management"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="MDWF"/>
+      <display value="midwife"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="NASST"/>
+      <display value="nurse assistant"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="PAYORCNTR"/>
+      <display value="payor contracting"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="PCP"/>
+      <display value="primary care physician"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="POACON"/>
+      <display value="healthcare power of attorney consent author"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="PRCON"/>
+      <display value="personal representative consent author"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="PRISURG"/>
+      <display value="primary surgeon"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="PROMSK"/>
+      <display value="authorized provider masking author"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="PROVMGT"/>
+      <display value="provider management"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="REINS"/>
+      <display value="reinsures"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="RETROCES"/>
+      <display value="retrocessionaires"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="REVIEWER"/>
+      <display value="reviewer"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="RNDPHYS"/>
+      <display value="rounding physician"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="SASST"/>
+      <display value="second assistant surgeon"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="SELFINRD"/>
+      <display value="self insured"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="SNRS"/>
+      <display value="scrub nurse"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="SUBCON"/>
+      <display value="subject of consent author"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="SUBCTRT"/>
+      <display value="subcontracting risk"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="TASST"/>
+      <display value="third assistant"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="UMGT"/>
+      <display value="utilization management"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="UNDERWRTNG"/>
+      <display value="underwriting"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="_AuthorizedParticipationFunction"/>
+      <display value="AuthorizedParticipationFunction"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="_AuthorizedReceiverParticipationFunction"/>
+      <display value="AuthorizedReceiverParticipationFunction"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="_ConsenterParticipationFunction"/>
+      <display value="ConsenterParticipationFunction"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="_CoverageParticipationFunction"/>
+      <display value="CoverageParticipationFunction"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="_OverriderParticipationFunction"/>
+      <display value="OverriderParticipationFunction"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="_PayorParticipationFunction"/>
+      <display value="PayorParticipationFunction"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="_SponsorParticipationFunction"/>
+      <display value="SponsorParticipationFunction"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="_UnderwriterParticipationFunction"/>
+      <display value="UnderwriterParticipationFunction"/>
+    </contains>
+  </expansion>
+</ValueSet>

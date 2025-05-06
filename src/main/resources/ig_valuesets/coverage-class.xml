@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="coverage-class"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="fm"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="trial-use"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="2"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/coverage-class"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.1009"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="CoverageClassCodes"/>
+  <title value="Coverage Class Codes"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="Financial Management"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="This value set includes Coverage Class codes."/>
+  <immutable value="true"/>
+  <copyright value="HL7 Inc."/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/coverage-class"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:92ef7a7f-dddc-41e5-90de-8a9e32910f4c"/>
+    <timestamp value="2025-01-17T09:53:37-07:00"/>
+    <total value="11"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/coverage-class|1.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/coverage-class"/>
+      <code value="group"/>
+      <display value="Group"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/coverage-class"/>
+      <code value="subgroup"/>
+      <display value="SubGroup"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/coverage-class"/>
+      <code value="plan"/>
+      <display value="Plan"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/coverage-class"/>
+      <code value="subplan"/>
+      <display value="SubPlan"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/coverage-class"/>
+      <code value="class"/>
+      <display value="Class"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/coverage-class"/>
+      <code value="subclass"/>
+      <display value="SubClass"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/coverage-class"/>
+      <code value="sequence"/>
+      <display value="Sequence"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/coverage-class"/>
+      <code value="rxbin"/>
+      <display value="RX BIN"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/coverage-class"/>
+      <code value="rxpcn"/>
+      <display value="RX PCN"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/coverage-class"/>
+      <code value="rxid"/>
+      <display value="RX Id"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/coverage-class"/>
+      <code value="rxgroup"/>
+      <display value="RX Group"/>
+    </contains>
+  </expansion>
+</ValueSet>

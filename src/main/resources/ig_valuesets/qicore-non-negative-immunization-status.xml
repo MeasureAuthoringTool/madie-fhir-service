@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="qicore-non-negative-immunization-status"/>
+  <text>
+    <status value="extensions"/>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <ul>
+        <li>Include these codes as defined in 
+          <a href="http://hl7.org/fhir/R4/codesystem-event-status.html">
+            <code>http://hl7.org/fhir/event-status</code>
+          </a>
+          <table class="none">
+            <tr>
+              <td style="white-space:nowrap">
+                <b>Code</b>
+              </td>
+              <td>
+                <b>Display</b>
+              </td>
+              <td>
+                <b>Definition</b>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="http://hl7.org/fhir/R4/codesystem-event-status.html#event-status-completed">completed</a>
+              </td>
+              <td>Completed</td>
+              <td>The event has now concluded.</td>
+            </tr>
+            <tr>
+              <td>
+                <a href="http://hl7.org/fhir/R4/codesystem-event-status.html#event-status-entered-in-error">entered-in-error</a>
+              </td>
+              <td>Entered in Error</td>
+              <td>This electronic record should never have existed, though it is possible that real-world decisions were based on it.  (If real-world activity has occurred, the status should be &quot;stopped&quot; rather than &quot;entered-in-error&quot;.).</td>
+            </tr>
+          </table>
+        </li>
+      </ul>
+    </div>
+  </text>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="cqi"/>
+  </extension>
+  <url value="http://hl7.org/fhir/us/qicore/ValueSet/qicore-non-negative-immunization-status"/>
+  <version value="6.0.0"/>
+  <name value="NonNegativeImmunizationStatus"/>
+  <title value="Non-Negative Immunization Status"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2018-12-05T00:00:00+00:00"/>
+  <publisher value="HL7 International / Clinical Quality Information"/>
+  <contact>
+    <name value="Clinical Quality Information WG"/>
+    <telecom>
+      <system value="url"/>
+      <value value="http://www.hl7.org/Special/committees/cqi"/>
+    </telecom>
+  </contact>
+  <description value="This value set defines the set of codes that indicate a non-negated event status for immunization resources (i.e. codes that are not `not-done`)"/>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="US"/>
+    </coding>
+  </jurisdiction>
+  <purpose value="This value set was defined to support the set of event statuses in FHIR that do not explicitly indicate a negative status (i.e. all the codes from the http://hl7.org/fhir/event-status code system that are used for immunization status and that are not `not-done`)."/>
+  <compose>
+    <include>
+      <system value="http://hl7.org/fhir/event-status"/>
+      <concept>
+        <code value="completed"/>
+        <display value="Completed"/>
+      </concept>
+      <concept>
+        <code value="entered-in-error"/>
+        <display value="Entered in Error"/>
+      </concept>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:b56c4088-e5a8-4c77-ba6b-c927df3aeecf"/>
+    <timestamp value="2025-01-17T09:53:42-07:00"/>
+    <total value="2"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="warning-draft"/>
+      <valueUri value="http://hl7.org/fhir/event-status|4.0.1"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://hl7.org/fhir/event-status|4.0.1"/>
+    </parameter>
+    <contains>
+      <system value="http://hl7.org/fhir/event-status"/>
+      <code value="completed"/>
+      <display value="Completed"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/event-status"/>
+      <code value="entered-in-error"/>
+      <display value="Entered in Error"/>
+    </contains>
+  </expansion>
+</ValueSet>

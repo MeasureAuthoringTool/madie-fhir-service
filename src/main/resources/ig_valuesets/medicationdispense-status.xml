@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="medicationdispense-status"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="phx"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="trial-use"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="2"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/medicationdispense-status"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.1312"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="MedicationDispense Status Codes"/>
+  <title value="Medication dispense  status  codes"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="MedicationDispense Status Codes"/>
+  <immutable value="true"/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/medicationdispense-status"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:e1990c8c-29f7-4207-9b5f-815c9cda07aa"/>
+    <timestamp value="2025-01-17T09:53:38-07:00"/>
+    <total value="9"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/medicationdispense-status|4.0.1"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/medicationdispense-status"/>
+      <code value="preparation"/>
+      <display value="Preparation"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/medicationdispense-status"/>
+      <code value="in-progress"/>
+      <display value="In Progress"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/medicationdispense-status"/>
+      <code value="cancelled"/>
+      <display value="Cancelled"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/medicationdispense-status"/>
+      <code value="on-hold"/>
+      <display value="On Hold"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/medicationdispense-status"/>
+      <code value="completed"/>
+      <display value="Completed"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/medicationdispense-status"/>
+      <code value="entered-in-error"/>
+      <display value="Entered in Error"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/medicationdispense-status"/>
+      <code value="stopped"/>
+      <display value="Stopped"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/medicationdispense-status"/>
+      <code value="declined"/>
+      <display value="Declined"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/medicationdispense-status"/>
+      <code value="unknown"/>
+      <display value="Unknown"/>
+    </contains>
+  </expansion>
+</ValueSet>

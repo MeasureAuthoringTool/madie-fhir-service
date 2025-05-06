@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="us-core-simple-observation-category"/>
+  <text>
+    <status value="generated"/>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <p>This value set includes codes based on the following rules:</p>
+      <ul>
+        <li>Include all codes defined in 
+          <a href="CodeSystem-us-core-category.html">
+            <code>http://hl7.org/fhir/us/core/CodeSystem/us-core-category</code>
+          </a>
+        </li>
+        <li>Include all codes defined in 
+          <a href="http://terminology.hl7.org/5.0.0/CodeSystem-observation-category.html">
+            <code>http://terminology.hl7.org/CodeSystem/observation-category</code>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </text>
+  <url value="http://hl7.org/fhir/us/core/ValueSet/us-core-simple-observation-category"/>
+  <version value="6.1.0"/>
+  <name value="USCoreSimpleObservationCategory"/>
+  <title value="US Core Simple Observation Category"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2022-09-29"/>
+  <publisher value="HL7 International - Cross-Group Projects"/>
+  <contact>
+    <name value="HL7 International - Cross-Group Projects"/>
+    <telecom>
+      <system value="url"/>
+      <value value="http://www.hl7.org/Special/committees/cgp"/>
+    </telecom>
+    <telecom>
+      <system value="email"/>
+      <value value="cgp@lists.HL7.org"/>
+    </telecom>
+  </contact>
+  <description value="Used to classify the context of a survey, screening or assessment for simple observations and may be used to assist with indexing and searching for appropriate instances."/>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="US"/>
+    </coding>
+  </jurisdiction>
+  <copyright value="Used by permission of HL7 International, all rights reserved Creative Commons License"/>
+  <compose>
+    <include>
+      <system value="http://hl7.org/fhir/us/core/CodeSystem/us-core-category"/>
+    </include>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/observation-category"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:abc6652f-8d13-4f35-b979-cf0e2d276aaa"/>
+    <timestamp value="2025-01-17T09:53:42-07:00"/>
+    <total value="13"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://hl7.org/fhir/us/core/CodeSystem/us-core-category|6.1.0"/>
+    </parameter>
+    <parameter>
+      <name value="warning-draft"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/observation-category|1.0.0"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/observation-category|1.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://hl7.org/fhir/us/core/CodeSystem/us-core-category"/>
+      <code value="sdoh"/>
+      <display value="SDOH"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/us/core/CodeSystem/us-core-category"/>
+      <code value="functional-status"/>
+      <display value="Functional Status"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/us/core/CodeSystem/us-core-category"/>
+      <code value="disability-status"/>
+      <display value="Disability Status"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/us/core/CodeSystem/us-core-category"/>
+      <code value="cognitive-status"/>
+      <display value="Cognitive Status"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/observation-category"/>
+      <code value="social-history"/>
+      <display value="Social History"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/observation-category"/>
+      <code value="vital-signs"/>
+      <display value="Vital Signs"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/observation-category"/>
+      <code value="imaging"/>
+      <display value="Imaging"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/observation-category"/>
+      <code value="laboratory"/>
+      <display value="Laboratory"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/observation-category"/>
+      <code value="procedure"/>
+      <display value="Procedure"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/observation-category"/>
+      <code value="survey"/>
+      <display value="Survey"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/observation-category"/>
+      <code value="exam"/>
+      <display value="Exam"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/observation-category"/>
+      <code value="therapy"/>
+      <display value="Therapy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/observation-category"/>
+      <code value="activity"/>
+      <display value="Activity"/>
+    </contains>
+  </expansion>
+</ValueSet>

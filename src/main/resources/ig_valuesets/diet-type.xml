@@ -1,0 +1,1520 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="diet-type"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="oo"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/diet-type"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.385"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="DietCodes"/>
+  <title value="Diet Codes"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="FHIR NutritionOrder team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="Codes that can be used to indicate the type of food being ordered for a patient. This value set is provided as a suggestive example. It includes codes from [SNOMED CT](http://snomed.info/sct) where concept is-a 182922004 (Dietary regime (regime/therapy)) "/>
+  <copyright value="This resource includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyright of the International Health Terminology Standards Development Organisation (IHTSDO). Implementers of these specifications must have the appropriate SNOMED CT Affiliate license - for more information contact http://www.snomed.org/snomed-ct/get-snomed-ct or info@snomed.org"/>
+  <compose>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="182922004"/>
+      </filter>
+    </include>
+  </compose>
+  <expansion>
+    <extension url="http://hl7.org/fhir/StructureDefinition/valueset-unclosed">
+      <valueBoolean value="true"/>
+    </extension>
+    <identifier value="urn:uuid:bef3c7f4-a6ba-4a26-8608-f1f7dcca40e5"/>
+    <timestamp value="2025-01-17T09:53:37-07:00"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-valueset"/>
+      <valueUri value="null"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801"/>
+    </parameter>
+    <parameter>
+      <name value="version"/>
+      <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801"/>
+    </parameter>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182922004"/>
+      <display value="Dietary regime"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38903004"/>
+      <display value="Tube feeding by syringe method"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="50712000"/>
+      <display value="Tube feeding by Barron pump"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="56948003"/>
+      <display value="Tube feeding by drip method"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="61420007"/>
+      <display value="Tube feeding of patient"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="183028005"/>
+      <display value="Nasal tube feeding"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="223456000"/>
+      <display value="Provision of a special diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="225373002"/>
+      <display value="PEG - Percutaneous endoscopic gastrostomy feeding"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="225374008"/>
+      <display value="Jejunostomy feeding"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="229912004"/>
+      <display value="Enteral feeding"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="229913009"/>
+      <display value="Oral tube feeding"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="229914003"/>
+      <display value="Nasogastric feeding"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="229915002"/>
+      <display value="Nasoduodenal feeding"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="229916001"/>
+      <display value="Oesophagostomy feeding"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="229917005"/>
+      <display value="Gastrostomy feeding"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="284071006"/>
+      <display value="Dietary treatment for disorder"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="289133003"/>
+      <display value="Button gastrostomy feeding"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="310244003"/>
+      <display value="Nasojejunal feeding"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="386261001"/>
+      <display value="Diet staging (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="404919001"/>
+      <display value="Wheat-free diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="422972009"/>
+      <display value="Advance diet as tolerated (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="425458000"/>
+      <display value="Lactose-free diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="762104002"/>
+      <display value="Modified fluid diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="765021002"/>
+      <display value="Vegetarian diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="765022009"/>
+      <display value="Lacto-vegetarian diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="765023004"/>
+      <display value="Lacto-ovo-vegetarian diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="765024005"/>
+      <display value="Atkins diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="765025006"/>
+      <display value="Kosher diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="765052001"/>
+      <display value="Hindu diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="765053006"/>
+      <display value="Low fructose diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="765060000"/>
+      <display value="Ketogenic diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="765063003"/>
+      <display value="Cantonese diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="792805006"/>
+      <display value="Fasting"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1052337007"/>
+      <display value="Protein modified diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1055200005"/>
+      <display value="Increased protein diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1055201009"/>
+      <display value="Decreased protein diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1055202002"/>
+      <display value="Consistent protein diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1055203007"/>
+      <display value="Increased fat and oil diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1055204001"/>
+      <display value="Fat and oil modified diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1055207008"/>
+      <display value="Decreased fat diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1137465007"/>
+      <display value="Increased galactose diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1141680002"/>
+      <display value="Increased lactose diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1141683000"/>
+      <display value="Fructose modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1141684006"/>
+      <display value="Increased fructose diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1141931005"/>
+      <display value="Vitamin A and/or vitamin A derivative modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1141932003"/>
+      <display value="Increased vitamin A and/or vitamin A derivative diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1141933008"/>
+      <display value="Decreased vitamin A and/or vitamin A derivative diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1141934002"/>
+      <display value="Decreased vitamin D and/or vitamin D derivative diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1141935001"/>
+      <display value="Increased vitamin D and/or vitamin D derivative diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1141936000"/>
+      <display value="Vitamin D and/or vitamin D derivative modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1142125005"/>
+      <display value="Decreased linoleic acid diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1142126006"/>
+      <display value="Increased linoleic acid diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1142127002"/>
+      <display value="Omega 3 fatty acid modified diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1142128007"/>
+      <display value="Medium chain triglyceride modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1142129004"/>
+      <display value="Decreased N-3 fatty acid diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1142131008"/>
+      <display value="Increased omega 3 fatty acid diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1142132001"/>
+      <display value="Decreased medium chain triglyceride diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1142133006"/>
+      <display value="Increased medium chain triglyceride diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1142162007"/>
+      <display value="Decreased linolenic acid diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1142163002"/>
+      <display value="Decreased eicosapentaenoic acid diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1142164008"/>
+      <display value="Decreased docosahexaenoic acid diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1142165009"/>
+      <display value="Increased linolenic acid diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1142166005"/>
+      <display value="Increased eicosapentaenoic acid diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1142167001"/>
+      <display value="Increased docosahexaenoic acid diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1144595005"/>
+      <display value="Vitamin E and/or vitamin E derivative modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1144596006"/>
+      <display value="Increased vitamin E and/or vitamin E derivative diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1144598007"/>
+      <display value="Decreased vitamin E and/or vitamin E derivative diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1144599004"/>
+      <display value="Increased vitamin K and/or vitamin K derivative diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1144600001"/>
+      <display value="Decreased vitamin K and/or vitamin K derivative diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1144601002"/>
+      <display value="Vitamin K and/or vitamin K derivative modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1144800003"/>
+      <display value="Folate and/or folate derivative modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1144801004"/>
+      <display value="Increased folate and/or folate derivative diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1144802006"/>
+      <display value="Decreased folate and/or folate derivative diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1144804007"/>
+      <display value="Vitamin B6 and/or vitamin B6 derivative modified diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1144806009"/>
+      <display value="Increased vitamin B6 and/or vitamin B6 derivative diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1144808005"/>
+      <display value="Decreased vitamin B6 and/or vitamin B6 derivative diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1144996003"/>
+      <display value="Vitamin B12 and/or vitamin B12 derivative modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1144999005"/>
+      <display value="Decreased vitamin B12 and/or vitamin B12 derivative diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1145000005"/>
+      <display value="Increased vitamin B12 and/or vitamin B12 derivative diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1148495004"/>
+      <display value="Increased complex carbohydrate diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1148496003"/>
+      <display value="Decreased complex carbohydrate diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1148497007"/>
+      <display value="Increased simple carbohydrate diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1148499005"/>
+      <display value="Decreased simple carbohydrate diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1148501002"/>
+      <display value="Increased phenylalanine diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1148502009"/>
+      <display value="Phenylalanine modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1155728004"/>
+      <display value="Decreased chromium diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1155729007"/>
+      <display value="Sulfate salt modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1156314000"/>
+      <display value="Chloride salt modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1156315004"/>
+      <display value="Plant fiber modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1156443007"/>
+      <display value="Increased plant fiber diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1156444001"/>
+      <display value="Decreased plant fiber diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1156717005"/>
+      <display value="CHILD-1 - Cardiovascular Health Integrated Lifestyle Diet 1"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1156718000"/>
+      <display value="Cardiovascular Health Integrated Lifestyle Diet 2 Triglyceride"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1156719008"/>
+      <display value="Cardiovascular Health Integrated Lifestyle Diet 2 Low Density Lipoprotein"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1162720001"/>
+      <display value="Grain modified diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1162721002"/>
+      <display value="Vegetable modified diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1162722009"/>
+      <display value="Protein food modified diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1162724005"/>
+      <display value="Egg modified diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1162725006"/>
+      <display value="Raw egg free diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1162726007"/>
+      <display value="Fruit modified diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1162729000"/>
+      <display value="Modification of nutrition intake schedule to limit fasting"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1230134005"/>
+      <display value="Diet modified for uncooked food starch (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1230138008"/>
+      <display value="Diet modified for low protein medical food"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1254992009"/>
+      <display value="Caffeine free diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1254993004"/>
+      <display value="Lupin free diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1254994005"/>
+      <display value="Mammalian meat free diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1254995006"/>
+      <display value="Egg free diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1254996007"/>
+      <display value="Tree nut free diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1254998008"/>
+      <display value="Sesame free diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1254999000"/>
+      <display value="Fish free diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1255001001"/>
+      <display value="Soy free diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1255002008"/>
+      <display value="Shellfish free diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1255003003"/>
+      <display value="Peanut free diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1255142001"/>
+      <display value="Fermentable oligosaccharide, disaccharide, monosaccharide and polyol modified diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1255144000"/>
+      <display value="Low fermentable oligosaccharide, disaccharide, monosaccharide and polyol diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1255145004"/>
+      <display value="FODMAP (fermentable oligosaccharide, disaccharide, monosaccharide and polyol) reintroduction diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1255146003"/>
+      <display value="Customized fermentable oligosaccharide, disaccharide, monosaccharide and polyol diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1255162009"/>
+      <display value="Carbohydrate counting diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1255163004"/>
+      <display value="Mediterranean diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1255164005"/>
+      <display value="Halal diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1255165006"/>
+      <display value="Vegan diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1255166007"/>
+      <display value="Pescovegetarian diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1255167003"/>
+      <display value="Ovo vegetarian diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1255223005"/>
+      <display value="Cow milk free diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1255224004"/>
+      <display value="Beef free diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1255225003"/>
+      <display value="Sheep milk free diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1255226002"/>
+      <display value="Pork free diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1255227006"/>
+      <display value="Mammalian milk free diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1255228001"/>
+      <display value="Goat milk free diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1255386001"/>
+      <display value="Decreased oxalate diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1255387005"/>
+      <display value="Low microbial diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1255388000"/>
+      <display value="Bean and pea modified diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1255389008"/>
+      <display value="Starchy vegetable modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1255818003"/>
+      <display value="International Dysphagia Diet Standardisation Initiative Framework - Easy to Chew Level 7 food (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1255820000"/>
+      <display value="International Dysphagia Diet Standardisation Initiative Framework - Extremely Thick Level 4 drinks (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1255821001"/>
+      <display value="International Dysphagia Diet Standardisation Initiative Framework - Liquidized Level 3 food (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1255822008"/>
+      <display value="International Dysphagia Diet Standardisation Initiative Framework - Mildly Thick Level 2 drinks (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1255823003"/>
+      <display value="International Dysphagia Diet Standardisation Initiative Framework - Minced and Moist Level 5 food (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1255824009"/>
+      <display value="International Dysphagia Diet Standardisation Initiative Framework - Moderately Thick Level 3 drinks (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1255825005"/>
+      <display value="International Dysphagia Diet Standardisation Initiative Framework - Pureed Level 4 food (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1255826006"/>
+      <display value="International Dysphagia Diet Standardisation Initiative Framework - Regular Level 7 food (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1255828007"/>
+      <display value="International Dysphagia Diet Standardisation Initiative Framework - Slightly Thick Level 1 drinks (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1255829004"/>
+      <display value="International Dysphagia Diet Standardisation Initiative Framework - Soft and Bite Sized Level 6 food (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1259967009"/>
+      <display value="International Dysphagia Diet Standardisation Initiative Framework - Thin Level 0 drinks (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1151000175103"/>
+      <display value="Dietary Approaches to Stop Hypertension diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="47441000087101"/>
+      <display value="Gastrojejunostomy tube feeding"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="435581000124102"/>
+      <display value="Carbohydrate modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="435651000124106"/>
+      <display value="Consistent carbohydrate diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="435661000124108"/>
+      <display value="Galactose modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="435671000124101"/>
+      <display value="Cholesterol modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="435681000124103"/>
+      <display value="Dietary liquid consistency diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="435691000124100"/>
+      <display value="Diet modified for specific foods or ingredients (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="435701000124100"/>
+      <display value="Energy modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="435731000124108"/>
+      <display value="Liquid diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="435741000124103"/>
+      <display value="Clear liquid diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="435751000124101"/>
+      <display value="Full liquid diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="435771000124106"/>
+      <display value="General healthful diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="435781000124109"/>
+      <display value="Mineral modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="435801000124108"/>
+      <display value="Texture modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="435811000124106"/>
+      <display value="Vitamin modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="436661000124100"/>
+      <display value="Lactose modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="436671000124107"/>
+      <display value="Decreased lactose diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="436681000124105"/>
+      <display value="Increased carbohydrate diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="436691000124108"/>
+      <display value="Decreased carbohydrate diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="436701000124108"/>
+      <display value="Decreased galactose diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="436711000124106"/>
+      <display value="Decreased cholesterol diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="436721000124103"/>
+      <display value="Increased energy diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="436731000124100"/>
+      <display value="Decreased energy diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="436871000124106"/>
+      <display value="Monounsaturated fat modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="436881000124109"/>
+      <display value="Polyunsaturated fat modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="436891000124107"/>
+      <display value="Saturated fat modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="436901000124106"/>
+      <display value="Trans fat modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="436911000124109"/>
+      <display value="Increased monounsaturated fat diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="436921000124101"/>
+      <display value="Decreased monounsaturated fat diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="436931000124103"/>
+      <display value="Increased polyunsaturated fat diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="436941000124108"/>
+      <display value="Decreased polyunsaturated fat diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="436951000124105"/>
+      <display value="Decreased saturated fat diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="436961000124107"/>
+      <display value="Decreased trans fat diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437011000124105"/>
+      <display value="Soluble fibre modified diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437021000124102"/>
+      <display value="Insoluble fibre modified diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437031000124104"/>
+      <display value="Increased soluble fibre diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437041000124109"/>
+      <display value="Decreased soluble fibre diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437051000124106"/>
+      <display value="Increased insoluble fibre diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437061000124108"/>
+      <display value="Decreased insoluble fibre diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437081000124103"/>
+      <display value="Boron modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437091000124100"/>
+      <display value="Calcium modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437111000124109"/>
+      <display value="Chromium modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437121000124101"/>
+      <display value="Cobalt modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437131000124103"/>
+      <display value="Copper modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437141000124108"/>
+      <display value="Fluoride modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437151000124105"/>
+      <display value="Iodine modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437161000124107"/>
+      <display value="Iron modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437171000124100"/>
+      <display value="Magnesium modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437181000124102"/>
+      <display value="Manganese modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437191000124104"/>
+      <display value="Molybdenum modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437201000124101"/>
+      <display value="Phosphorus modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437211000124103"/>
+      <display value="Potassium modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437221000124106"/>
+      <display value="Selenium modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437231000124109"/>
+      <display value="Sodium modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437251000124102"/>
+      <display value="Zinc modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437261000124100"/>
+      <display value="Increased calcium diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437271000124107"/>
+      <display value="Decreased calcium diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437281000124105"/>
+      <display value="Increased chromium diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437291000124108"/>
+      <display value="Increased copper diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437301000124109"/>
+      <display value="Decreased copper diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437311000124107"/>
+      <display value="Increased iodine diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437321000124104"/>
+      <display value="Decreased iodine diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437331000124101"/>
+      <display value="Increased iron diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437341000124106"/>
+      <display value="Decreased iron diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437351000124108"/>
+      <display value="Increased magnesium diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437361000124105"/>
+      <display value="Decreased magnesium diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437371000124103"/>
+      <display value="Increased phosphorus diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437381000124100"/>
+      <display value="Decreased phosphorus diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437391000124102"/>
+      <display value="High potassium diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437401000124100"/>
+      <display value="Decreased potassium diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437411000124102"/>
+      <display value="Increased sodium diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437421000124105"/>
+      <display value="Decreased sodium diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437431000124108"/>
+      <display value="Increased zinc diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437441000124103"/>
+      <display value="Decreased zinc diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437481000124109"/>
+      <display value="Amino acid modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437491000124107"/>
+      <display value="Arginine modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437501000124104"/>
+      <display value="Glutamine modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437511000124101"/>
+      <display value="Histidine modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437521000124109"/>
+      <display value="Increased homocysteine diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437531000124107"/>
+      <display value="Isoleucine modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437541000124102"/>
+      <display value="Leucine modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437551000124100"/>
+      <display value="Lysine modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437561000124103"/>
+      <display value="Methionine modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437571000124105"/>
+      <display value="Decreased phenylalanine diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437581000124108"/>
+      <display value="Threonine modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437591000124106"/>
+      <display value="Tryptophan modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437601000124103"/>
+      <display value="Decreased tyramine diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437611000124100"/>
+      <display value="Tyrosine modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437621000124108"/>
+      <display value="Valine modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437631000124106"/>
+      <display value="Decreased casein diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437641000124101"/>
+      <display value="Decreased gluten diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437651000124104"/>
+      <display value="Gluten free diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437661000124102"/>
+      <display value="Increased arginine diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437671000124109"/>
+      <display value="Decreased arginine diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437681000124107"/>
+      <display value="Increased glutamine diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437691000124105"/>
+      <display value="Decreased glutamine diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437701000124105"/>
+      <display value="Increased histidine diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437711000124108"/>
+      <display value="Decreased histidine diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437721000124100"/>
+      <display value="Increased isoleucine diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437731000124102"/>
+      <display value="Decreased isoleucine diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437741000124107"/>
+      <display value="Increased leucine diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437751000124109"/>
+      <display value="Decreased leucine diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437761000124106"/>
+      <display value="Increased lysine diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437771000124104"/>
+      <display value="Decreased lysine diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437781000124101"/>
+      <display value="Increased methionine diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437791000124103"/>
+      <display value="Decreased methionine diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437801000124102"/>
+      <display value="Increased threonine diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437811000124104"/>
+      <display value="Decreased threonine diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437821000124107"/>
+      <display value="Increased tryptophan diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437831000124105"/>
+      <display value="Decreased tryptophan diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437841000124100"/>
+      <display value="Increased tyrosine diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437851000124103"/>
+      <display value="Decreased tyrosine diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437861000124101"/>
+      <display value="Increased valine diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="437871000124108"/>
+      <display value="Decreased valine diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="438001000124106"/>
+      <display value="Biotin modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="438021000124101"/>
+      <display value="Niacin modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="438031000124103"/>
+      <display value="Pantothenic acid modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="438041000124108"/>
+      <display value="Riboflavin modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="438051000124105"/>
+      <display value="Thiamine modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="438091000124104"/>
+      <display value="Ascorbic acid modified diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="438131000124102"/>
+      <display value="Increased biotin diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="438141000124107"/>
+      <display value="Decreased biotin diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="438171000124104"/>
+      <display value="Increased niacin diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="438181000124101"/>
+      <display value="Decreased niacin diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="438191000124103"/>
+      <display value="Increased pantothenic acid diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="438201000124100"/>
+      <display value="Decreased pantothenic acid diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="438211000124102"/>
+      <display value="Increased riboflavin diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="438221000124105"/>
+      <display value="Decreased riboflavin diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="438231000124108"/>
+      <display value="Increased thiamine diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="438241000124103"/>
+      <display value="Decreased thiamine diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="438311000124106"/>
+      <display value="Increased ascorbic acid diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="438321000124103"/>
+      <display value="Decreased ascorbic acid diet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="439021000124105"/>
+      <display value="Dietary liquid consistency - nectar thick liquid (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="439031000124108"/>
+      <display value="Dietary liquid consistency - honey thick liquid (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="439041000124103"/>
+      <display value="Dietary liquid consistency - spoon thick liquid (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="439061000124104"/>
+      <display value="Fluid restricted diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="439071000124106"/>
+      <display value="Increased fluid diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="439081000124109"/>
+      <display value="Dietary liquid consistency - thin liquid (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="439101000124101"/>
+      <display value="Easy to chew diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="439111000124103"/>
+      <display value="Mechanically altered diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="439121000124106"/>
+      <display value="Pureed diet (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="445341000124100"/>
+      <display value="Modification of nutritional regime (regime/therapy)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="445351000124103"/>
+      <display value="Modification of schedule of oral intake (regime/therapy)"/>
+    </contains>
+  </expansion>
+</ValueSet>

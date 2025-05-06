@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="patient-contactrelationship"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="pa"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="normative"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+    <valueCode value="4.0.0"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="5"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/patient-contactrelationship"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.1130"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="PatientContactRelationship"/>
+  <title value="Patient Contact Relationship "/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="The nature of the relationship between the patient and the contact person."/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0131"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-not-a"/>
+        <value value="O"/>
+      </filter>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:649477bb-e54b-4e06-ba87-6ed4b7c0d2ea"/>
+    <timestamp value="2025-01-17T09:53:38-07:00"/>
+    <total value="11"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/v2-0131|2.1.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0131"/>
+      <code value="BP"/>
+      <display value="Billing contact person"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0131"/>
+      <code value="CP"/>
+      <display value="Contact person"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0131"/>
+      <code value="EP"/>
+      <display value="Emergency contact person"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0131"/>
+      <code value="PR"/>
+      <display value="Person preparing referral"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0131"/>
+      <code value="E"/>
+      <display value="Employer"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0131"/>
+      <code value="C"/>
+      <display value="Emergency Contact"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0131"/>
+      <code value="F"/>
+      <display value="Federal Agency"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0131"/>
+      <code value="I"/>
+      <display value="Insurance Company"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0131"/>
+      <code value="N"/>
+      <display value="Next-of-Kin"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0131"/>
+      <code value="S"/>
+      <display value="State Agency"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0131"/>
+      <code value="U"/>
+      <display value="Unknown"/>
+    </contains>
+  </expansion>
+</ValueSet>

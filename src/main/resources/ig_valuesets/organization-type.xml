@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="organization-type"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="pa"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/organization-type"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.414"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="OrganizationType"/>
+  <title value="Organization type"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="This example value set defines a set of codes that can be used to indicate a type of organization."/>
+  <immutable value="true"/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/organization-type"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:54e8284a-3db3-498a-8020-77fc788d0ff3"/>
+    <timestamp value="2025-01-17T09:53:38-07:00"/>
+    <total value="12"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/organization-type|2.0.1"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/organization-type"/>
+      <code value="prov"/>
+      <display value="Healthcare Provider"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/organization-type"/>
+      <code value="dept"/>
+      <display value="Hospital Department"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/organization-type"/>
+      <code value="team"/>
+      <display value="Organizational team"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/organization-type"/>
+      <code value="govt"/>
+      <display value="Government"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/organization-type"/>
+      <code value="ins"/>
+      <display value="Insurance Company"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/organization-type"/>
+      <code value="pay"/>
+      <display value="Payer"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/organization-type"/>
+      <code value="edu"/>
+      <display value="Educational Institute"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/organization-type"/>
+      <code value="reli"/>
+      <display value="Religious Institution"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/organization-type"/>
+      <code value="crs"/>
+      <display value="Clinical Research Sponsor"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/organization-type"/>
+      <code value="cg"/>
+      <display value="Community Group"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/organization-type"/>
+      <code value="bus"/>
+      <display value="Non-Healthcare Business or Corporation"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/organization-type"/>
+      <code value="other"/>
+      <display value="Other"/>
+    </contains>
+  </expansion>
+</ValueSet>

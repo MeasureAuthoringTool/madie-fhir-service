@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="encounter-special-courtesy"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="pa"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/encounter-special-courtesy"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.252"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="SpecialCourtesy"/>
+  <title value="Special courtesy"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="This value set defines a set of codes that can be used to indicate special courtesies provided to the patient."/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-EncounterSpecialCourtesy"/>
+      <concept>
+        <code value="EXT"/>
+      </concept>
+      <concept>
+        <code value="NRM"/>
+      </concept>
+      <concept>
+        <code value="PRF"/>
+      </concept>
+      <concept>
+        <code value="STF"/>
+      </concept>
+      <concept>
+        <code value="VIP"/>
+      </concept>
+    </include>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-NullFlavor"/>
+      <concept>
+        <code value="UNK"/>
+      </concept>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:fab3cf3a-c412-4ec5-a94e-794e6f5716ce"/>
+    <timestamp value="2025-01-17T09:53:37-07:00"/>
+    <total value="6"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/v3-EncounterSpecialCourtesy|3.0.0"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-EncounterSpecialCourtesy"/>
+      <code value="EXT"/>
+      <display value="extended courtesy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-EncounterSpecialCourtesy"/>
+      <code value="NRM"/>
+      <display value="normal courtesy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-EncounterSpecialCourtesy"/>
+      <code value="PRF"/>
+      <display value="professional courtesy"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-EncounterSpecialCourtesy"/>
+      <code value="STF"/>
+      <display value="staff"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-EncounterSpecialCourtesy"/>
+      <code value="VIP"/>
+      <display value="very important person"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-NullFlavor"/>
+      <code value="UNK"/>
+      <display value="unknown"/>
+    </contains>
+  </expansion>
+</ValueSet>

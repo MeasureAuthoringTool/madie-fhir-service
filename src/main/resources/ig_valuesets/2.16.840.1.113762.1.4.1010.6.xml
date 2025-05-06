@@ -1,0 +1,2081 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="2.16.840.1.113762.1.4.1010.6"/>
+  <meta>
+    <versionId value="21"/>
+    <lastUpdated value="2023-06-14T11:14:45.000-04:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+    <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/publishable-valueset-cqfm"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/valueset-author">
+    <valueString value="HL7 Structured Documents WG"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate">
+    <valueDate value="2022-12-15"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/valueset-effectiveDate">
+    <valueDate value="2022-07-01"/>
+  </extension>
+  <url value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1010.6"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113762.1.4.1010.6"/>
+  </identifier>
+  <version value="20220701"/>
+  <name value="CVXVaccinesAdministeredVaccineSet"/>
+  <title value="CVX Vaccines Administered Vaccine Set"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2022-07-01T01:02:10-04:00"/>
+  <publisher value="HL7 Terminology"/>
+  <jurisdiction>
+    <extension url="http://hl7.org/fhir/StructureDefinition/data-absent-reason">
+      <valueString value="UNKNOWN"/>
+    </extension>
+  </jurisdiction>
+  <purpose value="(Clinical Focus: CVX vaccine concepts that represent actual vaccines types, including those that are historical record of a vaccine administered where the exact formulation is unknown. This does not include the identifiers for CVX codes that are administrative codes or never active codes. Available at http://www2a.cdc.gov/vaccines/iis/iisstandards/vaccines.asp?rpt=cvx),(Data Element Scope: Vaccine representation),(Inclusion Criteria: Any CVX code with &quot;CVX status&quot; (VSAC Property)  = Active, Inactive, Non-US except those noted in exclusions),(Exclusion Criteria: CVX codes that have a CVX &quot;status&quot; of either &quot;Pending&quot; or &quot;Never Active&quot; AND CVX codes with CVX &quot;Nonvaccine&quot; property = True.)"/>
+  <compose>
+    <include>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <concept>
+        <code value="01"/>
+        <display value="diphtheria, tetanus toxoids and pertussis vaccine"/>
+      </concept>
+      <concept>
+        <code value="02"/>
+        <display value="trivalent poliovirus vaccine, live, oral"/>
+      </concept>
+      <concept>
+        <code value="03"/>
+        <display value="measles, mumps and rubella virus vaccine"/>
+      </concept>
+      <concept>
+        <code value="04"/>
+        <display value="measles and rubella virus vaccine"/>
+      </concept>
+      <concept>
+        <code value="05"/>
+        <display value="measles virus vaccine"/>
+      </concept>
+      <concept>
+        <code value="06"/>
+        <display value="rubella virus vaccine"/>
+      </concept>
+      <concept>
+        <code value="07"/>
+        <display value="mumps virus vaccine"/>
+      </concept>
+      <concept>
+        <code value="08"/>
+        <display value="hepatitis B vaccine, pediatric or pediatric/adolescent dosage"/>
+      </concept>
+      <concept>
+        <code value="09"/>
+        <display value="tetanus and diphtheria toxoids, adsorbed, preservative free, for adult use (2 Lf of tetanus toxoid and 2 Lf of diphtheria toxoid)"/>
+      </concept>
+      <concept>
+        <code value="10"/>
+        <display value="poliovirus vaccine, inactivated"/>
+      </concept>
+      <concept>
+        <code value="100"/>
+        <display value="pneumococcal conjugate vaccine, 7 valent"/>
+      </concept>
+      <concept>
+        <code value="101"/>
+        <display value="typhoid Vi capsular polysaccharide vaccine"/>
+      </concept>
+      <concept>
+        <code value="102"/>
+        <display value="DTP- Haemophilus influenzae type b conjugate and hepatitis b vaccine"/>
+      </concept>
+      <concept>
+        <code value="103"/>
+        <display value="meningococcal C conjugate vaccine"/>
+      </concept>
+      <concept>
+        <code value="104"/>
+        <display value="hepatitis A and hepatitis B vaccine"/>
+      </concept>
+      <concept>
+        <code value="105"/>
+        <display value="vaccinia (smallpox) vaccine, diluted"/>
+      </concept>
+      <concept>
+        <code value="106"/>
+        <display value="diphtheria, tetanus toxoids and acellular pertussis vaccine, 5 pertussis antigens"/>
+      </concept>
+      <concept>
+        <code value="107"/>
+        <display value="diphtheria, tetanus toxoids and acellular pertussis vaccine, unspecified formulation"/>
+      </concept>
+      <concept>
+        <code value="108"/>
+        <display value="meningococcal ACWY vaccine, unspecified formulation"/>
+      </concept>
+      <concept>
+        <code value="109"/>
+        <display value="pneumococcal vaccine, unspecified formulation"/>
+      </concept>
+      <concept>
+        <code value="11"/>
+        <display value="pertussis vaccine"/>
+      </concept>
+      <concept>
+        <code value="110"/>
+        <display value="DTaP-hepatitis B and poliovirus vaccine"/>
+      </concept>
+      <concept>
+        <code value="111"/>
+        <display value="influenza virus vaccine, live, attenuated, for intranasal use"/>
+      </concept>
+      <concept>
+        <code value="112"/>
+        <display value="tetanus toxoid, unspecified formulation"/>
+      </concept>
+      <concept>
+        <code value="113"/>
+        <display value="tetanus and diphtheria toxoids, adsorbed, preservative free, for adult use (5 Lf of tetanus toxoid and 2 Lf of diphtheria toxoid)"/>
+      </concept>
+      <concept>
+        <code value="114"/>
+        <display value="meningococcal polysaccharide (groups A, C, Y and W-135) diphtheria toxoid conjugate vaccine (MCV4P)"/>
+      </concept>
+      <concept>
+        <code value="115"/>
+        <display value="tetanus toxoid, reduced diphtheria toxoid, and acellular pertussis vaccine, adsorbed"/>
+      </concept>
+      <concept>
+        <code value="116"/>
+        <display value="rotavirus, live, pentavalent vaccine"/>
+      </concept>
+      <concept>
+        <code value="118"/>
+        <display value="human papilloma virus vaccine, bivalent"/>
+      </concept>
+      <concept>
+        <code value="119"/>
+        <display value="rotavirus, live, monovalent vaccine"/>
+      </concept>
+      <concept>
+        <code value="120"/>
+        <display value="diphtheria, tetanus toxoids and acellular pertussis vaccine, Haemophilus influenzae type b conjugate, and poliovirus vaccine, inactivated (DTaP-Hib-IPV)"/>
+      </concept>
+      <concept>
+        <code value="121"/>
+        <display value="zoster vaccine, live"/>
+      </concept>
+      <concept>
+        <code value="122"/>
+        <display value="rotavirus vaccine, unspecified formulation"/>
+      </concept>
+      <concept>
+        <code value="123"/>
+        <display value="influenza virus vaccine, H5N1, A/Vietnam/1203/2004 (national stockpile)"/>
+      </concept>
+      <concept>
+        <code value="125"/>
+        <display value="Novel Influenza-H1N1-09, live virus for nasal administration"/>
+      </concept>
+      <concept>
+        <code value="126"/>
+        <display value="Novel influenza-H1N1-09, preservative-free, injectable"/>
+      </concept>
+      <concept>
+        <code value="127"/>
+        <display value="Novel influenza-H1N1-09, injectable"/>
+      </concept>
+      <concept>
+        <code value="128"/>
+        <display value="Novel influenza-H1N1-09, all formulations"/>
+      </concept>
+      <concept>
+        <code value="129"/>
+        <display value="Japanese Encephalitis vaccine, unspecified formulation"/>
+      </concept>
+      <concept>
+        <code value="130"/>
+        <display value="Diphtheria, tetanus toxoids and acellular pertussis vaccine, and poliovirus vaccine, inactivated"/>
+      </concept>
+      <concept>
+        <code value="131"/>
+        <display value="Historical record of a typhus vaccination"/>
+      </concept>
+      <concept>
+        <code value="132"/>
+        <display value="Historical diphtheria and tetanus toxoids and acellular pertussis, poliovirus, Haemophilus b conjugate and hepatitis B (recombinant) vaccine."/>
+      </concept>
+      <concept>
+        <code value="133"/>
+        <display value="pneumococcal conjugate vaccine, 13 valent"/>
+      </concept>
+      <concept>
+        <code value="134"/>
+        <display value="Japanese Encephalitis vaccine for intramuscular administration"/>
+      </concept>
+      <concept>
+        <code value="135"/>
+        <display value="influenza, high dose seasonal, preservative-free"/>
+      </concept>
+      <concept>
+        <code value="136"/>
+        <display value="meningococcal oligosaccharide (groups A, C, Y and W-135) diphtheria toxoid conjugate vaccine (MCV4O)"/>
+      </concept>
+      <concept>
+        <code value="137"/>
+        <display value="HPV, unspecified formulation"/>
+      </concept>
+      <concept>
+        <code value="138"/>
+        <display value="tetanus and diphtheria toxoids, not adsorbed, for adult use"/>
+      </concept>
+      <concept>
+        <code value="139"/>
+        <display value="Td(adult) unspecified formulation"/>
+      </concept>
+      <concept>
+        <code value="140"/>
+        <display value="Influenza, seasonal, injectable, preservative free"/>
+      </concept>
+      <concept>
+        <code value="141"/>
+        <display value="Influenza, seasonal, injectable"/>
+      </concept>
+      <concept>
+        <code value="142"/>
+        <display value="tetanus toxoid, not adsorbed"/>
+      </concept>
+      <concept>
+        <code value="143"/>
+        <display value="Adenovirus, type 4 and type 7, live, oral"/>
+      </concept>
+      <concept>
+        <code value="144"/>
+        <display value="seasonal influenza, intradermal, preservative free"/>
+      </concept>
+      <concept>
+        <code value="146"/>
+        <display value="Diphtheria and Tetanus Toxoids and Acellular Pertussis Adsorbed, Inactivated Poliovirus, Haemophilus b Conjugate (Meningococcal Protein Conjugate), and Hepatitis B (Recombinant) Vaccine."/>
+      </concept>
+      <concept>
+        <code value="147"/>
+        <display value="Meningococcal, MCV4, unspecified conjugate formulation(groups A, C, Y and W-135)"/>
+      </concept>
+      <concept>
+        <code value="148"/>
+        <display value="Meningococcal Groups C and Y and Haemophilus b Tetanus Toxoid Conjugate Vaccine"/>
+      </concept>
+      <concept>
+        <code value="149"/>
+        <display value="influenza, live, intranasal, quadrivalent"/>
+      </concept>
+      <concept>
+        <code value="15"/>
+        <display value="influenza virus vaccine, split virus (incl. purified surface antigen)-retired CODE"/>
+      </concept>
+      <concept>
+        <code value="150"/>
+        <display value="Influenza, injectable, quadrivalent, preservative free"/>
+      </concept>
+      <concept>
+        <code value="151"/>
+        <display value="influenza nasal, unspecified formulation"/>
+      </concept>
+      <concept>
+        <code value="152"/>
+        <display value="Pneumococcal Conjugate, unspecified formulation"/>
+      </concept>
+      <concept>
+        <code value="153"/>
+        <display value="Influenza, injectable, Madin Darby Canine Kidney, preservative free"/>
+      </concept>
+      <concept>
+        <code value="155"/>
+        <display value="Seasonal, trivalent, recombinant, injectable influenza vaccine, preservative free"/>
+      </concept>
+      <concept>
+        <code value="158"/>
+        <display value="influenza, injectable, quadrivalent, contains preservative"/>
+      </concept>
+      <concept>
+        <code value="16"/>
+        <display value="influenza virus vaccine, whole virus"/>
+      </concept>
+      <concept>
+        <code value="160"/>
+        <display value="Influenza A monovalent (H5N1), adjuvanted, National stockpile 2013"/>
+      </concept>
+      <concept>
+        <code value="161"/>
+        <display value="Influenza, injectable,quadrivalent, preservative free, pediatric"/>
+      </concept>
+      <concept>
+        <code value="162"/>
+        <display value="meningococcal B vaccine, fully recombinant"/>
+      </concept>
+      <concept>
+        <code value="163"/>
+        <display value="meningococcal B vaccine, recombinant, OMV, adjuvanted"/>
+      </concept>
+      <concept>
+        <code value="164"/>
+        <display value="meningococcal B, unspecified formulation"/>
+      </concept>
+      <concept>
+        <code value="165"/>
+        <display value="Human Papillomavirus 9-valent vaccine"/>
+      </concept>
+      <concept>
+        <code value="166"/>
+        <display value="influenza, intradermal, quadrivalent, preservative free, injectable"/>
+      </concept>
+      <concept>
+        <code value="167"/>
+        <display value="meningococcal vaccine of unknown formulation and unknown serogroups"/>
+      </concept>
+      <concept>
+        <code value="168"/>
+        <display value="Seasonal trivalent influenza vaccine, adjuvanted, preservative free"/>
+      </concept>
+      <concept>
+        <code value="169"/>
+        <display value="Hep A, live attenuated-IM"/>
+      </concept>
+      <concept>
+        <code value="17"/>
+        <display value="Haemophilus influenzae type b vaccine, conjugate unspecified formulation"/>
+      </concept>
+      <concept>
+        <code value="170"/>
+        <display value="non-US diphtheria, tetanus toxoids and acellular pertussis vaccine, Haemophilus influenzae type b conjugate, and poliovirus vaccine, inactivated (DTaP-Hib-IPV)"/>
+      </concept>
+      <concept>
+        <code value="171"/>
+        <display value="Influenza, injectable, Madin Darby Canine Kidney, preservative free, quadrivalent"/>
+      </concept>
+      <concept>
+        <code value="172"/>
+        <display value="cholera, WC-rBS"/>
+      </concept>
+      <concept>
+        <code value="173"/>
+        <display value="cholera, BivWC"/>
+      </concept>
+      <concept>
+        <code value="174"/>
+        <display value="cholera, live attenuated"/>
+      </concept>
+      <concept>
+        <code value="175"/>
+        <display value="Human Rabies vaccine from human diploid cell culture"/>
+      </concept>
+      <concept>
+        <code value="176"/>
+        <display value="Human rabies vaccine from Chicken fibroblast culture"/>
+      </concept>
+      <concept>
+        <code value="177"/>
+        <display value="pneumococcal conjugate vaccine, 10 valent"/>
+      </concept>
+      <concept>
+        <code value="178"/>
+        <display value="Non-US bivalent oral polio vaccine (types 1 and 3)"/>
+      </concept>
+      <concept>
+        <code value="179"/>
+        <display value="Non-US monovalent oral polio vaccine, unspecified formulation"/>
+      </concept>
+      <concept>
+        <code value="18"/>
+        <display value="rabies vaccine, for intramuscular injection RETIRED CODE"/>
+      </concept>
+      <concept>
+        <code value="182"/>
+        <display value="Oral Polio Vaccine, Unspecified formulation"/>
+      </concept>
+      <concept>
+        <code value="183"/>
+        <display value="Yellow fever vaccine alternative formulation"/>
+      </concept>
+      <concept>
+        <code value="184"/>
+        <display value="Yellow fever vaccine, unspecified formulation"/>
+      </concept>
+      <concept>
+        <code value="185"/>
+        <display value="Seasonal, quadrivalent, recombinant, injectable influenza vaccine, preservative free"/>
+      </concept>
+      <concept>
+        <code value="186"/>
+        <display value="Influenza, injectable, Madin Darby Canine Kidney,  quadrivalent with preservative"/>
+      </concept>
+      <concept>
+        <code value="187"/>
+        <display value="zoster vaccine recombinant"/>
+      </concept>
+      <concept>
+        <code value="188"/>
+        <display value="zoster vaccine, unspecified formulation"/>
+      </concept>
+      <concept>
+        <code value="189"/>
+        <display value="Hepatitis B vaccine (recombinant), CpG adjuvanted"/>
+      </concept>
+      <concept>
+        <code value="19"/>
+        <display value="Bacillus Calmette-Guerin vaccine"/>
+      </concept>
+      <concept>
+        <code value="190"/>
+        <display value="Typhoid conjugate vaccine (non-US)"/>
+      </concept>
+      <concept>
+        <code value="191"/>
+        <display value="meningococcal A polysaccharide vaccine (non-US)"/>
+      </concept>
+      <concept>
+        <code value="192"/>
+        <display value="meningococcal AC polysaccharide vaccine (non-US)"/>
+      </concept>
+      <concept>
+        <code value="193"/>
+        <display value="hepatitis A and hepatitis B vaccine, pediatric/adolescent (non-US)"/>
+      </concept>
+      <concept>
+        <code value="194"/>
+        <display value="influenza, Southern Hemisphere, unspecified formulation"/>
+      </concept>
+      <concept>
+        <code value="195"/>
+        <display value="Diphtheria, Tetanus, Poliomyelitis adsorbed"/>
+      </concept>
+      <concept>
+        <code value="196"/>
+        <display value="tetanus and diphtheria toxoids, adsorbed, preservative free, for adult use, Lf unspecified"/>
+      </concept>
+      <concept>
+        <code value="197"/>
+        <display value="influenza, high-dose seasonal, quadrivalent, .7mL dose, preservative free"/>
+      </concept>
+      <concept>
+        <code value="198"/>
+        <display value="Diphtheria, pertussis, tetanus, hepatitis B, Haemophilus Influenza Type b, (Pentavalent)"/>
+      </concept>
+      <concept>
+        <code value="20"/>
+        <display value="diphtheria, tetanus toxoids and acellular pertussis vaccine"/>
+      </concept>
+      <concept>
+        <code value="200"/>
+        <display value="influenza, seasonal, Southern Hemisphere, quadrivalent, pediatric 0.25mL dose, preservative free"/>
+      </concept>
+      <concept>
+        <code value="201"/>
+        <display value="influenza, seasonal, Southern Hemisphere, quadrivalent, 0.5mL dose, no preservative"/>
+      </concept>
+      <concept>
+        <code value="202"/>
+        <display value="influenza, seasonal, Southern Hemisphere, quadrivalent, 0.5mL dose, with preservative"/>
+      </concept>
+      <concept>
+        <code value="203"/>
+        <display value="meningococcal polysaccharide (groups A, C, Y, W-135) tetanus toxoid conjugate vaccine .5mL dose, preservative free"/>
+      </concept>
+      <concept>
+        <code value="204"/>
+        <display value="Ebola Zaire vaccine, live, recombinant, 1mL dose"/>
+      </concept>
+      <concept>
+        <code value="205"/>
+        <display value="influenza, seasonal vaccine, quadrivalent, adjuvanted, .5mL dose, preservative free"/>
+      </concept>
+      <concept>
+        <code value="206"/>
+        <display value="Vaccinia, smallpox monkeypox vaccine, live attenuated, preservative free"/>
+      </concept>
+      <concept>
+        <code value="207"/>
+        <display value="SARS-COV-2 (COVID-19) vaccine, mRNA, spike protein, LNP, preservative free, 100 mcg/0.5mL dose or 50 mcg/0.25mL dose"/>
+      </concept>
+      <concept>
+        <code value="208"/>
+        <display value="SARS-COV-2 (COVID-19) vaccine, mRNA, spike protein, LNP, preservative free, 30 mcg/0.3mL dose"/>
+      </concept>
+      <concept>
+        <code value="21"/>
+        <display value="varicella virus vaccine"/>
+      </concept>
+      <concept>
+        <code value="210"/>
+        <display value="SARS-COV-2 (COVID-19) vaccine, vector non-replicating, recombinant spike protein-ChAdOx1, preservative free, 0.5 mL"/>
+      </concept>
+      <concept>
+        <code value="211"/>
+        <display value="SARS-COV-2 (COVID-19) vaccine, subunit, recombinant spike protein-nanoparticle+Matrix-M1 Adjuvant, preservative free, 0.5mL dose"/>
+      </concept>
+      <concept>
+        <code value="212"/>
+        <display value="SARS-COV-2 (COVID-19) vaccine, vector non-replicating, recombinant spike protein-Ad26, preservative free, 0.5 mL"/>
+      </concept>
+      <concept>
+        <code value="213"/>
+        <display value="SARS-COV-2 (COVID-19) vaccine, UNSPECIFIED"/>
+      </concept>
+      <concept>
+        <code value="214"/>
+        <display value="Ebola, unspecified"/>
+      </concept>
+      <concept>
+        <code value="215"/>
+        <display value="Pneumococcal conjugate vaccine 15-valent (PCV15), polysaccharide CRM197 conjugate, adjuvant, preservative free"/>
+      </concept>
+      <concept>
+        <code value="216"/>
+        <display value="Pneumococcal conjugate vaccine 20-valent (PCV20), polysaccharide CRM197 conjugate, adjuvant, preservative free"/>
+      </concept>
+      <concept>
+        <code value="217"/>
+        <display value="SARS-COV-2 (COVID-19) vaccine, mRNA, spike protein, LNP, preservative free, 30 mcg/0.3mL dose, tris-sucrose formulation"/>
+      </concept>
+      <concept>
+        <code value="218"/>
+        <display value="SARS-COV-2 (COVID-19) vaccine, mRNA, spike protein, LNP, preservative free, 10 mcg/0.2mL dose, tris-sucrose formulation"/>
+      </concept>
+      <concept>
+        <code value="219"/>
+        <display value="SARS-COV-2 (COVID-19) vaccine, mRNA, spike protein, LNP, preservative free, 3 mcg/0.2mL dose, tris-sucrose formulation"/>
+      </concept>
+      <concept>
+        <code value="22"/>
+        <display value="DTP-Haemophilus influenzae type b conjugate vaccine"/>
+      </concept>
+      <concept>
+        <code value="220"/>
+        <display value="Hepatitis B vaccine (recombinant), 3-antigen, Al(OH)3 adjuvanted"/>
+      </concept>
+      <concept>
+        <code value="221"/>
+        <display value="SARS-COV-2 (COVID-19) vaccine, mRNA, spike protein, LNP, preservative free, 50 mcg/0.5 mL dose"/>
+      </concept>
+      <concept>
+        <code value="222"/>
+        <display value="Tick-borne encephalitis vaccine, unspecified"/>
+      </concept>
+      <concept>
+        <code value="223"/>
+        <display value="Tick-borne encephalitis vaccine, inactivated, preservative free, 0.25mL dose"/>
+      </concept>
+      <concept>
+        <code value="224"/>
+        <display value="Tick-borne encephalitis vaccine, inactivated, preservative free, 0.5mL dose"/>
+      </concept>
+      <concept>
+        <code value="225"/>
+        <display value="SARS-COV-2 (COVID-19) vaccine, D614, prefusion spike recombinant protein subunit (CoV2 preS dTM), AS03 adjuvant added, preservative free, 5mcg/0.5mL dose"/>
+      </concept>
+      <concept>
+        <code value="227"/>
+        <display value="SARS-COV-2 (COVID-19) vaccine, mRNA, spike protein, LNP, preservative free, pediatric 50 mcg/0.5 mL dose"/>
+      </concept>
+      <concept>
+        <code value="228"/>
+        <display value="SARS-COV-2 (COVID-19) vaccine, mRNA, spike protein, LNP, preservative free, pediatric 25 mcg/0.25 mL dose"/>
+      </concept>
+      <concept>
+        <code value="229"/>
+        <display value="SARS-COV-2 (COVID-19) vaccine, mRNA, spike protein, LNP, bivalent, preservative free, 50 mcg/0.5 mL dose"/>
+      </concept>
+      <concept>
+        <code value="23"/>
+        <display value="plague vaccine"/>
+      </concept>
+      <concept>
+        <code value="24"/>
+        <display value="anthrax vaccine"/>
+      </concept>
+      <concept>
+        <code value="25"/>
+        <display value="typhoid vaccine, live, oral"/>
+      </concept>
+      <concept>
+        <code value="26"/>
+        <display value="cholera vaccine, unspecified formulation"/>
+      </concept>
+      <concept>
+        <code value="28"/>
+        <display value="diphtheria and tetanus toxoids, adsorbed for pediatric use"/>
+      </concept>
+      <concept>
+        <code value="31"/>
+        <display value="hepatitis A vaccine, pediatric dosage, unspecified formulation"/>
+      </concept>
+      <concept>
+        <code value="32"/>
+        <display value="meningococcal polysaccharide vaccine (MPSV4)"/>
+      </concept>
+      <concept>
+        <code value="33"/>
+        <display value="pneumococcal polysaccharide vaccine, 23 valent"/>
+      </concept>
+      <concept>
+        <code value="35"/>
+        <display value="tetanus toxoid, adsorbed"/>
+      </concept>
+      <concept>
+        <code value="37"/>
+        <display value="yellow fever vaccine"/>
+      </concept>
+      <concept>
+        <code value="38"/>
+        <display value="rubella and mumps virus vaccine"/>
+      </concept>
+      <concept>
+        <code value="39"/>
+        <display value="Japanese Encephalitis Vaccine SC"/>
+      </concept>
+      <concept>
+        <code value="40"/>
+        <display value="rabies vaccine, for intradermal injection"/>
+      </concept>
+      <concept>
+        <code value="41"/>
+        <display value="typhoid vaccine, parenteral, other than acetone-killed, dried"/>
+      </concept>
+      <concept>
+        <code value="42"/>
+        <display value="hepatitis B vaccine, adolescent/high risk infant dosage"/>
+      </concept>
+      <concept>
+        <code value="43"/>
+        <display value="hepatitis B vaccine, adult dosage"/>
+      </concept>
+      <concept>
+        <code value="44"/>
+        <display value="hepatitis B vaccine, dialysis patient dosage"/>
+      </concept>
+      <concept>
+        <code value="45"/>
+        <display value="hepatitis B vaccine, unspecified formulation"/>
+      </concept>
+      <concept>
+        <code value="46"/>
+        <display value="Haemophilus influenzae type b vaccine, PRP-D conjugate"/>
+      </concept>
+      <concept>
+        <code value="47"/>
+        <display value="Haemophilus influenzae type b vaccine, HbOC conjugate"/>
+      </concept>
+      <concept>
+        <code value="48"/>
+        <display value="Haemophilus influenzae type b vaccine, PRP-T conjugate"/>
+      </concept>
+      <concept>
+        <code value="49"/>
+        <display value="Haemophilus influenzae type b vaccine, PRP-OMP conjugate"/>
+      </concept>
+      <concept>
+        <code value="50"/>
+        <display value="DTaP-Haemophilus influenzae type b conjugate vaccine"/>
+      </concept>
+      <concept>
+        <code value="500"/>
+        <display value="SARS-COV-2 COVID-19 Non-US Vaccine, Specific Product Unknown"/>
+      </concept>
+      <concept>
+        <code value="501"/>
+        <display value="SARS-COV-2 COVID-19 Inactivated Virus Non-US Vaccine Product (QAZCOVID-IN)"/>
+      </concept>
+      <concept>
+        <code value="502"/>
+        <display value="SARS-COV-2 COVID-19 Inactivated Virus Non-US Vaccine Product (COVAXIN)"/>
+      </concept>
+      <concept>
+        <code value="503"/>
+        <display value="SARS-COV-2 COVID-19  Live Attenuated Virus Non-US Vaccine Product (COVIVAC)"/>
+      </concept>
+      <concept>
+        <code value="504"/>
+        <display value="SARS-COV-2 COVID-19 Viral Vector Non-replicating Non-US Vaccine Product (Sputnik Light)"/>
+      </concept>
+      <concept>
+        <code value="505"/>
+        <display value="SARS-COV-2 COVID-19 Viral Vector Non-replicating Non-US Vaccine Product (Sputnik V)"/>
+      </concept>
+      <concept>
+        <code value="506"/>
+        <display value="SARS-COV-2 COVID-19 Viral Vector Non-replicating Non-US Vaccine Product (CanSino Biological Inc./Beijing Institute of Biotechnology)"/>
+      </concept>
+      <concept>
+        <code value="507"/>
+        <display value="SARS-COV-2 COVID-19 Protein Subunit Non-US Vaccine Product (Anhui Zhifei Longcom Biopharmaceutical + Institute of Microbiology, Chinese Academy of Sciences)"/>
+      </concept>
+      <concept>
+        <code value="508"/>
+        <display value="SARS-COV-2 COVID-19 Protein Subunit Non-US Vaccine Product  (Jiangsu Province Centers for Disease Control and Prevention)"/>
+      </concept>
+      <concept>
+        <code value="509"/>
+        <display value="SARS-COV-2 COVID-19 Protein Subunit Non-US Vaccine Product (EpiVacCorona)"/>
+      </concept>
+      <concept>
+        <code value="51"/>
+        <display value="Haemophilus influenzae type b conjugate and Hepatitis B vaccine"/>
+      </concept>
+      <concept>
+        <code value="510"/>
+        <display value="SARS-COV-2 COVID-19 Inactivated Virus Non-US Vaccine Product (BIBP, Sinopharm)"/>
+      </concept>
+      <concept>
+        <code value="511"/>
+        <display value="SARS-COV-2 COVID-19 Inactivated Virus Non-US Vaccine Product (CoronaVac, Sinovac)"/>
+      </concept>
+      <concept>
+        <code value="512"/>
+        <display value="SARS-COV-2 COVID-19 Virus Like Particle (VLP) Non-US Vaccine Product (Medicago, Covifenz)"/>
+      </concept>
+      <concept>
+        <code value="513"/>
+        <display value="SARS-COV-2 COVID-19 Protein Subunit Non-US Vaccine Product (Anhui Zhifei Longcom, Zifivax)"/>
+      </concept>
+      <concept>
+        <code value="514"/>
+        <display value="SARS-COV-2 COVID-19 DNA Non-US Vaccine Product (Zydus Cadila, ZyCoV-D)"/>
+      </concept>
+      <concept>
+        <code value="515"/>
+        <display value="SARS-COV-2 COVID-19 Protein Subunit Non-US Vaccine Product (Medigen, MVC-COV1901)"/>
+      </concept>
+      <concept>
+        <code value="516"/>
+        <display value="SARS-COV-2 COVID-19 Inactivated Non-US Vaccine Product (Minhai Biotechnology Co, KCONVAC)"/>
+      </concept>
+      <concept>
+        <code value="517"/>
+        <display value="SARS-COV-2 COVID-19 Protein Subunit Non-US Vaccine Product (Biological E Limited, Corbevax)"/>
+      </concept>
+      <concept>
+        <code value="52"/>
+        <display value="hepatitis A vaccine, adult dosage"/>
+      </concept>
+      <concept>
+        <code value="53"/>
+        <display value="typhoid vaccine, parenteral, acetone-killed, dried (U.S. military)"/>
+      </concept>
+      <concept>
+        <code value="54"/>
+        <display value="adenovirus vaccine, type 4, live, oral"/>
+      </concept>
+      <concept>
+        <code value="55"/>
+        <display value="adenovirus vaccine, type 7, live, oral"/>
+      </concept>
+      <concept>
+        <code value="56"/>
+        <display value="dengue fever vaccine"/>
+      </concept>
+      <concept>
+        <code value="62"/>
+        <display value="human papilloma virus vaccine, quadrivalent"/>
+      </concept>
+      <concept>
+        <code value="66"/>
+        <display value="Lyme disease vaccine"/>
+      </concept>
+      <concept>
+        <code value="69"/>
+        <display value="parainfluenza-3 virus vaccine"/>
+      </concept>
+      <concept>
+        <code value="74"/>
+        <display value="rotavirus, live, tetravalent vaccine"/>
+      </concept>
+      <concept>
+        <code value="75"/>
+        <display value="vaccinia (smallpox) vaccine"/>
+      </concept>
+      <concept>
+        <code value="77"/>
+        <display value="Tick-borne encephalitis vaccine (non-US)"/>
+      </concept>
+      <concept>
+        <code value="78"/>
+        <display value="tularemia vaccine"/>
+      </concept>
+      <concept>
+        <code value="80"/>
+        <display value="Venezuelan equine encephalitis, live, attenuated"/>
+      </concept>
+      <concept>
+        <code value="81"/>
+        <display value="Venezuelan equine encephalitis, inactivated"/>
+      </concept>
+      <concept>
+        <code value="82"/>
+        <display value="adenovirus vaccine, unspecified formulation"/>
+      </concept>
+      <concept>
+        <code value="83"/>
+        <display value="hepatitis A vaccine, pediatric/adolescent dosage, 2 dose schedule"/>
+      </concept>
+      <concept>
+        <code value="84"/>
+        <display value="hepatitis A vaccine, pediatric/adolescent dosage, 3 dose schedule"/>
+      </concept>
+      <concept>
+        <code value="85"/>
+        <display value="hepatitis A vaccine, unspecified formulation"/>
+      </concept>
+      <concept>
+        <code value="88"/>
+        <display value="influenza virus vaccine, unspecified formulation"/>
+      </concept>
+      <concept>
+        <code value="89"/>
+        <display value="poliovirus vaccine, unspecified formulation"/>
+      </concept>
+      <concept>
+        <code value="90"/>
+        <display value="rabies vaccine, unspecified formulation"/>
+      </concept>
+      <concept>
+        <code value="91"/>
+        <display value="typhoid vaccine, unspecified formulation"/>
+      </concept>
+      <concept>
+        <code value="92"/>
+        <display value="Venezuelan equine encephalitis vaccine, unspecified formulation"/>
+      </concept>
+      <concept>
+        <code value="94"/>
+        <display value="measles, mumps, rubella, and varicella virus vaccine"/>
+      </concept>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:285ef470-ef3e-4a35-80c3-acf06e52679a"/>
+    <timestamp value="2023-06-29T16:52:37-04:00"/>
+    <total value="202"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="01"/>
+      <display value="diphtheria, tetanus toxoids and pertussis vaccine"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="02"/>
+      <display value="trivalent poliovirus vaccine, live, oral"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="03"/>
+      <display value="measles, mumps and rubella virus vaccine"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="04"/>
+      <display value="measles and rubella virus vaccine"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="05"/>
+      <display value="measles virus vaccine"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="06"/>
+      <display value="rubella virus vaccine"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="07"/>
+      <display value="mumps virus vaccine"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="08"/>
+      <display value="hepatitis B vaccine, pediatric or pediatric/adolescent dosage"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="09"/>
+      <display value="tetanus and diphtheria toxoids, adsorbed, preservative free, for adult use (2 Lf of tetanus toxoid and 2 Lf of diphtheria toxoid)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="10"/>
+      <display value="poliovirus vaccine, inactivated"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="100"/>
+      <display value="pneumococcal conjugate vaccine, 7 valent"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="101"/>
+      <display value="typhoid Vi capsular polysaccharide vaccine"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="102"/>
+      <display value="DTP- Haemophilus influenzae type b conjugate and hepatitis b vaccine"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="103"/>
+      <display value="meningococcal C conjugate vaccine"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="104"/>
+      <display value="hepatitis A and hepatitis B vaccine"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="105"/>
+      <display value="vaccinia (smallpox) vaccine, diluted"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="106"/>
+      <display value="diphtheria, tetanus toxoids and acellular pertussis vaccine, 5 pertussis antigens"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="107"/>
+      <display value="diphtheria, tetanus toxoids and acellular pertussis vaccine, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="108"/>
+      <display value="meningococcal ACWY vaccine, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="109"/>
+      <display value="pneumococcal vaccine, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="11"/>
+      <display value="pertussis vaccine"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="110"/>
+      <display value="DTaP-hepatitis B and poliovirus vaccine"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="111"/>
+      <display value="influenza virus vaccine, live, attenuated, for intranasal use"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="112"/>
+      <display value="tetanus toxoid, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="113"/>
+      <display value="tetanus and diphtheria toxoids, adsorbed, preservative free, for adult use (5 Lf of tetanus toxoid and 2 Lf of diphtheria toxoid)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="114"/>
+      <display value="meningococcal polysaccharide (groups A, C, Y and W-135) diphtheria toxoid conjugate vaccine (MCV4P)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="115"/>
+      <display value="tetanus toxoid, reduced diphtheria toxoid, and acellular pertussis vaccine, adsorbed"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="116"/>
+      <display value="rotavirus, live, pentavalent vaccine"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="118"/>
+      <display value="human papilloma virus vaccine, bivalent"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="119"/>
+      <display value="rotavirus, live, monovalent vaccine"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="120"/>
+      <display value="diphtheria, tetanus toxoids and acellular pertussis vaccine, Haemophilus influenzae type b conjugate, and poliovirus vaccine, inactivated (DTaP-Hib-IPV)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="121"/>
+      <display value="zoster vaccine, live"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="122"/>
+      <display value="rotavirus vaccine, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="123"/>
+      <display value="influenza virus vaccine, H5N1, A/Vietnam/1203/2004 (national stockpile)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="125"/>
+      <display value="Novel Influenza-H1N1-09, live virus for nasal administration"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="126"/>
+      <display value="Novel influenza-H1N1-09, preservative-free, injectable"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="127"/>
+      <display value="Novel influenza-H1N1-09, injectable"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="128"/>
+      <display value="Novel influenza-H1N1-09, all formulations"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="129"/>
+      <display value="Japanese Encephalitis vaccine, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="130"/>
+      <display value="Diphtheria, tetanus toxoids and acellular pertussis vaccine, and poliovirus vaccine, inactivated"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="131"/>
+      <display value="Historical record of a typhus vaccination"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="132"/>
+      <display value="Historical diphtheria and tetanus toxoids and acellular pertussis, poliovirus, Haemophilus b conjugate and hepatitis B (recombinant) vaccine."/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="133"/>
+      <display value="pneumococcal conjugate vaccine, 13 valent"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="134"/>
+      <display value="Japanese Encephalitis vaccine for intramuscular administration"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="135"/>
+      <display value="influenza, high dose seasonal, preservative-free"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="136"/>
+      <display value="meningococcal oligosaccharide (groups A, C, Y and W-135) diphtheria toxoid conjugate vaccine (MCV4O)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="137"/>
+      <display value="HPV, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="138"/>
+      <display value="tetanus and diphtheria toxoids, not adsorbed, for adult use"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="139"/>
+      <display value="Td(adult) unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="140"/>
+      <display value="Influenza, seasonal, injectable, preservative free"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="141"/>
+      <display value="Influenza, seasonal, injectable"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="142"/>
+      <display value="tetanus toxoid, not adsorbed"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="143"/>
+      <display value="Adenovirus, type 4 and type 7, live, oral"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="144"/>
+      <display value="seasonal influenza, intradermal, preservative free"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="146"/>
+      <display value="Diphtheria and Tetanus Toxoids and Acellular Pertussis Adsorbed, Inactivated Poliovirus, Haemophilus b Conjugate (Meningococcal Protein Conjugate), and Hepatitis B (Recombinant) Vaccine."/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="147"/>
+      <display value="Meningococcal, MCV4, unspecified conjugate formulation(groups A, C, Y and W-135)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="148"/>
+      <display value="Meningococcal Groups C and Y and Haemophilus b Tetanus Toxoid Conjugate Vaccine"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="149"/>
+      <display value="influenza, live, intranasal, quadrivalent"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="15"/>
+      <display value="influenza virus vaccine, split virus (incl. purified surface antigen)-retired CODE"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="150"/>
+      <display value="Influenza, injectable, quadrivalent, preservative free"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="151"/>
+      <display value="influenza nasal, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="152"/>
+      <display value="Pneumococcal Conjugate, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="153"/>
+      <display value="Influenza, injectable, Madin Darby Canine Kidney, preservative free"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="155"/>
+      <display value="Seasonal, trivalent, recombinant, injectable influenza vaccine, preservative free"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="158"/>
+      <display value="influenza, injectable, quadrivalent, contains preservative"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="16"/>
+      <display value="influenza virus vaccine, whole virus"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="160"/>
+      <display value="Influenza A monovalent (H5N1), adjuvanted, National stockpile 2013"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="161"/>
+      <display value="Influenza, injectable,quadrivalent, preservative free, pediatric"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="162"/>
+      <display value="meningococcal B vaccine, fully recombinant"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="163"/>
+      <display value="meningococcal B vaccine, recombinant, OMV, adjuvanted"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="164"/>
+      <display value="meningococcal B, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="165"/>
+      <display value="Human Papillomavirus 9-valent vaccine"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="166"/>
+      <display value="influenza, intradermal, quadrivalent, preservative free, injectable"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="167"/>
+      <display value="meningococcal vaccine of unknown formulation and unknown serogroups"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="168"/>
+      <display value="Seasonal trivalent influenza vaccine, adjuvanted, preservative free"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="169"/>
+      <display value="Hep A, live attenuated-IM"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="17"/>
+      <display value="Haemophilus influenzae type b vaccine, conjugate unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="170"/>
+      <display value="non-US diphtheria, tetanus toxoids and acellular pertussis vaccine, Haemophilus influenzae type b conjugate, and poliovirus vaccine, inactivated (DTaP-Hib-IPV)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="171"/>
+      <display value="Influenza, injectable, Madin Darby Canine Kidney, preservative free, quadrivalent"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="172"/>
+      <display value="cholera, WC-rBS"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="173"/>
+      <display value="cholera, BivWC"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="174"/>
+      <display value="cholera, live attenuated"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="175"/>
+      <display value="Human Rabies vaccine from human diploid cell culture"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="176"/>
+      <display value="Human rabies vaccine from Chicken fibroblast culture"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="177"/>
+      <display value="pneumococcal conjugate vaccine, 10 valent"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="178"/>
+      <display value="Non-US bivalent oral polio vaccine (types 1 and 3)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="179"/>
+      <display value="Non-US monovalent oral polio vaccine, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="18"/>
+      <display value="rabies vaccine, for intramuscular injection RETIRED CODE"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="182"/>
+      <display value="Oral Polio Vaccine, Unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="183"/>
+      <display value="Yellow fever vaccine alternative formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="184"/>
+      <display value="Yellow fever vaccine, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="185"/>
+      <display value="Seasonal, quadrivalent, recombinant, injectable influenza vaccine, preservative free"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="186"/>
+      <display value="Influenza, injectable, Madin Darby Canine Kidney,  quadrivalent with preservative"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="187"/>
+      <display value="zoster vaccine recombinant"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="188"/>
+      <display value="zoster vaccine, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="189"/>
+      <display value="Hepatitis B vaccine (recombinant), CpG adjuvanted"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="19"/>
+      <display value="Bacillus Calmette-Guerin vaccine"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="190"/>
+      <display value="Typhoid conjugate vaccine (non-US)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="191"/>
+      <display value="meningococcal A polysaccharide vaccine (non-US)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="192"/>
+      <display value="meningococcal AC polysaccharide vaccine (non-US)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="193"/>
+      <display value="hepatitis A and hepatitis B vaccine, pediatric/adolescent (non-US)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="194"/>
+      <display value="influenza, Southern Hemisphere, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="195"/>
+      <display value="Diphtheria, Tetanus, Poliomyelitis adsorbed"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="196"/>
+      <display value="tetanus and diphtheria toxoids, adsorbed, preservative free, for adult use, Lf unspecified"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="197"/>
+      <display value="influenza, high-dose seasonal, quadrivalent, 0.7mL dose, preservative free"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="198"/>
+      <display value="Diphtheria, pertussis, tetanus, hepatitis B, Haemophilus Influenza Type b, (Pentavalent)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="20"/>
+      <display value="diphtheria, tetanus toxoids and acellular pertussis vaccine"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="200"/>
+      <display value="influenza, seasonal, Southern Hemisphere, quadrivalent, pediatric 0.25mL dose, preservative free"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="201"/>
+      <display value="influenza, seasonal, Southern Hemisphere, quadrivalent, 0.5mL dose, no preservative"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="202"/>
+      <display value="influenza, seasonal, Southern Hemisphere, quadrivalent, 0.5mL dose, with preservative"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="203"/>
+      <display value="meningococcal polysaccharide (groups A, C, Y, W-135) tetanus toxoid conjugate vaccine 0.5mL dose, preservative free"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="204"/>
+      <display value="Ebola Zaire vaccine, live, recombinant, 1mL dose"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="205"/>
+      <display value="influenza, seasonal vaccine, quadrivalent, adjuvanted, 0.5mL dose, preservative free"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="206"/>
+      <display value="Vaccinia, smallpox monkeypox vaccine, live attenuated, preservative free, subcutaneous or intradermal injection"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="207"/>
+      <display value="SARS-COV-2 (COVID-19) vaccine, mRNA, spike protein, LNP, preservative free, 100 mcg/0.5mL dose or 50 mcg/0.25mL dose"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="208"/>
+      <display value="SARS-COV-2 (COVID-19) vaccine, mRNA, spike protein, LNP, preservative free, 30 mcg/0.3mL dose"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="21"/>
+      <display value="varicella virus vaccine"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="210"/>
+      <display value="SARS-COV-2 (COVID-19) vaccine, vector non-replicating, recombinant spike protein-ChAdOx1, preservative free, 0.5 mL"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="211"/>
+      <display value="SARS-COV-2 (COVID-19) vaccine, subunit, recombinant spike protein-nanoparticle+Matrix-M1 Adjuvant, preservative free, 0.5mL dose"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="212"/>
+      <display value="SARS-COV-2 (COVID-19) vaccine, vector non-replicating, recombinant spike protein-Ad26, preservative free, 0.5 mL"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="213"/>
+      <display value="SARS-COV-2 (COVID-19) vaccine, UNSPECIFIED"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="214"/>
+      <display value="Ebola, unspecified"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="215"/>
+      <display value="Pneumococcal conjugate vaccine 15-valent (PCV15), polysaccharide CRM197 conjugate, adjuvant, preservative free"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="216"/>
+      <display value="Pneumococcal conjugate vaccine 20-valent (PCV20), polysaccharide CRM197 conjugate, adjuvant, preservative free"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="217"/>
+      <display value="SARS-COV-2 (COVID-19) vaccine, mRNA, spike protein, LNP, preservative free, 30 mcg/0.3mL dose, tris-sucrose formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="218"/>
+      <display value="SARS-COV-2 (COVID-19) vaccine, mRNA, spike protein, LNP, preservative free, 10 mcg/0.2mL dose, tris-sucrose formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="219"/>
+      <display value="SARS-COV-2 (COVID-19) vaccine, mRNA, spike protein, LNP, preservative free, 3 mcg/0.2mL dose, tris-sucrose formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="22"/>
+      <display value="DTP-Haemophilus influenzae type b conjugate vaccine"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="220"/>
+      <display value="Hepatitis B vaccine (recombinant), 3-antigen, Al(OH)3 adjuvanted"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="221"/>
+      <display value="SARS-COV-2 (COVID-19) vaccine, mRNA, spike protein, LNP, preservative free, 50 mcg/0.5 mL dose"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="222"/>
+      <display value="Tick-borne encephalitis vaccine, unspecified"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="223"/>
+      <display value="Tick-borne encephalitis vaccine, inactivated, preservative free, 0.25mL dose"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="224"/>
+      <display value="Tick-borne encephalitis vaccine, inactivated, preservative free, 0.5mL dose"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="227"/>
+      <display value="SARS-COV-2 (COVID-19) vaccine, mRNA, spike protein, LNP, preservative free, pediatric 50 mcg/0.5 mL dose"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="228"/>
+      <display value="SARS-COV-2 (COVID-19) vaccine, mRNA, spike protein, LNP, preservative free, pediatric 25 mcg/0.25 mL dose"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="229"/>
+      <display value="SARS-COV-2 (COVID-19) vaccine, mRNA, spike protein, LNP, bivalent, preservative free, 50 mcg/0.5 mL or 25 mcg/0.25 mL dose"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="23"/>
+      <display value="plague vaccine"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="24"/>
+      <display value="anthrax vaccine"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="25"/>
+      <display value="typhoid vaccine, live, oral"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="26"/>
+      <display value="cholera vaccine, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="28"/>
+      <display value="diphtheria and tetanus toxoids, adsorbed for pediatric use"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="31"/>
+      <display value="hepatitis A vaccine, pediatric dosage, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="32"/>
+      <display value="meningococcal polysaccharide vaccine (MPSV4)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="33"/>
+      <display value="pneumococcal polysaccharide vaccine, 23 valent"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="35"/>
+      <display value="tetanus toxoid, adsorbed"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="37"/>
+      <display value="yellow fever vaccine"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="38"/>
+      <display value="rubella and mumps virus vaccine"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="39"/>
+      <display value="Japanese Encephalitis Vaccine SC"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="40"/>
+      <display value="rabies vaccine, for intradermal injection"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="41"/>
+      <display value="typhoid vaccine, parenteral, other than acetone-killed, dried"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="42"/>
+      <display value="hepatitis B vaccine, adolescent/high risk infant dosage"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="43"/>
+      <display value="hepatitis B vaccine, adult dosage"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="44"/>
+      <display value="hepatitis B vaccine, dialysis patient dosage"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="45"/>
+      <display value="hepatitis B vaccine, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="46"/>
+      <display value="Haemophilus influenzae type b vaccine, PRP-D conjugate"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="47"/>
+      <display value="Haemophilus influenzae type b vaccine, HbOC conjugate"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="48"/>
+      <display value="Haemophilus influenzae type b vaccine, PRP-T conjugate"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="49"/>
+      <display value="Haemophilus influenzae type b vaccine, PRP-OMP conjugate"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="50"/>
+      <display value="DTaP-Haemophilus influenzae type b conjugate vaccine"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="500"/>
+      <display value="SARS-COV-2 COVID-19 Non-US Vaccine, Specific Product Unknown"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="501"/>
+      <display value="SARS-COV-2 COVID-19 Inactivated Virus Non-US Vaccine Product (QAZCOVID-IN)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="502"/>
+      <display value="SARS-COV-2 COVID-19 Inactivated Virus Non-US Vaccine Product (COVAXIN)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="503"/>
+      <display value="SARS-COV-2 COVID-19  Live Attenuated Virus Non-US Vaccine Product (COVIVAC)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="504"/>
+      <display value="SARS-COV-2 COVID-19 Viral Vector Non-replicating Non-US Vaccine Product (Sputnik Light)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="505"/>
+      <display value="SARS-COV-2 COVID-19 Viral Vector Non-replicating Non-US Vaccine Product (Sputnik V)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="506"/>
+      <display value="SARS-COV-2 COVID-19 Viral Vector Non-replicating Non-US Vaccine Product (CONVIDECIA), CanSino Biological Inc./Beijing Institute of Biotechnology"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="507"/>
+      <display value="SARS-COV-2 COVID-19 Protein Subunit Non-US Vaccine Product (Anhui Zhifei Longcom Biopharmaceutical + Institute of Microbiology, Chinese Academy of Sciences)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="508"/>
+      <display value="SARS-COV-2 COVID-19 Protein Subunit Non-US Vaccine Product  (Jiangsu Province Centers for Disease Control and Prevention)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="509"/>
+      <display value="SARS-COV-2 COVID-19 Protein Subunit Non-US Vaccine Product (EpiVacCorona)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="51"/>
+      <display value="Haemophilus influenzae type b conjugate and Hepatitis B vaccine"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="510"/>
+      <display value="SARS-COV-2 COVID-19 Inactivated Virus Non-US Vaccine Product (BIBP, Sinopharm)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="511"/>
+      <display value="SARS-COV-2 COVID-19 Inactivated Virus Non-US Vaccine Product (CoronaVac, Sinovac)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="512"/>
+      <display value="SARS-COV-2 COVID-19 Virus Like Particle (VLP) Non-US Vaccine Product (Medicago, Covifenz)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="513"/>
+      <display value="SARS-COV-2 COVID-19 Protein Subunit Non-US Vaccine Product (Anhui Zhifei Longcom, Zifivax)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="514"/>
+      <display value="SARS-COV-2 COVID-19 DNA Non-US Vaccine Product (Zydus Cadila, ZyCoV-D)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="515"/>
+      <display value="SARS-COV-2 COVID-19 Protein Subunit Non-US Vaccine Product (Medigen, MVC-COV1901)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="516"/>
+      <display value="SARS-COV-2 COVID-19 Inactivated Non-US Vaccine Product (Minhai Biotechnology Co, KCONVAC)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="517"/>
+      <display value="SARS-COV-2 COVID-19 Protein Subunit Non-US Vaccine Product (Biological E Limited, Corbevax)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="52"/>
+      <display value="hepatitis A vaccine, adult dosage"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="53"/>
+      <display value="typhoid vaccine, parenteral, acetone-killed, dried (U.S. military)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="54"/>
+      <display value="adenovirus vaccine, type 4, live, oral"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="55"/>
+      <display value="adenovirus vaccine, type 7, live, oral"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="56"/>
+      <display value="dengue fever vaccine, tetravalent"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="62"/>
+      <display value="human papilloma virus vaccine, quadrivalent"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="66"/>
+      <display value="Lyme disease vaccine"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="69"/>
+      <display value="parainfluenza-3 virus vaccine"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="74"/>
+      <display value="rotavirus, live, tetravalent vaccine"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="75"/>
+      <display value="vaccinia (smallpox) vaccine"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="77"/>
+      <display value="Tick-borne encephalitis vaccine (non-US)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="78"/>
+      <display value="tularemia vaccine"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="80"/>
+      <display value="Venezuelan equine encephalitis, live, attenuated"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="81"/>
+      <display value="Venezuelan equine encephalitis, inactivated"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="82"/>
+      <display value="adenovirus vaccine, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="83"/>
+      <display value="hepatitis A vaccine, pediatric/adolescent dosage, 2 dose schedule"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="84"/>
+      <display value="hepatitis A vaccine, pediatric/adolescent dosage, 3 dose schedule"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="85"/>
+      <display value="hepatitis A vaccine, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="88"/>
+      <display value="influenza virus vaccine, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="89"/>
+      <display value="poliovirus vaccine, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="90"/>
+      <display value="rabies vaccine, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="91"/>
+      <display value="typhoid vaccine, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="92"/>
+      <display value="Venezuelan equine encephalitis vaccine, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <version value="20230606"/>
+      <code value="94"/>
+      <display value="measles, mumps, rubella, and varicella virus vaccine"/>
+    </contains>
+  </expansion>
+</ValueSet>

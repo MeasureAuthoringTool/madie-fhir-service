@@ -1,0 +1,1128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="2.16.840.1.113762.1.4.1114.14"/>
+  <meta>
+    <versionId value="20"/>
+    <lastUpdated value="2022-10-13T11:11:06.000-04:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+    <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/publishable-valueset-cqfm"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/valueset-author">
+    <valueString value="HL7 Structured Documents WG"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate">
+    <valueDate value="2022-12-15"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/valueset-effectiveDate">
+    <valueDate value="2022-10-14"/>
+  </extension>
+  <url value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1114.14"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113762.1.4.1114.14"/>
+  </identifier>
+  <version value="20221014"/>
+  <name value="MedicationDrugClassForAllergenIntoleranceSCT"/>
+  <title value="Medication drug class for allergen intolerance SCT"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2022-10-14T01:02:46-04:00"/>
+  <publisher value="HL7 Terminology"/>
+  <description value="updated 2022-10-13 per vote at Structured Documents HL7 (https://confluence.hl7.org/display/SD/2022-10-13+Agenda+and+Minutes)&#xA;Built for C-CDA 2.x this value set should be used to document a patient reactant instance by searching through the grouped value sets first in drug ingredient, then drug class, and finally other substance. Once found, any alternative match should not be used as the primary code. Drug class concepts were originally drawn from the NDF-RT code system but current versions use SNOMED CT Drug Product hierarchy if possible and the Substance hierarchy if not found in products. This is to take advantage of the NLM-produced linkage between SNOMED CT drug product concepts and aligned RxNorm drug ingredient (IN,PIN) concepts that can be traced to orderable drugs. This will not be a full list of all drug classes. Note that the content does not include vaccines."/>
+  <jurisdiction>
+    <extension url="http://hl7.org/fhir/StructureDefinition/data-absent-reason">
+      <valueString value="UNKNOWN"/>
+    </extension>
+  </jurisdiction>
+  <purpose value="(Clinical Focus: Pharmacologic classification concepts drawn from SNOMED CT that are used to group products that have the characteristic represented by the class. Primarily used for allergen and intolerance substance classes preferentially with the product hierarchy.),(Data Element Scope: Medication drug class),(Inclusion Criteria: SNOMED CT drug class concepts that represent the most common recorded allergy or intolerance drug classes. Concept drawn from the product hierarchy (where available) to enable use of RxClass linkage to RxNorm prescribable products.),(Exclusion Criteria: Drug class concepts outside the product hierarchy when a concept exists in product hierarchy)"/>
+  <compose>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <concept>
+        <code value="105908007"/>
+        <display value="Medicinal product containing macrolide and acting as antibacterial agent (product)"/>
+      </concept>
+      <concept>
+        <code value="108417002"/>
+        <display value="Product containing 5-hydroxytryptamine-3-receptor antagonist (product)"/>
+      </concept>
+      <concept>
+        <code value="108661002"/>
+        <display value="Product containing histamine H2 receptor antagonist (product)"/>
+      </concept>
+      <concept>
+        <code value="108665006"/>
+        <display value="Product containing hydrogen/potassium adenosine triphosphatase enzyme system inhibitor (product)"/>
+      </concept>
+      <concept>
+        <code value="108787006"/>
+        <display value="Medicinal product containing anthracycline and acting as antineoplastic agent (product)"/>
+      </concept>
+      <concept>
+        <code value="108807002"/>
+        <display value="Product containing monoclonal antibody (product)"/>
+      </concept>
+      <concept>
+        <code value="11563006"/>
+        <display value="Product containing vitamin D and/or vitamin D derivative (product)"/>
+      </concept>
+      <concept>
+        <code value="116085009"/>
+        <display value="Product containing retinoid (product)"/>
+      </concept>
+      <concept>
+        <code value="116596006"/>
+        <display value="Product containing glucocorticoid (product)"/>
+      </concept>
+      <concept>
+        <code value="1181000221105"/>
+        <display value="Vaccine product containing only Influenza virus antigen (medicinal product)"/>
+      </concept>
+      <concept>
+        <code value="123954005"/>
+        <display value="Product containing prostaglandin-endoperoxide synthase isoform 2 inhibitor (product)"/>
+      </concept>
+      <concept>
+        <code value="126175007"/>
+        <display value="Product containing anabolic steroid (product)"/>
+      </concept>
+      <concept>
+        <code value="129473008"/>
+        <display value="Medicinal product containing echinocandin and acting as antifungal agent (product)"/>
+      </concept>
+      <concept>
+        <code value="16047007"/>
+        <display value="Product containing benzodiazepine (product)"/>
+      </concept>
+      <concept>
+        <code value="16403005"/>
+        <display value="Non-steroidal anti-inflammatory agent (product)"/>
+      </concept>
+      <concept>
+        <code value="1801000221105"/>
+        <display value="Vaccine product containing only Streptococcus pneumoniae capsular polysaccharide antigen conjugated (medicinal product)"/>
+      </concept>
+      <concept>
+        <code value="2596005"/>
+        <display value="Product containing lincomycin (medicinal product)"/>
+      </concept>
+      <concept>
+        <code value="282831004"/>
+        <display value="Medicinal product containing tetracycline structure and acting as antibacterial agent (product)"/>
+      </concept>
+      <concept>
+        <code value="320073005"/>
+        <display value="Product containing beta-2 adrenergic receptor agonist (product)"/>
+      </concept>
+      <concept>
+        <code value="33219003"/>
+        <display value="Medicinal product containing tricyclic compound and acting as antidepressant agent (product)"/>
+      </concept>
+      <concept>
+        <code value="33252009"/>
+        <display value="Product containing beta adrenergic receptor antagonist (product)"/>
+      </concept>
+      <concept>
+        <code value="332955008"/>
+        <display value="Product containing undecenoate (product)"/>
+      </concept>
+      <concept>
+        <code value="34012005"/>
+        <display value="Product containing sulfonylurea (product)"/>
+      </concept>
+      <concept>
+        <code value="346636007"/>
+        <display value="Plasma protein solution (product)"/>
+      </concept>
+      <concept>
+        <code value="349854005"/>
+        <display value="Product containing selective serotonin re-uptake inhibitor (product)"/>
+      </concept>
+      <concept>
+        <code value="350134005"/>
+        <display value="Product containing carbapenem (product)"/>
+      </concept>
+      <concept>
+        <code value="350157004"/>
+        <display value="Product containing nitroimidazole (product)"/>
+      </concept>
+      <concept>
+        <code value="350196005"/>
+        <display value="Medicinal product containing imidazole and acting as antifungal agent (product)"/>
+      </concept>
+      <concept>
+        <code value="350222007"/>
+        <display value="Medicinal product containing aminoquinoline and acting as antimalarial agent (product)"/>
+      </concept>
+      <concept>
+        <code value="350294001"/>
+        <display value="Product containing methadone analog (product)"/>
+      </concept>
+      <concept>
+        <code value="350312004"/>
+        <display value="Product containing salicylate (product)"/>
+      </concept>
+      <concept>
+        <code value="360204007"/>
+        <display value="Product containing opioid receptor agonist (product)"/>
+      </concept>
+      <concept>
+        <code value="363560004"/>
+        <display value="Product containing serotonin 5-hydroxytryptamine-1 receptor agonist (product)"/>
+      </concept>
+      <concept>
+        <code value="37084008"/>
+        <display value="Medicinal product containing quinolone and acting as antibacterial agent (product)"/>
+      </concept>
+      <concept>
+        <code value="372783007"/>
+        <display value="Antiparkinsonian agent (substance)"/>
+      </concept>
+      <concept>
+        <code value="39487003"/>
+        <display value="Product containing insulin (product)"/>
+      </concept>
+      <concept>
+        <code value="400266000"/>
+        <display value="Product containing hydrocolloid (medicinal product)"/>
+      </concept>
+      <concept>
+        <code value="407935004"/>
+        <display value="Contrast media (product)"/>
+      </concept>
+      <concept>
+        <code value="411600004"/>
+        <display value="Horse serum proteins diagnostic allergen extract (product)"/>
+      </concept>
+      <concept>
+        <code value="41549009"/>
+        <display value="Product containing angiotensin-converting enzyme inhibitor (product)"/>
+      </concept>
+      <concept>
+        <code value="416636000"/>
+        <display value="Product containing glucagon-like peptide 1 receptor agonist (product)"/>
+      </concept>
+      <concept>
+        <code value="416897008"/>
+        <display value="Product containing tumor necrosis factor alpha inhibitor (product)"/>
+      </concept>
+      <concept>
+        <code value="422292008"/>
+        <display value="Medicinal product containing streptogramin and acting as antibacterial agent (product)"/>
+      </concept>
+      <concept>
+        <code value="426722004"/>
+        <display value="Iodinated contrast media (substance)"/>
+      </concept>
+      <concept>
+        <code value="441508005"/>
+        <display value="Product containing C1 esterase inhibitor (product)"/>
+      </concept>
+      <concept>
+        <code value="45518007"/>
+        <display value="Medicinal product containing thiazide and acting as diuretic agent (product)"/>
+      </concept>
+      <concept>
+        <code value="48698004"/>
+        <display value="Product containing calcium channel blocker (product)"/>
+      </concept>
+      <concept>
+        <code value="60978003"/>
+        <display value="Product containing barbiturate (product)"/>
+      </concept>
+      <concept>
+        <code value="61946003"/>
+        <display value="Product containing estrogen receptor agonist (product)"/>
+      </concept>
+      <concept>
+        <code value="62294009"/>
+        <display value="Product containing Varicella-zoster virus antibody (medicinal product)"/>
+      </concept>
+      <concept>
+        <code value="63094006"/>
+        <display value="Medicinal product acting as anticonvulsant agent (product)"/>
+      </concept>
+      <concept>
+        <code value="6369005"/>
+        <display value="Medicinal product containing penicillin and acting as antibacterial agent (product)"/>
+      </concept>
+      <concept>
+        <code value="6425004"/>
+        <display value="Product containing histamine receptor antagonist (product)"/>
+      </concept>
+      <concept>
+        <code value="703677008"/>
+        <display value="Product containing sodium glucose cotransporter subtype 2 inhibitor (product)"/>
+      </concept>
+      <concept>
+        <code value="713382001"/>
+        <display value="Medicinal product containing nitrofuran derivative and acting as antibacterial agent (product)"/>
+      </concept>
+      <concept>
+        <code value="713764001"/>
+        <display value="Medicinal product containing rifamycin structure and acting as antibacterial agent (product)"/>
+      </concept>
+      <concept>
+        <code value="74226000"/>
+        <display value="Product containing vitamin K and/or vitamin K derivative (product)"/>
+      </concept>
+      <concept>
+        <code value="74632002"/>
+        <display value="Product containing succinimide (product)"/>
+      </concept>
+      <concept>
+        <code value="763875007"/>
+        <display value="Product containing sulfonamide (product)"/>
+      </concept>
+      <concept>
+        <code value="764299009"/>
+        <display value="Medicinal product containing cephalosporin and acting as antibacterial agent (product)"/>
+      </concept>
+      <concept>
+        <code value="764357006"/>
+        <display value="Phenylpiperazine derivative (substance)"/>
+      </concept>
+      <concept>
+        <code value="765419002"/>
+        <display value="Product containing methylated xanthine derivative (product)"/>
+      </concept>
+      <concept>
+        <code value="767151005"/>
+        <display value="Product containing carbamate (product)"/>
+      </concept>
+      <concept>
+        <code value="767365002"/>
+        <display value="Product containing potassium and/or potassium compound (product)"/>
+      </concept>
+      <concept>
+        <code value="768431001"/>
+        <display value="Product containing selenium and/or selenium compound (product)"/>
+      </concept>
+      <concept>
+        <code value="768435005"/>
+        <display value="Product containing magnesium and/or magnesium compound (product)"/>
+      </concept>
+      <concept>
+        <code value="768449001"/>
+        <display value="Product containing chromium and/or chromium compound (product)"/>
+      </concept>
+      <concept>
+        <code value="768451002"/>
+        <display value="Product containing calcium and/or calcium compound (product)"/>
+      </concept>
+      <concept>
+        <code value="768457003"/>
+        <display value="Product containing bismuth and/or bismuth compound (product)"/>
+      </concept>
+      <concept>
+        <code value="768592009"/>
+        <display value="Product containing gold and/or gold compound (product)"/>
+      </concept>
+      <concept>
+        <code value="768600002"/>
+        <display value="Product containing coumarin (product)"/>
+      </concept>
+      <concept>
+        <code value="768614002"/>
+        <display value="Product containing phenothiazine and/or phenothiazine derivative (product)"/>
+      </concept>
+      <concept>
+        <code value="768618004"/>
+        <display value="Product containing titanium and/or titanium compound (product)"/>
+      </concept>
+      <concept>
+        <code value="768621002"/>
+        <display value="Product containing platinum and/or platinum compound (product)"/>
+      </concept>
+      <concept>
+        <code value="768688006"/>
+        <display value="Product containing strontium and/or strontium compound (product)"/>
+      </concept>
+      <concept>
+        <code value="768697005"/>
+        <display value="Product containing barium and/or barium compound (product)"/>
+      </concept>
+      <concept>
+        <code value="768699008"/>
+        <display value="Product containing manganese and/or manganese compound (product)"/>
+      </concept>
+      <concept>
+        <code value="768759001"/>
+        <display value="Product containing steroid (product)"/>
+      </concept>
+      <concept>
+        <code value="768763008"/>
+        <display value="Product containing gadolinium and/or gadolinium compound (product)"/>
+      </concept>
+      <concept>
+        <code value="768766000"/>
+        <display value="Product containing mercury and/or mercury compound (product)"/>
+      </concept>
+      <concept>
+        <code value="768865007"/>
+        <display value="Product containing interferon (product)"/>
+      </concept>
+      <concept>
+        <code value="770377009"/>
+        <display value="Product containing 5-alpha reductase inhibitor (product)"/>
+      </concept>
+      <concept>
+        <code value="770387008"/>
+        <display value="Medicinal product containing aminoglycoside and acting as antibacterial agent (product)"/>
+      </concept>
+      <concept>
+        <code value="771344003"/>
+        <display value="Product containing paraben and/or paraben derivative (product)"/>
+      </concept>
+      <concept>
+        <code value="788032009"/>
+        <display value="Medicinal product acting as adhesive (product)"/>
+      </concept>
+      <concept>
+        <code value="788541006"/>
+        <display value="Product containing synthetic cannabinoid (product)"/>
+      </concept>
+      <concept>
+        <code value="789250004"/>
+        <display value="Product containing acetylcholinesterase inhibitor (product)"/>
+      </concept>
+      <concept>
+        <code value="79440004"/>
+        <display value="Product containing corticosteroid and/or corticosteroid derivative (product)"/>
+      </concept>
+      <concept>
+        <code value="830118008"/>
+        <display value="Medicinal product acting as loop diuretic (product)"/>
+      </concept>
+      <concept>
+        <code value="836398006"/>
+        <display value="Vaccine product containing Streptococcus pneumoniae antigen (medicinal product)"/>
+      </concept>
+      <concept>
+        <code value="860818003"/>
+        <display value="Vaccine product containing only Bacillus anthracis antigen (medicinal product)"/>
+      </concept>
+      <concept>
+        <code value="871727001"/>
+        <display value="Vaccine product containing only Vaccinia virus antigen (medicinal product)"/>
+      </concept>
+      <concept>
+        <code value="871742003"/>
+        <display value="Vaccine product containing only Clostridium tetani antigen (medicinal product)"/>
+      </concept>
+      <concept>
+        <code value="871758000"/>
+        <display value="Vaccine product containing only Bordetella pertussis antigen (medicinal product)"/>
+      </concept>
+      <concept>
+        <code value="871826000"/>
+        <display value="Vaccine product containing only Clostridium tetani and Corynebacterium diphtheriae antigens (medicinal product)"/>
+      </concept>
+      <concept>
+        <code value="871839001"/>
+        <display value="Vaccine product containing only Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type B antigens (medicinal product)"/>
+      </concept>
+      <concept>
+        <code value="871875004"/>
+        <display value="Vaccine product containing only Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae antigens (medicinal product)"/>
+      </concept>
+      <concept>
+        <code value="871919004"/>
+        <display value="Vaccine product containing only Human alphaherpesvirus 3 antigen (medicinal product)"/>
+      </concept>
+      <concept>
+        <code value="87233003"/>
+        <display value="Product containing low molecular weight heparin (product)"/>
+      </concept>
+      <concept>
+        <code value="89119000"/>
+        <display value="Nitrate salt (substance)"/>
+      </concept>
+      <concept>
+        <code value="895560003"/>
+        <display value="Medicinal product containing Vinca alkaloid and acting as antineoplastic agent (product)"/>
+      </concept>
+      <concept>
+        <code value="90614001"/>
+        <display value="Medicinal product containing beta-lactam and acting as antibacterial agent (product)"/>
+      </concept>
+      <concept>
+        <code value="961000221100"/>
+        <display value="Vaccine product containing only Salmonella enterica subspecies enterica serovar Typhi antigen (medicinal product)"/>
+      </concept>
+      <concept>
+        <code value="96281001"/>
+        <display value="Product containing bisphosphonate (product)"/>
+      </concept>
+      <concept>
+        <code value="96302009"/>
+        <display value="Product containing 3-hydroxy-3-methylglutaryl-coenzyme A reductase inhibitor (product)"/>
+      </concept>
+      <concept>
+        <code value="96308008"/>
+        <display value="Product containing angiotensin II receptor antagonist (product)"/>
+      </concept>
+      <concept>
+        <code value="981000221107"/>
+        <display value="Vaccine product containing only Streptococcus pneumoniae antigen (medicinal product)"/>
+      </concept>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:c8ce0cb9-32b7-4529-a639-8eb7b3362076"/>
+    <timestamp value="2023-06-29T18:33:44-04:00"/>
+    <total value="107"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="105908007"/>
+      <display value="Medicinal product containing macrolide and acting as antibacterial agent (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="108417002"/>
+      <display value="Product containing 5-hydroxytryptamine-3-receptor antagonist (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="108661002"/>
+      <display value="Product containing histamine H2 receptor antagonist (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="108665006"/>
+      <display value="Product containing hydrogen/potassium adenosine triphosphatase enzyme system inhibitor (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="108787006"/>
+      <display value="Medicinal product containing anthracycline and acting as antineoplastic agent (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="108807002"/>
+      <display value="Product containing monoclonal antibody (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="11563006"/>
+      <display value="Product containing vitamin D and/or vitamin D derivative (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="116085009"/>
+      <display value="Product containing retinoid (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="116596006"/>
+      <display value="Product containing glucocorticoid (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="1181000221105"/>
+      <display value="Vaccine product containing only Influenza virus antigen (medicinal product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="123954005"/>
+      <display value="Product containing prostaglandin-endoperoxide synthase isoform 2 inhibitor (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="126175007"/>
+      <display value="Product containing anabolic steroid (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="129473008"/>
+      <display value="Medicinal product containing echinocandin and acting as antifungal agent (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="16047007"/>
+      <display value="Product containing benzodiazepine (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="16403005"/>
+      <display value="Non-steroidal anti-inflammatory agent (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="1801000221105"/>
+      <display value="Vaccine product containing only Streptococcus pneumoniae capsular polysaccharide antigen conjugated (medicinal product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="2596005"/>
+      <display value="Product containing lincomycin (medicinal product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="282831004"/>
+      <display value="Medicinal product containing tetracycline structure and acting as antibacterial agent (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="320073005"/>
+      <display value="Product containing beta-2 adrenergic receptor agonist (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="33219003"/>
+      <display value="Medicinal product containing tricyclic compound and acting as antidepressant agent (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="33252009"/>
+      <display value="Product containing beta adrenergic receptor antagonist (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="332955008"/>
+      <display value="Product containing undecenoate (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="34012005"/>
+      <display value="Product containing sulfonylurea (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="346636007"/>
+      <display value="Plasma protein solution (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="349854005"/>
+      <display value="Product containing selective serotonin re-uptake inhibitor (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="350134005"/>
+      <display value="Product containing carbapenem (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="350157004"/>
+      <display value="Product containing nitroimidazole (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="350196005"/>
+      <display value="Medicinal product containing imidazole and acting as antifungal agent (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="350222007"/>
+      <display value="Medicinal product containing aminoquinoline and acting as antimalarial agent (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="350294001"/>
+      <display value="Product containing methadone analog (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="350312004"/>
+      <display value="Product containing salicylate (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="360204007"/>
+      <display value="Product containing opioid receptor agonist (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="363560004"/>
+      <display value="Product containing serotonin 5-hydroxytryptamine-1 receptor agonist (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="37084008"/>
+      <display value="Medicinal product containing quinolone and acting as antibacterial agent (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="372783007"/>
+      <display value="Antiparkinsonian agent (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="39487003"/>
+      <display value="Product containing insulin (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="400266000"/>
+      <display value="Product containing hydrocolloid (medicinal product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="407935004"/>
+      <display value="Contrast media (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="411600004"/>
+      <display value="Horse serum proteins diagnostic allergen extract (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="41549009"/>
+      <display value="Product containing angiotensin-converting enzyme inhibitor (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="416636000"/>
+      <display value="Product containing glucagon-like peptide 1 receptor agonist (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="416897008"/>
+      <display value="Product containing tumor necrosis factor alpha inhibitor (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="422292008"/>
+      <display value="Medicinal product containing streptogramin and acting as antibacterial agent (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="426722004"/>
+      <display value="Iodinated contrast media (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="441508005"/>
+      <display value="Product containing C1 esterase inhibitor (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="45518007"/>
+      <display value="Medicinal product containing thiazide and acting as diuretic agent (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="48698004"/>
+      <display value="Product containing calcium channel blocker (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="60978003"/>
+      <display value="Product containing barbiturate (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="61946003"/>
+      <display value="Product containing estrogen receptor agonist (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="62294009"/>
+      <display value="Product containing Varicella-zoster virus antibody (medicinal product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="63094006"/>
+      <display value="Medicinal product acting as anticonvulsant agent (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="6369005"/>
+      <display value="Medicinal product containing penicillin and acting as antibacterial agent (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="6425004"/>
+      <display value="Product containing histamine receptor antagonist (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="703677008"/>
+      <display value="Product containing sodium glucose cotransporter subtype 2 inhibitor (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="713382001"/>
+      <display value="Medicinal product containing nitrofuran derivative and acting as antibacterial agent (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="713764001"/>
+      <display value="Medicinal product containing rifamycin structure and acting as antibacterial agent (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="74226000"/>
+      <display value="Product containing vitamin K and/or vitamin K derivative (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="74632002"/>
+      <display value="Product containing succinimide (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="763875007"/>
+      <display value="Product containing sulfonamide (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="764299009"/>
+      <display value="Medicinal product containing cephalosporin and acting as antibacterial agent (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="764357006"/>
+      <display value="Phenylpiperazine derivative (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="765419002"/>
+      <display value="Product containing methylated xanthine derivative (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="767151005"/>
+      <display value="Product containing carbamate (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="767365002"/>
+      <display value="Product containing potassium and/or potassium compound (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768431001"/>
+      <display value="Product containing selenium and/or selenium compound (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768435005"/>
+      <display value="Product containing magnesium and/or magnesium compound (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768449001"/>
+      <display value="Product containing chromium and/or chromium compound (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768451002"/>
+      <display value="Product containing calcium and/or calcium compound (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768457003"/>
+      <display value="Product containing bismuth and/or bismuth compound (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768592009"/>
+      <display value="Product containing gold and/or gold compound (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768600002"/>
+      <display value="Product containing coumarin (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768614002"/>
+      <display value="Product containing phenothiazine and/or phenothiazine derivative (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768618004"/>
+      <display value="Product containing titanium and/or titanium compound (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768621002"/>
+      <display value="Product containing platinum and/or platinum compound (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768688006"/>
+      <display value="Product containing strontium and/or strontium compound (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768697005"/>
+      <display value="Product containing barium and/or barium compound (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768699008"/>
+      <display value="Product containing manganese and/or manganese compound (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768759001"/>
+      <display value="Product containing steroid (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768763008"/>
+      <display value="Product containing gadolinium and/or gadolinium compound (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768766000"/>
+      <display value="Product containing mercury and/or mercury compound (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="768865007"/>
+      <display value="Product containing interferon (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="770377009"/>
+      <display value="Product containing 5-alpha reductase inhibitor (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="770387008"/>
+      <display value="Medicinal product containing aminoglycoside and acting as antibacterial agent (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="771344003"/>
+      <display value="Product containing paraben and/or paraben derivative (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="788032009"/>
+      <display value="Medicinal product acting as adhesive (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="788541006"/>
+      <display value="Product containing synthetic cannabinoid (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="789250004"/>
+      <display value="Product containing acetylcholinesterase inhibitor (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="79440004"/>
+      <display value="Product containing corticosteroid and/or corticosteroid derivative (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="830118008"/>
+      <display value="Medicinal product acting as loop diuretic (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="836398006"/>
+      <display value="Vaccine product containing Streptococcus pneumoniae antigen (medicinal product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="860818003"/>
+      <display value="Vaccine product containing only Bacillus anthracis antigen (medicinal product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="871727001"/>
+      <display value="Vaccine product containing only Vaccinia virus antigen (medicinal product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="871742003"/>
+      <display value="Vaccine product containing only Clostridium tetani antigen (medicinal product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="871758000"/>
+      <display value="Vaccine product containing only Bordetella pertussis antigen (medicinal product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="871826000"/>
+      <display value="Vaccine product containing only Clostridium tetani and Corynebacterium diphtheriae antigens (medicinal product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="871839001"/>
+      <display value="Vaccine product containing only Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b antigens (medicinal product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="871875004"/>
+      <display value="Vaccine product containing only Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae antigens (medicinal product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="871919004"/>
+      <display value="Vaccine product containing only Human alphaherpesvirus 3 antigen (medicinal product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="87233003"/>
+      <display value="Product containing low molecular weight heparin (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="89119000"/>
+      <display value="Nitrate salt (substance)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="895560003"/>
+      <display value="Medicinal product containing Vinca alkaloid and acting as antineoplastic agent (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="90614001"/>
+      <display value="Medicinal product containing beta-lactam and acting as antibacterial agent (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="961000221100"/>
+      <display value="Vaccine product containing only Salmonella enterica subspecies enterica serovar Typhi antigen (medicinal product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="96281001"/>
+      <display value="Product containing bisphosphonate (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="96302009"/>
+      <display value="Product containing 3-hydroxy-3-methylglutaryl-coenzyme A reductase inhibitor (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="96308008"/>
+      <display value="Product containing angiotensin II receptor antagonist (product)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <version value="http://snomed.info/sct/731000124108/version/20230301"/>
+      <code value="981000221107"/>
+      <display value="Vaccine product containing only Streptococcus pneumoniae antigen (medicinal product)"/>
+    </contains>
+  </expansion>
+</ValueSet>

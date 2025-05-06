@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="immunization-subpotent-reason"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="pher"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/immunization-subpotent-reason"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.993"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="ImmunizationSubpotentReason"/>
+  <title value="Immunization Subpotent Reason"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://www.hl7.org/Special/committees/pher/index.cfm"/>
+    </telecom>
+  </contact>
+  <description value="The value set to instantiate this attribute should be drawn from a terminologically robust code system that consists of or contains concepts to support describing the reason why a dose is considered to be subpotent. This value set is provided as a suggestive example."/>
+  <immutable value="true"/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/immunization-subpotent-reason"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:d93d22a9-99bd-4047-abb9-7a68a8ffadf3"/>
+    <timestamp value="2025-01-17T09:53:38-07:00"/>
+    <total value="5"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/immunization-subpotent-reason|1.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/immunization-subpotent-reason"/>
+      <code value="partialdose"/>
+      <display value="Partial Dose"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/immunization-subpotent-reason"/>
+      <code value="coldchainbreak"/>
+      <display value="Cold Chain Break"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/immunization-subpotent-reason"/>
+      <code value="recall"/>
+      <display value="Manufacturer Recall"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/immunization-subpotent-reason"/>
+      <code value="adversestorage"/>
+      <display value="Adverse Storage"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/immunization-subpotent-reason"/>
+      <code value="expired"/>
+      <display value="Expired Product"/>
+    </contains>
+  </expansion>
+</ValueSet>

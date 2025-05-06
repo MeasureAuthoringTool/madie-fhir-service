@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="reason-medication-not-given-codes"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="phx"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/reason-medication-not-given-codes"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.342"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="SNOMEDCTReasonMedicationNotGivenCodes"/>
+  <title value="SNOMED CT Reason Medication Not Given Codes"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="This value set includes all medication refused, medication not administered, and non-administration of necessary drug or medicine codes from SNOMED CT - provided as an exemplar value set."/>
+  <immutable value="true"/>
+  <copyright value="This value set includes content from SNOMED CT, which is copyright 2002 International Health Terminology Standards Development Organisation (IHTSDO), and distributed by agreement between IHTSDO and HL7. Implementer use of SNOMED CT is not covered by this agreement."/>
+  <compose>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="242990004"/>
+      </filter>
+    </include>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="182895007"/>
+      </filter>
+    </include>
+  </compose>
+  <expansion>
+    <extension url="http://hl7.org/fhir/StructureDefinition/valueset-unclosed">
+      <valueBoolean value="true"/>
+    </extension>
+    <identifier value="urn:uuid:5e8a2037-5020-44cb-a894-36f5e2b2e1d2"/>
+    <timestamp value="2025-01-17T09:53:38-07:00"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-valueset"/>
+      <valueUri value="null"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801"/>
+    </parameter>
+    <parameter>
+      <name value="version"/>
+      <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801"/>
+    </parameter>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="242990004"/>
+      <display value="Drug not available for administration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182895007"/>
+      <display value="Drug declined by patient"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182896008"/>
+      <display value="Drug declined by patient - dislikes taste"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182897004"/>
+      <display value="Drug declined by patient - side effects"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182898009"/>
+      <display value="Drug declined by patient - inconvenient"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182899001"/>
+      <display value="Drug declined by patient - problem swallowing"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182900006"/>
+      <display value="Drug declined by patient - patient beliefs"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182901005"/>
+      <display value="Drug declined by patient - alternative therapy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182902003"/>
+      <display value="Drug declined by patient - cannot pay script"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182903008"/>
+      <display value="Drug declined by patient - reason unknown"/>
+    </contains>
+  </expansion>
+</ValueSet>

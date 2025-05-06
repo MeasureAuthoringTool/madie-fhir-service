@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="related-claim-relationship"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="fm"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/related-claim-relationship"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.568"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="ExampleRelatedClaimRelationshipCodes"/>
+  <title value="Example Related Claim Relationship Codes"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="Financial Management"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="This value set includes sample Related Claim Relationship codes."/>
+  <copyright value="This is an example set."/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-relatedclaimrelationship"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:366ae29b-ea21-4867-8a6e-2491038f188a"/>
+    <timestamp value="2025-01-17T09:53:38-07:00"/>
+    <total value="2"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/ex-relatedclaimrelationship|1.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-relatedclaimrelationship"/>
+      <code value="prior"/>
+      <display value="Prior Claim"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-relatedclaimrelationship"/>
+      <code value="associated"/>
+      <display value="Associated Claim"/>
+    </contains>
+  </expansion>
+</ValueSet>

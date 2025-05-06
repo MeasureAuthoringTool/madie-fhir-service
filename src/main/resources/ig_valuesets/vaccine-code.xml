@@ -1,0 +1,1803 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="vaccine-code"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="pher"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/vaccine-code"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.3.88.12.80.22"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="VaccineAdministeredValueSet"/>
+  <title value="Vaccine Administered Value Set"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="HL7 FHIR"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="This identifies the vaccine substance administered - CVX codes."/>
+  <compose>
+    <include>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+    </include>
+    <include>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:bfa2b48a-5dd0-4375-921a-071ff917c37f"/>
+    <timestamp value="2025-01-17T09:53:39-07:00"/>
+    <total value="344"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-valueset"/>
+      <valueUri value="null"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://hl7.org/fhir/sid/cvx|20231214"/>
+    </parameter>
+    <parameter>
+      <name value="version"/>
+      <valueUri value="http://hl7.org/fhir/sid/cvx|20231214"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="urn:oid:1.2.36.1.2001.1005.17"/>
+    </parameter>
+    <parameter>
+      <name value="version"/>
+      <valueUri value="urn:oid:1.2.36.1.2001.1005.17"/>
+    </parameter>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="01"/>
+      <display value="DTP"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="02"/>
+      <display value="OPV"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="03"/>
+      <display value="MMR"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="04"/>
+      <display value="M/R"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="05"/>
+      <display value="measles"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="06"/>
+      <display value="rubella"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="07"/>
+      <display value="mumps"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="08"/>
+      <display value="Hep B, adolescent or pediatric"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="09"/>
+      <display value="Td (adult), 2 Lf tetanus toxoid, preservative free, adsorbed"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="10"/>
+      <display value="IPV"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="11"/>
+      <display value="pertussis"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="12"/>
+      <display value="diphtheria antitoxin"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="13"/>
+      <display value="TIG"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="14"/>
+      <display value="IG, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="15"/>
+      <display value="influenza, split (incl. purified surface antigen)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="16"/>
+      <display value="influenza, whole"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="17"/>
+      <display value="Hib, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="18"/>
+      <display value="rabies, intramuscular injection"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="19"/>
+      <display value="BCG"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="20"/>
+      <display value="DTaP"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="21"/>
+      <display value="varicella"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="22"/>
+      <display value="DTP-Hib"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="23"/>
+      <display value="plague"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="24"/>
+      <display value="anthrax"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="25"/>
+      <display value="typhoid, oral"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="26"/>
+      <display value="cholera, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="27"/>
+      <display value="botulinum antitoxin"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="28"/>
+      <display value="DT (pediatric)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="29"/>
+      <display value="CMVIG"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="30"/>
+      <display value="HBIG"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="31"/>
+      <display value="Hep A, pediatric, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="32"/>
+      <display value="meningococcal MPSV4"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="33"/>
+      <display value="pneumococcal polysaccharide PPV23"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="34"/>
+      <display value="RIG"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="35"/>
+      <display value="tetanus toxoid, adsorbed"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="36"/>
+      <display value="VZIG"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="37"/>
+      <display value="yellow fever"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="38"/>
+      <display value="rubella/mumps"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="39"/>
+      <display value="Japanese encephalitis SC"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="40"/>
+      <display value="rabies, intradermal injection"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="41"/>
+      <display value="typhoid, parenteral"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="42"/>
+      <display value="Hep B, adolescent/high risk infant"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="43"/>
+      <display value="Hep B, adult"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="44"/>
+      <display value="Hep B, dialysis"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="45"/>
+      <display value="Hep B, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="46"/>
+      <display value="Hib (PRP-D)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="47"/>
+      <display value="Hib (HbOC)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="48"/>
+      <display value="Hib (PRP-T)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="49"/>
+      <display value="Hib (PRP-OMP)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="50"/>
+      <display value="DTaP-Hib"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="51"/>
+      <display value="Hib-Hep B"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="52"/>
+      <display value="Hep A, adult"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="53"/>
+      <display value="typhoid, parenteral, AKD (U.S. military)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="54"/>
+      <display value="adenovirus, type 4"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="55"/>
+      <display value="adenovirus, type 7"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="56"/>
+      <display value="dengue fever tetravalent"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="57"/>
+      <display value="hantavirus"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="58"/>
+      <display value="Hep C"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="59"/>
+      <display value="Hep E"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="60"/>
+      <display value="herpes simplex 2"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="61"/>
+      <display value="HIV"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="62"/>
+      <display value="HPV, quadrivalent"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="63"/>
+      <display value="Junin virus"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="64"/>
+      <display value="leishmaniasis"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="65"/>
+      <display value="leprosy"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="66"/>
+      <display value="Lyme disease"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="67"/>
+      <display value="malaria"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="68"/>
+      <display value="melanoma"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="69"/>
+      <display value="parainfluenza-3"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="70"/>
+      <display value="Q fever"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="71"/>
+      <display value="RSV-IGIV"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="72"/>
+      <display value="rheumatic fever"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="73"/>
+      <display value="Rift Valley fever"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="74"/>
+      <display value="rotavirus, tetravalent"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="75"/>
+      <display value="vaccinia (smallpox)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="76"/>
+      <display value="Staphylococcus bacterio lysate"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="77"/>
+      <display value="Tick-borne encephalitis vaccine (non-US)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="78"/>
+      <display value="tularemia vaccine"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="79"/>
+      <display value="vaccinia immune globulin"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="80"/>
+      <display value="VEE, live"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="81"/>
+      <display value="VEE, inactivated"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="82"/>
+      <display value="adenovirus, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="83"/>
+      <display value="Hep A, ped/adol, 2 dose"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="84"/>
+      <display value="Hep A, ped/adol, 3 dose"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="85"/>
+      <display value="Hep A, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="86"/>
+      <display value="IG"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="87"/>
+      <display value="IGIV"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="88"/>
+      <display value="influenza, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="89"/>
+      <display value="polio, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="90"/>
+      <display value="rabies, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="91"/>
+      <display value="typhoid, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="92"/>
+      <display value="VEE, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="93"/>
+      <display value="RSV-MAb"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="94"/>
+      <display value="MMRV"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="95"/>
+      <display value="TST-OT tine test"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="96"/>
+      <display value="TST-PPD intradermal"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="97"/>
+      <display value="TST-PPD tine test"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="98"/>
+      <display value="TST, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="99"/>
+      <display value="RESERVED - do not use"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="100"/>
+      <display value="pneumococcal conjugate PCV 7"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="101"/>
+      <display value="typhoid, ViCPs"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="102"/>
+      <display value="DTP-Hib-Hep B"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="103"/>
+      <display value="meningococcal C conjugate"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="104"/>
+      <display value="Hep A-Hep B"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="105"/>
+      <display value="vaccinia (smallpox) diluted"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="106"/>
+      <display value="DTaP, 5 pertussis antigens"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="107"/>
+      <display value="DTaP, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="108"/>
+      <display value="meningococcal ACWY, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="109"/>
+      <display value="pneumococcal, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="110"/>
+      <display value="DTaP-Hep B-IPV"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="111"/>
+      <display value="influenza, live, intranasal"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="112"/>
+      <display value="tetanus toxoid, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="113"/>
+      <display value="Td (adult), 5 Lf tetanus toxoid, preservative free, adsorbed"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="114"/>
+      <display value="meningococcal MCV4P"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="115"/>
+      <display value="Tdap"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="116"/>
+      <display value="rotavirus, pentavalent"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="117"/>
+      <display value="VZIG (IND)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="118"/>
+      <display value="HPV, bivalent"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="119"/>
+      <display value="rotavirus, monovalent"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="120"/>
+      <display value="DTaP-Hib-IPV"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="121"/>
+      <display value="zoster live"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="122"/>
+      <display value="rotavirus, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="123"/>
+      <display value="influenza, H5N1-1203"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="125"/>
+      <display value="Novel Influenza-H1N1-09, nasal"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="126"/>
+      <display value="Novel influenza-H1N1-09, preservative-free"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="127"/>
+      <display value="Novel influenza-H1N1-09"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="128"/>
+      <display value="Novel Influenza-H1N1-09, all formulations"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="129"/>
+      <display value="Japanese Encephalitis, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="130"/>
+      <display value="DTaP-IPV"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="131"/>
+      <display value="typhus, historical"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="132"/>
+      <display value="DTaP-IPV-HIB-HEP B, historical"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="133"/>
+      <display value="Pneumococcal conjugate PCV 13"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="134"/>
+      <display value="Japanese Encephalitis IM"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="135"/>
+      <display value="Influenza, high dose seasonal"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="136"/>
+      <display value="Meningococcal MCV4O"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="137"/>
+      <display value="HPV, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="138"/>
+      <display value="Td (adult)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="139"/>
+      <display value="Td(adult) unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="140"/>
+      <display value="Influenza, seasonal, injectable, preservative free"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="141"/>
+      <display value="Influenza, seasonal, injectable"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="142"/>
+      <display value="tetanus toxoid, not adsorbed"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="143"/>
+      <display value="Adenovirus types 4 and 7"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="144"/>
+      <display value="influenza, seasonal, intradermal, preservative free"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="145"/>
+      <display value="RSV-MAb (new)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="146"/>
+      <display value="DTaP,IPV,Hib,HepB"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="147"/>
+      <display value="meningococcal MCV4, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="148"/>
+      <display value="Meningococcal C/Y-HIB PRP"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="149"/>
+      <display value="influenza, live, intranasal, quadrivalent"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="150"/>
+      <display value="influenza, injectable, quadrivalent, preservative free"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="151"/>
+      <display value="influenza nasal, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="152"/>
+      <display value="Pneumococcal Conjugate, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="153"/>
+      <display value="Influenza, injectable, MDCK, preservative free"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="154"/>
+      <display value="Hep A, IG"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="155"/>
+      <display value="influenza, recombinant, injectable, preservative free"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="156"/>
+      <display value="Rho(D)-IG"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="157"/>
+      <display value="Rho(D) -IG IM"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="158"/>
+      <display value="influenza, injectable, quadrivalent"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="159"/>
+      <display value="Rho(D) - Unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="160"/>
+      <display value="Influenza A monovalent (H5N1), ADJUVANTED-2013"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="161"/>
+      <display value="Influenza, injectable,quadrivalent, preservative free, pediatric"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="162"/>
+      <display value="meningococcal B, recombinant"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="163"/>
+      <display value="meningococcal B, OMV"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="164"/>
+      <display value="meningococcal B, unspecified"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="165"/>
+      <display value="HPV9"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="166"/>
+      <display value="influenza, intradermal, quadrivalent, preservative free"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="167"/>
+      <display value="meningococcal, unknown serogroups"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="168"/>
+      <display value="influenza, trivalent, adjuvanted"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="169"/>
+      <display value="Hep A, live attenuated"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="170"/>
+      <display value="DTAP/IPV/HIB - non-US"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="171"/>
+      <display value="Influenza, injectable, MDCK, preservative free, quadrivalent"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="172"/>
+      <display value="cholera, WC-rBS"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="173"/>
+      <display value="cholera, BivWC"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="174"/>
+      <display value="cholera, live attenuated"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="175"/>
+      <display value="Rabies - IM Diploid cell culture"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="176"/>
+      <display value="Rabies - IM fibroblast culture"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="177"/>
+      <display value="PCV10"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="178"/>
+      <display value="OPV bivalent"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="179"/>
+      <display value="OPV ,monovalent, unspecified"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="180"/>
+      <display value="tetanus immune globulin"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="181"/>
+      <display value="anthrax immune globulin"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="182"/>
+      <display value="OPV, Unspecified"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="183"/>
+      <display value="Yellow fever vaccine - alt"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="184"/>
+      <display value="Yellow fever, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="185"/>
+      <display value="influenza, recombinant, quadrivalent,injectable, preservative free"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="186"/>
+      <display value="Influenza, injectable, MDCK, quadrivalent, preservative"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="187"/>
+      <display value="zoster recombinant"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="188"/>
+      <display value="zoster, unspecified formulation"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="189"/>
+      <display value="HepB-CpG"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="190"/>
+      <display value="Typhoid conjugate vaccine (TCV)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="191"/>
+      <display value="meningococcal A polysaccharide (non-US)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="192"/>
+      <display value="meningococcal AC polysaccharide (non-US)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="193"/>
+      <display value="Hep A-Hep B, pediatric/adolescent"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="194"/>
+      <display value="Influenza, Southern Hemisphere"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="195"/>
+      <display value="DT, IPV adsorbed"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="196"/>
+      <display value="Td, adsorbed, preservative free, adult use, Lf unspecified"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="197"/>
+      <display value="influenza, high-dose, quadrivalent"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="198"/>
+      <display value="DTP-hepB-Hib Pentavalent Non-US"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="200"/>
+      <display value="influenza, Southern Hemisphere, pediatric, preservative free"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="201"/>
+      <display value="influenza, Southern Hemisphere, preservative free"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="202"/>
+      <display value="influenza, Southern Hemisphere, quadrivalent, with preservative"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="203"/>
+      <display value="meningococcal conjugate quadrivalent, MenACWY-TT (MCV4)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="204"/>
+      <display value="Ebola Zaire vaccine, live, recombinant, 1mL dose"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="205"/>
+      <display value="Influenza vaccine, quadrivalent, adjuvanted"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="206"/>
+      <display value="Vaccinia, smallpox Mpox vaccine live, PF, SQ or ID injection"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="207"/>
+      <display value="COVID-19, mRNA, LNP-S, PF, 100 mcg/0.5mL dose or 50 mcg/0.25mL dose"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="208"/>
+      <display value="COVID-19, mRNA, LNP-S, PF, 30 mcg/0.3 mL dose"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="210"/>
+      <display value="COVID-19 vaccine, vector-nr, rS-ChAdOx1, PF, 0.5 mL"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="211"/>
+      <display value="COVID-19, subunit, rS-nanoparticle+Matrix-M1 Adjuvant, PF, 0.5 mL"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="212"/>
+      <display value="COVID-19 vaccine, vector-nr, rS-Ad26, PF, 0.5 mL"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="213"/>
+      <display value="SARS-COV-2 (COVID-19) vaccine, UNSPECIFIED"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="214"/>
+      <display value="Ebola, unspecified"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="215"/>
+      <display value="Pneumococcal conjugate PCV15, polysaccharide CRM197 conjugate, adjuvant, PF"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="216"/>
+      <display value="Pneumococcal conjugate PCV20, polysaccharide CRM197 conjugate, adjuvant, PF"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="217"/>
+      <display value="COVID-19, mRNA, LNP-S, PF, 30 mcg/0.3 mL dose, tris-sucrose"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="218"/>
+      <display value="COVID-19, mRNA, LNP-S, PF, 10 mcg/0.2 mL dose, tris-sucrose"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="219"/>
+      <display value="COVID-19, mRNA, LNP-S, PF, 3 mcg/0.2 mL dose, tris-sucrose"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="220"/>
+      <display value="HepB recombinant, 3-antigen, Al(OH)3"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="221"/>
+      <display value="COVID-19, mRNA, LNP-S, PF, 50 mcg/0.5 mL dose"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="222"/>
+      <display value="Tick-borne encephalitis, unspecified"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="223"/>
+      <display value="Tick-borne encephalitis, inactivated, PF, 0.25mL"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="224"/>
+      <display value="Tick-borne encephalitis, inactivated, PF, 0.5mL"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="225"/>
+      <display value="COVID-19, D614, recomb, preS dTM, AS03 adjuvant add, PF, 5mcg/0.5mL"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="226"/>
+      <display value="COVID-19, D614, recomb, preS dTM, AS03 adjuvant add, PF, 10mcg/0.5mL"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="227"/>
+      <display value="COVID-19, mRNA, LNP-S, PF, pediatric 50 mcg/0.5 mL dose"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="228"/>
+      <display value="COVID-19, mRNA, LNP-S, PF, pediatric 25 mcg/0.25 mL dose"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="229"/>
+      <display value="COVID-19, mRNA, LNP-S, bivalent, PF, 50 mcg/0.5 mL or 25mcg/0.25 mL dose"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="230"/>
+      <display value="COVID-19, mRNA, LNP-S, bivalent, PF, 10 mcg/0.2 mL"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="231"/>
+      <display value="influenza, Southern Hemisphere, high-dose, quadrivalent"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="300"/>
+      <display value="COVID-19, mRNA, LNP-S, bivalent, PF, 30 mcg/0.3 mL dose"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="301"/>
+      <display value="COVID-19, mRNA, LNP-S, bivalent, PF, 10 mcg/0.2 mL dose"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="302"/>
+      <display value="COVID-19, mRNA, LNP-S, bivalent, PF, 3 mcg/0.2 mL dose"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="303"/>
+      <display value="RSV, recombinant, protein subunit RSVpreF, adjuvant reconstituted, 0.5 mL, PF"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="304"/>
+      <display value="Respiratory syncytial virus (RSV), unspecified"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="305"/>
+      <display value="RSV, bivalent, protein subunit RSVpreF, diluent reconstituted, 0.5 mL, PF"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="306"/>
+      <display value="RSV, mAb, nirsevimab-alip, 0.5 mL, neonate to 24 months"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="307"/>
+      <display value="RSV, mAb, nirsevimab-alip, 1 mL, neonate to 24 months"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="308"/>
+      <display value="COVID-19, mRNA, LNP-S, PF, tris-sucrose, 3 mcg/0.3 mL"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="309"/>
+      <display value="COVID-19, mRNA, LNP-S, PF, tris-sucrose, 30 mcg/0.3 mL"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="310"/>
+      <display value="COVID-19, mRNA, LNP-S, PF, tris-sucrose, 10 mcg/0.3 mL"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="311"/>
+      <display value="COVID-19, mRNA, LNP-S, PF, 25 mcg/0.25 mL"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="312"/>
+      <display value="COVID-19, mRNA, LNP-S, PF, 50 mcg/0.5 mL"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="313"/>
+      <display value="COVID-19, subunit, rS-nanoparticle, adjuvanted, PF, 5 mcg/0.5 mL"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="314"/>
+      <display value="Respiratory syncytial virus (RSV) vaccine, unspecified"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="315"/>
+      <display value="Respiratory syncytial virus (RSV) MAB, unspecified"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="316"/>
+      <display value="meningococcal polysaccharide (MenACWY-TT conjugate), (MenB), PF"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="317"/>
+      <display value="Chikungunya live attenuated vaccine, 0.5 mL, PF"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="500"/>
+      <display value="COVID-19 Non-US Vaccine, Product Unknown"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="501"/>
+      <display value="COVID-19 IV Non-US Vaccine (QAZCOVID-IN)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="502"/>
+      <display value="COVID-19 IV Non-US Vaccine (COVAXIN)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="503"/>
+      <display value="COVID-19 LAV Non-US Vaccine (COVIVAC)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="504"/>
+      <display value="COVID-19 VVnr Non-US Vaccine (Sputnik Light)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="505"/>
+      <display value="COVID-19 VVnr Non-US Vaccine (Sputnik V)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="506"/>
+      <display value="COVID-19 VVnr Non-US Vaccine (CanSino Biological Inc./Beijing Institute of Biotechnology"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="507"/>
+      <display value="COVID-19 PS Non-US Vaccine (Anhui Zhifei Longcom Biopharm + Inst of Micro, Chinese Acad of Sciences)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="508"/>
+      <display value="COVID-19 PS Non-US Vaccine (Jiangsu Province Centers for Disease Control and Prevention)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="509"/>
+      <display value="COVID-19 PS Non-US Vaccine (EpiVacCorona)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="510"/>
+      <display value="COVID-19 IV Non-US Vaccine (BIBP, Sinopharm)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="511"/>
+      <display value="COVID-19 IV Non-US Vaccine (CoronaVac, Sinovac)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="512"/>
+      <display value="SARS-COV-2 COVID-19 VLP Non-US Vaccine (Medicago, Covifenz)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="513"/>
+      <display value="SARS-COV-2 COVID-19 PS Non-US Vaccine (Anhui Zhifei Longcom, Zifivax)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="514"/>
+      <display value="SARS-COV-2 COVID-19 DNA Non-US Vaccine (Zydus Cadila, ZyCoV-D)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="515"/>
+      <display value="SARS-COV-2 COVID-19 PS Non-US Vaccine (Medigen, MVC-COV1901)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="516"/>
+      <display value="COV-2 COVID-19 Inactivated Non-US Vaccine Product (Minhai Biotechnology Co, KCONVAC)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="517"/>
+      <display value="SARS-COV-2 COVID-19 PS Non-US Vaccine (Biological E Limited, Corbevax)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="518"/>
+      <display value="COVID-19 Inactivated, Non-US Vaccine (VLA2001, Valneva)"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="519"/>
+      <display value="COVID-19 mRNA, bivalent, original/Omicron BA.1, Non-US Vaccine (Spikevax Bivalent), Moderna"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="520"/>
+      <display value="COVID-19 mRNA, bivalent, original/Omicron BA.1, Non-US Vaccine Product, Pfizer-BioNTech"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="521"/>
+      <display value="COVID-19 SP, protein-based, adjuvanted (VidPrevtyn Beta), Sanofi-GSK"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="801"/>
+      <display value="AS03 Adjuvant"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="998"/>
+      <display value="no vaccine administered"/>
+    </contains>
+    <contains>
+      <system value="http://hl7.org/fhir/sid/cvx"/>
+      <code value="999"/>
+      <display value="unknown"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="AGRPAL"/>
+      <display value="Agrippal"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="AVAXM"/>
+      <display value="Avaxim"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="BCG"/>
+      <display value="BCG"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="CDT"/>
+      <display value="CDT"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="CMX"/>
+      <display value="COMVAX"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="DTP"/>
+      <display value="Triple Antigen"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="DTPA"/>
+      <display value="DTPa"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="ENGP"/>
+      <display value="Engerix B"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="FLRIX"/>
+      <display value="Fluarix"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="FLUVAX"/>
+      <display value="Fluvax"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="FLVRN"/>
+      <display value="Fluvirin"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="FVXJNR"/>
+      <display value="Fluvax Junior"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="GNDIP"/>
+      <display value="Diphtheria"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="GNFLU"/>
+      <display value="Influenza"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="GNHEP"/>
+      <display value="Hepatitis B"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="GNHIB"/>
+      <display value="HIB"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="GNHPA"/>
+      <display value="Hepatitis A"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="GNJEN"/>
+      <display value="Japanese Encephalitis"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="GNMEA"/>
+      <display value="Measles"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="GNMEN"/>
+      <display value="Meningococcal C"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="GNMUM"/>
+      <display value="Mumps"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="GNPNE"/>
+      <display value="Pneumococcal"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="GNPOL"/>
+      <display value="Polio"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="GNROX"/>
+      <display value="Rotavirus"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="GNRUB"/>
+      <display value="Rubella"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="GNTET"/>
+      <display value="Tetanus"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="GNVAR"/>
+      <display value="Varicella"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="HATWNJ"/>
+      <display value="Twinrix Junior"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="HAVAQ"/>
+      <display value="Vaqta Paed/Adol"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="HAVJ"/>
+      <display value="Havrix Junior"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="HBOC"/>
+      <display value="HibTITER"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="HBV"/>
+      <display value="HBV"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="HBVP"/>
+      <display value="HBVAX II"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="HBX"/>
+      <display value="Hiberix"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="IFHX"/>
+      <display value="Infanrix Hexa"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="IFIP"/>
+      <display value="Infanrix-IPV"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="IFPA"/>
+      <display value="Infanrix Penta"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="IFX"/>
+      <display value="Infanrix"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="IFXB"/>
+      <display value="InfanrixHepB"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="INFLUV"/>
+      <display value="Influvac"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="IPV"/>
+      <display value="IPOL"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="JEVAX"/>
+      <display value="JE-VAX"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="MENJUG"/>
+      <display value="Menjugate"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="MENTEC"/>
+      <display value="Meningitec"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="MENUME"/>
+      <display value="Menomune"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="MENVAX"/>
+      <display value="Mencevax ACWY"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="MMR"/>
+      <display value="MMR"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="MMRCSL"/>
+      <display value="MMR II"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="MMRSKB"/>
+      <display value="Priorix"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="MNTRX"/>
+      <display value="Menitorix"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="NEISVC"/>
+      <display value="NeisVac-C"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="OPV"/>
+      <display value="Polio"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="P"/>
+      <display value="Pertussis"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="PANVAX"/>
+      <display value="Panvax"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="PDCL"/>
+      <display value="Pediacel"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="PLCL"/>
+      <display value="Poliacel"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="PNEUMO"/>
+      <display value="Pneumovax"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="PRPD"/>
+      <display value="ProHIBit"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="PROQAD"/>
+      <display value="ProQuad"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="PRPOMP"/>
+      <display value="PedvaxHIB"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="PRPT"/>
+      <display value="ActHIB"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="PRVNR"/>
+      <display value="Prevenar 7"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="PRVTH"/>
+      <display value="Prevenar 13"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="PRXTEX"/>
+      <display value="Priorix-Tetra"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="QDCL"/>
+      <display value="Quadracel"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="ROTRIX"/>
+      <display value="Rotarix"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="ROTTEQ"/>
+      <display value="Rotateq"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="SYNFLX"/>
+      <display value="Synflorix"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="TCL"/>
+      <display value="Tripacel"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="VAXGRP"/>
+      <display value="Vaxigrip"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="VGRJNR"/>
+      <display value="Vaxigrip Junior"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="VLRIX"/>
+      <display value="Varilrix"/>
+    </contains>
+    <contains>
+      <system value="urn:oid:1.2.36.1.2001.1005.17"/>
+      <code value="VRVAX"/>
+      <display value="Varivax"/>
+    </contains>
+  </expansion>
+</ValueSet>

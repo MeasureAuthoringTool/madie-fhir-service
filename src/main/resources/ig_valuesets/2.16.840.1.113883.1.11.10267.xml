@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="2.16.840.1.113883.1.11.10267"/>
+  <meta>
+    <versionId value="17"/>
+    <lastUpdated value="2022-06-29T01:02:31.000-04:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+    <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/publishable-valueset-cqfm"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/valueset-author">
+    <valueString value="HL7 Structured Documents WG"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/valueset-keyWord">
+    <valueString value="C-CDA,CCDAr1_1,CCDAr21"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate">
+    <valueDate value="2022-12-15"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/valueset-effectiveDate">
+    <valueDate value="2022-06-29"/>
+  </extension>
+  <url value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.1.11.10267"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.1.11.10267"/>
+  </identifier>
+  <version value="20220629"/>
+  <name value="ParticipationFunction"/>
+  <title value="ParticipationFunction"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2022-06-29T01:02:31-04:00"/>
+  <publisher value="HL7 Terminology"/>
+  <description value="removed two codes that were not in the original version of the code system."/>
+  <jurisdiction>
+    <extension url="http://hl7.org/fhir/StructureDefinition/data-absent-reason">
+      <valueString value="UNKNOWN"/>
+    </extension>
+  </jurisdiction>
+  <purpose value="(Clinical Focus: This code is used to specify the exact function an actor had in a service in all necessary detail. This domain may include local extensions (CWE).),(Data Element Scope: ),(Inclusion Criteria: ),(Exclusion Criteria: )"/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <concept>
+        <code value="ADMPHYS"/>
+        <display value="admitting physician"/>
+      </concept>
+      <concept>
+        <code value="ANEST"/>
+        <display value="anesthesist"/>
+      </concept>
+      <concept>
+        <code value="ANRS"/>
+        <display value="anesthesia nurse"/>
+      </concept>
+      <concept>
+        <code value="ASSEMBLER"/>
+        <display value="assembly software"/>
+      </concept>
+      <concept>
+        <code value="ATTPHYS"/>
+        <display value="attending physician"/>
+      </concept>
+      <concept>
+        <code value="AUCG"/>
+        <display value="caregiver information receiver"/>
+      </concept>
+      <concept>
+        <code value="AUCOV"/>
+        <display value="consent overrider"/>
+      </concept>
+      <concept>
+        <code value="AUEMROV"/>
+        <display value="emergency overrider"/>
+      </concept>
+      <concept>
+        <code value="AULR"/>
+        <display value="legitimate relationship information receiver"/>
+      </concept>
+      <concept>
+        <code value="AUTM"/>
+        <display value="care team information receiver"/>
+      </concept>
+      <concept>
+        <code value="AUWA"/>
+        <display value="work area information receiver"/>
+      </concept>
+      <concept>
+        <code value="CLMADJ"/>
+        <display value="claims adjudication"/>
+      </concept>
+      <concept>
+        <code value="COMPOSER"/>
+        <display value="composer software"/>
+      </concept>
+      <concept>
+        <code value="DISPHYS"/>
+        <display value="discharging physician"/>
+      </concept>
+      <concept>
+        <code value="ENROLL"/>
+        <display value="enrollment broker"/>
+      </concept>
+      <concept>
+        <code value="FASST"/>
+        <display value="first assistant surgeon"/>
+      </concept>
+      <concept>
+        <code value="FFSMGT"/>
+        <display value="ffs management"/>
+      </concept>
+      <concept>
+        <code value="FULINRD"/>
+        <display value="fully insured"/>
+      </concept>
+      <concept>
+        <code value="GRDCON"/>
+        <display value="legal guardian consent author"/>
+      </concept>
+      <concept>
+        <code value="MCMGT"/>
+        <display value="managed care management"/>
+      </concept>
+      <concept>
+        <code value="MDWF"/>
+        <display value="midwife"/>
+      </concept>
+      <concept>
+        <code value="NASST"/>
+        <display value="nurse assistant"/>
+      </concept>
+      <concept>
+        <code value="PAYORCNTR"/>
+        <display value="payor contracting"/>
+      </concept>
+      <concept>
+        <code value="PCP"/>
+        <display value="primary care physician"/>
+      </concept>
+      <concept>
+        <code value="POACON"/>
+        <display value="healthcare power of attorney consent author"/>
+      </concept>
+      <concept>
+        <code value="PRCON"/>
+        <display value="personal representative consent author"/>
+      </concept>
+      <concept>
+        <code value="PRISURG"/>
+        <display value="primary surgeon"/>
+      </concept>
+      <concept>
+        <code value="PROMSK"/>
+        <display value="authorized provider masking author"/>
+      </concept>
+      <concept>
+        <code value="PROVMGT"/>
+        <display value="provider management"/>
+      </concept>
+      <concept>
+        <code value="REINS"/>
+        <display value="reinsures"/>
+      </concept>
+      <concept>
+        <code value="RETROCES"/>
+        <display value="retrocessionaires"/>
+      </concept>
+      <concept>
+        <code value="REVIEWER"/>
+        <display value="reviewer"/>
+      </concept>
+      <concept>
+        <code value="RNDPHYS"/>
+        <display value="rounding physician"/>
+      </concept>
+      <concept>
+        <code value="SASST"/>
+        <display value="second assistant surgeon"/>
+      </concept>
+      <concept>
+        <code value="SELFINRD"/>
+        <display value="self insured"/>
+      </concept>
+      <concept>
+        <code value="SNRS"/>
+        <display value="scrub nurse"/>
+      </concept>
+      <concept>
+        <code value="SUBCON"/>
+        <display value="subject of consent author"/>
+      </concept>
+      <concept>
+        <code value="SUBCTRT"/>
+        <display value="subcontracting risk"/>
+      </concept>
+      <concept>
+        <code value="TASST"/>
+        <display value="third assistant"/>
+      </concept>
+      <concept>
+        <code value="UMGT"/>
+        <display value="utilization management"/>
+      </concept>
+      <concept>
+        <code value="UNDERWRTNG"/>
+        <display value="underwriting"/>
+      </concept>
+      <concept>
+        <code value="_AuthorizedParticipationFunction"/>
+        <display value="AuthorizedParticipationFunction"/>
+      </concept>
+      <concept>
+        <code value="_AuthorizedReceiverParticipationFunction"/>
+        <display value="AuthorizedReceiverParticipationFunction"/>
+      </concept>
+      <concept>
+        <code value="_ConsenterParticipationFunction"/>
+        <display value="ConsenterParticipationFunction"/>
+      </concept>
+      <concept>
+        <code value="_CoverageParticipationFunction"/>
+        <display value="CoverageParticipationFunction"/>
+      </concept>
+      <concept>
+        <code value="_OverriderParticipationFunction"/>
+        <display value="OverriderParticipationFunction"/>
+      </concept>
+      <concept>
+        <code value="_PayorParticipationFunction"/>
+        <display value="PayorParticipationFunction"/>
+      </concept>
+      <concept>
+        <code value="_SponsorParticipationFunction"/>
+        <display value="SponsorParticipationFunction"/>
+      </concept>
+      <concept>
+        <code value="_UnderwriterParticipationFunction"/>
+        <display value="UnderwriterParticipationFunction"/>
+      </concept>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:55ae5ec0-6dd6-484b-b83e-6b09e2fc78a0"/>
+    <timestamp value="2023-06-29T19:11:14-04:00"/>
+    <total value="49"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="ADMPHYS"/>
+      <display value="admitting physician"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="ANEST"/>
+      <display value="anesthesist"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="ANRS"/>
+      <display value="anesthesia nurse"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="ASSEMBLER"/>
+      <display value="assembly software"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="ATTPHYS"/>
+      <display value="attending physician"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="AUCG"/>
+      <display value="caregiver information receiver"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="AUCOV"/>
+      <display value="consent overrider"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="AUEMROV"/>
+      <display value="emergency overrider"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="AULR"/>
+      <display value="legitimate relationship information receiver"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="AUTM"/>
+      <display value="care team information receiver"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="AUWA"/>
+      <display value="work area information receiver"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="CLMADJ"/>
+      <display value="claims adjudication"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="COMPOSER"/>
+      <display value="composer software"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="DISPHYS"/>
+      <display value="discharging physician"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="ENROLL"/>
+      <display value="enrollment broker"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="FASST"/>
+      <display value="first assistant surgeon"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="FFSMGT"/>
+      <display value="ffs management"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="FULINRD"/>
+      <display value="fully insured"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="GRDCON"/>
+      <display value="legal guardian consent author"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="MCMGT"/>
+      <display value="managed care management"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="MDWF"/>
+      <display value="midwife"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="NASST"/>
+      <display value="nurse assistant"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="PAYORCNTR"/>
+      <display value="payor contracting"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="PCP"/>
+      <display value="primary care physician"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="POACON"/>
+      <display value="healthcare power of attorney consent author"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="PRCON"/>
+      <display value="personal representative consent author"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="PRISURG"/>
+      <display value="primary surgeon"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="PROMSK"/>
+      <display value="authorized provider masking author"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="PROVMGT"/>
+      <display value="provider management"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="REINS"/>
+      <display value="reinsures"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="RETROCES"/>
+      <display value="retrocessionaires"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="REVIEWER"/>
+      <display value="reviewer"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="RNDPHYS"/>
+      <display value="rounding physician"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="SASST"/>
+      <display value="second assistant surgeon"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="SELFINRD"/>
+      <display value="self insured"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="SNRS"/>
+      <display value="scrub nurse"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="SUBCON"/>
+      <display value="subject of consent author"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="SUBCTRT"/>
+      <display value="subcontracting risk"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="TASST"/>
+      <display value="third assistant"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="UMGT"/>
+      <display value="utilization management"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="UNDERWRTNG"/>
+      <display value="underwriting"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="_AuthorizedParticipationFunction"/>
+      <display value="AuthorizedParticipationFunction"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="_AuthorizedReceiverParticipationFunction"/>
+      <display value="AuthorizedReceiverParticipationFunction"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="_ConsenterParticipationFunction"/>
+      <display value="ConsenterParticipationFunction"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="_CoverageParticipationFunction"/>
+      <display value="CoverageParticipationFunction"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="_OverriderParticipationFunction"/>
+      <display value="OverriderParticipationFunction"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="_PayorParticipationFunction"/>
+      <display value="PayorParticipationFunction"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="_SponsorParticipationFunction"/>
+      <display value="SponsorParticipationFunction"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction"/>
+      <version value="2023-02-01"/>
+      <code value="_UnderwriterParticipationFunction"/>
+      <display value="UnderwriterParticipationFunction"/>
+    </contains>
+  </expansion>
+</ValueSet>

@@ -1,0 +1,5080 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="bodystructure-code"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="oo"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/bodystructure-code"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.142"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="SNOMEDCTMorphologicAbnormalities"/>
+  <title value="SNOMED CT Morphologic Abnormalities"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="This value set includes all codes from [SNOMED CT](http://snomed.info/sct) where concept is-a 442083009 (Anatomical or acquired body site (body structure))."/>
+  <copyright value="This resource includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyright of the International Health Terminology Standards Development Organisation (IHTSDO). Implementers of these specifications must have the appropriate SNOMED CT Affiliate license - for more information contact http://www.snomed.org/snomed-ct/get-snomed-ct or info@snomed.org"/>
+  <compose>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="49755003"/>
+      </filter>
+    </include>
+  </compose>
+  <expansion>
+    <extension url="http://hl7.org/fhir/StructureDefinition/valueset-unclosed">
+      <valueBoolean value="true"/>
+    </extension>
+    <identifier value="urn:uuid:22f62190-f923-497e-afb7-17070c3a7c55"/>
+    <timestamp value="2025-01-17T09:53:37-07:00"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-valueset"/>
+      <valueUri value="null"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801"/>
+    </parameter>
+    <parameter>
+      <name value="version"/>
+      <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801"/>
+    </parameter>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="49755003"/>
+      <display value="Abnormal tissue appearance"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="145009"/>
+      <display value="Colloid milium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="161006"/>
+      <display value="Thermal injury"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="182000"/>
+      <display value="Canalization"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="232001"/>
+      <display value="Congenital fold"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="255003"/>
+      <display value="Calcified nodule"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="259009"/>
+      <display value="Fibrous body"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="328005"/>
+      <display value="Follicular papule"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="339008"/>
+      <display value="Blister"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="354002"/>
+      <display value="Triton tumor, malignant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="367004"/>
+      <display value="Clubbing"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="394000"/>
+      <display value="Abnormal trabeculation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="419008"/>
+      <display value="Functional dilatation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="420002"/>
+      <display value="Anastomosis, heterocladic"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="487002"/>
+      <display value="Coil/whorled fibers"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="511008"/>
+      <display value="Fibrous meningioma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="575006"/>
+      <display value="Cholesteatoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="605004"/>
+      <display value="Severe inflammatory atypia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="738003"/>
+      <display value="Ball valve obstruction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="803009"/>
+      <display value="Paraganglioma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="810003"/>
+      <display value="Spindle cell nevus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="835009"/>
+      <display value="Peripheral T-cell lymphoma, AILD (Angioimmunoblastic Lymphadenopathy with Dysproteinemia)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="856006"/>
+      <display value="Actinic keratosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="900006"/>
+      <display value="Mucin-producing adenocarcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="915007"/>
+      <display value="Malignant melanoma in junctional nevus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="985004"/>
+      <display value="Neurilemmoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="988002"/>
+      <display value="Wet gangrene"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="999000"/>
+      <display value="Mixed islet cell and exocrine adenocarcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1040005"/>
+      <display value="Anterior open dislocation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1129000"/>
+      <display value="Acidophilic body"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1138003"/>
+      <display value="Moderate squamous cell atypia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1188006"/>
+      <display value="Superior open dislocation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1338007"/>
+      <display value="Basal cell carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1443001"/>
+      <display value="Chromophobe carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1454006"/>
+      <display value="Chronic fibrinous inflammation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1513001"/>
+      <display value="Melanotic neuroectodermal tumor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1522000"/>
+      <display value="Plaque"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1561008"/>
+      <display value="Swollen sarcoplasmic reticulum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1586004"/>
+      <display value="Subependymal giant cell astrocytoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1623000"/>
+      <display value="Myxopapillary ependymoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1736008"/>
+      <display value="Anteversion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1752006"/>
+      <display value="Clear cell adenoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1791001"/>
+      <display value="Radiation injury with fibrosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1806006"/>
+      <display value="Eruption"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="1996000"/>
+      <display value="Numeric atrophy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2014001"/>
+      <display value="Microlymphoblast"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2019006"/>
+      <display value="Sarcoplasmic bodies"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2026006"/>
+      <display value="Serous adenofibroma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2052000"/>
+      <display value="Acute necrosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2097009"/>
+      <display value="Dyskeratosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2122006"/>
+      <display value="Pressure atrophy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2142002"/>
+      <display value="Nodular melanoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2218006"/>
+      <display value="Endothelial degeneration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2221008"/>
+      <display value="Mesonephroma, malignant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2227007"/>
+      <display value="Adrenal cortical carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2289007"/>
+      <display value="Dicentric chromosome"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2348006"/>
+      <display value="Adenomatoid tumor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2412005"/>
+      <display value="Maculopapule"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2464004"/>
+      <display value="Moderate cytologic atypia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2483006"/>
+      <display value="Cavity"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2557004"/>
+      <display value="Chronic leukemia (morphologic abnormality)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2559001"/>
+      <display value="Claw-shaped deformity"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2570008"/>
+      <display value="Traction diverticulum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2710003"/>
+      <display value="Fibrolipoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2735009"/>
+      <display value="Papillary cystadenocarcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2763006"/>
+      <display value="Comedo"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2881000"/>
+      <display value="Anisokaryosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2952002"/>
+      <display value="Proliferative inflammation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2953007"/>
+      <display value="Microglandular hyperplasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="2985005"/>
+      <display value="Paget's disease, mammary"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3102004"/>
+      <display value="Oligodendroglioma, anaplastic"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3139003"/>
+      <display value="Ballooning degeneration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3313007"/>
+      <display value="Chronic superficial ulcer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3380003"/>
+      <display value="Superficial injury"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3404009"/>
+      <display value="Bite"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3416003"/>
+      <display value="Lengthening of short arm"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3645005"/>
+      <display value="Pregnancy luteoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3679006"/>
+      <display value="Polycystic change"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3821009"/>
+      <display value="Blunt injury"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3839000"/>
+      <display value="Lipid-rich carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3875003"/>
+      <display value="Tophus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="3898006"/>
+      <display value="Neoplasm, benign"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4000000"/>
+      <display value="Severe transitional cell atypia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4079000"/>
+      <display value="Mucoepidermoid carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4125007"/>
+      <display value="Bursal cyst"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4147007"/>
+      <display value="Mass"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4196002"/>
+      <display value="Eversion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4205002"/>
+      <display value="Türk cell"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4230004"/>
+      <display value="Pacinian tumor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4305004"/>
+      <display value="Metastatic signet ring cell carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4392007"/>
+      <display value="Malignant mixed tumor, osteosarcomatous type"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4476003"/>
+      <display value="Atypical glandular cells of uncertain significance"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4484004"/>
+      <display value="Nucleolar alteration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4532008"/>
+      <display value="Acute inflammation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4538007"/>
+      <display value="Papulovesicular rash"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4553004"/>
+      <display value="Subependymal glioma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4584002"/>
+      <display value="Scirrhous adenocarcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4590003"/>
+      <display value="Adenocarcinoma, metastatic"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4618001"/>
+      <display value="Congenital dextrorotation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4631006"/>
+      <display value="Tubular adenocarcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4684005"/>
+      <display value="Mesonephric duct hyperplasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4686007"/>
+      <display value="Blister due to degeneration of basal cells"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4720007"/>
+      <display value="Dystrophy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4797003"/>
+      <display value="Papillary adenocarcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4830009"/>
+      <display value="Hyperpigmentation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4857006"/>
+      <display value="Sequestrum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4876008"/>
+      <display value="Acute obstruction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4916000"/>
+      <display value="Pleomorphism"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4935000"/>
+      <display value="Adenocarcinoma in situ in villous adenoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4947006"/>
+      <display value="Contraction bands"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4950009"/>
+      <display value="Sezary's disease"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="4977000"/>
+      <display value="Eccrine spiradenoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5008001"/>
+      <display value="Pitting edema"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5014008"/>
+      <display value="Leydig cell tumor, benign"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5052009"/>
+      <display value="Merkel cell carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5178002"/>
+      <display value="Synovioma, benign"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5183005"/>
+      <display value="Inferior closed dislocation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5188001"/>
+      <display value="Round calculus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5237007"/>
+      <display value="Pautrier microabscess"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5242004"/>
+      <display value="Synechia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5244003"/>
+      <display value="Intraductal papilloma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5257006"/>
+      <display value="Follicular adenocarcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5314004"/>
+      <display value="Acute dilatation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5356000"/>
+      <display value="Bowenoid papulosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5399005"/>
+      <display value="Dissecting hemorrhage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5468008"/>
+      <display value="Fracture, multiple"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5480000"/>
+      <display value="Canalized thrombus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5600009"/>
+      <display value="Schneiderian carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5640003"/>
+      <display value="Granular atrophy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5658009"/>
+      <display value="Adenocarcinoma in tubulovillous adenoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5688000"/>
+      <display value="Squamous cell carcinoma in situ with questionable stromal invasion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5734001"/>
+      <display value="Pressure groove"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5755004"/>
+      <display value="Cystic hyperplasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5770003"/>
+      <display value="Decompression injury"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5804003"/>
+      <display value="Congenital growth disproportion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5843004"/>
+      <display value="Basaloid carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5849000"/>
+      <display value="Glial cell reaction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5862001"/>
+      <display value="Mucous membrane eruption"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5909007"/>
+      <display value="Glandular-stromal asynchrony of endometrium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5960008"/>
+      <display value="Depressed structure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5974001"/>
+      <display value="Pressure cone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="5978003"/>
+      <display value="Fracture, open, longitudinal"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6078006"/>
+      <display value="Mucus retention"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6081001"/>
+      <display value="Deformity"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6120000"/>
+      <display value="Oncocytic metaplasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6151007"/>
+      <display value="Amphophilic stain reaction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6219000"/>
+      <display value="Neoplasm, malignant, uncertain whether primary or metastatic"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6223008"/>
+      <display value="Mild koilocytotic atypia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6266001"/>
+      <display value="Granulomatous inflammation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6320008"/>
+      <display value="Collagenolysis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6379007"/>
+      <display value="Multiple adenomatous polyps"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6381009"/>
+      <display value="Alpha heavy chain disease"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6406002"/>
+      <display value="Membranous inflammation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6437002"/>
+      <display value="Dentinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6492006"/>
+      <display value="Klatskin's tumor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6574001"/>
+      <display value="Necrosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6579006"/>
+      <display value="Sebum retention"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6582001"/>
+      <display value="Intrinsic obstruction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6609001"/>
+      <display value="Spongiosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6641007"/>
+      <display value="Metatypical carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6660000"/>
+      <display value="Atypical intraductal hyperplasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6780007"/>
+      <display value="Hemoglobin cast"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6842002"/>
+      <display value="Desmoplastic fibroma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="6855001"/>
+      <display value="Macronucleus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7003006"/>
+      <display value="Chronic hemorrhage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7010000"/>
+      <display value="Carcinomatosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7055007"/>
+      <display value="Lupus erythematosus cell"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7078001"/>
+      <display value="Hemosiderin pigmentation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7094008"/>
+      <display value="Dilated pore of Winer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7244004"/>
+      <display value="Decidual cast"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7300000"/>
+      <display value="Lymphoepithelial carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7313006"/>
+      <display value="Open dislocation, incomplete"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7372009"/>
+      <display value="Inflammatory atypia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7429002"/>
+      <display value="Glomangioma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7643002"/>
+      <display value="Calcified hematoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7744000"/>
+      <display value="Congestive hypertrophy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7796002"/>
+      <display value="Lipogenic pigmentation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7828002"/>
+      <display value="Xanthine calculus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7841003"/>
+      <display value="Macrocytic normochromic erythrocyte"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7894007"/>
+      <display value="Karyotype morphology"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7905002"/>
+      <display value="Fracture, oblique"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7906001"/>
+      <display value="Open dislocation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="7939003"/>
+      <display value="Localized edema"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8005002"/>
+      <display value="Incomplete transposition"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8070006"/>
+      <display value="Secretory alteration of vagina"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8097004"/>
+      <display value="Alveolar adenoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8120005"/>
+      <display value="Acentric chromosome"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8129006"/>
+      <display value="Deposition of oxalate crystals"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8145008"/>
+      <display value="Mixed tumor, malignant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8210009"/>
+      <display value="Corpora amylacea"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8241005"/>
+      <display value="Hemolymphangioma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8276007"/>
+      <display value="Balloon cell nevus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8309002"/>
+      <display value="Moderate transitional cell atypia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8360001"/>
+      <display value="Pleomorphic adenoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8566008"/>
+      <display value="Autosomal chromosome mosaicism"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8573003"/>
+      <display value="Acute hemorrhage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8664001"/>
+      <display value="Fibromyxoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8723003"/>
+      <display value="Segmental demyelination"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8734000"/>
+      <display value="Choriocarcinoma combined with other germ cell elements"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8804002"/>
+      <display value="Passive congestion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8833001"/>
+      <display value="Open dislocation, complete"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8855009"/>
+      <display value="Mosaicism"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8934006"/>
+      <display value="Papillary syringadenoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="8978002"/>
+      <display value="Proliferative cyclic alteration of breast"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9001003"/>
+      <display value="Chondroblastoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9088006"/>
+      <display value="Lobar atrophy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9098000"/>
+      <display value="Medullary adenoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9138001"/>
+      <display value="Mild columnar cell atypia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9155002"/>
+      <display value="Squamous odontogenic tumor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9187004"/>
+      <display value="Leukokeratosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9196004"/>
+      <display value="Staghorn calculus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9235006"/>
+      <display value="Eccentric hypertrophy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9240003"/>
+      <display value="Niemann-Pick cell"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9266000"/>
+      <display value="Juxtacortical chondroma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9287005"/>
+      <display value="Colloid cyst"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9294008"/>
+      <display value="Spermatocytic seminoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9324003"/>
+      <display value="Inactive endometrium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9395006"/>
+      <display value="Sarcomatosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9435009"/>
+      <display value="Senile hyperplasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9436005"/>
+      <display value="Basophil adenoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9499001"/>
+      <display value="Multiple polyps"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9546005"/>
+      <display value="Shift"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9550003"/>
+      <display value="Bronchogenic cyst"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9618003"/>
+      <display value="Epithelial-myoepithelial carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9656002"/>
+      <display value="Consolidation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9671003"/>
+      <display value="Elastofibroma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9688005"/>
+      <display value="Deposition of carbon"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9729005"/>
+      <display value="Blue edema"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9751002"/>
+      <display value="Wire loop lesion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9767008"/>
+      <display value="Hyperchromatism"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9801004"/>
+      <display value="Spindle cell sarcoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9805008"/>
+      <display value="Rice body"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9816001"/>
+      <display value="Leukoedema"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9831005"/>
+      <display value="Myxoid degeneration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="9903002"/>
+      <display value="Paraganglioma, malignant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10060008"/>
+      <display value="Eccrine papillary adenoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10069009"/>
+      <display value="Giant cell tumor of bone, malignant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10122001"/>
+      <display value="Accretion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10146008"/>
+      <display value="Chief cell adenocarcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10219009"/>
+      <display value="Xanthosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10288008"/>
+      <display value="Squamous cell carcinoma, spindle cell"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10291008"/>
+      <display value="Giant pigmented nevus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10376009"/>
+      <display value="Papillary carcinoma in situ"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10403004"/>
+      <display value="Serous atrophy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10505008"/>
+      <display value="Retroversion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10636005"/>
+      <display value="Stomatocyte"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10637001"/>
+      <display value="Basophilic stain reaction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10690002"/>
+      <display value="Atheromatous embolus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10705005"/>
+      <display value="Mucinous adenofibroma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="10873006"/>
+      <display value="Micronodular regeneration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11063000"/>
+      <display value="Ameloblastic fibroma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11071001"/>
+      <display value="Racemose hemangioma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11073003"/>
+      <display value="Mixed liposarcoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11080001"/>
+      <display value="Neuronal achromasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11099005"/>
+      <display value="Epithelioid cell nevus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11108009"/>
+      <display value="Dehiscence"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11117009"/>
+      <display value="Dyskaryosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11182007"/>
+      <display value="Abnormally short growth"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11211003"/>
+      <display value="Interstitial emphysema"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11224003"/>
+      <display value="Chronic membranous inflammation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11284000"/>
+      <display value="Closed dislocation, incomplete"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11467009"/>
+      <display value="Capillary lymphangioma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11506001"/>
+      <display value="Hilus cell tumor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11514007"/>
+      <display value="Algor mortis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11528001"/>
+      <display value="Mucinosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11556006"/>
+      <display value="Arteriovenous aneurysm"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11585000"/>
+      <display value="Bubo"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11607000"/>
+      <display value="Gunpowder burn"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11639007"/>
+      <display value="Puncture"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11650005"/>
+      <display value="Giant hypertrophy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11671000"/>
+      <display value="Adenoid cystic carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11704001"/>
+      <display value="Chromosome mosaicism"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11793003"/>
+      <display value="Mesoblastic nephroma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11854003"/>
+      <display value="Fibrous nodule"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11858000"/>
+      <display value="Suture line of skin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11889001"/>
+      <display value="Abiotrophy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="11908008"/>
+      <display value="Binucleated plasmablast"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12060004"/>
+      <display value="Ganglioneuromatosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12143007"/>
+      <display value="Embryonic cyst"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12167004"/>
+      <display value="Lymphocyst"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12170000"/>
+      <display value="Rosette"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12191008"/>
+      <display value="Fracture, ununited, stellate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12205003"/>
+      <display value="Chief cell adenoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12219003"/>
+      <display value="Aleukemic lymphoid leukemia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12222001"/>
+      <display value="Erythrocyte abnormality"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12302002"/>
+      <display value="Small cell osteosarcoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12323008"/>
+      <display value="Androblastoma, malignant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12354007"/>
+      <display value="Retinoblastoma, undifferentiated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12393003"/>
+      <display value="Purpura"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12400006"/>
+      <display value="Papillary transitional cell carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12402003"/>
+      <display value="Scar"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12404002"/>
+      <display value="Trophic gangrene"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12478003"/>
+      <display value="Squamous cell carcinoma, microinvasive"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12535006"/>
+      <display value="Acquired absence"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12540003"/>
+      <display value="Muscle fiber atrophy, type II"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12560006"/>
+      <display value="Primary sequestrum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12582004"/>
+      <display value="Internal fistula"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12583009"/>
+      <display value="Lobular adenoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12690005"/>
+      <display value="Fibroblastic osteosarcoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12747003"/>
+      <display value="Microcalcification"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12794006"/>
+      <display value="Nonsuppurative inflammation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12835000"/>
+      <display value="Multiple injuries"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12856003"/>
+      <display value="Varix"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12933008"/>
+      <display value="Sweat gland tumor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12943006"/>
+      <display value="Spongioblastoma polare"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12944000"/>
+      <display value="Acid chemical burn"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="12973002"/>
+      <display value="Dislocation, multiple, open"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13018008"/>
+      <display value="Neovascularization"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13062004"/>
+      <display value="Psammoma bodies"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13129009"/>
+      <display value="Fracture, open, incomplete"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13136005"/>
+      <display value="Injection site"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13238004"/>
+      <display value="Granular cell tumor, malignant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13321001"/>
+      <display value="Fracture, comminuted"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13331008"/>
+      <display value="Atrophy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13467000"/>
+      <display value="Pseudocyst"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13485007"/>
+      <display value="Pannus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13583002"/>
+      <display value="Mast cell sarcoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13599008"/>
+      <display value="Gunshot wound, contact"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13705009"/>
+      <display value="Partial obstruction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13713005"/>
+      <display value="Thromboembolus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13875003"/>
+      <display value="Glomangiosarcoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13901007"/>
+      <display value="Fat-laden macrophage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="13924000"/>
+      <display value="Wound"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14093007"/>
+      <display value="Decalcification"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14156004"/>
+      <display value="Racemose aneurysm"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14166007"/>
+      <display value="Koplik spot"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14212006"/>
+      <display value="Pseudopalisade formation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14269005"/>
+      <display value="Embryonal rhabdomyosarcoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14317002"/>
+      <display value="Erythroleukemia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14350002"/>
+      <display value="Angiomatosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14391000"/>
+      <display value="Koilocytotic atypia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14442007"/>
+      <display value="Generalized keratoacanthoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14494009"/>
+      <display value="Meningeal sarcomatosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14696003"/>
+      <display value="Cystic degeneration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14737000"/>
+      <display value="Jet lesion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14797003"/>
+      <display value="Fracture, delayed union, oblique"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14799000"/>
+      <display value="Neoplasm, metastatic"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14847005"/>
+      <display value="Triploidy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14889002"/>
+      <display value="Rasmussen's aneurysm"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14912003"/>
+      <display value="Vesiculobullous rash"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="14962008"/>
+      <display value="Mutilating wound"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15074003"/>
+      <display value="Neurogenic ulcer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15112009"/>
+      <display value="Inverted keratosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15176003"/>
+      <display value="Adenocarcinoma with squamous metaplasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15304008"/>
+      <display value="Factitial ulcer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15418000"/>
+      <display value="Spontaneous perforation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15486006"/>
+      <display value="Hypoploidy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15498001"/>
+      <display value="Superficial ulcer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15503003"/>
+      <display value="Molluscum bodies"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15519005"/>
+      <display value="Combined abnormal curvature"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15524008"/>
+      <display value="Obliteration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15556001"/>
+      <display value="Ball thrombus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15588009"/>
+      <display value="Microlithiasis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15619004"/>
+      <display value="Hepatocellular carcinoma, fibrolamellar"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15690004"/>
+      <display value="Tortuosity"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15702005"/>
+      <display value="Fibrous mesothelioma, benign"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15897004"/>
+      <display value="Chromosomal translocation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15904002"/>
+      <display value="Bridging necrosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15937000"/>
+      <display value="Congenital vascular proliferation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15949004"/>
+      <display value="Thymoma, malignant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15960008"/>
+      <display value="Reticulohistiocytic granuloma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="15967006"/>
+      <display value="Hypersegmentation of nucleus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16080000"/>
+      <display value="Fibrin deposition"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16090008"/>
+      <display value="Myxoid leiomyosarcoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16104005"/>
+      <display value="Segmental glomerulosclerosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16163002"/>
+      <display value="Ossified nodule"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16190006"/>
+      <display value="Herring's bodies"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16216007"/>
+      <display value="Gaucher cell"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16255008"/>
+      <display value="Fenestration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16277007"/>
+      <display value="Collapse"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16479008"/>
+      <display value="Inappropriate lobular activity of breast"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16483008"/>
+      <display value="Russell body"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16566002"/>
+      <display value="Phyllodes tumor, benign"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16578003"/>
+      <display value="Posterior open dislocation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16640008"/>
+      <display value="Separation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16740003"/>
+      <display value="Anasarca"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16741004"/>
+      <display value="Pleomorphic carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16759001"/>
+      <display value="Chronic eosinophilic inflammation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16822006"/>
+      <display value="Malignant carotid body tumor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16893006"/>
+      <display value="Hodgkin's disease, lymphocytic depletion, diffuse fibrosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16974005"/>
+      <display value="Acral lentiginous melanoma, malignant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="16980002"/>
+      <display value="Foam cell"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17015005"/>
+      <display value="Lateral open dislocation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17201003"/>
+      <display value="Spillage of feces"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17264009"/>
+      <display value="Carcinoma in pleomorphic adenoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17289003"/>
+      <display value="Fat embolus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17302008"/>
+      <display value="Cerebellar sarcoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17307002"/>
+      <display value="Transudate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17351006"/>
+      <display value="Congenital non-rotation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17372009"/>
+      <display value="Granuloma pyogenicum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17474009"/>
+      <display value="Atypical glandular hyperplasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17569003"/>
+      <display value="Emphysematous bleb"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17665002"/>
+      <display value="Metaplasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17672001"/>
+      <display value="Accumulation of fluid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17684004"/>
+      <display value="Protein cast"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17734002"/>
+      <display value="Chediak-Higashi cell"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17781001"/>
+      <display value="Curvilinear bodies"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17815009"/>
+      <display value="Sudanophilic stain reaction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17930004"/>
+      <display value="Neuronevus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17941002"/>
+      <display value="Arteriolosclerosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="17968002"/>
+      <display value="Mucinous degeneration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18016009"/>
+      <display value="Phlebosclerosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18048008"/>
+      <display value="Squamous cell carcinoma, keratinizing"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18064000"/>
+      <display value="Achromasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18072003"/>
+      <display value="Micronucleus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18105004"/>
+      <display value="Endometrioid adenofibroma, malignant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18115005"/>
+      <display value="Pathologic calcification"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18126004"/>
+      <display value="Diverticulitis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18130001"/>
+      <display value="Gunshot wound, exit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18174004"/>
+      <display value="Brown edema"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18189008"/>
+      <display value="Gudden's atrophy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18203003"/>
+      <display value="Non-communicating cerebrospinal fluid retention"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18295000"/>
+      <display value="Double structure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18334002"/>
+      <display value="Fracture, stellate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18348002"/>
+      <display value="Queyrat's erythroplasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18450009"/>
+      <display value="Malignant melanoma in precancerous melanosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18465005"/>
+      <display value="Anomalous origin of vein"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18498000"/>
+      <display value="Acute membranous inflammation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18568009"/>
+      <display value="Anastomosis, end to end"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18588008"/>
+      <display value="Synovial sarcoma, biphasic"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18655006"/>
+      <display value="Depigmentation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18680006"/>
+      <display value="Intraductal carcinoma and lobular carcinoma in situ"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18695008"/>
+      <display value="Hyaline body"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18727002"/>
+      <display value="C cell tumor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18765009"/>
+      <display value="Sclerosing lipogranuloma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18799007"/>
+      <display value="Invasive hydatidiform mole"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18802003"/>
+      <display value="External fistula"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18854008"/>
+      <display value="Struma ovarii, malignant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18861007"/>
+      <display value="Granulosa cell tumor, malignant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18915006"/>
+      <display value="Dense tubules"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18958005"/>
+      <display value="Councilman body"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="18977007"/>
+      <display value="Adrenal cortical adenoma, clear cell"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19010006"/>
+      <display value="Hyaline degeneration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19071004"/>
+      <display value="Epithelioid leiomyoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19128006"/>
+      <display value="Hyperorthokeratosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19134004"/>
+      <display value="Fascial fibrosarcoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19137006"/>
+      <display value="Marantic thrombus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19227008"/>
+      <display value="Foreign body"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19316008"/>
+      <display value="Cytoid body"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19329008"/>
+      <display value="Adrenal cortical adenoma, glomerulosa cell"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19340000"/>
+      <display value="Malignant lymphoma, lymphoplasmacytic"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19365003"/>
+      <display value="Acute empyema"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19380009"/>
+      <display value="Sclerosing segmental glomerulosclerosis with hyalinosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19436005"/>
+      <display value="Stain reaction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19438006"/>
+      <display value="Feathery degeneration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19504001"/>
+      <display value="Serofibrinous effusion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19561006"/>
+      <display value="Congenital levorotation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19571008"/>
+      <display value="Multiple open wounds"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19607003"/>
+      <display value="Endoreduplication"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19614001"/>
+      <display value="Lightning burn"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19633006"/>
+      <display value="Mucous cyst"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19643009"/>
+      <display value="Pyogranuloma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19651007"/>
+      <display value="Micromyeloblast"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19668006"/>
+      <display value="Parabasal cells predominate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19669003"/>
+      <display value="Erythrocyte agglutination"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19672005"/>
+      <display value="Condyloma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19685008"/>
+      <display value="Stasis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19756007"/>
+      <display value="Gastrinoma, malignant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19795008"/>
+      <display value="Brain sand"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19836000"/>
+      <display value="Deforming fibrosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19897006"/>
+      <display value="Melanotic psammomatous MPNST"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19906005"/>
+      <display value="Retinoblastoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19909003"/>
+      <display value="Complement deposit"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19921004"/>
+      <display value="Compression injury"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19928005"/>
+      <display value="Fibromatosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19929002"/>
+      <display value="Angiomyolipoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19940005"/>
+      <display value="Lichenification"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19952003"/>
+      <display value="Elastic vascular sclerosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="19988008"/>
+      <display value="Pseudoainhum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20012006"/>
+      <display value="Major open wound"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20108002"/>
+      <display value="Intramural hemorrhage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20131002"/>
+      <display value="Chronic necrosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20182004"/>
+      <display value="Myocytolysis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20194008"/>
+      <display value="Hyperplastic dystrophy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20256001"/>
+      <display value="Glandular proliferation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20351009"/>
+      <display value="Adnexal nevus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20365006"/>
+      <display value="Squamous intraepithelial neoplasia, grade III"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20369000"/>
+      <display value="Chronic mucous inflammation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20380000"/>
+      <display value="Ameloblastic odontosarcoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20456003"/>
+      <display value="Loose body"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20462008"/>
+      <display value="Ameloblastoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20464009"/>
+      <display value="Perforated diverticulum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20473001"/>
+      <display value="Stellate laceration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20589000"/>
+      <display value="Pappenheimer body (morphologic abnormality)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20601007"/>
+      <display value="Flattening deformity"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20667008"/>
+      <display value="Myosarcoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20700001"/>
+      <display value="Fracture, closed, oblique"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20717008"/>
+      <display value="Atherosclerotic fibrous plaque"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20741006"/>
+      <display value="Hydrops"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20774006"/>
+      <display value="Re-epithelialization"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20776008"/>
+      <display value="Adenolymphoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20810002"/>
+      <display value="Myelolipoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20829008"/>
+      <display value="Endometrioid adenofibroma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20893004"/>
+      <display value="Polypoid hyperplasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20894005"/>
+      <display value="Mallory bodies"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20946005"/>
+      <display value="Fracture, closed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20955008"/>
+      <display value="Insulinoma, malignant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="20985003"/>
+      <display value="Verrucous keratotic hemangioma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21008007"/>
+      <display value="Cystadenocarcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21046000"/>
+      <display value="Dalen-Fuchs nodule"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21103001"/>
+      <display value="Acute fibrosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21135001"/>
+      <display value="Multiple superficial injuries"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21139007"/>
+      <display value="Organization"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21181001"/>
+      <display value="Thymoma, benign"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21326004"/>
+      <display value="Small cell-large cell carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21386001"/>
+      <display value="Foreign body giant cell"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21396005"/>
+      <display value="Pleomorphic lipoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21444008"/>
+      <display value="Microglial nodules"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21453001"/>
+      <display value="Massive necrosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21465002"/>
+      <display value="Abnormally short and broad growth"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21589007"/>
+      <display value="Ependymoma, anaplastic"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21718009"/>
+      <display value="Cast"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21720007"/>
+      <display value="Electrical burn"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21912003"/>
+      <display value="Malignant teratoma, intermediate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21925006"/>
+      <display value="Neuroglial-lined cyst"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21930005"/>
+      <display value="Trabecular adenoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21947006"/>
+      <display value="Compression fracture"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21968007"/>
+      <display value="Papillary carcinoma, follicular variant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21971004"/>
+      <display value="Plasma cell granuloma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21980004"/>
+      <display value="Prestenotic dilatation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="21997005"/>
+      <display value="Massive disruption"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22024005"/>
+      <display value="Lipoadenoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22036004"/>
+      <display value="Pseudoaneurysm"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22039006"/>
+      <display value="Ruptured aneurysm"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22084008"/>
+      <display value="Postmortem blood clot"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22116003"/>
+      <display value="Papillary serous cystadenoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22197008"/>
+      <display value="Burkitt's cell leukemia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22217002"/>
+      <display value="Mixed glioma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22222002"/>
+      <display value="Muscle fiber small group atrophy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22257004"/>
+      <display value="Fibrous hamartoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22287005"/>
+      <display value="Eosinophilic stain reaction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22303008"/>
+      <display value="Version"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22331004"/>
+      <display value="Acute monocytic leukemia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22333001"/>
+      <display value="Uric acid infarct"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22341001"/>
+      <display value="Thrombosed varices"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22427006"/>
+      <display value="Elastoid degeneration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22483007"/>
+      <display value="Radiation injury with inflammation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22517003"/>
+      <display value="Subependymal gliosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22524002"/>
+      <display value="Warty dyskeratoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22640007"/>
+      <display value="Pathologic fracture"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22641006"/>
+      <display value="Serous effusion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22687000"/>
+      <display value="Large cell carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22694002"/>
+      <display value="Adenocarcinoma with apocrine metaplasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22725004"/>
+      <display value="High-grade squamous intraepithelial lesion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22858003"/>
+      <display value="Connective tissue nevus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22984005"/>
+      <display value="Moderate columnar cell atypia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="22995004"/>
+      <display value="Focal nodular hyperplasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23041001"/>
+      <display value="Sinus histiocytosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23048007"/>
+      <display value="Marinesco body"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23108001"/>
+      <display value="Mild squamous cell atypia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23109009"/>
+      <display value="Pseudosarcomatous carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23255001"/>
+      <display value="Cementoblastoma, benign"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23280001"/>
+      <display value="Isochromosome for long arm"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23286007"/>
+      <display value="Fracture, delayed union, incomplete"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23290009"/>
+      <display value="Glandular hyperplasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23305007"/>
+      <display value="Macrocytic hyperchromic erythrocyte"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23345003"/>
+      <display value="Ring chromosome"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23382007"/>
+      <display value="Stress fracture"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23444003"/>
+      <display value="Mixed acidophil-basophil carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23482006"/>
+      <display value="Avulsion fracture"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23521003"/>
+      <display value="Glycogen deposition"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23539007"/>
+      <display value="Organizing hematoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23604003"/>
+      <display value="Cartilaginous hamartoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23620008"/>
+      <display value="Acanthosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23839001"/>
+      <display value="Chylous effusion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23844008"/>
+      <display value="Fibrosiderotic nodule"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23870009"/>
+      <display value="Hypersecretory gestational endometrium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="23990004"/>
+      <display value="Fracture, ununited, comminuted"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24007003"/>
+      <display value="Clear cell sarcoma of kidney"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24016004"/>
+      <display value="Corrected transposition"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24017008"/>
+      <display value="Meibomian adenoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24018003"/>
+      <display value="Enterogenous cyst"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24045002"/>
+      <display value="Intramuscular lipoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24072005"/>
+      <display value="Acute leukemia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24183004"/>
+      <display value="Fibrinous polyp"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24216005"/>
+      <display value="Congenital absence"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24244006"/>
+      <display value="Brown atrophy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24253004"/>
+      <display value="Squamous intraepithelial lesion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24283008"/>
+      <display value="Serosanguineous effusion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24327009"/>
+      <display value="Struma ovarii"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24373006"/>
+      <display value="Pregnancy alteration of vagina"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24389009"/>
+      <display value="Injection site granuloma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24398007"/>
+      <display value="Nuclear/cytoplasmic ratio decreased"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24421006"/>
+      <display value="Subcapsular hemorrhage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24481008"/>
+      <display value="Hypersegmented leukocyte"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24482001"/>
+      <display value="Bronchial adenoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24505004"/>
+      <display value="Carcinoma, diffuse type"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24531002"/>
+      <display value="Complex caries"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24551003"/>
+      <display value="Arteriovenous malformation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24582004"/>
+      <display value="Pseudohypertrophic dystrophy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24604009"/>
+      <display value="Medullomyoblastoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24645001"/>
+      <display value="Guarnieri bodies"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24653009"/>
+      <display value="Spindle cell melanoma, type A"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24762001"/>
+      <display value="Pilomatrix carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24804006"/>
+      <display value="Wolffian duct rest"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24811005"/>
+      <display value="Serous inflammation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24815001"/>
+      <display value="Sertoli cell tumor with lipid storage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24827003"/>
+      <display value="Abnormal white blood cell"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="24887001"/>
+      <display value="Maceration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25006003"/>
+      <display value="Navicular cell"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25063008"/>
+      <display value="Involutional atrophy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25081006"/>
+      <display value="Nephroblastoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25088000"/>
+      <display value="Dimple"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25154008"/>
+      <display value="Blister due to degeneration of the basement zone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25190001"/>
+      <display value="Adenocarcinoma, intestinal type"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25201003"/>
+      <display value="Epidermal nevus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25239006"/>
+      <display value="Lymphangiomyoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25295002"/>
+      <display value="Phytobezoar"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25322007"/>
+      <display value="Dilatation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25370001"/>
+      <display value="Hepatocellular carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25371002"/>
+      <display value="High level estrogen effect present"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25499005"/>
+      <display value="Seborrheic keratosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25603007"/>
+      <display value="Ossifying fibroma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25624002"/>
+      <display value="Dysplastic platelet"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25659002"/>
+      <display value="Narrowed structure (morphologic abnormality)"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25694009"/>
+      <display value="Papule"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25723000"/>
+      <display value="Dysplasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25733008"/>
+      <display value="Burn injury with charring"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25774008"/>
+      <display value="Anomalous arterial connection"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25840002"/>
+      <display value="Deep caries"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25845007"/>
+      <display value="Healing ulcer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25874003"/>
+      <display value="Endometrioid adenofibroma, borderline malignancy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25889007"/>
+      <display value="Fibrous histiocytoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25910003"/>
+      <display value="Papillary carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="25979007"/>
+      <display value="Acute mucous inflammation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26019009"/>
+      <display value="Retinoblastoma, differentiated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26036001"/>
+      <display value="Obstruction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26138003"/>
+      <display value="Gliomatosis cerebri"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26209007"/>
+      <display value="Giant comedo"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26211003"/>
+      <display value="Juxtacortical chondrosarcoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26246006"/>
+      <display value="Plasma cell inflammation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26269009"/>
+      <display value="Poststenotic dilatation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26310004"/>
+      <display value="Fold"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26317001"/>
+      <display value="Acute ulcer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26325004"/>
+      <display value="Magnocellular nevus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26344006"/>
+      <display value="Anomalous venous drainage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26372004"/>
+      <display value="Luteoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26396009"/>
+      <display value="Dislocation, incomplete"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26496005"/>
+      <display value="Atypical fibrous histiocytoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26514007"/>
+      <display value="Draining wound"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26545006"/>
+      <display value="Macrofollicular adenoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26638004"/>
+      <display value="Water-clear cell adenoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26696002"/>
+      <display value="Chemical burn"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26713004"/>
+      <display value="Non-occlusive thrombus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26727009"/>
+      <display value="Multiple thromboembolism"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26735007"/>
+      <display value="Gynandroblastoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26751004"/>
+      <display value="Organizing inflammation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26759002"/>
+      <display value="Embryonal rest"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26810009"/>
+      <display value="Angiokeratoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26819005"/>
+      <display value="Tart cell"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26860003"/>
+      <display value="Secondary hypertrophy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26888009"/>
+      <display value="Odontogenic tumor, malignant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26927002"/>
+      <display value="Minor disruption"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="26996000"/>
+      <display value="Hyperkeratosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27006004"/>
+      <display value="Vasculitic rash"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27058005"/>
+      <display value="Necrotizing granulomatous inflammation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27090000"/>
+      <display value="Transitional cell carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27092008"/>
+      <display value="Ameloblastic fibrosarcoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27230006"/>
+      <display value="Basal cell adenoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27266007"/>
+      <display value="Pseudo-obstruction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27313007"/>
+      <display value="Spindle cell lipoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27317008"/>
+      <display value="Complete transposition"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27325005"/>
+      <display value="Atypical gastric metaplasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27329004"/>
+      <display value="Basophilic degeneration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27367001"/>
+      <display value="Wrinkle"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27391005"/>
+      <display value="Hamartomatous polyp"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27461004"/>
+      <display value="Immunoproliferative small intestinal disease"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27510006"/>
+      <display value="Fracture, open, stellate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27515001"/>
+      <display value="Avulsion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27551008"/>
+      <display value="Stricture"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27580004"/>
+      <display value="Abnormal nuclear/cytoplasmic ratio"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27605001"/>
+      <display value="Endometrial gestational alteration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27721004"/>
+      <display value="Biliary hamartoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27799005"/>
+      <display value="Postinflammatory hypopigmentation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27809005"/>
+      <display value="Progressive obstruction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27849002"/>
+      <display value="Myxoid liposarcoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27876002"/>
+      <display value="Multiple infarcts"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27881006"/>
+      <display value="Bony callus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27890004"/>
+      <display value="Cervical mucous arborization"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27925004"/>
+      <display value="Nodule"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="27952009"/>
+      <display value="Congenital multiseptation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28047004"/>
+      <display value="Embryonal carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28087009"/>
+      <display value="Fracture, delayed union"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28126000"/>
+      <display value="Severe koilocytotic atypia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28146005"/>
+      <display value="Lipochrome histiocytosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28173006"/>
+      <display value="Follicular adenocarcinoma, well differentiated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28208008"/>
+      <display value="Edematous infarct"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28218003"/>
+      <display value="Severe columnar cell atypia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28237007"/>
+      <display value="Melanotic neurofibroma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28307001"/>
+      <display value="Germinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28325008"/>
+      <display value="Polyembryoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28351005"/>
+      <display value="Myxosarcoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28543008"/>
+      <display value="Visceromegaly"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28558000"/>
+      <display value="Villous adenocarcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28569002"/>
+      <display value="Muscle fiber change"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28655007"/>
+      <display value="Liposarcoma, well differentiated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28727003"/>
+      <display value="Odontogenic cyst"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28733007"/>
+      <display value="Compound odontoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28781000"/>
+      <display value="Internal hyperostosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28789003"/>
+      <display value="Pancake cell"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28831000"/>
+      <display value="Gunshot contusion ring"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28836005"/>
+      <display value="Fracture, impacted"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28878004"/>
+      <display value="Fibrin thrombus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28950004"/>
+      <display value="Acute promyelocytic leukemia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28953002"/>
+      <display value="Angiomyosarcoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="28960008"/>
+      <display value="Arteriosclerosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="29020002"/>
+      <display value="Complex odontoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="29144003"/>
+      <display value="Central cores"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="29185008"/>
+      <display value="Fatty degeneration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="29209006"/>
+      <display value="Alzheimer glial change"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="29370006"/>
+      <display value="Pheochromocytoma, malignant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="29463007"/>
+      <display value="Keratin plug"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="29483008"/>
+      <display value="Calcified atheromatous plaque"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="29696001"/>
+      <display value="Prolapse"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="29771007"/>
+      <display value="Wolffian body rest"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="29792007"/>
+      <display value="Trabecular adenocarcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="29856000"/>
+      <display value="Chromosome fragment"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="29996004"/>
+      <display value="Tetrasomy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30098003"/>
+      <display value="Hyperemia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30156004"/>
+      <display value="Cribriform carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30213001"/>
+      <display value="Lymphatic edema"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30217000"/>
+      <display value="Proliferation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30285000"/>
+      <display value="Verruca"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30289006"/>
+      <display value="Endometrioid carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30301008"/>
+      <display value="Microfollicular adenoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30321009"/>
+      <display value="Remyelination"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30383009"/>
+      <display value="Mesothelioma, biphasic, malignant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30386001"/>
+      <display value="Radiation injury with necrosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30419000"/>
+      <display value="Leukostasis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30425001"/>
+      <display value="Osteolysis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30469008"/>
+      <display value="Buhot cell"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30494009"/>
+      <display value="Junctional nevus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30543000"/>
+      <display value="Fracture, incomplete"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30546008"/>
+      <display value="Clear cell adenocarcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30566004"/>
+      <display value="Noninfiltrating intraductal papillary adenocarcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30649006"/>
+      <display value="Basal cell tumor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30651005"/>
+      <display value="Menstrual alteration of vagina"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30685006"/>
+      <display value="Atypical lymphoid hyperplasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30691008"/>
+      <display value="Anomalous origin of artery"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30699005"/>
+      <display value="Carotid body tumor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30713000"/>
+      <display value="Hypernephroid tumor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30727005"/>
+      <display value="Capillary telangiectasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30771009"/>
+      <display value="Heavy metal pigmentation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30812002"/>
+      <display value="Overriding structures"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30867001"/>
+      <display value="Carnification"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30891005"/>
+      <display value="Mummification"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30902005"/>
+      <display value="Fracture, open, impacted"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30924005"/>
+      <display value="Rhabdomyosarcoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30938003"/>
+      <display value="Langhans giant cell"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="30962008"/>
+      <display value="Acute myelomonocytic leukemia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31040001"/>
+      <display value="Linear circular atrophy of lower extremities"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31069005"/>
+      <display value="Fibroepithelial polyp"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31092005"/>
+      <display value="Zahn's infarct"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31098009"/>
+      <display value="Massive fibrosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31104000"/>
+      <display value="Hemangioendothelioma, benign"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31113003"/>
+      <display value="Diverticulum"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31131002"/>
+      <display value="Vipoma, malignant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31186001"/>
+      <display value="Chondroma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31279000"/>
+      <display value="Fracture, delayed union, stellate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31296004"/>
+      <display value="Granulosa cell-theca cell tumor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31313009"/>
+      <display value="Bridging fibrosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31390008"/>
+      <display value="Epithelial hyperplasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31396002"/>
+      <display value="Goblet cell carcinoid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31470003"/>
+      <display value="Adenosarcoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31478005"/>
+      <display value="Rhagades"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31511007"/>
+      <display value="Pseudoarthrosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31590009"/>
+      <display value="Ferrocalcinotic deposition"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31593006"/>
+      <display value="Minimal lesion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31653004"/>
+      <display value="Fibromuscular dysplasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31671006"/>
+      <display value="Pineoblastoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31739005"/>
+      <display value="Lateral abnormal curvature"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31794002"/>
+      <display value="Sympathetic paraganglioma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31807009"/>
+      <display value="Persistent embryonic structure"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31830003"/>
+      <display value="Ruptured epithelial inclusion cyst"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31883006"/>
+      <display value="Fusion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="31980008"/>
+      <display value="Necrotizing inflammation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32008003"/>
+      <display value="Mild transitional cell atypia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32071008"/>
+      <display value="Strumal carcinoid"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32140001"/>
+      <display value="Papillary cystadenoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32224006"/>
+      <display value="Coagulative necrosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32272007"/>
+      <display value="Sweat gland adenocarcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32274008"/>
+      <display value="Stellate spontaneous pseudoscars"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32288007"/>
+      <display value="Serous cyst"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32296002"/>
+      <display value="Intraductal papillomatosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32322008"/>
+      <display value="Subchondral bone cyst"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32408007"/>
+      <display value="Piecemeal necrosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32416003"/>
+      <display value="Atypical hyperplasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32434004"/>
+      <display value="Pulmonary adenomatosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32456001"/>
+      <display value="Desmoplastic medulloblastoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32512003"/>
+      <display value="Extra-adrenal paraganglioma, malignant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32651000"/>
+      <display value="Arteriolosclerosis with fibrinoid necrosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32693004"/>
+      <display value="Demyelination"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32837003"/>
+      <display value="Hemangioblastomatosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32844007"/>
+      <display value="Mixed germ cell tumor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32884003"/>
+      <display value="Hematin pigmentation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32913002"/>
+      <display value="Medullary carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32915009"/>
+      <display value="Reed-Sternberg cell"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="32968003"/>
+      <display value="Inflammatory carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33059009"/>
+      <display value="Trichofolliculoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33080003"/>
+      <display value="Fracture, ununited"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33125008"/>
+      <display value="Hematoidin pigmentation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33170000"/>
+      <display value="Mucinous adenoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33176006"/>
+      <display value="Hemangioendothelioma, malignant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33178007"/>
+      <display value="Fracture, delayed union, longitudinal"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33196003"/>
+      <display value="Micromegakaryocyte"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33288004"/>
+      <display value="Mild epithelial dysplasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33377007"/>
+      <display value="Cavernous hemangioma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33385003"/>
+      <display value="Generalized recession"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33387006"/>
+      <display value="Intracystic hyperplasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33408004"/>
+      <display value="Fracture, ununited, segmental"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33429008"/>
+      <display value="Menstrual involution of breast"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33475000"/>
+      <display value="Neuropil thread"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33560006"/>
+      <display value="Subacute lymphoid leukemia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33593002"/>
+      <display value="Vascular wall degeneration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33681003"/>
+      <display value="Osteosarcoma in Paget's disease of bone"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33851008"/>
+      <display value="Subacute necrosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33872006"/>
+      <display value="Small non-cleaved cell"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33873001"/>
+      <display value="Convoluted cell"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33889003"/>
+      <display value="Atypical lobular hyperplasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33929001"/>
+      <display value="Epithelioid hemangioma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="33940009"/>
+      <display value="Caseous necrosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34058006"/>
+      <display value="Bowing deformity"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34064004"/>
+      <display value="Karyorrhexis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34081008"/>
+      <display value="Post-radiation cytologic changes with dysplasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34087007"/>
+      <display value="Hemiatrophy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34110004"/>
+      <display value="Sertoli-Leydig cell tumor, well differentiated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34277002"/>
+      <display value="Dislocation, multiple"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34305007"/>
+      <display value="Fracture, multiple, closed"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34337008"/>
+      <display value="Prolactinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34344004"/>
+      <display value="Concentric hypertrophy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34360000"/>
+      <display value="Fibrous histiocytoma, malignant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34418003"/>
+      <display value="Glandular necrotizing metaplasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34419006"/>
+      <display value="Decidual alteration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34493008"/>
+      <display value="Osmiophilic stain reaction"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34494002"/>
+      <display value="Communicating cerebrospinal fluid retention"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34550005"/>
+      <display value="Glomangiomyoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34603009"/>
+      <display value="Basal cell adenocarcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34636005"/>
+      <display value="Regeneration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34717007"/>
+      <display value="Smudge cell"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34720004"/>
+      <display value="Menstrual endometrium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34785007"/>
+      <display value="Lipolysis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34807008"/>
+      <display value="Congenital incomplete expansion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34823008"/>
+      <display value="Tumor necrosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34882000"/>
+      <display value="Giant fibroadenoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="34941004"/>
+      <display value="Odontogenic myxoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35013009"/>
+      <display value="Purulent discharge"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35073002"/>
+      <display value="Inflammatory pseudotumor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35232005"/>
+      <display value="Infiltrating duct and lobular carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35262004"/>
+      <display value="Gliosarcoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35287006"/>
+      <display value="Myeloid sarcoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35336005"/>
+      <display value="Gunshot wound, entrance, close shot"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35453004"/>
+      <display value="Autophagic bodies"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35506000"/>
+      <display value="Sweat retention"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35562000"/>
+      <display value="Waldenstrom's macroglobulinemia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35566002"/>
+      <display value="Hematoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35601003"/>
+      <display value="Monoclonal gammopathy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35696001"/>
+      <display value="Ruptured infarct"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35701008"/>
+      <display value="Hemangioblastic meningioma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35714009"/>
+      <display value="Postmortem change"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35718007"/>
+      <display value="Squamous cell carcinoma, small cell, nonkeratinizing"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35787005"/>
+      <display value="Postinflammatory atrophy"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35813005"/>
+      <display value="Fibrocystic change, proliferative type with atypia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35828005"/>
+      <display value="Malacia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35851005"/>
+      <display value="Chronic empyema"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35872008"/>
+      <display value="Secondary hyperplasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35933005"/>
+      <display value="Laceration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35944002"/>
+      <display value="Radiation ulcer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="35992002"/>
+      <display value="Predecidual alteration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36024000"/>
+      <display value="Gangrene"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36087009"/>
+      <display value="Adenocarcinoma in villous adenoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36161006"/>
+      <display value="Wallerian degeneration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36191001"/>
+      <display value="Perforation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36195005"/>
+      <display value="Nodular hyperplasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36207003"/>
+      <display value="Air embolus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36223003"/>
+      <display value="Fracture, delayed union, intra-articular"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36279001"/>
+      <display value="Lipogranuloma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36310008"/>
+      <display value="Alveolar adenocarcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36318001"/>
+      <display value="Apocrine adenoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36373003"/>
+      <display value="Muscle fiber hypertrophy, type II"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36390009"/>
+      <display value="Chronic suppurative inflammation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36425007"/>
+      <display value="Comedocarcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36468008"/>
+      <display value="Surgically constructed organ"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36475009"/>
+      <display value="Low-output external fistula"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36504009"/>
+      <display value="Ankylosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36560003"/>
+      <display value="Cystic infarct"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36639000"/>
+      <display value="Psoriasiform rash"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36721002"/>
+      <display value="Papillary mucinous cystadenoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36731009"/>
+      <display value="Sacculation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36839003"/>
+      <display value="Dislocation, multiple, closed and open"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36850000"/>
+      <display value="Retention"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="36949004"/>
+      <display value="Focal epithelial hyperplasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37039006"/>
+      <display value="Chromophobe adenoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37058002"/>
+      <display value="Foreign body giant cell granuloma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37068007"/>
+      <display value="Lateral displacement"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37095002"/>
+      <display value="Lipomatosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37138001"/>
+      <display value="Epithelioid cell melanoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37159008"/>
+      <display value="Glandular and muscular hyperplasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37205004"/>
+      <display value="Superficial wound"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37206003"/>
+      <display value="Synovial sarcoma, spindle cell"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37257004"/>
+      <display value="Decreased melanin pigmentation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37258009"/>
+      <display value="Cementoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37266000"/>
+      <display value="Secretory endometrium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37279009"/>
+      <display value="Amyloid tumor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37291000"/>
+      <display value="Eventration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37302003"/>
+      <display value="Adrenal cortical adenoma, heavily pigmented variant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37304002"/>
+      <display value="Basosquamous carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37500005"/>
+      <display value="Blister due to intracellular degeneration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37585003"/>
+      <display value="Chronic necrotizing inflammation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37708001"/>
+      <display value="Gene mosaicism"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37719003"/>
+      <display value="Milium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37748009"/>
+      <display value="Bony sclerosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37771006"/>
+      <display value="Crypt abscess"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37778000"/>
+      <display value="Saddle embolus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37782003"/>
+      <display value="Damage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37842001"/>
+      <display value="Antemortem blood clot"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37904008"/>
+      <display value="Chronic bleeding ulcer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="37995004"/>
+      <display value="Linitis plastica"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38022006"/>
+      <display value="Congenital abnormal roundness"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38045000"/>
+      <display value="Cold injury"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38069001"/>
+      <display value="Metaplastic keratinization"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38084005"/>
+      <display value="Stercoraceous ulcer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38109001"/>
+      <display value="Osseous metaplasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38117009"/>
+      <display value="Deposition of gold"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38139006"/>
+      <display value="Septal fibrosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38392006"/>
+      <display value="Congenital abnormal curvature"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38406003"/>
+      <display value="Mesenchymoma, benign"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38423007"/>
+      <display value="Honeycomb structures"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38431002"/>
+      <display value="Psammomatous meningioma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38444007"/>
+      <display value="Blood vessel hyperplasia"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38493002"/>
+      <display value="Fibrogranulomatous inflammation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38542009"/>
+      <display value="Nodular glomerulosclerosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38549000"/>
+      <display value="Carcinoma, undifferentiated"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38551001"/>
+      <display value="Senile plaque"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38640009"/>
+      <display value="Anemic infarct"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38698001"/>
+      <display value="Flexner-Wintersteiner rosette"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38716007"/>
+      <display value="Atherosclerosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38785003"/>
+      <display value="Air leakage"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38843008"/>
+      <display value="Abnormal melanin pigmentation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38931008"/>
+      <display value="Recent operative site"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38958001"/>
+      <display value="Mixed cell adenocarcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="38969003"/>
+      <display value="Precancerous melanosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39000009"/>
+      <display value="Hemangiosarcoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39005004"/>
+      <display value="Medulloepithelioma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39035006"/>
+      <display value="Atypical squamous cells of uncertain significance"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39037003"/>
+      <display value="Target fibers"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39056008"/>
+      <display value="Papillary squamous cell carcinoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39063008"/>
+      <display value="Fracture, delayed union, segmental"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39086001"/>
+      <display value="Hodgkin's disease, nodular sclerosis, cellular phase"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39143003"/>
+      <display value="Myxoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39266006"/>
+      <display value="Abnormal cell"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39274007"/>
+      <display value="Balloon cell melanoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39332000"/>
+      <display value="Intraepidermal epithelioma of Jadassohn"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39391009"/>
+      <display value="Chronic serous inflammation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39404008"/>
+      <display value="Microembolus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39471001"/>
+      <display value="Bile duct adenoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39474009"/>
+      <display value="Sea-blue histiocyte"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39503004"/>
+      <display value="Fracture, closed, segmental"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39553005"/>
+      <display value="Chondromyxoid fibroma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39577004"/>
+      <display value="Tumor cells, uncertain whether benign or malignant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39601009"/>
+      <display value="Resorbed tissue"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39718000"/>
+      <display value="Congenital failure to migrate"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39720002"/>
+      <display value="Adrenal cortical adenoma, mixed cell"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39781001"/>
+      <display value="Primitive neuroectodermal tumor"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39820009"/>
+      <display value="Abnormal number of nucleoli"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39850001"/>
+      <display value="Deposition of beryllium"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39870007"/>
+      <display value="Ossifying epulis of periodontal origin"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39876001"/>
+      <display value="Proliferative alteration of vagina"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39892006"/>
+      <display value="Mucoepidermoid tumour uncertain whether benign or malignant"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39896009"/>
+      <display value="Malignant melanoma, regressing"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39922000"/>
+      <display value="Folded cell"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39928001"/>
+      <display value="Excessive repair"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39935009"/>
+      <display value="Rouleaux formation"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39961008"/>
+      <display value="Bone fragment embolus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39967007"/>
+      <display value="Acquired web"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="39983007"/>
+      <display value="Fibrous adhesion"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40009002"/>
+      <display value="Craniopharyngioma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40123003"/>
+      <display value="Fetal rhabdomyoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40215006"/>
+      <display value="Muscle fiber atrophy, type I"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40225001"/>
+      <display value="Cystic lymphangioma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40236008"/>
+      <display value="Rimmed vacuoles"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40244008"/>
+      <display value="Spindle cell melanoma, type B"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40247001"/>
+      <display value="Zenker's necrosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40293003"/>
+      <display value="Adenomyoma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40299004"/>
+      <display value="Pigmentary degeneration"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40302004"/>
+      <display value="Corps ronds"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40318005"/>
+      <display value="Adenomatous nodule"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40411000"/>
+      <display value="Malignant lymphoma, large cell, follicular"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40459000"/>
+      <display value="Malignant mixed tumor, carcinomatous type"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40477005"/>
+      <display value="Deep third degree burn injury"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40487009"/>
+      <display value="Cholesterol granuloma"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40518009"/>
+      <display value="Acute superficial ulcer"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40633007"/>
+      <display value="Homer Wright rosette"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40641007"/>
+      <display value="Folded nucleus"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40761005"/>
+      <display value="Lipid cell tumor of ovary"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40772000"/>
+      <display value="Fibrous plaque"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40829002"/>
+      <display value="Acute edema"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40842002"/>
+      <display value="Anastomosis, end to side"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40866008"/>
+      <display value="Chip fracture"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40935003"/>
+      <display value="Meningiomatosis"/>
+    </contains>
+    <contains>
+      <system value="http://snomed.info/sct"/>
+      <code value="40962006"/>
+      <display value="Subcorneal blister"/>
+    </contains>
+  </expansion>
+</ValueSet>

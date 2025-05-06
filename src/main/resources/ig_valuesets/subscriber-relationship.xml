@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="subscriber-relationship"/>
+  <meta>
+    <lastUpdated value="2019-11-01T09:29:23.356+11:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="fm"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="trial-use"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="2"/>
+  </extension>
+  <url value="http://hl7.org/fhir/ValueSet/subscriber-relationship"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.3.1385"/>
+  </identifier>
+  <version value="4.0.1"/>
+  <name value="SubscriberRelationshipCodes"/>
+  <title value="SubscriberPolicyholder Relationship Codes"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2019-11-01T09:29:23+11:00"/>
+  <publisher value="Financial Management"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="This value set includes codes for the relationship between the Subscriber and the Beneficiary (insured/covered party/patient)."/>
+  <immutable value="true"/>
+  <copyright value="This is an extensible set."/>
+  <compose>
+    <include>
+      <system value="http://terminology.hl7.org/CodeSystem/subscriber-relationship"/>
+    </include>
+  </compose>
+  <expansion>
+    <identifier value="urn:uuid:c62eeb9c-2cdd-401a-9ef2-bb75c700e31c"/>
+    <timestamp value="2025-01-17T09:53:39-07:00"/>
+    <total value="7"/>
+    <offset value="0"/>
+    <parameter>
+      <name value="count"/>
+      <valueInteger value="1000"/>
+    </parameter>
+    <parameter>
+      <name value="offset"/>
+      <valueInteger value="0"/>
+    </parameter>
+    <parameter>
+      <name value="excludeNested"/>
+      <valueBoolean value="true"/>
+    </parameter>
+    <parameter>
+      <name value="used-codesystem"/>
+      <valueUri value="http://terminology.hl7.org/CodeSystem/subscriber-relationship|1.0.0"/>
+    </parameter>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/subscriber-relationship"/>
+      <code value="child"/>
+      <display value="Child"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/subscriber-relationship"/>
+      <code value="parent"/>
+      <display value="Parent"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/subscriber-relationship"/>
+      <code value="spouse"/>
+      <display value="Spouse"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/subscriber-relationship"/>
+      <code value="common"/>
+      <display value="Common Law Spouse"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/subscriber-relationship"/>
+      <code value="other"/>
+      <display value="Other"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/subscriber-relationship"/>
+      <code value="self"/>
+      <display value="Self"/>
+    </contains>
+    <contains>
+      <system value="http://terminology.hl7.org/CodeSystem/subscriber-relationship"/>
+      <code value="injured"/>
+      <display value="Injured Party"/>
+    </contains>
+  </expansion>
+</ValueSet>
