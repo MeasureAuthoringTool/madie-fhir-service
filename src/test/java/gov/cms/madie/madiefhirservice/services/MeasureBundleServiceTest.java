@@ -25,7 +25,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.security.Principal;
 import java.util.Map;
 
-import static gov.cms.madie.madiefhirservice.utils.BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
@@ -76,8 +75,7 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
 
   @Test
   public void testCreateMeasureBundle() {
-    when(measureTranslatorService.createFhirMeasureForMadieMeasure(
-            madieMeasure, BundleUtil.MEASURE_BUNDLE_TYPE_CALCULATION))
+    when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure))
         .thenReturn(measure);
 
     when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class), any(), anyString()))
@@ -143,8 +141,7 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
 
   @Test
   public void testCreateMeasureBundleWhenIncludedLibraryNotFound() {
-    when(measureTranslatorService.createFhirMeasureForMadieMeasure(
-            madieMeasure, BundleUtil.MEASURE_BUNDLE_TYPE_CALCULATION))
+    when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure))
         .thenReturn(measure);
 
     when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class), any(), anyString()))
@@ -176,8 +173,7 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
 
   @Test
   public void testCreateMeasureBundleForExport() {
-    when(measureTranslatorService.createFhirMeasureForMadieMeasure(
-            madieMeasure, MEASURE_BUNDLE_TYPE_EXPORT))
+    when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure))
         .thenReturn(measure);
 
     when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class), any(), anyString()))
@@ -216,7 +212,7 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
         measureBundleService.createMeasureBundle(
             madieMeasure,
             mock(Principal.class),
-            MEASURE_BUNDLE_TYPE_EXPORT,
+            BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT,
             "token",
             CqlCompilerException.ErrorSeverity.Info);
 
