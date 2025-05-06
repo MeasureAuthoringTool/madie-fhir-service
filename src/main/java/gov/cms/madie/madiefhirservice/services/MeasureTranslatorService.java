@@ -40,12 +40,7 @@ public class MeasureTranslatorService {
     Organization steward = madieMeasure.getMeasureMetaData().getSteward();
     String copyright = madieMeasure.getMeasureMetaData().getCopyright();
     String disclaimer = madieMeasure.getMeasureMetaData().getDisclaimer();
-    Instant approvalDate = madieMeasure.getReviewMetaData().getApprovalDate();
-    Instant lastReviewDate = madieMeasure.getReviewMetaData().getLastReviewDate();
-    String version = madieMeasure.getVersion().toString();
-    if (madieMeasure.getMeasureMetaData() != null && madieMeasure.getMeasureMetaData().isDraft()) {
-      version = "Draft based on " + version;
-    }
+
     org.hl7.fhir.r4.model.Measure measure = new org.hl7.fhir.r4.model.Measure();
     measure
         .setName(madieMeasure.getCqlLibraryName())
@@ -54,12 +49,12 @@ public class MeasureTranslatorService {
         .setExperimental(madieMeasure.getMeasureMetaData().getExperimental())
         .setUrl(
             FhirResourceHelpers.buildResourceFullUrl("Measure", madieMeasure.getCqlLibraryName()))
-        .setVersion(version)
+        .setVersion(getVersion(madieMeasure))
         .setEffectivePeriod(
             getPeriodFromDates(
                 madieMeasure.getMeasurementPeriodStart(), madieMeasure.getMeasurementPeriodEnd()))
-        .setApprovalDate(approvalDate != null ? Date.from(approvalDate) : null)
-        .setLastReviewDate(lastReviewDate != null ? Date.from(lastReviewDate) : null)
+        .setApprovalDate(getApprovalDate(madieMeasure))
+        .setLastReviewDate(getLastReviewDate(madieMeasure))
         .setPublisher(getStewardName(steward))
         .setDefinition(buildDefinitions(madieMeasure))
         .setCopyright(StringUtils.isBlank(copyright) ? UNKNOWN : copyright)
@@ -98,6 +93,24 @@ public class MeasureTranslatorService {
           buildRelatedArtifacts(madieMeasure.getMeasureMetaData().getReferences()));
     }
     return measure;
+  }
+
+  private String getVersion(Measure madieMeasure) {
+    String version = madieMeasure.getVersion().toString();
+    if (madieMeasure.getMeasureMetaData() != null && madieMeasure.getMeasureMetaData().isDraft()) {
+      version = "Draft based on " + version;
+    }
+    return version;
+  }
+
+  private Date getApprovalDate(Measure madieMeasure) {
+    Instant approvalDate = madieMeasure.getReviewMetaData().getApprovalDate();
+    return approvalDate != null ? Date.from(approvalDate) : null;
+  }
+
+  private Date getLastReviewDate(Measure madieMeasure) {
+    Instant lastReviewDate = madieMeasure.getReviewMetaData().getLastReviewDate();
+    return lastReviewDate != null ? Date.from(lastReviewDate) : null;
   }
 
   /**
