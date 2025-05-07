@@ -34,12 +34,9 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class MeasureTranslatorService {
   public static final String UNKNOWN = "UNKNOWN";
-  private final AppConfigService appConfigService;
 
   public org.hl7.fhir.r4.model.Measure createFhirMeasureForMadieMeasure(Measure madieMeasure) {
     Organization steward = madieMeasure.getMeasureMetaData().getSteward();
-    String copyright = madieMeasure.getMeasureMetaData().getCopyright();
-    String disclaimer = madieMeasure.getMeasureMetaData().getDisclaimer();
 
     org.hl7.fhir.r4.model.Measure measure = new org.hl7.fhir.r4.model.Measure();
     measure
@@ -57,8 +54,8 @@ public class MeasureTranslatorService {
         .setLastReviewDate(getLastReviewDate(madieMeasure))
         .setPublisher(getStewardName(steward))
         .setDefinition(buildDefinitions(madieMeasure))
-        .setCopyright(StringUtils.isBlank(copyright) ? UNKNOWN : copyright)
-        .setDisclaimer(StringUtils.isBlank(disclaimer) ? UNKNOWN : disclaimer)
+        .setCopyright(getCopyright(madieMeasure))
+        .setDisclaimer(getDisclaimer(madieMeasure))
         .setRationale(madieMeasure.getMeasureMetaData().getRationale())
         .setPurpose(madieMeasure.getMeasureMetaData().getPurpose())
         .setLibrary(
@@ -69,10 +66,7 @@ public class MeasureTranslatorService {
         .setContact(buildContactDetail(madieMeasure.getMeasureMetaData().getSteward(), false))
         .setGroup(buildGroups(madieMeasure.getGroups()))
         .setSupplementalData(buildSupplementalData(madieMeasure))
-        .setStatus(
-            madieMeasure.getMeasureMetaData().isDraft()
-                ? PublicationStatus.DRAFT
-                : PublicationStatus.ACTIVE)
+        .setStatus(getStatus(madieMeasure))
         .setDescription(madieMeasure.getMeasureMetaData().getDescription())
         .setUsage(madieMeasure.getMeasureMetaData().getGuidance())
         .setAuthor(buildContactDetail(madieMeasure.getMeasureMetaData().getDevelopers(), true))
@@ -81,17 +75,9 @@ public class MeasureTranslatorService {
         .setDate(Date.from(madieMeasure.getLastModifiedAt()))
         .setMeta(buildMeasureMeta(madieMeasure.getGroups()))
         .setId(madieMeasure.getCqlLibraryName());
-    for (Extension ext : buildExtensions(madieMeasure)) {
-      measure.addExtension(ext);
-    }
-    if (madieMeasure.getMeasureMetaData().getIntendedVenue() != null) {
-      measure.addUseContext(
-          buildIntendedVenue(madieMeasure.getMeasureMetaData().getIntendedVenue()));
-    }
-    if (CollectionUtils.isNotEmpty(madieMeasure.getMeasureMetaData().getReferences())) {
-      measure.setRelatedArtifact(
-          buildRelatedArtifacts(madieMeasure.getMeasureMetaData().getReferences()));
-    }
+    setExtensions(madieMeasure, measure);
+    setUseContext(madieMeasure, measure);
+    setRelatedArtifact(madieMeasure, measure);
     return measure;
   }
 
@@ -111,6 +97,42 @@ public class MeasureTranslatorService {
   private Date getLastReviewDate(Measure madieMeasure) {
     Instant lastReviewDate = madieMeasure.getReviewMetaData().getLastReviewDate();
     return lastReviewDate != null ? Date.from(lastReviewDate) : null;
+  }
+
+  private String getCopyright(Measure madieMeasure) {
+    String copyright = madieMeasure.getMeasureMetaData().getCopyright();
+    return StringUtils.isBlank(copyright) ? UNKNOWN : copyright;
+  }
+
+  private String getDisclaimer(Measure madieMeasure) {
+    String disclaimer = madieMeasure.getMeasureMetaData().getDisclaimer();
+    return StringUtils.isBlank(disclaimer) ? UNKNOWN : disclaimer;
+  }
+
+  private Enumerations.PublicationStatus getStatus(Measure madieMeasure) {
+    return madieMeasure.getMeasureMetaData().isDraft()
+        ? PublicationStatus.DRAFT
+        : PublicationStatus.ACTIVE;
+  }
+
+  private void setExtensions(Measure madieMeasure, org.hl7.fhir.r4.model.Measure measure) {
+    for (Extension ext : buildExtensions(madieMeasure)) {
+      measure.addExtension(ext);
+    }
+  }
+
+  private void setUseContext(Measure madieMeasure, org.hl7.fhir.r4.model.Measure measure) {
+    if (madieMeasure.getMeasureMetaData().getIntendedVenue() != null) {
+      measure.addUseContext(
+          buildIntendedVenue(madieMeasure.getMeasureMetaData().getIntendedVenue()));
+    }
+  }
+
+  private void setRelatedArtifact(Measure madieMeasure, org.hl7.fhir.r4.model.Measure measure) {
+    if (CollectionUtils.isNotEmpty(madieMeasure.getMeasureMetaData().getReferences())) {
+      measure.setRelatedArtifact(
+          buildRelatedArtifacts(madieMeasure.getMeasureMetaData().getReferences()));
+    }
   }
 
   /**
