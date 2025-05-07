@@ -30,6 +30,13 @@ public class ResourceController {
     return structureDefinitionService.getValueSetDefinition(url);
   }
 
+  @GetMapping(value = "/extensions", produces = MediaType.APPLICATION_JSON_VALUE)
+  public List<StructureDefinitionDto> getExtensionsForTargetPath(
+      @RequestParam(name = "targetPath") String targetPath,
+      @RequestParam(name = "kind") String targetKind) {
+    return structureDefinitionService.getExtensionsForTargetPath(targetPath, targetKind);
+  }
+
   @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
   public List<ResourceIdentifier> getAllResources() {
     return structureDefinitionService.getAllResources();
