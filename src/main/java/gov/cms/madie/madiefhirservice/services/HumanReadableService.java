@@ -39,6 +39,7 @@ public class HumanReadableService extends ResourceUtils {
   }
 
   private void escapeTopLevelProperties(org.hl7.fhir.r5.model.Measure measure) {
+    measure.setTitle(escapeStr(measure.getTitle()));
     measure.setPublisher(escapeStr(measure.getPublisher()));
     measure.setDescription(escapeStr(measure.getDescription()));
     measure.setUsage(escapeStr(measure.getUsage()));
@@ -81,6 +82,12 @@ public class HumanReadableService extends ResourceUtils {
                       Reference ref = identifier.getAssigner();
                       ref.setDisplay(escapeStr(ref.getDisplay()));
                       identifier.setAssigner(ref);
+                    }
+                    // escaping special chars for eCQM abbreviated title
+                    if (identifier.getSystem() != null
+                        && identifier.getSystem().contains("shortName")) {
+                      String originalValue = identifier.getValue();
+                      identifier.setValue(escapeStr(originalValue));
                     }
                     return identifier;
                   })
