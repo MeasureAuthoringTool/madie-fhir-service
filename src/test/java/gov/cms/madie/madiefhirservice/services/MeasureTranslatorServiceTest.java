@@ -7,8 +7,6 @@ import static gov.cms.madie.madiefhirservice.constants.IdentifierType.CODE_PUBLI
 import static gov.cms.madie.madiefhirservice.constants.IdentifierType.CODE_SHORT_NAME;
 import static gov.cms.madie.madiefhirservice.constants.IdentifierType.CODE_VERSION_INDEPENDENT;
 import static gov.cms.madie.madiefhirservice.constants.IdentifierType.CODE_VERSION_SPECIFIC;
-import static gov.cms.madie.madiefhirservice.utils.BundleUtil.MEASURE_BUNDLE_TYPE_CALCULATION;
-import static gov.cms.madie.madiefhirservice.utils.BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -77,8 +75,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
   @Test
   public void testCreateFhirMeasureForMadieMeasure() {
     org.hl7.fhir.r4.model.Measure measure =
-        measureTranslatorService.createFhirMeasureForMadieMeasure(
-            madieMeasure, MEASURE_BUNDLE_TYPE_EXPORT);
+        measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure);
 
     assertThat(measure.getName(), is(equalTo(madieMeasure.getCqlLibraryName())));
     assertThat(measure.getUsage(), is(equalTo(madieMeasure.getMeasureMetaData().getGuidance())));
@@ -428,8 +425,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     madieRatioMeasure.getMeasureMetaData().setCopyright("testCopyright");
     madieRatioMeasure.getMeasureMetaData().setDisclaimer("testDisclaimer");
     org.hl7.fhir.r4.model.Measure measure =
-        measureTranslatorService.createFhirMeasureForMadieMeasure(
-            madieRatioMeasure, MEASURE_BUNDLE_TYPE_EXPORT);
+        measureTranslatorService.createFhirMeasureForMadieMeasure(madieRatioMeasure);
 
     assertThat(measure.getName(), is(equalTo(madieMeasure.getCqlLibraryName())));
     assertFalse(measure.getExperimental());
@@ -583,8 +579,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
   @Test
   public void testCreateFhirMeasureForMadieCVMeasure() {
     org.hl7.fhir.r4.model.Measure measure =
-        measureTranslatorService.createFhirMeasureForMadieMeasure(
-            madieCVMeasure, MEASURE_BUNDLE_TYPE_CALCULATION);
+        measureTranslatorService.createFhirMeasureForMadieMeasure(madieCVMeasure);
 
     assertThat(measure.getName(), is(equalTo(madieCVMeasure.getCqlLibraryName())));
     assertThat(
@@ -749,8 +744,8 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     List<Group> groups = new ArrayList<>();
     groups.add(group);
 
-    List<MeasureGroupComponent> groupComponent =
-        measureTranslatorService.buildGroups(groups, MEASURE_BUNDLE_TYPE_CALCULATION);
+    List<MeasureGroupComponent> groupComponent = measureTranslatorService.buildGroups(groups);
+
     assertNotNull(groupComponent);
 
     groupComponent.forEach(
@@ -831,21 +826,16 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
         List.of(PopulationType.INITIAL_POPULATION, PopulationType.MEASURE_POPULATION));
     stratifications.add(strat1);
     Stratification strat2 = new Stratification();
-    strat2.setId("testStrat2Id");
-    strat2.setDescription("strat2-description");
-    strat2.setAssociations(
+    strat2.setDescription("strat-description");
+    strat1.setAssociations(
         List.of(PopulationType.INITIAL_POPULATION, PopulationType.MEASURE_POPULATION));
     stratifications.add(strat2);
-    Stratification strat3 = new Stratification(); // no associations, not included in output
-    strat3.setId("testStrat3Id");
-    strat3.setDescription("strat3-description");
-    stratifications.add(strat3);
     group.setStratifications(stratifications);
     List<Group> groups = new ArrayList<>();
     groups.add(group);
 
-    List<MeasureGroupComponent> groupComponent =
-        measureTranslatorService.buildGroups(groups, MEASURE_BUNDLE_TYPE_CALCULATION);
+    List<MeasureGroupComponent> groupComponent = measureTranslatorService.buildGroups(groups);
+
     assertNotNull(groupComponent);
 
     assertThat(groupComponent.size(), is(equalTo(1)));
@@ -853,16 +843,11 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertThat(measureGroupComponent, is(notNullValue()));
     List<MeasureGroupStratifierComponent> stratifier = measureGroupComponent.getStratifier();
     assertThat(stratifier, is(notNullValue()));
-    assertThat(stratifier.size(), is(equalTo(3)));
+    assertThat(stratifier.size(), is(equalTo(2)));
     MeasureGroupStratifierComponent measureGroupStratifierComponent = stratifier.get(0);
     assertThat(measureGroupStratifierComponent, is(notNullValue()));
     assertThat(measureGroupStratifierComponent.getDescription(), is(equalTo("strat-description")));
-    assertThat(measureGroupStratifierComponent.getId(), is(equalTo("testStrat1Id")));
-    MeasureGroupStratifierComponent measureGroupStratifierComponent2 = stratifier.get(1);
-    assertThat(measureGroupStratifierComponent2, is(notNullValue()));
-    assertThat(
-        measureGroupStratifierComponent2.getDescription(), is(equalTo("strat2-description")));
-    assertThat(measureGroupStratifierComponent2.getId(), is(equalTo("testStrat2Id")));
+
     Expression expression = measureGroupStratifierComponent.getCriteria();
     assertThat(expression, is(notNullValue()));
     List<Extension> appliesToExt = measureGroupStratifierComponent.getExtension();
@@ -920,8 +905,8 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     List<Group> groups = new ArrayList<>();
     groups.add(group);
 
-    List<MeasureGroupComponent> groupComponent =
-        measureTranslatorService.buildGroups(groups, MEASURE_BUNDLE_TYPE_CALCULATION);
+    List<MeasureGroupComponent> groupComponent = measureTranslatorService.buildGroups(groups);
+
     assertNotNull(groupComponent);
 
     assertThat(groupComponent.size(), is(equalTo(1)));
@@ -987,8 +972,8 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     List<Group> groups = new ArrayList<>();
     groups.add(group);
 
-    List<MeasureGroupComponent> groupComponent =
-        measureTranslatorService.buildGroups(groups, MEASURE_BUNDLE_TYPE_CALCULATION);
+    List<MeasureGroupComponent> groupComponent = measureTranslatorService.buildGroups(groups);
+
     assertNotNull(groupComponent);
 
     assertThat(groupComponent.size(), is(equalTo(1)));
@@ -1277,7 +1262,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
   @Test
   public void testBuildGroupsWithNull() {
     List<MeasureGroupComponent> listOfComponent =
-        measureTranslatorService.buildGroups(new ArrayList<>(), MEASURE_BUNDLE_TYPE_CALCULATION);
+        measureTranslatorService.buildGroups(new ArrayList<>());
     assertNull(listOfComponent);
   }
 
@@ -1299,8 +1284,8 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
   public void testCreateFhirMeasureForDraftMadieMeasure() {
     madieMeasure.getMeasureMetaData().setDraft(true);
     org.hl7.fhir.r4.model.Measure measure =
-        measureTranslatorService.createFhirMeasureForMadieMeasure(
-            madieMeasure, MEASURE_BUNDLE_TYPE_CALCULATION);
+        measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure);
+
     assertEquals("Draft based on 0.0.000", measure.getVersion());
   }
 
@@ -1323,8 +1308,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
 
     madieMeasure.getMeasureMetaData().setReferences(List.of(reference1, reference2));
     org.hl7.fhir.r4.model.Measure measure =
-        measureTranslatorService.createFhirMeasureForMadieMeasure(
-            madieMeasure, MEASURE_BUNDLE_TYPE_CALCULATION);
+        measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure);
     assertEquals(2, measure.getRelatedArtifact().size());
     assertEquals(
         "CITATION - Ference, B.A. (2015, March 10). Statins and the risk of developing new-onset Type 2 diabetes: Expert analysis. Retrieved from https://www.acc.org/latest-in-cardiology/articles/2015/03/10/08/10/statins-and-the-risk-of-developing-new-onset-type-2-diabetes\n",
