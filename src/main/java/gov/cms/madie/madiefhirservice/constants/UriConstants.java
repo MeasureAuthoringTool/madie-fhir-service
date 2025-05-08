@@ -79,7 +79,9 @@ public final class UriConstants {
         "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-supplementalDataGuidance";
 
     public static final String MEASURE_DEFINITION_EXT_URI =
-        "http://hl7.org/fhir/5.0/StructureDefinition/extension-Measure.term";
+        // TODO Use this URL once liquid templates are updated:
+        //  "http://hl7.org/fhir/5.0/StructureDefinition/extension-Measure.term";
+        "http://hl7.org/fhir/StructureDefinition/cqf-definitionTerm";
 
     public static final String INCLUDE_IN_REPORT_TYPE_URI =
         "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType";
