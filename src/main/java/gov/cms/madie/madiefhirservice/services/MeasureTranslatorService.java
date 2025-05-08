@@ -254,7 +254,7 @@ public class MeasureTranslatorService {
             identifierType.getCode(),
             UriConstants.CodeSystem.CODE_SYSTEM_IDENTIFIER_TYPE_URI,
             identifierType.getDisplay()));
-    log.info("\nbuildIdentifier: identifier = " + identifier.toString());
+    log.debug("\nbuildIdentifier: identifier = {}", identifier.getValue());
     return identifier;
   }
 
