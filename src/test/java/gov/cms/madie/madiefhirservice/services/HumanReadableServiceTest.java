@@ -348,6 +348,13 @@ class HumanReadableServiceTest
   public void testEscapeMeasure() {
     org.hl7.fhir.r5.model.Measure r5Measure = new org.hl7.fhir.r5.model.Measure();
 
+    org.hl7.fhir.r5.model.Identifier identifiers = new org.hl7.fhir.r5.model.Identifier();
+    identifiers.setSystem("UriType[https://madie.cms.gov/measure/shortName]");
+    identifiers.setValue("eCqmTitle&");
+
+    r5Measure.addIdentifier(identifiers);
+    r5Measure.setTitle("measure name &");
+
     org.hl7.fhir.r5.model.Expression expression = new org.hl7.fhir.r5.model.Expression();
     expression.setDescription("test description");
     org.hl7.fhir.r5.model.Measure.MeasureSupplementalDataComponent supplementalData =
@@ -408,6 +415,8 @@ class HumanReadableServiceTest
     r5Measure.addRelatedArtifact(r5RelatedArtifact);
 
     org.hl7.fhir.r5.model.Measure result = humanReadableService.escapeMeasure(r5Measure);
+    assertEquals("eCqmTitle&amp;", result.getIdentifier().get(0).getValue());
+    assertEquals("measure name &amp;", result.getTitle());
     assertNotNull(result);
     assertNotNull(result.getRelatedArtifact());
     assertEquals(1, result.getRelatedArtifact().size());
