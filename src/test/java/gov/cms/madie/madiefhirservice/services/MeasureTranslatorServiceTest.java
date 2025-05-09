@@ -412,9 +412,22 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertFalse(measure.getSupplementalData().get(2).getUsage().get(0).getCoding().isEmpty());
     assertEquals("0.0.000", measure.getVersion());
 
-    assertEquals(measure.getDefinition().size(), 2);
-    assertEquals(measure.getDefinition().get(0).toString(), "test term1 - test definition1" + "\n");
-    assertEquals(measure.getDefinition().get(1).toString(), "test term2 - test definition2" + "\n");
+    assertThat(measure.hasExtension(UriConstants.CqfMeasures.MEASURE_DEFINITION_EXT_URI), is(true));
+    List<Extension> measureDefinitionExtensions =
+        measure.getExtensionsByUrl(UriConstants.CqfMeasures.MEASURE_DEFINITION_EXT_URI);
+
+    assertEquals(2, measureDefinitionExtensions.size());
+    for (int i = 0; i < measureDefinitionExtensions.size(); i++) {
+      assertEquals(2, measureDefinitionExtensions.get(i).getExtension().size());
+      assertThat(measureDefinitionExtensions.get(i).hasExtension("term"), is(true));
+      assertThat(measureDefinitionExtensions.get(i).hasExtension("definition"), is(true));
+      assertThat(
+          measureDefinitionExtensions.get(i).getExtension().get(0).getValue().toString(),
+          is(madieMeasure.getMeasureMetaData().getMeasureDefinitions().get(i).getTerm()));
+      assertThat(
+          measureDefinitionExtensions.get(i).getExtension().get(1).getValue().toString(),
+          is(madieMeasure.getMeasureMetaData().getMeasureDefinitions().get(i).getDefinition()));
+    }
   }
 
   @Test

@@ -29,6 +29,8 @@ import gov.cms.madie.madiefhirservice.constants.UriConstants;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import static org.apache.commons.collections4.CollectionUtils.isNotEmpty;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -53,7 +55,6 @@ public class MeasureTranslatorService {
         .setApprovalDate(getApprovalDate(madieMeasure))
         .setLastReviewDate(getLastReviewDate(madieMeasure))
         .setPublisher(getStewardName(steward))
-        .setDefinition(buildDefinitions(madieMeasure))
         .setCopyright(getCopyright(madieMeasure))
         .setDisclaimer(getDisclaimer(madieMeasure))
         .setRationale(madieMeasure.getMeasureMetaData().getRationale())
@@ -149,6 +150,10 @@ public class MeasureTranslatorService {
     Extension riskAdjustmentVariableGuidanceExt = buildRiskAdjustmentGuidanceExt(madieMeasure);
     if (riskAdjustmentVariableGuidanceExt != null) {
       extensions.add(riskAdjustmentVariableGuidanceExt);
+    }
+    List<Extension> measureDefinitionsExts = buildMeasureDefinitionExts(madieMeasure);
+    if (isNotEmpty(measureDefinitionsExts)) {
+      extensions.addAll(measureDefinitionsExts);
     }
     return extensions;
   }
@@ -249,7 +254,7 @@ public class MeasureTranslatorService {
             identifierType.getCode(),
             UriConstants.CodeSystem.CODE_SYSTEM_IDENTIFIER_TYPE_URI,
             identifierType.getDisplay()));
-    log.info("\nbuildIdentifier: identifier = " + identifier.toString());
+    log.debug("\nbuildIdentifier: identifier = {}", identifier.getValue());
     return identifier;
   }
 
@@ -495,7 +500,7 @@ public class MeasureTranslatorService {
                   strat -> {
                     List<PopulationType> associations = strat.getAssociations();
                     MeasureGroupStratifierComponent stratComponent = null;
-                    if (CollectionUtils.isNotEmpty(associations)) {
+                    if (isNotEmpty(associations)) {
                       List<Extension> extensionList =
                           associations.stream()
                               .map(
@@ -702,6 +707,30 @@ public class MeasureTranslatorService {
     return ext;
   }
 
+  /**
+   * Build extension for each measure definition. Assumes that each measure definition contains a
+   * Term and Definition of that Term.
+   *
+   * @param madieMeasure
+   * @return List of Extensions where each Extension represents a measure definition.
+   */
+  private List<Extension> buildMeasureDefinitionExts(Measure madieMeasure) {
+    if (CollectionUtils.isEmpty(madieMeasure.getMeasureMetaData().getMeasureDefinitions())) {
+      return Collections.emptyList();
+    }
+
+    return madieMeasure.getMeasureMetaData().getMeasureDefinitions().stream()
+        .map(
+            msrDef -> {
+              Extension ext = new Extension(UriConstants.CqfMeasures.MEASURE_DEFINITION_EXT_URI);
+              ext.addExtension(new Extension("term", new StringType(msrDef.getTerm())));
+              ext.addExtension(
+                  new Extension("definition", new MarkdownType(msrDef.getDefinition())));
+              return ext;
+            })
+        .collect(Collectors.toList());
+  }
+
   private List<MeasureSupplementalDataComponent> buildSupplementalDataElements(
       Measure madieMeasure) {
     if (madieMeasure.getSupplementalData() == null) {
@@ -722,7 +751,7 @@ public class MeasureTranslatorService {
                           "supplemental-data",
                           "http://terminology.hl7.org/CodeSystem/measure-data-usage",
                           null)));
-              if (CollectionUtils.isNotEmpty(supplementalData.getIncludeInReportType())) {
+              if (isNotEmpty(supplementalData.getIncludeInReportType())) {
                 supplementalData
                     .getIncludeInReportType()
                     .forEach(
@@ -754,7 +783,7 @@ public class MeasureTranslatorService {
                           "http://terminology.hl7.org/CodeSystem/measure-data-usage",
                           null)));
               measureSupplementalDataComponent.setDescription(riskAdjustment.getDefinition());
-              if (CollectionUtils.isNotEmpty(riskAdjustment.getIncludeInReportType())) {
+              if (isNotEmpty(riskAdjustment.getIncludeInReportType())) {
                 riskAdjustment
                     .getIncludeInReportType()
                     .forEach(
@@ -771,22 +800,6 @@ public class MeasureTranslatorService {
     return new Extension(
         UriConstants.CqfMeasures.INCLUDE_IN_REPORT_TYPE_URI,
         new CodeType(measureReportType.toCode()));
-  }
-
-  private List<MarkdownType> buildDefinitions(Measure madieMeasure) {
-    List<MarkdownType> definitions = null;
-    if (madieMeasure.getMeasureMetaData() != null
-        && !CollectionUtils.isEmpty(madieMeasure.getMeasureMetaData().getMeasureDefinitions())) {
-      definitions =
-          madieMeasure.getMeasureMetaData().getMeasureDefinitions().stream()
-              .map(
-                  definition -> {
-                    return new MarkdownType(
-                        definition.getTerm() + " - " + definition.getDefinition() + "\n");
-                  })
-              .collect(Collectors.toList());
-    }
-    return definitions;
   }
 
   private List<RelatedArtifact> buildRelatedArtifacts(
