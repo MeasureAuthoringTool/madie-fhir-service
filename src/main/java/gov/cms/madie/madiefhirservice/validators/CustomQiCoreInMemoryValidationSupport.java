@@ -39,7 +39,6 @@ public class CustomQiCoreInMemoryValidationSupport
           CommonCodeSystemsTerminologyService.getValueSetUrl(getFhirContext(), theValueSet);
       String codeSystemUrlToValidate = theCodeSystemUrlAndVersion;
       String codeSystemVersionToValidate = null;
-      IssueSeverity severity = null;
       if (theCodeSystemUrlAndVersion != null) {
         int versionIndex = theCodeSystemUrlAndVersion.indexOf("|");
         if (versionIndex > -1) {
@@ -67,7 +66,6 @@ public class CustomQiCoreInMemoryValidationSupport
                 vsUrl,
                 codeSystemUrlToValidate,
                 codeSystemVersionToValidate,
-                severity,
                 contains);
           } else {
             // code system mismatch - kick validation to next in chain
@@ -80,7 +78,8 @@ public class CustomQiCoreInMemoryValidationSupport
           createNotInVsValidationResult(
               theCode, theDisplay, codeSystemUrlToValidate, theCodeSystemUrlAndVersion, vsUrl);
       log.info(
-          "Code validation failed: {}", notInVsCodeValidationResult.getIssues().get(0).getDiagnostics());
+          "Code validation failed: {}",
+          notInVsCodeValidationResult.getIssues().get(0).getDiagnostics());
       return notInVsCodeValidationResult;
     }
     return null;
@@ -93,8 +92,8 @@ public class CustomQiCoreInMemoryValidationSupport
       String vsUrl,
       String codeSystemUrlToValidate,
       String codeSystemVersionToValidate,
-      IssueSeverity severity,
       ValueSet.ValueSetExpansionContainsComponent contains) {
+    IssueSeverity severity = null;
     // check if display matches
     if (StringUtils.isNotBlank(theDisplay)
         && !StringUtils.equals(theDisplay, contains.getDisplay())) {
