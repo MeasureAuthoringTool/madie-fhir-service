@@ -7,7 +7,6 @@ import ca.uhn.fhir.parser.IParser;
 import ca.uhn.fhir.util.ClasspathUtil;
 import ca.uhn.fhir.validation.FhirValidator;
 import ca.uhn.fhir.validation.IValidatorModule;
-import gov.cms.madie.madiefhirservice.utils.QiCoreLenientTerminologyValidator;
 import gov.cms.madie.madiefhirservice.utils.ResourceUtils;
 import gov.cms.madie.madiefhirservice.validators.CustomQiCoreInMemoryValidationSupport;
 import lombok.extern.slf4j.Slf4j;
@@ -85,23 +84,22 @@ public class HapiFhirConfig {
     npmPackageSupport.loadPackageFromClasspath(
         "classpath:packages/hl7.fhir.xver-extensions-0.1.0.tgz");
     PrePopulatedValidationSupport prePopulatedValidationSupport =
-        buildPrePopulatedValidationSupportFromZip(qicore6FhirContext, "classpath:packages/tx-qicore-6.0.0.zip");
+        buildPrePopulatedValidationSupportFromZip(
+            qicore6FhirContext, "classpath:packages/tx-qicore-6.0.0.zip");
 
     UnknownCodeSystemWarningValidationSupport unknownCodeSystemWarningValidationSupport =
         new UnknownCodeSystemWarningValidationSupport(qicore6FhirContext);
     unknownCodeSystemWarningValidationSupport.setNonExistentCodeSystemSeverity(
         IValidationSupport.IssueSeverity.WARNING);
 
-    return //new CachingValidationSupport(
+    return new CachingValidationSupport(
         new ValidationSupportChain(
             prePopulatedValidationSupport,
             npmPackageSupport,
             new DefaultProfileValidationSupport(qicore6FhirContext),
             new CustomQiCoreInMemoryValidationSupport(qicore6FhirContext),
-//            new QiCoreLenientTerminologyValidator(qicore6FhirContext),
             new CommonCodeSystemsTerminologyService(qicore6FhirContext),
-            unknownCodeSystemWarningValidationSupport);
-    //);
+            unknownCodeSystemWarningValidationSupport));
   }
 
   @Bean
@@ -156,10 +154,11 @@ public class HapiFhirConfig {
     IParser xmlParser = qicore6FhirContext.newXmlParser();
 
     try (InputStream is = ClasspathUtil.loadResourceAsStream(zipFileName);
-         ZipInputStream zipInputStream = new ZipInputStream(is)) {
+        ZipInputStream zipInputStream = new ZipInputStream(is)) {
 
       if (is == null) {
-        throw new IllegalArgumentException("ZIP file not found in resources/packages: " + zipFileName);
+        throw new IllegalArgumentException(
+            "ZIP file not found in resources/packages: " + zipFileName);
       }
 
       ZipEntry entry;
