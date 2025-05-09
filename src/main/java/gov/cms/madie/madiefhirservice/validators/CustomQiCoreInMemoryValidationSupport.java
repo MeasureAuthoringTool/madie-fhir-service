@@ -59,7 +59,7 @@ public class CustomQiCoreInMemoryValidationSupport
               || (StringUtils.equals(codeSystemUrlToValidate, contains.getSystem())
                   && (codeSystemVersionToValidate == null
                       || StringUtils.equals(codeSystemVersionToValidate, contains.getVersion())))) {
-            return getCodeValidationResult(
+            return validateMatchedCodeAndCodeSystem(
                 theCodeSystemUrlAndVersion,
                 theCode,
                 theDisplay,
@@ -85,7 +85,7 @@ public class CustomQiCoreInMemoryValidationSupport
     return null;
   }
 
-  private CodeValidationResult getCodeValidationResult(
+  private CodeValidationResult validateMatchedCodeAndCodeSystem(
       String theCodeSystemUrlAndVersion,
       String theCode,
       String theDisplay,

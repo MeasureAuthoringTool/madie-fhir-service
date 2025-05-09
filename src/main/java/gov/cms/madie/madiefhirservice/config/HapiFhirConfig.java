@@ -173,7 +173,6 @@ public class HapiFhirConfig {
           IBaseResource baseResource = xmlParser.parseResource(fileContent.toString());
           if (baseResource instanceof ValueSet) {
             prePopulatedValidationSupport.addValueSet(baseResource);
-            log.info("Added ValueSet: {}", baseResource.getIdElement().getIdPart());
           }
         }
         zipInputStream.closeEntry();
