@@ -64,8 +64,6 @@ class HumanReadableServiceTest
 
   private Library library;
 
-  private org.hl7.fhir.r4.model.Library r4EffectiveDataRequirements;
-
   List<MarkdownType> terms = new ArrayList<>();
   MarkdownType term1 = new MarkdownType("Term1 - Definition1");
   MarkdownType term2 = new MarkdownType("Term2 - Definition2");
@@ -108,10 +106,10 @@ class HumanReadableServiceTest
     terms.add(term1);
     terms.add(term2);
 
-    r4EffectiveDataRequirements =
+    Library r4EffectiveDataRequirements =
         convertToFhirR4Resource(
             getStringFromTestResource("/humanReadable/effective" + "-data-requirements.json"),
-            org.hl7.fhir.r4.model.Library.class);
+            Library.class);
 
     measure =
         new org.hl7.fhir.r4.model.Measure()
