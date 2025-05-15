@@ -15,7 +15,6 @@ import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.Library;
 import org.hl7.fhir.r4.model.Resource;
 import org.hl7.fhir.r5.model.*;
-import org.hl7.fhir.r5.model.Enumerations.FHIRTypes;
 import org.hl7.fhir.r5.utils.LiquidEngine;
 import org.springframework.stereotype.Service;
 
@@ -225,10 +224,7 @@ public class HumanReadableService extends ResourceUtils {
             });
   }
 
-  public String generateMeasureHumanReadable(
-      Measure madieMeasure,
-      Bundle bundleResource,
-      org.hl7.fhir.r5.model.Library effectiveDataRequirements) {
+  public String generateMeasureHumanReadable(Measure madieMeasure, Bundle bundleResource) {
     log.info("Generating human readable for measure: {}", madieMeasure.getId());
     if (bundleResource == null) {
       log.error("Unable to find a bundleResource for measure {}", madieMeasure.getId());
@@ -245,11 +241,7 @@ public class HumanReadableService extends ResourceUtils {
       var versionConvertor_40_50 = new VersionConvertor_40_50(new BaseAdvisor_40_50());
       org.hl7.fhir.r5.model.Measure r5Measure =
           (org.hl7.fhir.r5.model.Measure) versionConvertor_40_50.convertResource(measureResource);
-      // sort effectiveDataRequirements.parameters
-      sortParameters(madieMeasure, effectiveDataRequirements);
-      r5Measure.addContained(effectiveDataRequirements);
 
-      r5Measure.getExtension().add(createEffectiveDataRequirementExtension());
       // escape html
       org.hl7.fhir.r5.model.Measure escapedR5Measure = escapeMeasure(r5Measure);
 
@@ -263,78 +255,6 @@ public class HumanReadableService extends ResourceUtils {
           fhirException);
       throw new HumanReadableGenerationException("measure", madieMeasure.getId());
     }
-  }
-
-  private void sortParameters(
-      Measure madieMeasure, org.hl7.fhir.r5.model.Library effectiveDataRequirements) {
-    List<String> suppDataDefs =
-        madieMeasure.getSupplementalData().stream()
-            .map((s) -> s.getDefinition())
-            .collect(Collectors.toList());
-    List<String> riskAdjDefs =
-        madieMeasure.getRiskAdjustments().stream()
-            .map((s) -> s.getDefinition())
-            .collect(Collectors.toList());
-    List<String> strats = new ArrayList<String>();
-    if (madieMeasure.getGroups() != null) {
-      madieMeasure.getGroups().stream()
-          .forEach(
-              (g) -> {
-                if (CollectionUtils.isNotEmpty(g.getStratifications())) {
-                  strats.addAll(
-                      g.getStratifications().stream()
-                          .map(s -> s.getCqlDefinition())
-                          .collect(Collectors.toList()));
-                }
-              });
-    }
-
-    Collections.sort(
-        effectiveDataRequirements.getParameter(),
-        new Comparator<ParameterDefinition>() {
-
-          @Override
-          public int compare(ParameterDefinition o1, ParameterDefinition o2) {
-
-            int ord1 = determineOrd(o1, suppDataDefs, riskAdjDefs, strats);
-            int ord2 = determineOrd(o2, suppDataDefs, riskAdjDefs, strats);
-
-            int result = ord1 - ord2;
-            return result;
-          }
-        });
-  }
-
-  private int determineOrd(
-      ParameterDefinition paramDef,
-      List<String> suppDataDefs,
-      List<String> riskAdjDefs,
-      List<String> strats) {
-    int result = 1; // default = 1
-
-    // if paramDef is a period, then ord = 0
-    if (paramDef != null
-        && paramDef.getType() != null
-        && paramDef.getType().toCode().equals(FHIRTypes.PERIOD.toCode())) {
-      result = 0;
-    }
-    // if paramDef is a supp data then ord = 2
-    if (paramDef != null && suppDataDefs.contains(paramDef.getName())) {
-      result = 2;
-    }
-
-    // if paramDef is a risk adjustment data then ord = 3
-    if (paramDef != null && riskAdjDefs.contains(paramDef.getName())) {
-      result = 3;
-    }
-
-    // if paramDef is a stratification data then ord = 4
-    if (paramDef != null && strats.contains(paramDef.getName())) {
-      result = 4;
-    }
-
-    // if paramDef is anything else then ord = 1
-    return result;
   }
 
   /**
@@ -395,13 +315,6 @@ public class HumanReadableService extends ResourceUtils {
             .filter(content -> content.getContentType().equalsIgnoreCase("text/cql"))
             .map(content -> content.setData(escapeStr(new String(content.getData())).getBytes()))
             .collect(Collectors.toList()));
-  }
-
-  private Extension createEffectiveDataRequirementExtension() {
-    var extension = new Extension();
-    extension.setUrl(CqfMeasures.EFFECTIVE_DATA_REQUIREMENT_URL);
-    extension.getValueReference().setReference("#effective-data-requirements");
-    return extension;
   }
 
   private void escapeDefinitions(org.hl7.fhir.r5.model.Measure measure) {

@@ -12,6 +12,7 @@ import java.security.Principal;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import org.apache.commons.collections4.CollectionUtils;
 import org.cqframework.cql.cql2elm.CqlCompilerException;
 import org.hl7.fhir.convertors.advisors.impl.BaseAdvisor_40_50;
 import org.hl7.fhir.convertors.conv40_50.VersionConvertor_40_50;
@@ -21,8 +22,13 @@ import org.hl7.fhir.r4.model.Extension;
 import org.hl7.fhir.r4.model.Library;
 import org.hl7.fhir.r4.model.Narrative;
 import org.hl7.fhir.r4.model.Reference;
+import org.hl7.fhir.r5.model.Enumerations;
+import org.hl7.fhir.r5.model.ParameterDefinition;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -84,13 +90,14 @@ public class MeasureBundleService {
     org.hl7.fhir.r5.model.Library effectiveDataRequirements =
         elmTranslatorClient.getEffectiveDataRequirements(
             libraryDetails, true, accessToken, errorSeverity);
+
+    sortParameters(madieMeasure, effectiveDataRequirements);
     addEffectiveDataRequirementsToMeasure(measure, effectiveDataRequirements);
 
     if (BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT.equals(bundleType)) {
       // get human-readable for measure
       String humanReadable =
-          humanReadableService.generateMeasureHumanReadable(
-              madieMeasure, bundle, effectiveDataRequirements);
+          humanReadableService.generateMeasureHumanReadable(madieMeasure, bundle);
       // set narrative and effective DataRequirements to measure
       setNarrativeText(measure, humanReadable);
 
@@ -183,14 +190,85 @@ public class MeasureBundleService {
     org.hl7.fhir.r4.model.Library r4EffectiveDataRequirements =
         (org.hl7.fhir.r4.model.Library)
             versionConvertor_40_50.convertResource(effectiveDataRequirements);
-    // TODO: verify effective data requirement profile compliance:
-    // http://hl7.org/fhir/us/cqfmeasures/StructureDefinition-module-definition-library-cqfm.html
+
     measure.addContained(r4EffectiveDataRequirements);
     Extension extension =
         new Extension()
             .setUrl(UriConstants.CqfMeasures.EFFECTIVE_DATA_REQUIREMENT_URL)
             .setValue(new Reference().setReference("#effective-data-requirements"));
     measure.getExtension().add(extension);
+  }
+
+  private void sortParameters(
+      Measure madieMeasure, org.hl7.fhir.r5.model.Library effectiveDataRequirements) {
+    List<String> suppDataDefs =
+        madieMeasure.getSupplementalData().stream()
+            .map((s) -> s.getDefinition())
+            .collect(Collectors.toList());
+    List<String> riskAdjDefs =
+        madieMeasure.getRiskAdjustments().stream()
+            .map((s) -> s.getDefinition())
+            .collect(Collectors.toList());
+    List<String> strats = new ArrayList<String>();
+    if (madieMeasure.getGroups() != null) {
+      madieMeasure.getGroups().stream()
+          .forEach(
+              (g) -> {
+                if (CollectionUtils.isNotEmpty(g.getStratifications())) {
+                  strats.addAll(
+                      g.getStratifications().stream()
+                          .map(s -> s.getCqlDefinition())
+                          .collect(Collectors.toList()));
+                }
+              });
+    }
+
+    Collections.sort(
+        effectiveDataRequirements.getParameter(),
+        new Comparator<ParameterDefinition>() {
+
+          @Override
+          public int compare(ParameterDefinition o1, ParameterDefinition o2) {
+
+            int ord1 = determineOrd(o1, suppDataDefs, riskAdjDefs, strats);
+            int ord2 = determineOrd(o2, suppDataDefs, riskAdjDefs, strats);
+
+            int result = ord1 - ord2;
+            return result;
+          }
+        });
+  }
+
+  private int determineOrd(
+      ParameterDefinition paramDef,
+      List<String> suppDataDefs,
+      List<String> riskAdjDefs,
+      List<String> strats) {
+    int result = 1; // default = 1
+
+    // if paramDef is a period, then ord = 0
+    if (paramDef != null
+        && paramDef.getType() != null
+        && paramDef.getType().toCode().equals(Enumerations.FHIRTypes.PERIOD.toCode())) {
+      result = 0;
+    }
+    // if paramDef is a supp data then ord = 2
+    if (paramDef != null && suppDataDefs.contains(paramDef.getName())) {
+      result = 2;
+    }
+
+    // if paramDef is a risk adjustment data then ord = 3
+    if (paramDef != null && riskAdjDefs.contains(paramDef.getName())) {
+      result = 3;
+    }
+
+    // if paramDef is a stratification data then ord = 4
+    if (paramDef != null && strats.contains(paramDef.getName())) {
+      result = 4;
+    }
+
+    // if paramDef is anything else then ord = 1
+    return result;
   }
 
   private Set<String> getExpressions(org.hl7.fhir.r4.model.Measure r5Measure) {
