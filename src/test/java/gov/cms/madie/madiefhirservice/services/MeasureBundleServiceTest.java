@@ -201,8 +201,7 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
             eq(CqlCompilerException.ErrorSeverity.Info)))
         .thenReturn(effectiveDataRequirements);
 
-    when(humanReadableService.generateMeasureHumanReadable(
-            any(Measure.class), any(Bundle.class), any(org.hl7.fhir.r5.model.Library.class)))
+    when(humanReadableService.generateMeasureHumanReadable(any(Measure.class), any(Bundle.class)))
         .thenReturn(humanReadable);
     when(humanReadableService.generateLibraryHumanReadable(
             any(org.hl7.fhir.r4.model.Library.class)))
