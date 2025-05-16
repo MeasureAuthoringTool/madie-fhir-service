@@ -715,7 +715,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
             .getExtensionByUrl(UriConstants.CqfMeasures.CRITERIA_REFERENCE_URI)
             .getValue()
             .primitiveValue(),
-        is(equalTo("53808b19-54c7-45f7-95c4-dd4ee58f4730")));
+        is(equalTo(null)));
     assertThat(
         groupPopComponentObs.getExtensionByUrl(UriConstants.CqfMeasures.AGGREGATE_METHOD_URI),
         is(notNullValue()));

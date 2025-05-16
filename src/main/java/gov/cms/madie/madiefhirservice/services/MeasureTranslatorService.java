@@ -482,7 +482,9 @@ public class MeasureTranslatorService {
                 observationPopulation.addExtension(
                     new Extension(
                         UriConstants.CqfMeasures.CRITERIA_REFERENCE_URI,
-                        new StringType(measureObservation.getCriteriaReference())));
+                        new StringType(
+                            findReferencedPopulationDisplayIdByCriteriaReference(
+                                measureObservation.getCriteriaReference(), madieGroup))));
               }
               return observationPopulation;
             })
@@ -556,7 +558,7 @@ public class MeasureTranslatorService {
                         && pop.getAssociationType()
                             .toString()
                             .equalsIgnoreCase(population.getName().toCode()))) {
-                  IBaseDatatype theValue = new StringType(pop.getId());
+                  IBaseDatatype theValue = new StringType(pop.getDisplayId());
                   extension.set(
                       new Extension(UriConstants.CqfMeasures.CRITERIA_REFERENCE_URI, theValue));
                 }
@@ -816,5 +818,14 @@ public class MeasureTranslatorService {
                     .setCitation(
                         reference.getReferenceType() + " - " + reference.getReferenceText() + "\n"))
         .collect(Collectors.toList());
+  }
+
+  private String findReferencedPopulationDisplayIdByCriteriaReference(
+      String reference, Group group) {
+    Optional<Population> findPopulation =
+        group.getPopulations().stream()
+            .filter(population -> population.getId().equals(reference))
+            .findFirst();
+    return findPopulation.isPresent() ? findPopulation.get().getDisplayId() : null;
   }
 }
