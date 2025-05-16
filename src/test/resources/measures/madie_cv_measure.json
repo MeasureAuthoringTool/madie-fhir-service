@@ -22,27 +22,31 @@
           "id": "c7650d30-0614-41fa-bde8-27b3b9331e04",
           "name": "initialPopulation",
           "definition": "ipp",
-          "associationType": null
+          "associationType": null,
+          "displayId": "InitialPopulation_1"
         },
         {
           "id": "53808b19-54c7-45f7-95c4-dd4ee58f4730",
           "name": "measurePopulation",
           "definition": "mpop",
-          "associationType": null
+          "associationType": null,
+          "displayId": "MeasurePopulation_1"
         },
         {
           "id": "15985c2c-c4a6-4d8c-9802-0f25b9b90003",
           "name": "measurePopulationExclusion",
           "definition": "",
-          "associationType": null
+          "associationType": null,
+          "displayId": "MeasurePopulationExclusion_1"
         }
       ],
       "measureObservations": [
         {
           "id": "6c7c52bd-0060-45d8-9c42-cfedbd40d148",
           "definition": "fun",
-          "criteriaReference": "53808b19-54c7-45f7-95c4-dd4ee58f4730",
-          "aggregateMethod": "Minimum"
+          "criteriaReference": "invlalid",
+          "aggregateMethod": "Minimum",
+          "displayId": "MeasureObservation_1"
         }
       ],
       "groupDescription": "",
