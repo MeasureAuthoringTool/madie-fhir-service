@@ -493,10 +493,6 @@ public class TestCaseBundleService {
     return readMe;
   }
 
-  private String generateReadMe(List<TestCase> testCases) {
-    return generateReadMe(testCases, null);
-  }
-
   private String generateMadieMetadataFile(List<TestCase> testCases)
       throws JsonProcessingException {
     if (CollectionUtils.isEmpty(testCases)) {
