@@ -89,7 +89,8 @@ public class TestCaseBundleService {
         log.error(
             "Unable to parse test case bundle resource for test case [{}] from Measure [{}]",
             testCase.getId(),
-            measure.getId());
+            measure.getId(),
+            ex);
         continue;
       }
 
@@ -455,7 +456,7 @@ public class TestCaseBundleService {
     }
   }
 
-  private String generateReadMe(List<TestCase> testCases) {
+  private String generateReadMe(List<TestCase> testCases, List<TestCase> excludedTestCases) {
     String readMe =
         "The purpose of this file is to allow users to view the mapping of test case names to their test case "
             + "UUIDs. In order to find a specific test case file in the export, first locate the test case "
@@ -473,6 +474,21 @@ public class TestCaseBundleService {
                         + " "
                         + testCase.getTitle())
             .collect(Collectors.joining());
+
+    if (!CollectionUtils.isEmpty(excludedTestCases)) {
+      readMe += "\n\nThe following test cases were excluded from the export due to errors:\n";
+      readMe +=
+          excludedTestCases.stream()
+              .map(
+                  testCase ->
+                      "\n"
+                          + testCase.getPatientId()
+                          + " = "
+                          + testCase.getSeries()
+                          + " "
+                          + testCase.getTitle())
+              .collect(Collectors.joining());
+    }
 
     return readMe;
   }
@@ -507,10 +523,14 @@ public class TestCaseBundleService {
    * @param measure MADiE Measure
    * @param exportableTestCaseBundle Exportable TestCase bundles that includes measure report
    * @param testCases List of test cases to be exported, used to generate ReadMe
+   * @param excludedTestCases List of test cases that were excluded from the export due to errors
    * @return zipped content
    */
   public byte[] zipTestCaseContents(
-      Measure measure, Map<String, Bundle> exportableTestCaseBundle, List<TestCase> testCases) {
+      Measure measure,
+      Map<String, Bundle> exportableTestCaseBundle,
+      List<TestCase> testCases,
+      List<TestCase> excludedTestCases) {
     try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
 
       PackagingUtility utility = PackagingUtilityFactory.getInstance(measure.getModel());
@@ -520,7 +540,7 @@ public class TestCaseBundleService {
           ZipInputStream zis = new ZipInputStream(new ByteArrayInputStream(bytes))) {
 
         // Add the README file to the zip
-        String readme = generateReadMe(testCases);
+        String readme = generateReadMe(testCases, excludedTestCases);
         ZipEntry entry = new ZipEntry("README.txt");
         entry.setSize(readme.length());
         zos.putNextEntry(entry);

@@ -8,9 +8,12 @@ import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
 import gov.cms.madie.models.common.BundleType;
 import gov.cms.madie.models.dto.ExportDTO;
 import gov.cms.madie.models.measure.Measure;
+import gov.cms.madie.models.measure.TestCase;
 import org.hl7.fhir.r4.model.Bundle;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -41,6 +44,8 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
   @Autowired private MockMvc mockMvc;
 
   @Autowired private ObjectMapper mapper;
+
+  @Captor private ArgumentCaptor<List> testCaseListCaptor;
 
   private Bundle testCaseBundle;
 
@@ -112,6 +117,54 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
         .andExpect(status().isOk());
     verify(testCaseBundleService, times(1))
         .getTestCaseExportBundle(any(Measure.class), any(List.class), any(ExportDTO.class));
+  }
+
+  @Test
+  void getTestCaseExportBundleMultiWithBundleTypeCollectionWithMissingTestCases() throws Exception {
+
+    Principal principal = mock(Principal.class);
+    when(principal.getName()).thenReturn(TEST_USER_ID);
+
+    List<TestCase> allTestCases = new ArrayList<>(dto.getMeasure().getTestCases());
+    TestCase errorTestCase =
+        TestCase.builder()
+            .id("ErrorId1")
+            .patientId(UUID.randomUUID())
+            .title("ErrorTC")
+            .series("FAIL")
+            .json(
+                "{\n  \"resourceType\": \"Bundle\",\n  \"id\": \"DENEXPass-NarcolepsyOnsetsEndOfMP\",\n  \"type\": \"collection\",\n  \"entry\": [\n    {\n      \"fullUrl\": \"https://madie.cms.gov/Encounter/Encounter-1\",\n      \"resource\": {\n        \"resourceType\": \"Encounter\",\n   } } ] }")
+            .build();
+    allTestCases.add(errorTestCase);
+
+    Map<String, Bundle> testCaseBundleMap = new HashMap<>();
+    testCaseBundleMap.put(
+        dto.getMeasure().getTestCases().get(0).getPatientId().toString(), testCaseBundle);
+    testCaseBundleMap.put(
+        dto.getMeasure().getTestCases().get(1).getPatientId().toString(), testCaseBundle);
+    when(testCaseBundleService.getTestCaseExportBundle(
+            any(Measure.class), any(List.class), any(ExportDTO.class)))
+        .thenReturn(testCaseBundleMap);
+    mockMvc
+        .perform(
+            MockMvcRequestBuilders.put("/fhir/test-cases/export-all")
+                .with(user(TEST_USER_ID))
+                .with(csrf())
+                .header(HttpHeaders.AUTHORIZATION, "test-okta")
+                .content(
+                    mapper.writeValueAsString(
+                        dto.toBuilder()
+                            .measure(dto.getMeasure().toBuilder().testCases(allTestCases).build())
+                            .testCaseIds(
+                                asList(TEST_CASE_ID, TEST_CASE_ID_2, errorTestCase.getId()))
+                            .build()))
+                .contentType(MediaType.APPLICATION_JSON_VALUE))
+        .andExpect(status().isPartialContent());
+    verify(testCaseBundleService, times(1))
+        .getTestCaseExportBundle(any(Measure.class), any(List.class), any(ExportDTO.class));
+    verify(testCaseBundleService, times(1))
+        .zipTestCaseContents(
+            any(Measure.class), any(Map.class), any(List.class), testCaseListCaptor.capture());
   }
 
   @Test

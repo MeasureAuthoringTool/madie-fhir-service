@@ -14,11 +14,7 @@ import static org.mockito.Mockito.doReturn;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -192,7 +188,7 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
     testCaseList.add(testCase);
     byte[] results =
         testCaseBundleService.zipTestCaseContents(
-            madieMeasure, exportableTestCaseBundle, testCaseList);
+            madieMeasure, exportableTestCaseBundle, testCaseList, null);
     assertNotNull(results);
     Map<String, String> zipContents = getZipContents(results);
     assertEquals(2, zipContents.size());
@@ -439,7 +435,6 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
     assertEquals(0, measureReport.getGroup().size());
   }
 
-  //  @Disabled
   @Test
   void zipTestCaseContents() throws IOException {
 
@@ -460,13 +455,62 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
         .thenReturn(new PackagingUtilityImpl());
     byte[] result =
         testCaseBundleService.zipTestCaseContents(
-            madieMeasure, testCaseBundleMap, madieMeasure.getTestCases());
+            madieMeasure, testCaseBundleMap, madieMeasure.getTestCases(), null);
 
     Map<String, String> zipContents = getZipContents(result);
     assertEquals(4, zipContents.size());
     assertTrue(zipContents.containsKey("test1.json"));
     assertTrue(zipContents.containsKey("test2.json"));
     assertTrue(zipContents.containsKey("README.txt"));
+    assertTrue(zipContents.containsKey(".madie"));
+  }
+
+  @Test
+  void zipTestCaseContentsWithExcludedTestCases() throws IOException {
+    Map<String, Bundle> testCaseBundleMap = new HashMap<>();
+    testCaseBundleMap.put(
+        "test1",
+        FhirContext.forR4()
+            .newJsonParser()
+            .parseResource(Bundle.class, madieMeasure.getTestCases().get(0).getJson()));
+    testCaseBundleMap.put(
+        "test2",
+        FhirContext.forR4()
+            .newJsonParser()
+            .parseResource(Bundle.class, madieMeasure.getTestCases().get(1).getJson()));
+    TestCase excluded1 =
+        TestCase.builder()
+            .id("ExcludedId1")
+            .patientId(UUID.randomUUID())
+            .series("DENOMPass")
+            .title("MultEncNoRiskAssmt")
+            .build();
+    TestCase excluded2 =
+        TestCase.builder()
+            .id("ExcludedId2")
+            .patientId(UUID.randomUUID())
+            .series("IPPass")
+            .title("MDDDxInOPEnc")
+            .build();
+    List<TestCase> excludedTestCases = List.of(excluded1, excluded2);
+
+    factory
+        .when(() -> PackagingUtilityFactory.getInstance(anyString()))
+        .thenReturn(new PackagingUtilityImpl());
+    byte[] result =
+        testCaseBundleService.zipTestCaseContents(
+            madieMeasure, testCaseBundleMap, madieMeasure.getTestCases(), excludedTestCases);
+
+    Map<String, String> zipContents = getZipContents(result);
+    assertEquals(4, zipContents.size());
+    assertTrue(zipContents.containsKey("test1.json"));
+    assertTrue(zipContents.containsKey("test2.json"));
+    assertTrue(zipContents.containsKey("README.txt"));
+    final String errorSection =
+        zipContents.get("README.txt")
+            .split("The following test cases were excluded from the export due to errors:")[1];
+    assertTrue(errorSection.contains(excluded1.getPatientId().toString()));
+    assertTrue(errorSection.contains(excluded2.getPatientId().toString()));
     assertTrue(zipContents.containsKey(".madie"));
   }
 

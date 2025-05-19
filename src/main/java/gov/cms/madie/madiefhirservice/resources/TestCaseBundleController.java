@@ -4,6 +4,7 @@ import java.security.Principal;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.hl7.fhir.r4.model.Bundle;
@@ -63,6 +64,10 @@ public class TestCaseBundleController {
         testCaseBundleService.getTestCaseExportBundle(measure, testCases, exportDTO);
     if (testCases.size() != exportableTestCaseBundle.size()) {
       // remove the test cases that couldn't be parsed
+      List<TestCase> missingTestCases = getMissingTestCases(testCases, exportableTestCaseBundle);
+      log.info(
+          "Some test cases couldn't be parsed: {}",
+          missingTestCases.stream().map(TestCase::getId).collect(Collectors.joining(", ")));
       testCases =
           testCases.stream()
               .filter(
@@ -79,7 +84,7 @@ public class TestCaseBundleController {
           .contentType(MediaType.APPLICATION_OCTET_STREAM)
           .body(
               testCaseBundleService.zipTestCaseContents(
-                  measure, exportableTestCaseBundle, testCases));
+                  measure, exportableTestCaseBundle, testCases, missingTestCases));
     }
     return ResponseEntity.ok()
         .header(
@@ -90,6 +95,19 @@ public class TestCaseBundleController {
         .contentType(MediaType.APPLICATION_OCTET_STREAM)
         .body(
             testCaseBundleService.zipTestCaseContents(
-                measure, exportableTestCaseBundle, testCases));
+                measure, exportableTestCaseBundle, testCases, null));
+  }
+
+  private static List<TestCase> getMissingTestCases(
+      List<TestCase> testCases, Map<String, Bundle> exportableTestCaseBundle) {
+    Set<String> exportablePatientIds =
+        exportableTestCaseBundle.keySet().stream()
+            .map(key -> key.split("/")[0])
+            .collect(Collectors.toSet());
+    List<TestCase> missingTestCases =
+        testCases.stream()
+            .filter(testCase -> !exportablePatientIds.contains(testCase.getPatientId().toString()))
+            .collect(Collectors.toList());
+    return missingTestCases;
   }
 }
