@@ -461,8 +461,17 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
     assertEquals(4, zipContents.size());
     assertTrue(zipContents.containsKey("test1.json"));
     assertTrue(zipContents.containsKey("test2.json"));
-    assertTrue(zipContents.containsKey("README.txt"));
     assertTrue(zipContents.containsKey(".madie"));
+
+    assertTrue(zipContents.containsKey("README.txt"));
+    assertTrue(
+        zipContents
+            .get("README.txt")
+            .contains("#1 - " + madieMeasure.getTestCases().get(0).getPatientId().toString()));
+    assertTrue(
+        zipContents
+            .get("README.txt")
+            .contains("#2 - " + madieMeasure.getTestCases().get(1).getPatientId().toString()));
   }
 
   @Test
@@ -481,6 +490,7 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
     TestCase excluded1 =
         TestCase.builder()
             .id("ExcludedId1")
+            .caseNumber(3)
             .patientId(UUID.randomUUID())
             .series("DENOMPass")
             .title("MultEncNoRiskAssmt")
@@ -488,6 +498,7 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
     TestCase excluded2 =
         TestCase.builder()
             .id("ExcludedId2")
+            .caseNumber(4)
             .patientId(UUID.randomUUID())
             .series("IPPass")
             .title("MDDDxInOPEnc")
@@ -505,13 +516,13 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
     assertEquals(4, zipContents.size());
     assertTrue(zipContents.containsKey("test1.json"));
     assertTrue(zipContents.containsKey("test2.json"));
+    assertTrue(zipContents.containsKey(".madie"));
     assertTrue(zipContents.containsKey("README.txt"));
     final String errorSection =
         zipContents.get("README.txt")
-            .split("The following test cases were excluded from the export due to errors:")[1];
-    assertTrue(errorSection.contains(excluded1.getPatientId().toString()));
-    assertTrue(errorSection.contains(excluded2.getPatientId().toString()));
-    assertTrue(zipContents.containsKey(".madie"));
+            .split("The following test cases are invalid and not included in this export:")[1];
+    assertTrue(errorSection.contains("#3 - " + excluded1.getPatientId().toString()));
+    assertTrue(errorSection.contains("#4 - " + excluded2.getPatientId().toString()));
   }
 
   private Map<String, String> getZipContents(byte[] inputBytes) throws IOException {

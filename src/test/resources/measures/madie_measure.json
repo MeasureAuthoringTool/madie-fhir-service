@@ -19,6 +19,7 @@
       {
          "id":"62fe4466848fd80e1dd3edd0",
          "name":null,
+         "caseNumber": 1,
          "title":"test case title",
          "series":"test case series",
          "description":"test case description",
@@ -90,6 +91,7 @@
       {
          "id":"62fe4466848fd80e1dd3edd1",
          "name":null,
+         "caseNumber": 2,
          "title":"test case title1",
          "series":"test case series",
          "description":"test case description",

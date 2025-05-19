@@ -468,6 +468,9 @@ public class TestCaseBundleService {
             .map(
                 testCase ->
                     "\n"
+                        + "#"
+                        + testCase.getCaseNumber()
+                        + " - "
                         + testCase.getPatientId()
                         + " = "
                         + testCase.getSeries()
@@ -476,12 +479,15 @@ public class TestCaseBundleService {
             .collect(Collectors.joining());
 
     if (!CollectionUtils.isEmpty(excludedTestCases)) {
-      readMe += "\n\nThe following test cases were excluded from the export due to errors:\n";
+      readMe += "\n\nThe following test cases are invalid and not included in this export:\n";
       readMe +=
           excludedTestCases.stream()
               .map(
                   testCase ->
                       "\n"
+                          + "#"
+                          + testCase.getCaseNumber()
+                          + " - "
                           + testCase.getPatientId()
                           + " = "
                           + testCase.getSeries()
