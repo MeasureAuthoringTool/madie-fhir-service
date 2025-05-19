@@ -468,7 +468,7 @@ public class TestCaseBundleService {
             .map(
                 testCase ->
                     "\n"
-                        + "#"
+                        + "Case # "
                         + testCase.getCaseNumber()
                         + " - "
                         + testCase.getPatientId()
@@ -485,7 +485,7 @@ public class TestCaseBundleService {
               .map(
                   testCase ->
                       "\n"
-                          + "#"
+                          + "Case # "
                           + testCase.getCaseNumber()
                           + " - "
                           + testCase.getPatientId()

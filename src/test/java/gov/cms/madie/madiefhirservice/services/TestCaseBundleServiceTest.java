@@ -467,11 +467,11 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
     assertTrue(
         zipContents
             .get("README.txt")
-            .contains("#1 - " + madieMeasure.getTestCases().get(0).getPatientId().toString()));
+            .contains("Case # 1 - " + madieMeasure.getTestCases().get(0).getPatientId().toString()));
     assertTrue(
         zipContents
             .get("README.txt")
-            .contains("#2 - " + madieMeasure.getTestCases().get(1).getPatientId().toString()));
+            .contains("Case # 2 - " + madieMeasure.getTestCases().get(1).getPatientId().toString()));
   }
 
   @Test
@@ -521,8 +521,8 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
     final String errorSection =
         zipContents.get("README.txt")
             .split("The following test cases are invalid and not included in this export:")[1];
-    assertTrue(errorSection.contains("#3 - " + excluded1.getPatientId().toString()));
-    assertTrue(errorSection.contains("#4 - " + excluded2.getPatientId().toString()));
+    assertTrue(errorSection.contains("Case # 3 - " + excluded1.getPatientId().toString()));
+    assertTrue(errorSection.contains("Case # 4 - " + excluded2.getPatientId().toString()));
   }
 
   private Map<String, String> getZipContents(byte[] inputBytes) throws IOException {
