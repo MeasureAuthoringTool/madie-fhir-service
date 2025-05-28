@@ -467,11 +467,13 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
     assertTrue(
         zipContents
             .get("README.txt")
-            .contains("Case # 1 - " + madieMeasure.getTestCases().get(0).getPatientId().toString()));
+            .contains(
+                "Case # 1 - " + madieMeasure.getTestCases().get(0).getPatientId().toString()));
     assertTrue(
         zipContents
             .get("README.txt")
-            .contains("Case # 2 - " + madieMeasure.getTestCases().get(1).getPatientId().toString()));
+            .contains(
+                "Case # 2 - " + madieMeasure.getTestCases().get(1).getPatientId().toString()));
   }
 
   @Test
