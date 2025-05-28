@@ -20,7 +20,7 @@ madie:
     json-url: ${SERVICE_CONFIG_JSON_URL:http://localhost:9000/env-config/serviceConfig.json}
 
 vsac:
-  terminology-server-url: http://localhost:8095
+  terminology-server-url: https://cts.nlm.nih.gov/fhir
   api-key: ${VSAC_API_KEY:defaultvaluetopreventillegalappstate}
 
 #springdoc:
