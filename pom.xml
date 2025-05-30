@@ -48,6 +48,12 @@
 				<artifactId>ucum</artifactId>
 				<version>${org.fhir.ucum.version}</version>
 			</dependency>
+			<!-- TODO: remove this once spring-boot-starter-parent updates to pull in security fix -->
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-core</artifactId>
+				<version>6.4.6</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 

@@ -69,6 +69,7 @@ public class ValidationController {
 
     FhirContext fhirContext = validatorFactory.getContextForModel(modelType);
     FhirValidator fhirValidator = validatorFactory.getValidatorForModel(modelType);
+
     IBaseBundle bundle;
     try {
       bundle = validatorFactory.parseForModel(modelType, request.getBody());
@@ -92,6 +93,7 @@ public class ValidationController {
         validationService.validateBundleResourcesIdValid(fhirContext, bundle);
 
     ValidationResult result = fhirValidator.validateWithResult(bundle);
+
     try {
       final IBaseOperationOutcome combinedOutcome =
           validationService.combineOutcomes(
