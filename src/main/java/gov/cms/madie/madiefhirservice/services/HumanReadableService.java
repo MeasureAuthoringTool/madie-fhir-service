@@ -40,18 +40,7 @@ public class HumanReadableService extends ResourceUtils {
   private void escapeTopLevelProperties(org.hl7.fhir.r5.model.Measure measure) {
     measure.setTitle(escapeStr(measure.getTitle()));
     measure.setPublisher(escapeStr(measure.getPublisher()));
-    measure.setDescription(escapeStr(measure.getDescription()));
-    measure.setUsage(escapeStr(measure.getUsage()));
-    measure.setCopyright(escapeStr(measure.getCopyright()));
-    measure.setDisclaimer(escapeStr(measure.getDisclaimer()));
-    measure.setGuidance(escapeStr(measure.getGuidance()));
-    measure.setClinicalRecommendationStatement(
-        escapeStr(measure.getClinicalRecommendationStatement()));
-    measure.setRationale(escapeStr(measure.getRationale()));
-    measure.setPurpose(escapeStr(measure.getPurpose()));
     measure.setSubtitle(escapeStr(measure.getSubtitle()));
-    measure.setRiskAdjustment(escapeStr(measure.getRiskAdjustment()));
-    measure.setRateAggregation(escapeStr(measure.getRateAggregation()));
     if (measure.hasAuthor()) {
       measure.setAuthor(
           measure.getAuthor().stream()
@@ -164,7 +153,9 @@ public class HumanReadableService extends ResourceUtils {
                   .getExtension()
                   .forEach(
                       secondLevelExtension -> {
-                        if (secondLevelExtension.getValue() instanceof StringType) {
+                        if (secondLevelExtension.getValue() instanceof StringType
+                            // We want to omit the escape on guidance since it's an rtf field now
+                            && !Objects.equals(secondLevelExtension.getUrl(), "guidance")) {
                           secondLevelExtension.setValue(
                               new StringType(
                                   escapeStr(secondLevelExtension.getValue().primitiveValue())));
@@ -185,13 +176,11 @@ public class HumanReadableService extends ResourceUtils {
         .forEach(
             group -> {
               // top level description for population criteria
-              group.setDescription(escapeStr(group.getDescription()));
               group
                   .getPopulation()
                   .forEach(
                       population -> {
                         // update each population description
-                        population.setDescription(escapeStr(population.getDescription()));
                         Expression criteria = population.getCriteria();
                         criteria.setExpression(escapeStr(criteria.getExpression()));
                       });
@@ -200,8 +189,6 @@ public class HumanReadableService extends ResourceUtils {
                     group.getStratifier().stream()
                         .map(
                             measureGroupStratifierComponent -> {
-                              measureGroupStratifierComponent.setDescription(
-                                  escapeStr(measureGroupStratifierComponent.getDescription()));
                               log.info("escaping stratifier: {}", measureGroupStratifierComponent);
                               if (measureGroupStratifierComponent.hasCriteria()) {
                                 measureGroupStratifierComponent.setCriteria(
@@ -219,7 +206,8 @@ public class HumanReadableService extends ResourceUtils {
               }
               if (group.hasExtension(CqfMeasures.RATE_AGGREGATION_URI)) {
                 var extension = group.getExtensionByUrl(CqfMeasures.RATE_AGGREGATION_URI);
-                extension.setValue(new CodeType(escapeStr(extension.getValue().toString())));
+                // omitting escaping rtf field
+                extension.setValue(new CodeType(extension.getValue().toString()));
               }
             });
   }
