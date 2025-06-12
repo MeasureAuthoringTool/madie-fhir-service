@@ -311,7 +311,6 @@ class StructureDefinitionServiceTest {
     assertThat(
         output.get(0).getProfile(),
         is(equalTo("http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient")));
-
     assertThat(output.get(1).getId(), is(equalTo("us-core-practitioner")));
     assertThat(output.get(1).getTitle(), is(equalTo("US Core Practitioner Profile")));
     assertThat(output.get(1).getType(), is(equalTo("Practitioner")));
