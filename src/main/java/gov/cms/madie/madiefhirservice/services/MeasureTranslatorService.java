@@ -29,26 +29,17 @@ import gov.cms.madie.madiefhirservice.constants.UriConstants;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-import static gov.cms.madie.madiefhirservice.utils.BundleUtil.MEASURE_BUNDLE_TYPE_CALCULATION;
+import static org.apache.commons.collections4.CollectionUtils.isNotEmpty;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
 public class MeasureTranslatorService {
   public static final String UNKNOWN = "UNKNOWN";
-  private final AppConfigService appConfigService;
 
-  public org.hl7.fhir.r4.model.Measure createFhirMeasureForMadieMeasure(
-      Measure madieMeasure, String bundleType) {
+  public org.hl7.fhir.r4.model.Measure createFhirMeasureForMadieMeasure(Measure madieMeasure) {
     Organization steward = madieMeasure.getMeasureMetaData().getSteward();
-    String copyright = madieMeasure.getMeasureMetaData().getCopyright();
-    String disclaimer = madieMeasure.getMeasureMetaData().getDisclaimer();
-    Instant approvalDate = madieMeasure.getReviewMetaData().getApprovalDate();
-    Instant lastReviewDate = madieMeasure.getReviewMetaData().getLastReviewDate();
-    String version = madieMeasure.getVersion().toString();
-    if (madieMeasure.getMeasureMetaData() != null && madieMeasure.getMeasureMetaData().isDraft()) {
-      version = "Draft based on " + version;
-    }
+
     org.hl7.fhir.r4.model.Measure measure = new org.hl7.fhir.r4.model.Measure();
     measure
         .setName(madieMeasure.getCqlLibraryName())
@@ -57,16 +48,15 @@ public class MeasureTranslatorService {
         .setExperimental(madieMeasure.getMeasureMetaData().getExperimental())
         .setUrl(
             FhirResourceHelpers.buildResourceFullUrl("Measure", madieMeasure.getCqlLibraryName()))
-        .setVersion(version)
+        .setVersion(getVersion(madieMeasure))
         .setEffectivePeriod(
             getPeriodFromDates(
                 madieMeasure.getMeasurementPeriodStart(), madieMeasure.getMeasurementPeriodEnd()))
-        .setApprovalDate(approvalDate != null ? Date.from(approvalDate) : null)
-        .setLastReviewDate(lastReviewDate != null ? Date.from(lastReviewDate) : null)
+        .setApprovalDate(getApprovalDate(madieMeasure))
+        .setLastReviewDate(getLastReviewDate(madieMeasure))
         .setPublisher(getStewardName(steward))
-        .setDefinition(buildDefinitions(madieMeasure))
-        .setCopyright(StringUtils.isBlank(copyright) ? UNKNOWN : copyright)
-        .setDisclaimer(StringUtils.isBlank(disclaimer) ? UNKNOWN : disclaimer)
+        .setCopyright(getCopyright(madieMeasure))
+        .setDisclaimer(getDisclaimer(madieMeasure))
         .setRationale(madieMeasure.getMeasureMetaData().getRationale())
         .setPurpose(madieMeasure.getMeasureMetaData().getPurpose())
         .setLibrary(
@@ -75,12 +65,9 @@ public class MeasureTranslatorService {
                     FhirResourceHelpers.buildResourceFullUrl(
                         "Library", madieMeasure.getCqlLibraryName()))))
         .setContact(buildContactDetail(madieMeasure.getMeasureMetaData().getSteward(), false))
-        .setGroup(buildGroups(madieMeasure.getGroups(), bundleType))
+        .setGroup(buildGroups(madieMeasure.getGroups()))
         .setSupplementalData(buildSupplementalData(madieMeasure))
-        .setStatus(
-            madieMeasure.getMeasureMetaData().isDraft()
-                ? PublicationStatus.DRAFT
-                : PublicationStatus.ACTIVE)
+        .setStatus(getStatus(madieMeasure))
         .setDescription(madieMeasure.getMeasureMetaData().getDescription())
         .setUsage(madieMeasure.getMeasureMetaData().getGuidance())
         .setAuthor(buildContactDetail(madieMeasure.getMeasureMetaData().getDevelopers(), true))
@@ -89,18 +76,64 @@ public class MeasureTranslatorService {
         .setDate(Date.from(madieMeasure.getLastModifiedAt()))
         .setMeta(buildMeasureMeta(madieMeasure.getGroups()))
         .setId(madieMeasure.getCqlLibraryName());
+    setExtensions(madieMeasure, measure);
+    setUseContext(madieMeasure, measure);
+    setRelatedArtifact(madieMeasure, measure);
+    return measure;
+  }
+
+  private String getVersion(Measure madieMeasure) {
+    String version = madieMeasure.getVersion().toString();
+    if (madieMeasure.getMeasureMetaData() != null && madieMeasure.getMeasureMetaData().isDraft()) {
+      version = "Draft based on " + version;
+    }
+    return version;
+  }
+
+  private Date getApprovalDate(Measure madieMeasure) {
+    Instant approvalDate = madieMeasure.getReviewMetaData().getApprovalDate();
+    return approvalDate != null ? Date.from(approvalDate) : null;
+  }
+
+  private Date getLastReviewDate(Measure madieMeasure) {
+    Instant lastReviewDate = madieMeasure.getReviewMetaData().getLastReviewDate();
+    return lastReviewDate != null ? Date.from(lastReviewDate) : null;
+  }
+
+  private String getCopyright(Measure madieMeasure) {
+    String copyright = madieMeasure.getMeasureMetaData().getCopyright();
+    return StringUtils.isBlank(copyright) ? UNKNOWN : copyright;
+  }
+
+  private String getDisclaimer(Measure madieMeasure) {
+    String disclaimer = madieMeasure.getMeasureMetaData().getDisclaimer();
+    return StringUtils.isBlank(disclaimer) ? UNKNOWN : disclaimer;
+  }
+
+  private Enumerations.PublicationStatus getStatus(Measure madieMeasure) {
+    return madieMeasure.getMeasureMetaData().isDraft()
+        ? PublicationStatus.DRAFT
+        : PublicationStatus.ACTIVE;
+  }
+
+  private void setExtensions(Measure madieMeasure, org.hl7.fhir.r4.model.Measure measure) {
     for (Extension ext : buildExtensions(madieMeasure)) {
       measure.addExtension(ext);
     }
+  }
+
+  private void setUseContext(Measure madieMeasure, org.hl7.fhir.r4.model.Measure measure) {
     if (madieMeasure.getMeasureMetaData().getIntendedVenue() != null) {
       measure.addUseContext(
           buildIntendedVenue(madieMeasure.getMeasureMetaData().getIntendedVenue()));
     }
+  }
+
+  private void setRelatedArtifact(Measure madieMeasure, org.hl7.fhir.r4.model.Measure measure) {
     if (CollectionUtils.isNotEmpty(madieMeasure.getMeasureMetaData().getReferences())) {
       measure.setRelatedArtifact(
           buildRelatedArtifacts(madieMeasure.getMeasureMetaData().getReferences()));
     }
-    return measure;
   }
 
   /**
@@ -117,6 +150,10 @@ public class MeasureTranslatorService {
     Extension riskAdjustmentVariableGuidanceExt = buildRiskAdjustmentGuidanceExt(madieMeasure);
     if (riskAdjustmentVariableGuidanceExt != null) {
       extensions.add(riskAdjustmentVariableGuidanceExt);
+    }
+    List<Extension> measureDefinitionsExts = buildMeasureDefinitionExts(madieMeasure);
+    if (isNotEmpty(measureDefinitionsExts)) {
+      extensions.addAll(measureDefinitionsExts);
     }
     return extensions;
   }
@@ -217,7 +254,7 @@ public class MeasureTranslatorService {
             identifierType.getCode(),
             UriConstants.CodeSystem.CODE_SYSTEM_IDENTIFIER_TYPE_URI,
             identifierType.getDisplay()));
-    log.info("\nbuildIdentifier: identifier = " + identifier.toString());
+    log.debug("\nbuildIdentifier: identifier = {}", identifier.getValue());
     return identifier;
   }
 
@@ -256,11 +293,9 @@ public class MeasureTranslatorService {
     return meta;
   }
 
-  public List<MeasureGroupComponent> buildGroups(List<Group> madieGroups, String bundleType) {
+  public List<MeasureGroupComponent> buildGroups(List<Group> madieGroups) {
     if (CollectionUtils.isNotEmpty(madieGroups)) {
-      return madieGroups.stream()
-          .map(group -> this.buildGroup(group, bundleType))
-          .collect(Collectors.toList());
+      return madieGroups.stream().map(this::buildGroup).collect(Collectors.toList());
     } else {
       return null;
     }
@@ -287,12 +322,10 @@ public class MeasureTranslatorService {
     }
   }
 
-  public MeasureGroupComponent buildGroup(Group madieGroup, String bundleType) {
-    List<MeasureGroupPopulationComponent> measurePopulations =
-        buildPopulations(madieGroup, bundleType);
-    measurePopulations.addAll(buildObservations(madieGroup, bundleType));
-    List<MeasureGroupStratifierComponent> measureStratifications =
-        buildStratifications(madieGroup, bundleType);
+  public MeasureGroupComponent buildGroup(Group madieGroup) {
+    List<MeasureGroupPopulationComponent> measurePopulations = buildPopulations(madieGroup);
+    measurePopulations.addAll(buildObservations(madieGroup));
+    List<MeasureGroupStratifierComponent> measureStratifications = buildStratifications(madieGroup);
     // seems FHIR spec and fqm-execution want lowercase 'boolean', while other popBasis have
     // capitalized first letter
     final String popBasisValue =
@@ -303,7 +336,7 @@ public class MeasureTranslatorService {
     final List<CodeableConcept> types = getMeasureTypes(madieGroup.getMeasureGroupTypes());
     Element element =
         buildMeasureGroupComponent(
-            madieGroup, bundleType, measurePopulations, measureStratifications, popBasisValue);
+            madieGroup, measurePopulations, measureStratifications, popBasisValue);
     if (scoringUnit != null) {
       element.addExtension(new Extension(UriConstants.CqfMeasures.SCORING_UNIT_URI, scoringUnit));
     }
@@ -339,7 +372,6 @@ public class MeasureTranslatorService {
 
   private Element buildMeasureGroupComponent(
       Group madieGroup,
-      String bundleType,
       List<MeasureGroupPopulationComponent> measurePopulations,
       List<MeasureGroupStratifierComponent> measureStratifications,
       String popBasisValue) {
@@ -349,7 +381,6 @@ public class MeasureTranslatorService {
         .setStratifier(measureStratifications)
         .setId(
             StringUtils.isNotBlank(madieGroup.getDisplayId())
-                    && !StringUtils.equals(bundleType, "calculation")
                 ? madieGroup.getDisplayId()
                 : madieGroup.getId())
         .addExtension(
@@ -391,8 +422,7 @@ public class MeasureTranslatorService {
     return types;
   }
 
-  private List<MeasureGroupPopulationComponent> buildPopulations(
-      Group madieGroup, String bundleType) {
+  private List<MeasureGroupPopulationComponent> buildPopulations(Group madieGroup) {
     return madieGroup.getPopulations().stream()
         .filter(population -> StringUtils.isNotBlank(population.getDefinition()))
         .map(
@@ -411,8 +441,6 @@ public class MeasureTranslatorService {
                               buildExpression("text/cql-identifier", population.getDefinition()))
                           .setId(
                               StringUtils.isNotBlank(population.getDisplayId())
-                                      && !StringUtils.equals(
-                                          MEASURE_BUNDLE_TYPE_CALCULATION, bundleType)
                                   ? population.getDisplayId()
                                   : population.getId()))
                       .addExtension(buildPopulationTypeExtension(population, madieGroup));
@@ -421,8 +449,7 @@ public class MeasureTranslatorService {
         .collect(Collectors.toList());
   }
 
-  private List<MeasureGroupPopulationComponent> buildObservations(
-      Group madieGroup, String bundleType) {
+  private List<MeasureGroupPopulationComponent> buildObservations(Group madieGroup) {
     if (madieGroup.getMeasureObservations() == null
         || madieGroup.getMeasureObservations().isEmpty()) {
       return List.of();
@@ -448,8 +475,6 @@ public class MeasureTranslatorService {
                                   new StringType(measureObservation.getAggregateMethod())))
                           .setId(
                               StringUtils.isNotBlank(measureObservation.getDisplayId())
-                                      && !StringUtils.equals(
-                                          bundleType, MEASURE_BUNDLE_TYPE_CALCULATION)
                                   ? measureObservation.getDisplayId()
                                   : measureObservation.getId()));
               if (measureObservation.getCriteriaReference() != null
@@ -457,15 +482,16 @@ public class MeasureTranslatorService {
                 observationPopulation.addExtension(
                     new Extension(
                         UriConstants.CqfMeasures.CRITERIA_REFERENCE_URI,
-                        new StringType(measureObservation.getCriteriaReference())));
+                        new StringType(
+                            findReferencedPopulationDisplayIdByCriteriaReference(
+                                measureObservation.getCriteriaReference(), madieGroup))));
               }
               return observationPopulation;
             })
         .toList();
   }
 
-  private List<MeasureGroupStratifierComponent> buildStratifications(
-      Group madieGroup, String bundleType) {
+  private List<MeasureGroupStratifierComponent> buildStratifications(Group madieGroup) {
     List<MeasureGroupStratifierComponent> measureStratifications = null;
     if (madieGroup.getStratifications() != null && !madieGroup.getStratifications().isEmpty()) {
       AtomicReference<Integer> i = new AtomicReference<>();
@@ -476,7 +502,7 @@ public class MeasureTranslatorService {
                   strat -> {
                     List<PopulationType> associations = strat.getAssociations();
                     MeasureGroupStratifierComponent stratComponent = null;
-                    if (CollectionUtils.isNotEmpty(associations)) {
+                    if (isNotEmpty(associations)) {
                       List<Extension> extensionList =
                           associations.stream()
                               .map(
@@ -502,12 +528,8 @@ public class MeasureTranslatorService {
                                           "text/cql-identifier", strat.getCqlDefinition()))
                                   .setId(
                                       StringUtils.isNotBlank(strat.getDisplayId())
-                                              && !StringUtils.equals(
-                                                  bundleType, MEASURE_BUNDLE_TYPE_CALCULATION)
                                           ? strat.getDisplayId()
-                                          : StringUtils.isNotBlank(strat.getId())
-                                              ? strat.getId()
-                                              : i.get().toString());
+                                          : i.get().toString());
                       for (Extension extension : extensionList) {
                         stratComponent.addExtension(extension);
                       }
@@ -536,7 +558,7 @@ public class MeasureTranslatorService {
                         && pop.getAssociationType()
                             .toString()
                             .equalsIgnoreCase(population.getName().toCode()))) {
-                  IBaseDatatype theValue = new StringType(pop.getId());
+                  IBaseDatatype theValue = new StringType(pop.getDisplayId());
                   extension.set(
                       new Extension(UriConstants.CqfMeasures.CRITERIA_REFERENCE_URI, theValue));
                 }
@@ -687,6 +709,30 @@ public class MeasureTranslatorService {
     return ext;
   }
 
+  /**
+   * Build extension for each measure definition. Assumes that each measure definition contains a
+   * Term and Definition of that Term.
+   *
+   * @param madieMeasure
+   * @return List of Extensions where each Extension represents a measure definition.
+   */
+  private List<Extension> buildMeasureDefinitionExts(Measure madieMeasure) {
+    if (CollectionUtils.isEmpty(madieMeasure.getMeasureMetaData().getMeasureDefinitions())) {
+      return Collections.emptyList();
+    }
+
+    return madieMeasure.getMeasureMetaData().getMeasureDefinitions().stream()
+        .map(
+            msrDef -> {
+              Extension ext = new Extension(UriConstants.CqfMeasures.MEASURE_DEFINITION_EXT_URI);
+              ext.addExtension(new Extension("term", new StringType(msrDef.getTerm())));
+              ext.addExtension(
+                  new Extension("definition", new MarkdownType(msrDef.getDefinition())));
+              return ext;
+            })
+        .collect(Collectors.toList());
+  }
+
   private List<MeasureSupplementalDataComponent> buildSupplementalDataElements(
       Measure madieMeasure) {
     if (madieMeasure.getSupplementalData() == null) {
@@ -707,7 +753,7 @@ public class MeasureTranslatorService {
                           "supplemental-data",
                           "http://terminology.hl7.org/CodeSystem/measure-data-usage",
                           null)));
-              if (CollectionUtils.isNotEmpty(supplementalData.getIncludeInReportType())) {
+              if (isNotEmpty(supplementalData.getIncludeInReportType())) {
                 supplementalData
                     .getIncludeInReportType()
                     .forEach(
@@ -739,7 +785,7 @@ public class MeasureTranslatorService {
                           "http://terminology.hl7.org/CodeSystem/measure-data-usage",
                           null)));
               measureSupplementalDataComponent.setDescription(riskAdjustment.getDefinition());
-              if (CollectionUtils.isNotEmpty(riskAdjustment.getIncludeInReportType())) {
+              if (isNotEmpty(riskAdjustment.getIncludeInReportType())) {
                 riskAdjustment
                     .getIncludeInReportType()
                     .forEach(
@@ -758,22 +804,6 @@ public class MeasureTranslatorService {
         new CodeType(measureReportType.toCode()));
   }
 
-  private List<MarkdownType> buildDefinitions(Measure madieMeasure) {
-    List<MarkdownType> definitions = null;
-    if (madieMeasure.getMeasureMetaData() != null
-        && !CollectionUtils.isEmpty(madieMeasure.getMeasureMetaData().getMeasureDefinitions())) {
-      definitions =
-          madieMeasure.getMeasureMetaData().getMeasureDefinitions().stream()
-              .map(
-                  definition -> {
-                    return new MarkdownType(
-                        definition.getTerm() + " - " + definition.getDefinition() + "\n");
-                  })
-              .collect(Collectors.toList());
-    }
-    return definitions;
-  }
-
   private List<RelatedArtifact> buildRelatedArtifacts(
       List<gov.cms.madie.models.measure.Reference> references) {
     return references.stream()
@@ -788,5 +818,14 @@ public class MeasureTranslatorService {
                     .setCitation(
                         reference.getReferenceType() + " - " + reference.getReferenceText() + "\n"))
         .collect(Collectors.toList());
+  }
+
+  private String findReferencedPopulationDisplayIdByCriteriaReference(
+      String reference, Group group) {
+    Optional<Population> findPopulation =
+        group.getPopulations().stream()
+            .filter(population -> population.getId().equals(reference))
+            .findFirst();
+    return findPopulation.isPresent() ? findPopulation.get().getDisplayId() : null;
   }
 }

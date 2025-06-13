@@ -48,7 +48,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -64,8 +63,6 @@ class HumanReadableServiceTest
   private org.hl7.fhir.r4.model.Measure measure;
 
   private Library library;
-
-  private org.hl7.fhir.r5.model.Library effectiveDataRequirements;
 
   List<MarkdownType> terms = new ArrayList<>();
   MarkdownType term1 = new MarkdownType("Term1 - Definition1");
@@ -108,6 +105,12 @@ class HumanReadableServiceTest
 
     terms.add(term1);
     terms.add(term2);
+
+    Library r4EffectiveDataRequirements =
+        convertToFhirR4Resource(
+            getStringFromTestResource("/humanReadable/effective" + "-data-requirements.json"),
+            Library.class);
+
     measure =
         new org.hl7.fhir.r4.model.Measure()
             .setName(madieMeasure.getCqlLibraryName())
@@ -123,17 +126,14 @@ class HumanReadableServiceTest
             .setDisclaimer(madieMeasure.getMeasureMetaData().getDisclaimer())
             .setDefinition(terms);
 
+    measure.addContained(r4EffectiveDataRequirements);
+
     String cqlData = ResourceUtils.getData("/test-cql/cv_populations.cql");
     library =
         new Library()
             .addContent(new Attachment().setData(cqlData.getBytes()).setContentType("text/cql"));
 
     library.setId(madieMeasure.getCqlLibraryName());
-
-    effectiveDataRequirements =
-        convertToFhirR5Resource(
-            org.hl7.fhir.r5.model.Library.class,
-            getStringFromTestResource("/humanReadable/effective-data-requirements.json"));
   }
 
   public Bundle.BundleEntryComponent getBundleEntryComponent(Resource resource) {
@@ -179,8 +179,7 @@ class HumanReadableServiceTest
         .thenReturn(hrText);
 
     String generatedHumanReadable =
-        humanReadableService.generateMeasureHumanReadable(
-            madieMeasure, bundle, effectiveDataRequirements);
+        humanReadableService.generateMeasureHumanReadable(madieMeasure, bundle);
     assertNotNull(generatedHumanReadable);
     assertTrue(generatedHumanReadable.contains(hrText));
   }
@@ -200,8 +199,7 @@ class HumanReadableServiceTest
     le.setIncludeResolver(this);
     var hr = new HumanReadableService(le);
 
-    var generatedHumanReadable =
-        hr.generateMeasureHumanReadable(madieMeasure, bundle, effectiveDataRequirements);
+    var generatedHumanReadable = hr.generateMeasureHumanReadable(madieMeasure, bundle);
     assertNotNull(generatedHumanReadable);
   }
 
@@ -222,22 +220,12 @@ class HumanReadableServiceTest
 
     when(liquidEngine.evaluate(
             any(LiquidEngine.LiquidDocument.class),
-            argThat(
-                (measure) -> {
-                  org.hl7.fhir.r5.model.Measure m = (org.hl7.fhir.r5.model.Measure) measure;
-
-                  org.hl7.fhir.r5.model.Library library =
-                      (org.hl7.fhir.r5.model.Library) m.getContained().get(0);
-                  ParameterDefinition paramDef = library.getParameter().get(0);
-
-                  return "Period".equals(paramDef.getType().toCode());
-                }),
+            any(org.hl7.fhir.r5.model.Measure.class),
             any()))
         .thenReturn(hrText);
 
     String generatedHumanReadable =
-        humanReadableService.generateMeasureHumanReadable(
-            madieMeasure, bundle, effectiveDataRequirements);
+        humanReadableService.generateMeasureHumanReadable(madieMeasure, bundle);
     assertNotNull(generatedHumanReadable);
     assertTrue(generatedHumanReadable.contains(hrText));
   }
@@ -246,7 +234,7 @@ class HumanReadableServiceTest
   public void generateHumanReadableThrowsResourceNotFoundExceptionForNoBundle() {
     assertThrows(
         ResourceNotFoundException.class,
-        () -> humanReadableService.generateMeasureHumanReadable(madieMeasure, null, null));
+        () -> humanReadableService.generateMeasureHumanReadable(madieMeasure, null));
   }
 
   @Test
@@ -258,9 +246,7 @@ class HumanReadableServiceTest
 
     assertThrows(
         ResourceNotFoundException.class,
-        () ->
-            humanReadableService.generateMeasureHumanReadable(
-                madieMeasure, bundle, effectiveDataRequirements));
+        () -> humanReadableService.generateMeasureHumanReadable(madieMeasure, bundle));
   }
 
   @Test
@@ -284,9 +270,7 @@ class HumanReadableServiceTest
 
     assertThrows(
         HumanReadableGenerationException.class,
-        () ->
-            humanReadableService.generateMeasureHumanReadable(
-                madieMeasure, bundle, effectiveDataRequirements));
+        () -> humanReadableService.generateMeasureHumanReadable(madieMeasure, bundle));
   }
 
   @Test
@@ -348,6 +332,13 @@ class HumanReadableServiceTest
   public void testEscapeMeasure() {
     org.hl7.fhir.r5.model.Measure r5Measure = new org.hl7.fhir.r5.model.Measure();
 
+    org.hl7.fhir.r5.model.Identifier identifiers = new org.hl7.fhir.r5.model.Identifier();
+    identifiers.setSystem("UriType[https://madie.cms.gov/measure/shortName]");
+    identifiers.setValue("eCqmTitle&");
+
+    r5Measure.addIdentifier(identifiers);
+    r5Measure.setTitle("measure name &");
+
     org.hl7.fhir.r5.model.Expression expression = new org.hl7.fhir.r5.model.Expression();
     expression.setDescription("test description");
     org.hl7.fhir.r5.model.Measure.MeasureSupplementalDataComponent supplementalData =
@@ -408,6 +399,8 @@ class HumanReadableServiceTest
     r5Measure.addRelatedArtifact(r5RelatedArtifact);
 
     org.hl7.fhir.r5.model.Measure result = humanReadableService.escapeMeasure(r5Measure);
+    assertEquals("eCqmTitle&amp;", result.getIdentifier().get(0).getValue());
+    assertEquals("measure name &amp;", result.getTitle());
     assertNotNull(result);
     assertNotNull(result.getRelatedArtifact());
     assertEquals(1, result.getRelatedArtifact().size());

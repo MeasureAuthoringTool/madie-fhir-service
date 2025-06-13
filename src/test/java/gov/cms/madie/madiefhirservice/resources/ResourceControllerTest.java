@@ -100,4 +100,47 @@ class ResourceControllerTest {
     // then
     assertThat(output, is(equalTo(valueSetDefinition)));
   }
+
+  @Test
+  void testGetExtensionsForTargetPathReturnsListOfExtensions() {
+    // given
+    List<StructureDefinitionDto> extensions =
+        List.of(
+            StructureDefinitionDto.builder()
+                .definition(
+                    "{\"resourceType\": \"StructureDefinition\", \"id\": \"ext-1\", \"type\": \"Extension\"}")
+                .build(),
+            StructureDefinitionDto.builder()
+                .definition(
+                    "{\"resourceType\": \"StructureDefinition\", \"id\": \"ext-2\", \"type\": \"Extension\"}")
+                .build());
+    when(structureDefinitionService.getExtensionsForTargetPath("Observation.code", "Element"))
+        .thenReturn(extensions);
+
+    // when
+    List<StructureDefinitionDto> output =
+        resourceController.getExtensionsForTargetPath("Observation.code", "Element");
+
+    // then
+    assertThat(output, is(notNullValue()));
+    assertThat(output.size(), is(equalTo(2)));
+    assertThat(output.get(0).getDefinition(), is(notNullValue()));
+    assertThat(output.get(0).getDefinition().contains("\"id\": \"ext-1\""), is(true));
+    assertThat(output.get(1).getDefinition().contains("\"id\": \"ext-2\""), is(true));
+  }
+
+  @Test
+  void testGetExtensionsForTargetPathReturnsEmptyList() {
+    // given
+    when(structureDefinitionService.getExtensionsForTargetPath("InvalidPath", "Invalid"))
+        .thenReturn(List.of());
+
+    // when
+    List<StructureDefinitionDto> output =
+        resourceController.getExtensionsForTargetPath("InvalidPath", "Invalid");
+
+    // then
+    assertThat(output, is(notNullValue()));
+    assertThat(output.isEmpty(), is(true));
+  }
 }
