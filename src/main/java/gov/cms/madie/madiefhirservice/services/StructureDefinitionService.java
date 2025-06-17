@@ -132,9 +132,11 @@ public class StructureDefinitionService {
     return Objects.requireNonNull(validationSupportChainQiCore600.fetchAllStructureDefinitions())
         .stream()
         .filter(
-            resource ->
-                "resource".equals(((StructureDefinition) resource).getKind().toCode())
-                    && resource.getIdElement().getIdPart().startsWith("qicore"))
+            resource -> {
+              String idPart = resource.getIdElement().getIdPart();
+              return "resource".equals(((StructureDefinition) resource).getKind().toCode())
+                  && (idPart.startsWith("qicore") || idPart.startsWith("us-core"));
+            })
         .map(
             (resource) -> {
               StructureDefinition structureDefinition = (StructureDefinition) resource;
@@ -143,8 +145,6 @@ public class StructureDefinitionService {
                   .title(structureDefinition.getTitle())
                   .type(structureDefinition.getType())
                   .category(getCategoryByType(structureDefinition.getType()))
-                  // Todo: update profile URL if this method changes to return more than just
-                  // QI-Core resources
                   .profile(structureDefinition.getUrl())
                   .build();
             })
