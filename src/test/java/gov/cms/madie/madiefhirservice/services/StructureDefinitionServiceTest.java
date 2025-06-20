@@ -258,7 +258,7 @@ class StructureDefinitionServiceTest {
   }
 
   @Test
-  void testGetAllResourcesReturnsOnlyQiCoreResources() {
+  void testGetAllResourcesReturnsOnlyQiCoreAndUSCoreResources() {
     // given
     StructureDefinition def1 = new StructureDefinition();
     def1.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
@@ -278,6 +278,12 @@ class StructureDefinitionServiceTest {
     def3.setType("Practitioner");
     def3.setId("us-core-practitioner");
     def3.setUrl("http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner");
+    StructureDefinition def5 = new StructureDefinition();
+    def5.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
+    def5.setTitle("US Core Practitioner Profile");
+    def5.setType("Practitioner");
+    def5.setId("test-practitioner");
+    def5.setUrl("http://hl7.org/fhir/us/core/StructureDefinition/test-practitioner");
     StructureDefinition def4 = new StructureDefinition();
     def4.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
     def4.setTitle(null);
@@ -290,14 +296,14 @@ class StructureDefinitionServiceTest {
                 UriConstants.FhirStructureDefinitions.CATEGORY_URI,
                 new StringType("Base.Individuals"))));
     when(validationSupportChainQiCore600.fetchAllStructureDefinitions())
-        .thenReturn(List.of(def1, def2, def3, def4));
+        .thenReturn(List.of(def1, def2, def3, def4, def5));
 
     // when
     List<ResourceIdentifier> output = structureDefinitionService.getAllResources();
 
     // then
     assertThat(output, is(notNullValue()));
-    assertThat(output.size(), is(equalTo(1)));
+    assertThat(output.size(), is(equalTo(2)));
     assertThat(output.get(0).getId(), is(equalTo("qicore-patient")));
     assertThat(output.get(0).getTitle(), is(equalTo("QICore Patient")));
     assertThat(output.get(0).getType(), is(equalTo("Patient")));
@@ -305,6 +311,12 @@ class StructureDefinitionServiceTest {
     assertThat(
         output.get(0).getProfile(),
         is(equalTo("http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient")));
+    assertThat(output.get(1).getId(), is(equalTo("us-core-practitioner")));
+    assertThat(output.get(1).getTitle(), is(equalTo("US Core Practitioner Profile")));
+    assertThat(output.get(1).getType(), is(equalTo("Practitioner")));
+    assertThat(
+            output.get(1).getProfile(),
+            is(equalTo("http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner")));
   }
 
   @Test
