@@ -1324,8 +1324,8 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
         measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure);
     assertEquals(2, measure.getRelatedArtifact().size());
     assertEquals(
-        "CITATION - Ference, B.A. (2015, March 10). Statins and the risk of developing new-onset Type 2 diabetes: Expert analysis. Retrieved from https://www.acc.org/latest-in-cardiology/articles/2015/03/10/08/10/statins-and-the-risk-of-developing-new-onset-type-2-diabetes\n",
+        "Ference, B.A. (2015, March 10). Statins and the risk of developing new-onset Type 2 diabetes: Expert analysis. Retrieved from https://www.acc.org/latest-in-cardiology/articles/2015/03/10/08/10/statins-and-the-risk-of-developing-new-onset-type-2-diabetes",
         measure.getRelatedArtifact().get(0).getCitation());
-    assertEquals("UNKNOWN - text for unknown\n", measure.getRelatedArtifact().get(1).getCitation());
+    assertEquals("text for unknown", measure.getRelatedArtifact().get(1).getCitation());
   }
 }

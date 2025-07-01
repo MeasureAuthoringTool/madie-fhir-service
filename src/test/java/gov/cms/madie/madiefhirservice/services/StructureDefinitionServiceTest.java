@@ -315,8 +315,8 @@ class StructureDefinitionServiceTest {
     assertThat(output.get(1).getTitle(), is(equalTo("US Core Practitioner Profile")));
     assertThat(output.get(1).getType(), is(equalTo("Practitioner")));
     assertThat(
-            output.get(1).getProfile(),
-            is(equalTo("http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner")));
+        output.get(1).getProfile(),
+        is(equalTo("http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner")));
   }
 
   @Test
