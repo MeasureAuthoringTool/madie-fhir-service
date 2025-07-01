@@ -815,8 +815,7 @@ public class MeasureTranslatorService {
                             !"unknown".equalsIgnoreCase(reference.getReferenceType())
                                 ? reference.getReferenceType().toLowerCase()
                                 : ""))
-                    .setCitation(
-                        reference.getReferenceType() + " - " + reference.getReferenceText() + "\n"))
+                    .setCitation(reference.getReferenceText()))
         .collect(Collectors.toList());
   }
 
