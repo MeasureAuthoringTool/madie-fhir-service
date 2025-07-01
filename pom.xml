@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.4.6</version>
+		<version>3.4.7</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>gov.cms.madie</groupId>
@@ -184,7 +184,7 @@
 	<dependency>
 		<groupId>gov.cms.madie.packaging</groupId>
 		<artifactId>packaging-utility</artifactId>
-		<version>0.2.6</version>
+		<version>0.2.8-SNAPSHOT</version>
 		<exclusions>
 			<exclusion>
 				<groupId>gov.cms.madie</groupId>
