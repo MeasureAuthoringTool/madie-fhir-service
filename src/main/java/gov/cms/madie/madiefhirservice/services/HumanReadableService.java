@@ -22,6 +22,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static gov.cms.madie.madiefhirservice.dto.MadieFeatureFlag.ENHANCED_TEXT_FORMATTING;
 import static org.springframework.web.util.HtmlUtils.htmlEscape;
 
 @Slf4j
@@ -30,6 +31,7 @@ import static org.springframework.web.util.HtmlUtils.htmlEscape;
 public class HumanReadableService extends ResourceUtils {
 
   private final LiquidEngine liquidEngine;
+  private final AppConfigService appConfigService;
 
   private String escapeStr(String val) {
     if (val != null && !val.isEmpty()) {
@@ -42,6 +44,19 @@ public class HumanReadableService extends ResourceUtils {
     measure.setTitle(escapeStr(measure.getTitle()));
     measure.setPublisher(escapeStr(measure.getPublisher()));
     measure.setSubtitle(escapeStr(measure.getSubtitle()));
+    if (!appConfigService.isFlagEnabled(ENHANCED_TEXT_FORMATTING)) {
+      measure.setDescription(escapeStr(measure.getDescription()));
+      measure.setUsage(escapeStr(measure.getUsage()));
+      measure.setCopyright(escapeStr(measure.getCopyright()));
+      measure.setDisclaimer(escapeStr(measure.getDisclaimer()));
+      measure.setGuidance(escapeStr(measure.getGuidance()));
+      measure.setClinicalRecommendationStatement(
+          escapeStr(measure.getClinicalRecommendationStatement()));
+      measure.setRationale(escapeStr(measure.getRationale()));
+      measure.setPurpose(escapeStr(measure.getPurpose()));
+      measure.setRiskAdjustment(escapeStr(measure.getRiskAdjustment()));
+      measure.setRateAggregation(escapeStr(measure.getRateAggregation()));
+    }
     if (measure.hasAuthor()) {
       measure.setAuthor(
           measure.getAuthor().stream()
@@ -160,9 +175,12 @@ public class HumanReadableService extends ResourceUtils {
                   .getExtension()
                   .forEach(
                       secondLevelExtension -> {
-                        if (secondLevelExtension.getValue() instanceof StringType
-                            // We want to omit the escape on guidance since it's an rtf field now
-                            && !Objects.equals(secondLevelExtension.getUrl(), "guidance")) {
+                        if (secondLevelExtension.getValue() instanceof StringType) {
+                          // We want to omit the escape on guidance since it's an rtf field now
+                          if (appConfigService.isFlagEnabled(ENHANCED_TEXT_FORMATTING)
+                              && Objects.equals(secondLevelExtension.getUrl(), "guidance")) {
+                            return;
+                          }
                           secondLevelExtension.setValue(
                               new StringType(
                                   escapeStr(secondLevelExtension.getValue().primitiveValue())));
@@ -183,11 +201,17 @@ public class HumanReadableService extends ResourceUtils {
         .forEach(
             group -> {
               // top level description for population criteria
+              if (!appConfigService.isFlagEnabled(ENHANCED_TEXT_FORMATTING)) {
+                group.setDescription(escapeStr(group.getDescription()));
+              }
               group
                   .getPopulation()
                   .forEach(
                       population -> {
                         // update each population description
+                        if (!appConfigService.isFlagEnabled(ENHANCED_TEXT_FORMATTING)) {
+                          population.setDescription(escapeStr(population.getDescription()));
+                        }
                         Expression criteria = population.getCriteria();
                         criteria.setExpression(escapeStr(criteria.getExpression()));
                       });
@@ -196,6 +220,10 @@ public class HumanReadableService extends ResourceUtils {
                     group.getStratifier().stream()
                         .map(
                             measureGroupStratifierComponent -> {
+                              if (!appConfigService.isFlagEnabled(ENHANCED_TEXT_FORMATTING)) {
+                                measureGroupStratifierComponent.setDescription(
+                                    escapeStr(measureGroupStratifierComponent.getDescription()));
+                              }
                               log.info("escaping stratifier: {}", measureGroupStratifierComponent);
                               if (measureGroupStratifierComponent.hasCriteria()) {
                                 measureGroupStratifierComponent.setCriteria(
@@ -211,10 +239,10 @@ public class HumanReadableService extends ResourceUtils {
                             })
                         .collect(Collectors.toList()));
               }
-              if (group.hasExtension(CqfMeasures.RATE_AGGREGATION_URI)) {
+              if (!appConfigService.isFlagEnabled(ENHANCED_TEXT_FORMATTING)
+                  && group.hasExtension(CqfMeasures.RATE_AGGREGATION_URI)) {
                 var extension = group.getExtensionByUrl(CqfMeasures.RATE_AGGREGATION_URI);
-                // omitting escaping rtf field
-                extension.setValue(new CodeType(extension.getValue().toString()));
+                extension.setValue(new CodeType(escapeStr(extension.getValue().toString())));
               }
             });
   }

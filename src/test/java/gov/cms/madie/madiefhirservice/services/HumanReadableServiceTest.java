@@ -56,6 +56,7 @@ class HumanReadableServiceTest
     implements ResourceFileUtil, LiquidEngine.ILiquidEngineIncludeResolver {
 
   @Mock LiquidEngine liquidEngine;
+  @Mock AppConfigService appConfigService;
 
   @InjectMocks HumanReadableService humanReadableService;
 
@@ -196,9 +197,9 @@ class HumanReadableServiceTest
             .addEntry(libraryBundleEntryComponent);
 
     var le = new LiquidEngine(new SimpleWorkerContext.SimpleWorkerContextBuilder().build(), null);
-    // Set the include resolver
+    // Set include resolver
     le.setIncludeResolver(this);
-    var hr = new HumanReadableService(le);
+    var hr = new HumanReadableService(le, appConfigService);
 
     var generatedHumanReadable = hr.generateMeasureHumanReadable(madieMeasure, bundle);
     assertNotNull(generatedHumanReadable);
