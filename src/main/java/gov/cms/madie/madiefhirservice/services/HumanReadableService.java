@@ -61,7 +61,7 @@ public class HumanReadableService extends ResourceUtils {
                               .toCode()
                               .equals(RelatedArtifactType.JUSTIFICATION.toCode())
                           ? relatedArtifact.setDisplayElement(
-                              new StringType(escapeStr(relatedArtifact.getCitation())))
+                              new StringType((relatedArtifact.getDisplayElement().toString())))
                           : relatedArtifact.setCitation(escapeStr(relatedArtifact.getCitation())))
               .collect(Collectors.toList()));
     }

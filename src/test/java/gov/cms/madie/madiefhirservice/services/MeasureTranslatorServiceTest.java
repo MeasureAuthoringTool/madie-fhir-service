@@ -1318,14 +1318,22 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
             .referenceType("UNKNOWN")
             .referenceText("text for unknown")
             .build();
+    gov.cms.madie.models.measure.Reference reference3 =
+        gov.cms.madie.models.measure.Reference.builder()
+            .referenceType("JUSTIFICATION")
+            .referenceText("text for justification")
+            .build();
 
-    madieMeasure.getMeasureMetaData().setReferences(List.of(reference1, reference2));
+    madieMeasure.getMeasureMetaData().setReferences(List.of(reference1, reference2, reference3));
     org.hl7.fhir.r4.model.Measure measure =
         measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure);
-    assertEquals(2, measure.getRelatedArtifact().size());
+    assertEquals(3, measure.getRelatedArtifact().size());
     assertEquals(
         "Ference, B.A. (2015, March 10). Statins and the risk of developing new-onset Type 2 diabetes: Expert analysis. Retrieved from https://www.acc.org/latest-in-cardiology/articles/2015/03/10/08/10/statins-and-the-risk-of-developing-new-onset-type-2-diabetes",
         measure.getRelatedArtifact().get(0).getCitation());
     assertEquals("text for unknown", measure.getRelatedArtifact().get(1).getCitation());
+    assertEquals(
+        "text for justification",
+        measure.getRelatedArtifact().get(2).getDisplayElement().toString());
   }
 }

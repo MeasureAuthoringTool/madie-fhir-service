@@ -809,13 +809,19 @@ public class MeasureTranslatorService {
     return references.stream()
         .map(
             reference ->
-                new RelatedArtifact()
-                    .setType(
-                        RelatedArtifactType.fromCode(
-                            !"unknown".equalsIgnoreCase(reference.getReferenceType())
-                                ? reference.getReferenceType().toLowerCase()
-                                : ""))
-                    .setCitation(reference.getReferenceText()))
+                "Justification".equalsIgnoreCase(reference.getReferenceType())
+                    ? new RelatedArtifact()
+                        .setType(
+                            RelatedArtifactType.fromCode(
+                                reference.getReferenceType().toLowerCase()))
+                        .setDisplayElement(new StringType(reference.getReferenceText()))
+                    : new RelatedArtifact()
+                        .setType(
+                            RelatedArtifactType.fromCode(
+                                !"unknown".equalsIgnoreCase(reference.getReferenceType())
+                                    ? reference.getReferenceType().toLowerCase()
+                                    : ""))
+                        .setCitation(reference.getReferenceText()))
         .collect(Collectors.toList());
   }
 
