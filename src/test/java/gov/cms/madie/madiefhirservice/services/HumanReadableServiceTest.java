@@ -419,6 +419,6 @@ class HumanReadableServiceTest
     assertNotNull(result.getRelatedArtifact());
     assertEquals(2, result.getRelatedArtifact().size());
     assertEquals("test display &amp;", result.getRelatedArtifact().get(0).getDisplay());
-    assertEquals("test display &amp;", result.getRelatedArtifact().get(1).getDisplay());
+    assertEquals("test display &amp;amp;", result.getRelatedArtifact().get(1).getDisplay());
   }
 }
