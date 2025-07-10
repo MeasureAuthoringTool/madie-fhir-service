@@ -40,8 +40,7 @@ public class MeasureTranslatorService {
   public static final String UNKNOWN = "UNKNOWN";
   private static final Safelist RICH_TEXT_SAFE_LIST =
       Safelist.basic()
-          .addTags(
-              "s", "br", "table", "tbody", "td", "tfoot", "th", "thead", "tr", "col", "colgroup")
+          .addTags("s", "br", "table", "tbody", "td", "th", "thead", "tr", "col", "colgroup")
           .addAttributes("table", "style")
           .addAttributes("th", "rowspan", "colspan", "style", "colwidth")
           .addAttributes("td", "rowspan", "colspan", "style", "colwidth")
