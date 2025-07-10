@@ -1,14 +1,11 @@
 package gov.cms.madie.madiefhirservice.services;
 
-import gov.cms.madie.madiefhirservice.constants.UriConstants.CqfMeasures;
 import gov.cms.madie.madiefhirservice.exceptions.HumanReadableGenerationException;
 import gov.cms.madie.madiefhirservice.exceptions.ResourceNotFoundException;
 import gov.cms.madie.madiefhirservice.utils.ResourceUtils;
 import gov.cms.madie.models.measure.Measure;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.hl7.fhir.convertors.advisors.impl.BaseAdvisor_40_50;
 import org.hl7.fhir.convertors.conv40_50.VersionConvertor_40_50;
 import org.hl7.fhir.exceptions.FHIRException;
@@ -17,14 +14,11 @@ import org.hl7.fhir.r4.model.Library;
 import org.hl7.fhir.r4.model.Resource;
 import org.hl7.fhir.r5.model.*;
 import org.hl7.fhir.r5.utils.LiquidEngine;
-import org.jsoup.Jsoup;
-import org.jsoup.safety.Safelist;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static gov.cms.madie.madiefhirservice.dto.MadieFeatureFlag.ENHANCED_TEXT_FORMATTING;
 import static org.springframework.web.util.HtmlUtils.htmlEscape;
 
 @Slf4j
@@ -33,132 +27,12 @@ import static org.springframework.web.util.HtmlUtils.htmlEscape;
 public class HumanReadableService extends ResourceUtils {
 
   private final LiquidEngine liquidEngine;
-  private final AppConfigService appConfigService;
-
-  private static final Safelist RICH_TEXT_SAFE_LIST =
-      Safelist.basic()
-          .addTags(
-              "p",
-              "strong",
-              "em",
-              "u",
-              "s",
-              "ul",
-              "ol",
-              "li",
-              "br",
-              "table",
-              "tbody",
-              "td",
-              "tfoot",
-              "th",
-              "thead",
-              "tr",
-              "col",
-              "colgroup")
-          .addAttributes("table", "style")
-          .addAttributes("th", "rowspan", "colspan", "style", "colwidth")
-          .addAttributes("td", "rowspan", "colspan", "style", "colwidth")
-          .addAttributes("col", "style");
 
   private String escapeStr(String val) {
     if (val != null && !val.isEmpty()) {
       return htmlEscape(val);
     }
     return val;
-  }
-
-  private String sanitizeRichText(String val) {
-    if (StringUtils.isBlank(val)) {
-      return val;
-    }
-    String safeHtml = Jsoup.clean(val, RICH_TEXT_SAFE_LIST);
-    // col tags are not self-closing in html, so we need to make them wel-formed
-    return safeHtml.replaceAll("<col ([^/>]*)>", "<col $1 />");
-  }
-
-  private void escapeTopLevelProperties(org.hl7.fhir.r5.model.Measure measure) {
-    measure.setTitle(escapeStr(measure.getTitle()));
-    measure.setPublisher(escapeStr(measure.getPublisher()));
-    measure.setSubtitle(escapeStr(measure.getSubtitle()));
-    if (appConfigService.isFlagEnabled(ENHANCED_TEXT_FORMATTING)) {
-      measure.setDescription(sanitizeRichText(measure.getDescription()));
-      measure.setUsage(sanitizeRichText(measure.getUsage()));
-      measure.setCopyright(sanitizeRichText(measure.getCopyright()));
-      measure.setDisclaimer(sanitizeRichText(measure.getDisclaimer()));
-      measure.setGuidance(sanitizeRichText(measure.getGuidance()));
-      measure.setClinicalRecommendationStatement(
-          sanitizeRichText(measure.getClinicalRecommendationStatement()));
-      measure.setRationale(sanitizeRichText(measure.getRationale()));
-      measure.setPurpose(sanitizeRichText(measure.getPurpose()));
-      measure.setRiskAdjustment(sanitizeRichText(measure.getRiskAdjustment()));
-      measure.setRateAggregation(sanitizeRichText(measure.getRateAggregation()));
-    } else {
-      measure.setDescription(escapeStr(measure.getDescription()));
-      measure.setUsage(escapeStr(measure.getUsage()));
-      measure.setCopyright(escapeStr(measure.getCopyright()));
-      measure.setDisclaimer(escapeStr(measure.getDisclaimer()));
-      measure.setGuidance(escapeStr(measure.getGuidance()));
-      measure.setClinicalRecommendationStatement(
-          escapeStr(measure.getClinicalRecommendationStatement()));
-      measure.setRationale(escapeStr(measure.getRationale()));
-      measure.setPurpose(escapeStr(measure.getPurpose()));
-      measure.setRiskAdjustment(escapeStr(measure.getRiskAdjustment()));
-      measure.setRateAggregation(escapeStr(measure.getRateAggregation()));
-    }
-    if (measure.hasAuthor()) {
-      measure.setAuthor(
-          measure.getAuthor().stream()
-              .map(
-                  contactDetail -> {
-                    return contactDetail.setName(escapeStr(contactDetail.getName()));
-                  })
-              .collect(Collectors.toList()));
-    }
-    if (CollectionUtils.isNotEmpty(measure.getRelatedArtifact())) {
-      measure.setRelatedArtifact(
-          measure.getRelatedArtifact().stream()
-              .map(
-                  relatedArtifact ->
-                      relatedArtifact.setCitation(escapeStr(relatedArtifact.getCitation())))
-              .collect(Collectors.toList()));
-    }
-  }
-
-  private void escapeIdentifiers(org.hl7.fhir.r5.model.Measure measure) {
-    if (CollectionUtils.isNotEmpty(measure.getIdentifier())) {
-      measure.setIdentifier(
-          measure.getIdentifier().stream()
-              .map(
-                  identifier -> {
-                    if (identifier.hasAssigner()) {
-                      Reference ref = identifier.getAssigner();
-                      ref.setDisplay(escapeStr(ref.getDisplay()));
-                      identifier.setAssigner(ref);
-                    }
-                    // escaping special chars for eCQM abbreviated title
-                    if (identifier.getSystem() != null
-                        && identifier.getSystem().contains("shortName")) {
-                      String originalValue = identifier.getValue();
-                      identifier.setValue(escapeStr(originalValue));
-                    }
-                    return identifier;
-                  })
-              .collect(Collectors.toList()));
-    }
-  }
-
-  private void escapeSupplementalProperties(org.hl7.fhir.r5.model.Measure measure) {
-    // supplemental data Elements
-    measure
-        .getSupplementalData()
-        .forEach(
-            supplementalData -> {
-              supplementalData.setDescription(escapeStr(supplementalData.getDescription()));
-              Expression criteria = supplementalData.getCriteria();
-              criteria.setExpression(escapeStr(criteria.getExpression()));
-              criteria.setDescription(escapeStr(criteria.getDescription()));
-            });
   }
 
   public void escapeContainedProperties(org.hl7.fhir.r5.model.Measure measure) {
@@ -202,94 +76,6 @@ public class HumanReadableService extends ResourceUtils {
             });
   }
 
-  public org.hl7.fhir.r5.model.Measure escapeMeasure(org.hl7.fhir.r5.model.Measure measure) {
-    escapeTopLevelProperties(measure);
-    escapeSupplementalProperties(measure);
-    escapeContainedProperties(measure);
-    escapeIdentifiers(measure);
-    escapeDefinitions(measure);
-    // logic definitions, effective data requirements
-    // risk factors and supplemental data guidance
-    measure
-        .getExtension()
-        .forEach(
-            topLevelExtension -> {
-              topLevelExtension
-                  .getExtension()
-                  .forEach(
-                      secondLevelExtension -> {
-                        if (secondLevelExtension.getValue() instanceof StringType) {
-                          // We want to omit the escape on guidance since it's an rtf field now
-                          if (appConfigService.isFlagEnabled(ENHANCED_TEXT_FORMATTING)
-                              && Objects.equals(secondLevelExtension.getUrl(), "guidance")) {
-                            return;
-                          }
-                          secondLevelExtension.setValue(
-                              new StringType(
-                                  escapeStr(secondLevelExtension.getValue().primitiveValue())));
-                        }
-                      });
-            });
-
-    // population criteria descriptions
-    escapePopulationCriteria(measure);
-
-    // population criteria stratifications
-    return measure;
-  }
-
-  private void escapePopulationCriteria(org.hl7.fhir.r5.model.Measure measure) {
-    measure
-        .getGroup()
-        .forEach(
-            group -> {
-              // top level description for population criteria
-              if (!appConfigService.isFlagEnabled(ENHANCED_TEXT_FORMATTING)) {
-                group.setDescription(escapeStr(group.getDescription()));
-              }
-              group
-                  .getPopulation()
-                  .forEach(
-                      population -> {
-                        // update each population description
-                        if (!appConfigService.isFlagEnabled(ENHANCED_TEXT_FORMATTING)) {
-                          population.setDescription(escapeStr(population.getDescription()));
-                        }
-                        Expression criteria = population.getCriteria();
-                        criteria.setExpression(escapeStr(criteria.getExpression()));
-                      });
-              if (group.hasStratifier()) {
-                group.setStratifier(
-                    group.getStratifier().stream()
-                        .map(
-                            measureGroupStratifierComponent -> {
-                              if (!appConfigService.isFlagEnabled(ENHANCED_TEXT_FORMATTING)) {
-                                measureGroupStratifierComponent.setDescription(
-                                    escapeStr(measureGroupStratifierComponent.getDescription()));
-                              }
-                              log.info("escaping stratifier: {}", measureGroupStratifierComponent);
-                              if (measureGroupStratifierComponent.hasCriteria()) {
-                                measureGroupStratifierComponent.setCriteria(
-                                    measureGroupStratifierComponent
-                                        .getCriteria()
-                                        .setExpression(
-                                            escapeStr(
-                                                measureGroupStratifierComponent
-                                                    .getCriteria()
-                                                    .getExpression())));
-                              }
-                              return measureGroupStratifierComponent;
-                            })
-                        .collect(Collectors.toList()));
-              }
-              if (!appConfigService.isFlagEnabled(ENHANCED_TEXT_FORMATTING)
-                  && group.hasExtension(CqfMeasures.RATE_AGGREGATION_URI)) {
-                var extension = group.getExtensionByUrl(CqfMeasures.RATE_AGGREGATION_URI);
-                extension.setValue(new CodeType(escapeStr(extension.getValue().toString())));
-              }
-            });
-  }
-
   public String generateMeasureHumanReadable(Measure madieMeasure, Bundle bundleResource) {
     log.info("Generating human readable for measure: {}", madieMeasure.getId());
     if (bundleResource == null) {
@@ -308,12 +94,12 @@ public class HumanReadableService extends ResourceUtils {
       org.hl7.fhir.r5.model.Measure r5Measure =
           (org.hl7.fhir.r5.model.Measure) versionConvertor_40_50.convertResource(measureResource);
 
-      // escape html
-      org.hl7.fhir.r5.model.Measure escapedR5Measure = escapeMeasure(r5Measure);
+      // escape measure.contained properties
+      escapeContainedProperties(r5Measure);
 
       String measureTemplate = getData("/templates/Measure.liquid");
       LiquidEngine.LiquidDocument doc = liquidEngine.parse(measureTemplate, "hr-script");
-      return liquidEngine.evaluate(doc, escapedR5Measure, null);
+      return liquidEngine.evaluate(doc, r5Measure, null);
     } catch (FHIRException fhirException) {
       log.error(
           "Unable to generate Human readable for measure {} Reason => {}",
@@ -381,14 +167,5 @@ public class HumanReadableService extends ResourceUtils {
             .filter(content -> content.getContentType().equalsIgnoreCase("text/cql"))
             .map(content -> content.setData(escapeStr(new String(content.getData())).getBytes()))
             .collect(Collectors.toList()));
-  }
-
-  private void escapeDefinitions(org.hl7.fhir.r5.model.Measure measure) {
-    measure
-        .getTerm()
-        .forEach(
-            measureTermComponent -> {
-              measureTermComponent.setDefinition(escapeStr(measureTermComponent.getDefinition()));
-            });
   }
 }

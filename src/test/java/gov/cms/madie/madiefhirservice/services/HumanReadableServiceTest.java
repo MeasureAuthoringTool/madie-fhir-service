@@ -1,7 +1,6 @@
 package gov.cms.madie.madiefhirservice.services;
 
 import ca.uhn.fhir.model.api.TemporalPrecisionEnum;
-import gov.cms.madie.madiefhirservice.constants.UriConstants.CqfMeasures;
 import gov.cms.madie.madiefhirservice.exceptions.HumanReadableGenerationException;
 import gov.cms.madie.madiefhirservice.exceptions.ResourceNotFoundException;
 import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
@@ -28,7 +27,6 @@ import org.hl7.fhir.r4.model.RelatedArtifact;
 import org.hl7.fhir.r4.model.RelatedArtifact.RelatedArtifactType;
 import org.hl7.fhir.r4.model.Resource;
 import org.hl7.fhir.r5.context.SimpleWorkerContext;
-import org.hl7.fhir.r5.model.ParameterDefinition;
 import org.hl7.fhir.r5.utils.LiquidEngine;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -38,7 +36,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.io.IOException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -49,7 +46,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -57,7 +53,6 @@ class HumanReadableServiceTest
     implements ResourceFileUtil, LiquidEngine.ILiquidEngineIncludeResolver {
 
   @Mock LiquidEngine liquidEngine;
-  @Mock AppConfigService appConfigService;
 
   @InjectMocks HumanReadableService humanReadableService;
 
@@ -200,7 +195,7 @@ class HumanReadableServiceTest
     var le = new LiquidEngine(new SimpleWorkerContext.SimpleWorkerContextBuilder().build(), null);
     // Set include resolver
     le.setIncludeResolver(this);
-    var hr = new HumanReadableService(le, appConfigService);
+    var hr = new HumanReadableService(le);
 
     var generatedHumanReadable = hr.generateMeasureHumanReadable(madieMeasure, bundle);
     assertNotNull(generatedHumanReadable);
@@ -329,140 +324,5 @@ class HumanReadableServiceTest
   @Override
   public String fetchInclude(LiquidEngine engine, String name) {
     return gov.cms.madie.madiefhirservice.utils.ResourceUtils.getData("/templates/" + name);
-  }
-
-  @Test
-  public void testEscapeMeasure() {
-    org.hl7.fhir.r5.model.Measure r5Measure = new org.hl7.fhir.r5.model.Measure();
-
-    org.hl7.fhir.r5.model.Identifier identifiers = new org.hl7.fhir.r5.model.Identifier();
-    identifiers.setSystem("UriType[https://madie.cms.gov/measure/shortName]");
-    identifiers.setValue("eCqmTitle&");
-
-    r5Measure.addIdentifier(identifiers);
-    r5Measure.setTitle("measure name &");
-
-    org.hl7.fhir.r5.model.Expression expression = new org.hl7.fhir.r5.model.Expression();
-    expression.setDescription("test description");
-    org.hl7.fhir.r5.model.Measure.MeasureSupplementalDataComponent supplementalData =
-        new org.hl7.fhir.r5.model.Measure.MeasureSupplementalDataComponent();
-    supplementalData.setCriteria(expression);
-    supplementalData.setDescription("test description");
-    r5Measure.addSupplementalData().setCriteria(expression);
-
-    org.hl7.fhir.r5.model.Library lib = new org.hl7.fhir.r5.model.Library();
-    ParameterDefinition parameter = new ParameterDefinition();
-    parameter.setName("test name");
-    lib.addParameter(parameter);
-
-    org.hl7.fhir.r5.model.Extension topLevelExtension = new org.hl7.fhir.r5.model.Extension();
-    org.hl7.fhir.r5.model.Extension secondLevelExtension = new org.hl7.fhir.r5.model.Extension();
-    secondLevelExtension.setValue(new org.hl7.fhir.r5.model.StringType("test string"));
-    topLevelExtension.addExtension(secondLevelExtension);
-    lib.addExtension(topLevelExtension);
-
-    org.hl7.fhir.r5.model.RelatedArtifact r5RelatedArtifact =
-        new org.hl7.fhir.r5.model.RelatedArtifact();
-    r5RelatedArtifact.setCitation("test reference text");
-    r5RelatedArtifact.setLabel("test label");
-    r5RelatedArtifact.setDisplay("test display &");
-    r5RelatedArtifact.setResource("test resource");
-    lib.addRelatedArtifact(r5RelatedArtifact);
-
-    r5Measure.addContained(lib);
-
-    org.hl7.fhir.r5.model.Measure.MeasureTermComponent term =
-        new org.hl7.fhir.r5.model.Measure.MeasureTermComponent();
-    term.setDefinition("test definition");
-    r5Measure.addTerm(term);
-
-    r5Measure.addExtension(topLevelExtension);
-
-    org.hl7.fhir.r5.model.Measure.MeasureGroupComponent group =
-        new org.hl7.fhir.r5.model.Measure.MeasureGroupComponent();
-    group.setDescription("test description");
-    org.hl7.fhir.r5.model.Measure.MeasureGroupPopulationComponent population =
-        new org.hl7.fhir.r5.model.Measure.MeasureGroupPopulationComponent();
-    population.setDescription("test population description");
-    org.hl7.fhir.r5.model.Expression criteria = new org.hl7.fhir.r5.model.Expression();
-    criteria.setExpression("test expression");
-    population.setCriteria(criteria);
-    group.addPopulation(population);
-    org.hl7.fhir.r5.model.Measure.MeasureGroupStratifierComponent stratifier =
-        new org.hl7.fhir.r5.model.Measure.MeasureGroupStratifierComponent();
-    stratifier.setCriteria(criteria);
-    stratifier.setDescription("test stratifier description");
-    group.setStratifier(List.of(stratifier));
-    org.hl7.fhir.r5.model.Extension extension = new org.hl7.fhir.r5.model.Extension();
-    extension.setUrl(CqfMeasures.RATE_AGGREGATION_URI);
-    extension.setValue((new org.hl7.fhir.r5.model.StringType(CqfMeasures.RATE_AGGREGATION_URI)));
-    group.addExtension(extension);
-    r5Measure.addGroup(group);
-
-    r5Measure.addRelatedArtifact(r5RelatedArtifact);
-
-    org.hl7.fhir.r5.model.Measure result = humanReadableService.escapeMeasure(r5Measure);
-    assertEquals("eCqmTitle&amp;", result.getIdentifier().get(0).getValue());
-    assertEquals("measure name &amp;", result.getTitle());
-    assertNotNull(result);
-    assertNotNull(result.getRelatedArtifact());
-    assertEquals(1, result.getRelatedArtifact().size());
-    assertEquals("test display &amp;", result.getRelatedArtifact().get(0).getDisplay());
-  }
-
-  @Test
-  void testEscapeTopLevelPropertiesWithEnhancedTextFormatting() throws Exception {
-    // Arrange
-    org.hl7.fhir.r5.model.Measure r5Measure = new org.hl7.fhir.r5.model.Measure();
-    r5Measure.setTitle("Title &");
-    r5Measure.setPublisher("Publisher <b>bold</b>");
-    r5Measure.setSubtitle("Subtitle <script>");
-    r5Measure.setDescription("<b>desc</b><script>alert(1)</script>");
-    r5Measure.setUsage("<i>usage</i>");
-    r5Measure.setCopyright("<u>copyright</u>");
-    r5Measure.setDisclaimer("<em>disclaimer</em>");
-    r5Measure.setGuidance("<p>guidance</p>");
-    r5Measure.setClinicalRecommendationStatement("<ul><li>rec</li></ul>");
-    r5Measure.setRationale("<ol><li>rat</li></ol>");
-    r5Measure.setPurpose("<strong>purpose</strong>");
-    r5Measure.setRiskAdjustment("<s>risk</s>");
-    r5Measure.setRateAggregation("<table><colgroup><col style=\"width: 115px\"><col style=\"width: 134px\"><col style=\"width: 138px\"></colgroup><tr><td>agg</td></tr></table>");
-
-    doReturn(true).when(appConfigService).isFlagEnabled(any());
-
-    // Use reflection to access private method
-    Method method = HumanReadableService.class.getDeclaredMethod("escapeTopLevelProperties", org.hl7.fhir.r5.model.Measure.class);
-    method.setAccessible(true);
-    method.invoke(humanReadableService, r5Measure);
-
-    // Assert: rich text fields should be sanitized, not HTML-escaped
-    assertEquals("Title &amp;", r5Measure.getTitle());
-    assertEquals("Publisher &lt;b&gt;bold&lt;/b&gt;", r5Measure.getPublisher());
-    assertEquals("Subtitle &lt;script&gt;", r5Measure.getSubtitle());
-    assertEquals("<b>desc</b>", r5Measure.getDescription()); // script tag removed, b tag kept
-    assertEquals("<i>usage</i>", r5Measure.getUsage());
-    assertEquals("<u>copyright</u>", r5Measure.getCopyright());
-    assertEquals("<em>disclaimer</em>", r5Measure.getDisclaimer());
-    assertEquals("<p>guidance</p>", r5Measure.getGuidance());
-    assertEquals("<ul>\n" +
-      " <li>rec</li>\n" +
-      "</ul>", r5Measure.getClinicalRecommendationStatement());
-    assertEquals("<ol>\n" +
-      " <li>rat</li>\n" +
-      "</ol>", r5Measure.getRationale());
-    assertEquals("<strong>purpose</strong>", r5Measure.getPurpose());
-    assertEquals("<s>risk</s>", r5Measure.getRiskAdjustment());
-    assertEquals("<table>\n" +
-      " <colgroup>\n" +
-      "  <col style=\"width: 115px\" />\n" +
-      "  <col style=\"width: 134px\" />\n" +
-      "  <col style=\"width: 138px\" />\n" +
-      " </colgroup>\n" +
-      " <tbody>\n" +
-      "  <tr>\n" +
-      "   <td>agg</td>\n" +
-      "  </tr>\n" +
-      " </tbody>\n" +
-      "</table>", r5Measure.getRateAggregation());
   }
 }
