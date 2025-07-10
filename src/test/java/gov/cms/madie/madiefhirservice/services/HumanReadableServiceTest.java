@@ -38,6 +38,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -48,6 +49,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -406,5 +408,61 @@ class HumanReadableServiceTest
     assertNotNull(result.getRelatedArtifact());
     assertEquals(1, result.getRelatedArtifact().size());
     assertEquals("test display &amp;", result.getRelatedArtifact().get(0).getDisplay());
+  }
+
+  @Test
+  void testEscapeTopLevelPropertiesWithEnhancedTextFormatting() throws Exception {
+    // Arrange
+    org.hl7.fhir.r5.model.Measure r5Measure = new org.hl7.fhir.r5.model.Measure();
+    r5Measure.setTitle("Title &");
+    r5Measure.setPublisher("Publisher <b>bold</b>");
+    r5Measure.setSubtitle("Subtitle <script>");
+    r5Measure.setDescription("<b>desc</b><script>alert(1)</script>");
+    r5Measure.setUsage("<i>usage</i>");
+    r5Measure.setCopyright("<u>copyright</u>");
+    r5Measure.setDisclaimer("<em>disclaimer</em>");
+    r5Measure.setGuidance("<p>guidance</p>");
+    r5Measure.setClinicalRecommendationStatement("<ul><li>rec</li></ul>");
+    r5Measure.setRationale("<ol><li>rat</li></ol>");
+    r5Measure.setPurpose("<strong>purpose</strong>");
+    r5Measure.setRiskAdjustment("<s>risk</s>");
+    r5Measure.setRateAggregation("<table><colgroup><col style=\"width: 115px\"><col style=\"width: 134px\"><col style=\"width: 138px\"></colgroup><tr><td>agg</td></tr></table>");
+
+    doReturn(true).when(appConfigService).isFlagEnabled(any());
+
+    // Use reflection to access private method
+    Method method = HumanReadableService.class.getDeclaredMethod("escapeTopLevelProperties", org.hl7.fhir.r5.model.Measure.class);
+    method.setAccessible(true);
+    method.invoke(humanReadableService, r5Measure);
+
+    // Assert: rich text fields should be sanitized, not HTML-escaped
+    assertEquals("Title &amp;", r5Measure.getTitle());
+    assertEquals("Publisher &lt;b&gt;bold&lt;/b&gt;", r5Measure.getPublisher());
+    assertEquals("Subtitle &lt;script&gt;", r5Measure.getSubtitle());
+    assertEquals("<b>desc</b>", r5Measure.getDescription()); // script tag removed, b tag kept
+    assertEquals("<i>usage</i>", r5Measure.getUsage());
+    assertEquals("<u>copyright</u>", r5Measure.getCopyright());
+    assertEquals("<em>disclaimer</em>", r5Measure.getDisclaimer());
+    assertEquals("<p>guidance</p>", r5Measure.getGuidance());
+    assertEquals("<ul>\n" +
+      " <li>rec</li>\n" +
+      "</ul>", r5Measure.getClinicalRecommendationStatement());
+    assertEquals("<ol>\n" +
+      " <li>rat</li>\n" +
+      "</ol>", r5Measure.getRationale());
+    assertEquals("<strong>purpose</strong>", r5Measure.getPurpose());
+    assertEquals("<s>risk</s>", r5Measure.getRiskAdjustment());
+    assertEquals("<table>\n" +
+      " <colgroup>\n" +
+      "  <col style=\"width: 115px\" />\n" +
+      "  <col style=\"width: 134px\" />\n" +
+      "  <col style=\"width: 138px\" />\n" +
+      " </colgroup>\n" +
+      " <tbody>\n" +
+      "  <tr>\n" +
+      "   <td>agg</td>\n" +
+      "  </tr>\n" +
+      " </tbody>\n" +
+      "</table>", r5Measure.getRateAggregation());
   }
 }

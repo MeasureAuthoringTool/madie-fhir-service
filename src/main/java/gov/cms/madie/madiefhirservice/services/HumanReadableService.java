@@ -8,6 +8,7 @@ import gov.cms.madie.models.measure.Measure;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.hl7.fhir.convertors.advisors.impl.BaseAdvisor_40_50;
 import org.hl7.fhir.convertors.conv40_50.VersionConvertor_40_50;
 import org.hl7.fhir.exceptions.FHIRException;
@@ -16,6 +17,8 @@ import org.hl7.fhir.r4.model.Library;
 import org.hl7.fhir.r4.model.Resource;
 import org.hl7.fhir.r5.model.*;
 import org.hl7.fhir.r5.utils.LiquidEngine;
+import org.jsoup.Jsoup;
+import org.jsoup.safety.Safelist;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -32,6 +35,32 @@ public class HumanReadableService extends ResourceUtils {
   private final LiquidEngine liquidEngine;
   private final AppConfigService appConfigService;
 
+  private static final Safelist RICH_TEXT_SAFE_LIST =
+      Safelist.basic()
+          .addTags(
+              "p",
+              "strong",
+              "em",
+              "u",
+              "s",
+              "ul",
+              "ol",
+              "li",
+              "br",
+              "table",
+              "tbody",
+              "td",
+              "tfoot",
+              "th",
+              "thead",
+              "tr",
+              "col",
+              "colgroup")
+          .addAttributes("table", "style")
+          .addAttributes("th", "rowspan", "colspan", "style", "colwidth")
+          .addAttributes("td", "rowspan", "colspan", "style", "colwidth")
+          .addAttributes("col", "style");
+
   private String escapeStr(String val) {
     if (val != null && !val.isEmpty()) {
       return htmlEscape(val);
@@ -39,11 +68,32 @@ public class HumanReadableService extends ResourceUtils {
     return val;
   }
 
+  private String sanitizeRichText(String val) {
+    if (StringUtils.isBlank(val)) {
+      return val;
+    }
+    String safeHtml = Jsoup.clean(val, RICH_TEXT_SAFE_LIST);
+    // col tags are not self-closing in html, so we need to make them wel-formed
+    return safeHtml.replaceAll("<col ([^/>]*)>", "<col $1 />");
+  }
+
   private void escapeTopLevelProperties(org.hl7.fhir.r5.model.Measure measure) {
     measure.setTitle(escapeStr(measure.getTitle()));
     measure.setPublisher(escapeStr(measure.getPublisher()));
     measure.setSubtitle(escapeStr(measure.getSubtitle()));
-    if (!appConfigService.isFlagEnabled(ENHANCED_TEXT_FORMATTING)) {
+    if (appConfigService.isFlagEnabled(ENHANCED_TEXT_FORMATTING)) {
+      measure.setDescription(sanitizeRichText(measure.getDescription()));
+      measure.setUsage(sanitizeRichText(measure.getUsage()));
+      measure.setCopyright(sanitizeRichText(measure.getCopyright()));
+      measure.setDisclaimer(sanitizeRichText(measure.getDisclaimer()));
+      measure.setGuidance(sanitizeRichText(measure.getGuidance()));
+      measure.setClinicalRecommendationStatement(
+          sanitizeRichText(measure.getClinicalRecommendationStatement()));
+      measure.setRationale(sanitizeRichText(measure.getRationale()));
+      measure.setPurpose(sanitizeRichText(measure.getPurpose()));
+      measure.setRiskAdjustment(sanitizeRichText(measure.getRiskAdjustment()));
+      measure.setRateAggregation(sanitizeRichText(measure.getRateAggregation()));
+    } else {
       measure.setDescription(escapeStr(measure.getDescription()));
       measure.setUsage(escapeStr(measure.getUsage()));
       measure.setCopyright(escapeStr(measure.getCopyright()));
