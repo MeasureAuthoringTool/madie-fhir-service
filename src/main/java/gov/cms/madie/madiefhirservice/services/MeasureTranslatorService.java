@@ -41,24 +41,7 @@ public class MeasureTranslatorService {
   private static final Safelist RICH_TEXT_SAFE_LIST =
       Safelist.basic()
           .addTags(
-              "p",
-              "strong",
-              "em",
-              "u",
-              "s",
-              "ul",
-              "ol",
-              "li",
-              "br",
-              "table",
-              "tbody",
-              "td",
-              "tfoot",
-              "th",
-              "thead",
-              "tr",
-              "col",
-              "colgroup")
+              "s", "br", "table", "tbody", "td", "tfoot", "th", "thead", "tr", "col", "colgroup")
           .addAttributes("table", "style")
           .addAttributes("th", "rowspan", "colspan", "style", "colwidth")
           .addAttributes("td", "rowspan", "colspan", "style", "colwidth")
