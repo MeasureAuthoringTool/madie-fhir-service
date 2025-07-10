@@ -728,7 +728,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
   }
 
   @Test
-  void testCreateFhirMeasureForMadieMeasure_RichTextSanitization() {
+  void testCreateFhirMeasureForMadieMeasureRichTextSanitization() {
     // Arrange
     MeasureMetaData metaData = madieMeasure.getMeasureMetaData();
     metaData.setSteward(Organization.builder().name("Steward <b>bold</b>").build());
