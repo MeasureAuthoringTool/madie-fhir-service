@@ -851,13 +851,20 @@ public class MeasureTranslatorService {
     return references.stream()
         .map(
             reference ->
-                new RelatedArtifact()
-                    .setType(
-                        RelatedArtifactType.fromCode(
-                            !"unknown".equalsIgnoreCase(reference.getReferenceType())
-                                ? reference.getReferenceType().toLowerCase()
-                                : ""))
-                    .setCitation(sanitizeText(reference.getReferenceText())))
+                "Justification".equalsIgnoreCase(reference.getReferenceType())
+                    ? new RelatedArtifact()
+                        .setType(
+                            RelatedArtifactType.fromCode(
+                                reference.getReferenceType().toLowerCase()))
+                        .setDisplayElement(
+                            new StringType(sanitizeText(reference.getReferenceText())))
+                    : new RelatedArtifact()
+                        .setType(
+                            RelatedArtifactType.fromCode(
+                                !"unknown".equalsIgnoreCase(reference.getReferenceType())
+                                    ? reference.getReferenceType().toLowerCase()
+                                    : ""))
+                        .setCitation(sanitizeText(reference.getReferenceText())))
         .collect(Collectors.toList());
   }
 
