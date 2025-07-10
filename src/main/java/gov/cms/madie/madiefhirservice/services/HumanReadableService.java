@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.hl7.fhir.convertors.advisors.impl.BaseAdvisor_40_50;
 import org.hl7.fhir.convertors.conv40_50.VersionConvertor_40_50;
+import org.hl7.fhir.dstu3.model.codesystems.RelatedArtifactType;
 import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.Library;
@@ -70,7 +71,14 @@ public class HumanReadableService extends ResourceUtils {
           measure.getRelatedArtifact().stream()
               .map(
                   relatedArtifact ->
-                      relatedArtifact.setCitation(escapeStr(relatedArtifact.getCitation())))
+                      relatedArtifact
+                              .getType()
+                              .toCode()
+                              .equals(RelatedArtifactType.JUSTIFICATION.toCode())
+                          ? relatedArtifact.setDisplayElement(
+                              new StringType(
+                                  escapeStr(relatedArtifact.getDisplayElement().toString())))
+                          : relatedArtifact.setCitation(escapeStr(relatedArtifact.getCitation())))
               .collect(Collectors.toList()));
     }
   }

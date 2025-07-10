@@ -29,6 +29,7 @@ import org.hl7.fhir.r4.model.RelatedArtifact.RelatedArtifactType;
 import org.hl7.fhir.r4.model.Resource;
 import org.hl7.fhir.r5.context.SimpleWorkerContext;
 import org.hl7.fhir.r5.model.ParameterDefinition;
+import org.hl7.fhir.r5.model.StringType;
 import org.hl7.fhir.r5.utils.LiquidEngine;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -361,11 +362,22 @@ class HumanReadableServiceTest
 
     org.hl7.fhir.r5.model.RelatedArtifact r5RelatedArtifact =
         new org.hl7.fhir.r5.model.RelatedArtifact();
+    r5RelatedArtifact.setType(org.hl7.fhir.r5.model.RelatedArtifact.RelatedArtifactType.CITATION);
     r5RelatedArtifact.setCitation("test reference text");
     r5RelatedArtifact.setLabel("test label");
     r5RelatedArtifact.setDisplay("test display &");
     r5RelatedArtifact.setResource("test resource");
     lib.addRelatedArtifact(r5RelatedArtifact);
+
+    org.hl7.fhir.r5.model.RelatedArtifact r5RelatedArtifact2 =
+        new org.hl7.fhir.r5.model.RelatedArtifact();
+    r5RelatedArtifact2.setType(
+        org.hl7.fhir.r5.model.RelatedArtifact.RelatedArtifactType.JUSTIFICATION);
+    r5RelatedArtifact2.setDisplayElement(new StringType("test reference text"));
+    r5RelatedArtifact2.setLabel("test label");
+    r5RelatedArtifact2.setDisplay("test display &");
+    r5RelatedArtifact2.setResource("test resource");
+    lib.addRelatedArtifact(r5RelatedArtifact2);
 
     r5Measure.addContained(lib);
 
@@ -398,13 +410,15 @@ class HumanReadableServiceTest
     r5Measure.addGroup(group);
 
     r5Measure.addRelatedArtifact(r5RelatedArtifact);
+    r5Measure.addRelatedArtifact(r5RelatedArtifact2);
 
     org.hl7.fhir.r5.model.Measure result = humanReadableService.escapeMeasure(r5Measure);
     assertEquals("eCqmTitle&amp;", result.getIdentifier().get(0).getValue());
     assertEquals("measure name &amp;", result.getTitle());
     assertNotNull(result);
     assertNotNull(result.getRelatedArtifact());
-    assertEquals(1, result.getRelatedArtifact().size());
+    assertEquals(2, result.getRelatedArtifact().size());
     assertEquals("test display &amp;", result.getRelatedArtifact().get(0).getDisplay());
+    assertEquals("test display &amp;amp;", result.getRelatedArtifact().get(1).getDisplay());
   }
 }
