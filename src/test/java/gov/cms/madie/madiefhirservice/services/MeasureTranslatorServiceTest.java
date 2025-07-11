@@ -728,6 +728,61 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
   }
 
   @Test
+  void testCreateFhirMeasureForMadieMeasureRichTextSanitization() {
+    // Arrange
+    MeasureMetaData metaData = madieMeasure.getMeasureMetaData();
+    metaData.setSteward(Organization.builder().name("Steward <b>bold</b>").build());
+    metaData.setCopyright(
+        "<p>Copyright <u>2025</u> ICF. </p><table style=\"width: 209px\"><colgroup><col style=\"width: 45px\"><col style=\"width: 67px\"></colgroup><tbody><tr><th colspan=\"1\" rowspan=\"1\" colwidth=\"45\"><p>V</p></th><th colspan=\"1\" rowspan=\"1\" colwidth=\"67\"><p>Y</p></th></tr><tr><td colspan=\"1\" rowspan=\"1\" colwidth=\"45\"><p>1</p></td><td colspan=\"1\" rowspan=\"1\" colwidth=\"67\"><p>2024</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\" colwidth=\"45\"><p>2</p></td><td colspan=\"1\" rowspan=\"1\" colwidth=\"67\"><p><u>2025</u></p></td></tr></tbody></table>");
+    metaData.setDisclaimer("<em>disclaimer</em>");
+    metaData.setRationale("<ol><li>rat</li></ol>");
+    metaData.setPurpose("<strong>purpose</strong>");
+    metaData.setGuidance("<p>guidance</p>");
+    metaData.setDescription("<b>desc</b><script>alert(1)</script>");
+    metaData.setClinicalRecommendation("<ul><li>rec</li></ul>");
+
+    // Act
+    org.hl7.fhir.r4.model.Measure measure =
+        measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure);
+
+    // Assert: rich text fields should be sanitized
+    assertEquals("test 4495", measure.getTitle());
+    assertEquals("Steward <b>bold</b>", measure.getPublisher());
+    assertEquals("<b>desc</b>", measure.getDescription()); // script tag removed, b tag kept
+    assertEquals(
+        "<p>Copyright <u>2025</u> ICF.</p>\n"
+            + "<table style=\"width: 209px\">\n"
+            + " <colgroup>\n"
+            + "  <col style=\"width: 45px\" />\n"
+            + "  <col style=\"width: 67px\" />\n"
+            + " </colgroup>\n"
+            + " <tbody>\n"
+            + "  <tr>\n"
+            + "   <th colspan=\"1\" rowspan=\"1\" colwidth=\"45\"><p>V</p></th>\n"
+            + "   <th colspan=\"1\" rowspan=\"1\" colwidth=\"67\"><p>Y</p></th>\n"
+            + "  </tr>\n"
+            + "  <tr>\n"
+            + "   <td colspan=\"1\" rowspan=\"1\" colwidth=\"45\"><p>1</p></td>\n"
+            + "   <td colspan=\"1\" rowspan=\"1\" colwidth=\"67\"><p>2024</p></td>\n"
+            + "  </tr>\n"
+            + "  <tr>\n"
+            + "   <td colspan=\"1\" rowspan=\"1\" colwidth=\"45\"><p>2</p></td>\n"
+            + "   <td colspan=\"1\" rowspan=\"1\" colwidth=\"67\"><p><u>2025</u></p></td>\n"
+            + "  </tr>\n"
+            + " </tbody>\n"
+            + "</table>",
+        measure.getCopyright());
+    assertEquals("<em>disclaimer</em>", measure.getDisclaimer());
+    assertEquals("<p>guidance</p>", measure.getUsage());
+    assertEquals("<ol>\n" + " <li>rat</li>\n" + "</ol>", measure.getRationale());
+    assertEquals("<strong>purpose</strong>", measure.getPurpose());
+    assertEquals(
+        "<ul>\n" + " <li>rec</li>\n" + "</ul>", measure.getClinicalRecommendationStatement());
+    var groupComponent = measure.getGroup().get(0);
+    assertEquals("test 4495 group 1", groupComponent.getDescription());
+  }
+
+  @Test
   public void testBuildFhirPopulationGroupsWithAssocations() {
     Population ip1 = new Population();
     ip1.setName(PopulationType.INITIAL_POPULATION);

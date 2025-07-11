@@ -1,7 +1,6 @@
 package gov.cms.madie.madiefhirservice.services;
 
 import ca.uhn.fhir.model.api.TemporalPrecisionEnum;
-import gov.cms.madie.madiefhirservice.constants.UriConstants.CqfMeasures;
 import gov.cms.madie.madiefhirservice.exceptions.HumanReadableGenerationException;
 import gov.cms.madie.madiefhirservice.exceptions.ResourceNotFoundException;
 import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
@@ -28,8 +27,6 @@ import org.hl7.fhir.r4.model.RelatedArtifact;
 import org.hl7.fhir.r4.model.RelatedArtifact.RelatedArtifactType;
 import org.hl7.fhir.r4.model.Resource;
 import org.hl7.fhir.r5.context.SimpleWorkerContext;
-import org.hl7.fhir.r5.model.ParameterDefinition;
-import org.hl7.fhir.r5.model.StringType;
 import org.hl7.fhir.r5.utils.LiquidEngine;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -56,7 +53,6 @@ class HumanReadableServiceTest
     implements ResourceFileUtil, LiquidEngine.ILiquidEngineIncludeResolver {
 
   @Mock LiquidEngine liquidEngine;
-  @Mock AppConfigService appConfigService;
 
   @InjectMocks HumanReadableService humanReadableService;
 
@@ -199,7 +195,7 @@ class HumanReadableServiceTest
     var le = new LiquidEngine(new SimpleWorkerContext.SimpleWorkerContextBuilder().build(), null);
     // Set include resolver
     le.setIncludeResolver(this);
-    var hr = new HumanReadableService(le, appConfigService);
+    var hr = new HumanReadableService(le);
 
     var generatedHumanReadable = hr.generateMeasureHumanReadable(madieMeasure, bundle);
     assertNotNull(generatedHumanReadable);
@@ -328,97 +324,5 @@ class HumanReadableServiceTest
   @Override
   public String fetchInclude(LiquidEngine engine, String name) {
     return gov.cms.madie.madiefhirservice.utils.ResourceUtils.getData("/templates/" + name);
-  }
-
-  @Test
-  public void testEscapeMeasure() {
-    org.hl7.fhir.r5.model.Measure r5Measure = new org.hl7.fhir.r5.model.Measure();
-
-    org.hl7.fhir.r5.model.Identifier identifiers = new org.hl7.fhir.r5.model.Identifier();
-    identifiers.setSystem("UriType[https://madie.cms.gov/measure/shortName]");
-    identifiers.setValue("eCqmTitle&");
-
-    r5Measure.addIdentifier(identifiers);
-    r5Measure.setTitle("measure name &");
-
-    org.hl7.fhir.r5.model.Expression expression = new org.hl7.fhir.r5.model.Expression();
-    expression.setDescription("test description");
-    org.hl7.fhir.r5.model.Measure.MeasureSupplementalDataComponent supplementalData =
-        new org.hl7.fhir.r5.model.Measure.MeasureSupplementalDataComponent();
-    supplementalData.setCriteria(expression);
-    supplementalData.setDescription("test description");
-    r5Measure.addSupplementalData().setCriteria(expression);
-
-    org.hl7.fhir.r5.model.Library lib = new org.hl7.fhir.r5.model.Library();
-    ParameterDefinition parameter = new ParameterDefinition();
-    parameter.setName("test name");
-    lib.addParameter(parameter);
-
-    org.hl7.fhir.r5.model.Extension topLevelExtension = new org.hl7.fhir.r5.model.Extension();
-    org.hl7.fhir.r5.model.Extension secondLevelExtension = new org.hl7.fhir.r5.model.Extension();
-    secondLevelExtension.setValue(new org.hl7.fhir.r5.model.StringType("test string"));
-    topLevelExtension.addExtension(secondLevelExtension);
-    lib.addExtension(topLevelExtension);
-
-    org.hl7.fhir.r5.model.RelatedArtifact r5RelatedArtifact =
-        new org.hl7.fhir.r5.model.RelatedArtifact();
-    r5RelatedArtifact.setType(org.hl7.fhir.r5.model.RelatedArtifact.RelatedArtifactType.CITATION);
-    r5RelatedArtifact.setCitation("test reference text");
-    r5RelatedArtifact.setLabel("test label");
-    r5RelatedArtifact.setDisplay("test display &");
-    r5RelatedArtifact.setResource("test resource");
-    lib.addRelatedArtifact(r5RelatedArtifact);
-
-    org.hl7.fhir.r5.model.RelatedArtifact r5RelatedArtifact2 =
-        new org.hl7.fhir.r5.model.RelatedArtifact();
-    r5RelatedArtifact2.setType(
-        org.hl7.fhir.r5.model.RelatedArtifact.RelatedArtifactType.JUSTIFICATION);
-    r5RelatedArtifact2.setDisplayElement(new StringType("test reference text"));
-    r5RelatedArtifact2.setLabel("test label");
-    r5RelatedArtifact2.setDisplay("test display &");
-    r5RelatedArtifact2.setResource("test resource");
-    lib.addRelatedArtifact(r5RelatedArtifact2);
-
-    r5Measure.addContained(lib);
-
-    org.hl7.fhir.r5.model.Measure.MeasureTermComponent term =
-        new org.hl7.fhir.r5.model.Measure.MeasureTermComponent();
-    term.setDefinition("test definition");
-    r5Measure.addTerm(term);
-
-    r5Measure.addExtension(topLevelExtension);
-
-    org.hl7.fhir.r5.model.Measure.MeasureGroupComponent group =
-        new org.hl7.fhir.r5.model.Measure.MeasureGroupComponent();
-    group.setDescription("test description");
-    org.hl7.fhir.r5.model.Measure.MeasureGroupPopulationComponent population =
-        new org.hl7.fhir.r5.model.Measure.MeasureGroupPopulationComponent();
-    population.setDescription("test population description");
-    org.hl7.fhir.r5.model.Expression criteria = new org.hl7.fhir.r5.model.Expression();
-    criteria.setExpression("test expression");
-    population.setCriteria(criteria);
-    group.addPopulation(population);
-    org.hl7.fhir.r5.model.Measure.MeasureGroupStratifierComponent stratifier =
-        new org.hl7.fhir.r5.model.Measure.MeasureGroupStratifierComponent();
-    stratifier.setCriteria(criteria);
-    stratifier.setDescription("test stratifier description");
-    group.setStratifier(List.of(stratifier));
-    org.hl7.fhir.r5.model.Extension extension = new org.hl7.fhir.r5.model.Extension();
-    extension.setUrl(CqfMeasures.RATE_AGGREGATION_URI);
-    extension.setValue((new org.hl7.fhir.r5.model.StringType(CqfMeasures.RATE_AGGREGATION_URI)));
-    group.addExtension(extension);
-    r5Measure.addGroup(group);
-
-    r5Measure.addRelatedArtifact(r5RelatedArtifact);
-    r5Measure.addRelatedArtifact(r5RelatedArtifact2);
-
-    org.hl7.fhir.r5.model.Measure result = humanReadableService.escapeMeasure(r5Measure);
-    assertEquals("eCqmTitle&amp;", result.getIdentifier().get(0).getValue());
-    assertEquals("measure name &amp;", result.getTitle());
-    assertNotNull(result);
-    assertNotNull(result.getRelatedArtifact());
-    assertEquals(2, result.getRelatedArtifact().size());
-    assertEquals("test display &amp;", result.getRelatedArtifact().get(0).getDisplay());
-    assertEquals("test display &amp;amp;", result.getRelatedArtifact().get(1).getDisplay());
   }
 }
