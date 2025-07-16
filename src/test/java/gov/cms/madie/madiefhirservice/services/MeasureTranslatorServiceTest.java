@@ -733,7 +733,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     MeasureMetaData metaData = madieMeasure.getMeasureMetaData();
     metaData.setSteward(Organization.builder().name("Steward <b>bold</b>").build());
     metaData.setCopyright(
-        "<p>Copyright <u>2025</u> ICF. </p><table style=\"width: 209px\"><colgroup><col style=\"width: 45px\"><col style=\"width: 67px\"></colgroup><tbody><tr><th colspan=\"1\" rowspan=\"1\" colwidth=\"45\"><p>V</p></th><th colspan=\"1\" rowspan=\"1\" colwidth=\"67\"><p>Y</p></th></tr><tr><td colspan=\"1\" rowspan=\"1\" colwidth=\"45\"><p>1</p></td><td colspan=\"1\" rowspan=\"1\" colwidth=\"67\"><p>2024</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\" colwidth=\"45\"><p>2</p></td><td colspan=\"1\" rowspan=\"1\" colwidth=\"67\"><p><u>2025</u></p></td></tr></tbody></table>");
+        "<p>Copyright <u>2025</u> ICF. </p><table style=\"width: 209px\" class=\"test\"><colgroup><col style=\"width: 45px\"><col style=\"width: 67px\"></colgroup><tbody><tr><th colspan=\"1\" rowspan=\"1\" colwidth=\"45\"><p>V</p></th><th colspan=\"1\" rowspan=\"1\" colwidth=\"67\"><p>Y</p></th></tr><tr><td colspan=\"1\" rowspan=\"1\" colwidth=\"45\"><p>1</p></td><td colspan=\"1\" rowspan=\"1\" colwidth=\"67\"><p>2024</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\" colwidth=\"45\"><p>2</p></td><td colspan=\"1\" rowspan=\"1\" colwidth=\"67\"><p><u>2025</u></p></td></tr></tbody></table>");
     metaData.setDisclaimer("<em>disclaimer</em>");
     metaData.setRationale("<ol><li>rat</li></ol>");
     metaData.setPurpose("<strong>purpose</strong>");
@@ -751,7 +751,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertEquals("<b>desc</b>", measure.getDescription()); // script tag removed, b tag kept
     assertEquals(
         "<p>Copyright <u>2025</u> ICF.</p>\n"
-            + "<table style=\"width: 209px\">\n"
+            + "<table style=\"width: 209px\" class=\"test\">\n"
             + " <colgroup>\n"
             + "  <col style=\"width: 45px\" />\n"
             + "  <col style=\"width: 67px\" />\n"
