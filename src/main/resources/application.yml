@@ -21,7 +21,7 @@ madie:
 
 vsac:
   terminology-server-url: https://cts.nlm.nih.gov/fhir
-  api-key: ${VSAC_API_KEY:9363c9d7-cbc1-4cd1-9cf7-2307d8aa7dc7}
+  api-key: ${VSAC_API_KEY:defaultvaluetopreventillegalappstate}
 
 #springdoc:
 #  swagger-ui:
