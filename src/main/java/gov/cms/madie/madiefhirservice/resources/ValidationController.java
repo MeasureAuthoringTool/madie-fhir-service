@@ -19,7 +19,6 @@ import gov.cms.madie.madiefhirservice.services.ResourceValidationService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.hl7.fhir.instance.model.api.IBaseBundle;
 import org.hl7.fhir.instance.model.api.IBaseOperationOutcome;
 import org.hl7.fhir.r4.model.OperationOutcome;
@@ -30,8 +29,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Objects;
 
 import static gov.cms.madie.madiefhirservice.utils.ModelEndpointMap.QICORE_VERSION_MODELTYPE_MAP;
 
@@ -61,9 +58,7 @@ public class ValidationController {
 
     // MAT-8019: Disable Test Case Validations for QI-Core STU 6 only.
     if (ModelType.QI_CORE_6_0_0.equals(modelType)
-        && !appConfigService.isFlagEnabled(MadieFeatureFlag.STU6_TEST_CASE_VALIDATION)
-        && StringUtils.deleteWhitespace(Objects.requireNonNull(request.getBody()).trim())
-            .contains("\"resourceType\":\"Patient\"")) {
+        && !appConfigService.isFlagEnabled(MadieFeatureFlag.STU6_TEST_CASE_VALIDATION)) {
       return noValidationResponse(parser);
     }
 
