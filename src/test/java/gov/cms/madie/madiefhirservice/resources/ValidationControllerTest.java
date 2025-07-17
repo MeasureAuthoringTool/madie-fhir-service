@@ -439,10 +439,6 @@ class ValidationControllerTest implements ResourceFileUtil {
 
     when(validatorFactory.getJsonParserForModel(any(ModelType.class))).thenReturn(parser);
 
-    String tc1Json = getStringFromTestResource("/testCaseBundles/validTestCaseStu6.json");
-
-    ValidationResult result = Mockito.mock(ValidationResult.class);
-
     OperationOutcome outcome = new OperationOutcome();
     outcome.addIssue().setSeverity(OperationOutcome.IssueSeverity.INFORMATION);
 
