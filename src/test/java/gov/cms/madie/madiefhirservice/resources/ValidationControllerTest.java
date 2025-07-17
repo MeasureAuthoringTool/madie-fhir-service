@@ -9,8 +9,11 @@ import ca.uhn.fhir.validation.FhirValidator;
 import ca.uhn.fhir.validation.ValidationResult;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import gov.cms.madie.madiefhirservice.dto.MadieFeatureFlag;
 import gov.cms.madie.madiefhirservice.exceptions.HapiJsonException;
 import gov.cms.madie.madiefhirservice.factories.ModelAwareFhirFactory;
+import gov.cms.madie.madiefhirservice.services.AppConfigService;
 import gov.cms.madie.madiefhirservice.services.ResourceValidationService;
 import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
 import gov.cms.madie.models.common.ModelType;
@@ -33,15 +36,18 @@ import org.springframework.http.HttpStatus;
 import java.util.HashMap;
 import java.util.Map;
 
-import static gov.cms.madie.madiefhirservice.utils.ModelEndpointMap.QICORE_4_1_1;
+import static gov.cms.madie.madiefhirservice.utils.ModelEndpointMap.*;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.nullValue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -60,6 +66,8 @@ class ValidationControllerTest implements ResourceFileUtil {
   @Mock ObjectMapper mapper;
 
   @Mock ModelAwareFhirFactory validatorFactory;
+
+  @Mock AppConfigService appConfigService;
 
   @InjectMocks private ValidationController validationController;
 
@@ -381,5 +389,73 @@ class ValidationControllerTest implements ResourceFileUtil {
     assertThat(output, is(notNullValue()));
     assertThat(output.getCode(), is(equalTo(HttpStatus.OK.value())));
     assertThat(output.isSuccessful(), is(true));
+  }
+
+  @Test
+  void testValidationControllerReturnsSuccessfulOutcomeStu6ValidationTrue() {
+    when(validatorFactory.parseForModel(any(ModelType.class), anyString()))
+        .thenReturn(new Bundle());
+    when(validatorFactory.getJsonParserForModel(any(ModelType.class))).thenReturn(parser);
+    when(validatorFactory.getContextForModel(any(ModelType.class))).thenReturn(fhirContext);
+    when(validatorFactory.getValidatorForModel(any(ModelType.class))).thenReturn(fhirValidator);
+    String tc1Json = getStringFromTestResource("/testCaseBundles/validTestCaseStu6.json");
+    when(entity.getBody()).thenReturn(tc1Json);
+    ValidationResult result = Mockito.mock(ValidationResult.class);
+
+    when(validationService.validateBundleResourcesProfiles(
+            any(FhirContext.class), any(IBaseBundle.class)))
+        .thenReturn(new OperationOutcome());
+    when(validationService.validateBundleResourcesIdValid(
+            any(FhirContext.class), any(IBaseBundle.class)))
+        .thenReturn(new OperationOutcome());
+    when(validationService.combineOutcomes(any(FhirContext.class), any(), any(), any()))
+        .thenReturn(new OperationOutcome());
+    when(validationService.isSuccessful(any(FhirContext.class), any(OperationOutcome.class)))
+        .thenReturn(true);
+    OperationOutcome outcome = new OperationOutcome();
+    outcome.addIssue().setSeverity(OperationOutcome.IssueSeverity.INFORMATION);
+    when(result.toOperationOutcome()).thenReturn(outcome);
+    when(fhirValidator.validateWithResult(any(IBaseResource.class))).thenReturn(result);
+    when(parser.encodeResourceToString(any(OperationOutcome.class)))
+        .thenReturn("{ \"resourceType\": \"OperationOutcome\" }");
+
+    doReturn(true)
+        .when(appConfigService)
+        .isFlagEnabled(eq(MadieFeatureFlag.STU6_TEST_CASE_VALIDATION));
+    HapiOperationOutcome output = validationController.validateBundleByModel(QICORE_6_0_0, entity);
+    assertThat(output, is(notNullValue()));
+    assertThat(output.getCode(), is(equalTo(HttpStatus.OK.value())));
+    assertThat(output.isSuccessful(), is(true));
+  }
+
+  /***
+   * Test to validate that the controller returns a successful outcome when
+   * the STU6 validation flag is false.
+   * JSON resource includes Patient
+   * and it's an STU6 test case.
+   */
+  @Test
+  void testValidationControllerReturnsSuccessfulOutcomeStu6ValidationFalse() {
+
+    when(validatorFactory.getJsonParserForModel(any(ModelType.class))).thenReturn(parser);
+
+    String tc1Json = getStringFromTestResource("/testCaseBundles/validTestCaseStu6.json");
+
+    ValidationResult result = Mockito.mock(ValidationResult.class);
+
+    OperationOutcome outcome = new OperationOutcome();
+    outcome.addIssue().setSeverity(OperationOutcome.IssueSeverity.INFORMATION);
+
+    when(parser.encodeResourceToString(any(OperationOutcome.class)))
+        .thenReturn("{ \"resourceType\": \"OperationOutcome\" }");
+
+    doReturn(false)
+        .when(appConfigService)
+        .isFlagEnabled(eq(MadieFeatureFlag.STU6_TEST_CASE_VALIDATION));
+    HapiOperationOutcome output = validationController.validateBundleByModel(QICORE_6_0_0, entity);
+    assertThat(output, is(notNullValue()));
+    assertThat(output.getCode(), is(equalTo(HttpStatus.OK.value())));
+    assertThat(output.isSuccessful(), is(true));
+    assertThat(output.getOutcomeResponse(), is(nullValue()));
   }
 }
