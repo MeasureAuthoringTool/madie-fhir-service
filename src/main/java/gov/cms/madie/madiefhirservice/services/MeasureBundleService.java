@@ -287,6 +287,12 @@ public class MeasureBundleService {
     return expressionSet;
   }
 
+  /**
+   * Converts rich text fields in a Measure resource to Markdown format
+   *
+   * @param measure the Measure resource to convert
+   * @return a new Measure resource with rich text fields converted to markdown
+   */
   private org.hl7.fhir.r4.model.Measure convertRichTextToMarkdownForMeasure(
       org.hl7.fhir.r4.model.Measure measure) {
     // Create a deep copy of the measure
@@ -355,7 +361,7 @@ public class MeasureBundleService {
               supplementalData -> {
                 supplementalData.setDescription(
                     RichTextUtil.toMarkDown(
-                        supplementalData.getDescription())); // Convert rich text to plain text
+                        supplementalData.getDescription()));
               });
     }
     return newMeasure;
