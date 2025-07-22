@@ -17,7 +17,6 @@ import gov.cms.madie.models.measure.Stratification;
 
 import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.r4.model.Attachment;
-import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.Library;
 import org.hl7.fhir.r4.model.MarkdownType;
@@ -25,7 +24,6 @@ import org.hl7.fhir.r4.model.Period;
 import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.RelatedArtifact;
 import org.hl7.fhir.r4.model.RelatedArtifact.RelatedArtifactType;
-import org.hl7.fhir.r4.model.Resource;
 import org.hl7.fhir.r5.context.SimpleWorkerContext;
 import org.hl7.fhir.r5.utils.LiquidEngine;
 import org.junit.jupiter.api.BeforeEach;
@@ -134,10 +132,6 @@ class HumanReadableServiceTest
     library.setId(madieMeasure.getCqlLibraryName());
   }
 
-  public Bundle.BundleEntryComponent getBundleEntryComponent(Resource resource) {
-    return new Bundle.BundleEntryComponent().setResource(resource);
-  }
-
   private Period getPeriodFromDates(Date startDate, Date endDate) {
     return new Period()
         .setStart(startDate, TemporalPrecisionEnum.DAY)
@@ -157,14 +151,6 @@ class HumanReadableServiceTest
     identifier.setAssigner(reference);
     measure.setIdentifier(List.of(identifier));
 
-    Bundle.BundleEntryComponent measureBundleEntryComponent = getBundleEntryComponent(measure);
-    Bundle.BundleEntryComponent libraryBundleEntryComponent = getBundleEntryComponent(library);
-    Bundle bundle =
-        new Bundle()
-            .setType(Bundle.BundleType.TRANSACTION)
-            .addEntry(measureBundleEntryComponent)
-            .addEntry(libraryBundleEntryComponent);
-
     String hrText = "<div>Human Readable for Measure: " + madieMeasure.getMeasureName() + "</div>";
 
     when(liquidEngine.parse(anyString(), anyString()))
@@ -177,40 +163,24 @@ class HumanReadableServiceTest
         .thenReturn(hrText);
 
     String generatedHumanReadable =
-        humanReadableService.generateMeasureHumanReadable(madieMeasure, bundle);
+        humanReadableService.generateMeasureHumanReadable(measure, madieMeasure.getId());
     assertNotNull(generatedHumanReadable);
     assertTrue(generatedHumanReadable.contains(hrText));
   }
 
   @Test
   public void generateMeasureHumanReadableUsingIncludes() throws IOException {
-    var measureBundleEntryComponent = getBundleEntryComponent(measure);
-    var libraryBundleEntryComponent = getBundleEntryComponent(library);
-    var bundle =
-        new Bundle()
-            .setType(Bundle.BundleType.TRANSACTION)
-            .addEntry(measureBundleEntryComponent)
-            .addEntry(libraryBundleEntryComponent);
-
     var le = new LiquidEngine(new SimpleWorkerContext.SimpleWorkerContextBuilder().build(), null);
     // Set include resolver
     le.setIncludeResolver(this);
     var hr = new HumanReadableService(le);
 
-    var generatedHumanReadable = hr.generateMeasureHumanReadable(madieMeasure, bundle);
+    var generatedHumanReadable = hr.generateMeasureHumanReadable(measure, madieMeasure.getId());
     assertNotNull(generatedHumanReadable);
   }
 
   @Test
   public void generateMeasureHumanReadableOrdered() {
-    Bundle.BundleEntryComponent measureBundleEntryComponent = getBundleEntryComponent(measure);
-    Bundle.BundleEntryComponent libraryBundleEntryComponent = getBundleEntryComponent(library);
-    Bundle bundle =
-        new Bundle()
-            .setType(Bundle.BundleType.TRANSACTION)
-            .addEntry(measureBundleEntryComponent)
-            .addEntry(libraryBundleEntryComponent);
-
     String hrText = "<div>Human Readable for Measure: " + madieMeasure.getMeasureName() + "</div>";
 
     when(liquidEngine.parse(anyString(), anyString()))
@@ -223,40 +193,20 @@ class HumanReadableServiceTest
         .thenReturn(hrText);
 
     String generatedHumanReadable =
-        humanReadableService.generateMeasureHumanReadable(madieMeasure, bundle);
+        humanReadableService.generateMeasureHumanReadable(measure, madieMeasure.getId());
     assertNotNull(generatedHumanReadable);
     assertTrue(generatedHumanReadable.contains(hrText));
   }
 
   @Test
-  public void generateHumanReadableThrowsResourceNotFoundExceptionForNoBundle() {
-    assertThrows(
-        ResourceNotFoundException.class,
-        () -> humanReadableService.generateMeasureHumanReadable(madieMeasure, null));
-  }
-
-  @Test
   void generateHumanReadableThrowsResourceNotFoundExceptionForNoMeasureResource() {
-    Bundle bundle =
-        new Bundle()
-            .setType(Bundle.BundleType.TRANSACTION)
-            .addEntry(getBundleEntryComponent(new Library()));
-
     assertThrows(
         ResourceNotFoundException.class,
-        () -> humanReadableService.generateMeasureHumanReadable(madieMeasure, bundle));
+        () -> humanReadableService.generateMeasureHumanReadable(null, madieMeasure.getId()));
   }
 
   @Test
   public void generateHumanReadableThrowsFHIRException() {
-    Bundle.BundleEntryComponent measureBundleEntryComponent = getBundleEntryComponent(measure);
-    Bundle.BundleEntryComponent libraryBundleEntryComponent = getBundleEntryComponent(library);
-    Bundle bundle =
-        new Bundle()
-            .setType(Bundle.BundleType.TRANSACTION)
-            .addEntry(measureBundleEntryComponent)
-            .addEntry(libraryBundleEntryComponent);
-
     when(liquidEngine.parse(anyString(), anyString()))
         .thenReturn(new LiquidEngine.LiquidDocument());
 
@@ -268,7 +218,7 @@ class HumanReadableServiceTest
 
     assertThrows(
         HumanReadableGenerationException.class,
-        () -> humanReadableService.generateMeasureHumanReadable(madieMeasure, bundle));
+        () -> humanReadableService.generateMeasureHumanReadable(measure, madieMeasure.getId()));
   }
 
   @Test

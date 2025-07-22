@@ -2,10 +2,7 @@ package gov.cms.madie.madiefhirservice.services;
 
 import gov.cms.madie.madiefhirservice.constants.UriConstants;
 import gov.cms.madie.madiefhirservice.dto.CqlLibraryDetails;
-import gov.cms.madie.madiefhirservice.utils.BundleUtil;
-import gov.cms.madie.madiefhirservice.utils.CqlFormatter;
-import gov.cms.madie.madiefhirservice.utils.FhirResourceHelpers;
-import gov.cms.madie.madiefhirservice.utils.ResourceUtils;
+import gov.cms.madie.madiefhirservice.utils.*;
 import gov.cms.madie.models.library.CqlLibrary;
 import gov.cms.madie.models.measure.Measure;
 import java.security.Principal;
@@ -16,12 +13,7 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.cqframework.cql.cql2elm.CqlCompilerException;
 import org.hl7.fhir.convertors.advisors.impl.BaseAdvisor_40_50;
 import org.hl7.fhir.convertors.conv40_50.VersionConvertor_40_50;
-import org.hl7.fhir.r4.model.Bundle;
-import org.hl7.fhir.r4.model.DomainResource;
-import org.hl7.fhir.r4.model.Extension;
-import org.hl7.fhir.r4.model.Library;
-import org.hl7.fhir.r4.model.Narrative;
-import org.hl7.fhir.r4.model.Reference;
+import org.hl7.fhir.r4.model.*;
 import org.hl7.fhir.r5.model.Enumerations;
 import org.hl7.fhir.r5.model.ParameterDefinition;
 import org.springframework.stereotype.Service;
@@ -60,15 +52,17 @@ public class MeasureBundleService {
     madieMeasure.setCql(CqlFormatter.formatCql(madieMeasure.getCql(), principal));
 
     log.info("CQL formatting completed successfully for measure {}", madieMeasure.getId());
-    org.hl7.fhir.r4.model.Measure measure =
+    org.hl7.fhir.r4.model.Measure measureForHR =
         measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure);
-    Set<String> expressions = getExpressions(measure);
+    Set<String> expressions = getExpressions(measureForHR);
+    org.hl7.fhir.r4.model.Measure measureForExport =
+        convertRichTextToMarkdownForMeasure(measureForHR);
 
     log.info(
         "Mapping of MADiE measure to FHIR measure completed successfully {}", madieMeasure.getId());
     // Bundle entry for Measure resource
     Bundle.BundleEntryComponent measureEntryComponent =
-        FhirResourceHelpers.getBundleEntryComponent(measure, "Transaction");
+        FhirResourceHelpers.getBundleEntryComponent(measureForExport, "Transaction");
     Bundle bundle =
         new Bundle().setType(Bundle.BundleType.TRANSACTION).addEntry(measureEntryComponent);
     log.info("Measure bundle entry created successfully {}", madieMeasure.getId());
@@ -86,20 +80,21 @@ public class MeasureBundleService {
             .expressions(expressions)
             .build();
     // get effective DataRequirements
-    log.info("Getting effective data requirements for measure: {}", measure.getId());
+    log.info("Getting effective data requirements for measure: {}", madieMeasure.getId());
     org.hl7.fhir.r5.model.Library effectiveDataRequirements =
         elmTranslatorClient.getEffectiveDataRequirements(
             libraryDetails, true, accessToken, errorSeverity);
 
     sortParameters(madieMeasure, effectiveDataRequirements);
-    addEffectiveDataRequirementsToMeasure(measure, effectiveDataRequirements);
+    addEffectiveDataRequirementsToMeasure(measureForHR, effectiveDataRequirements);
+    addEffectiveDataRequirementsToMeasure(measureForExport, effectiveDataRequirements);
 
     if (BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT.equals(bundleType)) {
       // get human-readable for measure
       String humanReadable =
-          humanReadableService.generateMeasureHumanReadable(madieMeasure, bundle);
+          humanReadableService.generateMeasureHumanReadable(measureForHR, madieMeasure.getId());
       // set narrative and effective DataRequirements to measure
-      setNarrativeText(measure, humanReadable);
+      setNarrativeText(measureForExport, humanReadable);
 
       // set narrative to measure library
       var measureLibrary =
@@ -290,5 +285,79 @@ public class MeasureBundleService {
                       stratifier -> expressionSet.add(stratifier.getCriteria().getExpression()));
             });
     return expressionSet;
+  }
+
+  private org.hl7.fhir.r4.model.Measure convertRichTextToMarkdownForMeasure(
+      org.hl7.fhir.r4.model.Measure measure) {
+    // Create a deep copy of the measure
+    org.hl7.fhir.r4.model.Measure newMeasure = measure.copy();
+    newMeasure
+        .setDescription(RichTextUtil.toMarkDown(measure.getDescription()))
+        .setTitle(RichTextUtil.toMarkDown(measure.getTitle()))
+        .setCopyright(RichTextUtil.toMarkDown(measure.getCopyright()))
+        .setDisclaimer(RichTextUtil.toMarkDown(measure.getDisclaimer()))
+        .setRationale(RichTextUtil.toMarkDown(measure.getRationale()))
+        .setPurpose(RichTextUtil.toMarkDown(measure.getPurpose()))
+        .setUsage(RichTextUtil.toMarkDown(measure.getUsage()))
+        .setClinicalRecommendationStatement(
+            RichTextUtil.toMarkDown(measure.getClinicalRecommendationStatement()));
+    if (CollectionUtils.isNotEmpty(newMeasure.getGroup())) {
+      newMeasure
+          .getGroup()
+          .forEach(
+              group -> {
+                group.setDescription(RichTextUtil.toMarkDown(group.getDescription()));
+                if (CollectionUtils.isNotEmpty(group.getPopulation())) {
+                  group
+                      .getPopulation()
+                      .forEach(
+                          population -> {
+                            population.setDescription(
+                                RichTextUtil.toMarkDown(population.getDescription()));
+                          });
+                }
+                if (CollectionUtils.isNotEmpty(group.getStratifier())) {
+                  group
+                      .getStratifier()
+                      .forEach(
+                          stratifier -> {
+                            stratifier.setDescription(
+                                RichTextUtil.toMarkDown(stratifier.getDescription()));
+                          });
+                }
+                if (CollectionUtils.isNotEmpty(group.getExtension())) {
+                  group
+                      .getExtension()
+                      .forEach(
+                          extension -> {
+                            if (extension
+                                .getUrl()
+                                .equals(UriConstants.CqfMeasures.RATE_AGGREGATION_URI)) {
+                              String markDown =
+                                  RichTextUtil.toMarkDown(String.valueOf(extension.getValue()));
+                              extension.setValue(new StringType(markDown));
+                            } else if (extension
+                                .getUrl()
+                                .equals(
+                                    UriConstants.CqfMeasures.IMPROVEMENT_NOTATION_GUIDANCE_URI)) {
+                              String markDown =
+                                  RichTextUtil.toMarkDown(String.valueOf(extension.getValue()));
+                              extension.setValue(new MarkdownType(markDown));
+                            }
+                          });
+                }
+              });
+    }
+    if (CollectionUtils.isNotEmpty(newMeasure.getSupplementalData())) {
+      newMeasure
+          .getSupplementalData()
+          .forEach(
+              supplementalData -> {
+                supplementalData.setDescription(
+                    RichTextUtil.toMarkDown(
+                        supplementalData.getDescription())); // Convert rich text to plain text
+              });
+    }
+    return newMeasure;
   }
 }
