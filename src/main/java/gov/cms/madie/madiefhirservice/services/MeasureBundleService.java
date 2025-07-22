@@ -360,8 +360,7 @@ public class MeasureBundleService {
           .forEach(
               supplementalData -> {
                 supplementalData.setDescription(
-                    RichTextUtil.toMarkDown(
-                        supplementalData.getDescription()));
+                    RichTextUtil.toMarkDown(supplementalData.getDescription()));
               });
     }
     return newMeasure;

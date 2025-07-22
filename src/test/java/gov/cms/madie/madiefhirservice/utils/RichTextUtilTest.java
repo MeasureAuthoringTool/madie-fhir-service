@@ -45,7 +45,8 @@ class RichTextUtilTest {
 
   @Test
   void testToMarkDownTable() {
-    String html = "<table><thead><tr><th>H</th></tr></thead><tbody><tr><td>C</td></tr></tbody></table>";
+    String html =
+        "<table><thead><tr><th>H</th></tr></thead><tbody><tr><td>C</td></tr></tbody></table>";
     String markdown = RichTextUtil.toMarkDown(html);
     assertTrue(markdown.contains("| H |"));
     assertTrue(markdown.contains("| C |"));
@@ -58,4 +59,3 @@ class RichTextUtilTest {
     assertTrue(markdown.contains("~~strike~~") || markdown.contains("strike"));
   }
 }
-

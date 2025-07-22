@@ -84,8 +84,7 @@ public class HumanReadableService extends ResourceUtils {
     try {
       // converting measure resource from R4 to R5 as we are using r5 liquid engine.
       var versionConvertor_40_50 = new VersionConvertor_40_50(new BaseAdvisor_40_50());
-      org.hl7.fhir.r5.model.Measure r5Measure =
-          (org.hl7.fhir.r5.model.Measure) versionConvertor_40_50.convertResource(measure);
+      Measure r5Measure = (Measure) versionConvertor_40_50.convertResource(measure);
 
       // escape measure.contained properties
       escapeContainedProperties(r5Measure);
