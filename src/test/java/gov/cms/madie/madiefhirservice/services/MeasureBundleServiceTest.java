@@ -14,6 +14,7 @@ import org.cqframework.cql.cql2elm.CqlCompilerException;
 import org.hl7.fhir.instance.model.api.IIdType;
 import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.Library;
+import org.hl7.fhir.r4.model.Resource;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -201,7 +202,7 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
             eq(CqlCompilerException.ErrorSeverity.Info)))
         .thenReturn(effectiveDataRequirements);
 
-    when(humanReadableService.generateMeasureHumanReadable(any(Measure.class), any(Bundle.class)))
+    when(humanReadableService.generateMeasureHumanReadable(any(Resource.class), anyString()))
         .thenReturn(humanReadable);
     when(humanReadableService.generateLibraryHumanReadable(
             any(org.hl7.fhir.r4.model.Library.class)))
