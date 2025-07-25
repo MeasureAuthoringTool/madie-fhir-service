@@ -6,6 +6,7 @@ import ca.uhn.fhir.rest.client.interceptor.BasicAuthInterceptor;
 import ca.uhn.fhir.rest.gclient.IQuery;
 import ca.uhn.fhir.util.BundleUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.hl7.fhir.common.hapi.validation.support.RemoteTerminologyServiceValidationSupport;
 import org.hl7.fhir.instance.model.api.IBaseBundle;
@@ -48,7 +49,7 @@ public class CustomRemoteTerminologyServiceValidationSupport
               .where(CodeSystem.URL.matches().value(theSystem));
       IBaseBundle results = codeSystemQuery.returnBundle(bundleType).execute();
       List<IBaseResource> resultsList = BundleUtil.toListOfResources(this.myCtx, results);
-      return !resultsList.isEmpty() ? resultsList.get(0) : null;
+      return CollectionUtils.isNotEmpty(resultsList) ? resultsList.get(0) : null;
     }
   }
 
