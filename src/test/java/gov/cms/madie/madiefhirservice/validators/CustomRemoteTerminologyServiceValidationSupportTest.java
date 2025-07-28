@@ -97,7 +97,7 @@ class CustomRemoteTerminologyServiceValidationSupportTest {
     when(query.returnBundle(eq(IBaseBundle.class))).thenReturn(query);
     when(query.execute()).thenReturn(bundle);
 
-    // Mock BundleUtil and CollectionUtils
+    // Mock BundleUtil
     try (MockedStatic<BundleUtil> bundleUtilMock = mockStatic(BundleUtil.class)) {
       bundleUtilMock
           .when(() -> BundleUtil.toListOfResources(fhirContext, bundle))
@@ -133,7 +133,7 @@ class CustomRemoteTerminologyServiceValidationSupportTest {
     when(query.returnBundle(eq(IBaseBundle.class))).thenReturn(query);
     when(query.execute()).thenReturn(bundle);
 
-    // Mock BundleUtil and CollectionUtils
+    // Mock BundleUtil
     try (MockedStatic<BundleUtil> bundleUtilMock = mockStatic(BundleUtil.class)) {
 
       bundleUtilMock
@@ -217,7 +217,7 @@ class CustomRemoteTerminologyServiceValidationSupportTest {
     when(query.returnBundle(eq(IBaseBundle.class))).thenReturn(query);
     when(query.execute()).thenReturn(bundle);
 
-    // Mock BundleUtil and CollectionUtils
+    // Mock BundleUtil
     try (MockedStatic<BundleUtil> bundleUtilMock = mockStatic(BundleUtil.class)) {
 
       bundleUtilMock
