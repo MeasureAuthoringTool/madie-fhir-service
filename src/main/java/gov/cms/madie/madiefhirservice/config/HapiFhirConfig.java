@@ -117,12 +117,8 @@ public class HapiFhirConfig {
 
   public RemoteTerminologyServiceValidationSupport getRemoteTerminologyServiceValidationSupport(
       FhirContext qicore6FhirContext) {
-    CustomRemoteTerminologyServiceValidationSupport remoteTerminologyValidationSupport =
-        new CustomRemoteTerminologyServiceValidationSupport(
-            qicore6FhirContext, terminologyServerBase);
-    remoteTerminologyValidationSupport.addClientInterceptor(
-        new BasicAuthInterceptor("apikey", vsacApiKey));
-    return remoteTerminologyValidationSupport;
+    return new CustomRemoteTerminologyServiceValidationSupport(
+        qicore6FhirContext, terminologyServerBase, new BasicAuthInterceptor("apikey", vsacApiKey));
   }
 
   @Bean
