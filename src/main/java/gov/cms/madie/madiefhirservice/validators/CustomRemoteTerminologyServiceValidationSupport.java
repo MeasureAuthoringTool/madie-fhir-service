@@ -18,18 +18,14 @@ import java.util.List;
 @Slf4j
 public class CustomRemoteTerminologyServiceValidationSupport
     extends RemoteTerminologyServiceValidationSupport {
-  private final BasicAuthInterceptor authInterceptor;
+  private final IGenericClient client;
 
   public CustomRemoteTerminologyServiceValidationSupport(
       FhirContext theFhirContext, String theBaseUrl, BasicAuthInterceptor basicAuthInterceptor) {
     super(theFhirContext, theBaseUrl);
-    authInterceptor = basicAuthInterceptor;
-  }
-
-  private IGenericClient getClient() {
-    IGenericClient retVal = super.myCtx.newRestfulGenericClient(getBaseUrl());
-    retVal.registerInterceptor(this.authInterceptor);
-    return retVal;
+    this.addClientInterceptor(basicAuthInterceptor);
+    client = super.myCtx.newRestfulGenericClient(getBaseUrl());
+    client.registerInterceptor(basicAuthInterceptor);
   }
 
   @Override
@@ -39,17 +35,17 @@ public class CustomRemoteTerminologyServiceValidationSupport
     if (StringUtils.isBlank(theSystem)) {
       return null;
     } else {
-      IGenericClient client = this.getClient();
       Class<? extends IBaseBundle> bundleType =
           this.myCtx.getResourceDefinition("Bundle").getImplementingClass(IBaseBundle.class);
       IQuery<IBaseBundle> codeSystemQuery =
           client
               .search()
               .forResource("CodeSystem")
-              .where(CodeSystem.URL.matches().value(theSystem));
-      IBaseBundle results = codeSystemQuery.returnBundle(bundleType).execute();
-      List<IBaseResource> resultsList = BundleUtil.toListOfResources(this.myCtx, results);
-      return CollectionUtils.isNotEmpty(resultsList) ? resultsList.get(0) : null;
+              .where(CodeSystem.URL.matches().value(theSystem))
+              .count(1);
+      IBaseBundle bundles = codeSystemQuery.returnBundle(bundleType).execute();
+      List<IBaseResource> codeSystems = BundleUtil.toListOfResources(this.myCtx, bundles);
+      return CollectionUtils.isNotEmpty(codeSystems) ? codeSystems.get(0) : null;
     }
   }
 

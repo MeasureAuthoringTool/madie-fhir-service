@@ -121,7 +121,7 @@ public class HapiFhirConfig {
     CustomRemoteTerminologyServiceValidationSupport remoteTerminologyValidationSupport =
         new CustomRemoteTerminologyServiceValidationSupport(
             qicore6FhirContext, terminologyServerBase, basicAuthInterceptor);
-    remoteTerminologyValidationSupport.addClientInterceptor(basicAuthInterceptor);
+    //    remoteTerminologyValidationSupport.addClientInterceptor(basicAuthInterceptor);
     return remoteTerminologyValidationSupport;
   }
 

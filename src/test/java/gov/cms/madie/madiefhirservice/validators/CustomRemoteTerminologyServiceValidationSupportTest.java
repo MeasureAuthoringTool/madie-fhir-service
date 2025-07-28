@@ -45,6 +45,10 @@ class CustomRemoteTerminologyServiceValidationSupportTest {
 
   @BeforeEach
   void setUp() {
+    // Mock the client creation in constructor
+    when(fhirContext.newRestfulGenericClient(baseUrl)).thenReturn(genericClient);
+    doNothing().when(genericClient).registerInterceptor(basicAuthInterceptor);
+
     validationSupport =
         new CustomRemoteTerminologyServiceValidationSupport(
             fhirContext, baseUrl, basicAuthInterceptor);
@@ -81,20 +85,19 @@ class CustomRemoteTerminologyServiceValidationSupportTest {
     String system = "http://example.com/CodeSystem/test";
     List<IBaseResource> resourceList = List.of(codeSystemResource);
 
-    // Mock the FhirContext and client setup
-    when(fhirContext.newRestfulGenericClient(baseUrl)).thenReturn(genericClient);
-    doNothing().when(genericClient).registerInterceptor(basicAuthInterceptor);
+    // Mock the FhirContext setup
     when(fhirContext.getResourceDefinition("Bundle")).thenReturn(bundleDefinition);
     when(bundleDefinition.getImplementingClass(IBaseBundle.class)).thenReturn(IBaseBundle.class);
 
-    // Mock the search chain
+    // Mock the search chain on the stored client
     when(genericClient.search()).thenReturn(untypedQuery);
     when(untypedQuery.forResource("CodeSystem")).thenReturn(query);
     when(query.where(any(ICriterion.class))).thenReturn(query);
+    when(query.count(1)).thenReturn(query);
     when(query.returnBundle(eq(IBaseBundle.class))).thenReturn(query);
     when(query.execute()).thenReturn(bundle);
 
-    // Mock BundleUtil
+    // Mock BundleUtil and CollectionUtils
     try (MockedStatic<BundleUtil> bundleUtilMock = mockStatic(BundleUtil.class)) {
       bundleUtilMock
           .when(() -> BundleUtil.toListOfResources(fhirContext, bundle))
@@ -105,9 +108,9 @@ class CustomRemoteTerminologyServiceValidationSupportTest {
 
       // then
       assertThat(result, is(codeSystemResource));
-      verify(genericClient).registerInterceptor(basicAuthInterceptor);
       verify(untypedQuery).forResource("CodeSystem");
       verify(query).where(any(ICriterion.class));
+      verify(query).count(1);
     }
   }
 
@@ -118,9 +121,7 @@ class CustomRemoteTerminologyServiceValidationSupportTest {
     String system = "http://example.com/CodeSystem/notfound";
     List<IBaseResource> emptyList = Collections.emptyList();
 
-    // Mock the FhirContext and client setup
-    when(fhirContext.newRestfulGenericClient(baseUrl)).thenReturn(genericClient);
-    doNothing().when(genericClient).registerInterceptor(basicAuthInterceptor);
+    // Mock the FhirContext setup
     when(fhirContext.getResourceDefinition("Bundle")).thenReturn(bundleDefinition);
     when(bundleDefinition.getImplementingClass(IBaseBundle.class)).thenReturn(IBaseBundle.class);
 
@@ -128,11 +129,13 @@ class CustomRemoteTerminologyServiceValidationSupportTest {
     when(genericClient.search()).thenReturn(untypedQuery);
     when(untypedQuery.forResource("CodeSystem")).thenReturn(query);
     when(query.where(any(ICriterion.class))).thenReturn(query);
+    when(query.count(1)).thenReturn(query);
     when(query.returnBundle(eq(IBaseBundle.class))).thenReturn(query);
     when(query.execute()).thenReturn(bundle);
 
-    // Mock BundleUtil
+    // Mock BundleUtil and CollectionUtils
     try (MockedStatic<BundleUtil> bundleUtilMock = mockStatic(BundleUtil.class)) {
+
       bundleUtilMock
           .when(() -> BundleUtil.toListOfResources(fhirContext, bundle))
           .thenReturn(emptyList);
@@ -184,11 +187,12 @@ class CustomRemoteTerminologyServiceValidationSupportTest {
   }
 
   @Test
-  void testConstructorSetsAuthInterceptor() {
+  void testConstructorSetsUpClientWithInterceptor() {
     // given/when - constructor called in setUp()
 
-    // then - verify that the validation support was created with the correct parameters
-    // This is implicitly tested by the other tests that verify the auth interceptor is used
+    // then - verify that the client was created and interceptor was registered
+    verify(fhirContext).newRestfulGenericClient(baseUrl);
+    verify(genericClient).registerInterceptor(basicAuthInterceptor);
     assertThat(validationSupport, is(notNullValue()));
   }
 
@@ -201,9 +205,7 @@ class CustomRemoteTerminologyServiceValidationSupportTest {
     IBaseResource secondResource = mock(IBaseResource.class);
     List<IBaseResource> resourceList = List.of(firstResource, secondResource);
 
-    // Mock the FhirContext and client setup
-    when(fhirContext.newRestfulGenericClient(baseUrl)).thenReturn(genericClient);
-    doNothing().when(genericClient).registerInterceptor(basicAuthInterceptor);
+    // Mock the FhirContext setup
     when(fhirContext.getResourceDefinition("Bundle")).thenReturn(bundleDefinition);
     when(bundleDefinition.getImplementingClass(IBaseBundle.class)).thenReturn(IBaseBundle.class);
 
@@ -211,15 +213,16 @@ class CustomRemoteTerminologyServiceValidationSupportTest {
     when(genericClient.search()).thenReturn(untypedQuery);
     when(untypedQuery.forResource("CodeSystem")).thenReturn(query);
     when(query.where(any(ICriterion.class))).thenReturn(query);
+    when(query.count(1)).thenReturn(query);
     when(query.returnBundle(eq(IBaseBundle.class))).thenReturn(query);
     when(query.execute()).thenReturn(bundle);
 
-    // Mock BundleUtil
+    // Mock BundleUtil and CollectionUtils
     try (MockedStatic<BundleUtil> bundleUtilMock = mockStatic(BundleUtil.class)) {
+
       bundleUtilMock
           .when(() -> BundleUtil.toListOfResources(fhirContext, bundle))
           .thenReturn(resourceList);
-
       // when
       IBaseResource result = validationSupport.fetchCodeSystem(system);
 
@@ -234,9 +237,7 @@ class CustomRemoteTerminologyServiceValidationSupportTest {
     // given
     String system = "http://example.com/CodeSystem/test";
 
-    // Mock the FhirContext and client setup
-    when(fhirContext.newRestfulGenericClient(baseUrl)).thenReturn(genericClient);
-    doNothing().when(genericClient).registerInterceptor(basicAuthInterceptor);
+    // Mock the FhirContext setup
     when(fhirContext.getResourceDefinition("Bundle")).thenReturn(bundleDefinition);
     when(bundleDefinition.getImplementingClass(IBaseBundle.class)).thenReturn(IBaseBundle.class);
 
@@ -244,14 +245,14 @@ class CustomRemoteTerminologyServiceValidationSupportTest {
     when(genericClient.search()).thenReturn(untypedQuery);
     when(untypedQuery.forResource("CodeSystem")).thenReturn(query);
     when(query.where(any(ICriterion.class))).thenReturn(query);
+    when(query.count(1)).thenReturn(query);
     when(query.returnBundle(eq(IBaseBundle.class))).thenReturn(query);
     when(query.execute()).thenThrow(new RuntimeException("FHIR server error"));
 
     // when/then - should handle exception gracefully
     try {
-      IBaseResource result = validationSupport.fetchCodeSystem(system);
+      validationSupport.fetchCodeSystem(system);
       // If no exception handling in the actual code, this will throw
-      // If there is exception handling, verify the behavior
     } catch (RuntimeException e) {
       assertThat(e.getMessage(), is("FHIR server error"));
     }
