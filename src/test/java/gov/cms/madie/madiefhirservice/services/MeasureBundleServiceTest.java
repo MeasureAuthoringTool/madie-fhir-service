@@ -262,7 +262,7 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
             eq(CqlCompilerException.ErrorSeverity.Error)))
         .thenReturn(effectiveDataRequirements);
 
-    org.hl7.fhir.r4.model.RelatedArtifact artifact = new org.hl7.fhir.r4.model.RelatedArtifact();
+    RelatedArtifact artifact = new RelatedArtifact();
     artifact.setCitation("<p><strong>Plain text citation</strong></p>");
     artifact.setDisplay("<p><strong>Plain text display</strong></p>");
     measure.addRelatedArtifact(artifact);
