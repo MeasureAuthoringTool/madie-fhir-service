@@ -12,9 +12,7 @@ import gov.cms.madie.models.library.CqlLibrary;
 import gov.cms.madie.models.measure.Measure;
 import org.cqframework.cql.cql2elm.CqlCompilerException;
 import org.hl7.fhir.instance.model.api.IIdType;
-import org.hl7.fhir.r4.model.Bundle;
-import org.hl7.fhir.r4.model.Library;
-import org.hl7.fhir.r4.model.Resource;
+import org.hl7.fhir.r4.model.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -247,5 +245,44 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
     assertThat(
         r4MeasureLibrary.getPublisher(),
         is(equalTo(madieMeasure.getMeasureMetaData().getSteward().getName())));
+  }
+
+  @Test
+  public void createMeasureBundleConvertsRelatedArtifactFieldsToMarkdown() {
+    when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure))
+        .thenReturn(measure);
+
+    when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class), any(), anyString()))
+        .thenReturn(library);
+
+    when(elmTranslatorClient.getEffectiveDataRequirements(
+            any(CqlLibraryDetails.class),
+            anyBoolean(),
+            anyString(),
+            eq(CqlCompilerException.ErrorSeverity.Error)))
+        .thenReturn(effectiveDataRequirements);
+
+    org.hl7.fhir.r4.model.RelatedArtifact artifact = new org.hl7.fhir.r4.model.RelatedArtifact();
+    artifact.setCitation("<p><strong>Plain text citation</strong></p>");
+    artifact.setDisplay("<p><strong>Plain text display</strong></p>");
+    measure.addRelatedArtifact(artifact);
+
+    Bundle bundle =
+        measureBundleService.createMeasureBundle(
+            madieMeasure,
+            mock(Principal.class),
+            BundleUtil.MEASURE_BUNDLE_TYPE_CALCULATION,
+            "token",
+            CqlCompilerException.ErrorSeverity.Error);
+
+    org.hl7.fhir.r4.model.Measure measureResource =
+        (org.hl7.fhir.r4.model.Measure) bundle.getEntry().get(0).getResource();
+
+    assertThat(
+        measureResource.getRelatedArtifact().get(0).getCitation().trim(),
+        is(equalTo("**Plain text citation**")));
+    assertThat(
+        measureResource.getRelatedArtifact().get(0).getDisplay().trim(),
+        is(equalTo("**Plain text display**")));
   }
 }
