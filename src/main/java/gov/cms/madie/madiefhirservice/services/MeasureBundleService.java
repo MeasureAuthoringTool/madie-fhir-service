@@ -377,7 +377,7 @@ public class MeasureBundleService {
           .getExtension()
           .forEach(
               ext -> {
-                if (ext.getUrl().equals(UriConstants.CqfMeasures.MEASURE_DEFINITIONS_URI)) {
+                if (ext.getUrl().equals(UriConstants.CqfMeasures.MEASURE_DEFINITION_EXT_URI)) {
                   String markDown =
                       RichTextUtil.toMarkDown(String.valueOf(ext.getExtension().get(1).getValue()));
                   ext.getExtension().get(1).setValue(new MarkdownType(markDown));

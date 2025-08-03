@@ -97,9 +97,6 @@ public final class UriConstants {
 
     public static final String IMPROVEMENT_NOTATION_GUIDANCE_URI =
         "http://hl7.org/fhir/StructureDefinition/cqf-improvementNotationGuidance";
-
-    public static final String MEASURE_DEFINITIONS_URI =
-        "http://hl7.org/fhir/StructureDefinition/cqf-definitionTerm";
   }
 
   public static final class CqfTestCases {
