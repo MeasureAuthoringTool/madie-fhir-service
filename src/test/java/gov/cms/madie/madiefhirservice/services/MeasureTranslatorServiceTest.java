@@ -12,6 +12,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.empty;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -895,7 +896,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     stratifications.add(strat1);
     Stratification strat2 = new Stratification();
     strat2.setDescription("strat-description");
-    strat1.setAssociations(
+    strat2.setAssociations(
         List.of(PopulationType.INITIAL_POPULATION, PopulationType.MEASURE_POPULATION));
     stratifications.add(strat2);
     group.setStratifications(stratifications);
@@ -966,7 +967,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     stratifications.add(strat1);
     Stratification strat2 = new Stratification();
     strat2.setDescription("strat-description2");
-    strat1.setAssociations(
+    strat2.setAssociations(
         List.of(PopulationType.MEASURE_POPULATION, PopulationType.INITIAL_POPULATION));
     stratifications.add(strat2);
     group.setStratifications(stratifications);
@@ -1001,7 +1002,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
         is(equalTo(UriConstants.CodeSystem.POPULATION_SYSTEM_URI)));
     assertThat(
         codeableConcept.getCodingFirstRep().getCode(),
-        is(equalTo(PopulationType.MEASURE_POPULATION.toCode())));
+        is(equalTo(PopulationType.INITIAL_POPULATION.toCode())));
   }
 
   @Test
@@ -1048,10 +1049,8 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     MeasureGroupComponent measureGroupComponent = groupComponent.get(0);
     assertThat(measureGroupComponent, is(notNullValue()));
     List<MeasureGroupStratifierComponent> stratifier = measureGroupComponent.getStratifier();
-    assertThat(stratifier, is(notNullValue()));
-    assertThat(stratifier.size(), is(equalTo(2)));
-    MeasureGroupStratifierComponent measureGroupStratifierComponent = stratifier.get(0);
-    assertNull(measureGroupStratifierComponent);
+    assertThat(stratifier, is(empty()));
+    assertThat(stratifier.size(), is(equalTo(0)));
   }
 
   @Test
