@@ -27,6 +27,8 @@ import org.springframework.context.annotation.Configuration;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -92,6 +94,9 @@ public class HapiFhirConfig {
         "classpath:packages/hl7.fhir.uv.extensions.r4-5.2.0.tgz");
     npmPackageSupport.loadPackageFromClasspath(
         "classpath:packages/hl7.fhir.xver-extensions-0.1.0.tgz");
+    PrePopulatedValidationSupport prePopulatedValidationSupportMadie =
+        buildPrePopulatedValidationSupportFromZip(
+            qicore6FhirContext, "classpath:packages/tx-qicore-6.0.0-madie.zip");
     PrePopulatedValidationSupport prePopulatedValidationSupport =
         buildPrePopulatedValidationSupportFromZip(
             qicore6FhirContext, "classpath:packages/tx-qicore-6.0.0.zip");
@@ -106,6 +111,7 @@ public class HapiFhirConfig {
 
     return new CachingValidationSupport(
         new ValidationSupportChain(
+            prePopulatedValidationSupportMadie,
             prePopulatedValidationSupport,
             npmPackageSupport,
             new DefaultProfileValidationSupport(qicore6FhirContext),
@@ -182,16 +188,23 @@ public class HapiFhirConfig {
 
       ZipEntry entry;
       while ((entry = zipInputStream.getNextEntry()) != null) {
-        if (!entry.isDirectory()) {
+        Path path = Paths.get(entry.getName());
+        if (!entry.isDirectory()
+            && !entry.getName().startsWith("__MACOSX/")
+            && !path.getFileName().toString().startsWith(".")) {
           StringBuilder fileContent = new StringBuilder();
           byte[] buffer = new byte[1024];
-          int read;
-          while ((read = zipInputStream.read(buffer)) != -1) {
-            fileContent.append(new String(buffer, 0, read));
-          }
-          IBaseResource baseResource = xmlParser.parseResource(fileContent.toString());
-          if (baseResource instanceof ValueSet) {
-            prePopulatedValidationSupport.addValueSet(baseResource);
+          try {
+            int read;
+            while ((read = zipInputStream.read(buffer)) != -1) {
+              fileContent.append(new String(buffer, 0, read));
+            }
+            IBaseResource baseResource = xmlParser.parseResource(fileContent.toString());
+            if (baseResource instanceof ValueSet) {
+              prePopulatedValidationSupport.addValueSet(baseResource);
+            }
+          } catch (Exception e) {
+            log.error("An error occurred while processing entry: {}", entry.getName(), e);
           }
         }
         zipInputStream.closeEntry();
