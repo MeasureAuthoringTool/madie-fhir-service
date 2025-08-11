@@ -363,6 +363,28 @@ public class MeasureBundleService {
                     RichTextUtil.toMarkDown(supplementalData.getDescription()));
               });
     }
+    if (CollectionUtils.isNotEmpty(newMeasure.getRelatedArtifact())) {
+      newMeasure
+          .getRelatedArtifact()
+          .forEach(
+              ra -> {
+                ra.setCitation(RichTextUtil.toMarkDown(ra.getCitation()));
+                ra.setDisplay(RichTextUtil.toMarkDown(ra.getDisplay()));
+              });
+    }
+    if (CollectionUtils.isNotEmpty(newMeasure.getExtension())) {
+      newMeasure
+          .getExtension()
+          .forEach(
+              ext -> {
+                if (ext.getUrl().equals(UriConstants.CqfMeasures.MEASURE_DEFINITION_EXT_URI)) {
+                  String markDown =
+                      RichTextUtil.toMarkDown(String.valueOf(ext.getExtension().get(1).getValue()));
+                  ext.getExtension().get(1).setValue(new MarkdownType(markDown));
+                }
+              });
+    }
+
     return newMeasure;
   }
 }

@@ -503,41 +503,40 @@ public class MeasureTranslatorService {
       i.set(Integer.valueOf(0));
       measureStratifications =
           madieGroup.getStratifications().stream()
+              .filter(strat -> isNotEmpty(strat.getAssociations()))
               .map(
                   strat -> {
                     List<PopulationType> associations = strat.getAssociations();
                     MeasureGroupStratifierComponent stratComponent = null;
-                    if (isNotEmpty(associations)) {
-                      List<Extension> extensionList =
-                          associations.stream()
-                              .map(
-                                  associationPopulation -> {
-                                    AtomicReference<Extension> extension = new AtomicReference<>();
-                                    extension.set(
-                                        new Extension(
-                                            UriConstants.CqfMeasures.APPLIES_TO_URI,
-                                            buildCodeableConcept(
-                                                associationPopulation.toCode(),
-                                                UriConstants.CodeSystem.POPULATION_SYSTEM_URI,
-                                                associationPopulation.getDisplay())));
-                                    return extension.get();
-                                  })
-                              .collect(Collectors.toList());
-                      i.set(Integer.valueOf(i.get().intValue() + 1));
-                      stratComponent =
-                          (MeasureGroupStratifierComponent)
-                              new MeasureGroupStratifierComponent()
-                                  .setDescription(RichTextUtil.sanitizeText(strat.getDescription()))
-                                  .setCriteria(
-                                      buildExpression(
-                                          "text/cql-identifier", strat.getCqlDefinition()))
-                                  .setId(
-                                      StringUtils.isNotBlank(strat.getDisplayId())
-                                          ? strat.getDisplayId()
-                                          : i.get().toString());
-                      for (Extension extension : extensionList) {
-                        stratComponent.addExtension(extension);
-                      }
+                    List<Extension> extensionList =
+                        associations.stream()
+                            .map(
+                                associationPopulation -> {
+                                  AtomicReference<Extension> extension = new AtomicReference<>();
+                                  extension.set(
+                                      new Extension(
+                                          UriConstants.CqfMeasures.APPLIES_TO_URI,
+                                          buildCodeableConcept(
+                                              associationPopulation.toCode(),
+                                              UriConstants.CodeSystem.POPULATION_SYSTEM_URI,
+                                              associationPopulation.getDisplay())));
+                                  return extension.get();
+                                })
+                            .collect(Collectors.toList());
+                    i.set(Integer.valueOf(i.get().intValue() + 1));
+                    stratComponent =
+                        (MeasureGroupStratifierComponent)
+                            new MeasureGroupStratifierComponent()
+                                .setDescription(RichTextUtil.sanitizeText(strat.getDescription()))
+                                .setCriteria(
+                                    buildExpression(
+                                        "text/cql-identifier", strat.getCqlDefinition()))
+                                .setId(
+                                    StringUtils.isNotBlank(strat.getDisplayId())
+                                        ? strat.getDisplayId()
+                                        : i.get().toString());
+                    for (Extension extension : extensionList) {
+                      stratComponent.addExtension(extension);
                     }
                     return stratComponent;
                   })
