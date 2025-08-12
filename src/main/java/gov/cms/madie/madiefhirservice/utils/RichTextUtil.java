@@ -25,7 +25,8 @@ public class RichTextUtil {
       return val;
     }
     String safeHtml = Jsoup.clean(val, RICH_TEXT_SAFE_LIST);
-    // br and col tags are not self-closing in html, so we need to close them to make them wel-formed
+    // br and col tags are not self-closing in html,
+    // so we need to close them to make them wel-formed
     safeHtml = safeHtml.replaceAll("<br([^/>]*)>", "<br$1 />");
     safeHtml = safeHtml.replaceAll("<col ([^/>]*)>", "<col $1 />");
     return safeHtml;
