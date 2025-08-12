@@ -14,7 +14,7 @@ import java.util.Arrays;
 public class RichTextUtil {
   private static final Safelist RICH_TEXT_SAFE_LIST =
       Safelist.basic()
-          .addTags("s", "br", "table", "tbody", "td", "th", "thead", "tr", "col", "colgroup", "del")
+          .addTags("s", "table", "tbody", "td", "th", "thead", "tr", "col", "colgroup", "del")
           .addAttributes("table", "style", "class", "id")
           .addAttributes("th", "rowspan", "colspan", "style", "colwidth")
           .addAttributes("td", "rowspan", "colspan", "style", "colwidth")
