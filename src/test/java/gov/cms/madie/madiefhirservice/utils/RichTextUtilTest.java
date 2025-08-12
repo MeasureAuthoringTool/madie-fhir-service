@@ -58,4 +58,18 @@ class RichTextUtilTest {
     String markdown = RichTextUtil.toMarkDown(html);
     assertTrue(markdown.contains("~~strike~~") || markdown.contains("strike"));
   }
+
+  @Test
+  void sanitizeTextHandlesEmptyBrTags() {
+    String html = "<p>Line 1<br>Line 2</p>";
+    String sanitized = RichTextUtil.sanitizeText(html);
+    assertTrue(sanitized.contains("<br />"));
+  }
+
+  @Test
+  void sanitizeTextIgnoresAlreadySelfClosingBrTags() {
+    String html = "<p>Line 1<br />Line 2</p>";
+    String sanitized = RichTextUtil.sanitizeText(html);
+    assertTrue(sanitized.contains("<br />"));
+  }
 }
