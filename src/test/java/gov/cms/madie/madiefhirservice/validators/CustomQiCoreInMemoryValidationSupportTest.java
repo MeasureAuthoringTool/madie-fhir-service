@@ -4,6 +4,7 @@ import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.context.support.ConceptValidationOptions;
 import ca.uhn.fhir.context.support.IValidationSupport;
 import ca.uhn.fhir.context.support.ValidationSupportContext;
+import gov.cms.madie.madiefhirservice.config.ValidationConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.hl7.fhir.r4.model.ValueSet;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,6 +16,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.Matchers.nullValue;
+import static org.mockito.Mockito.when;
 
 @Slf4j
 @ExtendWith(MockitoExtension.class)
@@ -24,10 +26,12 @@ class CustomQiCoreInMemoryValidationSupportTest {
   private ValueSet valueSet;
 
   @Mock private ValidationSupportContext validationSupportContext;
+  @Mock private ValidationConfig validationConfig;
 
   @BeforeEach
   void setUp() {
-    validationSupport = new CustomQiCoreInMemoryValidationSupport(FhirContext.forR4());
+    validationSupport =
+        new CustomQiCoreInMemoryValidationSupport(FhirContext.forR4(), validationConfig);
     valueSet = new ValueSet();
     valueSet.setUrl("http://hl7.org/fhir/ValueSet/fm-status");
     valueSet.setExpansion(new ValueSet.ValueSetExpansionComponent());
@@ -64,11 +68,15 @@ class CustomQiCoreInMemoryValidationSupportTest {
     contains.setCode("test-code");
     contains.setDisplay("Correct Display");
     valueSet.getExpansion().addContains(contains);
+    ConceptValidationOptions theOptions = new ConceptValidationOptions();
+    theOptions.setValidateDisplay(true);
+
+    when(validationConfig.isValidateDisplay()).thenReturn(true);
 
     var result =
         validationSupport.validateCodeInValueSet(
             validationSupportContext,
-            new ConceptValidationOptions(),
+            theOptions,
             "http://hl7.org/fhir/fm-status",
             "test-code",
             "Wrong Display",
@@ -77,6 +85,33 @@ class CustomQiCoreInMemoryValidationSupportTest {
     assertThat(result, is(notNullValue()));
     assertThat(result.getSeverity(), is(IValidationSupport.IssueSeverity.ERROR));
     assertThat(result.getIssues(), is(not(empty())));
+  }
+
+  @Test
+  void testValidateCodeInValueSetWithDisplayMismatchAndDisplayValidationDisabled() {
+    ValueSet.ValueSetExpansionContainsComponent contains =
+        new ValueSet.ValueSetExpansionContainsComponent();
+    contains.setSystem("http://hl7.org/fhir/fm-status");
+    contains.setCode("test-code");
+    contains.setDisplay("Correct Display");
+    valueSet.getExpansion().addContains(contains);
+    ConceptValidationOptions theOptions = new ConceptValidationOptions();
+    theOptions.setValidateDisplay(true);
+
+    when(validationConfig.isValidateDisplay()).thenReturn(false);
+
+    var result =
+        validationSupport.validateCodeInValueSet(
+            validationSupportContext,
+            theOptions,
+            "http://hl7.org/fhir/fm-status",
+            "test-code",
+            "Wrong Display",
+            valueSet);
+
+    assertThat(result, is(notNullValue()));
+    assertThat(result.getSeverity(), is(nullValue()));
+    assertThat(result.getIssues(), is(empty()));
   }
 
   @Test

@@ -2,24 +2,36 @@ package gov.cms.madie.madiefhirservice.validators;
 
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.context.RuntimeResourceDefinition;
+import ca.uhn.fhir.context.support.ConceptValidationOptions;
+import ca.uhn.fhir.context.support.DefaultProfileValidationSupport;
+import ca.uhn.fhir.context.support.IValidationSupport;
+import ca.uhn.fhir.context.support.ValidationSupportContext;
 import ca.uhn.fhir.i18n.HapiLocalizer;
 import ca.uhn.fhir.rest.client.api.IGenericClient;
+import ca.uhn.fhir.rest.client.impl.GenericClient;
 import ca.uhn.fhir.rest.client.interceptor.BasicAuthInterceptor;
-import ca.uhn.fhir.rest.gclient.ICriterion;
-import ca.uhn.fhir.rest.gclient.IQuery;
-import ca.uhn.fhir.rest.gclient.IUntypedQuery;
+import ca.uhn.fhir.rest.gclient.*;
 import ca.uhn.fhir.util.BundleUtil;
+import ca.uhn.fhir.util.ParametersUtil;
+import gov.cms.madie.madiefhirservice.config.ValidationConfig;
+import lombok.extern.slf4j.Slf4j;
 import org.hl7.fhir.instance.model.api.IBaseBundle;
+import org.hl7.fhir.instance.model.api.IBaseParameters;
 import org.hl7.fhir.instance.model.api.IBaseResource;
+import org.hl7.fhir.r4.model.Parameters;
+import org.hl7.fhir.r4.model.ValueSet;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -28,6 +40,7 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
+@Slf4j
 class CustomRemoteTerminologyServiceValidationSupportTest {
 
   @Mock private FhirContext fhirContext;
@@ -40,6 +53,11 @@ class CustomRemoteTerminologyServiceValidationSupportTest {
   @Mock private RuntimeResourceDefinition bundleDefinition;
   @Mock private HapiLocalizer localizer;
 
+  @Mock private ValidationConfig validationConfig;
+
+  @Captor private ArgumentCaptor<Parameters> parametersCaptor;
+  @Captor ArgumentCaptor<String> displayCaptor;
+
   private CustomRemoteTerminologyServiceValidationSupport validationSupport;
   private final String baseUrl = "http://example.com/fhir";
 
@@ -51,7 +69,7 @@ class CustomRemoteTerminologyServiceValidationSupportTest {
 
     validationSupport =
         new CustomRemoteTerminologyServiceValidationSupport(
-            fhirContext, baseUrl, basicAuthInterceptor);
+            fhirContext, baseUrl, basicAuthInterceptor, validationConfig);
   }
 
   @Test
@@ -255,6 +273,318 @@ class CustomRemoteTerminologyServiceValidationSupportTest {
       // If no exception handling in the actual code, this will throw
     } catch (RuntimeException e) {
       assertThat(e.getMessage(), is("FHIR server error"));
+    }
+  }
+
+  @Test
+  void testValidateCodeDelegatesToSuperWithNullForDisabled() {
+    // Given
+    ValidationSupportContext context = mock(ValidationSupportContext.class);
+    ConceptValidationOptions options = mock(ConceptValidationOptions.class);
+    String codeSystem = "system";
+    String code = "code";
+    String display = "display";
+    String valueSetUrl = "valueSetUrl";
+
+    CustomRemoteTerminologyServiceValidationSupport spySupport = spy(validationSupport);
+
+    IValidationSupport.CodeValidationResult theOutput =
+        mock(IValidationSupport.CodeValidationResult.class);
+
+    when(spySupport.superValidateCode(
+            any(ValidationSupportContext.class),
+            any(ConceptValidationOptions.class),
+            eq(codeSystem),
+            eq(code),
+            isNull(),
+            eq(valueSetUrl)))
+        .thenReturn(theOutput);
+
+    when(validationConfig.isValidateDisplay()).thenReturn(false);
+
+    // When
+    IValidationSupport.CodeValidationResult codeValidationResult =
+        spySupport.validateCode(context, options, codeSystem, code, display, valueSetUrl);
+
+    // Then
+    assertThat(codeValidationResult, is(theOutput));
+    verify(spySupport, times(1))
+        .superValidateCode(
+            any(ValidationSupportContext.class),
+            any(ConceptValidationOptions.class),
+            eq(codeSystem),
+            eq(code),
+            displayCaptor.capture(),
+            eq(valueSetUrl));
+    assertThat(displayCaptor.getValue(), is(nullValue()));
+  }
+
+  @Test
+  void testValidateCodeDelegatesToSuperWithDisplayForEnabled() {
+    // Given
+    ValidationSupportContext context = mock(ValidationSupportContext.class);
+    ConceptValidationOptions options = mock(ConceptValidationOptions.class);
+    String codeSystem = "system";
+    String code = "code";
+    String display = "display";
+    String valueSetUrl = "valueSetUrl";
+
+    CustomRemoteTerminologyServiceValidationSupport spySupport = spy(validationSupport);
+
+    IValidationSupport.CodeValidationResult theOutput =
+        mock(IValidationSupport.CodeValidationResult.class);
+
+    when(spySupport.superValidateCode(
+            any(ValidationSupportContext.class),
+            any(ConceptValidationOptions.class),
+            eq(codeSystem),
+            eq(code),
+            eq(display),
+            eq(valueSetUrl)))
+        .thenReturn(theOutput);
+
+    when(validationConfig.isValidateDisplay()).thenReturn(true);
+
+    // When
+    IValidationSupport.CodeValidationResult codeValidationResult =
+        spySupport.validateCode(context, options, codeSystem, code, display, valueSetUrl);
+
+    // Then
+    assertThat(codeValidationResult, is(theOutput));
+    verify(spySupport, times(1))
+        .superValidateCode(
+            any(ValidationSupportContext.class),
+            any(ConceptValidationOptions.class),
+            eq(codeSystem),
+            eq(code),
+            displayCaptor.capture(),
+            eq(valueSetUrl));
+    assertThat(displayCaptor.getValue(), is(equalTo(display)));
+  }
+
+  @Test
+  void testValidateCode() {
+    // given
+    ValidationSupportContext context = mock(ValidationSupportContext.class);
+    ConceptValidationOptions options = mock(ConceptValidationOptions.class);
+    String codeSystem = "system";
+    String code = "code";
+    String display = "display";
+    String valueSetUrl = "valueSetUrl";
+
+    CustomRemoteTerminologyServiceValidationSupport spySupport = spy(validationSupport);
+
+    when(validationConfig.isValidateDisplay()).thenReturn(false);
+
+    doReturn(fhirContext).when(spySupport).getFhirContext();
+    Parameters parameters = mock(Parameters.class);
+
+    try (MockedStatic<ParametersUtil> mocked = mockStatic(ParametersUtil.class)) {
+      mocked.when(() -> ParametersUtil.newInstance(fhirContext)).thenReturn(parameters);
+      GenericClient mockClient = mock(GenericClient.class);
+      doReturn(mockClient).when(fhirContext).newRestfulGenericClient(anyString());
+      IOperation mockOperation = mock(IOperation.class);
+      doReturn(mockOperation).when(mockClient).operation();
+      IOperationUnnamed mockUnnamedOperation = mock(IOperationUnnamed.class);
+      doReturn(mockUnnamedOperation).when(mockOperation).onType(anyString());
+      IOperationUntyped mockUntypedOperation = mock(IOperationUntyped.class);
+      doReturn(mockUntypedOperation).when(mockUnnamedOperation).named(anyString());
+      IOperationUntypedWithInputAndPartialOutput mockInputAndOutputOperation =
+          mock(IOperationUntypedWithInputAndPartialOutput.class);
+      doReturn(mockInputAndOutputOperation)
+          .when(mockUntypedOperation)
+          .withParameters(any(IBaseParameters.class));
+
+      Parameters retParameters = new Parameters();
+      retParameters.addParameter("result", "true");
+      log.info("retParameters: {}", retParameters);
+      doReturn(retParameters).when(mockInputAndOutputOperation).execute();
+      mocked
+          .when(
+              () ->
+                  ParametersUtil.getNamedParameterValueAsString(
+                      any(FhirContext.class), any(Parameters.class), eq("result")))
+          .thenReturn(Optional.of("true"));
+
+      // when
+      IValidationSupport.CodeValidationResult result =
+          spySupport.validateCode(context, options, codeSystem, code, display, valueSetUrl);
+
+      // then
+      assertThat(result, is(notNullValue()));
+      assertThat(result.isOk(), is(true));
+    }
+  }
+
+  @Test
+  void testValidateCodeInValueSetDelegatesToSuperWithNullForDisabled() {
+    // Given
+    ValidationSupportContext context = mock(ValidationSupportContext.class);
+    ConceptValidationOptions options = mock(ConceptValidationOptions.class);
+    String codeSystem = "system";
+    String code = "code";
+    String display = "display";
+
+    IBaseResource valueSet = mock(ValueSet.class);
+
+    CustomRemoteTerminologyServiceValidationSupport spySupport = spy(validationSupport);
+
+    IValidationSupport.CodeValidationResult theOutput =
+        mock(IValidationSupport.CodeValidationResult.class);
+
+    try (MockedStatic<DefaultProfileValidationSupport> mockedProfileValidationSupport =
+        mockStatic(DefaultProfileValidationSupport.class)) {
+      mockedProfileValidationSupport
+          .when(
+              () ->
+                  DefaultProfileValidationSupport.getConformanceResourceUrl(
+                      any(FhirContext.class), isNull()))
+          .thenReturn("http://valueset");
+
+      when(spySupport.superValidateCodeInValueSet(
+              any(ValidationSupportContext.class),
+              any(ConceptValidationOptions.class),
+              eq(codeSystem),
+              eq(code),
+              isNull(),
+              eq(valueSet)))
+          .thenReturn(theOutput);
+
+      when(validationConfig.isValidateDisplay()).thenReturn(false);
+
+      // When
+      IValidationSupport.CodeValidationResult codeValidationResult =
+          spySupport.validateCodeInValueSet(context, options, codeSystem, code, display, valueSet);
+
+      // Then
+      assertThat(codeValidationResult, is(theOutput));
+      verify(spySupport, times(1))
+          .superValidateCodeInValueSet(
+              any(ValidationSupportContext.class),
+              any(ConceptValidationOptions.class),
+              eq(codeSystem),
+              eq(code),
+              displayCaptor.capture(),
+              eq(valueSet));
+      assertThat(displayCaptor.getValue(), is(nullValue()));
+    }
+  }
+
+  @Test
+  void testValidateCodeInValueSetDelegatesToSuperWithDisplayForEnabled() {
+    // Given
+    ValidationSupportContext context = mock(ValidationSupportContext.class);
+    ConceptValidationOptions options = mock(ConceptValidationOptions.class);
+    String codeSystem = "system";
+    String code = "code";
+    String display = "display";
+
+    IBaseResource valueSet = mock(ValueSet.class);
+
+    CustomRemoteTerminologyServiceValidationSupport spySupport = spy(validationSupport);
+
+    IValidationSupport.CodeValidationResult theOutput =
+        mock(IValidationSupport.CodeValidationResult.class);
+
+    try (MockedStatic<DefaultProfileValidationSupport> mockedProfileValidationSupport =
+        mockStatic(DefaultProfileValidationSupport.class)) {
+      mockedProfileValidationSupport
+          .when(
+              () ->
+                  DefaultProfileValidationSupport.getConformanceResourceUrl(
+                      any(FhirContext.class), isNull()))
+          .thenReturn("http://valueset");
+
+      when(spySupport.superValidateCodeInValueSet(
+              any(ValidationSupportContext.class),
+              any(ConceptValidationOptions.class),
+              eq(codeSystem),
+              eq(code),
+              eq(display),
+              eq(valueSet)))
+          .thenReturn(theOutput);
+
+      when(validationConfig.isValidateDisplay()).thenReturn(true);
+
+      // When
+      IValidationSupport.CodeValidationResult codeValidationResult =
+          spySupport.validateCodeInValueSet(context, options, codeSystem, code, display, valueSet);
+
+      // Then
+      assertThat(codeValidationResult, is(theOutput));
+      verify(spySupport, times(1))
+          .superValidateCodeInValueSet(
+              any(ValidationSupportContext.class),
+              any(ConceptValidationOptions.class),
+              eq(codeSystem),
+              eq(code),
+              displayCaptor.capture(),
+              eq(valueSet));
+      assertThat(displayCaptor.getValue(), is(equalTo(display)));
+    }
+  }
+
+  @Test
+  void testValidateCodeInValueSet() {
+    // given
+    ValidationSupportContext context = mock(ValidationSupportContext.class);
+    ConceptValidationOptions options = mock(ConceptValidationOptions.class);
+    String codeSystem = "system";
+    String code = "code";
+    String display = "display";
+    IBaseResource valueSet = mock(IBaseResource.class);
+
+    CustomRemoteTerminologyServiceValidationSupport spySupport = spy(validationSupport);
+
+    when(validationConfig.isValidateDisplay()).thenReturn(false);
+
+    doReturn(fhirContext).when(spySupport).getFhirContext();
+    Parameters parameters = mock(Parameters.class);
+
+    try (MockedStatic<ParametersUtil> mocked = mockStatic(ParametersUtil.class)) {
+      try (MockedStatic<DefaultProfileValidationSupport> mockedProfileValidationSupport =
+          mockStatic(DefaultProfileValidationSupport.class)) {
+        mockedProfileValidationSupport
+            .when(
+                () ->
+                    DefaultProfileValidationSupport.getConformanceResourceUrl(
+                        any(FhirContext.class), any(IBaseResource.class)))
+            .thenReturn("http://valueset");
+        mocked.when(() -> ParametersUtil.newInstance(fhirContext)).thenReturn(parameters);
+        GenericClient mockClient = mock(GenericClient.class);
+        doReturn(mockClient).when(fhirContext).newRestfulGenericClient(anyString());
+        IOperation mockOperation = mock(IOperation.class);
+        doReturn(mockOperation).when(mockClient).operation();
+        IOperationUnnamed mockUnnamedOperation = mock(IOperationUnnamed.class);
+        doReturn(mockUnnamedOperation).when(mockOperation).onType(anyString());
+        IOperationUntyped mockUntypedOperation = mock(IOperationUntyped.class);
+        doReturn(mockUntypedOperation).when(mockUnnamedOperation).named(anyString());
+        IOperationUntypedWithInputAndPartialOutput mockInputAndOutputOperation =
+            mock(IOperationUntypedWithInputAndPartialOutput.class);
+        doReturn(mockInputAndOutputOperation)
+            .when(mockUntypedOperation)
+            .withParameters(any(IBaseParameters.class));
+
+        Parameters retParameters = new Parameters();
+        retParameters.addParameter("result", "true");
+        log.info("retParameters: {}", retParameters);
+        doReturn(retParameters).when(mockInputAndOutputOperation).execute();
+        mocked
+            .when(
+                () ->
+                    ParametersUtil.getNamedParameterValueAsString(
+                        any(FhirContext.class), any(Parameters.class), eq("result")))
+            .thenReturn(Optional.of("true"));
+
+        // when
+        IValidationSupport.CodeValidationResult result =
+            spySupport.validateCodeInValueSet(
+                context, options, codeSystem, code, display, valueSet);
+
+        // then
+        assertThat(result, is(notNullValue()));
+        assertThat(result.isOk(), is(true));
+      }
     }
   }
 }

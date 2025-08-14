@@ -3,6 +3,10 @@ server:
   servlet:
     context-path: /api
 
+validation:
+  terminology:
+    validateDisplay: false
+
 madie:
   cql-elm:
     service:
