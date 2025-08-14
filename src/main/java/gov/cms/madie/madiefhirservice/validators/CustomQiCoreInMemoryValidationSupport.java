@@ -4,6 +4,7 @@ import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.context.support.ConceptValidationOptions;
 import ca.uhn.fhir.context.support.IValidationSupport;
 import ca.uhn.fhir.context.support.ValidationSupportContext;
+import gov.cms.madie.madiefhirservice.config.ValidationConfig;
 import jakarta.annotation.Nonnull;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
@@ -19,8 +20,12 @@ import java.util.Collections;
 public class CustomQiCoreInMemoryValidationSupport
     extends InMemoryTerminologyServerValidationSupport {
 
-  public CustomQiCoreInMemoryValidationSupport(FhirContext fhirContext) {
+  private ValidationConfig validationConfig;
+
+  public CustomQiCoreInMemoryValidationSupport(
+      FhirContext fhirContext, ValidationConfig validationConfig) {
     super(fhirContext);
+    this.validationConfig = validationConfig;
   }
 
   @Override
@@ -32,6 +37,7 @@ public class CustomQiCoreInMemoryValidationSupport
       String theDisplay,
       @Nonnull IBaseResource theValueSet) {
     ValueSet valueSet = (ValueSet) theValueSet;
+    theOptions.setValidateDisplay(validationConfig.isValidateDisplay());
     if (valueSet != null
         && valueSet.getExpansion() != null
         && CollectionUtils.isNotEmpty(valueSet.getExpansion().getContains())) {
@@ -66,6 +72,7 @@ public class CustomQiCoreInMemoryValidationSupport
                 vsUrl,
                 codeSystemUrlToValidate,
                 codeSystemVersionToValidate,
+                theOptions,
                 contains);
           } else {
             // code system mismatch - kick validation to next in chain
@@ -92,10 +99,12 @@ public class CustomQiCoreInMemoryValidationSupport
       String vsUrl,
       String codeSystemUrlToValidate,
       String codeSystemVersionToValidate,
+      ConceptValidationOptions theOptions,
       ValueSet.ValueSetExpansionContainsComponent contains) {
     IssueSeverity severity = null;
     // check if display matches
-    if (StringUtils.isNotBlank(theDisplay)
+    if (theOptions.isValidateDisplay()
+        && StringUtils.isNotBlank(theDisplay)
         && !StringUtils.equals(theDisplay, contains.getDisplay())) {
       severity = IssueSeverity.ERROR;
     }

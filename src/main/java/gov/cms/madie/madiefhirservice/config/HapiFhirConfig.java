@@ -40,6 +40,8 @@ public class HapiFhirConfig {
   @Value("${vsac.terminology-server-url}")
   private String terminologyServerBase;
 
+  @Autowired private ValidationConfig validationConfig;
+
   @Bean
   @Qualifier("qicoreFhirContext")
   public FhirContext qicoreFhirContext() {
@@ -109,7 +111,7 @@ public class HapiFhirConfig {
             prePopulatedValidationSupport,
             npmPackageSupport,
             new DefaultProfileValidationSupport(qicore6FhirContext),
-            new CustomQiCoreInMemoryValidationSupport(qicore6FhirContext),
+            new CustomQiCoreInMemoryValidationSupport(qicore6FhirContext, validationConfig),
             new CommonCodeSystemsTerminologyService(qicore6FhirContext),
             remoteTerminologyServiceValidationSupport,
             unknownCodeSystemWarningValidationSupport));
@@ -118,7 +120,10 @@ public class HapiFhirConfig {
   public RemoteTerminologyServiceValidationSupport getRemoteTerminologyServiceValidationSupport(
       FhirContext qicore6FhirContext) {
     return new CustomRemoteTerminologyServiceValidationSupport(
-        qicore6FhirContext, terminologyServerBase, new BasicAuthInterceptor("apikey", vsacApiKey));
+        qicore6FhirContext,
+        terminologyServerBase,
+        new BasicAuthInterceptor("apikey", vsacApiKey),
+        validationConfig);
   }
 
   @Bean
