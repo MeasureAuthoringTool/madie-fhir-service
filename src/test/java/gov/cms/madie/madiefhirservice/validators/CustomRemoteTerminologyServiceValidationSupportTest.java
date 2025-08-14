@@ -533,8 +533,6 @@ class CustomRemoteTerminologyServiceValidationSupportTest {
     String code = "code";
     String display = "display";
     IBaseResource valueSet = mock(IBaseResource.class);
-    IValidationSupport.CodeValidationResult expectedResult =
-        mock(IValidationSupport.CodeValidationResult.class);
 
     CustomRemoteTerminologyServiceValidationSupport spySupport = spy(validationSupport);
 
