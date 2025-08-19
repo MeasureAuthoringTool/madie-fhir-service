@@ -16,6 +16,7 @@ import org.hl7.fhir.r4.model.ValueSet;
 
 import java.util.Collections;
 
+
 @Slf4j
 public class CustomQiCoreInMemoryValidationSupport
     extends InMemoryTerminologyServerValidationSupport {
@@ -89,6 +90,17 @@ public class CustomQiCoreInMemoryValidationSupport
           notInVsCodeValidationResult.getIssues().get(0).getDiagnostics());
       return notInVsCodeValidationResult;
     }
+    return null;
+  }
+
+  @Override
+  public CodeValidationResult validateCode(
+      @Nonnull ValidationSupportContext theValidationSupportContext,
+      @Nonnull ConceptValidationOptions theOptions,
+      String theCodeSystem,
+      String theCode,
+      String theDisplay,
+      String theValueSetUrl) {
     return null;
   }
 
