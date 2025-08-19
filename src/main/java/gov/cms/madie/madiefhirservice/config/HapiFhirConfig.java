@@ -27,6 +27,7 @@ import org.springframework.context.annotation.Configuration;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -187,20 +188,29 @@ public class HapiFhirConfig {
 
       ZipEntry entry;
       while ((entry = zipInputStream.getNextEntry()) != null) {
-        if (!entry.isDirectory()) {
+        if (!entry.isDirectory()
+                && !entry.getName().startsWith("__MACOSX")
+                && !entry.getName().endsWith(".DS_Store")) {
+
           StringBuilder fileContent = new StringBuilder();
           byte[] buffer = new byte[1024];
           int read;
           while ((read = zipInputStream.read(buffer)) != -1) {
-            fileContent.append(new String(buffer, 0, read));
+            fileContent.append(new String(buffer, 0, read, StandardCharsets.UTF_8));
           }
-          IBaseResource baseResource = xmlParser.parseResource(fileContent.toString());
+
+          String xmlContent = fileContent.toString();
+          if (xmlContent.startsWith("\uFEFF")) {
+            xmlContent = xmlContent.substring(1);
+          }
+          IBaseResource baseResource = xmlParser.parseResource(xmlContent);
           if (baseResource instanceof ValueSet) {
             prePopulatedValidationSupport.addValueSet(baseResource);
           }
         }
         zipInputStream.closeEntry();
       }
+
     }
 
     return prePopulatedValidationSupport;
