@@ -16,7 +16,6 @@ import org.hl7.fhir.r4.model.ValueSet;
 
 import java.util.Collections;
 
-
 @Slf4j
 public class CustomQiCoreInMemoryValidationSupport
     extends InMemoryTerminologyServerValidationSupport {

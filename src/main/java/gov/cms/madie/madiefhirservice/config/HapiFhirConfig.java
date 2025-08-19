@@ -113,8 +113,8 @@ public class HapiFhirConfig {
             npmPackageSupport,
             new DefaultProfileValidationSupport(qicore6FhirContext),
             new CustomQiCoreInMemoryValidationSupport(qicore6FhirContext, validationConfig),
-            remoteTerminologyServiceValidationSupport,
             new CommonCodeSystemsTerminologyService(qicore6FhirContext),
+            remoteTerminologyServiceValidationSupport,
             unknownCodeSystemWarningValidationSupport));
   }
 
