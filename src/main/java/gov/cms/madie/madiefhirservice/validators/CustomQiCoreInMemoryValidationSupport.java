@@ -92,6 +92,17 @@ public class CustomQiCoreInMemoryValidationSupport
     return null;
   }
 
+  @Override
+  public CodeValidationResult validateCode(
+      @Nonnull ValidationSupportContext theValidationSupportContext,
+      @Nonnull ConceptValidationOptions theOptions,
+      String theCodeSystem,
+      String theCode,
+      String theDisplay,
+      String theValueSetUrl) {
+    return null;
+  }
+
   private CodeValidationResult validateMatchedCodeAndCodeSystem(
       String theCodeSystemUrlAndVersion,
       String theCode,

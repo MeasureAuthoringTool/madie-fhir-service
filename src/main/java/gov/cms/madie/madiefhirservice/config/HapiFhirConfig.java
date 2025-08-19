@@ -189,8 +189,8 @@ public class HapiFhirConfig {
       ZipEntry entry;
       while ((entry = zipInputStream.getNextEntry()) != null) {
         if (!entry.isDirectory()
-                && !entry.getName().startsWith("__MACOSX")
-                && !entry.getName().endsWith(".DS_Store")) {
+            && !entry.getName().startsWith("__MACOSX")
+            && !entry.getName().endsWith(".DS_Store")) {
 
           StringBuilder fileContent = new StringBuilder();
           byte[] buffer = new byte[1024];
@@ -210,7 +210,6 @@ public class HapiFhirConfig {
         }
         zipInputStream.closeEntry();
       }
-
     }
 
     return prePopulatedValidationSupport;
