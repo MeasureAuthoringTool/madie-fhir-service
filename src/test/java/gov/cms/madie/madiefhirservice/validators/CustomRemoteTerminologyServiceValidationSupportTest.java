@@ -587,4 +587,42 @@ class CustomRemoteTerminologyServiceValidationSupportTest {
       }
     }
   }
+
+  @Test
+  void testFetchValueSetReturnsNullForBlankUrl() {
+    String blankUrl = "";
+    IBaseResource result = validationSupport.fetchValueSet(blankUrl);
+    assertThat(result, is(nullValue()));
+  }
+
+  @Test
+  void testFetchValueSetReturnsNullForNonCtsUrl() {
+    String nonCtsUrl = "http://example.com/fhir/ValueSet/123";
+    IBaseResource result = validationSupport.fetchValueSet(nonCtsUrl);
+    assertThat(result, is(nullValue()));
+  }
+
+  @Test
+  void testFetchValueSetReturnsFirstResourceForValidCtsUrl() {
+    String validCtsUrl = "http://cts.nlm.nih.gov/fhir/ValueSet/123";
+
+    when(fhirContext.getResourceDefinition("Bundle")).thenReturn(bundleDefinition);
+    when(bundleDefinition.getImplementingClass(IBaseBundle.class)).thenReturn(IBaseBundle.class);
+
+    when(genericClient.search()).thenReturn(untypedQuery);
+    when(untypedQuery.forResource("ValueSet")).thenReturn(query);
+    when(query.where((ICriterion<?>) any())).thenReturn(query);
+    when(query.returnBundle(IBaseBundle.class)).thenReturn(query);
+    when(query.execute()).thenReturn(bundle);
+
+    List<IBaseResource> mockResources = List.of(codeSystemResource);
+    mockStatic(BundleUtil.class);
+    when(BundleUtil.toListOfResources(fhirContext, bundle)).thenReturn(mockResources);
+
+    IBaseResource result = validationSupport.fetchValueSet(validCtsUrl);
+
+    assertThat(result, is(codeSystemResource));
+  }
+
+
 }

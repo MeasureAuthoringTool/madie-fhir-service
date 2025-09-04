@@ -17,6 +17,7 @@ import org.hl7.fhir.instance.model.api.IBaseBundle;
 import org.hl7.fhir.instance.model.api.IBaseResource;
 import org.hl7.fhir.r4.model.CodeSystem;
 import jakarta.annotation.Nonnull;
+import org.hl7.fhir.r4.model.ValueSet;
 
 import java.util.List;
 
@@ -138,6 +139,21 @@ public class CustomRemoteTerminologyServiceValidationSupport
   public IBaseResource fetchValueSet(String theValueSetUrl) {
     // disable code value set fetch for remote terminology service because it appears that VSAC
     // doesn't support value set search with summary mode
-    return null;
+    // Added cases it calls for cts valuesets
+    if (StringUtils.isBlank(theValueSetUrl)
+        || !StringUtils.contains(theValueSetUrl, "cts.nlm.nih.gov")) {
+      return null;
+    } else {
+      Class<? extends IBaseBundle> bundleType =
+          this.myCtx.getResourceDefinition("Bundle").getImplementingClass(IBaseBundle.class);
+      IQuery<IBaseBundle> valueSetQuery =
+          client
+              .search()
+              .forResource("ValueSet")
+              .where(ValueSet.URL.matches().value(theValueSetUrl));
+      IBaseBundle results = valueSetQuery.returnBundle(bundleType).execute();
+      List<IBaseResource> resultsList = BundleUtil.toListOfResources(this.myCtx, results);
+      return !resultsList.isEmpty() ? resultsList.get(0) : null;
+    }
   }
 }
