@@ -169,17 +169,17 @@ public class CustomRemoteTerminologyServiceValidationSupport
     // RemoteTerminologyServiceValidationSupport.invokeRemoteValidateCode
     // returns "invalid-code" when the code is not found in the value set or code system(that's
     // hardcoded).
-    // However, binding strength check expects it to be "not-found".
+    // However, binding strength check expects it to be "not-found"(check
+    // HAPI's InstanceValidator.getTxIssueWithCalculatedSeverity).
     // This ugly fixup is to change the issue code from "invalid-code" to "not-found"
     // TODO: revisit this when HAPI fixes it
-    if (validationResult.getSeverity() == IssueSeverity.ERROR) {
-      if (CollectionUtils.isNotEmpty(validationIssues)) {
-        CodeValidationIssueDetails issueDetails = validationIssues.get(0).getDetails();
-        CodeValidationIssueCoding issueCoding = issueDetails.getCodings().get(0);
-        if (StringUtils.equals(issueCoding.getCode(), "invalid-code")) {
-          issueDetails.addCoding(CodeValidationIssueCoding.TX_ISSUE_SYSTEM, "not-found");
-          issueDetails.getCodings().remove(issueCoding);
-        }
+    if (validationResult.getSeverity() == IssueSeverity.ERROR
+        && CollectionUtils.isNotEmpty(validationIssues)) {
+      CodeValidationIssueDetails issueDetails = validationIssues.get(0).getDetails();
+      CodeValidationIssueCoding issueCoding = issueDetails.getCodings().get(0);
+      if (StringUtils.equals(issueCoding.getCode(), "invalid-code")) {
+        issueDetails.addCoding(CodeValidationIssueCoding.TX_ISSUE_SYSTEM, "not-found");
+        issueDetails.getCodings().remove(issueCoding);
       }
     }
     return validationResult;
