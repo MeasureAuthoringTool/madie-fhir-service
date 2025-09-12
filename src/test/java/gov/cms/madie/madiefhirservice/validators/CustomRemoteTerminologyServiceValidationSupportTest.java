@@ -291,13 +291,8 @@ class CustomRemoteTerminologyServiceValidationSupportTest {
     IValidationSupport.CodeValidationResult theOutput =
         mock(IValidationSupport.CodeValidationResult.class);
 
-    when(spySupport.superValidateCode(
-            any(ValidationSupportContext.class),
-            any(ConceptValidationOptions.class),
-            eq(codeSystem),
-            eq(code),
-            isNull(),
-            eq(valueSetUrl)))
+    when(spySupport.invokeSuperRemoteValidateCode(
+            eq(codeSystem), eq(code), isNull(), eq(valueSetUrl), isNull()))
         .thenReturn(theOutput);
 
     when(validationConfig.isValidateDisplay()).thenReturn(false);
@@ -309,13 +304,8 @@ class CustomRemoteTerminologyServiceValidationSupportTest {
     // Then
     assertThat(codeValidationResult, is(theOutput));
     verify(spySupport, times(1))
-        .superValidateCode(
-            any(ValidationSupportContext.class),
-            any(ConceptValidationOptions.class),
-            eq(codeSystem),
-            eq(code),
-            displayCaptor.capture(),
-            eq(valueSetUrl));
+        .invokeSuperRemoteValidateCode(
+            eq(codeSystem), eq(code), displayCaptor.capture(), eq(valueSetUrl), isNull());
     assertThat(displayCaptor.getValue(), is(nullValue()));
   }
 
@@ -334,13 +324,8 @@ class CustomRemoteTerminologyServiceValidationSupportTest {
     IValidationSupport.CodeValidationResult theOutput =
         mock(IValidationSupport.CodeValidationResult.class);
 
-    when(spySupport.superValidateCode(
-            any(ValidationSupportContext.class),
-            any(ConceptValidationOptions.class),
-            eq(codeSystem),
-            eq(code),
-            eq(display),
-            eq(valueSetUrl)))
+    when(spySupport.invokeSuperRemoteValidateCode(
+            eq(codeSystem), eq(code), eq(display), eq(valueSetUrl), isNull()))
         .thenReturn(theOutput);
 
     when(validationConfig.isValidateDisplay()).thenReturn(true);
@@ -352,13 +337,8 @@ class CustomRemoteTerminologyServiceValidationSupportTest {
     // Then
     assertThat(codeValidationResult, is(theOutput));
     verify(spySupport, times(1))
-        .superValidateCode(
-            any(ValidationSupportContext.class),
-            any(ConceptValidationOptions.class),
-            eq(codeSystem),
-            eq(code),
-            displayCaptor.capture(),
-            eq(valueSetUrl));
+        .invokeSuperRemoteValidateCode(
+            eq(codeSystem), eq(code), displayCaptor.capture(), eq(valueSetUrl), isNull());
     assertThat(displayCaptor.getValue(), is(equalTo(display)));
   }
 
@@ -441,13 +421,8 @@ class CustomRemoteTerminologyServiceValidationSupportTest {
                       any(FhirContext.class), isNull()))
           .thenReturn("http://valueset");
 
-      when(spySupport.superValidateCodeInValueSet(
-              any(ValidationSupportContext.class),
-              any(ConceptValidationOptions.class),
-              eq(codeSystem),
-              eq(code),
-              isNull(),
-              eq(valueSet)))
+      when(spySupport.invokeSuperRemoteValidateCode(
+              eq(codeSystem), eq(code), isNull(), isNull(), eq(valueSet)))
           .thenReturn(theOutput);
 
       when(validationConfig.isValidateDisplay()).thenReturn(false);
@@ -459,13 +434,8 @@ class CustomRemoteTerminologyServiceValidationSupportTest {
       // Then
       assertThat(codeValidationResult, is(theOutput));
       verify(spySupport, times(1))
-          .superValidateCodeInValueSet(
-              any(ValidationSupportContext.class),
-              any(ConceptValidationOptions.class),
-              eq(codeSystem),
-              eq(code),
-              displayCaptor.capture(),
-              eq(valueSet));
+          .invokeSuperRemoteValidateCode(
+              eq(codeSystem), eq(code), displayCaptor.capture(), isNull(), eq(valueSet));
       assertThat(displayCaptor.getValue(), is(nullValue()));
     }
   }
@@ -484,7 +454,15 @@ class CustomRemoteTerminologyServiceValidationSupportTest {
     CustomRemoteTerminologyServiceValidationSupport spySupport = spy(validationSupport);
 
     IValidationSupport.CodeValidationResult theOutput =
-        mock(IValidationSupport.CodeValidationResult.class);
+        new IValidationSupport.CodeValidationResult();
+    theOutput.setSeverity(IValidationSupport.IssueSeverity.ERROR);
+    IValidationSupport.CodeValidationIssue codeValidationIssue =
+        new IValidationSupport.CodeValidationIssue(
+            "Code not found in ValueSet",
+            IValidationSupport.IssueSeverity.ERROR,
+            IValidationSupport.CodeValidationIssueCode.INVALID,
+            IValidationSupport.CodeValidationIssueCoding.INVALID_CODE);
+    theOutput.getIssues().add(codeValidationIssue);
 
     try (MockedStatic<DefaultProfileValidationSupport> mockedProfileValidationSupport =
         mockStatic(DefaultProfileValidationSupport.class)) {
@@ -495,13 +473,8 @@ class CustomRemoteTerminologyServiceValidationSupportTest {
                       any(FhirContext.class), isNull()))
           .thenReturn("http://valueset");
 
-      when(spySupport.superValidateCodeInValueSet(
-              any(ValidationSupportContext.class),
-              any(ConceptValidationOptions.class),
-              eq(codeSystem),
-              eq(code),
-              eq(display),
-              eq(valueSet)))
+      when(spySupport.invokeSuperRemoteValidateCode(
+              eq(codeSystem), eq(code), eq(display), isNull(), eq(valueSet)))
           .thenReturn(theOutput);
 
       when(validationConfig.isValidateDisplay()).thenReturn(true);
@@ -512,14 +485,11 @@ class CustomRemoteTerminologyServiceValidationSupportTest {
 
       // Then
       assertThat(codeValidationResult, is(theOutput));
+      assertThat(
+          theOutput.getIssues().get(0).getDetails().getCodings().get(0).getCode(), is("not-found"));
       verify(spySupport, times(1))
-          .superValidateCodeInValueSet(
-              any(ValidationSupportContext.class),
-              any(ConceptValidationOptions.class),
-              eq(codeSystem),
-              eq(code),
-              displayCaptor.capture(),
-              eq(valueSet));
+          .invokeSuperRemoteValidateCode(
+              eq(codeSystem), eq(code), displayCaptor.capture(), isNull(), eq(valueSet));
       assertThat(displayCaptor.getValue(), is(equalTo(display)));
     }
   }
@@ -623,6 +593,4 @@ class CustomRemoteTerminologyServiceValidationSupportTest {
 
     assertThat(result, is(codeSystemResource));
   }
-
-
 }
