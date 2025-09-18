@@ -33,7 +33,7 @@ public class AppConfigService {
       ServiceConfig serviceConfig =
           appConfigRestTemplate.getForObject(
               appConfigServiceConfig.getServiceConfigJsonUrl(), ServiceConfig.class);
-      log.info("Initializing measure-service with serviceConfig: {}", serviceConfig);
+      log.info("Initializing madie-fhir-service with serviceConfig: {}", serviceConfig);
       featureFlags = serviceConfig.getFeatures();
     } catch (Exception ex) {
       log.error("An error occurred while initializing feature flags from serviceConfig.json!", ex);

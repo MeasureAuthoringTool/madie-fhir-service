@@ -12,6 +12,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.empty;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -25,6 +26,7 @@ import gov.cms.madie.models.measure.Endorsement;
 import gov.cms.madie.models.measure.Group;
 import gov.cms.madie.models.measure.Measure;
 import gov.cms.madie.models.measure.MeasureMetaData;
+import gov.cms.madie.models.measure.MeasureObservation;
 import gov.cms.madie.models.measure.MeasureReportType;
 import gov.cms.madie.models.measure.MeasureScoring;
 import gov.cms.madie.models.measure.MeasureSet;
@@ -728,6 +730,61 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
   }
 
   @Test
+  void testCreateFhirMeasureForMadieMeasureRichTextSanitization() {
+    // Arrange
+    MeasureMetaData metaData = madieMeasure.getMeasureMetaData();
+    metaData.setSteward(Organization.builder().name("Steward <b>bold</b>").build());
+    metaData.setCopyright(
+        "<p>Copyright <u>2025</u> ICF. </p><table style=\"width: 209px\" class=\"test\"><colgroup><col style=\"width: 45px\"><col style=\"width: 67px\"></colgroup><tbody><tr><th colspan=\"1\" rowspan=\"1\" colwidth=\"45\"><p>V</p></th><th colspan=\"1\" rowspan=\"1\" colwidth=\"67\"><p>Y</p></th></tr><tr><td colspan=\"1\" rowspan=\"1\" colwidth=\"45\"><p>1</p></td><td colspan=\"1\" rowspan=\"1\" colwidth=\"67\"><p>2024</p></td></tr><tr><td colspan=\"1\" rowspan=\"1\" colwidth=\"45\"><p>2</p></td><td colspan=\"1\" rowspan=\"1\" colwidth=\"67\"><p><u>2025</u></p></td></tr></tbody></table>");
+    metaData.setDisclaimer("<em>disclaimer</em>");
+    metaData.setRationale("<ol><li>rat</li></ol>");
+    metaData.setPurpose("<strong>purpose</strong>");
+    metaData.setGuidance("<p>guidance</p>");
+    metaData.setDescription("<b>desc</b><script>alert(1)</script>");
+    metaData.setClinicalRecommendation("<ul><li>rec</li></ul>");
+
+    // Act
+    org.hl7.fhir.r4.model.Measure measure =
+        measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure);
+
+    // Assert: rich text fields should be sanitized
+    assertEquals("test 4495", measure.getTitle());
+    assertEquals("Steward <b>bold</b>", measure.getPublisher());
+    assertEquals("<b>desc</b>", measure.getDescription()); // script tag removed, b tag kept
+    assertEquals(
+        "<p>Copyright <u>2025</u> ICF.</p>\n"
+            + "<table style=\"width: 209px\" class=\"test\">\n"
+            + " <colgroup>\n"
+            + "  <col style=\"width: 45px\" />\n"
+            + "  <col style=\"width: 67px\" />\n"
+            + " </colgroup>\n"
+            + " <tbody>\n"
+            + "  <tr>\n"
+            + "   <th colspan=\"1\" rowspan=\"1\" colwidth=\"45\"><p>V</p></th>\n"
+            + "   <th colspan=\"1\" rowspan=\"1\" colwidth=\"67\"><p>Y</p></th>\n"
+            + "  </tr>\n"
+            + "  <tr>\n"
+            + "   <td colspan=\"1\" rowspan=\"1\" colwidth=\"45\"><p>1</p></td>\n"
+            + "   <td colspan=\"1\" rowspan=\"1\" colwidth=\"67\"><p>2024</p></td>\n"
+            + "  </tr>\n"
+            + "  <tr>\n"
+            + "   <td colspan=\"1\" rowspan=\"1\" colwidth=\"45\"><p>2</p></td>\n"
+            + "   <td colspan=\"1\" rowspan=\"1\" colwidth=\"67\"><p><u>2025</u></p></td>\n"
+            + "  </tr>\n"
+            + " </tbody>\n"
+            + "</table>",
+        measure.getCopyright());
+    assertEquals("<em>disclaimer</em>", measure.getDisclaimer());
+    assertEquals("<p>guidance</p>", measure.getUsage());
+    assertEquals("<ol>\n" + " <li>rat</li>\n" + "</ol>", measure.getRationale());
+    assertEquals("<strong>purpose</strong>", measure.getPurpose());
+    assertEquals(
+        "<ul>\n" + " <li>rec</li>\n" + "</ul>", measure.getClinicalRecommendationStatement());
+    var groupComponent = measure.getGroup().get(0);
+    assertEquals("test 4495 group 1", groupComponent.getDescription());
+  }
+
+  @Test
   public void testBuildFhirPopulationGroupsWithAssocations() {
     Population ip1 = new Population();
     ip1.setName(PopulationType.INITIAL_POPULATION);
@@ -840,7 +897,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     stratifications.add(strat1);
     Stratification strat2 = new Stratification();
     strat2.setDescription("strat-description");
-    strat1.setAssociations(
+    strat2.setAssociations(
         List.of(PopulationType.INITIAL_POPULATION, PopulationType.MEASURE_POPULATION));
     stratifications.add(strat2);
     group.setStratifications(stratifications);
@@ -911,7 +968,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     stratifications.add(strat1);
     Stratification strat2 = new Stratification();
     strat2.setDescription("strat-description2");
-    strat1.setAssociations(
+    strat2.setAssociations(
         List.of(PopulationType.MEASURE_POPULATION, PopulationType.INITIAL_POPULATION));
     stratifications.add(strat2);
     group.setStratifications(stratifications);
@@ -946,7 +1003,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
         is(equalTo(UriConstants.CodeSystem.POPULATION_SYSTEM_URI)));
     assertThat(
         codeableConcept.getCodingFirstRep().getCode(),
-        is(equalTo(PopulationType.MEASURE_POPULATION.toCode())));
+        is(equalTo(PopulationType.INITIAL_POPULATION.toCode())));
   }
 
   @Test
@@ -993,10 +1050,8 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     MeasureGroupComponent measureGroupComponent = groupComponent.get(0);
     assertThat(measureGroupComponent, is(notNullValue()));
     List<MeasureGroupStratifierComponent> stratifier = measureGroupComponent.getStratifier();
-    assertThat(stratifier, is(notNullValue()));
-    assertThat(stratifier.size(), is(equalTo(2)));
-    MeasureGroupStratifierComponent measureGroupStratifierComponent = stratifier.get(0);
-    assertNull(measureGroupStratifierComponent);
+    assertThat(stratifier, is(empty()));
+    assertThat(stratifier.size(), is(equalTo(0)));
   }
 
   @Test
@@ -1318,14 +1373,87 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
             .referenceType("UNKNOWN")
             .referenceText("text for unknown")
             .build();
+    gov.cms.madie.models.measure.Reference reference3 =
+        gov.cms.madie.models.measure.Reference.builder()
+            .referenceType("JUSTIFICATION")
+            .referenceText("text for justification")
+            .build();
 
-    madieMeasure.getMeasureMetaData().setReferences(List.of(reference1, reference2));
+    madieMeasure.getMeasureMetaData().setReferences(List.of(reference1, reference2, reference3));
     org.hl7.fhir.r4.model.Measure measure =
         measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure);
-    assertEquals(2, measure.getRelatedArtifact().size());
+    assertEquals(3, measure.getRelatedArtifact().size());
     assertEquals(
-        "CITATION - Ference, B.A. (2015, March 10). Statins and the risk of developing new-onset Type 2 diabetes: Expert analysis. Retrieved from https://www.acc.org/latest-in-cardiology/articles/2015/03/10/08/10/statins-and-the-risk-of-developing-new-onset-type-2-diabetes\n",
+        "Ference, B.A. (2015, March 10). Statins and the risk of developing new-onset Type 2 diabetes: Expert analysis. Retrieved from https://www.acc.org/latest-in-cardiology/articles/2015/03/10/08/10/statins-and-the-risk-of-developing-new-onset-type-2-diabetes",
         measure.getRelatedArtifact().get(0).getCitation());
-    assertEquals("UNKNOWN - text for unknown\n", measure.getRelatedArtifact().get(1).getCitation());
+    assertEquals("text for unknown", measure.getRelatedArtifact().get(1).getCitation());
+    assertEquals(
+        "text for justification",
+        measure.getRelatedArtifact().get(2).getDisplayElement().toString());
+  }
+
+  @Test
+  public void buildMeasureGroupObservation() {
+    Group group = buildContinuousVariableGroup();
+    group.setScoring(MeasureScoring.CONTINUOUS_VARIABLE.toString());
+    MeasureObservation mo = MeasureObservation.builder().id("measureObservationId").build();
+    group.setMeasureObservations(List.of(mo));
+
+    List<MeasureGroupComponent> groupComponent =
+        measureTranslatorService.buildGroups(List.of(group));
+
+    assertNotNull(groupComponent);
+
+    assertThat(groupComponent.size(), is(equalTo(1)));
+    MeasureGroupComponent measureGroupComponent = groupComponent.get(0);
+    assertThat(measureGroupComponent, is(notNullValue()));
+    Extension group1Ex = measureGroupComponent.getExtension().get(0);
+    assertThat(group1Ex.getUrl(), is(equalTo(UriConstants.CqfMeasures.SCORING_URI)));
+    List<MeasureGroupPopulationComponent> measureGroupPopulationComponents =
+        measureGroupComponent.getPopulation();
+    assertTrue(measureGroupPopulationComponents.size() == 1);
+    assertThat(
+        measureGroupPopulationComponents
+            .get(0)
+            .getExtensionByUrl(UriConstants.CqfMeasures.AGGREGATE_METHOD_URI),
+        is(notNullValue()));
+  }
+
+  @Test
+  public void buildMeasureGroupObservationNoObservation() {
+    Group group = buildContinuousVariableGroup();
+    group.setMeasureObservations(Collections.emptyList());
+
+    List<MeasureGroupComponent> groupComponent =
+        measureTranslatorService.buildGroups(List.of(group));
+
+    assertNotNull(groupComponent);
+
+    assertThat(groupComponent.size(), is(equalTo(1)));
+    MeasureGroupComponent measureGroupComponent = groupComponent.get(0);
+    assertThat(measureGroupComponent, is(notNullValue()));
+    Extension group1Ex = measureGroupComponent.getExtension().get(0);
+    assertThat(group1Ex.getUrl(), is(equalTo(UriConstants.CqfMeasures.SCORING_URI)));
+    List<MeasureGroupPopulationComponent> measureGroupPopulationComponents =
+        measureGroupComponent.getPopulation();
+    assertTrue(measureGroupPopulationComponents.size() == 0);
+  }
+
+  private Group buildContinuousVariableGroup() {
+    Population ip1 = new Population();
+    ip1.setName(PopulationType.INITIAL_POPULATION);
+    ip1.setAssociationType(AssociationType.DENOMINATOR);
+    ip1.setId("initial-population-1");
+    Population ip2 = new Population();
+    ip2.setName(PopulationType.MEASURE_POPULATION);
+    ip2.setAssociationType(AssociationType.NUMERATOR);
+    ip2.setId("measure-population-2");
+    ip2.setDisplayId("Measure Observation 1");
+
+    Group group = new Group();
+    group.setScoring(MeasureScoring.CONTINUOUS_VARIABLE.toString());
+    group.setPopulations(List.of(ip1, ip2));
+
+    return group;
   }
 }

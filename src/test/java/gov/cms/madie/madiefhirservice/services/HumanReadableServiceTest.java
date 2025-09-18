@@ -1,7 +1,6 @@
 package gov.cms.madie.madiefhirservice.services;
 
 import ca.uhn.fhir.model.api.TemporalPrecisionEnum;
-import gov.cms.madie.madiefhirservice.constants.UriConstants.CqfMeasures;
 import gov.cms.madie.madiefhirservice.exceptions.HumanReadableGenerationException;
 import gov.cms.madie.madiefhirservice.exceptions.ResourceNotFoundException;
 import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
@@ -18,7 +17,6 @@ import gov.cms.madie.models.measure.Stratification;
 
 import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.r4.model.Attachment;
-import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.Library;
 import org.hl7.fhir.r4.model.MarkdownType;
@@ -26,9 +24,7 @@ import org.hl7.fhir.r4.model.Period;
 import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.RelatedArtifact;
 import org.hl7.fhir.r4.model.RelatedArtifact.RelatedArtifactType;
-import org.hl7.fhir.r4.model.Resource;
 import org.hl7.fhir.r5.context.SimpleWorkerContext;
-import org.hl7.fhir.r5.model.ParameterDefinition;
 import org.hl7.fhir.r5.utils.LiquidEngine;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -136,10 +132,6 @@ class HumanReadableServiceTest
     library.setId(madieMeasure.getCqlLibraryName());
   }
 
-  public Bundle.BundleEntryComponent getBundleEntryComponent(Resource resource) {
-    return new Bundle.BundleEntryComponent().setResource(resource);
-  }
-
   private Period getPeriodFromDates(Date startDate, Date endDate) {
     return new Period()
         .setStart(startDate, TemporalPrecisionEnum.DAY)
@@ -159,14 +151,6 @@ class HumanReadableServiceTest
     identifier.setAssigner(reference);
     measure.setIdentifier(List.of(identifier));
 
-    Bundle.BundleEntryComponent measureBundleEntryComponent = getBundleEntryComponent(measure);
-    Bundle.BundleEntryComponent libraryBundleEntryComponent = getBundleEntryComponent(library);
-    Bundle bundle =
-        new Bundle()
-            .setType(Bundle.BundleType.TRANSACTION)
-            .addEntry(measureBundleEntryComponent)
-            .addEntry(libraryBundleEntryComponent);
-
     String hrText = "<div>Human Readable for Measure: " + madieMeasure.getMeasureName() + "</div>";
 
     when(liquidEngine.parse(anyString(), anyString()))
@@ -179,40 +163,24 @@ class HumanReadableServiceTest
         .thenReturn(hrText);
 
     String generatedHumanReadable =
-        humanReadableService.generateMeasureHumanReadable(madieMeasure, bundle);
+        humanReadableService.generateMeasureHumanReadable(measure, madieMeasure.getId());
     assertNotNull(generatedHumanReadable);
     assertTrue(generatedHumanReadable.contains(hrText));
   }
 
   @Test
   public void generateMeasureHumanReadableUsingIncludes() throws IOException {
-    var measureBundleEntryComponent = getBundleEntryComponent(measure);
-    var libraryBundleEntryComponent = getBundleEntryComponent(library);
-    var bundle =
-        new Bundle()
-            .setType(Bundle.BundleType.TRANSACTION)
-            .addEntry(measureBundleEntryComponent)
-            .addEntry(libraryBundleEntryComponent);
-
     var le = new LiquidEngine(new SimpleWorkerContext.SimpleWorkerContextBuilder().build(), null);
-    // Set the include resolver
+    // Set include resolver
     le.setIncludeResolver(this);
     var hr = new HumanReadableService(le);
 
-    var generatedHumanReadable = hr.generateMeasureHumanReadable(madieMeasure, bundle);
+    var generatedHumanReadable = hr.generateMeasureHumanReadable(measure, madieMeasure.getId());
     assertNotNull(generatedHumanReadable);
   }
 
   @Test
   public void generateMeasureHumanReadableOrdered() {
-    Bundle.BundleEntryComponent measureBundleEntryComponent = getBundleEntryComponent(measure);
-    Bundle.BundleEntryComponent libraryBundleEntryComponent = getBundleEntryComponent(library);
-    Bundle bundle =
-        new Bundle()
-            .setType(Bundle.BundleType.TRANSACTION)
-            .addEntry(measureBundleEntryComponent)
-            .addEntry(libraryBundleEntryComponent);
-
     String hrText = "<div>Human Readable for Measure: " + madieMeasure.getMeasureName() + "</div>";
 
     when(liquidEngine.parse(anyString(), anyString()))
@@ -225,40 +193,20 @@ class HumanReadableServiceTest
         .thenReturn(hrText);
 
     String generatedHumanReadable =
-        humanReadableService.generateMeasureHumanReadable(madieMeasure, bundle);
+        humanReadableService.generateMeasureHumanReadable(measure, madieMeasure.getId());
     assertNotNull(generatedHumanReadable);
     assertTrue(generatedHumanReadable.contains(hrText));
   }
 
   @Test
-  public void generateHumanReadableThrowsResourceNotFoundExceptionForNoBundle() {
-    assertThrows(
-        ResourceNotFoundException.class,
-        () -> humanReadableService.generateMeasureHumanReadable(madieMeasure, null));
-  }
-
-  @Test
   void generateHumanReadableThrowsResourceNotFoundExceptionForNoMeasureResource() {
-    Bundle bundle =
-        new Bundle()
-            .setType(Bundle.BundleType.TRANSACTION)
-            .addEntry(getBundleEntryComponent(new Library()));
-
     assertThrows(
         ResourceNotFoundException.class,
-        () -> humanReadableService.generateMeasureHumanReadable(madieMeasure, bundle));
+        () -> humanReadableService.generateMeasureHumanReadable(null, madieMeasure.getId()));
   }
 
   @Test
   public void generateHumanReadableThrowsFHIRException() {
-    Bundle.BundleEntryComponent measureBundleEntryComponent = getBundleEntryComponent(measure);
-    Bundle.BundleEntryComponent libraryBundleEntryComponent = getBundleEntryComponent(library);
-    Bundle bundle =
-        new Bundle()
-            .setType(Bundle.BundleType.TRANSACTION)
-            .addEntry(measureBundleEntryComponent)
-            .addEntry(libraryBundleEntryComponent);
-
     when(liquidEngine.parse(anyString(), anyString()))
         .thenReturn(new LiquidEngine.LiquidDocument());
 
@@ -270,7 +218,7 @@ class HumanReadableServiceTest
 
     assertThrows(
         HumanReadableGenerationException.class,
-        () -> humanReadableService.generateMeasureHumanReadable(madieMeasure, bundle));
+        () -> humanReadableService.generateMeasureHumanReadable(measure, madieMeasure.getId()));
   }
 
   @Test
@@ -326,84 +274,5 @@ class HumanReadableServiceTest
   @Override
   public String fetchInclude(LiquidEngine engine, String name) {
     return gov.cms.madie.madiefhirservice.utils.ResourceUtils.getData("/templates/" + name);
-  }
-
-  @Test
-  public void testEscapeMeasure() {
-    org.hl7.fhir.r5.model.Measure r5Measure = new org.hl7.fhir.r5.model.Measure();
-
-    org.hl7.fhir.r5.model.Identifier identifiers = new org.hl7.fhir.r5.model.Identifier();
-    identifiers.setSystem("UriType[https://madie.cms.gov/measure/shortName]");
-    identifiers.setValue("eCqmTitle&");
-
-    r5Measure.addIdentifier(identifiers);
-    r5Measure.setTitle("measure name &");
-
-    org.hl7.fhir.r5.model.Expression expression = new org.hl7.fhir.r5.model.Expression();
-    expression.setDescription("test description");
-    org.hl7.fhir.r5.model.Measure.MeasureSupplementalDataComponent supplementalData =
-        new org.hl7.fhir.r5.model.Measure.MeasureSupplementalDataComponent();
-    supplementalData.setCriteria(expression);
-    supplementalData.setDescription("test description");
-    r5Measure.addSupplementalData().setCriteria(expression);
-
-    org.hl7.fhir.r5.model.Library lib = new org.hl7.fhir.r5.model.Library();
-    ParameterDefinition parameter = new ParameterDefinition();
-    parameter.setName("test name");
-    lib.addParameter(parameter);
-
-    org.hl7.fhir.r5.model.Extension topLevelExtension = new org.hl7.fhir.r5.model.Extension();
-    org.hl7.fhir.r5.model.Extension secondLevelExtension = new org.hl7.fhir.r5.model.Extension();
-    secondLevelExtension.setValue(new org.hl7.fhir.r5.model.StringType("test string"));
-    topLevelExtension.addExtension(secondLevelExtension);
-    lib.addExtension(topLevelExtension);
-
-    org.hl7.fhir.r5.model.RelatedArtifact r5RelatedArtifact =
-        new org.hl7.fhir.r5.model.RelatedArtifact();
-    r5RelatedArtifact.setCitation("test reference text");
-    r5RelatedArtifact.setLabel("test label");
-    r5RelatedArtifact.setDisplay("test display &");
-    r5RelatedArtifact.setResource("test resource");
-    lib.addRelatedArtifact(r5RelatedArtifact);
-
-    r5Measure.addContained(lib);
-
-    org.hl7.fhir.r5.model.Measure.MeasureTermComponent term =
-        new org.hl7.fhir.r5.model.Measure.MeasureTermComponent();
-    term.setDefinition("test definition");
-    r5Measure.addTerm(term);
-
-    r5Measure.addExtension(topLevelExtension);
-
-    org.hl7.fhir.r5.model.Measure.MeasureGroupComponent group =
-        new org.hl7.fhir.r5.model.Measure.MeasureGroupComponent();
-    group.setDescription("test description");
-    org.hl7.fhir.r5.model.Measure.MeasureGroupPopulationComponent population =
-        new org.hl7.fhir.r5.model.Measure.MeasureGroupPopulationComponent();
-    population.setDescription("test population description");
-    org.hl7.fhir.r5.model.Expression criteria = new org.hl7.fhir.r5.model.Expression();
-    criteria.setExpression("test expression");
-    population.setCriteria(criteria);
-    group.addPopulation(population);
-    org.hl7.fhir.r5.model.Measure.MeasureGroupStratifierComponent stratifier =
-        new org.hl7.fhir.r5.model.Measure.MeasureGroupStratifierComponent();
-    stratifier.setCriteria(criteria);
-    stratifier.setDescription("test stratifier description");
-    group.setStratifier(List.of(stratifier));
-    org.hl7.fhir.r5.model.Extension extension = new org.hl7.fhir.r5.model.Extension();
-    extension.setUrl(CqfMeasures.RATE_AGGREGATION_URI);
-    extension.setValue((new org.hl7.fhir.r5.model.StringType(CqfMeasures.RATE_AGGREGATION_URI)));
-    group.addExtension(extension);
-    r5Measure.addGroup(group);
-
-    r5Measure.addRelatedArtifact(r5RelatedArtifact);
-
-    org.hl7.fhir.r5.model.Measure result = humanReadableService.escapeMeasure(r5Measure);
-    assertEquals("eCqmTitle&amp;", result.getIdentifier().get(0).getValue());
-    assertEquals("measure name &amp;", result.getTitle());
-    assertNotNull(result);
-    assertNotNull(result.getRelatedArtifact());
-    assertEquals(1, result.getRelatedArtifact().size());
-    assertEquals("test display &amp;", result.getRelatedArtifact().get(0).getDisplay());
   }
 }
