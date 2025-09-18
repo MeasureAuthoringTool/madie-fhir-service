@@ -47,7 +47,7 @@
 				<groupId>org.fhir</groupId>
 				<artifactId>ucum</artifactId>
 				<version>${org.fhir.ucum.version}</version>
-			</dependency>			
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -265,7 +265,12 @@
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.8.7</version>
+				<version>0.8.12</version>
+				<configuration>
+					<excludes>
+						<exclude>org/hl7/fhir/r5/**</exclude>
+					</excludes>
+				</configuration>
 				<executions>
 					<execution>
 						<goals>
