@@ -18,9 +18,10 @@
 	<properties>
 		<java.version>17</java.version>
 		<springfox.version>3.0.0</springfox.version>
-		<hapi.fhir.r4.version>7.6.1</hapi.fhir.r4.version>
+		<hapi.fhir.r4.version>8.4.0</hapi.fhir.r4.version>
 		<cqframework.version>3.26.0</cqframework.version>
 		<org.fhir.ucum.version>1.0.9</org.fhir.ucum.version>
+		<fhir.core.version>6.6.7</fhir.core.version>
 	</properties>
 
 	<repositories>
@@ -47,7 +48,64 @@
 				<groupId>org.fhir</groupId>
 				<artifactId>ucum</artifactId>
 				<version>${org.fhir.ucum.version}</version>
-			</dependency>			
+			</dependency>
+
+			<!-- Force all org.hl7.fhir modules to 6.6.7 -->
+			<dependency>
+				<groupId>ca.uhn.hapi.fhir</groupId>
+				<artifactId>org.hl7.fhir.convertors</artifactId>
+				<version>${fhir.core.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ca.uhn.hapi.fhir</groupId>
+				<artifactId>org.hl7.fhir.dstu2</artifactId>
+				<version>${fhir.core.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ca.uhn.hapi.fhir</groupId>
+				<artifactId>org.hl7.fhir.dstu3</artifactId>
+				<version>${fhir.core.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ca.uhn.hapi.fhir</groupId>
+				<artifactId>org.hl7.fhir.dstu2016may</artifactId>
+				<version>${fhir.core.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ca.uhn.hapi.fhir</groupId>
+				<artifactId>org.hl7.fhir.model</artifactId>
+				<version>${fhir.core.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ca.uhn.hapi.fhir</groupId>
+				<artifactId>org.hl7.fhir.r4</artifactId>
+				<version>${fhir.core.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ca.uhn.hapi.fhir</groupId>
+				<artifactId>org.hl7.fhir.r4b</artifactId>
+				<version>${fhir.core.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ca.uhn.hapi.fhir</groupId>
+				<artifactId>org.hl7.fhir.r5</artifactId>
+				<version>${fhir.core.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ca.uhn.hapi.fhir</groupId>
+				<artifactId>org.hl7.fhir.support</artifactId>
+				<version>${fhir.core.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ca.uhn.hapi.fhir</groupId>
+				<artifactId>org.hl7.fhir.utilities</artifactId>
+				<version>${fhir.core.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ca.uhn.hapi.fhir</groupId>
+				<artifactId>org.hl7.fhir.validation</artifactId>
+				<version>${fhir.core.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -96,6 +154,12 @@
 		<dependency>
 			<groupId>ca.uhn.hapi.fhir</groupId>
 			<artifactId>hapi-fhir-structures-r4</artifactId>
+			<version>${hapi.fhir.r4.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>ca.uhn.hapi.fhir</groupId>
+			<artifactId>hapi-fhir-structures-r5</artifactId>
 			<version>${hapi.fhir.r4.version}</version>
 		</dependency>
 

@@ -17,7 +17,7 @@ import org.hl7.fhir.common.hapi.validation.validator.FhirInstanceValidator;
 import org.hl7.fhir.instance.model.api.IBaseResource;
 import org.hl7.fhir.r4.model.ValueSet;
 import org.hl7.fhir.r5.context.SimpleWorkerContext;
-import org.hl7.fhir.r5.utils.LiquidEngine;
+import org.hl7.fhir.r5.liquid.LiquidEngine;
 import org.hl7.fhir.utilities.npm.NpmPackage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
