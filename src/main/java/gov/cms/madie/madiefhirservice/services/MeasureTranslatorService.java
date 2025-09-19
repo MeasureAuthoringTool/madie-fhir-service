@@ -133,7 +133,7 @@ public class MeasureTranslatorService {
   }
 
   private void setRelatedArtifact(Measure madieMeasure, org.hl7.fhir.r4.model.Measure measure) {
-    if (CollectionUtils.isNotEmpty(madieMeasure.getMeasureMetaData().getReferences())) {
+    if (isNotEmpty(madieMeasure.getMeasureMetaData().getReferences())) {
       measure.setRelatedArtifact(
           buildRelatedArtifacts(madieMeasure.getMeasureMetaData().getReferences()));
     }
@@ -184,7 +184,7 @@ public class MeasureTranslatorService {
               IdentifierType.CODE_VERSION_SPECIFIC));
       if (madieMeasure.getMeasureMetaData() != null
           && madieMeasure.getMeasureMetaData().getEndorsements() != null
-          && CollectionUtils.isNotEmpty(madieMeasure.getMeasureMetaData().getEndorsements())
+          && isNotEmpty(madieMeasure.getMeasureMetaData().getEndorsements())
           && StringUtils.isNotBlank(
               madieMeasure.getMeasureMetaData().getEndorsements().get(0).getEndorser())) {
         Endorsement endorsement = madieMeasure.getMeasureMetaData().getEndorsements().get(0);
@@ -297,7 +297,7 @@ public class MeasureTranslatorService {
   }
 
   public List<MeasureGroupComponent> buildGroups(List<Group> madieGroups) {
-    if (CollectionUtils.isNotEmpty(madieGroups)) {
+    if (isNotEmpty(madieGroups)) {
       return madieGroups.stream().map(this::buildGroup).collect(Collectors.toList());
     } else {
       return null;
@@ -477,13 +477,12 @@ public class MeasureTranslatorService {
                           .addExtension(
                               new Extension(
                                   UriConstants.CqfMeasures.AGGREGATE_METHOD_URI,
-                                  new StringType(measureObservation.getAggregateMethod())))
+                                  new CodeType(measureObservation.getAggregateMethod())))
                           .setId(
                               StringUtils.isNotBlank(measureObservation.getDisplayId())
                                   ? measureObservation.getDisplayId()
                                   : measureObservation.getId()));
-              if (measureObservation.getCriteriaReference() != null
-                  && StringUtils.isNotBlank(measureObservation.getCriteriaReference())) {
+              if (StringUtils.isNotBlank(measureObservation.getCriteriaReference())) {
                 observationPopulation.addExtension(
                     new Extension(
                         UriConstants.CqfMeasures.CRITERIA_REFERENCE_URI,
