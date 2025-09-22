@@ -26,6 +26,7 @@ import gov.cms.madie.models.measure.Endorsement;
 import gov.cms.madie.models.measure.Group;
 import gov.cms.madie.models.measure.Measure;
 import gov.cms.madie.models.measure.MeasureMetaData;
+import gov.cms.madie.models.measure.MeasureObservation;
 import gov.cms.madie.models.measure.MeasureReportType;
 import gov.cms.madie.models.measure.MeasureScoring;
 import gov.cms.madie.models.measure.MeasureSet;
@@ -1389,5 +1390,70 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertEquals(
         "text for justification",
         measure.getRelatedArtifact().get(2).getDisplayElement().toString());
+  }
+
+  @Test
+  public void buildMeasureGroupObservation() {
+    Group group = buildContinuousVariableGroup();
+    group.setScoring(MeasureScoring.CONTINUOUS_VARIABLE.toString());
+    MeasureObservation mo = MeasureObservation.builder().id("measureObservationId").build();
+    group.setMeasureObservations(List.of(mo));
+
+    List<MeasureGroupComponent> groupComponent =
+        measureTranslatorService.buildGroups(List.of(group));
+
+    assertNotNull(groupComponent);
+
+    assertThat(groupComponent.size(), is(equalTo(1)));
+    MeasureGroupComponent measureGroupComponent = groupComponent.get(0);
+    assertThat(measureGroupComponent, is(notNullValue()));
+    Extension group1Ex = measureGroupComponent.getExtension().get(0);
+    assertThat(group1Ex.getUrl(), is(equalTo(UriConstants.CqfMeasures.SCORING_URI)));
+    List<MeasureGroupPopulationComponent> measureGroupPopulationComponents =
+        measureGroupComponent.getPopulation();
+    assertTrue(measureGroupPopulationComponents.size() == 1);
+    assertThat(
+        measureGroupPopulationComponents
+            .get(0)
+            .getExtensionByUrl(UriConstants.CqfMeasures.AGGREGATE_METHOD_URI),
+        is(notNullValue()));
+  }
+
+  @Test
+  public void buildMeasureGroupObservationNoObservation() {
+    Group group = buildContinuousVariableGroup();
+    group.setMeasureObservations(Collections.emptyList());
+
+    List<MeasureGroupComponent> groupComponent =
+        measureTranslatorService.buildGroups(List.of(group));
+
+    assertNotNull(groupComponent);
+
+    assertThat(groupComponent.size(), is(equalTo(1)));
+    MeasureGroupComponent measureGroupComponent = groupComponent.get(0);
+    assertThat(measureGroupComponent, is(notNullValue()));
+    Extension group1Ex = measureGroupComponent.getExtension().get(0);
+    assertThat(group1Ex.getUrl(), is(equalTo(UriConstants.CqfMeasures.SCORING_URI)));
+    List<MeasureGroupPopulationComponent> measureGroupPopulationComponents =
+        measureGroupComponent.getPopulation();
+    assertTrue(measureGroupPopulationComponents.size() == 0);
+  }
+
+  private Group buildContinuousVariableGroup() {
+    Population ip1 = new Population();
+    ip1.setName(PopulationType.INITIAL_POPULATION);
+    ip1.setAssociationType(AssociationType.DENOMINATOR);
+    ip1.setId("initial-population-1");
+    Population ip2 = new Population();
+    ip2.setName(PopulationType.MEASURE_POPULATION);
+    ip2.setAssociationType(AssociationType.NUMERATOR);
+    ip2.setId("measure-population-2");
+    ip2.setDisplayId("Measure Observation 1");
+
+    Group group = new Group();
+    group.setScoring(MeasureScoring.CONTINUOUS_VARIABLE.toString());
+    group.setPopulations(List.of(ip1, ip2));
+
+    return group;
   }
 }
