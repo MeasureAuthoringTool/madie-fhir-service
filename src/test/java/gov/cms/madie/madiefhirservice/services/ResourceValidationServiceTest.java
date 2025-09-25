@@ -11,9 +11,7 @@ import org.hl7.fhir.r4.model.Encounter;
 import org.hl7.fhir.r4.model.OperationOutcome;
 import org.hl7.fhir.r4.model.Patient;
 import org.hl7.fhir.r4.model.Procedure;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -39,52 +37,42 @@ class ResourceValidationServiceTest {
 
   @InjectMocks ResourceValidationService validationService;
 
-  private MockedStatic<BundleUtil> bundleUtilMock;
-
   @BeforeAll
   public static void setup() {
     fhirContext = FhirContext.forR4();
     r5FhirContext = FhirContext.forR5();
   }
 
-  @BeforeEach
-  void setupMocks() {
-    bundleUtilMock = Mockito.mockStatic(BundleUtil.class);
-  }
-
-  @AfterEach
-  void tearDownMocks() {
-    if (bundleUtilMock != null) {
-      bundleUtilMock.close();
+  @Test
+  void testValidateBundleResourcesProfilesReturnsNoIssuesForEmptyBundle() {
+    try (MockedStatic<BundleUtil> utilities = Mockito.mockStatic(BundleUtil.class)) {
+      utilities
+          .when(() -> BundleUtil.toListOfResources(any(FhirContext.class), any(IBaseBundle.class)))
+          .thenReturn(List.of());
+      Bundle bundle = new Bundle();
+      OperationOutcome output =
+          (OperationOutcome) validationService.validateBundleResourcesProfiles(fhirContext, bundle);
+      assertThat(output, is(notNullValue()));
+      assertThat(output.hasIssue(), is(false));
     }
   }
 
   @Test
-  void testValidateBundleResourcesProfilesReturnsNoIssuesForEmptyBundle() {
-    bundleUtilMock
-        .when(() -> BundleUtil.toListOfResources(any(FhirContext.class), any(IBaseBundle.class)))
-        .thenReturn(List.of());
-    Bundle bundle = new Bundle();
-    OperationOutcome output =
-        (OperationOutcome) validationService.validateBundleResourcesProfiles(fhirContext, bundle);
-    assertThat(output, is(notNullValue()));
-    assertThat(output.hasIssue(), is(false));
-  }
-
-  @Test
   void testValidateBundleResourcesProfilesReturnsIssueForMissingProfile() {
-    bundleUtilMock
-        .when(() -> BundleUtil.toListOfResources(any(FhirContext.class), any(IBaseBundle.class)))
-        .thenReturn(List.of(new Patient(), new Encounter()));
+    try (MockedStatic<BundleUtil> utilities = Mockito.mockStatic(BundleUtil.class)) {
+      utilities
+          .when(() -> BundleUtil.toListOfResources(any(FhirContext.class), any(IBaseBundle.class)))
+          .thenReturn(List.of(new Patient(), new Encounter()));
 
-    Bundle bundle = new Bundle();
-    OperationOutcome output =
-        (OperationOutcome) validationService.validateBundleResourcesProfiles(fhirContext, bundle);
-    assertThat(output, is(notNullValue()));
-    assertThat(output.hasIssue(), is(true));
-    // empty profiles for Patient and Encounter has 2 issues, required profile missing adds
-    // another one
-    assertThat(output.getIssue().size(), is(equalTo(2)));
+      Bundle bundle = new Bundle();
+      OperationOutcome output =
+          (OperationOutcome) validationService.validateBundleResourcesProfiles(fhirContext, bundle);
+      assertThat(output, is(notNullValue()));
+      assertThat(output.hasIssue(), is(true));
+      // empty profiles for Patient and Encounter has 2 issues, required profile missing adds
+      // another one
+      assertThat(output.getIssue().size(), is(equalTo(2)));
+    }
   }
 
   @Test
@@ -93,16 +81,18 @@ class ResourceValidationServiceTest {
     p.getMeta().addProfile(UriConstants.QiCore.PATIENT_PROFILE_URI);
     Encounter encounter = new Encounter();
     encounter.getMeta().addProfile("invalidURL");
-    bundleUtilMock
-        .when(() -> BundleUtil.toListOfResources(any(FhirContext.class), any(IBaseBundle.class)))
-        .thenReturn(List.of(p, encounter));
+    try (MockedStatic<BundleUtil> utilities = Mockito.mockStatic(BundleUtil.class)) {
+      utilities
+          .when(() -> BundleUtil.toListOfResources(any(FhirContext.class), any(IBaseBundle.class)))
+          .thenReturn(List.of(p, encounter));
 
-    Bundle bundle = new Bundle();
-    OperationOutcome output =
-        (OperationOutcome) validationService.validateBundleResourcesProfiles(fhirContext, bundle);
-    assertThat(output, is(notNullValue()));
-    assertThat(output.hasIssue(), is(true));
-    assertThat(output.getIssue().size(), is(equalTo(1)));
+      Bundle bundle = new Bundle();
+      OperationOutcome output =
+          (OperationOutcome) validationService.validateBundleResourcesProfiles(fhirContext, bundle);
+      assertThat(output, is(notNullValue()));
+      assertThat(output.hasIssue(), is(true));
+      assertThat(output.getIssue().size(), is(equalTo(1)));
+    }
   }
 
   @Test
@@ -111,16 +101,18 @@ class ResourceValidationServiceTest {
     p.getMeta().addProfile(UriConstants.QiCore.PATIENT_PROFILE_URI);
     Encounter encounter = new Encounter();
     encounter.getMeta().addProfile("http://localhost:8080/measures/id?s=^IXIC");
-    bundleUtilMock
-        .when(() -> BundleUtil.toListOfResources(any(FhirContext.class), any(IBaseBundle.class)))
-        .thenReturn(List.of(p, encounter));
+    try (MockedStatic<BundleUtil> utilities = Mockito.mockStatic(BundleUtil.class)) {
+      utilities
+          .when(() -> BundleUtil.toListOfResources(any(FhirContext.class), any(IBaseBundle.class)))
+          .thenReturn(List.of(p, encounter));
 
-    Bundle bundle = new Bundle();
-    OperationOutcome output =
-        (OperationOutcome) validationService.validateBundleResourcesProfiles(fhirContext, bundle);
-    assertThat(output, is(notNullValue()));
-    assertThat(output.hasIssue(), is(true));
-    assertThat(output.getIssue().size(), is(equalTo(1)));
+      Bundle bundle = new Bundle();
+      OperationOutcome output =
+          (OperationOutcome) validationService.validateBundleResourcesProfiles(fhirContext, bundle);
+      assertThat(output, is(notNullValue()));
+      assertThat(output.hasIssue(), is(true));
+      assertThat(output.getIssue().size(), is(equalTo(1)));
+    }
   }
 
   @Test
@@ -129,15 +121,17 @@ class ResourceValidationServiceTest {
     p.getMeta().addProfile(UriConstants.QiCore.PATIENT_PROFILE_URI);
     Encounter encounter = new Encounter();
     encounter.getMeta().addProfile("http://test.profile.com");
-    bundleUtilMock
-        .when(() -> BundleUtil.toListOfResources(any(FhirContext.class), any(IBaseBundle.class)))
-        .thenReturn(List.of(p, encounter));
+    try (MockedStatic<BundleUtil> utilities = Mockito.mockStatic(BundleUtil.class)) {
+      utilities
+          .when(() -> BundleUtil.toListOfResources(any(FhirContext.class), any(IBaseBundle.class)))
+          .thenReturn(List.of(p, encounter));
 
-    Bundle bundle = new Bundle();
-    OperationOutcome output =
-        (OperationOutcome) validationService.validateBundleResourcesProfiles(fhirContext, bundle);
-    assertThat(output, is(notNullValue()));
-    assertThat(output.hasIssue(), is(false));
+      Bundle bundle = new Bundle();
+      OperationOutcome output =
+          (OperationOutcome) validationService.validateBundleResourcesProfiles(fhirContext, bundle);
+      assertThat(output, is(notNullValue()));
+      assertThat(output.hasIssue(), is(false));
+    }
   }
 
   @Test
@@ -148,16 +142,18 @@ class ResourceValidationServiceTest {
     e1.setId("1234");
     Encounter e2 = new Encounter();
     e2.setId("1234");
-    bundleUtilMock
-        .when(() -> BundleUtil.toListOfResources(any(FhirContext.class), any(IBaseBundle.class)))
-        .thenReturn(List.of(p, e1, e2));
+    try (MockedStatic<BundleUtil> utilities = Mockito.mockStatic(BundleUtil.class)) {
+      utilities
+          .when(() -> BundleUtil.toListOfResources(any(FhirContext.class), any(IBaseBundle.class)))
+          .thenReturn(List.of(p, e1, e2));
 
-    Bundle bundle = new Bundle();
-    OperationOutcome output =
-        (OperationOutcome) validationService.validateBundleResourcesIdValid(fhirContext, bundle);
-    assertThat(output, is(notNullValue()));
-    assertThat(output.hasIssue(), is(true));
-    assertThat(output.getIssueFirstRep().getDiagnostics().contains("1234"), is(true));
+      Bundle bundle = new Bundle();
+      OperationOutcome output =
+          (OperationOutcome) validationService.validateBundleResourcesIdValid(fhirContext, bundle);
+      assertThat(output, is(notNullValue()));
+      assertThat(output.hasIssue(), is(true));
+      assertThat(output.getIssueFirstRep().getDiagnostics().contains("1234"), is(true));
+    }
   }
 
   @Test
@@ -170,17 +166,19 @@ class ResourceValidationServiceTest {
     p1.setId("1234");
     Encounter e2 = new Encounter();
     e2.setId("3456");
-    bundleUtilMock
-        .when(() -> BundleUtil.toListOfResources(any(FhirContext.class), any(IBaseBundle.class)))
-        .thenReturn(List.of(p, e1, p1, e2));
+    try (MockedStatic<BundleUtil> utilities = Mockito.mockStatic(BundleUtil.class)) {
+      utilities
+          .when(() -> BundleUtil.toListOfResources(any(FhirContext.class), any(IBaseBundle.class)))
+          .thenReturn(List.of(p, e1, p1, e2));
 
-    Bundle bundle = new Bundle();
-    OperationOutcome output =
-        (OperationOutcome) validationService.validateBundleResourcesIdValid(fhirContext, bundle);
-    assertThat(output, is(notNullValue()));
-    assertThat(output.hasIssue(), is(true));
-    assertThat(output.getIssueFirstRep().getDiagnostics().contains("1234"), is(true));
-    assertThat(output.getIssue().size(), is(equalTo(1)));
+      Bundle bundle = new Bundle();
+      OperationOutcome output =
+          (OperationOutcome) validationService.validateBundleResourcesIdValid(fhirContext, bundle);
+      assertThat(output, is(notNullValue()));
+      assertThat(output.hasIssue(), is(true));
+      assertThat(output.getIssueFirstRep().getDiagnostics().contains("1234"), is(true));
+      assertThat(output.getIssue().size(), is(equalTo(1)));
+    }
   }
 
   @Test
@@ -191,15 +189,17 @@ class ResourceValidationServiceTest {
     e1.setId("2222");
     Encounter e2 = new Encounter();
     e2.setId("3333");
-    bundleUtilMock
-        .when(() -> BundleUtil.toListOfResources(any(FhirContext.class), any(IBaseBundle.class)))
-        .thenReturn(List.of(p, e1, e2));
+    try (MockedStatic<BundleUtil> utilities = Mockito.mockStatic(BundleUtil.class)) {
+      utilities
+          .when(() -> BundleUtil.toListOfResources(any(FhirContext.class), any(IBaseBundle.class)))
+          .thenReturn(List.of(p, e1, e2));
 
-    Bundle bundle = new Bundle();
-    OperationOutcome output =
-        (OperationOutcome) validationService.validateBundleResourcesIdValid(fhirContext, bundle);
-    assertThat(output, is(notNullValue()));
-    assertThat(output.hasIssue(), is(false));
+      Bundle bundle = new Bundle();
+      OperationOutcome output =
+          (OperationOutcome) validationService.validateBundleResourcesIdValid(fhirContext, bundle);
+      assertThat(output, is(notNullValue()));
+      assertThat(output.hasIssue(), is(false));
+    }
   }
 
   @Test
@@ -209,16 +209,18 @@ class ResourceValidationServiceTest {
     e1.setId("2222");
     Encounter e2 = new Encounter();
     e2.setId("3333");
-    bundleUtilMock
-        .when(() -> BundleUtil.toListOfResources(any(FhirContext.class), any(IBaseBundle.class)))
-        .thenReturn(List.of(p, e1, e2));
+    try (MockedStatic<BundleUtil> utilities = Mockito.mockStatic(BundleUtil.class)) {
+      utilities
+          .when(() -> BundleUtil.toListOfResources(any(FhirContext.class), any(IBaseBundle.class)))
+          .thenReturn(List.of(p, e1, e2));
 
-    Bundle bundle = new Bundle();
-    OperationOutcome output =
-        (OperationOutcome) validationService.validateBundleResourcesIdValid(fhirContext, bundle);
-    assertThat(output, is(notNullValue()));
-    assertThat(output.hasIssue(), is(true));
-    assertEquals("All resources must have an Id", output.getIssueFirstRep().getDiagnostics());
+      Bundle bundle = new Bundle();
+      OperationOutcome output =
+          (OperationOutcome) validationService.validateBundleResourcesIdValid(fhirContext, bundle);
+      assertThat(output, is(notNullValue()));
+      assertThat(output.hasIssue(), is(true));
+      assertEquals(output.getIssueFirstRep().getDiagnostics(), "All resources must have an Id");
+    }
   }
 
   @Test
