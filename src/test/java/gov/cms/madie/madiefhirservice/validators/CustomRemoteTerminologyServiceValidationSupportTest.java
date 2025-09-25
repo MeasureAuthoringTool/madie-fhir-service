@@ -586,7 +586,6 @@ class CustomRemoteTerminologyServiceValidationSupportTest {
     when(query.execute()).thenReturn(bundle);
 
     List<IBaseResource> mockResources = List.of(codeSystemResource);
-    mockStatic(BundleUtil.class);
     when(BundleUtil.toListOfResources(fhirContext, bundle)).thenReturn(mockResources);
 
     IBaseResource result = validationSupport.fetchValueSet(validCtsUrl);
