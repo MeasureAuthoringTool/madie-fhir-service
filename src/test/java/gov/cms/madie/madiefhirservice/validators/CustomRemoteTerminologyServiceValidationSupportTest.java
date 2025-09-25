@@ -586,10 +586,16 @@ class CustomRemoteTerminologyServiceValidationSupportTest {
     when(query.execute()).thenReturn(bundle);
 
     List<IBaseResource> mockResources = List.of(codeSystemResource);
-    when(BundleUtil.toListOfResources(fhirContext, bundle)).thenReturn(mockResources);
+    try (MockedStatic<BundleUtil> bundleUtilMock = mockStatic(BundleUtil.class)) {
+      bundleUtilMock
+          .when(() -> BundleUtil.toListOfResources(fhirContext, bundle))
+          .thenReturn(mockResources);
 
-    IBaseResource result = validationSupport.fetchValueSet(validCtsUrl);
+      // when
+      IBaseResource result = validationSupport.fetchValueSet(validCtsUrl);
 
-    assertThat(result, is(codeSystemResource));
+      // then
+      assertThat(result, is(codeSystemResource));
+    }
   }
 }
