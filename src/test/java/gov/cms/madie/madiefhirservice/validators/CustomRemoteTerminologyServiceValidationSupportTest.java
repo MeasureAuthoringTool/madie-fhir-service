@@ -586,14 +586,11 @@ class CustomRemoteTerminologyServiceValidationSupportTest {
     when(query.execute()).thenReturn(bundle);
 
     List<IBaseResource> mockResources = List.of(codeSystemResource);
-    // Ensure static mock is closed after use to avoid leaking into other tests
-    try (MockedStatic<BundleUtil> bundleUtilMock = mockStatic(BundleUtil.class)) {
-      bundleUtilMock
-          .when(() -> BundleUtil.toListOfResources(fhirContext, bundle))
-          .thenReturn(mockResources);
+    mockStatic(BundleUtil.class);
+    when(BundleUtil.toListOfResources(fhirContext, bundle)).thenReturn(mockResources);
 
-      IBaseResource result = validationSupport.fetchValueSet(validCtsUrl);
-      assertThat(result, is(codeSystemResource));
-    }
+    IBaseResource result = validationSupport.fetchValueSet(validCtsUrl);
+
+    assertThat(result, is(codeSystemResource));
   }
 }
