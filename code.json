@@ -1,0 +1,62 @@
+{
+  "name": "madie-fhir-service",
+  "description": "FHIR Service for MADiE",
+  "longDescription": "",
+  "status": "",
+  "permissions": {
+    "license": [
+      {
+        "name": "",
+        "URL": ""
+      }
+    ],
+    "usageType": "",
+    "exemptionText": ""
+  },
+  "organization": "",
+  "repositoryURL": "https://github.com/MeasureAuthoringTool/madie-fhir-service",
+  "projectURL": "",
+  "repositoryHost": "github",
+  "repositoryVisibility": "",
+  "vcs": "git",
+  "laborHours": 7628,
+  "reuseFrequency": {
+    "forks": 0,
+    "clones": 0
+  },
+  "platforms": [],
+  "categories": [],
+  "softwareType": "",
+  "languages": [
+    "Java",
+    "HTML",
+    "Liquid",
+    "Dockerfile"
+  ],
+  "maintenance": "",
+  "contractNumber": "",
+  "date": {
+    "created": "2022-03-16T18:35:11Z",
+    "lastModified": "2025-09-25T18:30:21Z",
+    "metaDataLastUpdated": "2025-10-01T00:15:48.065Z"
+  },
+  "tags": [],
+  "contact": {
+    "email": "",
+    "name": ""
+  },
+  "feedbackMechanisms": [
+    "https://github.com/MeasureAuthoringTool/madie-fhir-service/issues"
+  ],
+  "localisation": false,
+  "repositoryType": "",
+  "userInput": false,
+  "fismaLevel": "",
+  "group": "",
+  "projects": [],
+  "systems": [],
+  "upstream": "",
+  "subsetInHealthcare": [],
+  "userType": [],
+  "maturityModelTier": 0
+}
