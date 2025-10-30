@@ -203,9 +203,4 @@ class LenientTerminologyValidator implements IValidationSupport {
   public String getName() {
     return inMemoryTerminologyServerValidationSupport.getName();
   }
-
-  @Override
-  public boolean isEnabledValidationForCodingsLogicalAnd() {
-    return inMemoryTerminologyServerValidationSupport.isEnabledValidationForCodingsLogicalAnd();
-  }
 }

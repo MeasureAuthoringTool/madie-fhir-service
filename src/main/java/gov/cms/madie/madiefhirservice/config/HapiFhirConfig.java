@@ -17,7 +17,7 @@ import org.hl7.fhir.common.hapi.validation.validator.FhirInstanceValidator;
 import org.hl7.fhir.instance.model.api.IBaseResource;
 import org.hl7.fhir.r4.model.ValueSet;
 import org.hl7.fhir.r5.context.SimpleWorkerContext;
-import org.hl7.fhir.r5.utils.LiquidEngine;
+import org.hl7.fhir.r5.liquid.LiquidEngine;
 import org.hl7.fhir.utilities.npm.NpmPackage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -107,15 +107,14 @@ public class HapiFhirConfig {
     RemoteTerminologyServiceValidationSupport remoteTerminologyServiceValidationSupport =
         getRemoteTerminologyServiceValidationSupport(qicore6FhirContext);
 
-    return new CachingValidationSupport(
-        new ValidationSupportChain(
-            prePopulatedValidationSupport,
-            npmPackageSupport,
-            new DefaultProfileValidationSupport(qicore6FhirContext),
-            new CustomQiCoreInMemoryValidationSupport(qicore6FhirContext, validationConfig),
-            new CommonCodeSystemsTerminologyService(qicore6FhirContext),
-            remoteTerminologyServiceValidationSupport,
-            unknownCodeSystemWarningValidationSupport));
+    return new ValidationSupportChain(
+        prePopulatedValidationSupport,
+        npmPackageSupport,
+        new DefaultProfileValidationSupport(qicore6FhirContext),
+        new CustomQiCoreInMemoryValidationSupport(qicore6FhirContext, validationConfig),
+        new CommonCodeSystemsTerminologyService(qicore6FhirContext),
+        // remoteTerminologyServiceValidationSupport,
+        unknownCodeSystemWarningValidationSupport);
   }
 
   public RemoteTerminologyServiceValidationSupport getRemoteTerminologyServiceValidationSupport(
