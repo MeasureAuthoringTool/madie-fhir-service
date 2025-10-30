@@ -113,7 +113,7 @@ public class HapiFhirConfig {
         new DefaultProfileValidationSupport(qicore6FhirContext),
         new CustomQiCoreInMemoryValidationSupport(qicore6FhirContext, validationConfig),
         new CommonCodeSystemsTerminologyService(qicore6FhirContext),
-        // remoteTerminologyServiceValidationSupport,
+        remoteTerminologyServiceValidationSupport,
         unknownCodeSystemWarningValidationSupport);
   }
 
