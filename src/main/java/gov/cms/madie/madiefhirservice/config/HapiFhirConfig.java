@@ -106,15 +106,14 @@ public class HapiFhirConfig {
 
     RemoteTerminologyServiceValidationSupport remoteTerminologyServiceValidationSupport =
         getRemoteTerminologyServiceValidationSupport(qicore6FhirContext);
-    return new CachingValidationSupport(
-        new ValidationSupportChain(
-            prePopulatedValidationSupport,
-            npmPackageSupport,
-            new DefaultProfileValidationSupport(qicore6FhirContext),
-            new CustomQiCoreInMemoryValidationSupport(qicore6FhirContext, validationConfig),
-            new CommonCodeSystemsTerminologyService(qicore6FhirContext),
-            remoteTerminologyServiceValidationSupport,
-            unknownCodeSystemWarningValidationSupport));
+    return new ValidationSupportChain(
+        prePopulatedValidationSupport,
+        npmPackageSupport,
+        new DefaultProfileValidationSupport(qicore6FhirContext),
+        new CustomQiCoreInMemoryValidationSupport(qicore6FhirContext, validationConfig),
+        new CommonCodeSystemsTerminologyService(qicore6FhirContext),
+        remoteTerminologyServiceValidationSupport,
+        unknownCodeSystemWarningValidationSupport);
   }
 
   public RemoteTerminologyServiceValidationSupport getRemoteTerminologyServiceValidationSupport(
