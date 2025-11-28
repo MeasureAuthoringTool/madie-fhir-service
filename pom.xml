@@ -158,7 +158,7 @@
 		<dependency>
 			<groupId>com.okta.spring</groupId>
 			<artifactId>okta-spring-boot-starter</artifactId>
-			<version>3.0.7</version>
+			<version>3.0.8</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.springframework.security</groupId>
