@@ -123,8 +123,8 @@ public class StructureDefinitionService {
   }
 
   /**
-   * Return the ID, title, profile, category and type of all structure definitions that start with
-   * QICore and have a kind of "resource"
+   * Return the ID, title, profile, category and type of all structure definitions that have a kind
+   * of "resource"
    *
    * @return list of ResourceIdentifier, comprised of ID and title of the structure definitions
    */
@@ -133,16 +133,23 @@ public class StructureDefinitionService {
         .stream()
         .filter(
             resource -> {
-              String idPart = resource.getIdElement().getIdPart();
-              return "resource".equals(((StructureDefinition) resource).getKind().toCode())
-                  && (idPart.startsWith("qicore") || idPart.startsWith("us-core"));
+              StructureDefinition sd = (StructureDefinition) resource;
+              String title = sd.getTitle();
+              String idPart =
+                  resource.getIdElement() != null ? resource.getIdElement().getIdPart() : null;
+              return "resource".equals(sd.getKind().toCode())
+                  && (title != null && !title.isEmpty() || idPart != null && !idPart.isEmpty());
             })
         .map(
-            (resource) -> {
+            resource -> {
               StructureDefinition structureDefinition = (StructureDefinition) resource;
+              String idPart =
+                  resource.getIdElement() != null ? resource.getIdElement().getIdPart() : null;
+              String title = structureDefinition.getTitle();
+              String resultTitle = (title != null && !title.isEmpty()) ? title : idPart;
               return ResourceIdentifier.builder()
-                  .id(resource.getIdElement().getIdPart())
-                  .title(structureDefinition.getTitle())
+                  .id(idPart)
+                  .title(resultTitle)
                   .type(structureDefinition.getType())
                   .category(getCategoryByType(structureDefinition.getType()))
                   .profile(structureDefinition.getUrl())
