@@ -1,0 +1,221 @@
+{
+  "resourceType": "Library",
+  "id": "effective-data-requirements",
+  "extension": [ {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+    "extension": [ {
+      "url": "libraryName",
+      "valueString": "Test1CQLLib"
+    }, {
+      "url": "name",
+      "valueString": "boolIpp"
+    }, {
+      "url": "statement",
+      "valueString": "define \"boolIpp\":\n  true"
+    }, {
+      "url": "displaySequence",
+      "valueInteger": 0
+    } ]
+  }, {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+    "extension": [ {
+      "url": "libraryName",
+      "valueString": "Test1CQLLib"
+    }, {
+      "url": "name",
+      "valueString": "boolDenom"
+    }, {
+      "url": "statement",
+      "valueString": "define \"boolDenom\":\n  \"boolIpp\""
+    }, {
+      "url": "displaySequence",
+      "valueInteger": 1
+    } ]
+  }, {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+    "extension": [ {
+      "url": "libraryName",
+      "valueString": "Test1CQLLib"
+    }, {
+      "url": "name",
+      "valueString": "ex"
+    }, {
+      "url": "statement",
+      "valueString": "define \"ex\":\n  [\"Encounter\"] E\n    where E.period.start during \"Measurement Period\"\n      and E.status = 'finished'"
+    }, {
+      "url": "displaySequence",
+      "valueInteger": 2
+    } ]
+  }, {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+    "extension": [ {
+      "url": "libraryName",
+      "valueString": "Test1CQLLib"
+    }, {
+      "url": "name",
+      "valueString": "boolIpp2"
+    }, {
+      "url": "statement",
+      "valueString": "define \"boolIpp2\":\n  true"
+    }, {
+      "url": "displaySequence",
+      "valueInteger": 3
+    } ]
+  }, {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+    "extension": [ {
+      "url": "libraryName",
+      "valueString": "Test1CQLLib"
+    }, {
+      "url": "name",
+      "valueString": "ipp2"
+    }, {
+      "url": "statement",
+      "valueString": "define \"ipp2\":\n  [\"Encounter\"] E\n    where E.period.start during \"Measurement Period\""
+    }, {
+      "url": "displaySequence",
+      "valueInteger": 4
+    } ]
+  }, {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+    "extension": [ {
+      "url": "libraryName",
+      "valueString": "Test1CQLLib"
+    }, {
+      "url": "name",
+      "valueString": "num"
+    }, {
+      "url": "statement",
+      "valueString": "define \"num\":\n  \"ipp2\""
+    }, {
+      "url": "displaySequence",
+      "valueInteger": 5
+    } ]
+  }, {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+    "extension": [ {
+      "url": "libraryName",
+      "valueString": "Test1CQLLib"
+    }, {
+      "url": "name",
+      "valueString": "ipp"
+    }, {
+      "url": "statement",
+      "valueString": "define \"ipp\":\n  [\"Encounter\"] E\n    where E.period.start during \"Measurement Period\""
+    }, {
+      "url": "displaySequence",
+      "valueInteger": 6
+    } ]
+  }, {
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition",
+    "extension": [ {
+      "url": "libraryName",
+      "valueString": "Test1CQLLib"
+    }, {
+      "url": "name",
+      "valueString": "denom"
+    }, {
+      "url": "statement",
+      "valueString": "define \"denom\":\n  \"ipp\""
+    }, {
+      "url": "displaySequence",
+      "valueInteger": 7
+    } ]
+  } ],
+  "status": "active",
+  "type": {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/library-type",
+      "code": "module-definition"
+    } ]
+  },
+  "relatedArtifact": [ {
+    "type": "depends-on",
+    "display": "Library FHIRHelpers",
+    "resource": "Library/FHIRHelpers|4.1.000"
+  } ],
+  "parameter": [  {
+    "name": "boolDenom",
+    "use": "out",
+    "min": 0,
+    "max": "1",
+    "type": "boolean"
+  },{
+    "name": "Measurement Period",
+    "use": "in",
+    "min": 0,
+    "max": "1",
+    "type": "Period"
+  },
+   {
+    "name": "ex",
+    "use": "out",
+    "min": 0,
+    "max": "*",
+    "type": "Encounter"
+  }, {
+    "name": "boolIpp",
+    "use": "out",
+    "min": 0,
+    "max": "1",
+    "type": "boolean"
+  }, {
+    "name": "boolIpp2",
+    "use": "out",
+    "min": 0,
+    "max": "1",
+    "type": "boolean"
+  }, {
+    "name": "num",
+    "use": "out",
+    "min": 0,
+    "max": "*",
+    "type": "Encounter"
+  }, {
+    "name": "ipp",
+    "use": "out",
+    "min": 0,
+    "max": "*",
+    "type": "Encounter"
+  }, {
+    "name": "ipp2",
+    "use": "out",
+    "min": 0,
+    "max": "*",
+    "type": "Encounter"
+  }, {
+    "name": "denom",
+    "use": "out",
+    "min": 0,
+    "max": "*",
+    "type": "Encounter"
+  } ],
+  "dataRequirement": [ {
+    "type": "dateTime",
+    "profile": [ "http://hl7.org/fhir/dateTime" ],
+    "mustSupport": [ "value" ]
+  }, {
+    "profile": [ "http://hl7.org/fhir/EncounterStatus" ],
+    "mustSupport": [ "value" ]
+  }, {
+    "type": "Encounter",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
+    "mustSupport": [ "period", "period.start", "status" ]
+  }, {
+    "type": "Encounter",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
+    "mustSupport": [ "period", "period.start" ]
+  }, {
+    "type": "Encounter",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
+    "mustSupport": [ "period", "period.start" ]
+  }, {
+    "type": "Encounter",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
+    "mustSupport": [ "period", "period.start" ]
+  }, {
+    "type": "Encounter",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
+    "mustSupport": [ "period", "period.start" ]
+  } ]
+}

@@ -3,9 +3,29 @@ server:
   servlet:
     context-path: /api
 
-hapi:
-  fhir:
-    url: ${HAPI_FHIR_URL:http://localhost:8080/fhir}
+validation:
+  terminology:
+    validateDisplay: false
+
+madie:
+  cql-elm:
+    service:
+      base-url: ${FHIR_ELM_TRANSLATOR_SERVICE_URL:http://localhost:8083/api/fhir}
+      effective-data-requirements-uri: /effective-data-requirements
+  library:
+    service:
+      baseUrl: ${CQL_LIBRARY_SERVICE_URL:http://localhost:8082/api}
+      versioned:
+        uri: /cql-libraries/versioned
+  url: ${MADIE_URL:https://madie.cms.gov}
+  resource:
+    url: https://madie.cms.gov
+  service-config:
+    json-url: ${SERVICE_CONFIG_JSON_URL:http://localhost:9000/env-config/serviceConfig.json}
+
+vsac:
+  terminology-server-url: https://cts.nlm.nih.gov/fhir
+  api-key: ${VSAC_API_KEY:defaultvaluetopreventillegalappstate}
 
 #springdoc:
 #  swagger-ui:
@@ -17,5 +37,10 @@ logging:
 
 okta:
   oauth2:
-    issuer: ${OKTA_ISSUER:https://dev-53861726.okta.com/oauth2/default}
+    issuer: ${OKTA_ISSUER:https://dev-madie.okta.com/oauth2/default}
     audience: ${OKTA_AUDIENCE:api://default}
+
+caching:
+  spring:
+    libraries:
+      ttlMillis: 3600000

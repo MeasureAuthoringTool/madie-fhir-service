@@ -1,32 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.6.4</version>
+		<version>3.4.10</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>gov.cms.madie</groupId>
 	<artifactId>madie-fhir-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1.1</version>
 	<name>Madie fhir Service</name>
 	<description>Fhir Service for MADiE</description>
 
 	<properties>
-		<java.version>16</java.version>
+		<java.version>17</java.version>
 		<springfox.version>3.0.0</springfox.version>
+		 <hapi.fhir.r4.version>8.4.0</hapi.fhir.r4.version>
+		<cqframework.version>3.29.0</cqframework.version>
+		<org.fhir.ucum.version>1.0.9</org.fhir.ucum.version>
 	</properties>
 
 	<repositories>
 		<repository>
 			<id>github</id>
 			<name>Github madie rest commons</name>
-			<url>https://maven.pkg.github.com/MeasureAuthoringTool/madie-rest-commons</url>
-			<releases><enabled>true</enabled></releases>
+			<url>
+				https://maven.pkg.github.com/MeasureAuthoringTool/madie-rest-commons</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
 		</repository>
 	</repositories>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- override thymeleaf dependency for hapi-fhir because there is a critical vulnerability -->
+			<dependency>
+				<groupId>org.thymeleaf</groupId>
+				<artifactId>thymeleaf</artifactId>
+				<version>3.1.2.RELEASE</version>
+			</dependency>
+			<dependency>
+				<groupId>org.fhir</groupId>
+				<artifactId>ucum</artifactId>
+				<version>${org.fhir.ucum.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<dependencies>
 		<dependency>
@@ -48,6 +71,14 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-cache</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -65,49 +96,158 @@
 		<dependency>
 			<groupId>ca.uhn.hapi.fhir</groupId>
 			<artifactId>hapi-fhir-structures-r4</artifactId>
-			<version>5.7.0</version>
+			<version>${hapi.fhir.r4.version}</version>
+		</dependency>
+
+		<!-- Validation resources for FHIR validations -->
+		<dependency>
+			<groupId>ca.uhn.hapi.fhir</groupId>
+			<artifactId>hapi-fhir-validation</artifactId>
+			<version>${hapi.fhir.r4.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>ca.uhn.hapi.fhir</groupId>
+			<artifactId>hapi-fhir-validation-resources-r4</artifactId>
+			<version>${hapi.fhir.r4.version}</version>
 		</dependency>
 
 		<!--Provides Feasibility to interact with HAPI FHIR JPA Server-->
 		<dependency>
 			<groupId>ca.uhn.hapi.fhir</groupId>
 			<artifactId>hapi-fhir-client</artifactId>
-			<version>5.7.0</version>
+			<version>${hapi.fhir.r4.version}</version>
 		</dependency>
 
+		<!-- In-memory caching - required in HAPI FHIR v7.4.3 -->
+		<dependency>
+			<groupId>ca.uhn.hapi.fhir</groupId>
+			<artifactId>hapi-fhir-caching-caffeine</artifactId>
+			<version>${hapi.fhir.r4.version}</version>
+		</dependency>
+
+		<!-- required cqframework dependencies -->
+		<dependency>
+			<groupId>info.cqframework</groupId>
+			<artifactId>cql-to-elm</artifactId>
+			<version>${cqframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>info.cqframework</groupId>
+			<artifactId>cql-formatter</artifactId>
+			<version>${cqframework.version}</version>
+		</dependency>
+
+		<!-- Needed to fix class not found errors when using v2.15.4 - required in HAPI FHIR v7.4.3 -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>2.13.2.1</version>
+			<artifactId>jackson-core</artifactId>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-ui</artifactId>
-			<version>1.6.6</version>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.8.10</version>
 		</dependency>
 
 		<dependency>
 			<groupId>gov.cms.madie</groupId>
 			<artifactId>madie-rest-commons</artifactId>
-			<version>0.0.1</version>
+			<version>1.0.1-SNAPSHOT</version>
 		</dependency>
-
 		<dependency>
 			<groupId>com.okta.spring</groupId>
 			<artifactId>okta-spring-boot-starter</artifactId>
-			<version>2.1.5</version>
+			<version>3.0.7</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.security</groupId>
+					<artifactId>spring-security-web</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>gov.cms.madie</groupId>
+			<artifactId>madie-java-models</artifactId>
+			<version>0.6.102-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+      		<groupId>com.jayway.jsonpath</groupId>
+      		<artifactId>json-path</artifactId>
+    	</dependency>
+		<dependency>
+			<groupId>gov.cms.madie.packaging</groupId>
+			<artifactId>packaging-utility</artifactId>
+			<version>0.2.12-SNAPSHOT</version>
+			<exclusions>
+				<exclusion>
+					<groupId>gov.cms.madie</groupId>
+					<artifactId>madie-java-models</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>ca.uhn.hapi.fhir</groupId>
+					<artifactId>hapi-fhir-structures-r4</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.vladsch.flexmark</groupId>
+			<artifactId>flexmark-all</artifactId>
+			<version>0.64.8</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<!-- This will save you frustration if you change checkstyle
+					versions -->
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-checkstyle-plugin</artifactId>
+					<version>${mvn.checkstyle.version}</version>
+					<dependencies>
+						<dependency>
+							<groupId>com.puppycrawl.tools</groupId>
+							<artifactId>checkstyle</artifactId>
+							<version>8.40</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>com.theoryinpractise</groupId>
+										<artifactId>googleformatter-maven-plugin</artifactId>
+										<versionRange>[1.7.3,)</versionRange>
+										<goals>
+											<goal>format</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore/>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -125,7 +265,12 @@
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.8.7</version>
+				<version>0.8.12</version>
+				<configuration>
+					<excludes>
+						<exclude>org/hl7/fhir/r5/**</exclude>
+					</excludes>
+				</configuration>
 				<executions>
 					<execution>
 						<goals>
@@ -141,7 +286,22 @@
 					</execution>
 				</executions>
 			</plugin>
-
+			<plugin>
+				<groupId>com.spotify.fmt</groupId>
+				<artifactId>fmt-maven-plugin</artifactId>
+				<version>2.23</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>format</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<skipSortingImports>true</skipSortingImports>
+					<style>google</style>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
