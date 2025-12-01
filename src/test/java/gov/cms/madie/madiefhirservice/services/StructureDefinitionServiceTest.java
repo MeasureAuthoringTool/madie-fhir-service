@@ -258,7 +258,7 @@ class StructureDefinitionServiceTest {
   }
 
   @Test
-  void testGetAllResourcesReturnsOnlyQiCoreAndUSCoreResources() {
+  void testGetAllResourcesReturnsAllResourcesWithTitleOrIdPart() {
     // given
     StructureDefinition def1 = new StructureDefinition();
     def1.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
@@ -278,45 +278,128 @@ class StructureDefinitionServiceTest {
     def3.setType("Practitioner");
     def3.setId("us-core-practitioner");
     def3.setUrl("http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner");
-    StructureDefinition def5 = new StructureDefinition();
-    def5.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
-    def5.setTitle("US Core Practitioner Profile");
-    def5.setType("Practitioner");
-    def5.setId("test-practitioner");
-    def5.setUrl("http://hl7.org/fhir/us/core/StructureDefinition/test-practitioner");
     StructureDefinition def4 = new StructureDefinition();
     def4.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
-    def4.setTitle(null);
+    def4.setTitle(null); // Should fallback to id
     def4.setType("Patient");
-    def4.setId("Patient");
-    def4.setUrl("http://hl7.org/fhir/StructureDefinition/Patient");
-    def4.setExtension(
-        List.of(
-            new Extension(
-                UriConstants.FhirStructureDefinitions.CATEGORY_URI,
-                new StringType("Base.Individuals"))));
+    def4.setId("patient-null-title");
+    def4.setUrl("http://hl7.org/fhir/StructureDefinition/patient-null-title");
+    StructureDefinition def5 = new StructureDefinition();
+    def5.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
+    def5.setTitle(""); // Should fallback to id
+    def5.setType("Patient");
+    def5.setId("patient-empty-title");
+    def5.setUrl("http://hl7.org/fhir/StructureDefinition/patient-empty-title");
+    StructureDefinition def6 = new StructureDefinition();
+    def6.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
+    def6.setTitle("Valid Resource");
+    def6.setType("Observation");
+    def6.setId(""); // Should be included because title is present
+    def6.setUrl("http://hl7.org/fhir/StructureDefinition/observation-empty-id");
+    StructureDefinition def7 = new StructureDefinition();
+    def7.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
+    def7.setTitle("Valid Resource");
+    def7.setType("Observation");
+    def7.setId((String) null); // Should be included because title is present
+    def7.setUrl("http://hl7.org/fhir/StructureDefinition/observation-null-id");
+    StructureDefinition def8 = new StructureDefinition();
+    def8.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
+    def8.setTitle(null); // Should be excluded (no title, no id)
+    def8.setType("Observation");
+    def8.setId((String) null);
+    def8.setUrl("http://hl7.org/fhir/StructureDefinition/observation-null-id2");
+    StructureDefinition def9 = new StructureDefinition();
+    def9.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
+    def9.setTitle(""); // Should be excluded (no title, no id)
+    def9.setType("Observation");
+    def9.setId("");
+    def9.setUrl("http://hl7.org/fhir/StructureDefinition/observation-empty-id2");
+    StructureDefinition def10 = new StructureDefinition();
+    def10.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
+    def10.setTitle(null); // Should fallback to id
+    def10.setType("Observation");
+    def10.setId("valid-observation"); // Should be included
+    def10.setUrl("http://hl7.org/fhir/StructureDefinition/valid-observation");
     when(validationSupportChainQiCore600.fetchAllStructureDefinitions())
-        .thenReturn(List.of(def1, def2, def3, def4, def5));
+        .thenReturn(List.of(def1, def2, def3, def4, def5, def6, def7, def8, def9, def10));
+
+    // when
+    List<ResourceIdentifier> output = structureDefinitionService.getAllResources();
+    System.out.println("Returned resources:");
+    for (ResourceIdentifier r : output) {
+      System.out.println("id: " + r.getId() + ", title: " + r.getTitle());
+    }
+
+    // then
+    assertThat(output, is(notNullValue()));
+    // Only resources with either title or idPart should be included (def1, def3, def4, def5, def6,
+    // def7, def10)
+    assertThat(output.size(), is(equalTo(7)));
+    assertThat(
+        output.stream()
+            .anyMatch(
+                r -> "qicore-patient".equals(r.getId()) && "QICore Patient".equals(r.getTitle())),
+        is(true));
+    assertThat(
+        output.stream()
+            .anyMatch(
+                r ->
+                    "us-core-practitioner".equals(r.getId())
+                        && "US Core Practitioner Profile".equals(r.getTitle())),
+        is(true));
+    assertThat(
+        output.stream()
+            .anyMatch(
+                r ->
+                    "patient-null-title".equals(r.getId())
+                        && "patient-null-title".equals(r.getTitle())),
+        is(true));
+    assertThat(
+        output.stream()
+            .anyMatch(
+                r ->
+                    "patient-empty-title".equals(r.getId())
+                        && "patient-empty-title".equals(r.getTitle())),
+        is(true));
+    assertThat(
+        output.stream().anyMatch(r -> r.getId() == null && "Valid Resource".equals(r.getTitle())),
+        is(true));
+    assertThat(
+        output.stream()
+            .anyMatch(
+                r ->
+                    "valid-observation".equals(r.getId())
+                        && "valid-observation".equals(r.getTitle())),
+        is(true));
+    assertThat(
+        output.stream().anyMatch(r -> r.getId() == null && "Valid Resource".equals(r.getTitle())),
+        is(true));
+  }
+
+  @Test
+  void testGetAllResourcesExcludesNonResourceKind() {
+    // given
+    StructureDefinition def1 = new StructureDefinition();
+    def1.setKind(StructureDefinition.StructureDefinitionKind.COMPLEXTYPE);
+    def1.setTitle("QI-Core Key Element Extension");
+    def1.setType("Extension");
+    def1.setId("qicore-keyelement");
+    def1.setUrl("http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-keyelement");
+    StructureDefinition def2 = new StructureDefinition();
+    def2.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
+    def2.setTitle("QICore Patient");
+    def2.setType("Patient");
+    def2.setId("qicore-patient");
+    def2.setUrl("http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient");
+    when(validationSupportChainQiCore600.fetchAllStructureDefinitions())
+        .thenReturn(List.of(def1, def2));
 
     // when
     List<ResourceIdentifier> output = structureDefinitionService.getAllResources();
 
     // then
-    assertThat(output, is(notNullValue()));
-    assertThat(output.size(), is(equalTo(2)));
+    assertThat(output.size(), is(equalTo(1)));
     assertThat(output.get(0).getId(), is(equalTo("qicore-patient")));
-    assertThat(output.get(0).getTitle(), is(equalTo("QICore Patient")));
-    assertThat(output.get(0).getType(), is(equalTo("Patient")));
-    assertThat(output.get(0).getCategory(), is(equalTo("Base.Individuals")));
-    assertThat(
-        output.get(0).getProfile(),
-        is(equalTo("http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient")));
-    assertThat(output.get(1).getId(), is(equalTo("us-core-practitioner")));
-    assertThat(output.get(1).getTitle(), is(equalTo("US Core Practitioner Profile")));
-    assertThat(output.get(1).getType(), is(equalTo("Practitioner")));
-    assertThat(
-        output.get(1).getProfile(),
-        is(equalTo("http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner")));
   }
 
   @Test
