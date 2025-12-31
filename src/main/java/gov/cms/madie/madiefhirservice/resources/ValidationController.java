@@ -6,10 +6,8 @@ import ca.uhn.fhir.parser.IParser;
 import ca.uhn.fhir.util.OperationOutcomeUtil;
 import ca.uhn.fhir.validation.FhirValidator;
 import ca.uhn.fhir.validation.ValidationResult;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import gov.cms.madie.madiefhirservice.dto.MadieFeatureFlag;
 import gov.cms.madie.madiefhirservice.factories.ModelAwareFhirFactory;
 import gov.cms.madie.madiefhirservice.services.AppConfigService;
 import gov.cms.madie.models.common.ModelType;
@@ -21,7 +19,6 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.hl7.fhir.instance.model.api.IBaseBundle;
 import org.hl7.fhir.instance.model.api.IBaseOperationOutcome;
-import org.hl7.fhir.r4.model.OperationOutcome;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -55,12 +52,6 @@ public class ValidationController {
       @PathVariable("model") String modelVersion, HttpEntity<String> request) {
     final ModelType modelType = QICORE_VERSION_MODELTYPE_MAP.get(modelVersion);
     IParser parser = validatorFactory.getJsonParserForModel(modelType);
-
-    // MAT-8019: Disable Test Case Validations for QI-Core STU 6 only.
-    if (ModelType.QI_CORE_6_0_0.equals(modelType)
-        && !appConfigService.isFlagEnabled(MadieFeatureFlag.STU6_TEST_CASE_VALIDATION)) {
-      return noValidationResponse(parser);
-    }
 
     FhirContext fhirContext = validatorFactory.getContextForModel(modelType);
     FhirValidator fhirValidator = validatorFactory.getValidatorForModel(modelType);
@@ -105,19 +96,6 @@ public class ValidationController {
           .build();
     } catch (Exception ex) {
       throw new HapiJsonException("An error occurred processing the validation results", ex);
-    }
-  }
-
-  private HapiOperationOutcome noValidationResponse(IParser parser) {
-    try {
-      return HapiOperationOutcome.builder()
-          .code(HttpStatus.OK.value())
-          .successful(true)
-          .outcomeResponse(
-              mapper.readValue(parser.encodeResourceToString(new OperationOutcome()), Object.class))
-          .build();
-    } catch (JsonProcessingException e) {
-      throw new HapiJsonException("An error occurred processing the validation results", e);
     }
   }
 }

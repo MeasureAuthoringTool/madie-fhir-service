@@ -10,7 +10,6 @@ import ca.uhn.fhir.validation.ValidationResult;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import gov.cms.madie.madiefhirservice.dto.MadieFeatureFlag;
 import gov.cms.madie.madiefhirservice.exceptions.HapiJsonException;
 import gov.cms.madie.madiefhirservice.factories.ModelAwareFhirFactory;
 import gov.cms.madie.madiefhirservice.services.AppConfigService;
@@ -41,13 +40,10 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.nullValue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -392,7 +388,7 @@ class ValidationControllerTest implements ResourceFileUtil {
   }
 
   @Test
-  void testValidationControllerReturnsSuccessfulOutcomeStu6ValidationTrue() {
+  void testValidationControllerReturnsSuccessfulOutcomeStu6Validation() {
     when(validatorFactory.parseForModel(any(ModelType.class), anyString()))
         .thenReturn(new Bundle());
     when(validatorFactory.getJsonParserForModel(any(ModelType.class))).thenReturn(parser);
@@ -419,39 +415,9 @@ class ValidationControllerTest implements ResourceFileUtil {
     when(parser.encodeResourceToString(any(OperationOutcome.class)))
         .thenReturn("{ \"resourceType\": \"OperationOutcome\" }");
 
-    doReturn(true)
-        .when(appConfigService)
-        .isFlagEnabled(eq(MadieFeatureFlag.STU6_TEST_CASE_VALIDATION));
     HapiOperationOutcome output = validationController.validateBundleByModel(QICORE_6_0_0, entity);
     assertThat(output, is(notNullValue()));
     assertThat(output.getCode(), is(equalTo(HttpStatus.OK.value())));
     assertThat(output.isSuccessful(), is(true));
-  }
-
-  /***
-   * Test to validate that the controller returns a successful outcome when
-   * the STU6 validation flag is false.
-   * JSON resource includes Patient
-   * and it's an STU6 test case.
-   */
-  @Test
-  void testValidationControllerReturnsSuccessfulOutcomeStu6ValidationFalse() {
-
-    when(validatorFactory.getJsonParserForModel(any(ModelType.class))).thenReturn(parser);
-
-    OperationOutcome outcome = new OperationOutcome();
-    outcome.addIssue().setSeverity(OperationOutcome.IssueSeverity.INFORMATION);
-
-    when(parser.encodeResourceToString(any(OperationOutcome.class)))
-        .thenReturn("{ \"resourceType\": \"OperationOutcome\" }");
-
-    doReturn(false)
-        .when(appConfigService)
-        .isFlagEnabled(eq(MadieFeatureFlag.STU6_TEST_CASE_VALIDATION));
-    HapiOperationOutcome output = validationController.validateBundleByModel(QICORE_6_0_0, entity);
-    assertThat(output, is(notNullValue()));
-    assertThat(output.getCode(), is(equalTo(HttpStatus.OK.value())));
-    assertThat(output.isSuccessful(), is(true));
-    assertThat(output.getOutcomeResponse(), is(nullValue()));
   }
 }
