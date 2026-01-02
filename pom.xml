@@ -18,7 +18,7 @@
 	<properties>
 		<java.version>17</java.version>
 		<springfox.version>3.0.0</springfox.version>
-		 <hapi.fhir.r4.version>8.4.0</hapi.fhir.r4.version>
+		 <hapi.fhir.r4.version>8.6.1</hapi.fhir.r4.version>
 		<cqframework.version>3.29.0</cqframework.version>
 		<org.fhir.ucum.version>1.0.9</org.fhir.ucum.version>
 	</properties>
@@ -37,12 +37,6 @@
 
 	<dependencyManagement>
 		<dependencies>
-			<!-- override thymeleaf dependency for hapi-fhir because there is a critical vulnerability -->
-			<dependency>
-				<groupId>org.thymeleaf</groupId>
-				<artifactId>thymeleaf</artifactId>
-				<version>3.1.2.RELEASE</version>
-			</dependency>
 			<dependency>
 				<groupId>org.fhir</groupId>
 				<artifactId>ucum</artifactId>
@@ -119,12 +113,6 @@
 			<version>${hapi.fhir.r4.version}</version>
 		</dependency>
 
-		<!-- In-memory caching - required in HAPI FHIR v7.4.3 -->
-		<dependency>
-			<groupId>ca.uhn.hapi.fhir</groupId>
-			<artifactId>hapi-fhir-caching-caffeine</artifactId>
-			<version>${hapi.fhir.r4.version}</version>
-		</dependency>
 
 		<!-- required cqframework dependencies -->
 		<dependency>
