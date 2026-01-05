@@ -113,6 +113,12 @@
 			<version>${hapi.fhir.r4.version}</version>
 		</dependency>
 
+		<!-- In-memory caching - required in HAPI FHIR v7.4.3 -->
+		<dependency>
+			<groupId>ca.uhn.hapi.fhir</groupId>
+			<artifactId>hapi-fhir-caching-caffeine</artifactId>
+			<version>${hapi.fhir.r4.version}</version>
+		</dependency>
 
 		<!-- required cqframework dependencies -->
 		<dependency>
