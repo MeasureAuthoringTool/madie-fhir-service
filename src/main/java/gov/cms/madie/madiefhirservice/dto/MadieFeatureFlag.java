@@ -2,8 +2,7 @@ package gov.cms.madie.madiefhirservice.dto;
 
 /** Feature flags relevant to the madie-fhir-service */
 public enum MadieFeatureFlag {
-  QiCore_STU4_UPDATES("qiCoreStu4Updates"),
-  STU6_TEST_CASE_VALIDATION("stu6TestCaseValidation");
+  QiCore_STU4_UPDATES("qiCoreStu4Updates");
 
   private final String flag;
 
