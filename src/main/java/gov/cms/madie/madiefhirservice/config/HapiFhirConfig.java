@@ -99,11 +99,6 @@ public class HapiFhirConfig {
         buildPrePopulatedValidationSupportFromZip(
             qicore6FhirContext, "classpath:packages/tx-qicore-6.0.0.zip");
 
-    UnknownCodeSystemWarningValidationSupport unknownCodeSystemWarningValidationSupport =
-        new UnknownCodeSystemWarningValidationSupport(qicore6FhirContext);
-    unknownCodeSystemWarningValidationSupport.setNonExistentCodeSystemSeverity(
-        IValidationSupport.IssueSeverity.WARNING);
-
     RemoteTerminologyServiceValidationSupport remoteTerminologyServiceValidationSupport =
         getRemoteTerminologyServiceValidationSupport(qicore6FhirContext);
     return new ValidationSupportChain(
@@ -112,8 +107,7 @@ public class HapiFhirConfig {
         new DefaultProfileValidationSupport(qicore6FhirContext),
         new CustomQiCoreInMemoryValidationSupport(qicore6FhirContext, validationConfig),
         new CommonCodeSystemsTerminologyService(qicore6FhirContext),
-        remoteTerminologyServiceValidationSupport,
-        unknownCodeSystemWarningValidationSupport);
+        remoteTerminologyServiceValidationSupport);
   }
 
   public RemoteTerminologyServiceValidationSupport getRemoteTerminologyServiceValidationSupport(
