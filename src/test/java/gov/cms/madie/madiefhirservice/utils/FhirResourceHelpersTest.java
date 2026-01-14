@@ -66,7 +66,7 @@ public class FhirResourceHelpersTest {
   }
 
   @Test
-  void testexpectedInverseValue() {
+  void testExpectedInverseValue() {
     assertEquals(1, FhirResourceHelpers.getExpectedInverseValue(0));
     assertEquals(0, FhirResourceHelpers.getExpectedInverseValue(1));
   }
@@ -106,19 +106,19 @@ public class FhirResourceHelpersTest {
     List<MeasureReport.StratifierGroupPopulationComponent> stratifierGroupPopulationComponents =
         FhirResourceHelpers.buildStratumPopulation(stratValue1, true, true, group1);
 
-    assertEquals(stratifierGroupPopulationComponents.size(), 3);
-    assertEquals(
+    assertThat(stratifierGroupPopulationComponents.size(), is(3));
+    assertThat(
         stratifierGroupPopulationComponents.get(0).getCode().getCoding().get(0).getCode(),
-        "initial-population");
-    assertEquals(stratifierGroupPopulationComponents.get(0).getCount(), 1);
-    assertEquals(
+        is("initial-population"));
+    assertThat(stratifierGroupPopulationComponents.get(0).getCount(), is(1));
+    assertThat(
         stratifierGroupPopulationComponents.get(1).getCode().getCoding().get(0).getCode(),
-        "denominator");
-    assertEquals(stratifierGroupPopulationComponents.get(1).getCount(), 1);
-    assertEquals(
+        is("denominator"));
+    assertThat(stratifierGroupPopulationComponents.get(1).getCount(), is(1));
+    assertThat(
         stratifierGroupPopulationComponents.get(2).getCode().getCoding().get(0).getCode(),
-        "numerator");
-    assertEquals(stratifierGroupPopulationComponents.get(2).getCount(), 0);
+        is("numerator"));
+    assertThat(stratifierGroupPopulationComponents.get(2).getCount(), is(0));
 
     assertEquals("InitialPopulation_1", stratifierGroupPopulationComponents.get(0).getId());
     assertEquals("Denominator_1", stratifierGroupPopulationComponents.get(1).getId());
@@ -160,19 +160,19 @@ public class FhirResourceHelpersTest {
     List<MeasureReport.StratifierGroupPopulationComponent> stratifierGroupPopulationComponents =
         FhirResourceHelpers.buildStratumPopulation(stratValue1, false, true, group1);
 
-    assertEquals(stratifierGroupPopulationComponents.size(), 3);
-    assertEquals(
+    assertThat(stratifierGroupPopulationComponents.size(), is(3));
+    assertThat(
         stratifierGroupPopulationComponents.get(0).getCode().getCoding().get(0).getCode(),
-        "initial-population");
-    assertEquals(stratifierGroupPopulationComponents.get(0).getCount(), 0);
-    assertEquals(
+        is("initial-population"));
+    assertThat(stratifierGroupPopulationComponents.get(0).getCount(), is(0));
+    assertThat(
         stratifierGroupPopulationComponents.get(1).getCode().getCoding().get(0).getCode(),
-        "denominator");
-    assertEquals(stratifierGroupPopulationComponents.get(1).getCount(), 0);
-    assertEquals(
+        is("denominator"));
+    assertThat(stratifierGroupPopulationComponents.get(1).getCount(), is(0));
+    assertThat(
         stratifierGroupPopulationComponents.get(2).getCode().getCoding().get(0).getCode(),
-        "numerator");
-    assertEquals(stratifierGroupPopulationComponents.get(2).getCount(), 1);
+        is("numerator"));
+    assertThat(stratifierGroupPopulationComponents.get(2).getCount(), is(1));
 
     assertEquals("InitialPopulation_1", stratifierGroupPopulationComponents.get(0).getId());
     assertEquals("Denominator_1", stratifierGroupPopulationComponents.get(1).getId());
@@ -214,19 +214,19 @@ public class FhirResourceHelpersTest {
     List<MeasureReport.StratifierGroupPopulationComponent> stratifierGroupPopulationComponents =
         FhirResourceHelpers.buildStratumPopulation(stratValue1, null, false, group1);
 
-    assertEquals(stratifierGroupPopulationComponents.size(), 3);
-    assertEquals(
+    assertThat(stratifierGroupPopulationComponents.size(), is(3));
+    assertThat(
         stratifierGroupPopulationComponents.get(0).getCode().getCoding().get(0).getCode(),
-        "initial-population");
-    assertEquals(stratifierGroupPopulationComponents.get(0).getCount(), 5);
-    assertEquals(
+        is("initial-population"));
+    assertThat(stratifierGroupPopulationComponents.get(0).getCount(), is(5));
+    assertThat(
         stratifierGroupPopulationComponents.get(1).getCode().getCoding().get(0).getCode(),
-        "denominator");
-    assertEquals(stratifierGroupPopulationComponents.get(1).getCount(), 4);
-    assertEquals(
+        is("denominator"));
+    assertThat(stratifierGroupPopulationComponents.get(1).getCount(), is(4));
+    assertThat(
         stratifierGroupPopulationComponents.get(2).getCode().getCoding().get(0).getCode(),
-        "numerator");
-    assertEquals(stratifierGroupPopulationComponents.get(2).getCount(), 2);
+        is("numerator"));
+    assertThat(stratifierGroupPopulationComponents.get(2).getCount(), is(2));
 
     assertEquals("InitialPopulation_1", stratifierGroupPopulationComponents.get(0).getId());
     assertEquals("Denominator_1", stratifierGroupPopulationComponents.get(1).getId());
