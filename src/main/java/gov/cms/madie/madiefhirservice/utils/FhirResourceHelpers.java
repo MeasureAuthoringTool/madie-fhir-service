@@ -117,7 +117,10 @@ public class FhirResourceHelpers {
                               ? getExpectedValue(populationValue.getExpected())
                               : getExpectedInverseValue(
                                   getExpectedValue(populationValue.getExpected())))
-                          : Integer.parseInt(populationValue.getExpected().toString()));
+                          : (populationValue.getExpected() == null
+                                  || populationValue.getExpected().toString().isEmpty()
+                              ? 0 // Convert empty expected values to 0
+                              : Integer.parseInt(populationValue.getExpected().toString())));
                   return stratifierGroupPopulationComponent;
                 })
             .collect(Collectors.toList());

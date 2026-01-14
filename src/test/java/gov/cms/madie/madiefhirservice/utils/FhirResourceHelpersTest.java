@@ -234,6 +234,60 @@ public class FhirResourceHelpersTest {
   }
 
   @Test
+  void testBuildStratumPopulationForNonPatientBasedMeasuresWithEmptyExpectedValues() {
+    TestCaseStratificationValue stratValue1 =
+        TestCaseStratificationValue.builder().name("Strata-1").id("strat1Id").expected(1).build();
+    stratValue1.setPopulationValues(
+        List.of(
+            TestCasePopulationValue.builder()
+                .id("1")
+                .name(PopulationType.INITIAL_POPULATION)
+                .expected(null)
+                .build(),
+            TestCasePopulationValue.builder()
+                .id("2")
+                .name(PopulationType.DENOMINATOR)
+                .expected("")
+                .build(),
+            TestCasePopulationValue.builder()
+                .id("3")
+                .name(PopulationType.NUMERATOR)
+                .expected(1)
+                .build()));
+
+    Population pop1 = Population.builder().id("1").displayId("InitialPopulation_1").build();
+    Population pop2 = Population.builder().id("2").displayId("Denominator_1").build();
+    Population pop3 = Population.builder().id("3").displayId("Numerator_1").build();
+    Group group1 =
+        Group.builder()
+            .id("group1Id")
+            .displayId("Group_1")
+            .populations(List.of(pop1, pop2, pop3))
+            .build();
+
+    List<MeasureReport.StratifierGroupPopulationComponent> stratifierGroupPopulationComponents =
+        FhirResourceHelpers.buildStratumPopulation(stratValue1, null, false, group1);
+
+    assertEquals(3, stratifierGroupPopulationComponents.size());
+    assertEquals(
+        "initial-population",
+        stratifierGroupPopulationComponents.get(0).getCode().getCoding().get(0).getCode());
+    assertEquals(0, stratifierGroupPopulationComponents.get(0).getCount());
+    assertEquals(
+        "denominator",
+        stratifierGroupPopulationComponents.get(1).getCode().getCoding().get(0).getCode());
+    assertEquals(0, stratifierGroupPopulationComponents.get(1).getCount());
+    assertEquals(
+        "numerator",
+        stratifierGroupPopulationComponents.get(2).getCode().getCoding().get(0).getCode());
+    assertEquals(1, stratifierGroupPopulationComponents.get(2).getCount());
+
+    assertEquals("InitialPopulation_1", stratifierGroupPopulationComponents.get(0).getId());
+    assertEquals("Denominator_1", stratifierGroupPopulationComponents.get(1).getId());
+    assertEquals("Numerator_1", stratifierGroupPopulationComponents.get(2).getId());
+  }
+
+  @Test
   void testGetGroupStratificationDisplayIdPopulationsNotFound() {
     Group group1 =
         Group.builder()
