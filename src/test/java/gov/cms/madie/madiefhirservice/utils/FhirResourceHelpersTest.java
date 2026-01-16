@@ -17,6 +17,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class FhirResourceHelpersTest {
 
@@ -272,11 +273,11 @@ public class FhirResourceHelpersTest {
     assertEquals(
         "initial-population",
         stratifierGroupPopulationComponents.get(0).getCode().getCoding().get(0).getCode());
-    assertEquals(0, stratifierGroupPopulationComponents.get(0).getCount());
+    assertNull(stratifierGroupPopulationComponents.get(0).getCountElement().getValue());
     assertEquals(
         "denominator",
         stratifierGroupPopulationComponents.get(1).getCode().getCoding().get(0).getCode());
-    assertEquals(0, stratifierGroupPopulationComponents.get(1).getCount());
+    assertNull(stratifierGroupPopulationComponents.get(1).getCountElement().getValue());
     assertEquals(
         "numerator",
         stratifierGroupPopulationComponents.get(2).getCode().getCoding().get(0).getCode());
