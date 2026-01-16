@@ -75,7 +75,7 @@ public class FhirResourceHelpers {
    */
   public static int getExpectedValue(Object expectedValue) {
     if (expectedValue == null || StringUtils.isBlank(expectedValue.toString())) {
-      return 0;
+      return -1; // To be excluded
     } else if (expectedValue instanceof Boolean) {
       return (Boolean) expectedValue ? 1 : 0;
     } else {
@@ -111,13 +111,20 @@ public class FhirResourceHelpers {
                           UriConstants.CodeSystem.POPULATION_SYSTEM_URI,
                           populationValue.getName().getDisplay()));
 
-                  stratifierGroupPopulationComponent.setCount(
-                      isPatientBased
-                          ? (valueIndex
+                  // Exclude the count attribute when Expected Value is empty
+                  if (getExpectedValue(populationValue.getExpected()) >= 0) {
+                    if (isPatientBased) {
+                      stratifierGroupPopulationComponent.setCount(
+                          valueIndex
                               ? getExpectedValue(populationValue.getExpected())
                               : getExpectedInverseValue(
-                                  getExpectedValue(populationValue.getExpected())))
-                          : Integer.parseInt(populationValue.getExpected().toString()));
+                                  getExpectedValue(populationValue.getExpected())));
+                    } else {
+                      stratifierGroupPopulationComponent.setCount(
+                          Integer.parseInt(populationValue.getExpected().toString()));
+                    }
+                  }
+
                   return stratifierGroupPopulationComponent;
                 })
             .collect(Collectors.toList());
