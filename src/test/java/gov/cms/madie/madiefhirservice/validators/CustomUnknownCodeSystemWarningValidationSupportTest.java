@@ -49,7 +49,6 @@ class CustomUnknownCodeSystemWarningValidationSupportTest {
     assertThat(name, containsString("Unknown Code System Warning Validation Support"));
   }
 
-
   @Test
   void testIsValueSetSupportedAlwaysReturnsTrue() {
     boolean result =

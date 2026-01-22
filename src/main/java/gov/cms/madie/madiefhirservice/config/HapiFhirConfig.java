@@ -114,7 +114,7 @@ public class HapiFhirConfig {
         unknownCodeSystemWarningValidationSupport);
   }
 
-  public RemoteTerminologyServiceValidationSupport getRemoteTerminologyServiceValidationSupport(
+  private RemoteTerminologyServiceValidationSupport getRemoteTerminologyServiceValidationSupport(
       FhirContext qicore6FhirContext) {
     return new CustomRemoteTerminologyServiceValidationSupport(
         qicore6FhirContext,
@@ -123,7 +123,7 @@ public class HapiFhirConfig {
         validationConfig);
   }
 
-  public CustomUnknownCodeSystemWarningValidationSupport getUnknownCodeSystemValidationSupport(
+  private CustomUnknownCodeSystemWarningValidationSupport getUnknownCodeSystemValidationSupport(
       FhirContext qicore6FhirContext) {
     var unknownCodeSystemSupportChain =
         new CustomUnknownCodeSystemWarningValidationSupport(qicore6FhirContext);
