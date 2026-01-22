@@ -164,10 +164,7 @@ public class CustomUnknownCodeSystemWarningValidationSupport extends BaseValidat
     }
     IBaseResource codeSystem =
         theValidationSupportContext.getRootValidationSupport().fetchCodeSystem(theCodeSystem);
-    if (codeSystem != null) {
-      return false;
-    }
-    return true;
+    return codeSystem == null;
   }
 
   /**
