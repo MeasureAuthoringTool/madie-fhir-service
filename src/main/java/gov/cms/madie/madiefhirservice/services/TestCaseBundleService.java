@@ -332,13 +332,19 @@ public class TestCaseBundleService {
 
   private MeasureReport.MeasureReportGroupPopulationComponent
       getMeasureReportGroupPopulationComponent(TestCasePopulationValue testCasePopulationValue) {
-    return (new MeasureReport.MeasureReportGroupPopulationComponent())
-        .setCode(
-            FhirResourceHelpers.buildCodeableConcept(
-                getPopulationType(testCasePopulationValue.getName()).toCode(),
-                UriConstants.CodeSystem.POPULATION_SYSTEM_URI,
-                getPopulationType(testCasePopulationValue.getName()).getDisplay()))
-        .setCount(FhirResourceHelpers.getExpectedValue(testCasePopulationValue.getExpected()));
+    var groupPopComponent =
+        new MeasureReport.MeasureReportGroupPopulationComponent()
+            .setCode(
+                FhirResourceHelpers.buildCodeableConcept(
+                    getPopulationType(testCasePopulationValue.getName()).toCode(),
+                    UriConstants.CodeSystem.POPULATION_SYSTEM_URI,
+                    getPopulationType(testCasePopulationValue.getName()).getDisplay()));
+    // Exclude the count attribute when Expected Value is empty
+    if (FhirResourceHelpers.getExpectedValue(testCasePopulationValue.getExpected()) >= 0) {
+      groupPopComponent.setCount(
+          FhirResourceHelpers.getExpectedValue(testCasePopulationValue.getExpected()));
+    }
+    return groupPopComponent;
   }
 
   // MAT-8349: Denominator and Numerator Observations are not part of measure report population
