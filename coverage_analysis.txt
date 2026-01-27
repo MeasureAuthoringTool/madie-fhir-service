@@ -1,0 +1,46 @@
+COVERAGE ANALYSIS REPORT
+========================
+Date: January 27, 2026
+
+SUMMARY
+-------
+- JaCoCo Line Coverage: 90.14% ✓ (Target achieved)
+- JaCoCo Branch Coverage: 76.47% ✗ (Below target)
+- CodeCov Overall: 85.43% (Weighted average of line + branch)
+
+WHY THE DISCREPANCY?
+-------------------
+CodeCov calculates an overall coverage metric that combines:
+1. Line coverage (90.14%)
+2. Branch coverage (76.47%)
+
+Using a weighted approach, this results in approximately 85.43%
+
+AREAS FOR IMPROVEMENT
+---------------------
+To increase CodeCov coverage from 85.43% to 90%, we need to improve BRANCH coverage.
+
+Classes with lowest branch coverage and most impact:
+
+1. LibraryCqlVisitor - 46.88% branch coverage (34 uncovered branches)
+   - High impact: Large number of uncovered branches
+   - Focus: Conditional logic in CQL parsing
+
+2. MeasureBundleService - 52.17% branch coverage (22 uncovered branches)
+   - High impact: Core service with many conditional paths
+   - Focus: Bundle creation logic and error handling
+
+3. Va3. Va3. Va3. Va3. Va3. h coverage (11 uncovered branches)
+   - Medium impact: Data model w   - Medium impact: Data model w   - Medium impact:eModel that we just fixed
+
+4. TestCaseBundleService - 78.79% branch coverage (14 uncovered branches)
+   - Lower priority: Already has good coverage
+   - Focus   - Focus   - Focus   - Focus   - Focus   - Focus   - FocunService - 72.22% branch coverage (10 uncovered branches)
+   - Medium impact: Validation service
+   - Focus: Structure def   - Focus: Structurat   - Focus: Structur-------------
+To reach 90% overall coverage (CodeCov target), we need to increase branchTo reach 90% overall coverage (CodeCov target), we ityTo reach 90% overall coverage (CodeCov target), we need to increase nal branches
+2. Add tests for MeasureBundleService error handling and edge cases
+3. Add tests for ValuesetModel equals/hashCode edge cases
+4. Add tests for StructureDefinitionService validation branches
+
+This would add approximately This would add approximately This would add approxige.

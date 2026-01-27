@@ -7,6 +7,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class CodeModelTest {
 
@@ -54,7 +55,7 @@ class CodeModelTest {
             .codesystemVersion("1.0")
             .build();
 
-    assertThat(codeModel.equals(null), is(false));
+    assertFalse(codeModel.equals(null));
   }
 
   @Test
