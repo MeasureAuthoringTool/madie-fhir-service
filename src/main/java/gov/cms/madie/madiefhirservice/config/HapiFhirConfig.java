@@ -11,6 +11,7 @@ import ca.uhn.fhir.validation.IValidatorModule;
 import gov.cms.madie.madiefhirservice.utils.ResourceUtils;
 import gov.cms.madie.madiefhirservice.validators.CustomQiCoreInMemoryValidationSupport;
 import gov.cms.madie.madiefhirservice.validators.CustomRemoteTerminologyServiceValidationSupport;
+import gov.cms.madie.madiefhirservice.validators.CustomUnknownCodeSystemWarningValidationSupport;
 import lombok.extern.slf4j.Slf4j;
 import org.hl7.fhir.common.hapi.validation.support.*;
 import org.hl7.fhir.common.hapi.validation.validator.FhirInstanceValidator;
@@ -71,10 +72,8 @@ public class HapiFhirConfig {
     npmPackageSupport.loadPackageFromClasspath(
         "classpath:packages/hl7.fhir.xver-extensions-0.0.13.tgz");
 
-    UnknownCodeSystemWarningValidationSupport unknownCodeSystemWarningValidationSupport =
-        new UnknownCodeSystemWarningValidationSupport(qicoreFhirContext);
-    unknownCodeSystemWarningValidationSupport.setNonExistentCodeSystemSeverity(
-        IValidationSupport.IssueSeverity.WARNING);
+    CustomUnknownCodeSystemWarningValidationSupport unknownCodeSystemWarningValidationSupport =
+        getUnknownCodeSystemValidationSupport(qicoreFhirContext);
 
     return new ValidationSupportChain(
         npmPackageSupport,
@@ -99,10 +98,8 @@ public class HapiFhirConfig {
         buildPrePopulatedValidationSupportFromZip(
             qicore6FhirContext, "classpath:packages/tx-qicore-6.0.0.zip");
 
-    UnknownCodeSystemWarningValidationSupport unknownCodeSystemWarningValidationSupport =
-        new UnknownCodeSystemWarningValidationSupport(qicore6FhirContext);
-    unknownCodeSystemWarningValidationSupport.setNonExistentCodeSystemSeverity(
-        IValidationSupport.IssueSeverity.WARNING);
+    CustomUnknownCodeSystemWarningValidationSupport unknownCodeSystemWarningValidationSupport =
+        getUnknownCodeSystemValidationSupport(qicore6FhirContext);
 
     RemoteTerminologyServiceValidationSupport remoteTerminologyServiceValidationSupport =
         getRemoteTerminologyServiceValidationSupport(qicore6FhirContext);
@@ -117,13 +114,22 @@ public class HapiFhirConfig {
         unknownCodeSystemWarningValidationSupport);
   }
 
-  public RemoteTerminologyServiceValidationSupport getRemoteTerminologyServiceValidationSupport(
+  private RemoteTerminologyServiceValidationSupport getRemoteTerminologyServiceValidationSupport(
       FhirContext qicore6FhirContext) {
     return new CustomRemoteTerminologyServiceValidationSupport(
         qicore6FhirContext,
         terminologyServerBase,
         new BasicAuthInterceptor("apikey", vsacApiKey),
         validationConfig);
+  }
+
+  private CustomUnknownCodeSystemWarningValidationSupport getUnknownCodeSystemValidationSupport(
+      FhirContext qicore6FhirContext) {
+    var unknownCodeSystemSupportChain =
+        new CustomUnknownCodeSystemWarningValidationSupport(qicore6FhirContext);
+    unknownCodeSystemSupportChain.setNonExistentCodeSystemSeverity(
+        IValidationSupport.IssueSeverity.WARNING);
+    return unknownCodeSystemSupportChain;
   }
 
   @Bean
