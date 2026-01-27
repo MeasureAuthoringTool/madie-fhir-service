@@ -285,4 +285,237 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
         measureResource.getRelatedArtifact().get(0).getDisplay().trim(),
         is(equalTo("**Plain text display**")));
   }
+
+  @Test
+  public void testCreateMeasureBundleWithMeasureDefinitionExtension() {
+    when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure))
+        .thenReturn(measure);
+
+    when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class), any(), anyString()))
+        .thenReturn(library);
+
+    when(elmTranslatorClient.getEffectiveDataRequirements(
+            any(CqlLibraryDetails.class),
+            anyBoolean(),
+            anyString(),
+            eq(CqlCompilerException.ErrorSeverity.Error)))
+        .thenReturn(effectiveDataRequirements);
+
+    // Add measure definition extension
+    Extension measureDefExt = new Extension(UriConstants.CqfMeasures.MEASURE_DEFINITION_EXT_URI);
+    Extension innerExt1 = new Extension("key", new StringType("value"));
+    Extension innerExt2 =
+        new Extension("description", new StringType("<p><strong>Test</strong></p>"));
+    measureDefExt.addExtension(innerExt1);
+    measureDefExt.addExtension(innerExt2);
+    measure.addExtension(measureDefExt);
+
+    Bundle bundle =
+        measureBundleService.createMeasureBundle(
+            madieMeasure,
+            mock(Principal.class),
+            BundleUtil.MEASURE_BUNDLE_TYPE_CALCULATION,
+            "token",
+            CqlCompilerException.ErrorSeverity.Error);
+
+    assertThat(bundle, is(notNullValue()));
+  }
+
+  @Test
+  public void testCreateMeasureBundleWithGroupStratifiers() {
+    when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure))
+        .thenReturn(measure);
+
+    when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class), any(), anyString()))
+        .thenReturn(library);
+
+    when(elmTranslatorClient.getEffectiveDataRequirements(
+            any(CqlLibraryDetails.class),
+            anyBoolean(),
+            anyString(),
+            eq(CqlCompilerException.ErrorSeverity.Error)))
+        .thenReturn(effectiveDataRequirements);
+
+    // Add stratifiers to group
+    org.hl7.fhir.r4.model.Measure.MeasureGroupComponent group =
+        new org.hl7.fhir.r4.model.Measure.MeasureGroupComponent();
+    org.hl7.fhir.r4.model.Measure.MeasureGroupStratifierComponent stratifier =
+        new org.hl7.fhir.r4.model.Measure.MeasureGroupStratifierComponent();
+    stratifier.setDescription("<p><strong>Stratifier Description</strong></p>");
+    group.addStratifier(stratifier);
+    measure.addGroup(group);
+
+    Bundle bundle =
+        measureBundleService.createMeasureBundle(
+            madieMeasure,
+            mock(Principal.class),
+            BundleUtil.MEASURE_BUNDLE_TYPE_CALCULATION,
+            "token",
+            CqlCompilerException.ErrorSeverity.Error);
+
+    assertThat(bundle, is(notNullValue()));
+  }
+
+  @Test
+  public void testCreateMeasureBundleWithRateAggregationExtension() {
+    when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure))
+        .thenReturn(measure);
+
+    when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class), any(), anyString()))
+        .thenReturn(library);
+
+    when(elmTranslatorClient.getEffectiveDataRequirements(
+            any(CqlLibraryDetails.class),
+            anyBoolean(),
+            anyString(),
+            eq(CqlCompilerException.ErrorSeverity.Error)))
+        .thenReturn(effectiveDataRequirements);
+
+    // Add group with rate aggregation extension
+    org.hl7.fhir.r4.model.Measure.MeasureGroupComponent group =
+        new org.hl7.fhir.r4.model.Measure.MeasureGroupComponent();
+    Extension rateAggExt = new Extension(UriConstants.CqfMeasures.RATE_AGGREGATION_URI);
+    rateAggExt.setValue(new StringType("<p><strong>Rate Aggregation</strong></p>"));
+    group.addExtension(rateAggExt);
+    measure.addGroup(group);
+
+    Bundle bundle =
+        measureBundleService.createMeasureBundle(
+            madieMeasure,
+            mock(Principal.class),
+            BundleUtil.MEASURE_BUNDLE_TYPE_CALCULATION,
+            "token",
+            CqlCompilerException.ErrorSeverity.Error);
+
+    assertThat(bundle, is(notNullValue()));
+  }
+
+  @Test
+  public void testCreateMeasureBundleWithImprovementNotationExtension() {
+    when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure))
+        .thenReturn(measure);
+
+    when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class), any(), anyString()))
+        .thenReturn(library);
+
+    when(elmTranslatorClient.getEffectiveDataRequirements(
+            any(CqlLibraryDetails.class),
+            anyBoolean(),
+            anyString(),
+            eq(CqlCompilerException.ErrorSeverity.Error)))
+        .thenReturn(effectiveDataRequirements);
+
+    // Add group with improvement notation extension
+    org.hl7.fhir.r4.model.Measure.MeasureGroupComponent group =
+        new org.hl7.fhir.r4.model.Measure.MeasureGroupComponent();
+    Extension improvementExt =
+        new Extension(UriConstants.CqfMeasures.IMPROVEMENT_NOTATION_GUIDANCE_URI);
+    improvementExt.setValue(new MarkdownType("<p><strong>Improvement Notation</strong></p>"));
+    group.addExtension(improvementExt);
+    measure.addGroup(group);
+
+    Bundle bundle =
+        measureBundleService.createMeasureBundle(
+            madieMeasure,
+            mock(Principal.class),
+            BundleUtil.MEASURE_BUNDLE_TYPE_CALCULATION,
+            "token",
+            CqlCompilerException.ErrorSeverity.Error);
+
+    assertThat(bundle, is(notNullValue()));
+  }
+
+  @Test
+  public void testCreateMeasureBundleWithSupplementalData() {
+    when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure))
+        .thenReturn(measure);
+
+    when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class), any(), anyString()))
+        .thenReturn(library);
+
+    when(elmTranslatorClient.getEffectiveDataRequirements(
+            any(CqlLibraryDetails.class),
+            anyBoolean(),
+            anyString(),
+            eq(CqlCompilerException.ErrorSeverity.Error)))
+        .thenReturn(effectiveDataRequirements);
+
+    // Add supplemental data
+    org.hl7.fhir.r4.model.Measure.MeasureSupplementalDataComponent suppData =
+        new org.hl7.fhir.r4.model.Measure.MeasureSupplementalDataComponent();
+    suppData.setDescription("<p><strong>Supplemental Data Description</strong></p>");
+    measure.addSupplementalData(suppData);
+
+    Bundle bundle =
+        measureBundleService.createMeasureBundle(
+            madieMeasure,
+            mock(Principal.class),
+            BundleUtil.MEASURE_BUNDLE_TYPE_CALCULATION,
+            "token",
+            CqlCompilerException.ErrorSeverity.Error);
+
+    assertThat(bundle, is(notNullValue()));
+  }
+
+  @Test
+  public void testCreateMeasureBundleWithPopulations() {
+    when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure))
+        .thenReturn(measure);
+
+    when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class), any(), anyString()))
+        .thenReturn(library);
+
+    when(elmTranslatorClient.getEffectiveDataRequirements(
+            any(CqlLibraryDetails.class),
+            anyBoolean(),
+            anyString(),
+            eq(CqlCompilerException.ErrorSeverity.Error)))
+        .thenReturn(effectiveDataRequirements);
+
+    // Add group with populations
+    org.hl7.fhir.r4.model.Measure.MeasureGroupComponent group =
+        new org.hl7.fhir.r4.model.Measure.MeasureGroupComponent();
+    org.hl7.fhir.r4.model.Measure.MeasureGroupPopulationComponent population =
+        new org.hl7.fhir.r4.model.Measure.MeasureGroupPopulationComponent();
+    population.setDescription("<p><strong>Population Description</strong></p>");
+    group.addPopulation(population);
+    measure.addGroup(group);
+
+    Bundle bundle =
+        measureBundleService.createMeasureBundle(
+            madieMeasure,
+            mock(Principal.class),
+            BundleUtil.MEASURE_BUNDLE_TYPE_CALCULATION,
+            "token",
+            CqlCompilerException.ErrorSeverity.Error);
+
+    assertThat(bundle, is(notNullValue()));
+  }
+
+  @Test
+  public void testCreateCqlLibraryForMadieMeasure() {
+    CqlLibrary result = measureBundleService.createCqlLibraryForMadieMeasure(madieMeasure);
+
+    assertThat(result, is(notNullValue()));
+    assertThat(result.getId(), is(equalTo(madieMeasure.getCqlLibraryName())));
+    assertThat(result.getCqlLibraryName(), is(equalTo(madieMeasure.getCqlLibraryName())));
+    assertThat(result.getVersion(), is(equalTo(madieMeasure.getVersion())));
+    assertThat(result.getCql(), is(equalTo(madieMeasure.getCql())));
+  }
+
+  @Test
+  public void testGetMeasureLibraryResourceForMadieMeasure() {
+    when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class), any(), anyString()))
+        .thenReturn(library);
+
+    Library result =
+        measureBundleService.getMeasureLibraryResourceForMadieMeasure(
+            madieMeasure.getGroups().get(0).getPopulations().stream()
+                .map(p -> p.getDefinition())
+                .collect(java.util.stream.Collectors.toSet()),
+            madieMeasure,
+            "token");
+
+    assertThat(result, is(notNullValue()));
+  }
 }
