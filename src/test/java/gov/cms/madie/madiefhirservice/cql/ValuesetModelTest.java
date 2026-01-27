@@ -6,7 +6,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class ValuesetModelTest {
 
@@ -43,7 +43,7 @@ class ValuesetModelTest {
   @Test
   void testValuesetModelEqualsReturnsFalseForNull() {
     ValuesetModel valuesetModel = new ValuesetModel("Test", "1.2.3.4", "1.0", "Condition");
-    assertFalse(valuesetModel.equals(null));
+    assertNotEquals(null, valuesetModel);
   }
 
   @Test

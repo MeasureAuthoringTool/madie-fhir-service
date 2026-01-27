@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Test;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
-import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class CodeModelTest {
 
@@ -24,7 +24,7 @@ class CodeModelTest {
             .datatype("Condition")
             .build();
 
-    assertThat(codeModel, is(notNullValue()));
+    assertNotNull(codeModel);
     assertThat(codeModel.getName(), is(equalTo("Test Code")));
     assertThat(codeModel.getOid(), is(equalTo("1.2.3.4")));
     assertThat(codeModel.getCodeSystemOid(), is(equalTo("1.2.3")));
@@ -55,7 +55,7 @@ class CodeModelTest {
             .codesystemVersion("1.0")
             .build();
 
-    assertFalse(codeModel.equals(null));
+    assertNotEquals(null, codeModel);
   }
 
   @Test
