@@ -42,6 +42,6 @@ public class RichTextUtil {
         Arrays.asList(
             TablesExtension.create(), StrikethroughExtension.create(), InsExtension.create()));
     FlexmarkHtmlConverter converter = FlexmarkHtmlConverter.builder(options).build();
-    return converter.convert(text);
+    return converter.convert(text).stripTrailing();
   }
 }
