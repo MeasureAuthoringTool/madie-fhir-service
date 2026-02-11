@@ -1,6 +1,7 @@
 package gov.cms.madie.madiefhirservice.services;
 
 import ca.uhn.fhir.context.BaseRuntimeChildDefinition;
+import ca.uhn.fhir.context.BaseRuntimeElementCompositeDefinition;
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.context.RuntimeResourceDefinition;
 import ca.uhn.fhir.parser.IParser;
@@ -13,20 +14,14 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import org.apache.commons.lang3.StringUtils;
-import org.hl7.fhir.instance.model.api.IBaseBundle;
-import org.hl7.fhir.instance.model.api.IBaseOperationOutcome;
-import org.hl7.fhir.instance.model.api.IBaseResource;
+import org.hl7.fhir.instance.model.api.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Slf4j
 @Service
@@ -101,6 +96,121 @@ public class ResourceValidationService {
       }
     }
     return operationOutcome;
+  }
+
+  /**
+   * Finds resources within the given Bundle that contain invalid references. A Reference is
+   * considered invalid if it does not resolve to any other Resource within the same Bundle.
+   *
+   * @param fhirContext The FHIR context, specifies the FHIR version.
+   * @param bundleResource The Bundle to validate.
+   * @return Set of Resources with invalid references.
+   */
+  public Set<IBaseResource> findResourcesWithInvalidReferences(
+      FhirContext fhirContext, IBaseBundle bundleResource) {
+    List<IBaseResource> resources = BundleUtil.toListOfResources(fhirContext, bundleResource);
+    return findResourcesWithInvalidReferences(fhirContext, resources);
+  }
+
+  private Set<IBaseResource> findResourcesWithInvalidReferences(
+      FhirContext fhirContext, List<IBaseResource> resources) {
+    Set<IBaseResource> resourcesWithInvalidReferences = new HashSet<>();
+
+    // List of existing Ids in Bundle in the format "ResourceType/ID"
+    List<String> existingIds =
+        resources.stream()
+            .map(
+                resource ->
+                    resource.getIdElement().getResourceType()
+                        + "/"
+                        + resource.getIdElement().getIdPart())
+            .toList();
+
+    for (IBaseResource resource : resources) {
+
+      // HAPI's Runtime access to Resources
+      RuntimeResourceDefinition resourceDefinition = fhirContext.getResourceDefinition(resource);
+
+      // Loop over the children of the Resource to find Reference fields
+      for (BaseRuntimeChildDefinition child : resourceDefinition.getChildren()) {
+        child
+            .getAccessor()
+            .getValues(resource)
+            .forEach(
+                iBase -> {
+                  if (iBase instanceof IBaseReference baseReference) {
+                    if (isInvalidReferenceToBundleEntry(baseReference, existingIds)) {
+                      resourcesWithInvalidReferences.add(resource);
+                    }
+                  } else if (iBase instanceof IBaseBackboneElement backboneElement) {
+                    if (hasInvalidReferencesInBackboneToBundleEntries(
+                        fhirContext, backboneElement, existingIds)) {
+                      resourcesWithInvalidReferences.add(resource);
+                    }
+                  }
+                });
+      }
+    }
+    return resourcesWithInvalidReferences;
+  }
+
+  private boolean isInvalidReferenceToBundleEntry(
+      IBaseReference reference, List<String> existingIds) {
+    IIdType refElement = reference.getReferenceElement();
+
+    if (refElement == null || refElement.getResourceType() == null) {
+      return true; // Invalid reference
+    }
+
+    String refValue = refElement.getResourceType() + "/" + refElement.getIdPart();
+
+    if (!existingIds.contains(refValue)) {
+      log.debug("Found invalid reference to {} in Reference element", refValue);
+      return true;
+    }
+    return false; // Reference is valid
+  }
+
+  /**
+   * Recursively checks for invalid references within a backbone element and its nested backbone
+   * elements.
+   *
+   * @param fhirContext The FHIR context
+   * @param backbone The backbone element to check
+   * @param existingIds List of valid resource identifiers in format "ResourceType/Id"
+   * @return true if any invalid reference is found
+   */
+  private boolean hasInvalidReferencesInBackboneToBundleEntries(
+      FhirContext fhirContext, IBaseBackboneElement backbone, List<String> existingIds) {
+
+    // Get the definition for this backbone element
+    // Use getElementDefinition instead of getResourceDefinition
+    BaseRuntimeElementCompositeDefinition<?> backboneDef =
+        (BaseRuntimeElementCompositeDefinition<?>)
+            fhirContext.getElementDefinition(backbone.getClass());
+
+    // Iterate through all children of the backbone element
+    for (BaseRuntimeChildDefinition child : backboneDef.getChildren()) {
+      List<IBase> values = child.getAccessor().getValues(backbone);
+
+      for (IBase value : values) {
+        // Check if this is a Reference
+        if (value instanceof IBaseReference baseReference) {
+          if (isInvalidReferenceToBundleEntry(baseReference, existingIds)) {
+            return true;
+          }
+        }
+
+        // Check if this is a nested Backbone Element (recursion)
+        else if (value instanceof IBaseBackboneElement nestedBackbone) {
+          if (hasInvalidReferencesInBackboneToBundleEntries(
+              fhirContext, nestedBackbone, existingIds)) {
+            return true;
+          }
+        }
+      }
+    }
+    return false; // No invalid references found
   }
 
   public boolean isSuccessful(FhirContext fhirContext, IBaseOperationOutcome outcome) {

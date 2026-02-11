@@ -42,9 +42,10 @@
       }
     }
   }, {
-    "fullUrl": "http:\/\/local\/Patient",
+    "fullUrl": "http:\/\/local\/Patient\/1",
     "resource": {
       "resourceType": "Patient",
+      "id": "1",
       "text": {
         "status": "generated",
         "div": "<div xmlns=\"http:\/\/www.w3.org\/1999\/xhtml\">Lizzy Health<\/div>"

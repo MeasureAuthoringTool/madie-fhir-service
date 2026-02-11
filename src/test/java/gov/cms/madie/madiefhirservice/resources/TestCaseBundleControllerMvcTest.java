@@ -1,8 +1,12 @@
 package gov.cms.madie.madiefhirservice.resources;
 
 import ca.uhn.fhir.context.FhirContext;
+import ca.uhn.fhir.parser.DataFormatException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import gov.cms.madie.madiefhirservice.dto.ExecutionBundleDTO;
+import gov.cms.madie.madiefhirservice.factories.ModelAwareFhirFactory;
+import gov.cms.madie.madiefhirservice.services.ResourceValidationService;
 import gov.cms.madie.madiefhirservice.services.TestCaseBundleService;
 import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
 import gov.cms.madie.models.common.BundleType;
@@ -16,17 +20,23 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+
 import java.security.Principal;
 import java.util.*;
 
 import static java.util.Arrays.asList;
-import static org.mockito.ArgumentMatchers.any;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.anyString;
+import static org.mockito.Mockito.eq;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -39,23 +49,23 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
   private static final String TEST_CASE_ID = "62fe4466848fd80e1dd3edd0";
   private static final String TEST_CASE_ID_2 = "62fe4466848fd80e1dd3edd1";
 
-  @MockBean private TestCaseBundleService testCaseBundleService;
+  @MockitoBean private ModelAwareFhirFactory fhirModelFactory;
+  @MockitoBean private TestCaseBundleService testCaseBundleService;
+  @MockitoBean private ResourceValidationService validationService;
 
   @Autowired private MockMvc mockMvc;
 
   @Autowired private ObjectMapper mapper;
 
-  @Captor private ArgumentCaptor<List> testCaseListCaptor;
+  @Captor private ArgumentCaptor<List<TestCase>> testCaseListCaptor;
 
   private Bundle testCaseBundle;
-
-  private String madieMeasureJson;
 
   private ExportDTO dto;
 
   @BeforeEach
   public void setUp() throws JsonProcessingException {
-    madieMeasureJson = getStringFromTestResource("/measures/madie_measure.json");
+    String madieMeasureJson = getStringFromTestResource("/measures/madie_measure.json");
     String testCaseJson = getStringFromTestResource("/testCaseBundles/validTestCase.json");
     testCaseBundle = FhirContext.forR4().newJsonParser().parseResource(Bundle.class, testCaseJson);
     dto =
@@ -77,7 +87,7 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
     testCaseBundleMap.put(
         dto.getMeasure().getTestCases().get(1).getPatientId().toString(), testCaseBundle);
     when(testCaseBundleService.getTestCaseExportBundle(
-            any(Measure.class), any(List.class), any(ExportDTO.class)))
+            any(Measure.class), anyList(), any(ExportDTO.class)))
         .thenReturn(testCaseBundleMap);
     mockMvc
         .perform(
@@ -89,7 +99,7 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
                 .contentType(MediaType.APPLICATION_JSON_VALUE))
         .andExpect(status().isOk());
     verify(testCaseBundleService, times(1))
-        .getTestCaseExportBundle(any(Measure.class), any(List.class), any(ExportDTO.class));
+        .getTestCaseExportBundle(any(Measure.class), anyList(), any(ExportDTO.class));
   }
 
   @Test
@@ -104,7 +114,7 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
     testCaseBundleMap.put(
         dto.getMeasure().getTestCases().get(1).getPatientId().toString(), testCaseBundle);
     when(testCaseBundleService.getTestCaseExportBundle(
-            any(Measure.class), any(List.class), any(ExportDTO.class)))
+            any(Measure.class), anyList(), any(ExportDTO.class)))
         .thenReturn(testCaseBundleMap);
     mockMvc
         .perform(
@@ -116,7 +126,7 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
                 .contentType(MediaType.APPLICATION_JSON_VALUE))
         .andExpect(status().isOk());
     verify(testCaseBundleService, times(1))
-        .getTestCaseExportBundle(any(Measure.class), any(List.class), any(ExportDTO.class));
+        .getTestCaseExportBundle(any(Measure.class), anyList(), any(ExportDTO.class));
   }
 
   @Test
@@ -143,7 +153,7 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
     testCaseBundleMap.put(
         dto.getMeasure().getTestCases().get(1).getPatientId().toString(), testCaseBundle);
     when(testCaseBundleService.getTestCaseExportBundle(
-            any(Measure.class), any(List.class), any(ExportDTO.class)))
+            any(Measure.class), anyList(), any(ExportDTO.class)))
         .thenReturn(testCaseBundleMap);
     mockMvc
         .perform(
@@ -161,10 +171,9 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
                 .contentType(MediaType.APPLICATION_JSON_VALUE))
         .andExpect(status().isPartialContent());
     verify(testCaseBundleService, times(1))
-        .getTestCaseExportBundle(any(Measure.class), any(List.class), any(ExportDTO.class));
+        .getTestCaseExportBundle(any(Measure.class), anyList(), any(ExportDTO.class));
     verify(testCaseBundleService, times(1))
-        .zipTestCaseContents(
-            any(Measure.class), any(Map.class), any(List.class), testCaseListCaptor.capture());
+        .zipTestCaseContents(any(Measure.class), anyMap(), anyList(), testCaseListCaptor.capture());
   }
 
   @Test
@@ -180,7 +189,7 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
     testCaseBundleMap.put(
         dto.getMeasure().getTestCases().get(1).getPatientId().toString(), testCaseBundle);
     when(testCaseBundleService.getTestCaseExportBundle(
-            any(Measure.class), any(List.class), any(ExportDTO.class)))
+            any(Measure.class), anyList(), any(ExportDTO.class)))
         .thenReturn(testCaseBundleMap);
     mockMvc
         .perform(
@@ -192,7 +201,7 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
                 .contentType(MediaType.APPLICATION_JSON_VALUE))
         .andExpect(status().isOk());
     verify(testCaseBundleService, times(1))
-        .getTestCaseExportBundle(any(Measure.class), any(List.class), any(ExportDTO.class));
+        .getTestCaseExportBundle(any(Measure.class), anyList(), any(ExportDTO.class));
   }
 
   @Test
@@ -238,7 +247,7 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
     testCaseBundleMap.put(
         dto.getMeasure().getTestCases().get(0).getPatientId().toString(), testCaseBundle);
     when(testCaseBundleService.getTestCaseExportBundle(
-            any(Measure.class), any(List.class), any(ExportDTO.class)))
+            any(Measure.class), anyList(), any(ExportDTO.class)))
         .thenReturn(testCaseBundleMap);
     mockMvc
         .perform(
@@ -250,6 +259,164 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
                 .contentType(MediaType.APPLICATION_JSON_VALUE))
         .andExpect(status().is(206));
     verify(testCaseBundleService, times(1))
-        .getTestCaseExportBundle(any(Measure.class), any(List.class), any(ExportDTO.class));
+        .getTestCaseExportBundle(any(Measure.class), anyList(), any(ExportDTO.class));
+  }
+
+  @Test
+  void testReferencesInBundleValidation() throws Exception {
+    Principal principal = mock(Principal.class);
+    when(principal.getName()).thenReturn(TEST_USER_ID);
+
+    // Arrange
+    String testCaseJson = getStringFromTestResource("/testCaseBundles/validTestCase.json");
+    List<TestCase> testCases =
+        List.of(
+            TestCase.builder()
+                .id("test-case-valid-refs")
+                .patientId(UUID.randomUUID())
+                .title("Test Case with Valid References")
+                .series("HAPPY_PATH")
+                .json(testCaseJson)
+                .build());
+
+    // Mock the factory to return our test bundle
+    when(fhirModelFactory.parseForModel(any(), eq(testCaseJson))).thenReturn(new Bundle());
+    when(fhirModelFactory.getJsonParserForModel(any()))
+        .thenReturn(FhirContext.forR4().newJsonParser());
+    when(fhirModelFactory.getContextForModel(any())).thenReturn(FhirContext.forR4());
+
+    // Mock the validation service to indicate no invalid references
+    when(validationService.findResourcesWithInvalidReferences(
+            any(FhirContext.class), any(Bundle.class)))
+        .thenReturn(new HashSet<>()); // No invalid references
+
+    // Act
+    mockMvc
+        .perform(
+            MockMvcRequestBuilders.post("/fhir/test-cases/qicore/4.1.1/execution-bundles")
+                .with(user(TEST_USER_ID))
+                .with(csrf())
+                .header(HttpHeaders.AUTHORIZATION, "test-okta")
+                .content(mapper.writeValueAsString(testCases))
+                .contentType(MediaType.APPLICATION_JSON_VALUE))
+        .andDo(
+            (result) -> assertThat(result.getResponse().getContentAsString(), is(notNullValue())))
+        .andExpect(status().isOk());
+
+    // Assert
+    verify(fhirModelFactory, times(1)).parseForModel(any(), anyString());
+    verify(validationService, times(1))
+        .findResourcesWithInvalidReferences(any(FhirContext.class), any(Bundle.class));
+  }
+
+  @Test
+  void testExecutionBundleReturnsModifiedBundles() throws Exception {
+    Principal principal = mock(Principal.class);
+    when(principal.getName()).thenReturn(TEST_USER_ID);
+
+    // Arrange
+    String testCaseJson =
+        getStringFromTestResource("/testCaseBundles/validTestCase.json")
+            .replace("Patient\\/1", "Patient\\/nope");
+    Bundle bundle = FhirContext.forR4().newJsonParser().parseResource(Bundle.class, testCaseJson);
+    List<TestCase> testCases =
+        List.of(
+            TestCase.builder()
+                .id("test-case-valid-refs")
+                .patientId(UUID.randomUUID())
+                .title("Test Case with Valid References")
+                .series("HAPPY_PATH")
+                .json(testCaseJson)
+                .build());
+
+    // Mock the factory to return our test bundle
+    when(fhirModelFactory.parseForModel(any(), anyString())).thenReturn(bundle);
+    when(fhirModelFactory.getJsonParserForModel(any()))
+        .thenReturn(FhirContext.forR4().newJsonParser());
+    when(fhirModelFactory.getContextForModel(any())).thenReturn(FhirContext.forR4());
+
+    // Mock the validation service to indicate no invalid references
+    when(validationService.findResourcesWithInvalidReferences(
+            any(FhirContext.class), any(Bundle.class)))
+        .thenReturn(
+            Set.of(bundle.getEntry().get(0).getResource())); // First entry has invalid reference
+
+    // Act
+    mockMvc
+        .perform(
+            MockMvcRequestBuilders.post("/fhir/test-cases/qicore/4.1.1/execution-bundles")
+                .with(user(TEST_USER_ID))
+                .with(csrf())
+                .header(HttpHeaders.AUTHORIZATION, "test-okta")
+                .content(mapper.writeValueAsString(testCases))
+                .contentType(MediaType.APPLICATION_JSON_VALUE))
+        .andDo(
+            (result) -> {
+              String responseContent = result.getResponse().getContentAsString();
+              assertThat(responseContent, is(notNullValue()));
+              List<ExecutionBundleDTO> executionBundles =
+                  asList(mapper.readValue(responseContent, ExecutionBundleDTO[].class));
+              assertThat(executionBundles.size(), is(1));
+              ExecutionBundleDTO executionBundleDTO = executionBundles.get(0);
+              assertThat(executionBundleDTO.getTestCaseId(), is("test-case-valid-refs"));
+              Bundle returnedBundle =
+                  FhirContext.forR4()
+                      .newJsonParser()
+                      .parseResource(Bundle.class, executionBundleDTO.getBundle());
+              assertThat(
+                  returnedBundle.getEntry().size(), is(testCaseBundle.getEntry().size() - 1));
+            })
+        .andExpect(status().isOk());
+
+    // Assert
+    verify(fhirModelFactory, times(1)).parseForModel(any(), anyString());
+    verify(validationService, times(1))
+        .findResourcesWithInvalidReferences(any(FhirContext.class), any(Bundle.class));
+  }
+
+  @Test
+  void testExecutionBundleThrowsOnEmptyJson() throws Exception {
+    Principal principal = mock(Principal.class);
+    when(principal.getName()).thenReturn(TEST_USER_ID);
+
+    // Arrange
+    List<TestCase> testCases =
+        List.of(
+            TestCase.builder()
+                .id("test-case-valid-refs")
+                .patientId(UUID.randomUUID())
+                .title("Test Case with Valid References")
+                .series("ERROR_PATH")
+                .json("{}")
+                .build());
+
+    // Mock the factory to return our test bundle
+    when(fhirModelFactory.parseForModel(any(), anyString())).thenThrow(new DataFormatException());
+    when(fhirModelFactory.getJsonParserForModel(any()))
+        .thenReturn(FhirContext.forR4().newJsonParser());
+    when(fhirModelFactory.getContextForModel(any())).thenReturn(FhirContext.forR4());
+
+    // Mock the validation service to indicate no invalid references
+    when(validationService.findResourcesWithInvalidReferences(
+            any(FhirContext.class), any(Bundle.class)))
+        .thenReturn(new HashSet<>()); // No invalid references
+
+    // Act
+    mockMvc
+        .perform(
+            MockMvcRequestBuilders.post("/fhir/test-cases/qicore/4.1.1/execution-bundles")
+                .with(user(TEST_USER_ID))
+                .with(csrf())
+                .header(HttpHeaders.AUTHORIZATION, "test-okta")
+                .content(mapper.writeValueAsString(testCases))
+                .contentType(MediaType.APPLICATION_JSON_VALUE))
+        .andDo(
+            (result) -> assertThat(result.getResponse().getContentAsString(), is(notNullValue())))
+        .andExpect(status().isBadRequest());
+
+    // Assert
+    verify(fhirModelFactory, times(1)).parseForModel(any(), anyString());
+    verify(validationService, times(0))
+        .findResourcesWithInvalidReferences(any(FhirContext.class), any(Bundle.class));
   }
 }

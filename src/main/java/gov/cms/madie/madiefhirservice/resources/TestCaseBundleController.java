@@ -1,41 +1,49 @@
 package gov.cms.madie.madiefhirservice.resources;
 
-import java.security.Principal;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
-
-import org.hl7.fhir.r4.model.Bundle;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import ca.uhn.fhir.context.FhirContext;
+import ca.uhn.fhir.parser.DataFormatException;
+import ca.uhn.fhir.parser.IParser;
+import gov.cms.madie.madiefhirservice.dto.ExecutionBundleDTO;
+import gov.cms.madie.madiefhirservice.exceptions.BundleOperationException;
 import gov.cms.madie.madiefhirservice.exceptions.ResourceNotFoundException;
+import gov.cms.madie.madiefhirservice.factories.ModelAwareFhirFactory;
+import gov.cms.madie.madiefhirservice.services.ResourceValidationService;
 import gov.cms.madie.madiefhirservice.services.TestCaseBundleService;
 import gov.cms.madie.madiefhirservice.utils.ExportFileNamesUtil;
+import gov.cms.madie.models.common.ModelType;
 import gov.cms.madie.models.dto.ExportDTO;
 import gov.cms.madie.models.measure.Measure;
 import gov.cms.madie.models.measure.TestCase;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.hl7.fhir.instance.model.api.IBaseBundle;
+import org.hl7.fhir.instance.model.api.IBaseResource;
+import org.hl7.fhir.r4.model.Bundle;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
+import java.util.*;
+import java.util.stream.Collectors;
+
+import static gov.cms.madie.madiefhirservice.utils.ModelEndpointMap.QICORE_VERSION_MODELTYPE_MAP;
 
 @Slf4j
 @RestController
 @RequestMapping(path = "/fhir/test-cases")
 @Tag(
     name = "TestCase-Bundle-Controller",
-    description = "API for generating test case bundle for export")
-@RequiredArgsConstructor
+    description = "API for generating test case bundle for export and execution")
+@AllArgsConstructor
 public class TestCaseBundleController {
 
   private final TestCaseBundleService testCaseBundleService;
+  private final ModelAwareFhirFactory fhirModelFactory;
+  private final ResourceValidationService validationService;
 
   @PutMapping("/export-all")
   public ResponseEntity<byte[]> getTestCaseExportBundle(
@@ -109,5 +117,59 @@ public class TestCaseBundleController {
             .filter(testCase -> !exportablePatientIds.contains(testCase.getPatientId().toString()))
             .collect(Collectors.toList());
     return missingTestCases;
+  }
+
+  @PostMapping(
+      path = "/qicore/{model}/execution-bundles",
+      consumes = MediaType.APPLICATION_JSON_VALUE,
+      produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<List<ExecutionBundleDTO>> getTestCaseExecutionBundle(
+      @PathVariable("model") String modelVersion,
+      @RequestBody List<TestCase> testCases,
+      HttpEntity<String> request) {
+    final ModelType modelType = QICORE_VERSION_MODELTYPE_MAP.get(modelVersion);
+    IParser parser = fhirModelFactory.getJsonParserForModel(modelType);
+    FhirContext fhirContext = fhirModelFactory.getContextForModel(modelType);
+
+    List<ExecutionBundleDTO> executionBundles = new ArrayList<>();
+    for (TestCase testCase : testCases) {
+      IBaseBundle bundle;
+      try {
+        bundle = fhirModelFactory.parseForModel(modelType, testCase.getJson());
+      } catch (DataFormatException | ClassCastException ex) {
+        throw new BundleOperationException("Test Case", testCase.getId(), ex);
+      }
+
+      // only operate on bundles
+      if (!"BUNDLE".equalsIgnoreCase(bundle.fhirType())) {
+        throw new BundleOperationException(
+            "Test Case",
+            testCase.getId(),
+            new IllegalArgumentException("Resource must have resourceType of 'Bundle'"));
+      }
+
+      // find any resources with invalid references.
+      Set<IBaseResource> resourcesWithInvalidReferences =
+          validationService.findResourcesWithInvalidReferences(fhirContext, bundle);
+      List<Bundle.BundleEntryComponent> validResources =
+          ((Bundle) bundle)
+              .getEntry().stream()
+                  .filter(entry -> !resourcesWithInvalidReferences.contains(entry.getResource()))
+                  .toList();
+
+      // if there are invalid references, create a new bundle with only the valid resources.
+      if (validResources.size() != ((Bundle) bundle).getEntry().size()) {
+        ExecutionBundleDTO executionBundleDTO =
+            ExecutionBundleDTO.builder()
+                .bundle(
+                    parser.encodeResourceToString(
+                        ((Bundle) bundle).copy().setEntry(validResources)))
+                .testCaseId(testCase.getId())
+                .build();
+        executionBundles.add(executionBundleDTO);
+      }
+    }
+    // return modified bundles with their test case IDs.
+    return ResponseEntity.ok(executionBundles);
   }
 }
