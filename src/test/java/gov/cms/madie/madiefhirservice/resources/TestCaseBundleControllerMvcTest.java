@@ -4,7 +4,7 @@ import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.parser.DataFormatException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import gov.cms.madie.madiefhirservice.dto.ExecutionBundleDTO;
+import gov.cms.madie.madiefhirservice.dto.TestCaseExecutionBundlesDTO;
 import gov.cms.madie.madiefhirservice.factories.ModelAwareFhirFactory;
 import gov.cms.madie.madiefhirservice.services.ResourceValidationService;
 import gov.cms.madie.madiefhirservice.services.TestCaseBundleService;
@@ -33,6 +33,8 @@ import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.anyString;
@@ -239,7 +241,7 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
   }
 
   @Test
-  void getTestCaseExportAllReturnParialContent() throws Exception {
+  void getTestCaseExportAllReturnPartialContent() throws Exception {
     Principal principal = mock(Principal.class);
     when(principal.getName()).thenReturn(TEST_USER_ID);
 
@@ -300,7 +302,31 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
                 .content(mapper.writeValueAsString(testCases))
                 .contentType(MediaType.APPLICATION_JSON_VALUE))
         .andDo(
-            (result) -> assertThat(result.getResponse().getContentAsString(), is(notNullValue())))
+            (result) -> {
+              String responseContent = result.getResponse().getContentAsString();
+              assertThat(responseContent, is(notNullValue()));
+              TestCaseExecutionBundlesDTO dto =
+                  mapper.readValue(responseContent, TestCaseExecutionBundlesDTO.class);
+              assertThat(dto.getTestCases().size(), is(testCases.size()));
+              assertThat(dto.getModifiedTestCaseIds().size(), is(0));
+              Bundle returnedBundle =
+                  FhirContext.forR4()
+                      .newJsonParser()
+                      .parseResource(Bundle.class, dto.getTestCases().get(0).getJson());
+              assertThat(returnedBundle.getEntry().size(), is(testCaseBundle.getEntry().size()));
+              assertTrue(
+                  returnedBundle
+                      .getEntry()
+                      .get(0)
+                      .getResource()
+                      .equalsDeep(testCaseBundle.getEntry().get(0).getResource()));
+              assertTrue(
+                  returnedBundle
+                      .getEntry()
+                      .get(1)
+                      .getResource()
+                      .equalsDeep(testCaseBundle.getEntry().get(1).getResource()));
+            })
         .andExpect(status().isOk());
 
     // Assert
@@ -315,12 +341,24 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
     when(principal.getName()).thenReturn(TEST_USER_ID);
 
     // Arrange
-    String testCaseJson =
-        getStringFromTestResource("/testCaseBundles/validTestCase.json")
-            .replace("Patient\\/1", "Patient\\/nope");
+    String testCaseJson = getStringFromTestResource("/testCaseBundles/validTestCase.json");
+    String testCaseJsonWithInvalidReference = testCaseJson.replace("Patient\\/1", "Patient\\/nope");
+
+    Bundle bundleWithInvalidReference =
+        FhirContext.forR4()
+            .newJsonParser()
+            .parseResource(Bundle.class, testCaseJsonWithInvalidReference);
     Bundle bundle = FhirContext.forR4().newJsonParser().parseResource(Bundle.class, testCaseJson);
+
     List<TestCase> testCases =
         List.of(
+            TestCase.builder()
+                .id("test-case-invalid-refs")
+                .patientId(UUID.randomUUID())
+                .title("Test Case with Invalid References")
+                .series("HAPPY_PATH")
+                .json(testCaseJsonWithInvalidReference)
+                .build(),
             TestCase.builder()
                 .id("test-case-valid-refs")
                 .patientId(UUID.randomUUID())
@@ -330,16 +368,23 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
                 .build());
 
     // Mock the factory to return our test bundle
-    when(fhirModelFactory.parseForModel(any(), anyString())).thenReturn(bundle);
+    when(fhirModelFactory.parseForModel(any(), eq(testCaseJson))).thenReturn(bundle);
+    when(fhirModelFactory.parseForModel(any(), eq(testCaseJsonWithInvalidReference)))
+        .thenReturn(bundleWithInvalidReference);
     when(fhirModelFactory.getJsonParserForModel(any()))
         .thenReturn(FhirContext.forR4().newJsonParser());
     when(fhirModelFactory.getContextForModel(any())).thenReturn(FhirContext.forR4());
 
-    // Mock the validation service to indicate no invalid references
+    when(validationService.findResourcesWithInvalidReferences(any(FhirContext.class), eq(bundle)))
+        .thenReturn(new HashSet<>());
     when(validationService.findResourcesWithInvalidReferences(
-            any(FhirContext.class), any(Bundle.class)))
+            any(FhirContext.class), eq(bundleWithInvalidReference)))
         .thenReturn(
-            Set.of(bundle.getEntry().get(0).getResource())); // First entry has invalid reference
+            Set.of(
+                bundleWithInvalidReference
+                    .getEntry()
+                    .get(0)
+                    .getResource())); // First entry has invalid reference
 
     // Act
     mockMvc
@@ -354,23 +399,43 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
             (result) -> {
               String responseContent = result.getResponse().getContentAsString();
               assertThat(responseContent, is(notNullValue()));
-              List<ExecutionBundleDTO> executionBundles =
-                  asList(mapper.readValue(responseContent, ExecutionBundleDTO[].class));
-              assertThat(executionBundles.size(), is(1));
-              ExecutionBundleDTO executionBundleDTO = executionBundles.get(0);
-              assertThat(executionBundleDTO.getTestCaseId(), is("test-case-valid-refs"));
+              TestCaseExecutionBundlesDTO dto =
+                  mapper.readValue(responseContent, TestCaseExecutionBundlesDTO.class);
+              assertThat(dto.getTestCases().size(), is(testCases.size()));
+              assertThat(dto.getModifiedTestCaseIds().size(), is(1));
+              assertThat(dto.getModifiedTestCaseIds().get(0), is("test-case-invalid-refs"));
+              assertFalse(dto.getModifiedTestCaseIds().contains("test-case-valid-refs"));
+              Bundle returnedModifiedBundle =
+                  FhirContext.forR4()
+                      .newJsonParser()
+                      .parseResource(Bundle.class, dto.getTestCases().get(0).getJson());
+              assertThat(
+                  returnedModifiedBundle.getEntry().size(),
+                  is(bundleWithInvalidReference.getEntry().size() - 1));
+              assertTrue(
+                  returnedModifiedBundle
+                      .getEntry()
+                      .get(0)
+                      .getResource()
+                      .equalsDeep(bundleWithInvalidReference.getEntry().get(1).getResource()));
+
               Bundle returnedBundle =
                   FhirContext.forR4()
                       .newJsonParser()
-                      .parseResource(Bundle.class, executionBundleDTO.getBundle());
-              assertThat(
-                  returnedBundle.getEntry().size(), is(testCaseBundle.getEntry().size() - 1));
+                      .parseResource(Bundle.class, dto.getTestCases().get(1).getJson());
+              assertThat(returnedBundle.getEntry().size(), is(bundle.getEntry().size()));
+              assertTrue(
+                  returnedBundle
+                      .getEntry()
+                      .get(0)
+                      .getResource()
+                      .equalsDeep(bundle.getEntry().get(0).getResource()));
             })
         .andExpect(status().isOk());
 
     // Assert
-    verify(fhirModelFactory, times(1)).parseForModel(any(), anyString());
-    verify(validationService, times(1))
+    verify(fhirModelFactory, times(2)).parseForModel(any(), anyString());
+    verify(validationService, times(2))
         .findResourcesWithInvalidReferences(any(FhirContext.class), any(Bundle.class));
   }
 

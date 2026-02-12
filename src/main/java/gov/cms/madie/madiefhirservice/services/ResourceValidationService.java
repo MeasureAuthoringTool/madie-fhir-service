@@ -138,15 +138,13 @@ public class ResourceValidationService {
             .getValues(resource)
             .forEach(
                 iBase -> {
-                  if (iBase instanceof IBaseReference baseReference) {
-                    if (isInvalidReferenceToBundleEntry(baseReference, existingIds)) {
-                      resourcesWithInvalidReferences.add(resource);
-                    }
-                  } else if (iBase instanceof IBaseBackboneElement backboneElement) {
-                    if (hasInvalidReferencesInBackboneToBundleEntries(
-                        fhirContext, backboneElement, existingIds)) {
-                      resourcesWithInvalidReferences.add(resource);
-                    }
+                  if (iBase instanceof IBaseReference baseReference
+                      && isInvalidReferenceToBundleEntry(baseReference, existingIds)) {
+                    resourcesWithInvalidReferences.add(resource);
+                  } else if (iBase instanceof IBaseBackboneElement backboneElement
+                      && hasInvalidReferencesInBackboneToBundleEntries(
+                          fhirContext, backboneElement, existingIds)) {
+                    resourcesWithInvalidReferences.add(resource);
                   }
                 });
       }
@@ -195,18 +193,14 @@ public class ResourceValidationService {
 
       for (IBase value : values) {
         // Check if this is a Reference
-        if (value instanceof IBaseReference baseReference) {
-          if (isInvalidReferenceToBundleEntry(baseReference, existingIds)) {
-            return true;
-          }
-        }
-
-        // Check if this is a nested Backbone Element (recursion)
-        else if (value instanceof IBaseBackboneElement nestedBackbone) {
-          if (hasInvalidReferencesInBackboneToBundleEntries(
-              fhirContext, nestedBackbone, existingIds)) {
-            return true;
-          }
+        if (value instanceof IBaseReference baseReference
+            && isInvalidReferenceToBundleEntry(baseReference, existingIds)) {
+          return true;
+          // Check if this is a nested Backbone Element (recursion)
+        } else if (value instanceof IBaseBackboneElement nestedBackbone
+            && hasInvalidReferencesInBackboneToBundleEntries(
+                fhirContext, nestedBackbone, existingIds)) {
+          return true;
         }
       }
     }

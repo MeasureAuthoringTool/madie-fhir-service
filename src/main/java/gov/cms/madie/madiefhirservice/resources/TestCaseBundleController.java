@@ -3,7 +3,7 @@ package gov.cms.madie.madiefhirservice.resources;
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.parser.DataFormatException;
 import ca.uhn.fhir.parser.IParser;
-import gov.cms.madie.madiefhirservice.dto.ExecutionBundleDTO;
+import gov.cms.madie.madiefhirservice.dto.TestCaseExecutionBundlesDTO;
 import gov.cms.madie.madiefhirservice.exceptions.BundleOperationException;
 import gov.cms.madie.madiefhirservice.exceptions.ResourceNotFoundException;
 import gov.cms.madie.madiefhirservice.factories.ModelAwareFhirFactory;
@@ -20,6 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.hl7.fhir.instance.model.api.IBaseBundle;
 import org.hl7.fhir.instance.model.api.IBaseResource;
 import org.hl7.fhir.r4.model.Bundle;
+import org.jspecify.annotations.NonNull;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -123,7 +124,7 @@ public class TestCaseBundleController {
       path = "/qicore/{model}/execution-bundles",
       consumes = MediaType.APPLICATION_JSON_VALUE,
       produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<List<ExecutionBundleDTO>> getTestCaseExecutionBundle(
+  public ResponseEntity<TestCaseExecutionBundlesDTO> getTestCaseExecutionBundle(
       @PathVariable("model") String modelVersion,
       @RequestBody List<TestCase> testCases,
       HttpEntity<String> request) {
@@ -131,45 +132,52 @@ public class TestCaseBundleController {
     IParser parser = fhirModelFactory.getJsonParserForModel(modelType);
     FhirContext fhirContext = fhirModelFactory.getContextForModel(modelType);
 
-    List<ExecutionBundleDTO> executionBundles = new ArrayList<>();
+    List<String> modifiedTestCaseIds = new ArrayList<>();
     for (TestCase testCase : testCases) {
-      IBaseBundle bundle;
-      try {
-        bundle = fhirModelFactory.parseForModel(modelType, testCase.getJson());
-      } catch (DataFormatException | ClassCastException ex) {
-        throw new BundleOperationException("Test Case", testCase.getId(), ex);
-      }
-
-      // only operate on bundles
-      if (!"BUNDLE".equalsIgnoreCase(bundle.fhirType())) {
-        throw new BundleOperationException(
-            "Test Case",
-            testCase.getId(),
-            new IllegalArgumentException("Resource must have resourceType of 'Bundle'"));
-      }
+      IBaseBundle bundle = parseBundleFromTestCase(testCase, modelType);
 
       // find any resources with invalid references.
       Set<IBaseResource> resourcesWithInvalidReferences =
           validationService.findResourcesWithInvalidReferences(fhirContext, bundle);
+      // create list of valid resources.
       List<Bundle.BundleEntryComponent> validResources =
           ((Bundle) bundle)
               .getEntry().stream()
                   .filter(entry -> !resourcesWithInvalidReferences.contains(entry.getResource()))
                   .toList();
 
-      // if there are invalid references, create a new bundle with only the valid resources.
       if (validResources.size() != ((Bundle) bundle).getEntry().size()) {
-        ExecutionBundleDTO executionBundleDTO =
-            ExecutionBundleDTO.builder()
-                .bundle(
-                    parser.encodeResourceToString(
-                        ((Bundle) bundle).copy().setEntry(validResources)))
-                .testCaseId(testCase.getId())
-                .build();
-        executionBundles.add(executionBundleDTO);
+        Bundle modifiedBundle = ((Bundle) bundle).copy().setEntry(validResources);
+        try {
+          testCase.setJson(parser.encodeResourceToString(modifiedBundle));
+          modifiedTestCaseIds.add(testCase.getId());
+        } catch (DataFormatException ex) {
+          testCase.setJson(testCase.getJson());
+        }
       }
     }
-    // return modified bundles with their test case IDs.
-    return ResponseEntity.ok(executionBundles);
+    return ResponseEntity.ok(
+        TestCaseExecutionBundlesDTO.builder()
+            .testCases(testCases)
+            .modifiedTestCaseIds(modifiedTestCaseIds)
+            .build());
+  }
+
+  private @NonNull IBaseBundle parseBundleFromTestCase(TestCase testCase, ModelType modelType) {
+    IBaseBundle bundle;
+    try {
+      bundle = fhirModelFactory.parseForModel(modelType, testCase.getJson());
+    } catch (DataFormatException | ClassCastException ex) {
+      throw new BundleOperationException("Test Case", testCase.getId(), ex);
+    }
+
+    // only operate on bundles
+    if (!"BUNDLE".equalsIgnoreCase(bundle.fhirType())) {
+      throw new BundleOperationException(
+          "Test Case",
+          testCase.getId(),
+          new IllegalArgumentException("Resource must have resourceType of 'Bundle'"));
+    }
+    return bundle;
   }
 }
