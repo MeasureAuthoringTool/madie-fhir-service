@@ -6,6 +6,7 @@ import ca.uhn.fhir.parser.IParser;
 import gov.cms.madie.madiefhirservice.dto.TestCaseExecutionBundlesDTO;
 import gov.cms.madie.madiefhirservice.exceptions.BundleOperationException;
 import gov.cms.madie.madiefhirservice.exceptions.ResourceNotFoundException;
+import gov.cms.madie.madiefhirservice.exceptions.UnsupportedTypeException;
 import gov.cms.madie.madiefhirservice.factories.ModelAwareFhirFactory;
 import gov.cms.madie.madiefhirservice.services.ResourceValidationService;
 import gov.cms.madie.madiefhirservice.services.TestCaseBundleService;
@@ -173,16 +174,8 @@ public class TestCaseBundleController {
     IBaseBundle bundle;
     try {
       bundle = fhirModelFactory.parseForModel(modelType, testCase.getJson());
-    } catch (DataFormatException | ClassCastException ex) {
+    } catch (DataFormatException | UnsupportedTypeException ex) {
       throw new BundleOperationException("Test Case", testCase.getId(), ex);
-    }
-
-    // only operate on bundles
-    if (!"BUNDLE".equalsIgnoreCase(bundle.fhirType())) {
-      throw new BundleOperationException(
-          "Test Case",
-          testCase.getId(),
-          new IllegalArgumentException("Resource must have resourceType of 'Bundle'"));
     }
     return bundle;
   }
