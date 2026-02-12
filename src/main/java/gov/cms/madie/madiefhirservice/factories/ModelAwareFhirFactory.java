@@ -62,7 +62,7 @@ public class ModelAwareFhirFactory {
    * @param bundleString
    * @return
    * @throws DataFormatException
-   * @throws ClassCastException
+   * @throws UnsupportedTypeException
    */
   public IBaseBundle parseForModel(ModelType modelType, String bundleString) {
     IParser parser = this.getJsonParserForModel(modelType);

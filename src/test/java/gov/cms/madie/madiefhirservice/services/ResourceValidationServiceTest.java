@@ -6,11 +6,13 @@ import ca.uhn.fhir.util.OperationOutcomeUtil;
 import gov.cms.madie.madiefhirservice.constants.UriConstants;
 import org.hl7.fhir.instance.model.api.IBaseBundle;
 import org.hl7.fhir.instance.model.api.IBaseOperationOutcome;
+import org.hl7.fhir.instance.model.api.IBaseResource;
 import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.Encounter;
 import org.hl7.fhir.r4.model.OperationOutcome;
 import org.hl7.fhir.r4.model.Patient;
 import org.hl7.fhir.r4.model.Procedure;
+import org.hl7.fhir.r4.model.Reference;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -21,12 +23,13 @@ import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
+import java.util.Set;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 
 @ExtendWith(MockitoExtension.class)
@@ -34,6 +37,9 @@ class ResourceValidationServiceTest {
 
   @Spy static FhirContext fhirContext;
   @Spy static FhirContext r5FhirContext;
+  private static Bundle bundleWithValidResources;
+  private static Bundle bundleWithInvalidResources;
+  private static Bundle bundleWithInvalidNestedResources;
 
   @InjectMocks ResourceValidationService validationService;
 
@@ -41,6 +47,42 @@ class ResourceValidationServiceTest {
   public static void setup() {
     fhirContext = FhirContext.forR4();
     r5FhirContext = FhirContext.forR5();
+
+    // Arrange
+    bundleWithValidResources = new Bundle();
+    bundleWithValidResources.setId("test-bundle");
+    bundleWithValidResources.setType(Bundle.BundleType.COLLECTION);
+
+    Patient patient = new Patient();
+    patient.setId("Patient/pat-1");
+    patient
+        .getMeta()
+        .addProfile("http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient");
+    bundleWithValidResources.addEntry().setResource(patient);
+
+    Procedure procedure = new Procedure();
+    procedure.setId("Procedure/proc-1");
+    procedure
+        .getMeta()
+        .addProfile("http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedure");
+    procedure.setStatus(Procedure.ProcedureStatus.COMPLETED);
+    procedure.setSubject(new Reference("Patient/pat-1"));
+    Procedure.ProcedurePerformerComponent performer = new Procedure.ProcedurePerformerComponent();
+    performer.setActor(new Reference("Patient/pat-1"));
+    procedure.addPerformer(performer);
+    bundleWithValidResources.addEntry().setResource(procedure);
+
+    // Duplicate Bundle and mutate Resource to have invalid Reference
+    bundleWithInvalidResources = bundleWithValidResources.copy();
+    bundleWithInvalidResources
+        .addEntry()
+        .setResource(procedure.copy().setSubject(new Reference("Patient/different-patient")));
+
+    // Duplicate Bundle and mutate Resource to have invalid nested Reference
+    bundleWithInvalidNestedResources = bundleWithValidResources.copy();
+    ((Procedure) bundleWithInvalidNestedResources.getEntry().get(1).getResource())
+        .setPerformer(
+            List.of(performer.copy().setActor(new Reference("Practitioner/non-existent"))));
   }
 
   @Test
@@ -219,7 +261,7 @@ class ResourceValidationServiceTest {
           (OperationOutcome) validationService.validateBundleResourcesIdValid(fhirContext, bundle);
       assertThat(output, is(notNullValue()));
       assertThat(output.hasIssue(), is(true));
-      assertEquals(output.getIssueFirstRep().getDiagnostics(), "All resources must have an Id");
+      assertThat(output.getIssueFirstRep().getDiagnostics(), is("All resources must have an Id"));
     }
   }
 
@@ -481,5 +523,48 @@ class ResourceValidationServiceTest {
     assertThat(
         ((org.hl7.fhir.r5.model.OperationOutcome) output).getIssue().get(3).getDiagnostics(),
         is(equalTo("test-error2")));
+  }
+
+  @Test
+  void testFindResourcesWithInvalidReferences() {
+    // Act
+    List<IBaseResource> invalidResources =
+        validationService
+            .findResourcesWithInvalidReferences(fhirContext, bundleWithInvalidResources)
+            .stream()
+            .toList();
+
+    // Assert
+    assertThat(invalidResources.size(), is(equalTo(1)));
+    assertThat(invalidResources.get(0).getIdElement().toString(), is(equalTo("Procedure/proc-1")));
+  }
+
+  @Test
+  void testValidateReferenceInBackboneElementValid() {
+    // Act
+    List<IBaseResource> invalidResources =
+        validationService
+            .findResourcesWithInvalidReferences(fhirContext, bundleWithInvalidNestedResources)
+            .stream()
+            .toList();
+
+    // Assert
+    assertThat(invalidResources.size(), is(equalTo(1)));
+    assertThat(invalidResources.get(0).getIdElement().toString(), is(equalTo("Procedure/proc-1")));
+  }
+
+  @Test
+  void testValidateBundleWithNoEntries() {
+    // Arrange
+    Bundle bundle = new Bundle();
+    bundle.setId("empty-bundle");
+    bundle.setType(Bundle.BundleType.COLLECTION);
+
+    // Act
+    Set<IBaseResource> invalidResources =
+        validationService.findResourcesWithInvalidReferences(fhirContext, bundle);
+
+    // Assert
+    assertTrue(invalidResources.isEmpty());
   }
 }
