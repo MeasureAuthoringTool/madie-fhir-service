@@ -2,6 +2,7 @@ package gov.cms.madie.madiefhirservice.resources;
 
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.parser.DataFormatException;
+import ca.uhn.fhir.parser.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import gov.cms.madie.madiefhirservice.dto.TestCaseExecutionBundlesDTO;
@@ -18,6 +19,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.HttpHeaders;
@@ -55,11 +57,15 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
   @MockitoBean private TestCaseBundleService testCaseBundleService;
   @MockitoBean private ResourceValidationService validationService;
 
+  @Mock JsonParser parser;
+
   @Autowired private MockMvc mockMvc;
 
   @Autowired private ObjectMapper mapper;
 
   @Captor private ArgumentCaptor<List<TestCase>> testCaseListCaptor;
+
+  private String testCaseJson;
 
   private Bundle testCaseBundle;
 
@@ -68,7 +74,7 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
   @BeforeEach
   public void setUp() throws JsonProcessingException {
     String madieMeasureJson = getStringFromTestResource("/measures/madie_measure.json");
-    String testCaseJson = getStringFromTestResource("/testCaseBundles/validTestCase.json");
+    testCaseJson = getStringFromTestResource("/testCaseBundles/validTestCase.json");
     testCaseBundle = FhirContext.forR4().newJsonParser().parseResource(Bundle.class, testCaseJson);
     dto =
         ExportDTO.builder()
@@ -265,12 +271,11 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
   }
 
   @Test
-  void testReferencesInBundleValidation() throws Exception {
+  void testValidReferencesInBundle() throws Exception {
     Principal principal = mock(Principal.class);
     when(principal.getName()).thenReturn(TEST_USER_ID);
 
     // Arrange
-    String testCaseJson = getStringFromTestResource("/testCaseBundles/validTestCase.json");
     List<TestCase> testCases =
         List.of(
             TestCase.builder()
@@ -282,7 +287,7 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
                 .build());
 
     // Mock the factory to return our test bundle
-    when(fhirModelFactory.parseForModel(any(), eq(testCaseJson))).thenReturn(new Bundle());
+    when(fhirModelFactory.parseForModel(any(), eq(testCaseJson))).thenReturn(testCaseBundle);
     when(fhirModelFactory.getJsonParserForModel(any()))
         .thenReturn(FhirContext.forR4().newJsonParser());
     when(fhirModelFactory.getContextForModel(any())).thenReturn(FhirContext.forR4());
@@ -295,7 +300,7 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
     // Act
     mockMvc
         .perform(
-            MockMvcRequestBuilders.post("/fhir/test-cases/qicore/4.1.1/execution-bundles")
+            MockMvcRequestBuilders.post("/fhir/test-cases/qicore/4-1-1/execution-bundles")
                 .with(user(TEST_USER_ID))
                 .with(csrf())
                 .header(HttpHeaders.AUTHORIZATION, "test-okta")
@@ -341,14 +346,11 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
     when(principal.getName()).thenReturn(TEST_USER_ID);
 
     // Arrange
-    String testCaseJson = getStringFromTestResource("/testCaseBundles/validTestCase.json");
     String testCaseJsonWithInvalidReference = testCaseJson.replace("Patient\\/1", "Patient\\/nope");
-
     Bundle bundleWithInvalidReference =
         FhirContext.forR4()
             .newJsonParser()
             .parseResource(Bundle.class, testCaseJsonWithInvalidReference);
-    Bundle bundle = FhirContext.forR4().newJsonParser().parseResource(Bundle.class, testCaseJson);
 
     List<TestCase> testCases =
         List.of(
@@ -368,14 +370,15 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
                 .build());
 
     // Mock the factory to return our test bundle
-    when(fhirModelFactory.parseForModel(any(), eq(testCaseJson))).thenReturn(bundle);
+    when(fhirModelFactory.parseForModel(any(), eq(testCaseJson))).thenReturn(testCaseBundle);
     when(fhirModelFactory.parseForModel(any(), eq(testCaseJsonWithInvalidReference)))
         .thenReturn(bundleWithInvalidReference);
     when(fhirModelFactory.getJsonParserForModel(any()))
         .thenReturn(FhirContext.forR4().newJsonParser());
     when(fhirModelFactory.getContextForModel(any())).thenReturn(FhirContext.forR4());
 
-    when(validationService.findResourcesWithInvalidReferences(any(FhirContext.class), eq(bundle)))
+    when(validationService.findResourcesWithInvalidReferences(
+            any(FhirContext.class), eq(testCaseBundle)))
         .thenReturn(new HashSet<>());
     when(validationService.findResourcesWithInvalidReferences(
             any(FhirContext.class), eq(bundleWithInvalidReference)))
@@ -389,7 +392,7 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
     // Act
     mockMvc
         .perform(
-            MockMvcRequestBuilders.post("/fhir/test-cases/qicore/4.1.1/execution-bundles")
+            MockMvcRequestBuilders.post("/fhir/test-cases/qicore/4-1-1/execution-bundles")
                 .with(user(TEST_USER_ID))
                 .with(csrf())
                 .header(HttpHeaders.AUTHORIZATION, "test-okta")
@@ -423,13 +426,13 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
                   FhirContext.forR4()
                       .newJsonParser()
                       .parseResource(Bundle.class, dto.getTestCases().get(1).getJson());
-              assertThat(returnedBundle.getEntry().size(), is(bundle.getEntry().size()));
+              assertThat(returnedBundle.getEntry().size(), is(testCaseBundle.getEntry().size()));
               assertTrue(
                   returnedBundle
                       .getEntry()
                       .get(0)
                       .getResource()
-                      .equalsDeep(bundle.getEntry().get(0).getResource()));
+                      .equalsDeep(testCaseBundle.getEntry().get(0).getResource()));
             })
         .andExpect(status().isOk());
 
@@ -469,7 +472,7 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
     // Act
     mockMvc
         .perform(
-            MockMvcRequestBuilders.post("/fhir/test-cases/qicore/4.1.1/execution-bundles")
+            MockMvcRequestBuilders.post("/fhir/test-cases/qicore/4-1-1/execution-bundles")
                 .with(user(TEST_USER_ID))
                 .with(csrf())
                 .header(HttpHeaders.AUTHORIZATION, "test-okta")
@@ -482,6 +485,72 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
     // Assert
     verify(fhirModelFactory, times(1)).parseForModel(any(), anyString());
     verify(validationService, times(0))
+        .findResourcesWithInvalidReferences(any(FhirContext.class), any(Bundle.class));
+  }
+
+  @Test
+  void testExecutionBundleHandlesMalformedModifiedBundle() throws Exception {
+    Principal principal = mock(Principal.class);
+    when(principal.getName()).thenReturn(TEST_USER_ID);
+
+    // Arrange
+    String testCaseJsonWithInvalidReference = testCaseJson.replace("Patient\\/1", "Patient\\/nope");
+
+    Bundle bundleWithInvalidReference =
+        FhirContext.forR4()
+            .newJsonParser()
+            .parseResource(Bundle.class, testCaseJsonWithInvalidReference);
+
+    List<TestCase> testCases =
+        List.of(
+            TestCase.builder()
+                .id("test-case-invalid-refs")
+                .patientId(UUID.randomUUID())
+                .title("Test Case with Invalid References")
+                .series("HAPPY_PATH")
+                .json(testCaseJsonWithInvalidReference)
+                .build());
+
+    // Mock the factory to return our test bundle
+    when(fhirModelFactory.parseForModel(any(), eq(testCaseJsonWithInvalidReference)))
+        .thenReturn(bundleWithInvalidReference);
+    when(fhirModelFactory.getJsonParserForModel(any())).thenReturn(parser);
+    when(fhirModelFactory.getContextForModel(any())).thenReturn(FhirContext.forR4());
+    when(parser.encodeResourceToString(any())).thenThrow(new DataFormatException());
+
+    when(validationService.findResourcesWithInvalidReferences(
+            any(FhirContext.class), eq(bundleWithInvalidReference)))
+        .thenReturn(
+            Set.of(
+                bundleWithInvalidReference
+                    .getEntry()
+                    .get(0)
+                    .getResource())); // First entry has invalid reference
+
+    // Act
+    mockMvc
+        .perform(
+            MockMvcRequestBuilders.post("/fhir/test-cases/qicore/4-1-1/execution-bundles")
+                .with(user(TEST_USER_ID))
+                .with(csrf())
+                .header(HttpHeaders.AUTHORIZATION, "test-okta")
+                .content(mapper.writeValueAsString(testCases))
+                .contentType(MediaType.APPLICATION_JSON_VALUE))
+        .andDo(
+            (result) -> {
+              String responseContent = result.getResponse().getContentAsString();
+              assertThat(responseContent, is(notNullValue()));
+              TestCaseExecutionBundlesDTO dto =
+                  mapper.readValue(responseContent, TestCaseExecutionBundlesDTO.class);
+              assertThat(dto.getTestCases().size(), is(0));
+              assertThat(dto.getModifiedTestCaseIds().size(), is(1));
+              assertTrue(dto.getModifiedTestCaseIds().contains("test-case-invalid-refs"));
+            })
+        .andExpect(status().isOk());
+
+    // Assert
+    verify(fhirModelFactory, times(1)).parseForModel(any(), anyString());
+    verify(validationService, times(1))
         .findResourcesWithInvalidReferences(any(FhirContext.class), any(Bundle.class));
   }
 }

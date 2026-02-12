@@ -133,6 +133,7 @@ public class TestCaseBundleController {
     FhirContext fhirContext = fhirModelFactory.getContextForModel(modelType);
 
     List<String> modifiedTestCaseIds = new ArrayList<>();
+    List<TestCase> malformedTestCases = new ArrayList<>();
     for (TestCase testCase : testCases) {
       IBaseBundle bundle = parseBundleFromTestCase(testCase, modelType);
 
@@ -150,12 +151,17 @@ public class TestCaseBundleController {
         Bundle modifiedBundle = ((Bundle) bundle).copy().setEntry(validResources);
         try {
           testCase.setJson(parser.encodeResourceToString(modifiedBundle));
-          modifiedTestCaseIds.add(testCase.getId());
         } catch (DataFormatException ex) {
-          testCase.setJson(testCase.getJson());
+          log.error(
+              "Error re-encoding modified bundle for Test Case [{}]: {}",
+              testCase.getId(),
+              ex.getMessage());
+          malformedTestCases.add(testCase);
         }
+        modifiedTestCaseIds.add(testCase.getId());
       }
     }
+    testCases.removeAll(malformedTestCases);
     return ResponseEntity.ok(
         TestCaseExecutionBundlesDTO.builder()
             .testCases(testCases)

@@ -67,6 +67,9 @@ class ResourceValidationServiceTest {
         .addProfile("http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedure");
     procedure.setStatus(Procedure.ProcedureStatus.COMPLETED);
     procedure.setSubject(new Reference("Patient/pat-1"));
+    Procedure.ProcedurePerformerComponent performer = new Procedure.ProcedurePerformerComponent();
+    performer.setActor(new Reference("Patient/pat-1"));
+    procedure.addPerformer(performer);
     bundleWithValidResources.addEntry().setResource(procedure);
 
     // Duplicate Bundle and mutate Resource to have invalid Reference
@@ -76,13 +79,10 @@ class ResourceValidationServiceTest {
         .setResource(procedure.copy().setSubject(new Reference("Patient/different-patient")));
 
     // Duplicate Bundle and mutate Resource to have invalid nested Reference
-    Procedure.ProcedurePerformerComponent performer = new Procedure.ProcedurePerformerComponent();
-    performer.setActor(new Reference("Practitioner/non-existent"));
-
     bundleWithInvalidNestedResources = bundleWithValidResources.copy();
-    bundleWithInvalidNestedResources
-        .addEntry()
-        .setResource(procedure.copy().addPerformer(performer));
+    ((Procedure) bundleWithInvalidNestedResources.getEntry().get(1).getResource())
+        .setPerformer(
+            List.of(performer.copy().setActor(new Reference("Practitioner/non-existent"))));
   }
 
   @Test
