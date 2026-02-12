@@ -29,6 +29,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 
@@ -540,7 +541,7 @@ class ResourceValidationServiceTest {
   }
 
   @Test
-  void testValidateReferenceInBackboneElementValid() {
+  void testFindReferenceInBackboneElementValid() {
     // Act
     List<IBaseResource> invalidResources =
         validationService
@@ -566,5 +567,80 @@ class ResourceValidationServiceTest {
 
     // Assert
     assertTrue(invalidResources.isEmpty());
+  }
+
+  @Test
+  void testValidateBundleReferencesForExecutionWithInvalidReference() {
+    // Act
+    IBaseOperationOutcome baseOperationOutcome =
+        validationService.validateBundleReferencesForExecution(
+            fhirContext, bundleWithInvalidNestedResources);
+
+    // Assert
+    OperationOutcome outcome = (OperationOutcome) baseOperationOutcome;
+    assertThat(outcome.getIssue().size(), is(1));
+    assertThat(outcome.getIssue().get(0).getSeverity().toCode(), is(equalTo("warning")));
+    assertThat(
+        outcome.getIssue().get(0).getDiagnostics(),
+        is(
+            "Resource [Procedure/proc-1] will not be included in execution because one or more references do not resolve within the bundle."));
+  }
+
+  @Test
+  void testValidateReferenceInBackboneElementValid() {
+    // Arrange
+    Bundle bundle = bundleWithInvalidNestedResources.copy();
+    ((Procedure) bundle.getEntry().get(bundle.getEntry().size() - 1).getResource())
+        .getPerformer()
+        .remove(0);
+
+    Procedure.ProcedurePerformerComponent performer = new Procedure.ProcedurePerformerComponent();
+    performer.setActor(new Reference("Patient/pat-1"));
+    ((Procedure) bundle.getEntry().get(bundle.getEntry().size() - 1).getResource())
+        .addPerformer(performer);
+
+    // Act
+    IBaseOperationOutcome outcome =
+        validationService.validateBundleReferencesForExecution(fhirContext, bundle);
+
+    // Assert
+    assertThat(validationService.isSuccessful(fhirContext, outcome), is(true));
+    assertThat(((OperationOutcome) outcome).getIssue().size(), is(0));
+  }
+
+  @Test
+  void testValidateReferenceInBackboneElementInvalid() {
+    // Act
+    IBaseOperationOutcome outcome =
+        validationService.validateBundleReferencesForExecution(
+            fhirContext, bundleWithInvalidNestedResources);
+
+    // Assert
+    assertThat(validationService.isSuccessful(fhirContext, outcome), is(true));
+    assertThat(((OperationOutcome) outcome).getIssue().size(), is(equalTo(1)));
+    assertThat(
+        ((OperationOutcome) outcome).getIssue().get(0).getDiagnostics(),
+        is(
+            "Resource [Procedure/proc-1] will not be included in execution because one or more references do not resolve within the bundle."));
+  }
+
+  @Test
+  void testValidateBundleWithNullBundleThrowsException() {
+    // Act & Assert
+    assertThrows(
+        IllegalArgumentException.class,
+        () -> validationService.validateBundleReferencesForExecution(fhirContext, null));
+  }
+
+  @Test
+  void testValidateBundleWithNullFhirContextThrowsException() {
+    // Arrange
+    Bundle bundle = new Bundle();
+    bundle.setType(Bundle.BundleType.COLLECTION);
+
+    // Act & Assert
+    assertThrows(
+        IllegalArgumentException.class,
+        () -> validationService.validateBundleReferencesForExecution(null, bundle));
   }
 }

@@ -16,10 +16,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
@@ -45,11 +45,11 @@ class ValidationControllerMvcTest implements ResourceFileUtil {
   private static final String VALIDATION_API_URL = "/fhir/validations/qicore/%s/bundles";
 
   @Autowired private FhirContext qicoreFhirContext;
-  @MockBean private ResourceValidationService validationService;
+  @MockitoBean private ResourceValidationService validationService;
   @Autowired private MockMvc mockMvc;
   @Autowired FhirValidator qicoreNpmFhirValidator;
-  @MockBean private ModelAwareFhirFactory validatorFactory;
-  @MockBean private AppConfigService appConfigService;
+  @MockitoBean private ModelAwareFhirFactory validatorFactory;
+  @MockitoBean private AppConfigService appConfigService;
   private IParser r4Parser;
 
   @BeforeEach
@@ -130,7 +130,10 @@ class ValidationControllerMvcTest implements ResourceFileUtil {
     when(validationService.validateBundleResourcesIdValid(
             any(FhirContext.class), any(IBaseBundle.class)))
         .thenReturn(new OperationOutcome());
-    when(validationService.combineOutcomes(any(FhirContext.class), any(), any(), any()))
+    when(validationService.validateBundleReferencesForExecution(
+            any(FhirContext.class), any(IBaseBundle.class)))
+        .thenReturn(new OperationOutcome());
+    when(validationService.combineOutcomes(any(FhirContext.class), any(), any(), any(), any()))
         .thenReturn(new OperationOutcome());
     when(validatorFactory.parseForModel(any(ModelType.class), anyString()))
         .thenAnswer(
@@ -168,7 +171,10 @@ class ValidationControllerMvcTest implements ResourceFileUtil {
     when(validationService.validateBundleResourcesIdValid(
             any(FhirContext.class), any(IBaseBundle.class)))
         .thenReturn(new OperationOutcome());
-    when(validationService.combineOutcomes(any(FhirContext.class), any(), any(), any()))
+    when(validationService.validateBundleReferencesForExecution(
+            any(FhirContext.class), any(IBaseBundle.class)))
+        .thenReturn(new OperationOutcome());
+    when(validationService.combineOutcomes(any(FhirContext.class), any(), any(), any(), any()))
         .thenReturn(operationOutcomeWithIssues);
     when(validationService.isSuccessful(any(FhirContext.class), any(OperationOutcome.class)))
         .thenReturn(true);
@@ -207,7 +213,10 @@ class ValidationControllerMvcTest implements ResourceFileUtil {
     when(validationService.validateBundleResourcesIdValid(
             any(FhirContext.class), any(IBaseBundle.class)))
         .thenReturn(new OperationOutcome());
-    when(validationService.combineOutcomes(any(FhirContext.class), any(), any(), any()))
+    when(validationService.validateBundleReferencesForExecution(
+            any(FhirContext.class), any(IBaseBundle.class)))
+        .thenReturn(new OperationOutcome());
+    when(validationService.combineOutcomes(any(FhirContext.class), any(), any(), any(), any()))
         .thenReturn(new OperationOutcome());
     when(validationService.isSuccessful(any(FhirContext.class), any(OperationOutcome.class)))
         .thenReturn(true);
@@ -250,10 +259,14 @@ class ValidationControllerMvcTest implements ResourceFileUtil {
     when(validationService.validateBundleResourcesIdValid(
             any(FhirContext.class), any(IBaseBundle.class)))
         .thenReturn(invalidIdErrorOutcome);
+    when(validationService.validateBundleReferencesForExecution(
+            any(FhirContext.class), any(IBaseBundle.class)))
+        .thenReturn(new OperationOutcome());
     OperationOutcome combinedOutcome = new OperationOutcome();
     combinedOutcome.addIssue().setSeverity(OperationOutcome.IssueSeverity.ERROR);
     combinedOutcome.addIssue().setSeverity(OperationOutcome.IssueSeverity.WARNING);
-    when(validationService.combineOutcomes(any(FhirContext.class), any(), any(), any()))
+    combinedOutcome.addIssue().setSeverity(OperationOutcome.IssueSeverity.WARNING);
+    when(validationService.combineOutcomes(any(FhirContext.class), any(), any(), any(), any()))
         .thenReturn(combinedOutcome);
     when(validationService.isSuccessful(any(FhirContext.class), any(OperationOutcome.class)))
         .thenReturn(false);
