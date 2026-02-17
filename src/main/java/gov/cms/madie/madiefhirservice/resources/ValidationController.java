@@ -77,13 +77,19 @@ public class ValidationController {
         validationService.validateBundleResourcesProfiles(fhirContext, bundle);
     IBaseOperationOutcome validIdsOutcome =
         validationService.validateBundleResourcesIdValid(fhirContext, bundle);
+    IBaseOperationOutcome validReferencesOutcome =
+        validationService.validateBundleReferencesForExecution(fhirContext, bundle);
 
     ValidationResult result = fhirValidator.validateWithResult(bundle);
 
     try {
       final IBaseOperationOutcome combinedOutcome =
           validationService.combineOutcomes(
-              fhirContext, requiredProfilesOutcome, validIdsOutcome, result.toOperationOutcome());
+              fhirContext,
+              requiredProfilesOutcome,
+              validIdsOutcome,
+              validReferencesOutcome,
+              result.toOperationOutcome());
       String outcomeString = parser.encodeResourceToString(combinedOutcome);
       return HapiOperationOutcome.builder()
           .code(

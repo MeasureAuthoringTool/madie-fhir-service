@@ -99,6 +99,56 @@ public class ResourceValidationService {
   }
 
   /**
+   * Validates Reference fields in the Bundle point to Resources within the Bundle. If a Reference
+   * does not resolve within the Bundle, a warning issue is added to the OperationOutcome
+   * identifying the Resource with the invalid Reference.
+   *
+   * <p>This is not an exhaustive validation. A single invalid reference is sufficient for a
+   * Resource to be marked as Invalid and processing will not continue once an invalid reference is
+   * found within a Resource.
+   *
+   * @param fhirContext The FHIR context, specifies the FHIR version.
+   * @param bundleResource The Bundle to validate.
+   * @return HAPI BaseOperationOutcome with warnings for invalid references.
+   */
+  public IBaseOperationOutcome validateBundleReferencesForExecution(
+      FhirContext fhirContext, IBaseBundle bundleResource) {
+    if (bundleResource == null) {
+      throw new IllegalArgumentException("Bundle resource cannot be null");
+    }
+    if (fhirContext == null) {
+      throw new IllegalArgumentException("FhirContext cannot be null");
+    }
+    List<IBaseResource> resources = BundleUtil.toListOfResources(fhirContext, bundleResource);
+    IBaseOperationOutcome operationOutcome = OperationOutcomeUtil.newInstance(fhirContext);
+
+    // Identify Resources in the bundle with one or more Reference fields that do resolve to IDs
+    // within the Bundle.
+    Set<IBaseResource> resourcesWithInvalidReferences =
+        findResourcesWithInvalidReferences(fhirContext, resources);
+
+    // Add a warning issue to the OperationOutcome for each resource with invalid references,
+    // but do not fail validation since this is only used to notify users of which resources
+    // will be excluded from execution of the test case.
+    resourcesWithInvalidReferences.forEach(
+        resource -> {
+          OperationOutcomeUtil.addIssue(
+              fhirContext,
+              operationOutcome,
+              "warning",
+              ("Resource [%s] will not be included in execution "
+                      + "because one or more references do not resolve within the bundle.")
+                  .formatted(
+                      resource.getIdElement().getResourceType()
+                          + "/"
+                          + resource.getIdElement().getIdPart()),
+              null,
+              "invalid");
+        });
+    return operationOutcome;
+  }
+
+  /**
    * Finds resources within the given Bundle that contain invalid references. A Reference is
    * considered invalid if it does not resolve to any other Resource within the same Bundle.
    *
