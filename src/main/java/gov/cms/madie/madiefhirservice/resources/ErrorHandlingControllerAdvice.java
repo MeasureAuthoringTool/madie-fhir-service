@@ -17,19 +17,19 @@ import java.util.Map;
 @ControllerAdvice
 public class ErrorHandlingControllerAdvice {
 
-    @ExceptionHandler(BundleOperationException.class)
-    public ResponseEntity<Map<String, Object>> handleBundleOperationException(
-            BundleOperationException ex, HttpServletRequest request) {
-        Map<String, Object> errorResponse = new HashMap<>();
+  @ExceptionHandler(BundleOperationException.class)
+  public ResponseEntity<Map<String, Object>> handleBundleOperationException(
+      BundleOperationException ex, HttpServletRequest request) {
+    Map<String, Object> errorResponse = new HashMap<>();
 
-        errorResponse.put("timestamp", LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME));
-        errorResponse.put("status", HttpStatus.BAD_REQUEST.value());
-        errorResponse.put("error", HttpStatus.BAD_REQUEST.getReasonPhrase());
-        errorResponse.put("path", request.getRequestURI());
-        if (ex.getCause() != null) {
-            errorResponse.put("message", ex.getCause().getMessage());
-        }
-
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+    errorResponse.put("timestamp", LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME));
+    errorResponse.put("status", HttpStatus.BAD_REQUEST.value());
+    errorResponse.put("error", HttpStatus.BAD_REQUEST.getReasonPhrase());
+    errorResponse.put("path", request.getRequestURI());
+    if (ex.getCause() != null) {
+      errorResponse.put("message", ex.getCause().getMessage());
     }
+
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+  }
 }
