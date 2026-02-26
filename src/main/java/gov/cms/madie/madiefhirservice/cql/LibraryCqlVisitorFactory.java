@@ -1,13 +1,10 @@
 package gov.cms.madie.madiefhirservice.cql;
 
-import org.antlr.v4.runtime.CharStreams;
-import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.kotlinruntime.CommonTokenStream;
+import org.antlr.v4.kotlinruntime.StringCharStream;
 import org.cqframework.cql.gen.cqlLexer;
 import org.cqframework.cql.gen.cqlParser;
 import org.springframework.stereotype.Service;
-
-import java.io.IOException;
-import java.io.StringReader;
 
 @Service
 public class LibraryCqlVisitorFactory {
@@ -20,14 +17,10 @@ public class LibraryCqlVisitorFactory {
   }
 
   public static cqlParser.LibraryContext getLibraryContext(String cql) {
-    try {
-      cqlLexer lexer = new cqlLexer(CharStreams.fromReader(new StringReader(cql)));
-      CommonTokenStream tokens = new CommonTokenStream(lexer);
-      cqlParser parser = new cqlParser(tokens);
-      parser.setBuildParseTree(true);
-      return parser.library();
-    } catch (IOException ioe) {
-      throw new RuntimeException(ioe);
-    }
+    cqlLexer lexer = new cqlLexer(new StringCharStream(cql, "cql"));
+    CommonTokenStream tokens = new CommonTokenStream(lexer);
+    cqlParser parser = new cqlParser(tokens);
+    parser.setBuildParseTree(true);
+    return parser.library();
   }
 }

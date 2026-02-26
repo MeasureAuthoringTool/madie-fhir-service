@@ -19,7 +19,7 @@
 		<java.version>17</java.version>
 		<springfox.version>3.0.0</springfox.version>
 		 <hapi.fhir.r4.version>8.6.1</hapi.fhir.r4.version>
-		<cqframework.version>3.29.0</cqframework.version>
+		<cqframework.version>4.4.0</cqframework.version>
 		<org.fhir.ucum.version>1.0.9</org.fhir.ucum.version>
 	</properties>
 
@@ -122,14 +122,26 @@
 
 		<!-- required cqframework dependencies -->
 		<dependency>
-			<groupId>info.cqframework</groupId>
-			<artifactId>cql-to-elm</artifactId>
+			<groupId>org.cqframework</groupId>
+			<artifactId>cql-to-elm-jvm</artifactId>
 			<version>${cqframework.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>info.cqframework</groupId>
+			<groupId>org.cqframework</groupId>
 			<artifactId>cql-formatter</artifactId>
 			<version>${cqframework.version}</version>
+		</dependency>
+		<!-- Explicit dependency for CQL parser classes (transitive from cql-formatter with runtime scope) -->
+		<dependency>
+			<groupId>org.cqframework</groupId>
+			<artifactId>cql-jvm</artifactId>
+			<version>${cqframework.version}</version>
+		</dependency>
+		<!-- Explicit dependency for Kotlin ANTLR runtime (required by cql-jvm parser classes) -->
+		<dependency>
+			<groupId>com.strumenta</groupId>
+			<artifactId>antlr-kotlin-runtime-jvm</artifactId>
+			<version>1.0.3</version>
 		</dependency>
 
 		<!-- Needed to fix class not found errors when using v2.15.4 - required in HAPI FHIR v7.4.3 -->
