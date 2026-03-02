@@ -4,7 +4,7 @@ import gov.cms.madie.madiefhirservice.constants.UriConstants;
 import gov.cms.madie.madiefhirservice.utils.FhirResourceHelpers;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
-import org.antlr.v4.runtime.ParserRuleContext;
+import org.antlr.v4.kotlinruntime.ParserRuleContext;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Pair;
 import org.cqframework.cql.gen.cqlBaseVisitor;

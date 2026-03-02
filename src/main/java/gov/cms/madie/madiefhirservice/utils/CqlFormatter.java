@@ -16,7 +16,7 @@ public final class CqlFormatter {
   public static String formatCql(String cqlData, Principal principal) {
     try (var cqlDataStream = new ByteArrayInputStream(cqlData.getBytes())) {
       CqlFormatterVisitor.FormatResult formatResult =
-          CqlFormatterVisitor.getFormattedOutput(cqlDataStream);
+          CqlFormatterVisitor.Companion.getFormattedOutput(cqlDataStream);
       if (formatResult.getErrors() != null && !formatResult.getErrors().isEmpty()) {
         log.info("User [{}] requested to format the CQL, but errors found", principal.getName());
         throw new CqlFormatterException(
