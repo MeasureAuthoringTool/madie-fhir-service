@@ -348,9 +348,10 @@ public class TestCaseBundleService {
   }
 
   // MAT-8349: Denominator and Numerator Observations are not part of measure report population
-  private PopulationType getPopulationType(PopulationType populationType) {
+  PopulationType getPopulationType(PopulationType populationType) {
     return (populationType.equals(PopulationType.DENOMINATOR_OBSERVATION)
-            || populationType.equals(PopulationType.NUMERATOR_OBSERVATION))
+            || populationType.equals(PopulationType.NUMERATOR_OBSERVATION)
+            || populationType.equals(PopulationType.MEASURE_POPULATION_OBSERVATION))
         ? PopulationType.MEASURE_OBSERVATION
         : populationType;
   }
