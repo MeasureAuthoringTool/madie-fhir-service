@@ -51,6 +51,7 @@ import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
 import gov.cms.madie.models.common.BundleType;
 import gov.cms.madie.models.measure.Group;
 import gov.cms.madie.models.measure.Measure;
+import gov.cms.madie.models.measure.PopulationType;
 import gov.cms.madie.models.measure.Stratification;
 import gov.cms.madie.models.measure.TestCase;
 import gov.cms.madie.packaging.utils.PackagingUtilityFactory;
@@ -574,5 +575,33 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
     Group group = Group.builder().id("1").build();
     assertThrows(
         ResourceNotFoundException.class, () -> testCaseBundleService.getGroup(List.of(group), "2"));
+  }
+
+  @Test
+  void testGetPopulationTypeReturnsMeasureObservationForDenominatorObservation() {
+    PopulationType result =
+        testCaseBundleService.getPopulationType(PopulationType.DENOMINATOR_OBSERVATION);
+    assertEquals(PopulationType.MEASURE_OBSERVATION, result);
+  }
+
+  @Test
+  void testGetPopulationTypeReturnsMeasureObservationForNumeratorObservation() {
+    PopulationType result =
+        testCaseBundleService.getPopulationType(PopulationType.NUMERATOR_OBSERVATION);
+    assertEquals(PopulationType.MEASURE_OBSERVATION, result);
+  }
+
+  @Test
+  void testGetPopulationTypeReturnsMeasureObservationForMeasurePopulationObservation() {
+    PopulationType result =
+        testCaseBundleService.getPopulationType(PopulationType.MEASURE_POPULATION_OBSERVATION);
+    assertEquals(PopulationType.MEASURE_OBSERVATION, result);
+  }
+
+  @Test
+  void testGetPopulationTypeReturnsSameForInitialPopulation() {
+    PopulationType result =
+        testCaseBundleService.getPopulationType(PopulationType.INITIAL_POPULATION);
+    assertEquals(PopulationType.INITIAL_POPULATION, result);
   }
 }
