@@ -44,3 +44,12 @@ caching:
   spring:
     libraries:
       ttlMillis: 3600000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,caches,metrics,info,cache-inspection
+  endpoint:
+    health:
+      show-details: when-authorized

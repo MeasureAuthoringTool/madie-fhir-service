@@ -58,6 +58,10 @@ public class LibraryService {
                 libraryNameValuePair.getRight(),
                 accessToken,
                 errorSeverity);
+        // Todo If the library is already in libraryMap, we can skip the call to
+        // cqlLibraryToFhirLibrary and assume the library is already in the correct format.
+        // We can also skip the call to findCqlAttachment and getIncludedLibraries since we would
+        // have already done that for the library when we first added it to the libraryMap.
         Library library = cqlLibraryToFhirLibrary(cqlLibrary, bundleType, accessToken);
         libraryMap.put(key, library);
 
