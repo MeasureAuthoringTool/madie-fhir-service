@@ -19,7 +19,7 @@
 		<java.version>17</java.version>
 		<springfox.version>3.0.0</springfox.version>
 		 <hapi.fhir.r4.version>8.8.0</hapi.fhir.r4.version>
-		<cqframework.version>4.5.0</cqframework.version>
+		<cqframework.version>4.6.0</cqframework.version>
 		<org.fhir.ucum.version>1.0.9</org.fhir.ucum.version>
 	</properties>
 
