@@ -36,7 +36,8 @@ import static org.apache.commons.collections4.CollectionUtils.isNotEmpty;
 @Service
 @RequiredArgsConstructor
 public class MeasureTranslatorService {
-  public static final String UNKNOWN = "UNKNOWN";
+  public static final String UNKNOWN =
+      "{\"extension\":[{\"url\":\"http://hl7.org/fhir/StructureDefinition/data-absent-reason\",\"valueCode\":\"unknown\"}]}";
 
   public org.hl7.fhir.r4.model.Measure createFhirMeasureForMadieMeasure(Measure madieMeasure) {
     Organization steward = madieMeasure.getMeasureMetaData().getSteward();
