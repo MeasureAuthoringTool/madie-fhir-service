@@ -726,7 +726,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
             .getExtensionByUrl(UriConstants.CqfMeasures.AGGREGATE_METHOD_URI)
             .getValue()
             .primitiveValue(),
-        is(equalTo("Minimum")));
+        is(equalTo("minimum")));
   }
 
   @Test
