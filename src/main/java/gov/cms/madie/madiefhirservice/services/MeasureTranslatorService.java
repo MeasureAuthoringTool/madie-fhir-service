@@ -478,7 +478,10 @@ public class MeasureTranslatorService {
                           .addExtension(
                               new Extension(
                                   UriConstants.CqfMeasures.AGGREGATE_METHOD_URI,
-                                  new CodeType(measureObservation.getAggregateMethod())))
+                                  new CodeType(
+                                      measureObservation.getAggregateMethod() != null
+                                          ? measureObservation.getAggregateMethod().toLowerCase()
+                                          : null)))
                           .setId(
                               StringUtils.isNotBlank(measureObservation.getDisplayId())
                                   ? measureObservation.getDisplayId()
