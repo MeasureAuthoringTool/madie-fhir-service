@@ -40,11 +40,6 @@ okta:
     issuer: ${OKTA_ISSUER:https://dev-madie.okta.com/oauth2/default}
     audience: ${OKTA_AUDIENCE:api://default}
 
-caching:
-  spring:
-    libraries:
-      ttlMillis: 3600000
-
 management:
   endpoints:
     web:
