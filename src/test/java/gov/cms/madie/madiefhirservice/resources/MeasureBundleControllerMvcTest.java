@@ -3,6 +3,7 @@ package gov.cms.madie.madiefhirservice.resources;
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.rest.api.MethodOutcome;
 import gov.cms.madie.madiefhirservice.services.ExportService;
+import gov.cms.madie.madiefhirservice.clients.UserServiceClient;
 import gov.cms.madie.madiefhirservice.services.MeasureBundleService;
 import gov.cms.madie.madiefhirservice.utils.MeasureTestHelper;
 import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
@@ -41,6 +42,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class MeasureBundleControllerMvcTest implements ResourceFileUtil {
   private static final String TEST_USER_ID = "john_doe";
 
+  @MockitoBean private UserServiceClient userServiceClient;
   @MockitoBean private MeasureBundleService measureBundleService;
 
   @MockitoBean private ExportService exportService;
