@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Slf4j
 @RestController
@@ -27,8 +26,7 @@ public class AdminController {
   public ResponseEntity<List<String>> evictAllCaches(Principal principal) {
     List<String> evictedCaches = new ArrayList<>(cacheManager.getCacheNames());
     log.info("Admin user [{}] is evicting all caches: {}", principal.getName(), evictedCaches);
-    evictedCaches.forEach(
-        cacheName -> Objects.requireNonNull(cacheManager.getCache(cacheName)).clear());
+    evictedCaches.forEach(cacheName -> cacheManager.getCache(cacheName).clear());
     return ResponseEntity.ok(evictedCaches);
   }
 }
