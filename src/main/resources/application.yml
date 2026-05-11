@@ -8,6 +8,8 @@ validation:
     validateDisplay: false
 
 madie:
+  user-service:
+    base-url: ${USER_SERVICE_URL:http://localhost:8088/api}
   cql-elm:
     service:
       base-url: ${FHIR_ELM_TRANSLATOR_SERVICE_URL:http://localhost:8083/api/fhir}

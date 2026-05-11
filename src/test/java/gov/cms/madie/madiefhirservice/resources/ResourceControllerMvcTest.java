@@ -3,6 +3,7 @@ package gov.cms.madie.madiefhirservice.resources;
 import gov.cms.madie.madiefhirservice.dto.ResourceIdentifier;
 import gov.cms.madie.madiefhirservice.dto.StructureDefinitionDto;
 import gov.cms.madie.madiefhirservice.exceptions.ResourceNotFoundException;
+import gov.cms.madie.madiefhirservice.clients.UserServiceClient;
 import gov.cms.madie.madiefhirservice.services.StructureDefinitionService;
 import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
 import org.assertj.core.api.Assertions;
@@ -36,6 +37,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class ResourceControllerMvcTest implements ResourceFileUtil {
   private static final String TEST_USER_ID = "john_doe";
 
+  @MockitoBean private UserServiceClient userServiceClient;
   @MockitoBean private StructureDefinitionService structureDefinitionService;
   @Autowired private MockMvc mockMvc;
 
