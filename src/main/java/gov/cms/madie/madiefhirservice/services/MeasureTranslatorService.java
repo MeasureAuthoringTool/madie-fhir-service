@@ -12,6 +12,7 @@ import gov.cms.madie.models.measure.*;
 import gov.cms.madie.models.measure.Group;
 import gov.cms.madie.models.measure.Measure;
 import gov.cms.madie.models.measure.Population;
+import gov.cms.madie.models.utils.CmsIdFormatter;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.hl7.fhir.r4.model.Identifier.IdentifierUse;
@@ -36,8 +37,7 @@ import static org.apache.commons.collections4.CollectionUtils.isNotEmpty;
 @Service
 @RequiredArgsConstructor
 public class MeasureTranslatorService {
-  public static final String UNKNOWN =
-      "{\"extension\":[{\"url\":\"http://hl7.org/fhir/StructureDefinition/data-absent-reason\",\"valueCode\":\"unknown\"}]}";
+  public static final String UNKNOWN = "UNKNOWN";
 
   public org.hl7.fhir.r4.model.Measure createFhirMeasureForMadieMeasure(Measure madieMeasure) {
     Organization steward = madieMeasure.getMeasureMetaData().getSteward();
@@ -205,7 +205,7 @@ public class MeasureTranslatorService {
             buildIdentifier(
                     IdentifierUse.OFFICIAL,
                     UriConstants.MadieMeasure.CMS_ID,
-                    madieMeasure.getMeasureSet().getCmsId() + "FHIR",
+                    CmsIdFormatter.pad(measureSet.getCmsId()) + CmsIdFormatter.FHIR_SUFFIX,
                     IdentifierType.CODE_PUBLISHER)
                 .setAssigner(buildDisplayReference("CMS")));
       }
