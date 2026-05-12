@@ -6,6 +6,7 @@ import ca.uhn.fhir.parser.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import gov.cms.madie.madiefhirservice.dto.TestCaseExecutionBundlesDTO;
+import gov.cms.madie.madiefhirservice.clients.UserServiceClient;
 import gov.cms.madie.madiefhirservice.factories.ModelAwareFhirFactory;
 import gov.cms.madie.madiefhirservice.services.ResourceValidationService;
 import gov.cms.madie.madiefhirservice.services.TestCaseBundleService;
@@ -53,6 +54,7 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
   private static final String TEST_CASE_ID = "62fe4466848fd80e1dd3edd0";
   private static final String TEST_CASE_ID_2 = "62fe4466848fd80e1dd3edd1";
 
+  @MockitoBean private UserServiceClient userServiceClient;
   @MockitoBean private ModelAwareFhirFactory fhirModelFactory;
   @MockitoBean private TestCaseBundleService testCaseBundleService;
   @MockitoBean private ResourceValidationService validationService;

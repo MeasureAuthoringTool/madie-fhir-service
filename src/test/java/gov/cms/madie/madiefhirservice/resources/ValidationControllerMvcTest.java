@@ -4,6 +4,7 @@ import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.parser.IParser;
 import ca.uhn.fhir.parser.StrictErrorHandler;
 import ca.uhn.fhir.validation.FhirValidator;
+import gov.cms.madie.madiefhirservice.clients.UserServiceClient;
 import gov.cms.madie.madiefhirservice.factories.ModelAwareFhirFactory;
 import gov.cms.madie.madiefhirservice.services.AppConfigService;
 import gov.cms.madie.madiefhirservice.services.ResourceValidationService;
@@ -45,6 +46,7 @@ class ValidationControllerMvcTest implements ResourceFileUtil {
   private static final String VALIDATION_API_URL = "/fhir/validations/qicore/%s/bundles";
 
   @Autowired private FhirContext qicoreFhirContext;
+  @MockitoBean private UserServiceClient userServiceClient;
   @MockitoBean private ResourceValidationService validationService;
   @Autowired private MockMvc mockMvc;
   @Autowired FhirValidator qicoreNpmFhirValidator;
