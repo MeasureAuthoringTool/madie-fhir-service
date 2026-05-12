@@ -12,6 +12,7 @@ import gov.cms.madie.models.measure.*;
 import gov.cms.madie.models.measure.Group;
 import gov.cms.madie.models.measure.Measure;
 import gov.cms.madie.models.measure.Population;
+import gov.cms.madie.models.utils.CmsIdFormatter;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.hl7.fhir.r4.model.Identifier.IdentifierUse;
@@ -205,7 +206,7 @@ public class MeasureTranslatorService {
             buildIdentifier(
                     IdentifierUse.OFFICIAL,
                     UriConstants.MadieMeasure.CMS_ID,
-                    madieMeasure.getMeasureSet().getCmsId() + "FHIR",
+                    CmsIdFormatter.pad(measureSet.getCmsId()) + CmsIdFormatter.FHIR_SUFFIX,
                     IdentifierType.CODE_PUBLISHER)
                 .setAssigner(buildDisplayReference("CMS")));
       }

@@ -1221,7 +1221,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertThat(output.get(4), is(notNullValue()));
     assertThat(output.get(4).getUse(), is(equalTo(Identifier.IdentifierUse.OFFICIAL)));
     assertThat(output.get(4).getSystem(), is(equalTo(UriConstants.MadieMeasure.CMS_ID)));
-    assertThat(output.get(4).getValue(), is(equalTo("986FHIR")));
+    assertThat(output.get(4).getValue(), is(equalTo("0986FHIR")));
     assertThat(output.get(4).getType(), is(notNullValue()));
     assertThat(
         output.get(4).getType().getCodingFirstRep().getSystem(),
@@ -1261,7 +1261,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertThat(output.get(2).getValue(), is(equalTo(UriConstants.URN_UUID_PREFIX + "UUID_1")));
     // CMS ID
     assertThat(output.get(3), is(notNullValue()));
-    assertThat(output.get(3).getValue(), is(equalTo("22FHIR")));
+    assertThat(output.get(3).getValue(), is(equalTo("0022FHIR")));
   }
 
   @Test
