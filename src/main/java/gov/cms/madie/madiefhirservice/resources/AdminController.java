@@ -15,7 +15,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("/fhir-service/admin")
 @RequiredArgsConstructor
 public class AdminController {
 
