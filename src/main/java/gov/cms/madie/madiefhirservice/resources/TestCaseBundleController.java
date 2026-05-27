@@ -149,6 +149,7 @@ public class TestCaseBundleController {
                   .filter(
                       entry -> {
                         if (resourcesWithInvalidReferences.contains(entry.getResource())) {
+                          // do not filter Patient resource if allowInvalidRefsForPatient is true
                           return allowInvalidRefsForPatient
                               && "Patient".equals(entry.getResource().fhirType());
                         }
