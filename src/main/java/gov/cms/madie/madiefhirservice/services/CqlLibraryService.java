@@ -79,7 +79,7 @@ public class CqlLibraryService {
    */
   private URI buildMadieLibraryServiceUri(
       String name, String version, CqlCompilerException.ErrorSeverity errorSeverity) {
-    return UriComponentsBuilder.fromHttpUrl(madieLibraryService + librariesVersionedUri)
+    return UriComponentsBuilder.fromUriString(madieLibraryService + librariesVersionedUri)
         .queryParam("name", name)
         .queryParam("version", version)
         .queryParam("errorSeverity", errorSeverity)

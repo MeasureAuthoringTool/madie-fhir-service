@@ -35,7 +35,7 @@ public class ElmTranslatorClient {
       log.info(
           "Getting Module Definition Library for library: {}", libraryDetails.getLibraryName());
       URI uri =
-          UriComponentsBuilder.fromHttpUrl(
+          UriComponentsBuilder.fromUriString(
                   elmTranslatorClientConfig.getCqlElmServiceBaseUrl()
                       + elmTranslatorClientConfig.getEffectiveDataRequirementsDataUri())
               .queryParam("recursive", recursive)
