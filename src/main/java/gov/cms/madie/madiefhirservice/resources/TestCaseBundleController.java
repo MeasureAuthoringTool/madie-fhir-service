@@ -127,6 +127,7 @@ public class TestCaseBundleController {
       produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<TestCaseExecutionBundlesDTO> getTestCaseExecutionBundle(
       @PathVariable("model") String modelVersion,
+      @RequestParam(defaultValue = "false") boolean allowInvalidRefsForPatient,
       @RequestBody List<TestCase> testCases,
       HttpEntity<String> request) {
     final ModelType modelType = QICORE_VERSION_MODELTYPE_MAP.get(modelVersion);
@@ -145,7 +146,14 @@ public class TestCaseBundleController {
       List<Bundle.BundleEntryComponent> validResources =
           ((Bundle) bundle)
               .getEntry().stream()
-                  .filter(entry -> !resourcesWithInvalidReferences.contains(entry.getResource()))
+                  .filter(
+                      entry -> {
+                        if (resourcesWithInvalidReferences.contains(entry.getResource())) {
+                          return allowInvalidRefsForPatient
+                              && "Patient".equals(entry.getResource().fhirType());
+                        }
+                        return true;
+                      })
                   .toList();
 
       if (validResources.size() != ((Bundle) bundle).getEntry().size()) {

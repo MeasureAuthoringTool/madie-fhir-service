@@ -112,7 +112,7 @@ public class ResourceValidationService {
    * @return HAPI BaseOperationOutcome with warnings for invalid references.
    */
   public IBaseOperationOutcome validateBundleReferencesForExecution(
-      FhirContext fhirContext, IBaseBundle bundleResource) {
+      FhirContext fhirContext, IBaseBundle bundleResource, boolean lenientPatientRefs) {
     if (bundleResource == null) {
       throw new IllegalArgumentException("Bundle resource cannot be null");
     }
@@ -127,24 +127,27 @@ public class ResourceValidationService {
     Set<IBaseResource> resourcesWithInvalidReferences =
         findResourcesWithInvalidReferences(fhirContext, resources);
 
-    // Add a warning issue to the OperationOutcome for each resource with invalid references,
-    // but do not fail validation since this is only used to notify users of which resources
-    // will be excluded from execution of the test case.
+    // Add an issue to the OperationOutcome for each resource with invalid references.
+    // If lenientPatientRefs is true, use a warning to notify users; otherwise use an error
+    // to exclude the resource from execution of the test case.
+    final String severity = lenientPatientRefs ? "warning" : "error";
+    final String message =
+        lenientPatientRefs
+            ? "Resource [%s] contains a reference that does not resolve within the bundle"
+            : "Resource [%s] will not be included in execution "
+                + "because one or more references do not resolve within the bundle.";
     resourcesWithInvalidReferences.forEach(
-        resource -> {
-          OperationOutcomeUtil.addIssue(
-              fhirContext,
-              operationOutcome,
-              "warning",
-              ("Resource [%s] will not be included in execution "
-                      + "because one or more references do not resolve within the bundle.")
-                  .formatted(
-                      resource.getIdElement().getResourceType()
-                          + "/"
-                          + resource.getIdElement().getIdPart()),
-              null,
-              "invalid");
-        });
+        resource ->
+            OperationOutcomeUtil.addIssue(
+                fhirContext,
+                operationOutcome,
+                severity,
+                message.formatted(
+                    resource.getIdElement().getResourceType()
+                        + "/"
+                        + resource.getIdElement().getIdPart()),
+                null,
+                "invalid"));
     return operationOutcome;
   }
 
