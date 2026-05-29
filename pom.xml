@@ -141,7 +141,7 @@
 		<dependency>
 			<groupId>com.strumenta</groupId>
 			<artifactId>antlr-kotlin-runtime-jvm</artifactId>
-			<version>1.0.3</version>
+			<version>1.0.4</version>
 		</dependency>
 
 		<!-- Needed to fix class not found errors when using v2.15.4 - required in HAPI FHIR v7.4.3 -->
