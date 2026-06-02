@@ -491,6 +491,79 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
   }
 
   @Test
+  void testExecutionBundleAllowInvalidRefsForPatientKeepsPatientFiltersOthers() throws Exception {
+    Principal principal = mock(Principal.class);
+    when(principal.getName()).thenReturn(TEST_USER_ID);
+
+    // Arrange - both Patient and Encounter have invalid references
+    String testCaseJsonWithInvalidReference = testCaseJson.replace("Patient\\/1", "Patient\\/nope");
+    Bundle bundleWithInvalidReference =
+        FhirContext.forR4()
+            .newJsonParser()
+            .parseResource(Bundle.class, testCaseJsonWithInvalidReference);
+
+    List<TestCase> testCases =
+        List.of(
+            TestCase.builder()
+                .id("test-case-invalid-refs")
+                .patientId(UUID.randomUUID())
+                .title("Test Case with Invalid References")
+                .series("HAPPY_PATH")
+                .json(testCaseJsonWithInvalidReference)
+                .build());
+
+    // Mock the factory to return our test bundle
+    when(fhirModelFactory.parseForModel(any(), eq(testCaseJsonWithInvalidReference)))
+        .thenReturn(bundleWithInvalidReference);
+    when(fhirModelFactory.getJsonParserForModel(any()))
+        .thenReturn(FhirContext.forR4().newJsonParser());
+    when(fhirModelFactory.getContextForModel(any())).thenReturn(FhirContext.forR4());
+
+    // Both Encounter (index 0) and Patient (index 1) have invalid references
+    when(validationService.findResourcesWithInvalidReferences(
+            any(FhirContext.class), eq(bundleWithInvalidReference)))
+        .thenReturn(
+            Set.of(
+                bundleWithInvalidReference.getEntry().get(0).getResource(),
+                bundleWithInvalidReference.getEntry().get(1).getResource()));
+
+    // Act - with allowInvalidRefsForPatient=true
+    mockMvc
+        .perform(
+            MockMvcRequestBuilders.post(
+                    "/fhir/test-cases/qicore/4-1-1/execution-bundles?allowInvalidRefsForPatient=true")
+                .with(user(TEST_USER_ID))
+                .with(csrf())
+                .header(HttpHeaders.AUTHORIZATION, "test-okta")
+                .content(mapper.writeValueAsString(testCases))
+                .contentType(MediaType.APPLICATION_JSON_VALUE))
+        .andDo(
+            (result) -> {
+              String responseContent = result.getResponse().getContentAsString();
+              assertThat(responseContent, is(notNullValue()));
+              TestCaseExecutionBundlesDTO dto =
+                  mapper.readValue(responseContent, TestCaseExecutionBundlesDTO.class);
+              assertThat(dto.getTestCases().size(), is(1));
+              assertThat(dto.getModifiedTestCaseIds().size(), is(1));
+              assertTrue(dto.getModifiedTestCaseIds().contains("test-case-invalid-refs"));
+              Bundle returnedModifiedBundle =
+                  FhirContext.forR4()
+                      .newJsonParser()
+                      .parseResource(Bundle.class, dto.getTestCases().get(0).getJson());
+              // Only Patient should remain (Encounter filtered out)
+              assertThat(returnedModifiedBundle.getEntry().size(), is(1));
+              assertThat(
+                  returnedModifiedBundle.getEntry().get(0).getResource().fhirType(), is("Patient"));
+            })
+        .andExpect(status().isOk());
+
+    // Assert
+    verify(fhirModelFactory, times(1)).parseForModel(any(), anyString());
+    verify(validationService, times(1))
+        .findResourcesWithInvalidReferences(any(FhirContext.class), any(Bundle.class));
+  }
+
+  @Test
   void testExecutionBundleHandlesMalformedModifiedBundle() throws Exception {
     Principal principal = mock(Principal.class);
     when(principal.getName()).thenReturn(TEST_USER_ID);

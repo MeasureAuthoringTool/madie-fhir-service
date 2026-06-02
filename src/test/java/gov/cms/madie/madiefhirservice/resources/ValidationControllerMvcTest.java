@@ -29,6 +29,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -133,7 +134,7 @@ class ValidationControllerMvcTest implements ResourceFileUtil {
             any(FhirContext.class), any(IBaseBundle.class)))
         .thenReturn(new OperationOutcome());
     when(validationService.validateBundleReferencesForExecution(
-            any(FhirContext.class), any(IBaseBundle.class)))
+            any(FhirContext.class), any(IBaseBundle.class), anyBoolean()))
         .thenReturn(new OperationOutcome());
     when(validationService.combineOutcomes(any(FhirContext.class), any(), any(), any(), any()))
         .thenReturn(new OperationOutcome());
@@ -174,7 +175,7 @@ class ValidationControllerMvcTest implements ResourceFileUtil {
             any(FhirContext.class), any(IBaseBundle.class)))
         .thenReturn(new OperationOutcome());
     when(validationService.validateBundleReferencesForExecution(
-            any(FhirContext.class), any(IBaseBundle.class)))
+            any(FhirContext.class), any(IBaseBundle.class), anyBoolean()))
         .thenReturn(new OperationOutcome());
     when(validationService.combineOutcomes(any(FhirContext.class), any(), any(), any(), any()))
         .thenReturn(operationOutcomeWithIssues);
@@ -216,7 +217,7 @@ class ValidationControllerMvcTest implements ResourceFileUtil {
             any(FhirContext.class), any(IBaseBundle.class)))
         .thenReturn(new OperationOutcome());
     when(validationService.validateBundleReferencesForExecution(
-            any(FhirContext.class), any(IBaseBundle.class)))
+            any(FhirContext.class), any(IBaseBundle.class), anyBoolean()))
         .thenReturn(new OperationOutcome());
     when(validationService.combineOutcomes(any(FhirContext.class), any(), any(), any(), any()))
         .thenReturn(new OperationOutcome());
@@ -262,7 +263,7 @@ class ValidationControllerMvcTest implements ResourceFileUtil {
             any(FhirContext.class), any(IBaseBundle.class)))
         .thenReturn(invalidIdErrorOutcome);
     when(validationService.validateBundleReferencesForExecution(
-            any(FhirContext.class), any(IBaseBundle.class)))
+            any(FhirContext.class), any(IBaseBundle.class), anyBoolean()))
         .thenReturn(new OperationOutcome());
     OperationOutcome combinedOutcome = new OperationOutcome();
     combinedOutcome.addIssue().setSeverity(OperationOutcome.IssueSeverity.ERROR);

@@ -22,10 +22,7 @@ import org.hl7.fhir.instance.model.api.IBaseOperationOutcome;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import static gov.cms.madie.madiefhirservice.utils.ModelEndpointMap.QICORE_VERSION_MODELTYPE_MAP;
 
@@ -49,7 +46,9 @@ public class ValidationController {
       consumes = MediaType.APPLICATION_JSON_VALUE,
       produces = MediaType.APPLICATION_JSON_VALUE)
   public HapiOperationOutcome validateBundleByModel(
-      @PathVariable("model") String modelVersion, HttpEntity<String> request) {
+      @PathVariable("model") String modelVersion,
+      @RequestParam(defaultValue = "false") boolean lenientPatientRefs,
+      HttpEntity<String> request) {
     final ModelType modelType = QICORE_VERSION_MODELTYPE_MAP.get(modelVersion);
     IParser parser = validatorFactory.getJsonParserForModel(modelType);
 
@@ -78,7 +77,8 @@ public class ValidationController {
     IBaseOperationOutcome validIdsOutcome =
         validationService.validateBundleResourcesIdValid(fhirContext, bundle);
     IBaseOperationOutcome validReferencesOutcome =
-        validationService.validateBundleReferencesForExecution(fhirContext, bundle);
+        validationService.validateBundleReferencesForExecution(
+            fhirContext, bundle, lenientPatientRefs);
 
     ValidationResult result = fhirValidator.validateWithResult(bundle);
 

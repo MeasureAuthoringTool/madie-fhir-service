@@ -574,7 +574,7 @@ class ResourceValidationServiceTest {
     // Act
     IBaseOperationOutcome baseOperationOutcome =
         validationService.validateBundleReferencesForExecution(
-            fhirContext, bundleWithInvalidNestedResources);
+            fhirContext, bundleWithInvalidNestedResources, true);
 
     // Assert
     OperationOutcome outcome = (OperationOutcome) baseOperationOutcome;
@@ -583,7 +583,7 @@ class ResourceValidationServiceTest {
     assertThat(
         outcome.getIssue().get(0).getDiagnostics(),
         is(
-            "Resource [Procedure/proc-1] will not be included in execution because one or more references do not resolve within the bundle."));
+            "Resource [Procedure/proc-1] contains a reference that does not resolve within the bundle"));
   }
 
   @Test
@@ -601,7 +601,7 @@ class ResourceValidationServiceTest {
 
     // Act
     IBaseOperationOutcome outcome =
-        validationService.validateBundleReferencesForExecution(fhirContext, bundle);
+        validationService.validateBundleReferencesForExecution(fhirContext, bundle, false);
 
     // Assert
     assertThat(validationService.isSuccessful(fhirContext, outcome), is(true));
@@ -613,10 +613,10 @@ class ResourceValidationServiceTest {
     // Act
     IBaseOperationOutcome outcome =
         validationService.validateBundleReferencesForExecution(
-            fhirContext, bundleWithInvalidNestedResources);
+            fhirContext, bundleWithInvalidNestedResources, false);
 
     // Assert
-    assertThat(validationService.isSuccessful(fhirContext, outcome), is(true));
+    assertThat(validationService.isSuccessful(fhirContext, outcome), is(false));
     assertThat(((OperationOutcome) outcome).getIssue().size(), is(equalTo(1)));
     assertThat(
         ((OperationOutcome) outcome).getIssue().get(0).getDiagnostics(),
@@ -629,7 +629,7 @@ class ResourceValidationServiceTest {
     // Act & Assert
     assertThrows(
         IllegalArgumentException.class,
-        () -> validationService.validateBundleReferencesForExecution(fhirContext, null));
+        () -> validationService.validateBundleReferencesForExecution(fhirContext, null, false));
   }
 
   @Test
@@ -641,6 +641,6 @@ class ResourceValidationServiceTest {
     // Act & Assert
     assertThrows(
         IllegalArgumentException.class,
-        () -> validationService.validateBundleReferencesForExecution(null, bundle));
+        () -> validationService.validateBundleReferencesForExecution(null, bundle, false));
   }
 }
