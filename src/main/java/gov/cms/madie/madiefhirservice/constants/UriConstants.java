@@ -76,7 +76,7 @@ public final class UriConstants {
     public static final String EXECUTABLE_MEASURE_PROFILE_URI =
         "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/executable-measure-cqfm";
     public static final String COMPOSITE_MEASURE_PROFILE_URI =
-        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-compositemeasure";
+        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/composite-measure-cqfm";
 
     public static final String SUPPLEMENTAL_DATA_GUIDANCE_URI =
         "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-supplementalDataGuidance";
@@ -101,9 +101,9 @@ public final class UriConstants {
     public static final String IMPROVEMENT_NOTATION_GUIDANCE_URI =
         "http://hl7.org/fhir/StructureDefinition/cqf-improvementNotationGuidance";
     public static final String CQFM_GROUP_ID_URI =
-        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-groupId";
+        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-groupId";
     public static final String CQM_COMPONENT_URI =
-        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-component";
+        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-component";
   }
 
   public static final class CqfTestCases {
