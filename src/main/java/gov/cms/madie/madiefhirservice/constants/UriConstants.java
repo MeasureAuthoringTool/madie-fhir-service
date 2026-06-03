@@ -3,6 +3,7 @@ package gov.cms.madie.madiefhirservice.constants;
 public final class UriConstants {
   public static final String URN_UUID_PREFIX = "urn:uuid:";
   public static final String URN_IETF_RFC_3986 = "urn:ietf:rfc:3986";
+  public static final String MADIE_URL = "https://madie.cms.gov";
 
   public static final class FhirStructureDefinitions {
     public static final String CATEGORY_URI =
@@ -74,6 +75,8 @@ public final class UriConstants {
 
     public static final String EXECUTABLE_MEASURE_PROFILE_URI =
         "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/executable-measure-cqfm";
+    public static final String COMPOSITE_MEASURE_PROFILE_URI =
+        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-compositemeasure";
 
     public static final String SUPPLEMENTAL_DATA_GUIDANCE_URI =
         "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-supplementalDataGuidance";
@@ -97,6 +100,10 @@ public final class UriConstants {
 
     public static final String IMPROVEMENT_NOTATION_GUIDANCE_URI =
         "http://hl7.org/fhir/StructureDefinition/cqf-improvementNotationGuidance";
+    public static final String CQFM_GROUP_ID_URI =
+        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-groupId";
+    public static final String CQM_COMPONENT_URI =
+        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-component";
   }
 
   public static final class CqfTestCases {

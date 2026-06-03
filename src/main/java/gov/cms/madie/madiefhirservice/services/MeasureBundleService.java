@@ -66,41 +66,42 @@ public class MeasureBundleService {
     Bundle bundle =
         new Bundle().setType(Bundle.BundleType.TRANSACTION).addEntry(measureEntryComponent);
     log.info("Measure bundle entry created successfully {}", madieMeasure.getId());
-    // Bundle entries for all the library resources of a MADiE Measure
-    List<Bundle.BundleEntryComponent> libraryEntryComponents =
-        createBundleComponentsForLibrariesOfMadieMeasure(
-            expressions, madieMeasure, bundleType, errorSeverity, accessToken);
-    libraryEntryComponents.forEach(bundle::addEntry);
-    log.info("Included library components created successfully {}", madieMeasure.getId());
+    // skip included libraries and effective data requirements for composite measure
+    if (!madieMeasure.getMeasureMetaData().isComposite()) {
+      // Bundle entries for all the library resources of a MADiE Measure
+      List<Bundle.BundleEntryComponent> libraryEntryComponents =
+          createBundleComponentsForLibrariesOfMadieMeasure(
+              expressions, madieMeasure, bundleType, errorSeverity, accessToken);
+      libraryEntryComponents.forEach(bundle::addEntry);
+      log.info("Included library components created successfully {}", madieMeasure.getId());
 
-    CqlLibraryDetails libraryDetails =
-        CqlLibraryDetails.builder()
-            .libraryName(madieMeasure.getCqlLibraryName())
-            .cql(madieMeasure.getCql())
-            .expressions(expressions)
-            .build();
-    // get effective DataRequirements
-    log.info("Getting effective data requirements for measure: {}", madieMeasure.getId());
-    org.hl7.fhir.r5.model.Library effectiveDataRequirements =
-        elmTranslatorClient.getEffectiveDataRequirements(
-            libraryDetails, true, accessToken, errorSeverity);
+      CqlLibraryDetails libraryDetails =
+          CqlLibraryDetails.builder()
+              .libraryName(madieMeasure.getCqlLibraryName())
+              .cql(madieMeasure.getCql())
+              .expressions(expressions)
+              .build();
+      // get effective DataRequirements
+      log.info("Getting effective data requirements for measure: {}", madieMeasure.getId());
+      org.hl7.fhir.r5.model.Library effectiveDataRequirements =
+          elmTranslatorClient.getEffectiveDataRequirements(
+              libraryDetails, true, accessToken, errorSeverity);
 
-    sortParameters(madieMeasure, effectiveDataRequirements);
-    addEffectiveDataRequirementsToMeasure(measureForHR, effectiveDataRequirements);
-    addEffectiveDataRequirementsToMeasure(measureForExport, effectiveDataRequirements);
-
+      sortParameters(madieMeasure, effectiveDataRequirements);
+      addEffectiveDataRequirementsToMeasure(measureForHR, effectiveDataRequirements);
+      addEffectiveDataRequirementsToMeasure(measureForExport, effectiveDataRequirements);
+      // set narrative to measure library
+      var measureLibrary =
+          (org.hl7.fhir.r4.model.Library) ResourceUtils.getResource(bundle, "Library");
+      String libraryHr = humanReadableService.generateLibraryHumanReadable(measureLibrary);
+      setNarrativeText(measureLibrary, libraryHr);
+    }
     if (BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT.equals(bundleType)) {
       // get human-readable for measure
       String humanReadable =
           humanReadableService.generateMeasureHumanReadable(measureForHR, madieMeasure.getId());
       // set narrative and effective DataRequirements to measure
       setNarrativeText(measureForExport, humanReadable);
-
-      // set narrative to measure library
-      var measureLibrary =
-          (org.hl7.fhir.r4.model.Library) ResourceUtils.getResource(bundle, "Library");
-      String libraryHr = humanReadableService.generateLibraryHumanReadable(measureLibrary);
-      setNarrativeText(measureLibrary, libraryHr);
     }
     return bundle;
   }
@@ -139,7 +140,7 @@ public class MeasureBundleService {
   /**
    * Creates a Library resource for main library of MADiE Measure
    *
-   * @param expressions- measure populations, SDEs, Stratification
+   * @param expressions - measure populations, SDEs, Stratification
    * @param madieMeasure -> instance of MADiE measure
    * @param accessToken -> okta token
    * @return library- r4 library
