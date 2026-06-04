@@ -79,14 +79,14 @@ public class MeasureTranslatorService {
     setExtensions(madieMeasure, measure);
     setUseContext(madieMeasure, measure);
     setRelatedArtifact(madieMeasure, measure);
-    if (!isComposite) {
-      measure.setLibrary(
-          Collections.singletonList(
-              new CanonicalType(
-                  FhirResourceHelpers.buildResourceFullUrl(
-                      "Library", madieMeasure.getCqlLibraryName()))));
+    if (isComposite) {
+      return measure;
     }
-    return measure;
+    return measure.setLibrary(
+        Collections.singletonList(
+            new CanonicalType(
+                FhirResourceHelpers.buildResourceFullUrl(
+                    "Library", madieMeasure.getCqlLibraryName()))));
   }
 
   private String getVersion(Measure madieMeasure) {
