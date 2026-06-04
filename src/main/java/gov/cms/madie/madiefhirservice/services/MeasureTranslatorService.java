@@ -79,7 +79,6 @@ public class MeasureTranslatorService {
     setExtensions(madieMeasure, measure);
     setUseContext(madieMeasure, measure);
     setRelatedArtifact(madieMeasure, measure);
-    // skip library canonical for composite measure
     if (!isComposite) {
       measure.setLibrary(
           Collections.singletonList(
