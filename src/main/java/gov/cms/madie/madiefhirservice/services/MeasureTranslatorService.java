@@ -394,7 +394,7 @@ public class MeasureTranslatorService {
       }
     }
     // add cqm-component extension for each component of the composite measure
-    if (CollectionUtils.isNotEmpty(madieGroup.getComponents())) {
+    if (isNotEmpty(madieGroup.getComponents())) {
       madieGroup
           .getComponents()
           .forEach(
