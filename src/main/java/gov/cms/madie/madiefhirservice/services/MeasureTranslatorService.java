@@ -882,7 +882,7 @@ public class MeasureTranslatorService {
     String resourceUrl =
         UriConstants.MADIE_URL
             + "/Measure/"
-            + component.getMeasureName()
+            + component.getMeasureLibraryName()
             + "|"
             + component.getMeasureVersion();
     RelatedArtifact relatedArtifact =

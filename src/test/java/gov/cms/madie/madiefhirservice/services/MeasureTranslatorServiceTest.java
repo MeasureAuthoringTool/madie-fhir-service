@@ -1488,12 +1488,14 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     Component component1 =
         Component.builder()
             .measureName("ComponentMeasure1")
+            .measureLibraryName("ComponentMeasure1")
             .measureVersion("1.0.0")
             .multiGroupComponent(false)
             .build();
     Component component2 =
         Component.builder()
             .measureName("ComponentMeasure2")
+            .measureLibraryName("ComponentMeasure2")
             .measureVersion("2.0.0")
             .multiGroupComponent(true)
             .groupDisplayId("group-1")
