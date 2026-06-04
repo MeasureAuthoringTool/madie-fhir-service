@@ -102,7 +102,7 @@ public final class UriConstants {
         "http://hl7.org/fhir/StructureDefinition/cqf-improvementNotationGuidance";
     public static final String CQFM_GROUP_ID_URI =
         "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-groupId";
-    public static final String CQM_COMPONENT_URI =
+    public static final String CQFM_COMPONENT_URI =
         "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-component";
   }
 

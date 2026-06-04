@@ -401,7 +401,7 @@ public class MeasureTranslatorService {
               component ->
                   element.addExtension(
                       new Extension(
-                          UriConstants.CqfMeasures.CQM_COMPONENT_URI,
+                          UriConstants.CqfMeasures.CQFM_COMPONENT_URI,
                           buildRelatedArtifactForComponent(component))));
     }
     return (MeasureGroupComponent) element;

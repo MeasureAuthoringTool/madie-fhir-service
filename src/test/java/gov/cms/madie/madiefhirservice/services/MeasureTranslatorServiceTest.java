@@ -1561,7 +1561,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertThat(groupComponents.size(), is(equalTo(1)));
     MeasureGroupComponent mgc = groupComponents.get(0);
     // should have cqm-component extension
-    Extension componentExt = mgc.getExtensionByUrl(UriConstants.CqfMeasures.CQM_COMPONENT_URI);
+    Extension componentExt = mgc.getExtensionByUrl(UriConstants.CqfMeasures.CQFM_COMPONENT_URI);
     assertNotNull(componentExt);
     // the value should be a RelatedArtifact
     assertTrue(componentExt.getValue() instanceof RelatedArtifact);
