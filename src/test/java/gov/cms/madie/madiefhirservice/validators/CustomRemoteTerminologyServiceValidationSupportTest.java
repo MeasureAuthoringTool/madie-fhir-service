@@ -598,4 +598,150 @@ class CustomRemoteTerminologyServiceValidationSupportTest {
       assertThat(result, is(codeSystemResource));
     }
   }
+
+  @Test
+  void testBuildValidateCodeInputParametersWithNoValueSetAndNoValueSetUrl() {
+    // given - both theValueSet and theValueSetUrl are null
+    CustomRemoteTerminologyServiceValidationSupport spySupport = spy(validationSupport);
+    FhirContext r4Context = FhirContext.forR4();
+    doReturn(r4Context).when(spySupport).getFhirContext();
+
+    String codeSystem = "http://example.com/CodeSystem/test";
+    String code = "1234";
+    String display = "Test Display";
+
+    // when
+    Parameters params =
+        (Parameters)
+            spySupport.buildValidateCodeInputParameters(codeSystem, code, display, null, null);
+
+    // then - codeSystem is added as "url", code as "code", display present; no system/valueSet
+    assertThat(params.getParameterValue("url").primitiveValue(), is(codeSystem));
+    assertThat(params.getParameterValue("code").primitiveValue(), is(code));
+    assertThat(params.getParameterValue("display").primitiveValue(), is(display));
+    assertThat(params.hasParameter("system"), is(false));
+    assertThat(params.hasParameter("valueSet"), is(false));
+  }
+
+  @Test
+  void testBuildValidateCodeInputParametersWithNoValueSetAndNoValueSetUrlBlankDisplay() {
+    // given - both theValueSet and theValueSetUrl are null and display is blank
+    CustomRemoteTerminologyServiceValidationSupport spySupport = spy(validationSupport);
+    FhirContext r4Context = FhirContext.forR4();
+    doReturn(r4Context).when(spySupport).getFhirContext();
+
+    String codeSystem = "http://example.com/CodeSystem/test";
+    String code = "1234";
+
+    // when
+    Parameters params =
+        (Parameters) spySupport.buildValidateCodeInputParameters(codeSystem, code, "", null, null);
+
+    // then - display should not be added when blank
+    assertThat(params.getParameterValue("url").primitiveValue(), is(codeSystem));
+    assertThat(params.getParameterValue("code").primitiveValue(), is(code));
+    assertThat(params.hasParameter("display"), is(false));
+  }
+
+  @Test
+  void testBuildValidateCodeInputParametersWithValueSetUrl() {
+    // given - theValueSetUrl is provided
+    CustomRemoteTerminologyServiceValidationSupport spySupport = spy(validationSupport);
+    FhirContext r4Context = FhirContext.forR4();
+    doReturn(r4Context).when(spySupport).getFhirContext();
+
+    String codeSystem = "http://example.com/CodeSystem/test";
+    String code = "1234";
+    String display = "Test Display";
+    String valueSetUrl = "http://example.com/ValueSet/test";
+
+    // when
+    Parameters params =
+        (Parameters)
+            spySupport.buildValidateCodeInputParameters(
+                codeSystem, code, display, valueSetUrl, null);
+
+    // then - url is the valueSetUrl, code/system/display present, no inline valueSet
+    assertThat(params.getParameterValue("url").primitiveValue(), is(valueSetUrl));
+    assertThat(params.getParameterValue("code").primitiveValue(), is(code));
+    assertThat(params.getParameterValue("system").primitiveValue(), is(codeSystem));
+    assertThat(params.getParameterValue("display").primitiveValue(), is(display));
+    assertThat(params.hasParameter("valueSet"), is(false));
+  }
+
+  @Test
+  void testBuildValidateCodeInputParametersWithValueSetUrlAndBlankCodeSystemAndDisplay() {
+    // given - valueSetUrl provided but codeSystem and display are blank
+    CustomRemoteTerminologyServiceValidationSupport spySupport = spy(validationSupport);
+    FhirContext r4Context = FhirContext.forR4();
+    doReturn(r4Context).when(spySupport).getFhirContext();
+
+    String code = "1234";
+    String valueSetUrl = "http://example.com/ValueSet/test";
+
+    // when
+    Parameters params =
+        (Parameters) spySupport.buildValidateCodeInputParameters(null, code, "", valueSetUrl, null);
+
+    // then - system and display omitted when blank
+    assertThat(params.getParameterValue("url").primitiveValue(), is(valueSetUrl));
+    assertThat(params.getParameterValue("code").primitiveValue(), is(code));
+    assertThat(params.hasParameter("system"), is(false));
+    assertThat(params.hasParameter("display"), is(false));
+    assertThat(params.hasParameter("valueSet"), is(false));
+  }
+
+  @Test
+  void testBuildValidateCodeInputParametersWithInlineValueSet() {
+    // given - an inline valueSet (no valueSetUrl)
+    CustomRemoteTerminologyServiceValidationSupport spySupport = spy(validationSupport);
+    FhirContext r4Context = FhirContext.forR4();
+    doReturn(r4Context).when(spySupport).getFhirContext();
+
+    String codeSystem = "http://example.com/CodeSystem/test";
+    String code = "1234";
+    String display = "Test Display";
+    ValueSet valueSet = new ValueSet();
+    valueSet.setUrl("http://example.com/ValueSet/inline");
+
+    // when
+    Parameters params =
+        (Parameters)
+            spySupport.buildValidateCodeInputParameters(codeSystem, code, display, null, valueSet);
+
+    // then - no "url" added, code/system/display present, inline valueSet added
+    assertThat(params.hasParameter("url"), is(false));
+    assertThat(params.getParameterValue("code").primitiveValue(), is(code));
+    assertThat(params.getParameterValue("system").primitiveValue(), is(codeSystem));
+    assertThat(params.getParameterValue("display").primitiveValue(), is(display));
+    assertThat(params.getParameter("valueSet").getResource(), is(valueSet));
+  }
+
+  @Test
+  void testBuildValidateCodeInputParametersWithValueSetUrlAndInlineValueSet() {
+    // given - both valueSetUrl and inline valueSet are provided
+    CustomRemoteTerminologyServiceValidationSupport spySupport = spy(validationSupport);
+    FhirContext r4Context = FhirContext.forR4();
+    doReturn(r4Context).when(spySupport).getFhirContext();
+
+    String codeSystem = "http://example.com/CodeSystem/test";
+    String code = "1234";
+    String display = "Test Display";
+    String valueSetUrl = "http://example.com/ValueSet/test";
+    ValueSet valueSet = new ValueSet();
+    valueSet.setUrl("http://example.com/ValueSet/inline");
+
+    // when
+    Parameters params =
+        (Parameters)
+            spySupport.buildValidateCodeInputParameters(
+                codeSystem, code, display, valueSetUrl, valueSet);
+
+    // then - url uses valueSetUrl and inline valueSet is also included
+    assertThat(params.getParameterValue("url").primitiveValue(), is(valueSetUrl));
+    assertThat(params.getParameterValue("code").primitiveValue(), is(code));
+    assertThat(params.getParameterValue("system").primitiveValue(), is(codeSystem));
+    assertThat(params.getParameterValue("display").primitiveValue(), is(display));
+    assertThat(params.getParameter("valueSet").getResource(), is(valueSet));
+  }
 }
