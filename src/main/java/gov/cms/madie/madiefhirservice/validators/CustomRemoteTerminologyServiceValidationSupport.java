@@ -8,6 +8,7 @@ import ca.uhn.fhir.rest.client.api.IGenericClient;
 import ca.uhn.fhir.rest.client.interceptor.BasicAuthInterceptor;
 import ca.uhn.fhir.rest.gclient.IQuery;
 import ca.uhn.fhir.util.BundleUtil;
+import ca.uhn.fhir.util.ParametersUtil;
 import gov.cms.madie.madiefhirservice.config.ValidationConfig;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -16,6 +17,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.hl7.fhir.common.hapi.validation.support.RemoteTerminologyServiceValidationSupport;
 import org.hl7.fhir.common.hapi.validation.support.ValidationSupportUtils;
 import org.hl7.fhir.instance.model.api.IBaseBundle;
+import org.hl7.fhir.instance.model.api.IBaseParameters;
 import org.hl7.fhir.instance.model.api.IBaseResource;
 import org.hl7.fhir.r4.model.CodeSystem;
 import jakarta.annotation.Nonnull;
@@ -183,5 +185,53 @@ public class CustomRemoteTerminologyServiceValidationSupport
       }
     }
     return validationResult;
+  }
+
+  /**
+   * HAPI is adding inferSystem parameter when codesystem is null. Since this is not supported by
+   * VSAC and causing the validation to fail MAT-10108, we are overriding the method and removing
+   * the inferSystem parameter when code system is null. This is a temporary fix, when VSAC supports
+   * inferSystem parameter, we can remove this override and use the super class method.
+   *
+   * @param theCodeSystem theCodeSystem
+   * @param theCode theCode
+   * @param theDisplay the display name
+   * @param theValueSetUrl theValueSetUrl
+   * @param theValueSet theValueSet
+   * @return parameters
+   */
+  @Override
+  protected IBaseParameters buildValidateCodeInputParameters(
+      String theCodeSystem,
+      String theCode,
+      String theDisplay,
+      String theValueSetUrl,
+      IBaseResource theValueSet) {
+    final FhirContext fhirContext = getFhirContext();
+    IBaseParameters params = ParametersUtil.newInstance(fhirContext);
+
+    if (theValueSet == null && theValueSetUrl == null) {
+      ParametersUtil.addParameterToParametersUri(fhirContext, params, "url", theCodeSystem);
+      ParametersUtil.addParameterToParametersString(fhirContext, params, "code", theCode);
+      if (isNotBlank(theDisplay)) {
+        ParametersUtil.addParameterToParametersString(fhirContext, params, "display", theDisplay);
+      }
+      return params;
+    }
+
+    if (isNotBlank(theValueSetUrl)) {
+      ParametersUtil.addParameterToParametersUri(fhirContext, params, "url", theValueSetUrl);
+    }
+    ParametersUtil.addParameterToParametersString(fhirContext, params, "code", theCode);
+    if (isNotBlank(theCodeSystem)) {
+      ParametersUtil.addParameterToParametersUri(fhirContext, params, "system", theCodeSystem);
+    }
+    if (isNotBlank(theDisplay)) {
+      ParametersUtil.addParameterToParametersString(fhirContext, params, "display", theDisplay);
+    }
+    if (theValueSet != null) {
+      ParametersUtil.addParameterToParameters(fhirContext, params, "valueSet", theValueSet);
+    }
+    return params;
   }
 }
