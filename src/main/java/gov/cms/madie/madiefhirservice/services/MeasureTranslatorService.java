@@ -42,7 +42,7 @@ public class MeasureTranslatorService {
 
   public org.hl7.fhir.r4.model.Measure createFhirMeasureForMadieMeasure(Measure madieMeasure) {
     Organization steward = madieMeasure.getMeasureMetaData().getSteward();
-
+    boolean isComposite = madieMeasure.getMeasureMetaData().isComposite();
     org.hl7.fhir.r4.model.Measure measure = new org.hl7.fhir.r4.model.Measure();
     measure
         .setName(madieMeasure.getCqlLibraryName())
@@ -62,11 +62,6 @@ public class MeasureTranslatorService {
         .setDisclaimer(RichTextUtil.sanitizeText(getDisclaimer(madieMeasure)))
         .setRationale(RichTextUtil.sanitizeText(madieMeasure.getMeasureMetaData().getRationale()))
         .setPurpose(RichTextUtil.sanitizeText(madieMeasure.getMeasureMetaData().getPurpose()))
-        .setLibrary(
-            Collections.singletonList(
-                new CanonicalType(
-                    FhirResourceHelpers.buildResourceFullUrl(
-                        "Library", madieMeasure.getCqlLibraryName()))))
         .setContact(buildContactDetail(madieMeasure.getMeasureMetaData().getSteward(), false))
         .setGroup(buildGroups(madieMeasure.getGroups()))
         .setSupplementalData(buildSupplementalData(madieMeasure))
@@ -79,12 +74,19 @@ public class MeasureTranslatorService {
             RichTextUtil.sanitizeText(
                 madieMeasure.getMeasureMetaData().getClinicalRecommendation()))
         .setDate(Date.from(madieMeasure.getLastModifiedAt()))
-        .setMeta(buildMeasureMeta(madieMeasure.getGroups()))
+        .setMeta(buildMeasureMeta(madieMeasure.getGroups(), isComposite))
         .setId(madieMeasure.getCqlLibraryName());
     setExtensions(madieMeasure, measure);
     setUseContext(madieMeasure, measure);
     setRelatedArtifact(madieMeasure, measure);
-    return measure;
+    if (isComposite) {
+      return measure;
+    }
+    return measure.setLibrary(
+        Collections.singletonList(
+            new CanonicalType(
+                FhirResourceHelpers.buildResourceFullUrl(
+                    "Library", madieMeasure.getCqlLibraryName()))));
   }
 
   private String getVersion(Measure madieMeasure) {
@@ -138,6 +140,20 @@ public class MeasureTranslatorService {
     if (isNotEmpty(madieMeasure.getMeasureMetaData().getReferences())) {
       measure.setRelatedArtifact(
           buildRelatedArtifacts(madieMeasure.getMeasureMetaData().getReferences()));
+    }
+    // for composite measure, we need to add related artifact for each component group
+    if (madieMeasure.getMeasureMetaData().isComposite() && isNotEmpty(madieMeasure.getGroups())) {
+      List<RelatedArtifact> relatedArtifacts = new ArrayList<>();
+      madieMeasure
+          .getGroups()
+          .forEach(
+              group ->
+                  group
+                      .getComponents()
+                      .forEach(
+                          component ->
+                              relatedArtifacts.add(buildRelatedArtifactForComponent(component))));
+      measure.getRelatedArtifact().addAll(relatedArtifacts);
     }
   }
 
@@ -263,14 +279,18 @@ public class MeasureTranslatorService {
     return identifier;
   }
 
-  public Meta buildMeasureMeta(List<Group> madieGroups) {
+  public Meta buildMeasureMeta(List<Group> madieGroups, boolean isComposite) {
     final Meta meta = new Meta();
     meta.addProfile(UriConstants.CqfMeasures.SHAREABLE_MEASURE_PROFILE_URI)
         .addProfile(UriConstants.CqfMeasures.COMPUTABLE_MEASURE_PROFILE_URI)
         .addProfile(UriConstants.CqfMeasures.PUBLISHABLE_MEASURE_PROFILE_URI)
-        .addProfile(UriConstants.CqfMeasures.EXECUTABLE_MEASURE_PROFILE_URI)
-        .addProfile(UriConstants.CqfMeasures.CQL_MEASURE_PROFILE_URI)
-        .addProfile(UriConstants.CqfMeasures.ELM_MEASURE_PROFILE_URI);
+        .addProfile(UriConstants.CqfMeasures.EXECUTABLE_MEASURE_PROFILE_URI);
+    if (isComposite) {
+      meta.addProfile(UriConstants.CqfMeasures.COMPOSITE_MEASURE_PROFILE_URI);
+    } else {
+      meta.addProfile(UriConstants.CqfMeasures.CQL_MEASURE_PROFILE_URI)
+          .addProfile(UriConstants.CqfMeasures.ELM_MEASURE_PROFILE_URI);
+    }
 
     if (!madieGroups.isEmpty()) {
       String score = madieGroups.get(0).getScoring();
@@ -372,6 +392,17 @@ public class MeasureTranslatorService {
             new MarkdownType(
                 RichTextUtil.sanitizeText(madieGroup.getImprovementNotationDescription())));
       }
+    }
+    // add cqm-component extension for each component of the composite measure
+    if (isNotEmpty(madieGroup.getComponents())) {
+      madieGroup
+          .getComponents()
+          .forEach(
+              component ->
+                  element.addExtension(
+                      new Extension(
+                          UriConstants.CqfMeasures.CQFM_COMPONENT_URI,
+                          buildRelatedArtifactForComponent(component))));
     }
     return (MeasureGroupComponent) element;
   }
@@ -844,6 +875,27 @@ public class MeasureTranslatorService {
                                     : ""))
                         .setCitation(RichTextUtil.sanitizeText(reference.getReferenceText())))
         .collect(Collectors.toList());
+  }
+
+  private RelatedArtifact buildRelatedArtifactForComponent(Component component) {
+    String display = component.getMeasureName();
+    String resourceUrl =
+        UriConstants.MADIE_URL
+            + "/Measure/"
+            + component.getMeasureLibraryName()
+            + "|"
+            + component.getMeasureVersion();
+    RelatedArtifact relatedArtifact =
+        new RelatedArtifact().setType(RelatedArtifactType.COMPOSEDOF).setResource(resourceUrl);
+    if (component.isMultiGroupComponent()) {
+      display += ", " + StringUtils.capitalize(component.getGroupDisplayId().replace("-", " "));
+      relatedArtifact.addExtension(
+          new Extension(
+              UriConstants.CqfMeasures.CQFM_GROUP_ID_URI,
+              new StringType(component.getGroupDisplayId())));
+    }
+    relatedArtifact.setDisplay(RichTextUtil.sanitizeText(display));
+    return relatedArtifact;
   }
 
   private String findReferencedPopulationDisplayIdByCriteriaReference(

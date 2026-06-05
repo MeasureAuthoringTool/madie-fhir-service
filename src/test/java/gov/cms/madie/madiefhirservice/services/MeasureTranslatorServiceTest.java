@@ -22,6 +22,7 @@ import gov.cms.madie.madiefhirservice.utils.MeasureTestHelper;
 import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
 import gov.cms.madie.models.common.Organization;
 import gov.cms.madie.models.measure.AssociationType;
+import gov.cms.madie.models.measure.Component;
 import gov.cms.madie.models.measure.Endorsement;
 import gov.cms.madie.models.measure.Group;
 import gov.cms.madie.models.measure.Measure;
@@ -1058,7 +1059,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
   void testBuildMeasureMetaHandlesValidInput() {
     final Meta output =
         measureTranslatorService.buildMeasureMeta(
-            List.of(Group.builder().scoring("Proportion").build()));
+            List.of(Group.builder().scoring("Proportion").build()), false);
     assertThat(output, is(notNullValue()));
     assertThat(output.hasProfile(), is(true));
     assertThat(
@@ -1075,7 +1076,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
 
   @Test
   void testBuildMeasureMetaHandlesEmptyInput() {
-    final Meta output = measureTranslatorService.buildMeasureMeta(Collections.emptyList());
+    final Meta output = measureTranslatorService.buildMeasureMeta(Collections.emptyList(), false);
     assertThat(output, is(notNullValue()));
     assertThat(output.hasProfile(), is(true));
     assertThat(
@@ -1095,7 +1096,8 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
         measureTranslatorService.buildMeasureMeta(
             List.of(
                 Group.builder().scoring("Proportion").build(),
-                Group.builder().scoring("Ratio").build()));
+                Group.builder().scoring("Ratio").build()),
+            false);
     assertThat(output, is(notNullValue()));
     assertThat(output.hasProfile(), is(true));
     assertThat(
@@ -1115,7 +1117,8 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
         measureTranslatorService.buildMeasureMeta(
             List.of(
                 Group.builder().scoring("Cohort").build(),
-                Group.builder().scoring("Cohort").build()));
+                Group.builder().scoring("Cohort").build()),
+            false);
     assertThat(output, is(notNullValue()));
     assertThat(output.hasProfile(), is(true));
     assertThat(
@@ -1455,5 +1458,131 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     group.setPopulations(List.of(ip1, ip2));
 
     return group;
+  }
+
+  @Test
+  void testBuildMeasureMetaForCompositeMeasure() {
+    final Meta output =
+        measureTranslatorService.buildMeasureMeta(
+            List.of(Group.builder().scoring("Proportion").build()), true);
+    assertThat(output, is(notNullValue()));
+    assertThat(output.hasProfile(), is(true));
+    assertThat(
+        output.hasProfile(UriConstants.CqfMeasures.EXECUTABLE_MEASURE_PROFILE_URI), is(true));
+    assertThat(
+        output.hasProfile(UriConstants.CqfMeasures.PUBLISHABLE_MEASURE_PROFILE_URI), is(true));
+    assertThat(output.hasProfile(UriConstants.CqfMeasures.SHAREABLE_MEASURE_PROFILE_URI), is(true));
+    assertThat(
+        output.hasProfile(UriConstants.CqfMeasures.COMPUTABLE_MEASURE_PROFILE_URI), is(true));
+    assertThat(output.hasProfile(UriConstants.CqfMeasures.COMPOSITE_MEASURE_PROFILE_URI), is(true));
+    // composite measures should NOT have CQL/ELM profiles
+    assertThat(output.hasProfile(UriConstants.CqfMeasures.CQL_MEASURE_PROFILE_URI), is(false));
+    assertThat(output.hasProfile(UriConstants.CqfMeasures.ELM_MEASURE_PROFILE_URI), is(false));
+    // scoring profile should still be added
+    assertThat(output.hasProfile(UriConstants.CqfMeasures.PROPORTION_PROFILE_URI), is(true));
+  }
+
+  @Test
+  void testCreateFhirMeasureForCompositeMeasure() {
+    madieMeasure.getMeasureMetaData().setComposite(true);
+    Component component1 =
+        Component.builder()
+            .measureName("ComponentMeasure1")
+            .measureLibraryName("ComponentMeasure1")
+            .measureVersion("1.0.0")
+            .multiGroupComponent(false)
+            .build();
+    Component component2 =
+        Component.builder()
+            .measureName("ComponentMeasure2")
+            .measureLibraryName("ComponentMeasure2")
+            .measureVersion("2.0.0")
+            .multiGroupComponent(true)
+            .groupDisplayId("group-1")
+            .build();
+    Group group =
+        Group.builder()
+            .scoring("Proportion")
+            .components(List.of(component1, component2))
+            .populations(new ArrayList<>())
+            .build();
+    madieMeasure.setGroups(List.of(group));
+
+    org.hl7.fhir.r4.model.Measure measure =
+        measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure);
+
+    // composite measures should not have library canonical
+    assertTrue(measure.getLibrary().isEmpty());
+    // should have composite measure profile
+    assertThat(
+        measure.getMeta().hasProfile(UriConstants.CqfMeasures.COMPOSITE_MEASURE_PROFILE_URI),
+        is(true));
+    // should have related artifacts for components (COMPOSED-OF type)
+    List<RelatedArtifact> composedOfArtifacts =
+        measure.getRelatedArtifact().stream()
+            .filter(ra -> ra.getType() == RelatedArtifact.RelatedArtifactType.COMPOSEDOF)
+            .collect(java.util.stream.Collectors.toList());
+    assertThat(composedOfArtifacts.size(), is(equalTo(2)));
+    // first component - no multi-group
+    assertThat(composedOfArtifacts.get(0).getDisplay(), is(equalTo("ComponentMeasure1")));
+    assertThat(composedOfArtifacts.get(0).getResource(), containsString("ComponentMeasure1|1.0.0"));
+    assertNull(
+        composedOfArtifacts.get(0).getExtensionByUrl(UriConstants.CqfMeasures.CQFM_GROUP_ID_URI));
+    // second component - multi-group with group id extension
+    assertThat(composedOfArtifacts.get(1).getDisplay(), is(equalTo("ComponentMeasure2, Group 1")));
+    assertThat(composedOfArtifacts.get(1).getResource(), containsString("ComponentMeasure2|2.0.0"));
+    assertNotNull(
+        composedOfArtifacts.get(1).getExtensionByUrl(UriConstants.CqfMeasures.CQFM_GROUP_ID_URI));
+    assertThat(
+        composedOfArtifacts
+            .get(1)
+            .getExtensionByUrl(UriConstants.CqfMeasures.CQFM_GROUP_ID_URI)
+            .getValue()
+            .toString(),
+        is(equalTo("group-1")));
+  }
+
+  @Test
+  void testBuildGroupsWithComponents() {
+    Component component =
+        Component.builder()
+            .measureName("ComponentMeasure")
+            .measureVersion("1.0.0")
+            .multiGroupComponent(false)
+            .build();
+    Group group =
+        Group.builder()
+            .scoring("Proportion")
+            .components(List.of(component))
+            .populations(new ArrayList<>())
+            .build();
+
+    List<MeasureGroupComponent> groupComponents =
+        measureTranslatorService.buildGroups(List.of(group));
+
+    assertThat(groupComponents.size(), is(equalTo(1)));
+    MeasureGroupComponent mgc = groupComponents.get(0);
+    // should have cqm-component extension
+    Extension componentExt = mgc.getExtensionByUrl(UriConstants.CqfMeasures.CQFM_COMPONENT_URI);
+    assertNotNull(componentExt);
+    // the value should be a RelatedArtifact
+    assertTrue(componentExt.getValue() instanceof RelatedArtifact);
+    RelatedArtifact ra = (RelatedArtifact) componentExt.getValue();
+    assertThat(ra.getType(), is(equalTo(RelatedArtifact.RelatedArtifactType.COMPOSEDOF)));
+    assertThat(ra.getDisplay(), is(equalTo("ComponentMeasure")));
+  }
+
+  @Test
+  void testSetRelatedArtifactForNonCompositeMeasureWithReferences() {
+    madieMeasure.getMeasureMetaData().setComposite(false);
+    madieMeasure.setGroups(new ArrayList<>());
+    org.hl7.fhir.r4.model.Measure measure =
+        measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure);
+    // should not have COMPOSED-OF related artifacts for non-composite measure
+    long composedOfCount =
+        measure.getRelatedArtifact().stream()
+            .filter(ra -> ra.getType() == RelatedArtifact.RelatedArtifactType.COMPOSEDOF)
+            .count();
+    assertThat(composedOfCount, is(equalTo(0L)));
   }
 }

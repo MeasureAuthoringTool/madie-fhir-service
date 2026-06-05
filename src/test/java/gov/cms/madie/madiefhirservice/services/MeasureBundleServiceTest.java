@@ -139,6 +139,34 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
   }
 
   @Test
+  public void testCreateMeasureBundleForCompositeMeasure() {
+    madieMeasure.getMeasureMetaData().setComposite(true);
+    when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure))
+        .thenReturn(measure);
+
+    Bundle bundle =
+        measureBundleService.createMeasureBundle(
+            madieMeasure,
+            mock(Principal.class),
+            BundleUtil.MEASURE_BUNDLE_TYPE_CALCULATION,
+            "token",
+            CqlCompilerException.ErrorSeverity.Error);
+
+    // composite measure bundle should only have 1 entry (measure only, no libraries)
+    assertThat(bundle.getEntry().size(), is(1));
+    assertThat(bundle.getType(), is(equalTo(Bundle.BundleType.TRANSACTION)));
+
+    org.hl7.fhir.r4.model.Measure measureResource =
+        (org.hl7.fhir.r4.model.Measure) bundle.getEntry().get(0).getResource();
+    assertThat(madieMeasure.getCqlLibraryName(), is(equalTo(measureResource.getName())));
+
+    Bundle.BundleEntryRequestComponent measureEntryRequest = bundle.getEntry().get(0).getRequest();
+    assertThat(
+        measureEntryRequest.getUrl(), is(equalTo("Measure/" + madieMeasure.getCqlLibraryName())));
+    assertThat(measureEntryRequest.getMethod(), is(equalTo(Bundle.HTTPVerb.POST)));
+  }
+
+  @Test
   public void testCreateMeasureBundleWhenIncludedLibraryNotFound() {
     when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure))
         .thenReturn(measure);
