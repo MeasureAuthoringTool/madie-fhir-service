@@ -22,6 +22,11 @@ madie:
   url: ${MADIE_URL:https://madie.cms.gov}
   resource:
     url: https://madie.cms.gov
+  terminology:
+    service:
+      base-url: ${TERMINOLOGY_SERVICE_URL:http://localhost:8081/api/terminology}
+      validate-codes: /validations/codes
+      api-key: ${TERMINOLOGY_API_KEY:0a51991c}
   service-config:
     json-url: ${SERVICE_CONFIG_JSON_URL:http://localhost:9000/env-config/serviceConfig.json}
 
