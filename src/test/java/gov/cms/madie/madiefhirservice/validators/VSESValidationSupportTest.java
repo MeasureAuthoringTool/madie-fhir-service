@@ -37,7 +37,7 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 @Slf4j
-class CustomSavedValueSetExpansionValidationSupportTest {
+class VSESValidationSupportTest {
 
   @Mock(lenient = true)
   private FhirContext fhirContext;
@@ -54,7 +54,7 @@ class CustomSavedValueSetExpansionValidationSupportTest {
   @Mock(lenient = true)
   private HapiLocalizer localizer;
 
-  private CustomSavedValueSetExpansionValidationSupport validationSupport;
+  private VSESValidationSupport validationSupport;
   private ValueSet valueSet;
   private final String baseUrl = "http://example.com/fhir";
   private final String apiKey = "test-api-key";
@@ -65,7 +65,7 @@ class CustomSavedValueSetExpansionValidationSupportTest {
     doNothing().when(genericClient).registerInterceptor(basicAuthInterceptor);
 
     validationSupport =
-        new CustomSavedValueSetExpansionValidationSupport(
+        new VSESValidationSupport(
             fhirContext, baseUrl, apiKey, basicAuthInterceptor, validationConfig);
     valueSet = new ValueSet();
     valueSet.setUrl("http://hl7.org/fhir/ValueSet/test");

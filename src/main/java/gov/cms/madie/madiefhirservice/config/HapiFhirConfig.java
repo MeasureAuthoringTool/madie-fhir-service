@@ -11,7 +11,7 @@ import ca.uhn.fhir.validation.IValidatorModule;
 import gov.cms.madie.madiefhirservice.utils.ResourceUtils;
 import gov.cms.madie.madiefhirservice.validators.CustomRemoteTerminologyServiceValidationSupport;
 import gov.cms.madie.madiefhirservice.validators.CustomUnknownCodeSystemWarningValidationSupport;
-import gov.cms.madie.madiefhirservice.validators.CustomSavedValueSetExpansionValidationSupport;
+import gov.cms.madie.madiefhirservice.validators.VSESValidationSupport;
 import lombok.extern.slf4j.Slf4j;
 import org.hl7.fhir.common.hapi.validation.support.*;
 import org.hl7.fhir.common.hapi.validation.validator.FhirInstanceValidator;
@@ -107,8 +107,8 @@ public class HapiFhirConfig {
     RemoteTerminologyServiceValidationSupport remoteTerminologyServiceValidationSupport =
         getRemoteTerminologyServiceValidationSupport(qicore6FhirContext);
 
-    CustomSavedValueSetExpansionValidationSupport savedExpansionSupport =
-        new CustomSavedValueSetExpansionValidationSupport(
+    VSESValidationSupport vsesValidationSupport =
+        new VSESValidationSupport(
             qicore6FhirContext,
             savedExpansionServiceBaseUrl,
             savedExpansionServiceApiKey,
@@ -117,10 +117,9 @@ public class HapiFhirConfig {
 
     return new ValidationSupportChain(
         npmPackageSupport,
+        vsesValidationSupport,
         new DefaultProfileValidationSupport(qicore6FhirContext),
         new CommonCodeSystemsTerminologyService(qicore6FhirContext),
-        // support that attempts to fetch saved ValueSet expansions from an external service
-        savedExpansionSupport,
         remoteTerminologyServiceValidationSupport,
         unknownCodeSystemWarningValidationSupport);
   }

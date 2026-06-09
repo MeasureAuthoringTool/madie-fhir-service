@@ -32,7 +32,7 @@ import java.util.List;
  * endpoint that returns a serialized ValueSet (preferably FHIR JSON) for a given ValueSet URL.
  */
 @Slf4j
-public class CustomSavedValueSetExpansionValidationSupport
+public class VSESValidationSupport
     extends RemoteTerminologyServiceValidationSupport {
 
   private final String serviceBaseUrl;
@@ -41,7 +41,7 @@ public class CustomSavedValueSetExpansionValidationSupport
   private final IGenericClient client;
   private ValidationConfig validationConfig;
 
-  public CustomSavedValueSetExpansionValidationSupport(
+  public VSESValidationSupport(
       FhirContext theFhirContext,
       String serviceBaseUrl,
       String apiKey,
