@@ -65,8 +65,7 @@ class VSESValidationSupportTest {
     doNothing().when(genericClient).registerInterceptor(basicAuthInterceptor);
 
     validationSupport =
-        new VSESValidationSupport(
-            fhirContext, baseUrl, apiKey, basicAuthInterceptor, validationConfig);
+        new VSESValidationSupport(fhirContext, baseUrl, basicAuthInterceptor, validationConfig);
     valueSet = new ValueSet();
     valueSet.setUrl("http://hl7.org/fhir/ValueSet/test");
     valueSet.setExpansion(new ValueSet.ValueSetExpansionComponent());

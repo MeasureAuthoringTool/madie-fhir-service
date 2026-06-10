@@ -32,30 +32,23 @@ import java.util.List;
  * endpoint that returns a serialized ValueSet (preferably FHIR JSON) for a given ValueSet URL.
  */
 @Slf4j
-public class VSESValidationSupport
-    extends RemoteTerminologyServiceValidationSupport {
+public class VSESValidationSupport extends RemoteTerminologyServiceValidationSupport {
 
-  private final String serviceBaseUrl;
-  private final String apiKey;
-  //  private final IParser parser;
   private final IGenericClient client;
   private ValidationConfig validationConfig;
 
   public VSESValidationSupport(
       FhirContext theFhirContext,
       String serviceBaseUrl,
-      String apiKey,
       BasicAuthInterceptor basicAuthInterceptor,
       ValidationConfig validationConfig) {
     // Pass an empty base URL to parent to prevent it from attempting remote calls itself
     super(theFhirContext, serviceBaseUrl);
-    this.serviceBaseUrl = serviceBaseUrl;
     this.addClientInterceptor(basicAuthInterceptor);
     client = super.myCtx.newRestfulGenericClient(getBaseUrl());
     client.registerInterceptor(basicAuthInterceptor);
     // Force JSON encoding to handle servers that return incorrect Content-Type headers
     client.setEncoding(EncodingEnum.JSON);
-    this.apiKey = apiKey;
     this.validationConfig = validationConfig;
   }
 

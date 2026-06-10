@@ -111,7 +111,6 @@ public class HapiFhirConfig {
         new VSESValidationSupport(
             qicore6FhirContext,
             savedExpansionServiceBaseUrl,
-            savedExpansionServiceApiKey,
             new BasicAuthInterceptor("api-key", savedExpansionServiceApiKey),
             validationConfig);
 
