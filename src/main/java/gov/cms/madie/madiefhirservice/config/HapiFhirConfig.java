@@ -9,9 +9,9 @@ import ca.uhn.fhir.util.ClasspathUtil;
 import ca.uhn.fhir.validation.FhirValidator;
 import ca.uhn.fhir.validation.IValidatorModule;
 import gov.cms.madie.madiefhirservice.utils.ResourceUtils;
-import gov.cms.madie.madiefhirservice.validators.CustomQiCoreInMemoryValidationSupport;
 import gov.cms.madie.madiefhirservice.validators.CustomRemoteTerminologyServiceValidationSupport;
 import gov.cms.madie.madiefhirservice.validators.CustomUnknownCodeSystemWarningValidationSupport;
+import gov.cms.madie.madiefhirservice.validators.VSESValidationSupport;
 import lombok.extern.slf4j.Slf4j;
 import org.hl7.fhir.common.hapi.validation.support.*;
 import org.hl7.fhir.common.hapi.validation.validator.FhirInstanceValidator;
@@ -41,6 +41,12 @@ public class HapiFhirConfig {
 
   @Value("${vsac.terminology-server-url}")
   private String terminologyServerBase;
+
+  @Value("${madie.terminology.service.base-url:}")
+  private String savedExpansionServiceBaseUrl;
+
+  @Value("${madie.terminology.service.api-key:}")
+  private String savedExpansionServiceApiKey;
 
   @Autowired private ValidationConfig validationConfig;
 
@@ -94,9 +100,6 @@ public class HapiFhirConfig {
         "classpath:packages/hl7.fhir.uv.extensions.r4-5.2.0.tgz");
     npmPackageSupport.loadPackageFromClasspath(
         "classpath:packages/hl7.fhir.xver-extensions-0.1.0.tgz");
-    PrePopulatedValidationSupport prePopulatedValidationSupport =
-        buildPrePopulatedValidationSupportFromZip(
-            qicore6FhirContext, "classpath:packages/tx-qicore-6.0.0.zip");
 
     CustomUnknownCodeSystemWarningValidationSupport unknownCodeSystemWarningValidationSupport =
         getUnknownCodeSystemValidationSupport(qicore6FhirContext);
@@ -104,11 +107,17 @@ public class HapiFhirConfig {
     RemoteTerminologyServiceValidationSupport remoteTerminologyServiceValidationSupport =
         getRemoteTerminologyServiceValidationSupport(qicore6FhirContext);
 
+    VSESValidationSupport vsesValidationSupport =
+        new VSESValidationSupport(
+            qicore6FhirContext,
+            savedExpansionServiceBaseUrl,
+            new BasicAuthInterceptor("api-key", savedExpansionServiceApiKey),
+            validationConfig);
+
     return new ValidationSupportChain(
-        prePopulatedValidationSupport,
         npmPackageSupport,
+        vsesValidationSupport,
         new DefaultProfileValidationSupport(qicore6FhirContext),
-        new CustomQiCoreInMemoryValidationSupport(qicore6FhirContext, validationConfig),
         new CommonCodeSystemsTerminologyService(qicore6FhirContext),
         remoteTerminologyServiceValidationSupport,
         unknownCodeSystemWarningValidationSupport);
