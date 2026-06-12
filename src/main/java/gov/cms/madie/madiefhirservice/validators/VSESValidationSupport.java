@@ -28,8 +28,7 @@ import java.util.List;
 /**
  * Validation support module that fetches previously-saved ValueSet expansions from an external
  * service. The service is expected to expose an endpoint that returns a serialized ValueSet
- * (preferably FHIR JSON) for a given ValueSet URL. service. The service is expected to expose an
- * endpoint that returns a serialized ValueSet (preferably FHIR JSON) for a given ValueSet URL.
+ * (preferably FHIR JSON) for a given ValueSet URL.
  */
 @Slf4j
 public class VSESValidationSupport extends RemoteTerminologyServiceValidationSupport {
