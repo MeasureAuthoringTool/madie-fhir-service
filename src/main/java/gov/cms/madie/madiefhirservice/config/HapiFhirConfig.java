@@ -9,6 +9,7 @@ import ca.uhn.fhir.util.ClasspathUtil;
 import ca.uhn.fhir.validation.FhirValidator;
 import ca.uhn.fhir.validation.IValidatorModule;
 import gov.cms.madie.madiefhirservice.utils.ResourceUtils;
+import gov.cms.madie.madiefhirservice.validators.CustomQiCoreInMemoryValidationSupport;
 import gov.cms.madie.madiefhirservice.validators.CustomRemoteTerminologyServiceValidationSupport;
 import gov.cms.madie.madiefhirservice.validators.CustomUnknownCodeSystemWarningValidationSupport;
 import gov.cms.madie.madiefhirservice.validators.VSESValidationSupport;
@@ -100,6 +101,9 @@ public class HapiFhirConfig {
         "classpath:packages/hl7.fhir.uv.extensions.r4-5.2.0.tgz");
     npmPackageSupport.loadPackageFromClasspath(
         "classpath:packages/hl7.fhir.xver-extensions-0.1.0.tgz");
+    PrePopulatedValidationSupport prePopulatedValidationSupport =
+        buildPrePopulatedValidationSupportFromZip(
+            qicore6FhirContext, "classpath:packages/tx-qicore-6.0.0.zip");
 
     CustomUnknownCodeSystemWarningValidationSupport unknownCodeSystemWarningValidationSupport =
         getUnknownCodeSystemValidationSupport(qicore6FhirContext);
@@ -115,9 +119,11 @@ public class HapiFhirConfig {
             validationConfig);
 
     return new ValidationSupportChain(
+        prePopulatedValidationSupport,
         npmPackageSupport,
         vsesValidationSupport,
         new DefaultProfileValidationSupport(qicore6FhirContext),
+        new CustomQiCoreInMemoryValidationSupport(qicore6FhirContext, validationConfig),
         new CommonCodeSystemsTerminologyService(qicore6FhirContext),
         remoteTerminologyServiceValidationSupport,
         unknownCodeSystemWarningValidationSupport);
