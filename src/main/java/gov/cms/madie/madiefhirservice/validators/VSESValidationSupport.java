@@ -19,7 +19,6 @@ import org.hl7.fhir.common.hapi.validation.support.InMemoryTerminologyServerVali
 import org.hl7.fhir.common.hapi.validation.support.RemoteTerminologyServiceValidationSupport;
 import org.hl7.fhir.instance.model.api.IBaseBundle;
 import org.hl7.fhir.instance.model.api.IBaseResource;
-import org.hl7.fhir.r4.model.CodeSystem;
 import org.hl7.fhir.r4.model.ValueSet;
 
 import java.util.Collections;
@@ -88,24 +87,9 @@ public class VSESValidationSupport extends RemoteTerminologyServiceValidationSup
 
   @Override
   public IBaseResource fetchCodeSystem(String theSystem) {
-    if (StringUtils.isBlank(theSystem)) {
-      return null;
-    } else {
-      Class<? extends IBaseBundle> bundleType =
-          this.myCtx.getResourceDefinition("Bundle").getImplementingClass(IBaseBundle.class);
-      IQuery<IBaseBundle> codeSystemQuery =
-          client
-              .search()
-              .forResource("CodeSystem")
-              .where(CodeSystem.URL.matches().value(theSystem))
-              .count(1);
-      IBaseBundle bundles = codeSystemQuery.returnBundle(bundleType).execute();
-      if (bundles == null) {
-        return null;
-      }
-      List<IBaseResource> codeSystems = BundleUtil.toListOfResources(this.myCtx, bundles);
-      return CollectionUtils.isNotEmpty(codeSystems) ? codeSystems.get(0) : null;
-    }
+    // VSES does not support CodeSystem validation, so we can return null here to skip to the next
+    // validation support module in the chain
+    return null;
   }
 
   @Override

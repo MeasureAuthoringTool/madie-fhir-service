@@ -9,6 +9,7 @@ import ca.uhn.fhir.util.ClasspathUtil;
 import ca.uhn.fhir.validation.FhirValidator;
 import ca.uhn.fhir.validation.IValidatorModule;
 import gov.cms.madie.madiefhirservice.utils.ResourceUtils;
+import gov.cms.madie.madiefhirservice.validators.CustomQiCoreInMemoryValidationSupport;
 import gov.cms.madie.madiefhirservice.validators.CustomRemoteTerminologyServiceValidationSupport;
 import gov.cms.madie.madiefhirservice.validators.CustomUnknownCodeSystemWarningValidationSupport;
 import gov.cms.madie.madiefhirservice.validators.VSESValidationSupport;
@@ -122,7 +123,7 @@ public class HapiFhirConfig {
         npmPackageSupport,
         vsesValidationSupport,
         new DefaultProfileValidationSupport(qicore6FhirContext),
-        //        new CustomQiCoreInMemoryValidationSupport(qicore6FhirContext, validationConfig),
+        new CustomQiCoreInMemoryValidationSupport(qicore6FhirContext, validationConfig),
         new CommonCodeSystemsTerminologyService(qicore6FhirContext),
         remoteTerminologyServiceValidationSupport,
         unknownCodeSystemWarningValidationSupport);
