@@ -19,7 +19,6 @@ import org.hl7.fhir.common.hapi.validation.support.InMemoryTerminologyServerVali
 import org.hl7.fhir.common.hapi.validation.support.RemoteTerminologyServiceValidationSupport;
 import org.hl7.fhir.instance.model.api.IBaseBundle;
 import org.hl7.fhir.instance.model.api.IBaseResource;
-import org.hl7.fhir.r4.model.CodeSystem;
 import org.hl7.fhir.r4.model.ValueSet;
 
 import java.util.Collections;
@@ -62,8 +61,15 @@ public class VSESValidationSupport extends RemoteTerminologyServiceValidationSup
   public IBaseResource fetchValueSet(String theValueSetUrl) {
     Class<? extends IBaseBundle> bundleType =
         this.myCtx.getResourceDefinition("Bundle").getImplementingClass(IBaseBundle.class);
+    String[] valueSetParams = theValueSetUrl.split("\\|");
     IQuery<IBaseBundle> valueSetQuery =
-        client.search().forResource("ValueSet").where(ValueSet.URL.matches().value(theValueSetUrl));
+        client
+            .search()
+            .forResource("ValueSet")
+            .where(ValueSet.URL.matches().value(valueSetParams[0]));
+    if (valueSetParams != null && valueSetParams.length > 1) {
+      valueSetQuery.where(ValueSet.VERSION.exactly().code(valueSetParams[1]));
+    }
     IBaseBundle results = valueSetQuery.returnBundle(bundleType).execute();
     if (results == null) {
       return null;
@@ -81,21 +87,9 @@ public class VSESValidationSupport extends RemoteTerminologyServiceValidationSup
 
   @Override
   public IBaseResource fetchCodeSystem(String theSystem) {
-    if (StringUtils.isBlank(theSystem)) {
-      return null;
-    } else {
-      Class<? extends IBaseBundle> bundleType =
-          this.myCtx.getResourceDefinition("Bundle").getImplementingClass(IBaseBundle.class);
-      IQuery<IBaseBundle> codeSystemQuery =
-          client
-              .search()
-              .forResource("CodeSystem")
-              .where(CodeSystem.URL.matches().value(theSystem))
-              .count(1);
-      IBaseBundle bundles = codeSystemQuery.returnBundle(bundleType).execute();
-      List<IBaseResource> codeSystems = BundleUtil.toListOfResources(this.myCtx, bundles);
-      return CollectionUtils.isNotEmpty(codeSystems) ? codeSystems.get(0) : null;
-    }
+    // VSES does not support CodeSystem validation, so we can return null here to skip to the next
+    // validation support module in the chain
+    return null;
   }
 
   @Override
@@ -214,7 +208,7 @@ public class VSESValidationSupport extends RemoteTerminologyServiceValidationSup
                       contains.getDisplay(),
                       theCodeSystemUrlAndVersion,
                       theCode)
-              + " for MADiE in-memory expansion of ValueSet: "
+              + " for MADiE VSES expansion of ValueSet: "
               + vsUrl;
       validationResult.setIssues(
           Collections.singletonList(
@@ -241,7 +235,7 @@ public class VSESValidationSupport extends RemoteTerminologyServiceValidationSup
             .setSeverity(IssueSeverity.ERROR);
     String message = "Invalid - missing code";
     if (StringUtils.isNotBlank(vsUrl)) {
-      message = message + " for in-memory expansion of ValueSet '" + vsUrl + "'";
+      message = message + " for VSES expansion of ValueSet '" + vsUrl + "'";
     }
     codeValidationResult.setIssues(
         Collections.singletonList(
@@ -271,7 +265,7 @@ public class VSESValidationSupport extends RemoteTerminologyServiceValidationSup
     IssueSeverity severity = IssueSeverity.ERROR;
 
     if (StringUtils.isNotBlank(vsUrl)) {
-      message = message + " for in-memory expansion of ValueSet '" + vsUrl + "'";
+      message = message + " for VSES expansion of ValueSet '" + vsUrl + "'";
       issueCoding = CodeValidationIssueCoding.NOT_IN_VS;
     }
 
@@ -310,7 +304,7 @@ public class VSESValidationSupport extends RemoteTerminologyServiceValidationSup
             .setSeverity(theSeverity);
     if (StringUtils.isNotBlank(vsUrl)) {
       codeValidationResult.setSourceDetails(
-          "Code was validated against in-memory expansion of ValueSet: " + vsUrl);
+          "Code was validated against VSES expansion of ValueSet: " + vsUrl);
     }
     return codeValidationResult;
   }
