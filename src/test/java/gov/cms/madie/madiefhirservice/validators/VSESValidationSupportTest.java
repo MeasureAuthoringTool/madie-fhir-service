@@ -114,6 +114,33 @@ class VSESValidationSupportTest {
 
   @Test
   @SuppressWarnings("unchecked")
+  void fetchValueSetAppliesVersionCriteriaWhenVersionIsInUrl() {
+    String valueSetUrlWithVersion = "http://hl7.org/fhir/ValueSet/test|1.0.0";
+    IBaseResource mockResource = mock(IBaseResource.class);
+    List<IBaseResource> resourceList = List.of(mockResource);
+
+    when(fhirContext.getResourceDefinition("Bundle")).thenReturn(bundleDefinition);
+    when(bundleDefinition.getImplementingClass(IBaseBundle.class)).thenReturn(IBaseBundle.class);
+    when(genericClient.search()).thenReturn(untypedQuery);
+    when(untypedQuery.forResource("ValueSet")).thenReturn(query);
+    when(query.where(any(ICriterion.class))).thenReturn(query);
+    when(query.returnBundle(eq(IBaseBundle.class))).thenReturn(query);
+    when(query.execute()).thenReturn(bundle);
+
+    try (MockedStatic<BundleUtil> bundleUtilMock = mockStatic(BundleUtil.class)) {
+      bundleUtilMock
+              .when(() -> BundleUtil.toListOfResources(fhirContext, bundle))
+              .thenReturn(resourceList);
+
+      IBaseResource result = validationSupport.fetchValueSet(valueSetUrlWithVersion);
+
+      assertThat(result, is(mockResource));
+      verify(query, times(2)).where(any(ICriterion.class));
+    }
+  }
+
+  @Test
+  @SuppressWarnings("unchecked")
   void fetchValueSetReturnsNullWhenBundleIsNull() {
     String valueSetUrl = "http://hl7.org/fhir/ValueSet/test";
 
