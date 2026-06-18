@@ -100,6 +100,9 @@ public class HapiFhirConfig {
         "classpath:packages/hl7.fhir.uv.extensions.r4-5.2.0.tgz");
     npmPackageSupport.loadPackageFromClasspath(
         "classpath:packages/hl7.fhir.xver-extensions-0.1.0.tgz");
+    PrePopulatedValidationSupport prePopulatedValidationSupport =
+        buildPrePopulatedValidationSupportFromZip(
+            qicore6FhirContext, "classpath:packages/tx-qicore-6.0.0.zip");
 
     CustomUnknownCodeSystemWarningValidationSupport unknownCodeSystemWarningValidationSupport =
         getUnknownCodeSystemValidationSupport(qicore6FhirContext);
@@ -115,9 +118,11 @@ public class HapiFhirConfig {
             validationConfig);
 
     return new ValidationSupportChain(
+        prePopulatedValidationSupport,
         npmPackageSupport,
         vsesValidationSupport,
         new DefaultProfileValidationSupport(qicore6FhirContext),
+        //        new CustomQiCoreInMemoryValidationSupport(qicore6FhirContext, validationConfig),
         new CommonCodeSystemsTerminologyService(qicore6FhirContext),
         remoteTerminologyServiceValidationSupport,
         unknownCodeSystemWarningValidationSupport);

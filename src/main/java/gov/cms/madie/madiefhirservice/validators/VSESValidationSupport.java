@@ -62,8 +62,15 @@ public class VSESValidationSupport extends RemoteTerminologyServiceValidationSup
   public IBaseResource fetchValueSet(String theValueSetUrl) {
     Class<? extends IBaseBundle> bundleType =
         this.myCtx.getResourceDefinition("Bundle").getImplementingClass(IBaseBundle.class);
+    String[] valueSetParams = theValueSetUrl.split("\\|");
     IQuery<IBaseBundle> valueSetQuery =
-        client.search().forResource("ValueSet").where(ValueSet.URL.matches().value(theValueSetUrl));
+        client
+            .search()
+            .forResource("ValueSet")
+            .where(ValueSet.URL.matches().value(valueSetParams[0]));
+    if (valueSetParams != null && valueSetParams.length > 1) {
+      valueSetQuery.where(ValueSet.VERSION.exactly().code(valueSetParams[1]));
+    }
     IBaseBundle results = valueSetQuery.returnBundle(bundleType).execute();
     if (results == null) {
       return null;
@@ -93,6 +100,9 @@ public class VSESValidationSupport extends RemoteTerminologyServiceValidationSup
               .where(CodeSystem.URL.matches().value(theSystem))
               .count(1);
       IBaseBundle bundles = codeSystemQuery.returnBundle(bundleType).execute();
+      if (bundles == null) {
+        return null;
+      }
       List<IBaseResource> codeSystems = BundleUtil.toListOfResources(this.myCtx, bundles);
       return CollectionUtils.isNotEmpty(codeSystems) ? codeSystems.get(0) : null;
     }
@@ -214,7 +224,7 @@ public class VSESValidationSupport extends RemoteTerminologyServiceValidationSup
                       contains.getDisplay(),
                       theCodeSystemUrlAndVersion,
                       theCode)
-              + " for MADiE in-memory expansion of ValueSet: "
+              + " for MADiE VSES expansion of ValueSet: "
               + vsUrl;
       validationResult.setIssues(
           Collections.singletonList(
@@ -241,7 +251,7 @@ public class VSESValidationSupport extends RemoteTerminologyServiceValidationSup
             .setSeverity(IssueSeverity.ERROR);
     String message = "Invalid - missing code";
     if (StringUtils.isNotBlank(vsUrl)) {
-      message = message + " for in-memory expansion of ValueSet '" + vsUrl + "'";
+      message = message + " for VSES expansion of ValueSet '" + vsUrl + "'";
     }
     codeValidationResult.setIssues(
         Collections.singletonList(
@@ -271,7 +281,7 @@ public class VSESValidationSupport extends RemoteTerminologyServiceValidationSup
     IssueSeverity severity = IssueSeverity.ERROR;
 
     if (StringUtils.isNotBlank(vsUrl)) {
-      message = message + " for in-memory expansion of ValueSet '" + vsUrl + "'";
+      message = message + " for VSES expansion of ValueSet '" + vsUrl + "'";
       issueCoding = CodeValidationIssueCoding.NOT_IN_VS;
     }
 
@@ -310,7 +320,7 @@ public class VSESValidationSupport extends RemoteTerminologyServiceValidationSup
             .setSeverity(theSeverity);
     if (StringUtils.isNotBlank(vsUrl)) {
       codeValidationResult.setSourceDetails(
-          "Code was validated against in-memory expansion of ValueSet: " + vsUrl);
+          "Code was validated against VSES expansion of ValueSet: " + vsUrl);
     }
     return codeValidationResult;
   }
