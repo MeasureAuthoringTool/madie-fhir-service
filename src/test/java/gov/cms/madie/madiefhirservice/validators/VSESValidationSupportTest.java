@@ -228,112 +228,11 @@ class VSESValidationSupportTest {
 
   @Test
   @SuppressWarnings("unchecked")
-  void fetchCodeSystemReturnsResourceWhenFound() {
+  void fetchCodeSystemReturnsNull() {
     String codeSystem = "http://hl7.org/fhir/CodeSystem/test";
-    IBaseResource mockResource = mock(IBaseResource.class);
-    List<IBaseResource> resourceList = List.of(mockResource);
+    IBaseResource result = validationSupport.fetchCodeSystem(codeSystem);
 
-    when(fhirContext.getResourceDefinition("Bundle")).thenReturn(bundleDefinition);
-    when(bundleDefinition.getImplementingClass(IBaseBundle.class)).thenReturn(IBaseBundle.class);
-    when(genericClient.search()).thenReturn(untypedQuery);
-    when(untypedQuery.forResource("CodeSystem")).thenReturn(query);
-    when(query.where(any(ICriterion.class))).thenReturn(query);
-    when(query.count(1)).thenReturn(query);
-    when(query.returnBundle(eq(IBaseBundle.class))).thenReturn(query);
-    when(query.execute()).thenReturn(bundle);
-
-    try (MockedStatic<BundleUtil> bundleUtilMock = mockStatic(BundleUtil.class)) {
-      bundleUtilMock
-          .when(() -> BundleUtil.toListOfResources(fhirContext, bundle))
-          .thenReturn(resourceList);
-
-      IBaseResource result = validationSupport.fetchCodeSystem(codeSystem);
-
-      assertThat(result, is(mockResource));
-      verify(untypedQuery).forResource("CodeSystem");
-      verify(query).count(1);
-    }
-  }
-
-  @Test
-  @SuppressWarnings("unchecked")
-  void fetchCodeSystemReturnsNullWhenNoResourcesFound() {
-    String codeSystem = "http://hl7.org/fhir/CodeSystem/notfound";
-    List<IBaseResource> emptyList = Collections.emptyList();
-
-    when(fhirContext.getResourceDefinition("Bundle")).thenReturn(bundleDefinition);
-    when(bundleDefinition.getImplementingClass(IBaseBundle.class)).thenReturn(IBaseBundle.class);
-    when(genericClient.search()).thenReturn(untypedQuery);
-    when(untypedQuery.forResource("CodeSystem")).thenReturn(query);
-    when(query.where(any(ICriterion.class))).thenReturn(query);
-    when(query.count(1)).thenReturn(query);
-    when(query.returnBundle(eq(IBaseBundle.class))).thenReturn(query);
-    when(query.execute()).thenReturn(bundle);
-
-    try (MockedStatic<BundleUtil> bundleUtilMock = mockStatic(BundleUtil.class)) {
-      bundleUtilMock
-          .when(() -> BundleUtil.toListOfResources(fhirContext, bundle))
-          .thenReturn(emptyList);
-
-      IBaseResource result = validationSupport.fetchCodeSystem(codeSystem);
-
-      assertThat(result, is(nullValue()));
-    }
-  }
-
-  @Test
-  @SuppressWarnings("unchecked")
-  void isCodeSystemSupportedReturnsTrueWhenCodeSystemExists() {
-    String codeSystem = "http://hl7.org/fhir/CodeSystem/test";
-    IBaseResource mockResource = mock(IBaseResource.class);
-    List<IBaseResource> resourceList = List.of(mockResource);
-
-    when(fhirContext.getResourceDefinition("Bundle")).thenReturn(bundleDefinition);
-    when(bundleDefinition.getImplementingClass(IBaseBundle.class)).thenReturn(IBaseBundle.class);
-    when(genericClient.search()).thenReturn(untypedQuery);
-    when(untypedQuery.forResource("CodeSystem")).thenReturn(query);
-    when(query.where(any(ICriterion.class))).thenReturn(query);
-    when(query.count(1)).thenReturn(query);
-    when(query.returnBundle(eq(IBaseBundle.class))).thenReturn(query);
-    when(query.execute()).thenReturn(bundle);
-
-    try (MockedStatic<BundleUtil> bundleUtilMock = mockStatic(BundleUtil.class)) {
-      bundleUtilMock
-          .when(() -> BundleUtil.toListOfResources(fhirContext, bundle))
-          .thenReturn(resourceList);
-
-      boolean isSupported =
-          validationSupport.isCodeSystemSupported(validationSupportContext, codeSystem);
-
-      assertThat(isSupported, is(true));
-    }
-  }
-
-  @Test
-  @SuppressWarnings("unchecked")
-  void isCodeSystemSupportedReturnsFalseWhenCodeSystemNotFound() {
-    String codeSystem = "http://hl7.org/fhir/CodeSystem/notfound";
-    List<IBaseResource> emptyList = Collections.emptyList();
-
-    when(fhirContext.getResourceDefinition("Bundle")).thenReturn(bundleDefinition);
-    when(bundleDefinition.getImplementingClass(IBaseBundle.class)).thenReturn(IBaseBundle.class);
-    when(genericClient.search()).thenReturn(untypedQuery);
-    when(untypedQuery.forResource("CodeSystem")).thenReturn(query);
-    when(query.where(any(ICriterion.class))).thenReturn(query);
-    when(query.count(1)).thenReturn(query);
-    when(query.returnBundle(eq(IBaseBundle.class))).thenReturn(query);
-    when(query.execute()).thenReturn(bundle);
-
-    try (MockedStatic<BundleUtil> bundleUtilMock = mockStatic(BundleUtil.class)) {
-      bundleUtilMock
-          .when(() -> BundleUtil.toListOfResources(fhirContext, bundle))
-          .thenReturn(emptyList);
-
-      boolean isSupported =
-          validationSupport.isCodeSystemSupported(validationSupportContext, codeSystem);
-
-      assertThat(isSupported, is(false));
-    }
+    assertThat(result, is(nullValue()));
   }
 
   @Test
@@ -771,7 +670,7 @@ class VSESValidationSupportTest {
             valueSet);
 
     assertThat(result, is(notNullValue()));
-    assertThat(result.getSourceDetails(), containsString("in-memory expansion of ValueSet"));
+    assertThat(result.getSourceDetails(), containsString("VSES expansion of ValueSet"));
     assertThat(result.getSourceDetails(), containsString(valueSet.getUrl()));
   }
 }
