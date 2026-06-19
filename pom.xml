@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.5.14</version>
+		<version>4.0.6</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>gov.cms.madie</groupId>
@@ -53,6 +53,11 @@
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-restclient</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 			<exclusions>
 				<exclusion>
@@ -71,12 +76,22 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security-oauth2-resource-server</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-cache</artifactId>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webmvc-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 
@@ -164,7 +179,7 @@
 		<dependency>
 			<groupId>com.okta.spring</groupId>
 			<artifactId>okta-spring-boot-starter</artifactId>
-			<version>3.0.7</version>
+			<version>3.1.0</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.springframework.security</groupId>
