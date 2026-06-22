@@ -1,7 +1,7 @@
 package gov.cms.madie.madiefhirservice.services;
 
 import ca.uhn.fhir.rest.api.MethodOutcome;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import tools.jackson.core.JacksonException;
 import gov.cms.madie.madiefhirservice.constants.UriConstants;
 import gov.cms.madie.madiefhirservice.dto.CqlLibraryDetails;
 import gov.cms.madie.madiefhirservice.exceptions.CqlLibraryNotFoundException;
@@ -53,7 +53,7 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
   private org.hl7.fhir.r5.model.Library effectiveDataRequirements;
 
   @BeforeEach
-  public void setup() throws JsonProcessingException {
+  public void setup() throws JacksonException {
     String madieMeasureJson = getStringFromTestResource("/measures/madie_measure.json");
     madieMeasure = MeasureTestHelper.createMadieMeasureFromJson(madieMeasureJson);
 

@@ -1,9 +1,8 @@
 package gov.cms.madie.madiefhirservice.utils;
 
 import ca.uhn.fhir.context.FhirContext;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.ObjectMapper;
 import gov.cms.madie.models.measure.Measure;
 import org.apache.commons.lang3.StringUtils;
 import org.hl7.fhir.r4.model.Bundle;
@@ -11,11 +10,11 @@ import org.hl7.fhir.r4.model.Resource;
 
 public class MeasureTestHelper {
 
-  public static Measure createMadieMeasureFromJson(String json) throws JsonProcessingException {
+  public static Measure createMadieMeasureFromJson(String json) throws JacksonException {
     if (StringUtils.isEmpty(json)) {
       return null;
     }
-    ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
+    ObjectMapper objectMapper = new ObjectMapper();
     return objectMapper.readValue(json, Measure.class);
   }
 

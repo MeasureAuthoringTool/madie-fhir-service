@@ -2,6 +2,8 @@ package gov.cms.madie.madiefhirservice.resources;
 
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.rest.api.MethodOutcome;
+import gov.cms.madie.madiefhirservice.clients.UserRoleConverter;
+import gov.cms.madie.madiefhirservice.config.SecurityConfig;
 import gov.cms.madie.madiefhirservice.services.ExportService;
 import gov.cms.madie.madiefhirservice.clients.UserServiceClient;
 import gov.cms.madie.madiefhirservice.services.MeasureBundleService;
@@ -14,9 +16,11 @@ import org.hl7.fhir.r4.model.Bundle;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -39,10 +43,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest({MeasureBundleController.class})
+@Import({SecurityConfig.class, UserRoleConverter.class})
 public class MeasureBundleControllerMvcTest implements ResourceFileUtil {
   private static final String TEST_USER_ID = "john_doe";
 
   @MockitoBean private UserServiceClient userServiceClient;
+  @MockitoBean private JwtDecoder jwtDecoder;
   @MockitoBean private MeasureBundleService measureBundleService;
 
   @MockitoBean private ExportService exportService;
@@ -147,6 +153,6 @@ public class MeasureBundleControllerMvcTest implements ResourceFileUtil {
     assertThat(result.getResponse().getContentType(), is(equalTo("application/octet-stream")));
     assertThat(
         result.getResponse().getHeader("Content-Disposition"),
-        is(equalTo("attachment;filename=\"title-v0.0.000-FHIR.zip\"")));
+        is(equalTo("attachment;filename=\"title-v1.2.003-FHIR.zip\"")));
   }
 }

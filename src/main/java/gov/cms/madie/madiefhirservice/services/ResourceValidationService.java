@@ -7,7 +7,7 @@ import ca.uhn.fhir.context.RuntimeResourceDefinition;
 import ca.uhn.fhir.parser.IParser;
 import ca.uhn.fhir.util.BundleUtil;
 import ca.uhn.fhir.util.OperationOutcomeUtil;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.ObjectMapper;
 import gov.cms.madie.madiefhirservice.exceptions.HapiJsonException;
 import gov.cms.madie.models.measure.HapiOperationOutcome;
 import lombok.AllArgsConstructor;

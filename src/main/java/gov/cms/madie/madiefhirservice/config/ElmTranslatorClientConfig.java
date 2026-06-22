@@ -2,10 +2,7 @@ package gov.cms.madie.madiefhirservice.config;
 
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.web.client.RestTemplate;
 
 @Getter
 @Configuration
@@ -18,10 +15,4 @@ public class ElmTranslatorClientConfig {
 
   @Value("${madie.url}")
   private String madieUrl;
-
-  @Bean
-  @Primary
-  public RestTemplate elmTranslatorRestTemplate() {
-    return new RestTemplate();
-  }
 }

@@ -3,8 +3,10 @@ package gov.cms.madie.madiefhirservice.resources;
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.parser.DataFormatException;
 import ca.uhn.fhir.parser.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.ObjectMapper;
+import gov.cms.madie.madiefhirservice.clients.UserRoleConverter;
+import gov.cms.madie.madiefhirservice.config.SecurityConfig;
 import gov.cms.madie.madiefhirservice.dto.TestCaseExecutionBundlesDTO;
 import gov.cms.madie.madiefhirservice.clients.UserServiceClient;
 import gov.cms.madie.madiefhirservice.factories.ModelAwareFhirFactory;
@@ -18,18 +20,21 @@ import gov.cms.madie.models.measure.TestCase;
 import org.hl7.fhir.r4.model.Bundle;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpHeaders;
+import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import java.security.Principal;
 import java.util.*;
 
 import static java.util.Arrays.asList;
@@ -47,6 +52,8 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest({TestCaseBundleController.class})
+@Import({SecurityConfig.class, UserRoleConverter.class})
+@ExtendWith(MockitoExtension.class)
 class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
 
   private static final String TEST_USER_ID = "john_doe";
@@ -55,6 +62,7 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
   private static final String TEST_CASE_ID_2 = "62fe4466848fd80e1dd3edd1";
 
   @MockitoBean private UserServiceClient userServiceClient;
+  @MockitoBean private JwtDecoder jwtDecoder;
   @MockitoBean private ModelAwareFhirFactory fhirModelFactory;
   @MockitoBean private TestCaseBundleService testCaseBundleService;
   @MockitoBean private ResourceValidationService validationService;
@@ -74,7 +82,7 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
   private ExportDTO dto;
 
   @BeforeEach
-  public void setUp() throws JsonProcessingException {
+  public void setUp() throws JacksonException {
     String madieMeasureJson = getStringFromTestResource("/measures/madie_measure.json");
     testCaseJson = getStringFromTestResource("/testCaseBundles/validTestCase.json");
     testCaseBundle = FhirContext.forR4().newJsonParser().parseResource(Bundle.class, testCaseJson);
@@ -88,8 +96,6 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
 
   @Test
   void getTestCaseExportBundleMulti() throws Exception {
-    Principal principal = mock(Principal.class);
-    when(principal.getName()).thenReturn(TEST_USER_ID);
 
     Map<String, Bundle> testCaseBundleMap = new HashMap<>();
     testCaseBundleMap.put(
@@ -115,9 +121,6 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
   @Test
   void getTestCaseExportBundleMultiWithBundleTypeCollection() throws Exception {
 
-    Principal principal = mock(Principal.class);
-    when(principal.getName()).thenReturn(TEST_USER_ID);
-
     Map<String, Bundle> testCaseBundleMap = new HashMap<>();
     testCaseBundleMap.put(
         dto.getMeasure().getTestCases().get(0).getPatientId().toString(), testCaseBundle);
@@ -141,9 +144,6 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
 
   @Test
   void getTestCaseExportBundleMultiWithBundleTypeCollectionWithMissingTestCases() throws Exception {
-
-    Principal principal = mock(Principal.class);
-    when(principal.getName()).thenReturn(TEST_USER_ID);
 
     List<TestCase> allTestCases = new ArrayList<>(dto.getMeasure().getTestCases());
     TestCase errorTestCase =
@@ -188,9 +188,6 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
 
   @Test
   void getTestCaseExportBundleMultiWithBundleTypeTransaction() throws Exception {
-
-    Principal principal = mock(Principal.class);
-    when(principal.getName()).thenReturn(TEST_USER_ID);
 
     Map<String, Bundle> testCaseBundleMap = new HashMap<>();
     dto.setBundleType(BundleType.TRANSACTION);
@@ -250,8 +247,6 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
 
   @Test
   void getTestCaseExportAllReturnPartialContent() throws Exception {
-    Principal principal = mock(Principal.class);
-    when(principal.getName()).thenReturn(TEST_USER_ID);
 
     Map<String, Bundle> testCaseBundleMap = new HashMap<>();
     testCaseBundleMap.put(
@@ -274,8 +269,6 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
 
   @Test
   void testValidReferencesInBundle() throws Exception {
-    Principal principal = mock(Principal.class);
-    when(principal.getName()).thenReturn(TEST_USER_ID);
 
     // Arrange
     List<TestCase> testCases =
@@ -344,8 +337,6 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
 
   @Test
   void testExecutionBundleReturnsModifiedBundles() throws Exception {
-    Principal principal = mock(Principal.class);
-    when(principal.getName()).thenReturn(TEST_USER_ID);
 
     // Arrange
     String testCaseJsonWithInvalidReference = testCaseJson.replace("Patient\\/1", "Patient\\/nope");
@@ -446,8 +437,6 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
 
   @Test
   void testExecutionBundleThrowsOnEmptyJson() throws Exception {
-    Principal principal = mock(Principal.class);
-    when(principal.getName()).thenReturn(TEST_USER_ID);
 
     // Arrange
     List<TestCase> testCases =
@@ -492,8 +481,6 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
 
   @Test
   void testExecutionBundleAllowInvalidRefsForPatientKeepsPatientFiltersOthers() throws Exception {
-    Principal principal = mock(Principal.class);
-    when(principal.getName()).thenReturn(TEST_USER_ID);
 
     // Arrange - both Patient and Encounter have invalid references
     String testCaseJsonWithInvalidReference = testCaseJson.replace("Patient\\/1", "Patient\\/nope");
@@ -565,8 +552,6 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
 
   @Test
   void testExecutionBundleHandlesMalformedModifiedBundle() throws Exception {
-    Principal principal = mock(Principal.class);
-    when(principal.getName()).thenReturn(TEST_USER_ID);
 
     // Arrange
     String testCaseJsonWithInvalidReference = testCaseJson.replace("Patient\\/1", "Patient\\/nope");
