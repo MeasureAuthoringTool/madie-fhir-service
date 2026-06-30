@@ -15,7 +15,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.empty;
 import static org.junit.jupiter.api.Assertions.*;
 
-import tools.jackson.core.JacksonException;
 import gov.cms.madie.madiefhirservice.constants.UriConstants;
 import gov.cms.madie.madiefhirservice.utils.FhirResourceHelpers;
 import gov.cms.madie.madiefhirservice.utils.MeasureTestHelper;
@@ -65,7 +64,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
   private Measure madieCVMeasure;
 
   @BeforeEach
-  public void setUp() throws JacksonException {
+  public void setUp() {
     String madieMeasureJson = getStringFromTestResource("/measures/madie_measure.json");
     madieMeasure = MeasureTestHelper.createMadieMeasureFromJson(madieMeasureJson);
     String madieRatioMeasureJson = getStringFromTestResource("/measures/madie_ratio_measure.json");

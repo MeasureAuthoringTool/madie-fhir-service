@@ -2,7 +2,6 @@ package gov.cms.madie.madiefhirservice.services;
 
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.parser.IParser;
-import tools.jackson.core.JacksonException;
 import gov.cms.madie.madiefhirservice.utils.MeasureTestHelper;
 import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
 import gov.cms.madie.madiefhirservice.utils.ResourceUtils;
@@ -37,7 +36,7 @@ public class TestCaseDateShifterServiceTest implements ResourceFileUtil {
   private IParser fhirParser;
 
   @BeforeEach
-  void setUpMeasure() throws JacksonException {
+  void setUpMeasure() {
     String madieMeasureJson = getStringFromTestResource("/measures/madie_measure.json");
     measure = MeasureTestHelper.createMadieMeasureFromJson(madieMeasureJson);
 

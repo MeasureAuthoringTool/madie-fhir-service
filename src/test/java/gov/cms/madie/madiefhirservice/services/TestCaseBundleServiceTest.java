@@ -37,7 +37,6 @@ import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.util.ReflectionTestUtils;
 
-import tools.jackson.core.JacksonException;
 
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.parser.IParser;
@@ -85,7 +84,7 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
   }
 
   @BeforeEach
-  public void setUp() throws JacksonException {
+  public void setUp() {
     parser =
         fhirContext
             .newJsonParser()

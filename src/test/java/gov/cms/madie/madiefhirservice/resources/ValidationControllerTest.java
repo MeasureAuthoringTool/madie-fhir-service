@@ -7,7 +7,6 @@ import ca.uhn.fhir.parser.IParserErrorHandler;
 import ca.uhn.fhir.parser.JsonParser;
 import ca.uhn.fhir.validation.FhirValidator;
 import ca.uhn.fhir.validation.ValidationResult;
-import tools.jackson.core.JacksonException;
 import tools.jackson.databind.ObjectMapper;
 
 import gov.cms.madie.madiefhirservice.exceptions.HapiJsonException;
@@ -131,7 +130,7 @@ class ValidationControllerTest implements ResourceFileUtil {
   }
 
   @Test
-  void testValidationControllerReturnsExceptionForProcessingError() throws JacksonException {
+  void testValidationControllerReturnsExceptionForProcessingError() {
     // given
     when(validatorFactory.parseForModel(any(ModelType.class), anyString()))
         .thenThrow(new ClassCastException("wrong resource type!"));
@@ -190,7 +189,7 @@ class ValidationControllerTest implements ResourceFileUtil {
   }
 
   @Test
-  void testValidationControllerReturnsExceptionForErrorProcessingOutput() throws JacksonException {
+  void testValidationControllerReturnsExceptionForErrorProcessingOutput() {
     when(validatorFactory.parseForModel(any(ModelType.class), anyString()))
         .thenReturn(new Bundle());
     when(validatorFactory.getJsonParserForModel(any(ModelType.class))).thenReturn(parser);
@@ -225,7 +224,7 @@ class ValidationControllerTest implements ResourceFileUtil {
   }
 
   @Test
-  void testValidationControllerReturnsOutcomeWithIssues() throws JacksonException {
+  void testValidationControllerReturnsOutcomeWithIssues() {
     when(validatorFactory.parseForModel(any(ModelType.class), anyString()))
         .thenReturn(new Bundle());
     when(validatorFactory.getJsonParserForModel(any(ModelType.class))).thenReturn(parser);
@@ -275,7 +274,7 @@ class ValidationControllerTest implements ResourceFileUtil {
   }
 
   @Test
-  void testValidationControllerReturnsOutcomeWithUniqueIdIssues() throws JacksonException {
+  void testValidationControllerReturnsOutcomeWithUniqueIdIssues() {
     when(validatorFactory.parseForModel(any(ModelType.class), anyString()))
         .thenReturn(new Bundle());
     when(validatorFactory.getJsonParserForModel(any(ModelType.class))).thenReturn(parser);
@@ -326,7 +325,7 @@ class ValidationControllerTest implements ResourceFileUtil {
   }
 
   @Test
-  void testValidationControllerReturnsOutcomeWithInvalidIdIssues() throws JacksonException {
+  void testValidationControllerReturnsOutcomeWithInvalidIdIssues() {
     when(validatorFactory.parseForModel(any(ModelType.class), anyString()))
         .thenReturn(new Bundle());
     when(validatorFactory.getJsonParserForModel(any(ModelType.class))).thenReturn(parser);
@@ -376,7 +375,7 @@ class ValidationControllerTest implements ResourceFileUtil {
   }
 
   @Test
-  void testValidationControllerReturnsOutcomeWithInvalidReferenceIssues() throws JacksonException {
+  void testValidationControllerReturnsOutcomeWithInvalidReferenceIssues() {
     when(validatorFactory.parseForModel(any(ModelType.class), anyString()))
         .thenReturn(new Bundle());
     when(validatorFactory.getJsonParserForModel(any(ModelType.class))).thenReturn(parser);

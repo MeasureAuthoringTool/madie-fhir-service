@@ -3,7 +3,6 @@ package gov.cms.madie.madiefhirservice.resources;
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.parser.DataFormatException;
 import ca.uhn.fhir.parser.JsonParser;
-import tools.jackson.core.JacksonException;
 import tools.jackson.databind.ObjectMapper;
 import gov.cms.madie.madiefhirservice.clients.UserRoleConverter;
 import gov.cms.madie.madiefhirservice.config.SecurityConfig;
@@ -82,7 +81,7 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
   private ExportDTO dto;
 
   @BeforeEach
-  public void setUp() throws JacksonException {
+  public void setUp() {
     String madieMeasureJson = getStringFromTestResource("/measures/madie_measure.json");
     testCaseJson = getStringFromTestResource("/testCaseBundles/validTestCase.json");
     testCaseBundle = FhirContext.forR4().newJsonParser().parseResource(Bundle.class, testCaseJson);

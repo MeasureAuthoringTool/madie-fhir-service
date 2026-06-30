@@ -22,7 +22,6 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
-import tools.jackson.core.JacksonException;
 import tools.jackson.databind.ObjectMapper;
 import gov.cms.madie.models.dto.TestCaseExportMetaData;
 import gov.cms.madie.models.measure.*;
@@ -506,7 +505,7 @@ public class TestCaseBundleService {
     return readMe;
   }
 
-  private String generateMadieMetadataFile(List<TestCase> testCases) throws JacksonException {
+  private String generateMadieMetadataFile(List<TestCase> testCases) {
     if (CollectionUtils.isEmpty(testCases)) {
       return "";
     }
