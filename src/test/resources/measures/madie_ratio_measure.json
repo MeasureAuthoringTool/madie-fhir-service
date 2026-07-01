@@ -1,6 +1,6 @@
 {
   "id": "626be3ca0ca8110d3b22404a",
-  "version":{"major":1, "minor":2, "revisionNumber":3},
+  "version":"1.2.003",
   "cqlLibraryName": "SimpleFhirMeasureLib",
   "measureName": "SimpleFhirMeasure",
   "measureSetId": "1-1-1-1",

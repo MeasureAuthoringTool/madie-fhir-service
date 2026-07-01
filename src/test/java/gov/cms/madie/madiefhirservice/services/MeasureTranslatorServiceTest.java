@@ -15,7 +15,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.empty;
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import gov.cms.madie.madiefhirservice.constants.UriConstants;
 import gov.cms.madie.madiefhirservice.utils.FhirResourceHelpers;
 import gov.cms.madie.madiefhirservice.utils.MeasureTestHelper;
@@ -65,7 +64,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
   private Measure madieCVMeasure;
 
   @BeforeEach
-  public void setUp() throws JsonProcessingException {
+  public void setUp() {
     String madieMeasureJson = getStringFromTestResource("/measures/madie_measure.json");
     madieMeasure = MeasureTestHelper.createMadieMeasureFromJson(madieMeasureJson);
     String madieRatioMeasureJson = getStringFromTestResource("/measures/madie_ratio_measure.json");
@@ -413,7 +412,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertThat(measure.getUseContext().get(0).getCode().getDisplay(), is(equalTo("Venue")));
     assertThat(measure.getUseContext().get(0).hasValue(), is(equalTo(true)));
     assertFalse(measure.getSupplementalData().get(2).getUsage().get(0).getCoding().isEmpty());
-    assertEquals("0.0.000", measure.getVersion());
+    assertEquals("1.2.003", measure.getVersion());
 
     assertThat(measure.hasExtension(UriConstants.CqfMeasures.MEASURE_DEFINITION_EXT_URI), is(true));
     List<Extension> measureDefinitionExtensions =
@@ -1357,7 +1356,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     org.hl7.fhir.r4.model.Measure measure =
         measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure);
 
-    assertEquals("Draft based on 0.0.000", measure.getVersion());
+    assertEquals("Draft based on 1.2.003", measure.getVersion());
   }
 
   @Test

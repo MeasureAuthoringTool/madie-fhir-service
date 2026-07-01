@@ -4,7 +4,9 @@ import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.parser.IParser;
 import ca.uhn.fhir.parser.StrictErrorHandler;
 import ca.uhn.fhir.validation.FhirValidator;
+import gov.cms.madie.madiefhirservice.clients.UserRoleConverter;
 import gov.cms.madie.madiefhirservice.clients.UserServiceClient;
+import gov.cms.madie.madiefhirservice.config.SecurityConfig;
 import gov.cms.madie.madiefhirservice.factories.ModelAwareFhirFactory;
 import gov.cms.madie.madiefhirservice.services.AppConfigService;
 import gov.cms.madie.madiefhirservice.services.ResourceValidationService;
@@ -16,9 +18,10 @@ import org.hl7.fhir.r4.model.OperationOutcome;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
+import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
@@ -40,7 +43,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest({ValidationController.class})
-@Import(ValidationMvcTestConfiguration.class)
+@Import({ValidationMvcTestConfiguration.class, SecurityConfig.class, UserRoleConverter.class})
 @ActiveProfiles("MvcTest")
 class ValidationControllerMvcTest implements ResourceFileUtil {
   private static final String TEST_USER_ID = "john_doe";
@@ -53,6 +56,7 @@ class ValidationControllerMvcTest implements ResourceFileUtil {
   @Autowired FhirValidator qicoreNpmFhirValidator;
   @MockitoBean private ModelAwareFhirFactory validatorFactory;
   @MockitoBean private AppConfigService appConfigService;
+  @MockitoBean private JwtDecoder jwtDecoder;
   private IParser r4Parser;
 
   @BeforeEach
