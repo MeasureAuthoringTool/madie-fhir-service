@@ -1,6 +1,7 @@
 package gov.cms.madie.madiefhirservice.factories;
 
 import ca.uhn.fhir.context.FhirContext;
+import ca.uhn.fhir.context.support.IValidationSupport;
 import ca.uhn.fhir.parser.DataFormatException;
 import ca.uhn.fhir.parser.IParser;
 import ca.uhn.fhir.parser.StrictErrorHandler;
@@ -21,6 +22,7 @@ public class ModelAwareFhirFactory {
 
   private final Map<String, FhirValidator> fhirValidatorMap;
   private final Map<String, FhirContext> fhirContextMap;
+  private final Map<String, IValidationSupport> validationSupportMap;
 
   public FhirValidator getValidatorForModel(ModelType modelType) {
     FhirValidator validator = fhirValidatorMap.get(modelType.getShortValue() + "NpmFhirValidator");
@@ -39,6 +41,23 @@ public class ModelAwareFhirFactory {
       throw new UnsupportedTypeException(this.getClass().getName(), modelType.toString());
     }
     return context;
+  }
+
+  public IValidationSupport getValidationSupportForModel(ModelType modelType) {
+    String beanName =
+        switch (modelType) {
+          case QI_CORE -> "validationSupportChain411";
+          case QI_CORE_6_0_0 -> "validationSupportChainQiCore600";
+          default -> null;
+        };
+
+    IValidationSupport validationSupport =
+        beanName != null ? validationSupportMap.get(beanName) : null;
+
+    if (validationSupport == null) {
+      throw new UnsupportedTypeException(this.getClass().getName(), modelType.toString());
+    }
+    return validationSupport;
   }
 
   public IParser getJsonParserForModel(ModelType modelType) {

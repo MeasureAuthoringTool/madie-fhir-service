@@ -1,6 +1,7 @@
 package gov.cms.madie.madiefhirservice.resources;
 
 import ca.uhn.fhir.context.FhirContext;
+import ca.uhn.fhir.context.support.IValidationSupport;
 import ca.uhn.fhir.parser.DataFormatException;
 import ca.uhn.fhir.parser.IParser;
 import ca.uhn.fhir.parser.IParserErrorHandler;
@@ -42,7 +43,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyBoolean;
-import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
@@ -65,6 +65,8 @@ class ValidationControllerTest implements ResourceFileUtil {
 
   @Mock AppConfigService appConfigService;
 
+  @Mock IValidationSupport validationSupport;
+
   @InjectMocks private ValidationController validationController;
 
   @BeforeEach
@@ -75,6 +77,14 @@ class ValidationControllerTest implements ResourceFileUtil {
         .when(parser.setParserErrorHandler(any(IParserErrorHandler.class)))
         .thenReturn(parser);
     Mockito.lenient().when(parser.setPrettyPrint(anyBoolean())).thenReturn(parser);
+    Mockito.lenient()
+        .when(validatorFactory.getValidationSupportForModel(any(ModelType.class)))
+        .thenReturn(validationSupport);
+    Mockito.lenient()
+        .when(
+            validationService.validateBundleResourceTypes(
+                any(FhirContext.class), any(IBaseBundle.class), any(IValidationSupport.class)))
+        .thenReturn(new OperationOutcome());
   }
 
   @Test
@@ -173,7 +183,8 @@ class ValidationControllerTest implements ResourceFileUtil {
     ValidationResult result = Mockito.mock(ValidationResult.class);
     when(result.toOperationOutcome()).thenReturn(new OperationOutcome());
     when(fhirValidator.validateWithResult(any(IBaseResource.class))).thenReturn(result);
-    when(validationService.combineOutcomes(any(FhirContext.class), any(), any(), any(), any()))
+    when(validationService.combineOutcomes(
+            any(FhirContext.class), any(), any(), any(), any(), any()))
         .thenReturn(operationOutcomeWithIssues);
     when(validationService.isSuccessful(any(FhirContext.class), any(OperationOutcome.class)))
         .thenReturn(false);
@@ -257,7 +268,8 @@ class ValidationControllerTest implements ResourceFileUtil {
     outcome.addIssue().setSeverity(OperationOutcome.IssueSeverity.ERROR);
     outcome.addIssue().setSeverity(OperationOutcome.IssueSeverity.WARNING);
     when(result.toOperationOutcome()).thenReturn(outcome);
-    when(validationService.combineOutcomes(any(FhirContext.class), any(), any(), any(), any()))
+    when(validationService.combineOutcomes(
+            any(FhirContext.class), any(), any(), any(), any(), any()))
         .thenReturn(outcome);
     when(validationService.isSuccessful(any(FhirContext.class), any(OperationOutcome.class)))
         .thenReturn(false);
@@ -309,7 +321,8 @@ class ValidationControllerTest implements ResourceFileUtil {
     when(result.toOperationOutcome()).thenReturn(new OperationOutcome());
     when(fhirValidator.validateWithResult(any(IBaseResource.class))).thenReturn(result);
 
-    when(validationService.combineOutcomes(any(FhirContext.class), any(), any(), any(), any()))
+    when(validationService.combineOutcomes(
+            any(FhirContext.class), any(), any(), any(), any(), any()))
         .thenReturn(errorOutcome);
     when(validationService.isSuccessful(any(FhirContext.class), any(OperationOutcome.class)))
         .thenReturn(false);
@@ -359,7 +372,8 @@ class ValidationControllerTest implements ResourceFileUtil {
     when(result.toOperationOutcome()).thenReturn(new OperationOutcome());
     when(fhirValidator.validateWithResult(any(IBaseResource.class))).thenReturn(result);
 
-    when(validationService.combineOutcomes(any(FhirContext.class), any(), any(), any(), any()))
+    when(validationService.combineOutcomes(
+            any(FhirContext.class), any(), any(), any(), any(), any()))
         .thenReturn(errorOutcome);
     when(validationService.isSuccessful(any(FhirContext.class), any(OperationOutcome.class)))
         .thenReturn(false);
@@ -409,7 +423,8 @@ class ValidationControllerTest implements ResourceFileUtil {
     when(result.toOperationOutcome()).thenReturn(new OperationOutcome());
     when(fhirValidator.validateWithResult(any(IBaseResource.class))).thenReturn(result);
 
-    when(validationService.combineOutcomes(any(FhirContext.class), any(), any(), any(), any()))
+    when(validationService.combineOutcomes(
+            any(FhirContext.class), any(), any(), any(), any(), any()))
         .thenReturn(warningOutcome);
     when(validationService.isSuccessful(any(FhirContext.class), any(OperationOutcome.class)))
         .thenReturn(false);
@@ -444,7 +459,8 @@ class ValidationControllerTest implements ResourceFileUtil {
     when(validationService.validateBundleReferencesForExecution(
             any(FhirContext.class), any(IBaseBundle.class), anyBoolean()))
         .thenReturn(new OperationOutcome());
-    when(validationService.combineOutcomes(any(FhirContext.class), any(), any(), any(), any()))
+    when(validationService.combineOutcomes(
+            any(FhirContext.class), any(), any(), any(), any(), any()))
         .thenReturn(new OperationOutcome());
     when(validationService.isSuccessful(any(FhirContext.class), any(OperationOutcome.class)))
         .thenReturn(true);
@@ -481,7 +497,8 @@ class ValidationControllerTest implements ResourceFileUtil {
     when(validationService.validateBundleReferencesForExecution(
             any(FhirContext.class), any(IBaseBundle.class), anyBoolean()))
         .thenReturn(new OperationOutcome());
-    when(validationService.combineOutcomes(any(FhirContext.class), any(), any(), any(), any()))
+    when(validationService.combineOutcomes(
+            any(FhirContext.class), any(), any(), any(), any(), any()))
         .thenReturn(new OperationOutcome());
     when(validationService.isSuccessful(any(FhirContext.class), any(OperationOutcome.class)))
         .thenReturn(true);
