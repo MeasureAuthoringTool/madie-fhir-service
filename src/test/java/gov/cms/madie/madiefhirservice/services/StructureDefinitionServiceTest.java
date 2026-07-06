@@ -6,12 +6,15 @@ import gov.cms.madie.madiefhirservice.constants.UriConstants;
 import gov.cms.madie.madiefhirservice.dto.ResourceIdentifier;
 import gov.cms.madie.madiefhirservice.dto.StructureDefinitionDto;
 import gov.cms.madie.madiefhirservice.exceptions.ResourceNotFoundException;
+import gov.cms.madie.madiefhirservice.factories.ModelAwareFhirFactory;
+import gov.cms.madie.models.common.ModelType;
 
 import org.hl7.fhir.r4.model.Enumerations.PublicationStatus;
 import org.hl7.fhir.r4.model.Extension;
 import org.hl7.fhir.r4.model.StringType;
 import org.hl7.fhir.r4.model.StructureDefinition;
 import org.hl7.fhir.r4.model.ValueSet;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -28,25 +31,37 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class StructureDefinitionServiceTest {
 
   @Spy private FhirContext fhirContextQiCoreStu600;
-  @Mock private IValidationSupport validationSupportChainQiCore600;
+  @Mock private IValidationSupport mockChain;
+  @Mock private ModelAwareFhirFactory modelAwareFhirFactory;
 
   @InjectMocks private StructureDefinitionService structureDefinitionService;
+
+  @BeforeEach
+  void setUp() {
+    lenient()
+        .when(modelAwareFhirFactory.getValidationSupportForModel(any(ModelType.class)))
+        .thenReturn(mockChain);
+  }
 
   @Test
   void testGetStructureDefinitionByIdThrowsNotFoundForNoDefinitions() {
     // given
-    when(validationSupportChainQiCore600.fetchAllStructureDefinitions()).thenReturn(List.of());
+    when(mockChain.fetchAllStructureDefinitions()).thenReturn(List.of());
 
     // when / then
     assertThrows(
         ResourceNotFoundException.class,
-        () -> structureDefinitionService.getStructureDefinitionById("qicore-practitioner"));
+        () ->
+            structureDefinitionService.getStructureDefinitionById(
+                ModelType.QI_CORE_6_0_0, "qicore-practitioner"));
   }
 
   @Test
@@ -60,13 +75,14 @@ class StructureDefinitionServiceTest {
     def3.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
     def3.setTitle("US Core Practitioner Profile");
     def3.setId("us-core-practitioner");
-    when(validationSupportChainQiCore600.fetchAllStructureDefinitions())
-        .thenReturn(List.of(def1, def3));
+    when(mockChain.fetchAllStructureDefinitions()).thenReturn(List.of(def1, def3));
 
     // when / then
     assertThrows(
         ResourceNotFoundException.class,
-        () -> structureDefinitionService.getStructureDefinitionById("qicore-practitioner"));
+        () ->
+            structureDefinitionService.getStructureDefinitionById(
+                ModelType.QI_CORE_6_0_0, "qicore-practitioner"));
   }
 
   @Test
@@ -99,12 +115,12 @@ class StructureDefinitionServiceTest {
         };
     def2.setContext(contexts);
 
-    when(validationSupportChainQiCore600.fetchAllStructureDefinitions())
-        .thenReturn(List.of(def1, def2, def3));
-    when(validationSupportChainQiCore600.getFhirContext()).thenReturn(fhirContextQiCoreStu600);
+    when(mockChain.fetchAllStructureDefinitions()).thenReturn(List.of(def1, def2, def3));
+    when(mockChain.getFhirContext()).thenReturn(fhirContextQiCoreStu600);
 
     List<StructureDefinitionDto> extension =
-        structureDefinitionService.getExtensionsForTargetPath("test", "element");
+        structureDefinitionService.getExtensionsForTargetPath(
+            ModelType.QI_CORE_6_0_0, "test", "element");
     assertNotNull(extension);
     assertEquals(1, extension.size());
   }
@@ -139,12 +155,12 @@ class StructureDefinitionServiceTest {
         };
     def2.setContext(contexts);
 
-    when(validationSupportChainQiCore600.fetchAllStructureDefinitions())
-        .thenReturn(List.of(def1, def2, def3));
-    when(validationSupportChainQiCore600.getFhirContext()).thenReturn(fhirContextQiCoreStu600);
+    when(mockChain.fetchAllStructureDefinitions()).thenReturn(List.of(def1, def2, def3));
+    when(mockChain.getFhirContext()).thenReturn(fhirContextQiCoreStu600);
 
     List<StructureDefinitionDto> extension =
-        structureDefinitionService.getExtensionsForTargetPath("test", "element");
+        structureDefinitionService.getExtensionsForTargetPath(
+            ModelType.QI_CORE_6_0_0, "test", "element");
     assertNotNull(extension);
     assertEquals(0, extension.size());
   }
@@ -180,12 +196,12 @@ class StructureDefinitionServiceTest {
         };
     def2.setContext(contexts);
 
-    when(validationSupportChainQiCore600.fetchAllStructureDefinitions())
-        .thenReturn(List.of(def1, def2, def3));
-    when(validationSupportChainQiCore600.getFhirContext()).thenReturn(fhirContextQiCoreStu600);
+    when(mockChain.fetchAllStructureDefinitions()).thenReturn(List.of(def1, def2, def3));
+    when(mockChain.getFhirContext()).thenReturn(fhirContextQiCoreStu600);
 
     List<StructureDefinitionDto> extension =
-        structureDefinitionService.getExtensionsForTargetPath("test", "element");
+        structureDefinitionService.getExtensionsForTargetPath(
+            ModelType.QI_CORE_6_0_0, "test", "element");
     assertNotNull(extension);
     assertEquals(0, extension.size());
   }
@@ -206,13 +222,13 @@ class StructureDefinitionServiceTest {
     def3.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
     def3.setTitle("US Core Practitioner Profile");
     def3.setId("us-core-practitioner");
-    when(validationSupportChainQiCore600.fetchAllStructureDefinitions())
-        .thenReturn(List.of(def1, def2, def3));
-    when(validationSupportChainQiCore600.getFhirContext()).thenReturn(fhirContextQiCoreStu600);
+    when(mockChain.fetchAllStructureDefinitions()).thenReturn(List.of(def1, def2, def3));
+    when(mockChain.getFhirContext()).thenReturn(fhirContextQiCoreStu600);
 
     // when
     StructureDefinitionDto output =
-        structureDefinitionService.getStructureDefinitionById("qicore-patient");
+        structureDefinitionService.getStructureDefinitionById(
+            ModelType.QI_CORE_6_0_0, "qicore-patient");
 
     // then
     assertThat(output, is(notNullValue()));
@@ -240,13 +256,13 @@ class StructureDefinitionServiceTest {
     def3.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
     def3.setTitle("US Core Practitioner Profile");
     def3.setId("us-core-practitioner");
-    when(validationSupportChainQiCore600.fetchAllStructureDefinitions())
-        .thenReturn(List.of(def1, def2, def3));
-    when(validationSupportChainQiCore600.getFhirContext()).thenReturn(fhirContextQiCoreStu600);
+    when(mockChain.fetchAllStructureDefinitions()).thenReturn(List.of(def1, def2, def3));
+    when(mockChain.getFhirContext()).thenReturn(fhirContextQiCoreStu600);
 
     // when
     StructureDefinitionDto output =
-        structureDefinitionService.getStructureDefinitionById("qicore-keyelement");
+        structureDefinitionService.getStructureDefinitionById(
+            ModelType.QI_CORE_6_0_0, "qicore-keyelement");
 
     // then
     assertThat(output, is(notNullValue()));
@@ -320,15 +336,12 @@ class StructureDefinitionServiceTest {
     def10.setType("Observation");
     def10.setId("valid-observation"); // Should be included
     def10.setUrl("http://hl7.org/fhir/StructureDefinition/valid-observation");
-    when(validationSupportChainQiCore600.fetchAllStructureDefinitions())
+    when(mockChain.fetchAllStructureDefinitions())
         .thenReturn(List.of(def1, def2, def3, def4, def5, def6, def7, def8, def9, def10));
 
     // when
-    List<ResourceIdentifier> output = structureDefinitionService.getAllResources();
-    System.out.println("Returned resources:");
-    for (ResourceIdentifier r : output) {
-      System.out.println("id: " + r.getId() + ", title: " + r.getTitle());
-    }
+    List<ResourceIdentifier> output =
+        structureDefinitionService.getAllResources(ModelType.QI_CORE_6_0_0);
 
     // then
     assertThat(output, is(notNullValue()));
@@ -391,11 +404,11 @@ class StructureDefinitionServiceTest {
     def2.setType("Patient");
     def2.setId("qicore-patient");
     def2.setUrl("http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient");
-    when(validationSupportChainQiCore600.fetchAllStructureDefinitions())
-        .thenReturn(List.of(def1, def2));
+    when(mockChain.fetchAllStructureDefinitions()).thenReturn(List.of(def1, def2));
 
     // when
-    List<ResourceIdentifier> output = structureDefinitionService.getAllResources();
+    List<ResourceIdentifier> output =
+        structureDefinitionService.getAllResources(ModelType.QI_CORE_6_0_0);
 
     // then
     assertThat(output.size(), is(equalTo(1)));
@@ -405,24 +418,9 @@ class StructureDefinitionServiceTest {
   @Test
   void testGetCategoryByTypeHandlesUnknownType() {
     // given
-    StructureDefinition def1 = new StructureDefinition();
-    def1.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
-    def1.setTitle("QICore Patient");
-    def1.setType("Patient");
-    def1.setId("qicore-patient");
-    def1.setUrl("http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient");
-    StructureDefinition def2 = new StructureDefinition();
-    def2.setKind(StructureDefinition.StructureDefinitionKind.COMPLEXTYPE);
-    def2.setTitle("QI-Core Key Element Extension");
-    def2.setType("Extension");
-    def2.setId("qicore-keyelement");
-    def2.setUrl("http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-keyelement");
-    StructureDefinition def3 = new StructureDefinition();
-    def3.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
-    def3.setTitle("US Core Practitioner Profile");
-    def3.setType("Practitioner");
-    def3.setId("us-core-practitioner");
-    def3.setUrl("http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner");
+    StructureDefinition def1 = buildDef("qicore-patient", "Patient", "QICore Patient");
+    StructureDefinition def2 =
+        buildDef("us-core-practitioner", "Practitioner", "US Core Practitioner Profile");
     StructureDefinition def4 = new StructureDefinition();
     def4.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
     def4.setTitle(null);
@@ -434,11 +432,10 @@ class StructureDefinitionServiceTest {
             new Extension(
                 UriConstants.FhirStructureDefinitions.CATEGORY_URI,
                 new StringType("Base.Individuals"))));
-    when(validationSupportChainQiCore600.fetchAllStructureDefinitions())
-        .thenReturn(List.of(def1, def2, def3, def4));
+    when(mockChain.fetchAllStructureDefinitions()).thenReturn(List.of(def1, def2, def4));
 
     // when
-    String output = structureDefinitionService.getCategoryByType("BLAHBLAH");
+    String output = structureDefinitionService.getCategoryByType(mockChain, "BLAHBLAH");
 
     // then
     assertThat(output, is(nullValue()));
@@ -447,35 +444,17 @@ class StructureDefinitionServiceTest {
   @Test
   void testGetCategoryByTypeHandlesTypeWithNoExtensions() {
     // given
-    StructureDefinition def1 = new StructureDefinition();
-    def1.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
-    def1.setTitle("QICore Patient");
-    def1.setType("Patient");
-    def1.setId("qicore-patient");
-    def1.setUrl("http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient");
-    StructureDefinition def2 = new StructureDefinition();
-    def2.setKind(StructureDefinition.StructureDefinitionKind.COMPLEXTYPE);
-    def2.setTitle("QI-Core Key Element Extension");
-    def2.setType("Extension");
-    def2.setId("qicore-keyelement");
-    def2.setUrl("http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-keyelement");
-    StructureDefinition def3 = new StructureDefinition();
-    def3.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
-    def3.setTitle("US Core Practitioner Profile");
-    def3.setType("Practitioner");
-    def3.setId("us-core-practitioner");
-    def3.setUrl("http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner");
+    StructureDefinition def1 = buildDef("qicore-patient", "Patient", "QICore Patient");
     StructureDefinition def4 = new StructureDefinition();
     def4.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
     def4.setTitle(null);
     def4.setType("Patient");
     def4.setId("Patient");
     def4.setUrl("http://hl7.org/fhir/StructureDefinition/Patient");
-    when(validationSupportChainQiCore600.fetchAllStructureDefinitions())
-        .thenReturn(List.of(def1, def2, def3, def4));
+    when(mockChain.fetchAllStructureDefinitions()).thenReturn(List.of(def1, def4));
 
     // when
-    String output = structureDefinitionService.getCategoryByType("Patient");
+    String output = structureDefinitionService.getCategoryByType(mockChain, "Patient");
 
     // then
     assertThat(output, is(nullValue()));
@@ -484,24 +463,7 @@ class StructureDefinitionServiceTest {
   @Test
   void testGetCategoryByTypeHandlesTypeWithNoCategoryExtension() {
     // given
-    StructureDefinition def1 = new StructureDefinition();
-    def1.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
-    def1.setTitle("QICore Patient");
-    def1.setType("Patient");
-    def1.setId("qicore-patient");
-    def1.setUrl("http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient");
-    StructureDefinition def2 = new StructureDefinition();
-    def2.setKind(StructureDefinition.StructureDefinitionKind.COMPLEXTYPE);
-    def2.setTitle("QI-Core Key Element Extension");
-    def2.setType("Extension");
-    def2.setId("qicore-keyelement");
-    def2.setUrl("http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-keyelement");
-    StructureDefinition def3 = new StructureDefinition();
-    def3.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
-    def3.setTitle("US Core Practitioner Profile");
-    def3.setType("Practitioner");
-    def3.setId("us-core-practitioner");
-    def3.setUrl("http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner");
+    StructureDefinition def1 = buildDef("qicore-patient", "Patient", "QICore Patient");
     StructureDefinition def4 = new StructureDefinition();
     def4.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
     def4.setTitle(null);
@@ -509,11 +471,10 @@ class StructureDefinitionServiceTest {
     def4.setId("Patient");
     def4.setUrl("http://hl7.org/fhir/StructureDefinition/Patient");
     def4.setExtension(List.of(new Extension("RANDOM.URL", new StringType("NOT_A_CATEGORY"))));
-    when(validationSupportChainQiCore600.fetchAllStructureDefinitions())
-        .thenReturn(List.of(def1, def2, def3, def4));
+    when(mockChain.fetchAllStructureDefinitions()).thenReturn(List.of(def1, def4));
 
     // when
-    String output = structureDefinitionService.getCategoryByType("Patient");
+    String output = structureDefinitionService.getCategoryByType(mockChain, "Patient");
 
     // then
     assertThat(output, is(nullValue()));
@@ -522,24 +483,7 @@ class StructureDefinitionServiceTest {
   @Test
   void testGetCategoryByTypeReturnsCategoryFromExtension() {
     // given
-    StructureDefinition def1 = new StructureDefinition();
-    def1.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
-    def1.setTitle("QICore Patient");
-    def1.setType("Patient");
-    def1.setId("qicore-patient");
-    def1.setUrl("http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient");
-    StructureDefinition def2 = new StructureDefinition();
-    def2.setKind(StructureDefinition.StructureDefinitionKind.COMPLEXTYPE);
-    def2.setTitle("QI-Core Key Element Extension");
-    def2.setType("Extension");
-    def2.setId("qicore-keyelement");
-    def2.setUrl("http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-keyelement");
-    StructureDefinition def3 = new StructureDefinition();
-    def3.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
-    def3.setTitle("US Core Practitioner Profile");
-    def3.setType("Practitioner");
-    def3.setId("us-core-practitioner");
-    def3.setUrl("http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner");
+    StructureDefinition def1 = buildDef("qicore-patient", "Patient", "QICore Patient");
     StructureDefinition def4 = new StructureDefinition();
     def4.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
     def4.setTitle(null);
@@ -551,11 +495,10 @@ class StructureDefinitionServiceTest {
             new Extension(
                 UriConstants.FhirStructureDefinitions.CATEGORY_URI,
                 new StringType("Base.Individuals"))));
-    when(validationSupportChainQiCore600.fetchAllStructureDefinitions())
-        .thenReturn(List.of(def1, def2, def3, def4));
+    when(mockChain.fetchAllStructureDefinitions()).thenReturn(List.of(def1, def4));
 
     // when
-    String output = structureDefinitionService.getCategoryByType("Patient");
+    String output = structureDefinitionService.getCategoryByType(mockChain, "Patient");
 
     // then
     assertThat(output, is(equalTo("Base.Individuals")));
@@ -565,10 +508,13 @@ class StructureDefinitionServiceTest {
   void getValueSetDefinition() {
     // given
     ValueSet valueSet = new ValueSet().setUrl("test").setName("omb ethnicity category");
-    when(validationSupportChainQiCore600.fetchValueSet(valueSet.getUrl())).thenReturn(valueSet);
-    when(validationSupportChainQiCore600.getFhirContext()).thenReturn(fhirContextQiCoreStu600);
+    when(mockChain.fetchValueSet(valueSet.getUrl())).thenReturn(valueSet);
+    when(mockChain.getFhirContext()).thenReturn(fhirContextQiCoreStu600);
+
     // when
-    String output = structureDefinitionService.getValueSetDefinition(valueSet.getUrl());
+    String output =
+        structureDefinitionService.getValueSetDefinition(
+            ModelType.QI_CORE_6_0_0, valueSet.getUrl());
 
     // then
     assertThat(
@@ -576,5 +522,34 @@ class StructureDefinitionServiceTest {
         is(
             equalTo(
                 "{\n  \"resourceType\": \"ValueSet\",\n  \"url\": \"test\",\n  \"name\": \"omb ethnicity category\"\n}")));
+  }
+
+  @Test
+  void testGetStructureDefinitionByIdWorksForUsCoreModel() {
+    // given
+    StructureDefinition def1 = new StructureDefinition();
+    def1.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
+    def1.setTitle("US Core Patient Profile");
+    def1.setId("us-core-patient");
+    when(mockChain.fetchAllStructureDefinitions()).thenReturn(List.of(def1));
+    when(mockChain.getFhirContext()).thenReturn(fhirContextQiCoreStu600);
+
+    // when
+    StructureDefinitionDto output =
+        structureDefinitionService.getStructureDefinitionById(
+            ModelType.US_CORE_6_0_1, "us-core-patient");
+
+    // then
+    assertThat(output, is(notNullValue()));
+    assertThat(output.getDefinition().contains("\"id\": \"us-core-patient\""), is(true));
+  }
+
+  private StructureDefinition buildDef(String id, String type, String title) {
+    StructureDefinition def = new StructureDefinition();
+    def.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
+    def.setTitle(title);
+    def.setType(type);
+    def.setId(id);
+    return def;
   }
 }

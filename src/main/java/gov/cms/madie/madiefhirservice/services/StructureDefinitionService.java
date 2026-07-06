@@ -7,6 +7,8 @@ import gov.cms.madie.madiefhirservice.constants.UriConstants;
 import gov.cms.madie.madiefhirservice.dto.ResourceIdentifier;
 import gov.cms.madie.madiefhirservice.dto.StructureDefinitionDto;
 import gov.cms.madie.madiefhirservice.exceptions.ResourceNotFoundException;
+import gov.cms.madie.madiefhirservice.factories.ModelAwareFhirFactory;
+import gov.cms.madie.models.common.ModelType;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
@@ -25,29 +27,29 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class StructureDefinitionService {
 
-  private IValidationSupport validationSupportChainQiCore600;
+  private ModelAwareFhirFactory modelAwareFhirFactory;
 
   /**
    * Fetches the structure definition for the given resource
    *
+   * @param modelType the model to fetch the structure definition for
    * @param structureDefinitionId ID of the structure definition, as found in the
    *     StructureDefinitions based on model and version. e.g. Patient, us-core-patient,
    *     qicore-patient
    */
-  public StructureDefinitionDto getStructureDefinitionById(String structureDefinitionId) {
+  public StructureDefinitionDto getStructureDefinitionById(
+      ModelType modelType, String structureDefinitionId) {
+    IValidationSupport chain = modelAwareFhirFactory.getValidationSupportForModel(modelType);
 
     IBaseResource structureDefinition =
-        Objects.requireNonNull(validationSupportChainQiCore600.fetchAllStructureDefinitions())
-            .stream()
+        Objects.requireNonNull(chain.fetchAllStructureDefinitions()).stream()
             .filter(resource -> structureDefinitionId.equals(resource.getIdElement().getIdPart()))
             .findFirst()
             .orElseThrow(
                 () -> new ResourceNotFoundException("StructureDefinition", structureDefinitionId));
 
-    // Todo: enhance with model-info, or at least primary code path
-
     IParser parser =
-        validationSupportChainQiCore600
+        chain
             .getFhirContext()
             .newJsonParser()
             .setParserErrorHandler(new StrictErrorHandler())
@@ -58,10 +60,11 @@ public class StructureDefinitionService {
   }
 
   public List<StructureDefinitionDto> getExtensionsForTargetPath(
-      String targetPath, String targetKind) {
+      ModelType modelType, String targetPath, String targetKind) {
+    IValidationSupport chain = modelAwareFhirFactory.getValidationSupportForModel(modelType);
+
     List<StructureDefinition> collect =
-        Objects.requireNonNull(validationSupportChainQiCore600.fetchAllStructureDefinitions())
-            .stream()
+        Objects.requireNonNull(chain.fetchAllStructureDefinitions()).stream()
             .map(resource -> (StructureDefinition) resource)
             .filter(
                 resource -> {
@@ -73,9 +76,8 @@ public class StructureDefinitionService {
             .filter(structureDef -> contextApplies(structureDef, targetPath, targetKind))
             .toList();
 
-    // Todo: enhance with model-info, or at least primary code path
     IParser parser =
-        validationSupportChainQiCore600
+        chain
             .getFhirContext()
             .newJsonParser()
             .setParserErrorHandler(new StrictErrorHandler())
@@ -109,12 +111,14 @@ public class StructureDefinitionService {
   /**
    * Fetches the value set definition for the given value set url
    *
+   * @param modelType the model to fetch the value set for
    * @param url of the value set definition
    */
-  public String getValueSetDefinition(String url) {
-    IBaseResource structureDefinition = validationSupportChainQiCore600.fetchValueSet(url);
+  public String getValueSetDefinition(ModelType modelType, String url) {
+    IValidationSupport chain = modelAwareFhirFactory.getValidationSupportForModel(modelType);
+    IBaseResource structureDefinition = chain.fetchValueSet(url);
     IParser parser =
-        validationSupportChainQiCore600
+        chain
             .getFhirContext()
             .newJsonParser()
             .setParserErrorHandler(new StrictErrorHandler())
@@ -126,11 +130,12 @@ public class StructureDefinitionService {
    * Return the ID, title, profile, category and type of all structure definitions that have a kind
    * of "resource"
    *
+   * @param modelType the model to fetch resources for
    * @return list of ResourceIdentifier, comprised of ID and title of the structure definitions
    */
-  public List<ResourceIdentifier> getAllResources() {
-    return Objects.requireNonNull(validationSupportChainQiCore600.fetchAllStructureDefinitions())
-        .stream()
+  public List<ResourceIdentifier> getAllResources(ModelType modelType) {
+    IValidationSupport chain = modelAwareFhirFactory.getValidationSupportForModel(modelType);
+    return Objects.requireNonNull(chain.fetchAllStructureDefinitions()).stream()
         .filter(
             resource -> {
               StructureDefinition sd = (StructureDefinition) resource;
@@ -151,7 +156,7 @@ public class StructureDefinitionService {
                   .id(idPart)
                   .title(resultTitle)
                   .type(structureDefinition.getType())
-                  .category(getCategoryByType(structureDefinition.getType()))
+                  .category(getCategoryByType(chain, structureDefinition.getType()))
                   .profile(structureDefinition.getUrl())
                   .build();
             })
@@ -162,13 +167,14 @@ public class StructureDefinitionService {
    * Returns the FHIR categorization of the provided type by loading the StructureDefinition with an
    * ID matching the provided type, and inspecting the Category extension.
    *
+   * @param chain the resolved validation support chain for the model
    * @param type base Type of the resource
    * @return FHIR categorization, including top-level and sub-category, of the provided
    */
-  public String getCategoryByType(String type) {
+  /** Package-private for testing. */
+  String getCategoryByType(IValidationSupport chain, String type) {
     Extension extension =
-        Objects.requireNonNull(validationSupportChainQiCore600.fetchAllStructureDefinitions())
-            .stream()
+        Objects.requireNonNull(chain.fetchAllStructureDefinitions()).stream()
             .filter(resource -> type.equals(resource.getIdElement().getIdPart()))
             .map(resource -> (StructureDefinition) resource)
             .findFirst()

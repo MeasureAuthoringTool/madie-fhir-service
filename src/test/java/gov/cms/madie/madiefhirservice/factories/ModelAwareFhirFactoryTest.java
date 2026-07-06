@@ -1,6 +1,7 @@
 package gov.cms.madie.madiefhirservice.factories;
 
 import ca.uhn.fhir.context.FhirContext;
+import ca.uhn.fhir.context.support.IValidationSupport;
 import ca.uhn.fhir.parser.IParser;
 import ca.uhn.fhir.parser.StrictErrorHandler;
 import ca.uhn.fhir.validation.FhirValidator;
@@ -36,8 +37,9 @@ class ModelAwareFhirFactoryTest {
   FhirContext qicore6FhirContext;
 
   @Mock private Map<String, FhirContext> fhirContextMap;
-
   @Mock private Map<String, FhirValidator> fhirValidatorMap;
+  @Mock private Map<String, IValidationSupport> validationSupportChainMap;
+  @Mock private IValidationSupport mockChain;
 
   // Not using @InjectMocks because Mockito seems to have issues injecting two maps
   // especially when running unit tests with coverage
@@ -50,7 +52,39 @@ class ModelAwareFhirFactoryTest {
 
     // manually instantiating because test fail when running with coverage
     modelAwareFhirFactory =
-        Mockito.spy(new ModelAwareFhirFactory(fhirValidatorMap, fhirContextMap));
+        Mockito.spy(
+            new ModelAwareFhirFactory(fhirValidatorMap, fhirContextMap, validationSupportChainMap));
+  }
+
+  @Test
+  public void testGetValidationSupportForModelReturnsChain() {
+    // given
+    ModelType modelType = ModelType.QI_CORE_6_0_0;
+    String lookup = modelType.getShortValue() + "ValidationSupportChain";
+    when(validationSupportChainMap.get(anyString())).thenReturn(mockChain);
+
+    // when
+    IValidationSupport output = modelAwareFhirFactory.getValidationSupportForModel(modelType);
+
+    // then
+    assertThat(output, is(equalTo(mockChain)));
+    verify(validationSupportChainMap).get(lookup);
+  }
+
+  @Test
+  public void testGetValidationSupportForModelThrowsUnsupportedTypeException() {
+    // given
+    ModelType modelType = ModelType.QDM_5_6;
+    String lookup = modelType.getShortValue() + "ValidationSupportChain";
+    when(validationSupportChainMap.get(anyString())).thenReturn(null);
+
+    // when
+    assertThrows(
+        UnsupportedTypeException.class,
+        () -> modelAwareFhirFactory.getValidationSupportForModel(modelType));
+
+    // then
+    verify(validationSupportChainMap).get(lookup);
   }
 
   @Test

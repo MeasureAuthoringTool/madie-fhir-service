@@ -4,6 +4,7 @@ import gov.cms.madie.madiefhirservice.dto.ResourceIdentifier;
 import gov.cms.madie.madiefhirservice.dto.StructureDefinitionDto;
 import gov.cms.madie.madiefhirservice.exceptions.ResourceNotFoundException;
 import gov.cms.madie.madiefhirservice.services.StructureDefinitionService;
+import gov.cms.madie.models.common.ModelType;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -17,6 +18,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
@@ -29,7 +31,7 @@ class ResourceControllerTest {
   @Test
   void testThatGetAllResourcesReturnsListOfResourceIdentifiers() {
     // given
-    when(structureDefinitionService.getAllResources())
+    when(structureDefinitionService.getAllResources(any(ModelType.class)))
         .thenReturn(
             List.of(
                 ResourceIdentifier.builder().id("qicore-careplan").title("QICore CarePlan").build(),
@@ -40,7 +42,7 @@ class ResourceControllerTest {
                     .build()));
 
     // when
-    List<ResourceIdentifier> output = resourceController.getAllResources();
+    List<ResourceIdentifier> output = resourceController.getAllResources(null);
 
     // then
     assertThat(output, is(notNullValue()));
@@ -54,12 +56,13 @@ class ResourceControllerTest {
   @Test
   void testThatGetStructureDefinitionThrowsNotFound() {
     // given
-    when(structureDefinitionService.getStructureDefinitionById(anyString()))
+    when(structureDefinitionService.getStructureDefinitionById(any(ModelType.class), anyString()))
         .thenThrow(new ResourceNotFoundException("StructureDefinition", "fake"));
 
     // when / then
     assertThrows(
-        ResourceNotFoundException.class, () -> resourceController.getStructureDefinition("fake"));
+        ResourceNotFoundException.class,
+        () -> resourceController.getStructureDefinition(null, "fake"));
   }
 
   @Test
@@ -75,10 +78,12 @@ class ResourceControllerTest {
                     + "        \"kind\": \"resource\"\n"
                     + "}")
             .build();
-    when(structureDefinitionService.getStructureDefinitionById(anyString())).thenReturn(dto);
+    when(structureDefinitionService.getStructureDefinitionById(any(ModelType.class), anyString()))
+        .thenReturn(dto);
 
     // when
-    StructureDefinitionDto output = resourceController.getStructureDefinition("qicore-patient");
+    StructureDefinitionDto output =
+        resourceController.getStructureDefinition(null, "qicore-patient");
 
     // then
     assertThat(output, is(notNullValue()));
@@ -91,11 +96,11 @@ class ResourceControllerTest {
     // given
     String valueSetDefinition =
         "{\"resourceType\": \"ValueSet\", \"id\": \"omb-ethnicity-category\",\"url\": \"http://hl7.org/fhir/us/core/ValueSet/omb-ethnicity-category\"}";
-    when(structureDefinitionService.getValueSetDefinition(anyString()))
+    when(structureDefinitionService.getValueSetDefinition(any(ModelType.class), anyString()))
         .thenReturn(valueSetDefinition);
 
     // when
-    String output = resourceController.getValueSetDefinition("url");
+    String output = resourceController.getValueSetDefinition(null, "url");
 
     // then
     assertThat(output, is(equalTo(valueSetDefinition)));
@@ -114,12 +119,13 @@ class ResourceControllerTest {
                 .definition(
                     "{\"resourceType\": \"StructureDefinition\", \"id\": \"ext-2\", \"type\": \"Extension\"}")
                 .build());
-    when(structureDefinitionService.getExtensionsForTargetPath("Observation.code", "Element"))
+    when(structureDefinitionService.getExtensionsForTargetPath(
+            any(ModelType.class), anyString(), anyString()))
         .thenReturn(extensions);
 
     // when
     List<StructureDefinitionDto> output =
-        resourceController.getExtensionsForTargetPath("Observation.code", "Element");
+        resourceController.getExtensionsForTargetPath(null, "Observation.code", "Element");
 
     // then
     assertThat(output, is(notNullValue()));
@@ -132,12 +138,13 @@ class ResourceControllerTest {
   @Test
   void testGetExtensionsForTargetPathReturnsEmptyList() {
     // given
-    when(structureDefinitionService.getExtensionsForTargetPath("InvalidPath", "Invalid"))
+    when(structureDefinitionService.getExtensionsForTargetPath(
+            any(ModelType.class), anyString(), anyString()))
         .thenReturn(List.of());
 
     // when
     List<StructureDefinitionDto> output =
-        resourceController.getExtensionsForTargetPath("InvalidPath", "Invalid");
+        resourceController.getExtensionsForTargetPath(null, "InvalidPath", "Invalid");
 
     // then
     assertThat(output, is(notNullValue()));

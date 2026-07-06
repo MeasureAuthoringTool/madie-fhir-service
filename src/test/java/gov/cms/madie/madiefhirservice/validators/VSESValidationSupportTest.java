@@ -129,8 +129,8 @@ class VSESValidationSupportTest {
 
     try (MockedStatic<BundleUtil> bundleUtilMock = mockStatic(BundleUtil.class)) {
       bundleUtilMock
-              .when(() -> BundleUtil.toListOfResources(fhirContext, bundle))
-              .thenReturn(resourceList);
+          .when(() -> BundleUtil.toListOfResources(fhirContext, bundle))
+          .thenReturn(resourceList);
 
       IBaseResource result = validationSupport.fetchValueSet(valueSetUrlWithVersion);
 
