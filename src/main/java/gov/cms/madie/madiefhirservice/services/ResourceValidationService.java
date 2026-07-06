@@ -352,7 +352,7 @@ public class ResourceValidationService {
 
   /**
    * Validates that each resource in the bundle has a resource type consistent with the
-   * StructureDefinition type declared in meta.profile (first profile).
+   * StructureDefinition type declared in all profiles( listed in meta.profile).
    *
    * @param fhirContext The FHIR context
    * @param bundleResource The Bundle to validate
@@ -377,30 +377,33 @@ public class ResourceValidationService {
       if (resource.getMeta() != null
           && resource.getMeta().getProfile() != null
           && !resource.getMeta().getProfile().isEmpty()) {
-        // Use first profile in meta.profile to fetch StructureDefinition
-        String profileUrl = resource.getMeta().getProfile().get(0).getValueAsString();
-        IBaseResource structureDefinition = validationSupport.fetchStructureDefinition(profileUrl);
+        // Validate against all profiles in meta.profile
+        for (IPrimitiveType<String> profile : resource.getMeta().getProfile()) {
+          String profileUrl = profile.getValueAsString();
+          IBaseResource structureDefinition =
+              validationSupport.fetchStructureDefinition(profileUrl);
 
-        if (structureDefinition == null) {
-          log.warn(
-              "StructureDefinition not found for profile [{}] on resource [{}]",
-              profileUrl,
-              resource.getIdElement().getIdPart());
-          continue;
-        }
+          if (structureDefinition == null) {
+            log.warn(
+                "StructureDefinition not found for profile [{}] on resource [{}]",
+                profileUrl,
+                resource.getIdElement().getIdPart());
+            continue;
+          }
 
-        // Cast to StructureDefinition to get the type
-        if (structureDefinition instanceof StructureDefinition sd) {
-          String expectedType = sd.getType();
-          if (!actualResourceType.equals(expectedType)) {
-            OperationOutcomeUtil.addIssue(
-                fhirContext,
-                operationOutcome,
-                "error",
-                formatResourceTypeMismatchMessage(
-                    resource, actualResourceType, expectedType, profileUrl),
-                null,
-                "invalid");
+          // Cast to StructureDefinition to get the type
+          if (structureDefinition instanceof StructureDefinition sd) {
+            String expectedType = sd.getType();
+            if (!actualResourceType.equals(expectedType)) {
+              OperationOutcomeUtil.addIssue(
+                  fhirContext,
+                  operationOutcome,
+                  "error",
+                  formatResourceTypeMismatchMessage(
+                      resource, actualResourceType, expectedType, profileUrl),
+                  null,
+                  "invalid");
+            }
           }
         }
       }
