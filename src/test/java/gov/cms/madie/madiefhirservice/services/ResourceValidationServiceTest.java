@@ -780,4 +780,21 @@ class ResourceValidationServiceTest {
     assertThat(outcome, is(notNullValue()));
     assertThat(outcome.hasIssue(), is(false));
   }
+
+  @Test
+  void testValidateBundleResourceTypesReturnsNoIssuesForNonR4Bundle() {
+    // given
+    IValidationSupport validationSupport = Mockito.mock(IValidationSupport.class);
+    IBaseBundle nonR4Bundle = Mockito.mock(IBaseBundle.class);
+
+    // when
+    OperationOutcome outcome =
+        (OperationOutcome)
+            validationService.validateBundleResourceTypes(
+                fhirContext, nonR4Bundle, validationSupport);
+
+    // then
+    assertThat(outcome, is(notNullValue()));
+    assertThat(outcome.hasIssue(), is(false));
+  }
 }
