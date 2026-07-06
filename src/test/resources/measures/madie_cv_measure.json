@@ -2,7 +2,7 @@
   "id": "63286afcc3f8be0e583f1eec",
   "measureHumanReadableId": null,
   "measureSetId": null,
-  "version":{"major":1, "minor":2, "revisionNumber":3},
+  "version":"1.2.003",
   "revisionNumber": null,
   "state": null,
   "cqlLibraryName": "Sep19Lib",

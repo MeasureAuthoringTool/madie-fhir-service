@@ -37,7 +37,6 @@ import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.util.ReflectionTestUtils;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.parser.IParser;
@@ -85,7 +84,7 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
   }
 
   @BeforeEach
-  public void setUp() throws JsonProcessingException {
+  public void setUp() {
     parser =
         fhirContext
             .newJsonParser()
@@ -208,7 +207,7 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
     // first test case bundle(collection)
     Bundle bundle =
         exportMap.get(
-            "285d114d-9c36-4d66-b0a0-06f395bbf23d/title-v0.0.000-testcaseseries-testcasetitle");
+            "285d114d-9c36-4d66-b0a0-06f395bbf23d/title-v1.2.003-testcaseseries-testcasetitle");
     String patientResourceId = bundle.getEntry().get(0).getResource().getId();
     assertEquals(5, bundle.getEntry().size());
     assertEquals(bundle.getType(), Bundle.BundleType.COLLECTION);
@@ -277,7 +276,7 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
     // second test case bundle(transactional)
     bundle =
         exportMap.get(
-            "0ec1197a-4895-43ed-b2eb-27971f8fb95b/title-v0.0.000-testcaseseries-testcasetitle1");
+            "0ec1197a-4895-43ed-b2eb-27971f8fb95b/title-v1.2.003-testcaseseries-testcasetitle1");
     assertEquals(5, bundle.getEntry().size());
     assertEquals(bundle.getType(), Bundle.BundleType.COLLECTION);
     bundleEntry = bundle.getEntry().get(4);
@@ -296,7 +295,7 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
 
     Bundle bundle =
         exportMap.get(
-            "285d114d-9c36-4d66-b0a0-06f395bbf23d/title-v0.0.000-testcaseseries-testcasetitle");
+            "285d114d-9c36-4d66-b0a0-06f395bbf23d/title-v1.2.003-testcaseseries-testcasetitle");
     String patientResourceId = bundle.getEntry().get(0).getResource().getId();
     assertEquals(5, bundle.getEntry().size());
     MeasureReport measureReport = (MeasureReport) bundle.getEntry().get(4).getResource();
@@ -431,7 +430,7 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
 
     Bundle bundle =
         exportMap.get(
-            "285d114d-9c36-4d66-b0a0-06f395bbf23d/title-v0.0.000-testcaseseries-testcasetitle");
+            "285d114d-9c36-4d66-b0a0-06f395bbf23d/title-v1.2.003-testcaseseries-testcasetitle");
     MeasureReport measureReport = (MeasureReport) bundle.getEntry().get(4).getResource();
     assertEquals(0, measureReport.getGroup().size());
   }

@@ -2,7 +2,7 @@
    "id":"62f66a8402b96d3a6ababefa",
    "measureHumanReadableId":null,
    "measureSetId":"testMeasureSetId",
-   "version":{"major":1, "minor":2, "revisionNumber":3},
+   "version":"1.2.003",
    "revisionNumber":null,
    "state":null,
    "cqlLibraryName":"SimpleFhirMeasureLib",

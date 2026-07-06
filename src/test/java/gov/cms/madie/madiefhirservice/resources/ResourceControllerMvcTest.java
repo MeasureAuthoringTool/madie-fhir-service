@@ -3,16 +3,20 @@ package gov.cms.madie.madiefhirservice.resources;
 import gov.cms.madie.madiefhirservice.dto.ResourceIdentifier;
 import gov.cms.madie.madiefhirservice.dto.StructureDefinitionDto;
 import gov.cms.madie.madiefhirservice.exceptions.ResourceNotFoundException;
+import gov.cms.madie.madiefhirservice.clients.UserRoleConverter;
 import gov.cms.madie.madiefhirservice.clients.UserServiceClient;
+import gov.cms.madie.madiefhirservice.config.SecurityConfig;
 import gov.cms.madie.madiefhirservice.services.StructureDefinitionService;
 import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
 import gov.cms.madie.models.common.ModelType;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -36,11 +40,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest({ResourceController.class})
+@Import({SecurityConfig.class, UserRoleConverter.class})
 public class ResourceControllerMvcTest implements ResourceFileUtil {
   private static final String TEST_USER_ID = "john_doe";
 
   @MockitoBean private UserServiceClient userServiceClient;
   @MockitoBean private StructureDefinitionService structureDefinitionService;
+  @MockitoBean private JwtDecoder jwtDecoder;
   @Autowired private MockMvc mockMvc;
 
   // --- Canonical path tests ---

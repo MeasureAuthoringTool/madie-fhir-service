@@ -1,5 +1,7 @@
 package gov.cms.madie.madiefhirservice.cql;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,7 +19,10 @@ public class CodeModel {
   private String codeSystemOid;
   private String codesystemName;
   private String codesystemVersion;
+
+  @JsonProperty("codesystemVersionIncluded")
   private boolean isCodesystemVersionIncluded;
+
   private String datatype;
 
   @Override
