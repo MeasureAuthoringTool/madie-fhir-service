@@ -72,6 +72,9 @@ public class ValidationController {
           "Resource must have resourceType of 'Bundle'");
     }
 
+    IBaseOperationOutcome resourceTypeValidationOutcome =
+        validationService.validateBundleResourceTypes(
+            fhirContext, bundle, validatorFactory.getValidationSupportForModel(modelType));
     IBaseOperationOutcome requiredProfilesOutcome =
         validationService.validateBundleResourcesProfiles(fhirContext, bundle);
     IBaseOperationOutcome validIdsOutcome =
@@ -86,6 +89,7 @@ public class ValidationController {
       final IBaseOperationOutcome combinedOutcome =
           validationService.combineOutcomes(
               fhirContext,
+              resourceTypeValidationOutcome,
               requiredProfilesOutcome,
               validIdsOutcome,
               validReferencesOutcome,
@@ -93,7 +97,8 @@ public class ValidationController {
       String outcomeString = parser.encodeResourceToString(combinedOutcome);
       return HapiOperationOutcome.builder()
           .code(
-              OperationOutcomeUtil.hasIssues(fhirContext, requiredProfilesOutcome)
+              OperationOutcomeUtil.hasIssues(fhirContext, resourceTypeValidationOutcome)
+                      || OperationOutcomeUtil.hasIssues(fhirContext, requiredProfilesOutcome)
                       || OperationOutcomeUtil.hasIssues(fhirContext, validIdsOutcome)
                   ? HttpStatus.BAD_REQUEST.value()
                   : HttpStatus.OK.value())

@@ -1,6 +1,7 @@
 package gov.cms.madie.madiefhirservice.factories;
 
 import ca.uhn.fhir.context.FhirContext;
+import ca.uhn.fhir.context.support.IValidationSupport;
 import ca.uhn.fhir.parser.IParser;
 import ca.uhn.fhir.parser.StrictErrorHandler;
 import ca.uhn.fhir.validation.FhirValidator;
@@ -39,6 +40,10 @@ class ModelAwareFhirFactoryTest {
 
   @Mock private Map<String, FhirValidator> fhirValidatorMap;
 
+  @Mock private Map<String, IValidationSupport> validationSupportMap;
+
+  @Mock private IValidationSupport mockValidationSupport;
+
   // Not using @InjectMocks because Mockito seems to have issues injecting two maps
   // especially when running unit tests with coverage
   private ModelAwareFhirFactory modelAwareFhirFactory;
@@ -50,7 +55,8 @@ class ModelAwareFhirFactoryTest {
 
     // manually instantiating because test fail when running with coverage
     modelAwareFhirFactory =
-        Mockito.spy(new ModelAwareFhirFactory(fhirValidatorMap, fhirContextMap));
+        Mockito.spy(
+            new ModelAwareFhirFactory(fhirValidatorMap, fhirContextMap, validationSupportMap));
   }
 
   @Test
@@ -189,5 +195,57 @@ class ModelAwareFhirFactoryTest {
     assertThrows(
         UnsupportedTypeException.class,
         () -> modelAwareFhirFactory.parseForModel(modelType, bundleString));
+  }
+
+  @Test
+  public void testGetValidationSupportForModelQiCoreReturnsSupport() {
+    // given
+    ModelType modelType = ModelType.QI_CORE;
+    when(validationSupportMap.get("validationSupportChain411")).thenReturn(mockValidationSupport);
+
+    // when
+    IValidationSupport output = modelAwareFhirFactory.getValidationSupportForModel(modelType);
+
+    // then
+    assertThat(output, is(equalTo(mockValidationSupport)));
+    verify(validationSupportMap).get("validationSupportChain411");
+  }
+
+  @Test
+  public void testGetValidationSupportForModelQiCore600ReturnsSupport() {
+    // given
+    ModelType modelType = ModelType.QI_CORE_6_0_0;
+    when(validationSupportMap.get("validationSupportChainQiCore600"))
+        .thenReturn(mockValidationSupport);
+
+    // when
+    IValidationSupport output = modelAwareFhirFactory.getValidationSupportForModel(modelType);
+
+    // then
+    assertThat(output, is(equalTo(mockValidationSupport)));
+    verify(validationSupportMap).get("validationSupportChainQiCore600");
+  }
+
+  @Test
+  public void testGetValidationSupportForModelThrowsUnsupportedTypeException() {
+    // given
+    ModelType modelType = ModelType.QDM_5_6;
+
+    // when
+    assertThrows(
+        UnsupportedTypeException.class,
+        () -> modelAwareFhirFactory.getValidationSupportForModel(modelType));
+  }
+
+  @Test
+  public void testGetValidationSupportForModelThrowsWhenNotFound() {
+    // given
+    ModelType modelType = ModelType.QI_CORE;
+    when(validationSupportMap.get("validationSupportChain411")).thenReturn(null);
+
+    // when
+    assertThrows(
+        UnsupportedTypeException.class,
+        () -> modelAwareFhirFactory.getValidationSupportForModel(modelType));
   }
 }
