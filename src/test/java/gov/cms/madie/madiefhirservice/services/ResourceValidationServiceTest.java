@@ -2,9 +2,11 @@ package gov.cms.madie.madiefhirservice.services;
 
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.context.support.IValidationSupport;
+import ca.uhn.fhir.parser.IParser;
 import ca.uhn.fhir.util.BundleUtil;
 import ca.uhn.fhir.util.OperationOutcomeUtil;
 import gov.cms.madie.madiefhirservice.constants.UriConstants;
+import gov.cms.madie.models.measure.HapiOperationOutcome;
 import org.hl7.fhir.instance.model.api.IBaseBundle;
 import org.hl7.fhir.instance.model.api.IBaseOperationOutcome;
 import org.hl7.fhir.instance.model.api.IBaseResource;
@@ -15,6 +17,7 @@ import org.hl7.fhir.r4.model.Patient;
 import org.hl7.fhir.r4.model.Procedure;
 import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.StructureDefinition;
+import tools.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -41,6 +44,7 @@ class ResourceValidationServiceTest {
 
   @Spy static FhirContext fhirContext;
   @Spy static FhirContext r5FhirContext;
+  @Spy ObjectMapper mapper;
   private static Bundle bundleWithValidResources;
   private static Bundle bundleWithInvalidResources;
   private static Bundle bundleWithInvalidNestedResources;
@@ -840,6 +844,18 @@ class ResourceValidationServiceTest {
         .addProfile("http://hl7.org/fhir/us/qicore/StructureDefinition/unknown-profile");
     bundle.addEntry().setFullUrl("https://madie.cms.gov/Patient/patient-123").setResource(patient);
 
+    // Add an entry with a null resource to verify resource == null is handled
+    bundle.addEntry().setFullUrl("https://madie.cms.gov/Encounter/null-resource").setResource(null);
+
+    // Add a resource with meta set to null to cover resource.getMeta() != null being false
+    Encounter encounterNoMeta = new Encounter();
+    encounterNoMeta.setId("encounter-no-meta");
+    encounterNoMeta.setMeta(null);
+    bundle
+        .addEntry()
+        .setFullUrl("https://madie.cms.gov/Encounter/encounter-no-meta")
+        .setResource(encounterNoMeta);
+
     StructureDefinition sdPatient = new StructureDefinition();
     sdPatient.setType("Patient");
     when(validationSupport.fetchStructureDefinition(
@@ -854,8 +870,28 @@ class ResourceValidationServiceTest {
         (OperationOutcome)
             validationService.validateBundleResourceTypes(fhirContext, bundle, validationSupport);
 
-    // then - no error because the matching profile is valid and the unknown one is skipped
+    // then - no error because the matching profile is valid, the unknown one is skipped,
+    // and the null resource entry is safely skipped
     assertThat(outcome, is(notNullValue()));
     assertThat(outcome.hasIssue(), is(false));
+  }
+
+  @Test
+  void testInvalidErrorOutcomeReturnsHapiOperationOutcomeWithErrorDetails() {
+    // given
+    IParser parser = fhirContext.newJsonParser();
+    String message = "Validation failed";
+    String exceptionMessage = "Resource is invalid";
+
+    // when
+    HapiOperationOutcome result =
+        validationService.invalidErrorOutcome(fhirContext, parser, message, exceptionMessage);
+
+    // then
+    assertThat(result, is(notNullValue()));
+    assertThat(result.getCode(), is(equalTo(400)));
+    assertThat(result.isSuccessful(), is(false));
+    assertThat(result.getMessage(), is(equalTo(message)));
+    assertThat(result.getOutcomeResponse(), is(notNullValue()));
   }
 }

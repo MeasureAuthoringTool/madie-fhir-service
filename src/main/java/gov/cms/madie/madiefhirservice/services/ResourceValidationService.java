@@ -8,6 +8,7 @@ import ca.uhn.fhir.context.support.IValidationSupport;
 import ca.uhn.fhir.parser.IParser;
 import ca.uhn.fhir.util.BundleUtil;
 import ca.uhn.fhir.util.OperationOutcomeUtil;
+import org.apache.commons.collections4.CollectionUtils;
 import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.Resource;
 import org.hl7.fhir.r4.model.StructureDefinition;
@@ -293,12 +294,6 @@ public class ResourceValidationService {
     return finalOo;
   }
 
-  private String formatMissingRequiredProfileMessage(IBaseResource resource, final String profile) {
-    return String.format(
-        "Resource of type [%s] must declare conformance to profile [%s].",
-        resource.fhirType(), profile);
-  }
-
   private String formatUniqueIdViolationMessage(final String resourceId) {
     return String.format(
         "All resources in bundle must have unique ID regardless of type. Multiple resources detected with ID [%s]",
@@ -374,9 +369,7 @@ public class ResourceValidationService {
       }
       String actualResourceType = resource.fhirType();
 
-      if (resource.getMeta() != null
-          && resource.getMeta().getProfile() != null
-          && !resource.getMeta().getProfile().isEmpty()) {
+      if (CollectionUtils.isNotEmpty(resource.getMeta().getProfile())) {
         // Validate against all profiles in meta.profile
         for (IPrimitiveType<String> profile : resource.getMeta().getProfile()) {
           String profileUrl = profile.getValueAsString();
