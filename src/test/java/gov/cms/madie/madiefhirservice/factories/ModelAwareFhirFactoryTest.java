@@ -39,7 +39,7 @@ class ModelAwareFhirFactoryTest {
   @Mock private Map<String, FhirContext> fhirContextMap;
   @Mock private Map<String, FhirValidator> fhirValidatorMap;
   @Mock private Map<String, IValidationSupport> validationSupportChainMap;
-  @Mock private IValidationSupport mockChain;
+  @Mock private IValidationSupport mockValidationSupport;
 
   // Not using @InjectMocks because Mockito seems to have issues injecting two maps
   // especially when running unit tests with coverage
@@ -61,13 +61,13 @@ class ModelAwareFhirFactoryTest {
     // given
     ModelType modelType = ModelType.QI_CORE_6_0_0;
     String lookup = modelType.getShortValue() + "ValidationSupportChain";
-    when(validationSupportChainMap.get(anyString())).thenReturn(mockChain);
+    when(validationSupportChainMap.get(anyString())).thenReturn(mockValidationSupport);
 
     // when
     IValidationSupport output = modelAwareFhirFactory.getValidationSupportForModel(modelType);
 
     // then
-    assertThat(output, is(equalTo(mockChain)));
+    assertThat(output, is(equalTo(mockValidationSupport)));
     verify(validationSupportChainMap).get(lookup);
   }
 
@@ -197,8 +197,7 @@ class ModelAwareFhirFactoryTest {
     IParser mockParser = Mockito.mock(IParser.class);
     Bundle mockBundle = Mockito.mock(Bundle.class);
 
-    when(fhirContextMap.get(anyString())).thenReturn(qicoreFhirContext);
-    when(modelAwareFhirFactory.getJsonParserForModel(modelType)).thenReturn(mockParser);
+    Mockito.doReturn(mockParser).when(modelAwareFhirFactory).getJsonParserForModel(modelType);
     when(mockParser.parseResource(Bundle.class, bundleString)).thenReturn(mockBundle);
 
     // when
@@ -216,12 +215,91 @@ class ModelAwareFhirFactoryTest {
     String bundleString = "{ \"resourceType\" : \"Bundle\", \"entry\": []}";
     IParser mockParser = Mockito.mock(IParser.class);
 
-    when(fhirContextMap.get(anyString())).thenReturn(qicoreFhirContext);
-    when(modelAwareFhirFactory.getJsonParserForModel(modelType)).thenReturn(mockParser);
+    Mockito.doReturn(mockParser).when(modelAwareFhirFactory).getJsonParserForModel(modelType);
 
     // when
     assertThrows(
         UnsupportedTypeException.class,
         () -> modelAwareFhirFactory.parseForModel(modelType, bundleString));
+  }
+
+  @Test
+  public void testGetValidationSupportForModelQiCoreReturnsSupport() {
+    // given
+    ModelType modelType = ModelType.QI_CORE;
+    String lookup = modelType.getShortValue() + "ValidationSupportChain";
+    when(validationSupportChainMap.get(lookup)).thenReturn(mockValidationSupport);
+
+    // when
+    IValidationSupport output = modelAwareFhirFactory.getValidationSupportForModel(modelType);
+
+    // then
+    assertThat(output, is(equalTo(mockValidationSupport)));
+    verify(validationSupportChainMap).get(lookup);
+  }
+
+  @Test
+  public void testGetValidationSupportForModelQiCore600ReturnsSupport() {
+    // given
+    ModelType modelType = ModelType.QI_CORE_6_0_0;
+    String lookup = modelType.getShortValue() + "ValidationSupportChain";
+    when(validationSupportChainMap.get(lookup)).thenReturn(mockValidationSupport);
+
+    // when
+    IValidationSupport output = modelAwareFhirFactory.getValidationSupportForModel(modelType);
+
+    // then
+    assertThat(output, is(equalTo(mockValidationSupport)));
+    verify(validationSupportChainMap).get(lookup);
+  }
+
+  @Test
+  public void testGetValidationSupportForModelThrowsWhenNotFound() {
+    // given
+    ModelType modelType = ModelType.QI_CORE;
+    String lookup = modelType.getShortValue() + "ValidationSupportChain";
+    when(validationSupportChainMap.get(lookup)).thenReturn(null);
+
+    // when
+    assertThrows(
+        UnsupportedTypeException.class,
+        () -> modelAwareFhirFactory.getValidationSupportForModel(modelType));
+  }
+
+  @Test
+  public void testParseForModelQiCore600ReturnsBundle() {
+    // given
+    ModelType modelType = ModelType.QI_CORE_6_0_0;
+    String bundleString = "{ \"resourceType\" : \"Bundle\", \"entry\": []}";
+    IParser mockParser = Mockito.mock(IParser.class);
+    Bundle mockBundle = Mockito.mock(Bundle.class);
+
+    Mockito.doReturn(mockParser).when(modelAwareFhirFactory).getJsonParserForModel(modelType);
+    when(mockParser.parseResource(Bundle.class, bundleString)).thenReturn(mockBundle);
+
+    // when
+    IBaseBundle output = modelAwareFhirFactory.parseForModel(modelType, bundleString);
+
+    // then
+    assertThat(output, is(equalTo(mockBundle)));
+    verify(mockParser).parseResource(Bundle.class, bundleString);
+  }
+
+  @Test
+  public void testParseForModelUnsupportedModelThrowsUnsupportedTypeException() {
+    // given
+    ModelType modelType = ModelType.QI_CORE_7_0_0;
+    String bundleString = "{ \"resourceType\" : \"Bundle\", \"entry\": []}";
+    IParser mockParser = Mockito.mock(IParser.class);
+
+    Mockito.doReturn(mockParser).when(modelAwareFhirFactory).getJsonParserForModel(modelType);
+
+    // when
+    assertThrows(
+        UnsupportedTypeException.class,
+        () -> modelAwareFhirFactory.parseForModel(modelType, bundleString));
+
+    // then
+    Mockito.verifyNoInteractions(mockParser);
   }
 }

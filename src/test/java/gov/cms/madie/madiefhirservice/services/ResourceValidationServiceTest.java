@@ -1,9 +1,12 @@
 package gov.cms.madie.madiefhirservice.services;
 
 import ca.uhn.fhir.context.FhirContext;
+import ca.uhn.fhir.context.support.IValidationSupport;
+import ca.uhn.fhir.parser.IParser;
 import ca.uhn.fhir.util.BundleUtil;
 import ca.uhn.fhir.util.OperationOutcomeUtil;
 import gov.cms.madie.madiefhirservice.constants.UriConstants;
+import gov.cms.madie.models.measure.HapiOperationOutcome;
 import org.hl7.fhir.instance.model.api.IBaseBundle;
 import org.hl7.fhir.instance.model.api.IBaseOperationOutcome;
 import org.hl7.fhir.instance.model.api.IBaseResource;
@@ -13,6 +16,8 @@ import org.hl7.fhir.r4.model.OperationOutcome;
 import org.hl7.fhir.r4.model.Patient;
 import org.hl7.fhir.r4.model.Procedure;
 import org.hl7.fhir.r4.model.Reference;
+import org.hl7.fhir.r4.model.StructureDefinition;
+import tools.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -32,12 +37,14 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class ResourceValidationServiceTest {
 
   @Spy static FhirContext fhirContext;
   @Spy static FhirContext r5FhirContext;
+  @Spy ObjectMapper mapper;
   private static Bundle bundleWithValidResources;
   private static Bundle bundleWithInvalidResources;
   private static Bundle bundleWithInvalidNestedResources;
@@ -642,5 +649,249 @@ class ResourceValidationServiceTest {
     assertThrows(
         IllegalArgumentException.class,
         () -> validationService.validateBundleReferencesForExecution(null, bundle, false));
+  }
+
+  @Test
+  void testValidateBundleResourceTypesReturnsErrorWhenProfileDoesNotMatchResourceType() {
+    // given
+    IValidationSupport validationSupport = Mockito.mock(IValidationSupport.class);
+    Bundle bundle = new Bundle();
+    bundle.setType(Bundle.BundleType.COLLECTION);
+
+    Patient patient = new Patient();
+    patient.setId("patient-123");
+    patient
+        .getMeta()
+        .addProfile("http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter");
+    bundle.addEntry().setFullUrl("https://madie.cms.gov/Patient/patient-123").setResource(patient);
+
+    StructureDefinition sd = new StructureDefinition();
+    sd.setType("Encounter");
+    when(validationSupport.fetchStructureDefinition(
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter"))
+        .thenReturn(sd);
+
+    // when
+    OperationOutcome outcome =
+        (OperationOutcome)
+            validationService.validateBundleResourceTypes(fhirContext, bundle, validationSupport);
+
+    // then
+    assertThat(outcome, is(notNullValue()));
+    assertThat(outcome.hasIssue(), is(true));
+    assertThat(outcome.getIssue().size(), is(equalTo(1)));
+    assertThat(outcome.getIssueFirstRep().getSeverity().toCode(), is(equalTo("error")));
+    assertThat(
+        outcome.getIssueFirstRep().getDiagnostics(),
+        is(
+            equalTo(
+                "Resource type mismatch: Resource Id [patient-123] has resourceType [Patient] "
+                    + "but the declared profile [http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter] expects type [Encounter].")));
+  }
+
+  @Test
+  void testValidateBundleResourceTypesReturnsNoIssuesForEmptyBundle() {
+    // given
+    IValidationSupport validationSupport = Mockito.mock(IValidationSupport.class);
+    Bundle bundle = new Bundle();
+    bundle.setType(Bundle.BundleType.COLLECTION);
+
+    // when
+    OperationOutcome outcome =
+        (OperationOutcome)
+            validationService.validateBundleResourceTypes(fhirContext, bundle, validationSupport);
+
+    // then
+    assertThat(outcome, is(notNullValue()));
+    assertThat(outcome.hasIssue(), is(false));
+  }
+
+  @Test
+  void testValidateBundleResourceTypesResourceWithNoMetaProfile() {
+    // given - resource without meta.profile should not produce an error (handled separately)
+    IValidationSupport validationSupport = Mockito.mock(IValidationSupport.class);
+    Bundle bundle = new Bundle();
+    bundle.setType(Bundle.BundleType.COLLECTION);
+
+    Patient patient = new Patient();
+    patient.setId("patient-123");
+    // No meta.profile set
+    bundle.addEntry().setFullUrl("https://madie.cms.gov/Patient/patient-123").setResource(patient);
+
+    // when
+    OperationOutcome outcome =
+        (OperationOutcome)
+            validationService.validateBundleResourceTypes(fhirContext, bundle, validationSupport);
+
+    // then
+    assertThat(outcome, is(notNullValue()));
+    assertThat(outcome.hasIssue(), is(false));
+  }
+
+  @Test
+  void testValidateBundleResourceTypesReturnsNoIssuesForNonR4Bundle() {
+    // given
+    IValidationSupport validationSupport = Mockito.mock(IValidationSupport.class);
+    IBaseBundle nonR4Bundle = Mockito.mock(IBaseBundle.class);
+
+    // when
+    OperationOutcome outcome =
+        (OperationOutcome)
+            validationService.validateBundleResourceTypes(
+                fhirContext, nonR4Bundle, validationSupport);
+
+    // then
+    assertThat(outcome, is(notNullValue()));
+    assertThat(outcome.hasIssue(), is(false));
+  }
+
+  @Test
+  void testValidateBundleResourceTypesValidatesAllProfilesNoErrors() {
+    // given - resource with multiple valid profiles that all resolve to the correct type
+    IValidationSupport validationSupport = Mockito.mock(IValidationSupport.class);
+    Bundle bundle = new Bundle();
+    bundle.setType(Bundle.BundleType.COLLECTION);
+
+    Patient patient = new Patient();
+    patient.setId("patient-123");
+    patient
+        .getMeta()
+        .addProfile("http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient");
+    patient.getMeta().addProfile("http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient");
+    bundle.addEntry().setFullUrl("https://madie.cms.gov/Patient/patient-123").setResource(patient);
+
+    StructureDefinition sd1 = new StructureDefinition();
+    sd1.setType("Patient");
+    StructureDefinition sd2 = new StructureDefinition();
+    sd2.setType("Patient");
+    when(validationSupport.fetchStructureDefinition(
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"))
+        .thenReturn(sd1);
+    when(validationSupport.fetchStructureDefinition(
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"))
+        .thenReturn(sd2);
+
+    // when
+    OperationOutcome outcome =
+        (OperationOutcome)
+            validationService.validateBundleResourceTypes(fhirContext, bundle, validationSupport);
+
+    // then
+    assertThat(outcome, is(notNullValue()));
+    assertThat(outcome.hasIssue(), is(false));
+  }
+
+  @Test
+  void testValidateBundleResourceTypesReturnsErrorWhenSecondProfileMismatches() {
+    // given - resource with two profiles where the second one mismatches
+    IValidationSupport validationSupport = Mockito.mock(IValidationSupport.class);
+    Bundle bundle = new Bundle();
+    bundle.setType(Bundle.BundleType.COLLECTION);
+
+    Patient patient = new Patient();
+    patient.setId("patient-123");
+    patient
+        .getMeta()
+        .addProfile("http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient");
+    patient
+        .getMeta()
+        .addProfile("http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter");
+    bundle.addEntry().setFullUrl("https://madie.cms.gov/Patient/patient-123").setResource(patient);
+
+    StructureDefinition sdPatient = new StructureDefinition();
+    sdPatient.setType("Patient");
+    StructureDefinition sdEncounter = new StructureDefinition();
+    sdEncounter.setType("Encounter");
+    when(validationSupport.fetchStructureDefinition(
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"))
+        .thenReturn(sdPatient);
+    when(validationSupport.fetchStructureDefinition(
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter"))
+        .thenReturn(sdEncounter);
+
+    // when
+    OperationOutcome outcome =
+        (OperationOutcome)
+            validationService.validateBundleResourceTypes(fhirContext, bundle, validationSupport);
+
+    // then
+    assertThat(outcome, is(notNullValue()));
+    assertThat(outcome.hasIssue(), is(true));
+    assertThat(outcome.getIssue().size(), is(equalTo(1)));
+    assertThat(outcome.getIssueFirstRep().getSeverity().toCode(), is(equalTo("error")));
+    assertThat(
+        outcome.getIssueFirstRep().getDiagnostics(),
+        is(
+            equalTo(
+                "Resource type mismatch: Resource Id [patient-123] has resourceType [Patient] "
+                    + "but the declared profile [http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter] expects type [Encounter].")));
+  }
+
+  @Test
+  void testValidateBundleResourceTypesSkipsUnresolvableProfileAmongMultiple() {
+    // given - resource with two profiles where one cannot be resolved
+    IValidationSupport validationSupport = Mockito.mock(IValidationSupport.class);
+    Bundle bundle = new Bundle();
+    bundle.setType(Bundle.BundleType.COLLECTION);
+
+    Patient patient = new Patient();
+    patient.setId("patient-123");
+    patient
+        .getMeta()
+        .addProfile("http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient");
+    patient
+        .getMeta()
+        .addProfile("http://hl7.org/fhir/us/qicore/StructureDefinition/unknown-profile");
+    bundle.addEntry().setFullUrl("https://madie.cms.gov/Patient/patient-123").setResource(patient);
+
+    // Add an entry with a null resource to verify resource == null is handled
+    bundle.addEntry().setFullUrl("https://madie.cms.gov/Encounter/null-resource").setResource(null);
+
+    // Add a resource with meta set to null to cover resource.getMeta() != null being false
+    Encounter encounterNoMeta = new Encounter();
+    encounterNoMeta.setId("encounter-no-meta");
+    encounterNoMeta.setMeta(null);
+    bundle
+        .addEntry()
+        .setFullUrl("https://madie.cms.gov/Encounter/encounter-no-meta")
+        .setResource(encounterNoMeta);
+
+    StructureDefinition sdPatient = new StructureDefinition();
+    sdPatient.setType("Patient");
+    when(validationSupport.fetchStructureDefinition(
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"))
+        .thenReturn(sdPatient);
+    when(validationSupport.fetchStructureDefinition(
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/unknown-profile"))
+        .thenReturn(null);
+
+    // when
+    OperationOutcome outcome =
+        (OperationOutcome)
+            validationService.validateBundleResourceTypes(fhirContext, bundle, validationSupport);
+
+    // then - no error because the matching profile is valid, the unknown one is skipped,
+    // and the null resource entry is safely skipped
+    assertThat(outcome, is(notNullValue()));
+    assertThat(outcome.hasIssue(), is(false));
+  }
+
+  @Test
+  void testInvalidErrorOutcomeReturnsHapiOperationOutcomeWithErrorDetails() {
+    // given
+    IParser parser = fhirContext.newJsonParser();
+    String message = "Validation failed";
+    String exceptionMessage = "Resource is invalid";
+
+    // when
+    HapiOperationOutcome result =
+        validationService.invalidErrorOutcome(fhirContext, parser, message, exceptionMessage);
+
+    // then
+    assertThat(result, is(notNullValue()));
+    assertThat(result.getCode(), is(equalTo(400)));
+    assertThat(result.isSuccessful(), is(false));
+    assertThat(result.getMessage(), is(equalTo(message)));
+    assertThat(result.getOutcomeResponse(), is(notNullValue()));
   }
 }

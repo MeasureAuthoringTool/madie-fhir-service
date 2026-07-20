@@ -4,9 +4,14 @@ import ca.uhn.fhir.context.BaseRuntimeChildDefinition;
 import ca.uhn.fhir.context.BaseRuntimeElementCompositeDefinition;
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.context.RuntimeResourceDefinition;
+import ca.uhn.fhir.context.support.IValidationSupport;
 import ca.uhn.fhir.parser.IParser;
 import ca.uhn.fhir.util.BundleUtil;
 import ca.uhn.fhir.util.OperationOutcomeUtil;
+import org.apache.commons.collections4.CollectionUtils;
+import org.hl7.fhir.r4.model.Bundle;
+import org.hl7.fhir.r4.model.Resource;
+import org.hl7.fhir.r4.model.StructureDefinition;
 import tools.jackson.databind.ObjectMapper;
 import gov.cms.madie.madiefhirservice.exceptions.HapiJsonException;
 import gov.cms.madie.models.measure.HapiOperationOutcome;
@@ -289,12 +294,6 @@ public class ResourceValidationService {
     return finalOo;
   }
 
-  private String formatMissingRequiredProfileMessage(IBaseResource resource, final String profile) {
-    return String.format(
-        "Resource of type [%s] must declare conformance to profile [%s].",
-        resource.fhirType(), profile);
-  }
-
   private String formatUniqueIdViolationMessage(final String resourceId) {
     return String.format(
         "All resources in bundle must have unique ID regardless of type. Multiple resources detected with ID [%s]",
@@ -344,5 +343,72 @@ public class ResourceValidationService {
     } catch (Exception ex) {
       throw new HapiJsonException("An error occurred processing the validation results", ex);
     }
+  }
+
+  /**
+   * Validates that each resource in the bundle has a resource type consistent with the
+   * StructureDefinition type declared in all profiles( listed in meta.profile).
+   *
+   * @param fhirContext The FHIR context
+   * @param bundleResource The Bundle to validate
+   * @param validationSupport The validation support chain used to fetch StructureDefinitions
+   * @return IBaseOperationOutcome with error issues for mismatched resource types
+   */
+  public IBaseOperationOutcome validateBundleResourceTypes(
+      FhirContext fhirContext, IBaseBundle bundleResource, IValidationSupport validationSupport) {
+    IBaseOperationOutcome operationOutcome = OperationOutcomeUtil.newInstance(fhirContext);
+
+    if (!(bundleResource instanceof Bundle bundle)) {
+      return operationOutcome;
+    }
+
+    for (Bundle.BundleEntryComponent entry : bundle.getEntry()) {
+      Resource resource = entry.getResource();
+      if (resource == null) {
+        continue;
+      }
+      String actualResourceType = resource.fhirType();
+
+      if (CollectionUtils.isNotEmpty(resource.getMeta().getProfile())) {
+        // Validate against all profiles in meta.profile
+        for (IPrimitiveType<String> profile : resource.getMeta().getProfile()) {
+          String profileUrl = profile.getValueAsString();
+          IBaseResource structureDefinition =
+              validationSupport.fetchStructureDefinition(profileUrl);
+
+          if (structureDefinition == null) {
+            log.warn(
+                "StructureDefinition not found for profile [{}] on resource [{}]",
+                profileUrl,
+                resource.getIdElement().getIdPart());
+            continue;
+          }
+
+          // Cast to StructureDefinition to get the type
+          if (structureDefinition instanceof StructureDefinition sd) {
+            String expectedType = sd.getType();
+            if (!actualResourceType.equals(expectedType)) {
+              OperationOutcomeUtil.addIssue(
+                  fhirContext,
+                  operationOutcome,
+                  "error",
+                  formatResourceTypeMismatchMessage(
+                      resource, actualResourceType, expectedType, profileUrl),
+                  null,
+                  "invalid");
+            }
+          }
+        }
+      }
+    }
+    return operationOutcome;
+  }
+
+  private String formatResourceTypeMismatchMessage(
+      IBaseResource resource, String actualType, String expectedType, String profileUrl) {
+    return String.format(
+        "Resource type mismatch: Resource Id [%s] has resourceType [%s] "
+            + "but the declared profile [%s] expects type [%s].",
+        resource.getIdElement().getIdPart(), actualType, profileUrl, expectedType);
   }
 }

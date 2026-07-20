@@ -1,6 +1,7 @@
 package gov.cms.madie.madiefhirservice.resources;
 
 import ca.uhn.fhir.context.FhirContext;
+import ca.uhn.fhir.context.support.IValidationSupport;
 import ca.uhn.fhir.parser.IParser;
 import ca.uhn.fhir.parser.StrictErrorHandler;
 import ca.uhn.fhir.validation.FhirValidator;
@@ -41,6 +42,7 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.mockito.Mockito.lenient;
 
 @WebMvcTest({ValidationController.class})
 @Import({ValidationMvcTestConfiguration.class, SecurityConfig.class, UserRoleConverter.class})
@@ -66,6 +68,14 @@ class ValidationControllerMvcTest implements ResourceFileUtil {
             .newJsonParser()
             .setParserErrorHandler(new StrictErrorHandler())
             .setPrettyPrint(true);
+    lenient()
+        .when(validatorFactory.getValidationSupportForModel(any(ModelType.class)))
+        .thenReturn(org.mockito.Mockito.mock(IValidationSupport.class));
+    lenient()
+        .when(
+            validationService.validateBundleResourceTypes(
+                any(FhirContext.class), any(IBaseBundle.class), any(IValidationSupport.class)))
+        .thenReturn(new OperationOutcome());
   }
 
   @Test
@@ -140,7 +150,8 @@ class ValidationControllerMvcTest implements ResourceFileUtil {
     when(validationService.validateBundleReferencesForExecution(
             any(FhirContext.class), any(IBaseBundle.class), anyBoolean()))
         .thenReturn(new OperationOutcome());
-    when(validationService.combineOutcomes(any(FhirContext.class), any(), any(), any(), any()))
+    when(validationService.combineOutcomes(
+            any(FhirContext.class), any(), any(), any(), any(), any()))
         .thenReturn(new OperationOutcome());
     when(validatorFactory.parseForModel(any(ModelType.class), anyString()))
         .thenAnswer(
@@ -181,7 +192,8 @@ class ValidationControllerMvcTest implements ResourceFileUtil {
     when(validationService.validateBundleReferencesForExecution(
             any(FhirContext.class), any(IBaseBundle.class), anyBoolean()))
         .thenReturn(new OperationOutcome());
-    when(validationService.combineOutcomes(any(FhirContext.class), any(), any(), any(), any()))
+    when(validationService.combineOutcomes(
+            any(FhirContext.class), any(), any(), any(), any(), any()))
         .thenReturn(operationOutcomeWithIssues);
     when(validationService.isSuccessful(any(FhirContext.class), any(OperationOutcome.class)))
         .thenReturn(true);
@@ -223,7 +235,8 @@ class ValidationControllerMvcTest implements ResourceFileUtil {
     when(validationService.validateBundleReferencesForExecution(
             any(FhirContext.class), any(IBaseBundle.class), anyBoolean()))
         .thenReturn(new OperationOutcome());
-    when(validationService.combineOutcomes(any(FhirContext.class), any(), any(), any(), any()))
+    when(validationService.combineOutcomes(
+            any(FhirContext.class), any(), any(), any(), any(), any()))
         .thenReturn(new OperationOutcome());
     when(validationService.isSuccessful(any(FhirContext.class), any(OperationOutcome.class)))
         .thenReturn(true);
@@ -273,7 +286,8 @@ class ValidationControllerMvcTest implements ResourceFileUtil {
     combinedOutcome.addIssue().setSeverity(OperationOutcome.IssueSeverity.ERROR);
     combinedOutcome.addIssue().setSeverity(OperationOutcome.IssueSeverity.WARNING);
     combinedOutcome.addIssue().setSeverity(OperationOutcome.IssueSeverity.WARNING);
-    when(validationService.combineOutcomes(any(FhirContext.class), any(), any(), any(), any()))
+    when(validationService.combineOutcomes(
+            any(FhirContext.class), any(), any(), any(), any(), any()))
         .thenReturn(combinedOutcome);
     when(validationService.isSuccessful(any(FhirContext.class), any(OperationOutcome.class)))
         .thenReturn(false);
