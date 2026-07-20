@@ -74,7 +74,7 @@ public class ResourceControllerMvcTest implements ResourceFileUtil {
 
   @Test
   void testCanonicalPathGetAllResourcesForUsCore6() throws Exception {
-    when(structureDefinitionService.getAllResources(eq(ModelType.US_CORE_6_0_1)))
+    when(structureDefinitionService.getAllResources(eq(ModelType.US_CORE_6_1_0)))
         .thenReturn(
             List.of(
                 ResourceIdentifier.builder()
@@ -91,7 +91,7 @@ public class ResourceControllerMvcTest implements ResourceFileUtil {
         .andExpect(status().isOk())
         .andExpect(jsonPath("$.[0].id").value("us-core-patient"));
 
-    verify(structureDefinitionService, times(1)).getAllResources(eq(ModelType.US_CORE_6_0_1));
+    verify(structureDefinitionService, times(1)).getAllResources(eq(ModelType.US_CORE_6_1_0));
   }
 
   @Test

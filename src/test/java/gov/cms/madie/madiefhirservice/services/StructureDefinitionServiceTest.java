@@ -537,7 +537,7 @@ class StructureDefinitionServiceTest {
     // when
     StructureDefinitionDto output =
         structureDefinitionService.getStructureDefinitionById(
-            ModelType.US_CORE_6_0_1, "us-core-patient");
+            ModelType.US_CORE_6_1_0, "us-core-patient");
 
     // then
     assertThat(output, is(notNullValue()));

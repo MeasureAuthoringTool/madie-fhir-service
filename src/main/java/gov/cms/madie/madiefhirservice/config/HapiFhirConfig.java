@@ -24,12 +24,15 @@ import org.hl7.fhir.utilities.npm.NpmPackage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -209,6 +212,30 @@ public class HapiFhirConfig {
         new CommonCodeSystemsTerminologyService(usqualitycore05FhirContext),
         remoteTerminologyServiceValidationSupport,
         unknownCodeSystemWarningValidationSupport);
+  }
+
+  @Bean
+  public Map<String, IValidationSupport> validationSupportChainMap(ApplicationContext context) {
+    Map<String, IValidationSupport> finalMap = new HashMap<>();
+
+    // 1. Get all beans of the target type (this gives you primary names)
+    Map<String, IValidationSupport> primaryBeans = context.getBeansOfType(IValidationSupport.class);
+
+    for (Map.Entry<String, IValidationSupport> entry : primaryBeans.entrySet()) {
+      String primaryName = entry.getKey();
+      IValidationSupport beanInstance = entry.getValue();
+
+      // 2. Map the primary name to the instance
+      finalMap.put(primaryName, beanInstance);
+
+      // 3. Find and map all aliases pointing to this specific primary name
+      String[] aliases = context.getAliases(primaryName);
+      for (String alias : aliases) {
+        finalMap.put(alias, beanInstance);
+      }
+    }
+
+    return finalMap;
   }
 
   private RemoteTerminologyServiceValidationSupport getRemoteTerminologyServiceValidationSupport(
