@@ -173,4 +173,27 @@ public class FhirResourceHelpers {
         || populationType == PopulationType.DENOMINATOR_OBSERVATION
         || populationType == PopulationType.NUMERATOR_OBSERVATION;
   }
+
+  /**
+   * Flattens the nested contains() lists in a ValueSet expansion. Recursively collects all contains
+   * components, including nested ones.
+   *
+   * @param containsList the top-level contains list from ValueSet expansion
+   * @return a flattened list of all ValueSetExpansionContainsComponent
+   */
+  public static List<ValueSet.ValueSetExpansionContainsComponent> flattenValueSetContains(
+      List<ValueSet.ValueSetExpansionContainsComponent> containsList) {
+    List<ValueSet.ValueSetExpansionContainsComponent> flattened = new ArrayList<>();
+    if (CollectionUtils.isEmpty(containsList)) {
+      return flattened;
+    }
+    for (ValueSet.ValueSetExpansionContainsComponent contains : containsList) {
+      flattened.add(contains);
+      // Recursively flatten nested contains
+      if (!CollectionUtils.isEmpty(contains.getContains())) {
+        flattened.addAll(flattenValueSetContains(contains.getContains()));
+      }
+    }
+    return flattened;
+  }
 }

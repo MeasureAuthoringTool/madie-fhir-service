@@ -32,8 +32,8 @@ import gov.cms.madie.madiefhirservice.utils.MeasureTestHelper;
 import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
 import gov.cms.madie.models.common.Version;
 import gov.cms.madie.models.measure.Measure;
+import gov.cms.madie.packaging.utils.PackagingUtility;
 import gov.cms.madie.packaging.utils.PackagingUtilityFactory;
-import gov.cms.madie.packaging.utils.qicore411.PackagingUtilityImpl;
 
 @ExtendWith(MockitoExtension.class)
 class ExportServiceTest implements ResourceFileUtil {
@@ -94,7 +94,7 @@ class ExportServiceTest implements ResourceFileUtil {
             anyString(),
             eq(CqlCompilerException.ErrorSeverity.Info)))
         .thenReturn(testBundle);
-    PackagingUtilityImpl utility = Mockito.mock(PackagingUtilityImpl.class);
+    PackagingUtility utility = Mockito.mock(PackagingUtility.class);
 
     factory.when(() -> PackagingUtilityFactory.getInstance("QI-Core v4.1.1")).thenReturn(utility);
     doReturn("This is a test".getBytes())

@@ -5,6 +5,7 @@ import ca.uhn.fhir.context.support.ConceptValidationOptions;
 import ca.uhn.fhir.context.support.IValidationSupport;
 import ca.uhn.fhir.context.support.ValidationSupportContext;
 import gov.cms.madie.madiefhirservice.config.ValidationConfig;
+import gov.cms.madie.madiefhirservice.utils.FhirResourceHelpers;
 import jakarta.annotation.Nonnull;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
@@ -58,7 +59,8 @@ public class CustomQiCoreInMemoryValidationSupport
             theDisplay, codeSystemUrlToValidate, codeSystemVersionToValidate, vsUrl);
       }
 
-      for (var contains : valueSet.getExpansion().getContains()) {
+      for (var contains :
+          FhirResourceHelpers.flattenValueSetContains(valueSet.getExpansion().getContains())) {
         if (StringUtils.equals(theCode, contains.getCode())) {
           // always assume code system is valid and check for equality
           if (theOptions.isInferSystem()
