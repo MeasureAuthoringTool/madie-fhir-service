@@ -18,11 +18,14 @@ import org.hl7.fhir.utilities.npm.NpmPackage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 @Slf4j
 @Configuration
@@ -55,12 +58,24 @@ public class HapiFhirConfig {
   }
 
   @Bean
+  @Qualifier("uscore6FhirContext")
+  public FhirContext uscore6FhirContext() {
+    return FhirContext.forR4();
+  }
+
+  @Bean
+  @Qualifier("usqualitycore05FhirContext")
+  public FhirContext usqualitycore05FhirContext() {
+    return FhirContext.forR4();
+  }
+
+  @Bean
   @Qualifier("fhirContextForR5")
   public FhirContext fhirContextForR5() {
     return FhirContext.forR5();
   }
 
-  @Bean
+  @Bean(name = {"validationSupportChain411", "qicoreValidationSupportChain"})
   public IValidationSupport validationSupportChain411(@Autowired FhirContext qicoreFhirContext)
       throws IOException {
     NpmPackageValidationSupport npmPackageSupport =
@@ -81,7 +96,7 @@ public class HapiFhirConfig {
         unknownCodeSystemWarningValidationSupport);
   }
 
-  @Bean
+  @Bean(name = {"validationSupportChainQiCore600", "qicore6ValidationSupportChain"})
   public IValidationSupport validationSupportChainQiCore600(
       @Autowired FhirContext qicore6FhirContext) throws IOException {
     NpmPackageValidationSupport npmPackageSupport =
@@ -114,6 +129,100 @@ public class HapiFhirConfig {
         new CommonCodeSystemsTerminologyService(qicore6FhirContext),
         remoteTerminologyServiceValidationSupport,
         unknownCodeSystemWarningValidationSupport);
+  }
+
+  @Bean(name = {"uscore6ValidationSupportChain"})
+  public IValidationSupport uscore6ValidationSupportChain(@Autowired FhirContext uscore6FhirContext)
+      throws IOException {
+    NpmPackageValidationSupport npmPackageSupport =
+        new NpmPackageValidationSupport(uscore6FhirContext);
+    npmPackageSupport.loadPackageFromClasspath("classpath:packages/hl7.fhir.us.core-6.1.0.tgz");
+    npmPackageSupport.loadPackageFromClasspath(
+        "classpath:packages/hl7.fhir.uv.extensions.r4-5.2.0.tgz");
+    npmPackageSupport.loadPackageFromClasspath(
+        "classpath:packages/hl7.fhir.xver-extensions-0.1.0.tgz");
+
+    CustomUnknownCodeSystemWarningValidationSupport unknownCodeSystemWarningValidationSupport =
+        getUnknownCodeSystemValidationSupport(uscore6FhirContext);
+
+    RemoteTerminologyServiceValidationSupport remoteTerminologyServiceValidationSupport =
+        getRemoteTerminologyServiceValidationSupport(uscore6FhirContext);
+
+    VSESValidationSupport vsesValidationSupport =
+        new VSESValidationSupport(
+            uscore6FhirContext,
+            savedExpansionServiceBaseUrl,
+            new BasicAuthInterceptor("api-key", savedExpansionServiceApiKey),
+            validationConfig);
+
+    return new ValidationSupportChain(
+        npmPackageSupport,
+        vsesValidationSupport,
+        new DefaultProfileValidationSupport(uscore6FhirContext),
+        new CustomQiCoreInMemoryValidationSupport(uscore6FhirContext, validationConfig),
+        new CommonCodeSystemsTerminologyService(uscore6FhirContext),
+        remoteTerminologyServiceValidationSupport,
+        unknownCodeSystemWarningValidationSupport);
+  }
+
+  @Bean(name = {"usqualitycore05ValidationSupportChain"})
+  public IValidationSupport usqualitycore05ValidationSupportChain(
+      @Autowired FhirContext usqualitycore05FhirContext) throws IOException {
+    NpmPackageValidationSupport npmPackageSupport =
+        new NpmPackageValidationSupport(usqualitycore05FhirContext);
+    npmPackageSupport.loadPackageFromClasspath(
+        "classpath:packages/fhir.onc.us-quality-core-0.5.0.tgz");
+    npmPackageSupport.loadPackageFromClasspath("classpath:packages/hl7.fhir.us.core-6.1.0.tgz");
+    npmPackageSupport.loadPackageFromClasspath(
+        "classpath:packages/hl7.fhir.uv.extensions.r4-5.2.0.tgz");
+    npmPackageSupport.loadPackageFromClasspath(
+        "classpath:packages/hl7.fhir.xver-extensions-0.1.0.tgz");
+
+    CustomUnknownCodeSystemWarningValidationSupport unknownCodeSystemWarningValidationSupport =
+        getUnknownCodeSystemValidationSupport(usqualitycore05FhirContext);
+
+    RemoteTerminologyServiceValidationSupport remoteTerminologyServiceValidationSupport =
+        getRemoteTerminologyServiceValidationSupport(usqualitycore05FhirContext);
+
+    VSESValidationSupport vsesValidationSupport =
+        new VSESValidationSupport(
+            usqualitycore05FhirContext,
+            savedExpansionServiceBaseUrl,
+            new BasicAuthInterceptor("api-key", savedExpansionServiceApiKey),
+            validationConfig);
+
+    return new ValidationSupportChain(
+        npmPackageSupport,
+        vsesValidationSupport,
+        new DefaultProfileValidationSupport(usqualitycore05FhirContext),
+        new CustomQiCoreInMemoryValidationSupport(usqualitycore05FhirContext, validationConfig),
+        new CommonCodeSystemsTerminologyService(usqualitycore05FhirContext),
+        remoteTerminologyServiceValidationSupport,
+        unknownCodeSystemWarningValidationSupport);
+  }
+
+  @Bean
+  public Map<String, IValidationSupport> validationSupportChainMap(ApplicationContext context) {
+    Map<String, IValidationSupport> finalMap = new HashMap<>();
+
+    // 1. Get all beans of the target type (this gives you primary names)
+    Map<String, IValidationSupport> primaryBeans = context.getBeansOfType(IValidationSupport.class);
+
+    for (Map.Entry<String, IValidationSupport> entry : primaryBeans.entrySet()) {
+      String primaryName = entry.getKey();
+      IValidationSupport beanInstance = entry.getValue();
+
+      // 2. Map the primary name to the instance
+      finalMap.put(primaryName, beanInstance);
+
+      // 3. Find and map all aliases pointing to this specific primary name
+      String[] aliases = context.getAliases(primaryName);
+      for (String alias : aliases) {
+        finalMap.put(alias, beanInstance);
+      }
+    }
+
+    return finalMap;
   }
 
   private RemoteTerminologyServiceValidationSupport getRemoteTerminologyServiceValidationSupport(
@@ -158,6 +267,28 @@ public class HapiFhirConfig {
 
     // Create a validation module and register it
     IValidatorModule module = new FhirInstanceValidator(validationSupportChainQiCore600);
+    validator.registerValidatorModule(module);
+    return validator;
+  }
+
+  @Bean
+  public FhirValidator uscore6NpmFhirValidator(
+      @Autowired FhirContext uscore6FhirContext,
+      @Autowired IValidationSupport uscore6ValidationSupportChain) {
+    log.info("validator config on FHIR Context v{}", uscore6FhirContext.getVersion());
+    FhirValidator validator = uscore6FhirContext.newValidator();
+    IValidatorModule module = new FhirInstanceValidator(uscore6ValidationSupportChain);
+    validator.registerValidatorModule(module);
+    return validator;
+  }
+
+  @Bean
+  public FhirValidator usqualitycore05NpmFhirValidator(
+      @Autowired FhirContext usqualitycore05FhirContext,
+      @Autowired IValidationSupport usqualitycore05ValidationSupportChain) {
+    log.info("validator config on FHIR Context v{}", usqualitycore05FhirContext.getVersion());
+    FhirValidator validator = usqualitycore05FhirContext.newValidator();
+    IValidatorModule module = new FhirInstanceValidator(usqualitycore05ValidationSupportChain);
     validator.registerValidatorModule(module);
     return validator;
   }

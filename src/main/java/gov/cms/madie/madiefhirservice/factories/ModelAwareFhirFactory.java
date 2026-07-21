@@ -22,7 +22,16 @@ public class ModelAwareFhirFactory {
 
   private final Map<String, FhirValidator> fhirValidatorMap;
   private final Map<String, FhirContext> fhirContextMap;
-  private final Map<String, IValidationSupport> validationSupportMap;
+  private final Map<String, IValidationSupport> validationSupportChainMap;
+
+  public IValidationSupport getValidationSupportForModel(ModelType modelType) {
+    IValidationSupport chain =
+        validationSupportChainMap.get(modelType.getShortValue() + "ValidationSupportChain");
+    if (chain == null) {
+      throw new UnsupportedTypeException(this.getClass().getName(), modelType.toString());
+    }
+    return chain;
+  }
 
   public FhirValidator getValidatorForModel(ModelType modelType) {
     FhirValidator validator = fhirValidatorMap.get(modelType.getShortValue() + "NpmFhirValidator");
@@ -41,23 +50,6 @@ public class ModelAwareFhirFactory {
       throw new UnsupportedTypeException(this.getClass().getName(), modelType.toString());
     }
     return context;
-  }
-
-  public IValidationSupport getValidationSupportForModel(ModelType modelType) {
-    String beanName =
-        switch (modelType) {
-          case QI_CORE -> "validationSupportChain411";
-          case QI_CORE_6_0_0 -> "validationSupportChainQiCore600";
-          default -> null;
-        };
-
-    IValidationSupport validationSupport =
-        beanName != null ? validationSupportMap.get(beanName) : null;
-
-    if (validationSupport == null) {
-      throw new UnsupportedTypeException(this.getClass().getName(), modelType.toString());
-    }
-    return validationSupport;
   }
 
   public IParser getJsonParserForModel(ModelType modelType) {
