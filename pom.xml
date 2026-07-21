@@ -198,7 +198,7 @@
 		<dependency>
 			<groupId>gov.cms.madie</groupId>
 			<artifactId>madie-java-models</artifactId>
-			<version>0.10.2-SNAPSHOT</version>
+			<version>0.10.6-SNAPSHOT</version>
 		</dependency>
 		<dependency>
       		<groupId>com.jayway.jsonpath</groupId>
@@ -207,7 +207,7 @@
 		<dependency>
 			<groupId>gov.cms.madie.packaging</groupId>
 			<artifactId>packaging-utility</artifactId>
-			<version>0.2.16-SNAPSHOT</version>
+			<version>0.2.17-SNAPSHOT</version>
 			<exclusions>
 				<exclusion>
 					<groupId>gov.cms.madie</groupId>

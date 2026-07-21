@@ -7,6 +7,7 @@ import gov.cms.madie.models.measure.Population;
 import gov.cms.madie.models.measure.TestCasePopulationValue;
 import gov.cms.madie.models.measure.TestCaseStratificationValue;
 import org.hl7.fhir.r4.model.MeasureReport;
+import org.hl7.fhir.r4.model.ValueSet;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -412,5 +413,59 @@ public class FhirResourceHelpersTest {
 
     // Then
     assertThat(output, is(equalTo("measurePopulationObservation0")));
+  }
+
+  @Test
+  void testFlattenValueSetContainsReturnsEmptyListForNullOrEmptyInput() {
+    List<ValueSet.ValueSetExpansionContainsComponent> flattenedFromNull =
+        FhirResourceHelpers.flattenValueSetContains(null);
+    List<ValueSet.ValueSetExpansionContainsComponent> flattenedFromEmpty =
+        FhirResourceHelpers.flattenValueSetContains(Collections.emptyList());
+
+    assertThat(flattenedFromNull.isEmpty(), is(true));
+    assertThat(flattenedFromEmpty.isEmpty(), is(true));
+  }
+
+  @Test
+  void testFlattenValueSetContainsReturnsTopLevelElementsWhenNoNestedContains() {
+    ValueSet.ValueSetExpansionContainsComponent firstContains =
+        new ValueSet.ValueSetExpansionContainsComponent().setCode("code-1");
+    ValueSet.ValueSetExpansionContainsComponent secondContains =
+        new ValueSet.ValueSetExpansionContainsComponent().setCode("code-2");
+
+    List<ValueSet.ValueSetExpansionContainsComponent> flattened =
+        FhirResourceHelpers.flattenValueSetContains(List.of(firstContains, secondContains));
+
+    assertThat(flattened.size(), is(2));
+    assertThat(flattened.get(0), is(firstContains));
+    assertThat(flattened.get(1), is(secondContains));
+  }
+
+  @Test
+  void testFlattenValueSetContainsRecursivelyFlattensNestedContainsInOrder() {
+    ValueSet.ValueSetExpansionContainsComponent parent =
+        new ValueSet.ValueSetExpansionContainsComponent().setCode("parent");
+    ValueSet.ValueSetExpansionContainsComponent childOne =
+        new ValueSet.ValueSetExpansionContainsComponent().setCode("child-1");
+    ValueSet.ValueSetExpansionContainsComponent grandChild =
+        new ValueSet.ValueSetExpansionContainsComponent().setCode("grand-child");
+    ValueSet.ValueSetExpansionContainsComponent childTwo =
+        new ValueSet.ValueSetExpansionContainsComponent().setCode("child-2");
+    ValueSet.ValueSetExpansionContainsComponent sibling =
+        new ValueSet.ValueSetExpansionContainsComponent().setCode("sibling");
+
+    childOne.addContains(grandChild);
+    parent.addContains(childOne);
+    parent.addContains(childTwo);
+
+    List<ValueSet.ValueSetExpansionContainsComponent> flattened =
+        FhirResourceHelpers.flattenValueSetContains(List.of(parent, sibling));
+
+    assertThat(flattened.size(), is(5));
+    assertThat(flattened.get(0), is(parent));
+    assertThat(flattened.get(1), is(childOne));
+    assertThat(flattened.get(2), is(grandChild));
+    assertThat(flattened.get(3), is(childTwo));
+    assertThat(flattened.get(4), is(sibling));
   }
 }
