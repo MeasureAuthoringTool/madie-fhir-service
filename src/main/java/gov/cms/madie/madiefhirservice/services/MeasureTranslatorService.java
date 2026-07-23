@@ -396,9 +396,10 @@ public class MeasureTranslatorService {
       }
     }
     if (StringUtils.isNotBlank(madieGroup.getCompositeScoring())) {
-      element.addExtension(
-          UriConstants.CqfMeasures.COMPOSITE_SCORING_URI,
-          buildCompositeScoringConcept(madieGroup.getCompositeScoring()));
+      CodeableConcept cc = buildCompositeScoringConcept(madieGroup.getCompositeScoring());
+      if (cc != null) {
+        element.addExtension(UriConstants.CqfMeasures.COMPOSITE_SCORING_URI, cc);
+      }
     }
     // add cqm-component extension for each component of the composite measure
     if (isNotEmpty(madieGroup.getComponents())) {
