@@ -1552,6 +1552,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     Group group =
         Group.builder()
             .scoring("Proportion")
+            .compositeScoring("Opportunity")
             .components(List.of(component))
             .populations(new ArrayList<>())
             .build();
@@ -1569,6 +1570,13 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     RelatedArtifact ra = (RelatedArtifact) componentExt.getValue();
     assertThat(ra.getType(), is(equalTo(RelatedArtifact.RelatedArtifactType.COMPOSEDOF)));
     assertThat(ra.getDisplay(), is(equalTo("ComponentMeasure")));
+    // should have cqfm-compositeSCoring extension
+    Extension compositeScoringExt =
+        mgc.getExtensionByUrl(UriConstants.CqfMeasures.COMPOSITE_SCORING_URI);
+    assertNotNull(compositeScoringExt);
+    assertThat(
+        ((CodeableConcept) compositeScoringExt.getValue()).getCoding().get(0).getCode(),
+        is(equalTo("opportunity")));
   }
 
   @Test
