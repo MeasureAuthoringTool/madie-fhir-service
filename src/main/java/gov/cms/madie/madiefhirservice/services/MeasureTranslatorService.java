@@ -5,6 +5,7 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 import gov.cms.madie.madiefhirservice.constants.IdentifierType;
+import gov.cms.madie.madiefhirservice.exceptions.BundleOperationException;
 import gov.cms.madie.madiefhirservice.utils.FhirResourceHelpers;
 import gov.cms.madie.madiefhirservice.utils.RichTextUtil;
 import gov.cms.madie.models.common.Organization;
@@ -396,10 +397,9 @@ public class MeasureTranslatorService {
       }
     }
     if (StringUtils.isNotBlank(madieGroup.getCompositeScoring())) {
-      CodeableConcept cc = buildCompositeScoringConcept(madieGroup.getCompositeScoring());
-      if (cc != null) {
-        element.addExtension(UriConstants.CqfMeasures.COMPOSITE_SCORING_URI, cc);
-      }
+      element.addExtension(
+          UriConstants.CqfMeasures.COMPOSITE_SCORING_URI,
+          buildCompositeScoringConcept(madieGroup.getCompositeScoring()));
     }
     // add cqm-component extension for each component of the composite measure
     if (isNotEmpty(madieGroup.getComponents())) {
@@ -651,10 +651,10 @@ public class MeasureTranslatorService {
           CompositeMeasureScoring.fromCode(compositeScoring.toLowerCase());
       return buildCodeableConcept(cms.toCode(), cms.getSystem(), cms.getDisplay());
     } catch (FHIRException ex) {
-      // just for safety. not expected to run into this
-      log.error("Unsupported composite scoring type ", ex);
+      String message = "Unsupported composite scoring type " + compositeScoring;
+      log.error(message, ex);
+      throw new BundleOperationException(message);
     }
-    return null;
   }
 
   private CodeableConcept buildCodeableConcept(String code, String system, String display) {

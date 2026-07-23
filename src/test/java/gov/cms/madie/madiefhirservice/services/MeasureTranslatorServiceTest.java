@@ -16,6 +16,7 @@ import static org.hamcrest.Matchers.empty;
 import static org.junit.jupiter.api.Assertions.*;
 
 import gov.cms.madie.madiefhirservice.constants.UriConstants;
+import gov.cms.madie.madiefhirservice.exceptions.BundleOperationException;
 import gov.cms.madie.madiefhirservice.utils.FhirResourceHelpers;
 import gov.cms.madie.madiefhirservice.utils.MeasureTestHelper;
 import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
@@ -1590,20 +1591,16 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     Group group =
         Group.builder()
             .scoring("Proportion")
-            .compositeScoring("UnsupportedCompositeScoring")
+            .compositeScoring("Test")
             .components(List.of(component))
             .populations(new ArrayList<>())
             .build();
 
-    List<MeasureGroupComponent> groupComponents =
-        measureTranslatorService.buildGroups(List.of(group));
-
-    assertThat(groupComponents.size(), is(equalTo(1)));
-    MeasureGroupComponent mgc = groupComponents.get(0);
-    //  cqfm-compositeSCoring should be null for unsupported scoring type
-    Extension compositeScoringExt =
-        mgc.getExtensionByUrl(UriConstants.CqfMeasures.COMPOSITE_SCORING_URI);
-    assertNull(compositeScoringExt);
+    Exception exception =
+        assertThrows(
+            BundleOperationException.class,
+            () -> measureTranslatorService.buildGroups(List.of(group)));
+    assertThat(exception.getMessage(), is(equalTo("Unsupported composite scoring type Test")));
   }
 
   @Test
