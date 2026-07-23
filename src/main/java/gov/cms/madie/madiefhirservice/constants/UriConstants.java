@@ -34,6 +34,8 @@ public final class UriConstants {
         "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-effectiveDataRequirements";
     public static final String SCORING_URI =
         "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-scoring";
+    public static final String COMPOSITE_SCORING_URI =
+        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-compositeScoring";
     public static final String SCORING_UNIT_URI =
         "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-scoringUnit";
 

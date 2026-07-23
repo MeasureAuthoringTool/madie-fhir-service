@@ -5,6 +5,7 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 import gov.cms.madie.madiefhirservice.constants.IdentifierType;
+import gov.cms.madie.madiefhirservice.exceptions.BundleOperationException;
 import gov.cms.madie.madiefhirservice.utils.FhirResourceHelpers;
 import gov.cms.madie.madiefhirservice.utils.RichTextUtil;
 import gov.cms.madie.models.common.Organization;
@@ -15,6 +16,8 @@ import gov.cms.madie.models.measure.Population;
 import gov.cms.madie.models.utils.CmsIdFormatter;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.hl7.fhir.exceptions.FHIRException;
+import org.hl7.fhir.r4.model.codesystems.CompositeMeasureScoring;
 import org.hl7.fhir.r4.model.Identifier.IdentifierUse;
 import org.hl7.fhir.instance.model.api.IBaseDatatype;
 import org.hl7.fhir.r4.model.Enumerations.PublicationStatus;
@@ -393,6 +396,11 @@ public class MeasureTranslatorService {
                 RichTextUtil.sanitizeText(madieGroup.getImprovementNotationDescription())));
       }
     }
+    if (StringUtils.isNotBlank(madieGroup.getCompositeScoring())) {
+      element.addExtension(
+          UriConstants.CqfMeasures.COMPOSITE_SCORING_URI,
+          buildCompositeScoringConcept(madieGroup.getCompositeScoring()));
+    }
     // add cqm-component extension for each component of the composite measure
     if (isNotEmpty(madieGroup.getComponents())) {
       madieGroup
@@ -629,6 +637,24 @@ public class MeasureTranslatorService {
       code = "continuous-variable";
     }
     return buildCodeableConcept(code, UriConstants.CodeSystem.SCORING_SYSTEM_URI, scoring);
+  }
+
+  /**
+   * Builds a CodeableConcept for the cqfm-compositeScoring extension using the HAPI FHIR {@link
+   * CompositeMeasureScoring} enum from the {@code
+   * http://terminology.hl7.org/CodeSystem/composite-measure-scoring} value set.
+   */
+  private CodeableConcept buildCompositeScoringConcept(String compositeScoring) {
+    // resolve by code (e.g. "opportunity", "all-or-nothing", "linear", "weighted")
+    try {
+      CompositeMeasureScoring cms =
+          CompositeMeasureScoring.fromCode(compositeScoring.toLowerCase());
+      return buildCodeableConcept(cms.toCode(), cms.getSystem(), cms.getDisplay());
+    } catch (FHIRException ex) {
+      String message = "Unsupported composite scoring type " + compositeScoring;
+      log.error(message, ex);
+      throw new BundleOperationException(message);
+    }
   }
 
   private CodeableConcept buildCodeableConcept(String code, String system, String display) {

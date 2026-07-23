@@ -16,6 +16,7 @@ import static org.hamcrest.Matchers.empty;
 import static org.junit.jupiter.api.Assertions.*;
 
 import gov.cms.madie.madiefhirservice.constants.UriConstants;
+import gov.cms.madie.madiefhirservice.exceptions.BundleOperationException;
 import gov.cms.madie.madiefhirservice.utils.FhirResourceHelpers;
 import gov.cms.madie.madiefhirservice.utils.MeasureTestHelper;
 import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
@@ -1552,6 +1553,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     Group group =
         Group.builder()
             .scoring("Proportion")
+            .compositeScoring("Opportunity")
             .components(List.of(component))
             .populations(new ArrayList<>())
             .build();
@@ -1565,10 +1567,40 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     Extension componentExt = mgc.getExtensionByUrl(UriConstants.CqfMeasures.CQFM_COMPONENT_URI);
     assertNotNull(componentExt);
     // the value should be a RelatedArtifact
-    assertTrue(componentExt.getValue() instanceof RelatedArtifact);
+    assertInstanceOf(RelatedArtifact.class, componentExt.getValue());
     RelatedArtifact ra = (RelatedArtifact) componentExt.getValue();
     assertThat(ra.getType(), is(equalTo(RelatedArtifact.RelatedArtifactType.COMPOSEDOF)));
     assertThat(ra.getDisplay(), is(equalTo("ComponentMeasure")));
+    // should have cqfm-compositeSCoring extension
+    Extension compositeScoringExt =
+        mgc.getExtensionByUrl(UriConstants.CqfMeasures.COMPOSITE_SCORING_URI);
+    assertNotNull(compositeScoringExt);
+    assertThat(
+        ((CodeableConcept) compositeScoringExt.getValue()).getCoding().get(0).getCode(),
+        is(equalTo("opportunity")));
+  }
+
+  @Test
+  void testBuildGroupsWithUnsupportedCompositeScoring() {
+    Component component =
+        Component.builder()
+            .measureName("ComponentMeasure")
+            .measureVersion("1.0.0")
+            .multiGroupComponent(false)
+            .build();
+    Group group =
+        Group.builder()
+            .scoring("Proportion")
+            .compositeScoring("Test")
+            .components(List.of(component))
+            .populations(new ArrayList<>())
+            .build();
+
+    Exception exception =
+        assertThrows(
+            BundleOperationException.class,
+            () -> measureTranslatorService.buildGroups(List.of(group)));
+    assertThat(exception.getMessage(), is(equalTo("Unsupported composite scoring type Test")));
   }
 
   @Test
