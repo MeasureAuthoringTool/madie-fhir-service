@@ -286,6 +286,25 @@ class ModelAwareFhirFactoryTest {
   }
 
   @Test
+  public void testParseForModelUsQualityCoreReturnsBundle() {
+    // given
+    ModelType modelType = ModelType.US_QUALITY_CORE_0_5_0;
+    String bundleString = "{ \"resourceType\" : \"Bundle\", \"entry\": []}";
+    IParser mockParser = Mockito.mock(IParser.class);
+    Bundle mockBundle = Mockito.mock(Bundle.class);
+
+    Mockito.doReturn(mockParser).when(modelAwareFhirFactory).getJsonParserForModel(modelType);
+    when(mockParser.parseResource(Bundle.class, bundleString)).thenReturn(mockBundle);
+
+    // when
+    IBaseBundle output = modelAwareFhirFactory.parseForModel(modelType, bundleString);
+
+    // then
+    assertThat(output, is(equalTo(mockBundle)));
+    verify(mockParser).parseResource(Bundle.class, bundleString);
+  }
+
+  @Test
   public void testParseForModelUnsupportedModelThrowsUnsupportedTypeException() {
     // given
     ModelType modelType = ModelType.QI_CORE_7_0_0;

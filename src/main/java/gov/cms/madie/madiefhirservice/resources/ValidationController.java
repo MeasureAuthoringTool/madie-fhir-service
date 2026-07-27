@@ -14,6 +14,7 @@ import gov.cms.madie.models.common.ModelType;
 import gov.cms.madie.models.measure.HapiOperationOutcome;
 import gov.cms.madie.madiefhirservice.exceptions.HapiJsonException;
 import gov.cms.madie.madiefhirservice.services.ResourceValidationService;
+import gov.cms.madie.madiefhirservice.utils.ModelTypeResolver;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,8 +24,6 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-
-import static gov.cms.madie.madiefhirservice.utils.ModelEndpointMap.QICORE_VERSION_MODELTYPE_MAP;
 
 @Slf4j
 @RestController
@@ -42,14 +41,14 @@ public class ValidationController {
   private ObjectMapper mapper;
 
   @PostMapping(
-      path = "/qicore/{model}/bundles",
+      path = "/{model}/bundles",
       consumes = MediaType.APPLICATION_JSON_VALUE,
       produces = MediaType.APPLICATION_JSON_VALUE)
   public HapiOperationOutcome validateBundleByModel(
-      @PathVariable("model") String modelVersion,
+      @PathVariable("model") String model,
       @RequestParam(defaultValue = "false") boolean lenientPatientRefs,
       HttpEntity<String> request) {
-    final ModelType modelType = QICORE_VERSION_MODELTYPE_MAP.get(modelVersion);
+    final ModelType modelType = ModelTypeResolver.resolve(model);
     IParser parser = validatorFactory.getJsonParserForModel(modelType);
 
     FhirContext fhirContext = validatorFactory.getContextForModel(modelType);

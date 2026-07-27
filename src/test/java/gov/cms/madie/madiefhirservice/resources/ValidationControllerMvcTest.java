@@ -28,7 +28,6 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import static gov.cms.madie.madiefhirservice.utils.ModelEndpointMap.QICORE_4_1_1;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -49,7 +48,8 @@ import static org.mockito.Mockito.lenient;
 @ActiveProfiles("MvcTest")
 class ValidationControllerMvcTest implements ResourceFileUtil {
   private static final String TEST_USER_ID = "john_doe";
-  private static final String VALIDATION_API_URL = "/fhir/validations/qicore/%s/bundles";
+  private static final String VALIDATION_API_URL = "/fhir/validations/%s/bundles";
+  private static final String QI_CORE_MODEL = ModelType.QI_CORE.getShortValue();
 
   @Autowired private FhirContext qicoreFhirContext;
   @MockitoBean private UserServiceClient userServiceClient;
@@ -95,7 +95,7 @@ class ValidationControllerMvcTest implements ResourceFileUtil {
 
     mockMvc
         .perform(
-            MockMvcRequestBuilders.post(String.format(VALIDATION_API_URL, QICORE_4_1_1))
+            MockMvcRequestBuilders.post(String.format(VALIDATION_API_URL, QI_CORE_MODEL))
                 .with(user(TEST_USER_ID))
                 .with(csrf())
                 .content(testCaseJson)
@@ -126,7 +126,7 @@ class ValidationControllerMvcTest implements ResourceFileUtil {
 
     mockMvc
         .perform(
-            MockMvcRequestBuilders.post(String.format(VALIDATION_API_URL, QICORE_4_1_1))
+            MockMvcRequestBuilders.post(String.format(VALIDATION_API_URL, QI_CORE_MODEL))
                 .with(user(TEST_USER_ID))
                 .with(csrf())
                 .content(testCaseJson)
@@ -166,7 +166,7 @@ class ValidationControllerMvcTest implements ResourceFileUtil {
 
     mockMvc
         .perform(
-            MockMvcRequestBuilders.post(String.format(VALIDATION_API_URL, QICORE_4_1_1))
+            MockMvcRequestBuilders.post(String.format(VALIDATION_API_URL, QI_CORE_MODEL))
                 .with(user(TEST_USER_ID))
                 .with(csrf())
                 .content(tc1Json)
@@ -211,7 +211,7 @@ class ValidationControllerMvcTest implements ResourceFileUtil {
 
     mockMvc
         .perform(
-            MockMvcRequestBuilders.post(String.format(VALIDATION_API_URL, QICORE_4_1_1))
+            MockMvcRequestBuilders.post(String.format(VALIDATION_API_URL, QI_CORE_MODEL))
                 .with(user(TEST_USER_ID))
                 .with(csrf())
                 .content(tc1Json)
@@ -254,7 +254,7 @@ class ValidationControllerMvcTest implements ResourceFileUtil {
 
     mockMvc
         .perform(
-            MockMvcRequestBuilders.post(String.format(VALIDATION_API_URL, QICORE_4_1_1))
+            MockMvcRequestBuilders.post(String.format(VALIDATION_API_URL, QI_CORE_MODEL))
                 .with(user(TEST_USER_ID))
                 .with(csrf())
                 .content(tc1Json)
@@ -305,7 +305,7 @@ class ValidationControllerMvcTest implements ResourceFileUtil {
 
     mockMvc
         .perform(
-            MockMvcRequestBuilders.post(String.format(VALIDATION_API_URL, QICORE_4_1_1))
+            MockMvcRequestBuilders.post(String.format(VALIDATION_API_URL, QI_CORE_MODEL))
                 .with(user(TEST_USER_ID))
                 .with(csrf())
                 .content(tc1Json)

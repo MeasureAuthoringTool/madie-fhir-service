@@ -4,11 +4,15 @@ import gov.cms.madie.madiefhirservice.dto.ResourceIdentifier;
 import gov.cms.madie.madiefhirservice.dto.StructureDefinitionDto;
 import gov.cms.madie.madiefhirservice.exceptions.ResourceNotFoundException;
 import gov.cms.madie.madiefhirservice.services.StructureDefinitionService;
+import gov.cms.madie.madiefhirservice.utils.ModelTypeResolver;
 import gov.cms.madie.models.common.ModelType;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
@@ -20,6 +24,7 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.mockStatic;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -27,6 +32,20 @@ class ResourceControllerTest {
 
   @Mock private StructureDefinitionService structureDefinitionService;
   @InjectMocks private ResourceController resourceController;
+  private MockedStatic<ModelTypeResolver> modelTypeResolverMock;
+
+  @BeforeEach
+  void setUp() {
+    modelTypeResolverMock = mockStatic(ModelTypeResolver.class);
+    modelTypeResolverMock
+        .when(() -> ModelTypeResolver.resolve(null))
+        .thenReturn(ModelType.QI_CORE_6_0_0);
+  }
+
+  @AfterEach
+  void tearDown() {
+    modelTypeResolverMock.close();
+  }
 
   @Test
   void testThatGetAllResourcesReturnsListOfResourceIdentifiers() {
