@@ -129,7 +129,6 @@ public class TestCaseBundleController {
       @RequestParam(defaultValue = "false") boolean allowInvalidRefsForPatient,
       @RequestBody List<TestCase> testCases,
       HttpEntity<String> request) {
-    log.info("got here");
     final ModelType modelType = ModelTypeResolver.resolve(modelVersion);
     IParser parser = fhirModelFactory.getJsonParserForModel(modelType);
     FhirContext fhirContext = fhirModelFactory.getContextForModel(modelType);
