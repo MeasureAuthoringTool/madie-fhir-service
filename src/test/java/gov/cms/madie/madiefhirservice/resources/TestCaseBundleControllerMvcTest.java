@@ -11,18 +11,22 @@ import gov.cms.madie.madiefhirservice.clients.UserServiceClient;
 import gov.cms.madie.madiefhirservice.factories.ModelAwareFhirFactory;
 import gov.cms.madie.madiefhirservice.services.ResourceValidationService;
 import gov.cms.madie.madiefhirservice.services.TestCaseBundleService;
+import gov.cms.madie.madiefhirservice.utils.ModelTypeResolver;
 import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
 import gov.cms.madie.models.common.BundleType;
+import gov.cms.madie.models.common.ModelType;
 import gov.cms.madie.models.dto.ExportDTO;
 import gov.cms.madie.models.measure.Measure;
 import gov.cms.madie.models.measure.TestCase;
 import org.hl7.fhir.r4.model.Bundle;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.Mock;
+import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
@@ -69,6 +73,7 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
   @Mock JsonParser parser;
 
   @Autowired private MockMvc mockMvc;
+  private MockedStatic<ModelTypeResolver> modelTypeResolverMock;
 
   @Autowired private ObjectMapper mapper;
 
@@ -82,6 +87,10 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
 
   @BeforeEach
   public void setUp() {
+    modelTypeResolverMock = mockStatic(ModelTypeResolver.class);
+    modelTypeResolverMock
+        .when(() -> ModelTypeResolver.resolve("4-1-1"))
+        .thenReturn(ModelType.QI_CORE);
     String madieMeasureJson = getStringFromTestResource("/measures/madie_measure.json");
     testCaseJson = getStringFromTestResource("/testCaseBundles/validTestCase.json");
     testCaseBundle = FhirContext.forR4().newJsonParser().parseResource(Bundle.class, testCaseJson);
@@ -91,6 +100,11 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
             .testCaseIds(asList(TEST_CASE_ID, TEST_CASE_ID_2))
             .bundleType(BundleType.COLLECTION)
             .build();
+  }
+
+  @AfterEach
+  void tearDownModelTypeResolver() {
+    modelTypeResolverMock.close();
   }
 
   @Test
@@ -294,7 +308,7 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
     // Act
     mockMvc
         .perform(
-            MockMvcRequestBuilders.post("/fhir/test-cases/qicore/4-1-1/execution-bundles")
+            MockMvcRequestBuilders.post("/fhir/test-cases/4-1-1/execution-bundles")
                 .with(user(TEST_USER_ID))
                 .with(csrf())
                 .header(HttpHeaders.AUTHORIZATION, "test-okta")
@@ -384,7 +398,7 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
     // Act
     mockMvc
         .perform(
-            MockMvcRequestBuilders.post("/fhir/test-cases/qicore/4-1-1/execution-bundles")
+            MockMvcRequestBuilders.post("/fhir/test-cases/4-1-1/execution-bundles")
                 .with(user(TEST_USER_ID))
                 .with(csrf())
                 .header(HttpHeaders.AUTHORIZATION, "test-okta")
@@ -462,7 +476,7 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
     // Act
     mockMvc
         .perform(
-            MockMvcRequestBuilders.post("/fhir/test-cases/qicore/4-1-1/execution-bundles")
+            MockMvcRequestBuilders.post("/fhir/test-cases/4-1-1/execution-bundles")
                 .with(user(TEST_USER_ID))
                 .with(csrf())
                 .header(HttpHeaders.AUTHORIZATION, "test-okta")
@@ -517,7 +531,7 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
     mockMvc
         .perform(
             MockMvcRequestBuilders.post(
-                    "/fhir/test-cases/qicore/4-1-1/execution-bundles?allowInvalidRefsForPatient=true")
+                    "/fhir/test-cases/4-1-1/execution-bundles?allowInvalidRefsForPatient=true")
                 .with(user(TEST_USER_ID))
                 .with(csrf())
                 .header(HttpHeaders.AUTHORIZATION, "test-okta")
@@ -589,7 +603,7 @@ class TestCaseBundleControllerMvcTest implements ResourceFileUtil {
     // Act
     mockMvc
         .perform(
-            MockMvcRequestBuilders.post("/fhir/test-cases/qicore/4-1-1/execution-bundles")
+            MockMvcRequestBuilders.post("/fhir/test-cases/4-1-1/execution-bundles")
                 .with(user(TEST_USER_ID))
                 .with(csrf())
                 .header(HttpHeaders.AUTHORIZATION, "test-okta")

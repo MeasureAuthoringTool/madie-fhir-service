@@ -11,6 +11,7 @@ import gov.cms.madie.madiefhirservice.factories.ModelAwareFhirFactory;
 import gov.cms.madie.madiefhirservice.services.ResourceValidationService;
 import gov.cms.madie.madiefhirservice.services.TestCaseBundleService;
 import gov.cms.madie.madiefhirservice.utils.ExportFileNamesUtil;
+import gov.cms.madie.madiefhirservice.utils.ModelTypeResolver;
 import gov.cms.madie.models.common.ModelType;
 import gov.cms.madie.models.dto.ExportDTO;
 import gov.cms.madie.models.measure.Measure;
@@ -31,8 +32,6 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 import java.util.*;
 import java.util.stream.Collectors;
-
-import static gov.cms.madie.madiefhirservice.utils.ModelEndpointMap.QICORE_VERSION_MODELTYPE_MAP;
 
 @Slf4j
 @RestController
@@ -122,7 +121,7 @@ public class TestCaseBundleController {
   }
 
   @PostMapping(
-      path = "/qicore/{model}/execution-bundles",
+      path = "/{model}/execution-bundles",
       consumes = MediaType.APPLICATION_JSON_VALUE,
       produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<TestCaseExecutionBundlesDTO> getTestCaseExecutionBundle(
@@ -130,7 +129,7 @@ public class TestCaseBundleController {
       @RequestParam(defaultValue = "false") boolean allowInvalidRefsForPatient,
       @RequestBody List<TestCase> testCases,
       HttpEntity<String> request) {
-    final ModelType modelType = QICORE_VERSION_MODELTYPE_MAP.get(modelVersion);
+    final ModelType modelType = ModelTypeResolver.resolve(modelVersion);
     IParser parser = fhirModelFactory.getJsonParserForModel(modelType);
     FhirContext fhirContext = fhirModelFactory.getContextForModel(modelType);
 

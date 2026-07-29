@@ -81,7 +81,8 @@ public class ModelAwareFhirFactory {
     IBaseBundle bundle;
     switch (modelType) {
       case QDM_5_6 -> throw new UnsupportedTypeException(this.getClass().getName(), "QDM v5.6");
-      case QI_CORE, QI_CORE_6_0_0 ->
+        // Todo: discuss whether we should just make this the default?
+      case QI_CORE, QI_CORE_6_0_0, US_QUALITY_CORE_0_5_0 ->
           bundle = parser.parseResource(org.hl7.fhir.r4.model.Bundle.class, bundleString);
       default -> throw new UnsupportedTypeException(this.getClass().getName(), "N/A");
     }

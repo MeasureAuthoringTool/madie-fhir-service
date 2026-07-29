@@ -35,7 +35,6 @@ import org.springframework.http.HttpStatus;
 import java.util.HashMap;
 import java.util.Map;
 
-import static gov.cms.madie.madiefhirservice.utils.ModelEndpointMap.*;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.CoreMatchers.is;
@@ -48,6 +47,8 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class ValidationControllerTest implements ResourceFileUtil {
+
+  private static final String QI_CORE_MODEL = ModelType.QI_CORE.getShortValue();
 
   @Spy FhirContext fhirContext;
 
@@ -105,7 +106,7 @@ class ValidationControllerTest implements ResourceFileUtil {
 
     when(entity.getBody()).thenReturn("{\"foo\": \"foo2\" }");
     HapiOperationOutcome output =
-        validationController.validateBundleByModel(QICORE_4_1_1, false, entity);
+        validationController.validateBundleByModel(QI_CORE_MODEL, false, entity);
     assertThat(output, is(notNullValue()));
     assertThat(output.getCode(), is(equalTo(HttpStatus.BAD_REQUEST.value())));
     assertThat(output.isSuccessful(), is(false));
@@ -131,7 +132,7 @@ class ValidationControllerTest implements ResourceFileUtil {
 
     // when
     HapiOperationOutcome output =
-        validationController.validateBundleByModel(QICORE_4_1_1, false, entity);
+        validationController.validateBundleByModel(QI_CORE_MODEL, false, entity);
 
     // then
     assertThat(output, is(notNullValue()));
@@ -154,7 +155,7 @@ class ValidationControllerTest implements ResourceFileUtil {
     // when/then
     assertThrows(
         HapiJsonException.class,
-        () -> validationController.validateBundleByModel(QICORE_4_1_1, false, entity));
+        () -> validationController.validateBundleByModel(QI_CORE_MODEL, false, entity));
   }
 
   @Test
@@ -191,7 +192,7 @@ class ValidationControllerTest implements ResourceFileUtil {
 
     // when
     HapiOperationOutcome output =
-        validationController.validateBundleByModel(QICORE_4_1_1, false, entity);
+        validationController.validateBundleByModel(QI_CORE_MODEL, false, entity);
 
     // then
     assertThat(output, is(notNullValue()));
@@ -231,7 +232,7 @@ class ValidationControllerTest implements ResourceFileUtil {
         .thenReturn("{ \"resourceType\": \"OperationOutcome\" }");
     assertThrows(
         HapiJsonException.class,
-        () -> validationController.validateBundleByModel(QICORE_4_1_1, false, entity));
+        () -> validationController.validateBundleByModel(QI_CORE_MODEL, false, entity));
   }
 
   @Test
@@ -275,7 +276,7 @@ class ValidationControllerTest implements ResourceFileUtil {
         .thenReturn(false);
 
     HapiOperationOutcome output =
-        validationController.validateBundleByModel(QICORE_4_1_1, false, entity);
+        validationController.validateBundleByModel(QI_CORE_MODEL, false, entity);
     assertThat(output, is(notNullValue()));
     assertThat(output.getCode(), is(equalTo(HttpStatus.OK.value())));
     assertThat(output.isSuccessful(), is(false));
@@ -328,7 +329,7 @@ class ValidationControllerTest implements ResourceFileUtil {
         .thenReturn(false);
 
     HapiOperationOutcome output =
-        validationController.validateBundleByModel(QICORE_4_1_1, false, entity);
+        validationController.validateBundleByModel(QI_CORE_MODEL, false, entity);
     assertThat(output, is(notNullValue()));
     assertThat(output.getCode(), is(equalTo(HttpStatus.BAD_REQUEST.value())));
     assertThat(output.getOutcomeResponse() instanceof Map, is(true));
@@ -379,7 +380,7 @@ class ValidationControllerTest implements ResourceFileUtil {
         .thenReturn(false);
 
     HapiOperationOutcome output =
-        validationController.validateBundleByModel(QICORE_4_1_1, false, entity);
+        validationController.validateBundleByModel(QI_CORE_MODEL, false, entity);
     assertThat(output, is(notNullValue()));
     assertThat(output.getCode(), is(equalTo(HttpStatus.BAD_REQUEST.value())));
     assertThat(output.getOutcomeResponse() instanceof Map, is(true));
@@ -430,7 +431,7 @@ class ValidationControllerTest implements ResourceFileUtil {
         .thenReturn(false);
 
     HapiOperationOutcome output =
-        validationController.validateBundleByModel(QICORE_4_1_1, false, entity);
+        validationController.validateBundleByModel(QI_CORE_MODEL, false, entity);
     assertThat(output, is(notNullValue()));
     assertThat(output.getCode(), is(equalTo(HttpStatus.OK.value())));
     assertThat(output.getOutcomeResponse() instanceof Map, is(true));
@@ -471,7 +472,7 @@ class ValidationControllerTest implements ResourceFileUtil {
     when(parser.encodeResourceToString(any(OperationOutcome.class)))
         .thenReturn("{ \"resourceType\": \"OperationOutcome\" }");
     HapiOperationOutcome output =
-        validationController.validateBundleByModel(QICORE_4_1_1, false, entity);
+        validationController.validateBundleByModel(QI_CORE_MODEL, false, entity);
     assertThat(output, is(notNullValue()));
     assertThat(output.getCode(), is(equalTo(HttpStatus.OK.value())));
     assertThat(output.isSuccessful(), is(true));
@@ -510,7 +511,8 @@ class ValidationControllerTest implements ResourceFileUtil {
         .thenReturn("{ \"resourceType\": \"OperationOutcome\" }");
 
     HapiOperationOutcome output =
-        validationController.validateBundleByModel(QICORE_6_0_0, false, entity);
+        validationController.validateBundleByModel(
+            ModelType.QI_CORE_6_0_0.getShortValue(), false, entity);
     assertThat(output, is(notNullValue()));
     assertThat(output.getCode(), is(equalTo(HttpStatus.OK.value())));
     assertThat(output.isSuccessful(), is(true));
