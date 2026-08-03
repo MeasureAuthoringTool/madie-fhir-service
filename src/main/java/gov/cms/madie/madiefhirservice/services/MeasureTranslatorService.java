@@ -137,6 +137,10 @@ public class MeasureTranslatorService {
       measure.addUseContext(
           buildIntendedVenue(madieMeasure.getMeasureMetaData().getIntendedVenue()));
     }
+
+    if (Boolean.TRUE.equals(madieMeasure.getMeasureMetaData().getTelehealthEligible())) {
+      measure.addUseContext(buildTelehealthEligible());
+    }
   }
 
   private void setRelatedArtifact(Measure madieMeasure, org.hl7.fhir.r4.model.Measure measure) {
@@ -247,6 +251,23 @@ public class MeasureTranslatorService {
             .setCode("venue")
             .setDisplay("Venue"));
     usageContext.setValue(new CodeableConcept(coding));
+
+    return usageContext;
+  }
+
+  private UsageContext buildTelehealthEligible() {
+    UsageContext usageContext = new UsageContext();
+    usageContext.setCode(
+        new Coding()
+            .setSystem("http://terminology.hl7.org/CodeSystem/usage-context-type")
+            .setCode("venue")
+            .setDisplay("Clinical Venue"));
+    usageContext.setValue(
+        new CodeableConcept(
+            new Coding()
+                .setSystem("http://cms.gov/CodeSystem/measure-eligibility")
+                .setCode("tele-health-eligible")
+                .setDisplay("Telehealth Eligible")));
 
     return usageContext;
   }

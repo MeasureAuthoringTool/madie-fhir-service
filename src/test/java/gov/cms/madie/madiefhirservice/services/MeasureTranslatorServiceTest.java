@@ -409,9 +409,20 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
         "Risk Adjustments example",
         measure.getSupplementalData().get(2).getCriteria().getExpression());
     assertEquals("Risk Adjustments example", measure.getSupplementalData().get(2).getDescription());
-    assertThat(measure.getUseContext().size(), is(equalTo(1)));
+    assertThat(measure.getUseContext().size(), is(equalTo(2)));
     assertThat(measure.getUseContext().get(0).getCode().getDisplay(), is(equalTo("Venue")));
     assertThat(measure.getUseContext().get(0).hasValue(), is(equalTo(true)));
+    UsageContext telehealth = measure.getUseContext().get(1);
+    assertThat(
+        telehealth.getCode().getSystem(),
+        is(equalTo("http://terminology.hl7.org/CodeSystem/usage-context-type")));
+    assertThat(telehealth.getCode().getCode(), is(equalTo("venue")));
+    assertThat(telehealth.getCode().getDisplay(), is(equalTo("Clinical Venue")));
+    Coding telehealthValue = telehealth.getValueCodeableConcept().getCodingFirstRep();
+    assertThat(
+        telehealthValue.getSystem(), is(equalTo("http://cms.gov/CodeSystem/measure-eligibility")));
+    assertThat(telehealthValue.getCode(), is(equalTo("tele-health-eligible")));
+    assertThat(telehealthValue.getDisplay(), is(equalTo("Telehealth Eligible")));
     assertFalse(measure.getSupplementalData().get(2).getUsage().get(0).getCoding().isEmpty());
     assertEquals("1.2.003", measure.getVersion());
 
