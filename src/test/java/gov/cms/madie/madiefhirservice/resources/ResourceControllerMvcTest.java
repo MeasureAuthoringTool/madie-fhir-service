@@ -1,5 +1,6 @@
 package gov.cms.madie.madiefhirservice.resources;
 
+import gov.cms.madie.madiefhirservice.dto.BuilderResourceMetadata;
 import gov.cms.madie.madiefhirservice.dto.ResourceIdentifier;
 import gov.cms.madie.madiefhirservice.dto.StructureDefinitionDto;
 import gov.cms.madie.madiefhirservice.exceptions.UnsupportedTypeException;
@@ -100,6 +101,34 @@ public class ResourceControllerMvcTest implements ResourceFileUtil {
         .andExpect(jsonPath("$.[0].title").value("QICore CarePlan"));
 
     verify(structureDefinitionService, times(1)).getAllResources(eq(ModelType.QI_CORE_6_0_0));
+  }
+
+  @Test
+  void testCanonicalPathGetBuilderResourceMetadataForUsQualityCore() throws Exception {
+    when(structureDefinitionService.getBuilderResourceMetadata(eq(ModelType.US_QUALITY_CORE_0_5_0)))
+        .thenReturn(
+            BuilderResourceMetadata.builder()
+                .resourcePaths(List.of("/guides/onc/us-quality-core", "/us/core"))
+                .primaryPatientProfile(
+                    ResourceIdentifier.builder()
+                        .id("us-quality-core-patient")
+                        .title("US Quality Core Patient")
+                        .build())
+                .build());
+
+    mockMvc
+        .perform(
+            MockMvcRequestBuilders.get("/fhir/models/usqualitycore05/resources/builder-metadata")
+                .with(user(TEST_USER_ID))
+                .with(csrf())
+                .header(HttpHeaders.AUTHORIZATION, "test-okta"))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$.resourcePaths[0]").value("/guides/onc/us-quality-core"))
+        .andExpect(jsonPath("$.resourcePaths[1]").value("/us/core"))
+        .andExpect(jsonPath("$.primaryPatientProfile.id").value("us-quality-core-patient"));
+
+    verify(structureDefinitionService, times(1))
+        .getBuilderResourceMetadata(eq(ModelType.US_QUALITY_CORE_0_5_0));
   }
 
   @Test

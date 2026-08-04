@@ -3,6 +3,7 @@ package gov.cms.madie.madiefhirservice.services;
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.context.support.IValidationSupport;
 import gov.cms.madie.madiefhirservice.constants.UriConstants;
+import gov.cms.madie.madiefhirservice.dto.BuilderResourceMetadata;
 import gov.cms.madie.madiefhirservice.dto.ResourceIdentifier;
 import gov.cms.madie.madiefhirservice.dto.StructureDefinitionDto;
 import gov.cms.madie.madiefhirservice.exceptions.ResourceNotFoundException;
@@ -387,6 +388,57 @@ class StructureDefinitionServiceTest {
     assertThat(
         output.stream().anyMatch(r -> r.getId() == null && "Valid Resource".equals(r.getTitle())),
         is(true));
+  }
+
+  @Test
+  void testGetBuilderResourceMetadataReturnsDistinctProfileUrlPaths() {
+    // given
+    StructureDefinition qicorePatient = buildDef("qicore-patient", "Patient", "QICore Patient");
+    qicorePatient.setUrl("http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient");
+    StructureDefinition qicoreEncounter =
+        buildDef("qicore-encounter", "Encounter", "QICore Encounter");
+    qicoreEncounter.setUrl("http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter");
+    StructureDefinition usCorePatient = buildDef("us-core-patient", "Patient", "US Core Patient");
+    usCorePatient.setUrl("http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient");
+    StructureDefinition basePatient = buildDef("Patient", "Patient", "Patient");
+    basePatient.setUrl("http://hl7.org/fhir/StructureDefinition/Patient");
+    when(mockChain.fetchAllStructureDefinitions())
+        .thenReturn(List.of(qicorePatient, qicoreEncounter, usCorePatient, basePatient));
+
+    // when
+    BuilderResourceMetadata output =
+        structureDefinitionService.getBuilderResourceMetadata(ModelType.QI_CORE_6_0_0);
+
+    // then
+    assertThat(output.getResourcePaths(), is(equalTo(List.of("/fhir/us/qicore", "/fhir/us/core"))));
+    assertThat(output.getPrimaryPatientProfile().getId(), is(equalTo("qicore-patient")));
+  }
+
+  @Test
+  void testGetBuilderResourceMetadataReturnsMostSpecificModelPatient() {
+    // given
+    StructureDefinition usQualityCorePatient =
+        buildDef("us-quality-core-patient", "Patient", "US Quality Core Patient");
+    usQualityCorePatient.setUrl(
+        "http://fhir.org/guides/onc/us-quality-core/StructureDefinition/us-quality-core-patient");
+    usQualityCorePatient.setBaseDefinition(
+        "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient|6.1.0");
+    StructureDefinition usCorePatient = buildDef("us-core-patient", "Patient", "US Core Patient");
+    usCorePatient.setUrl("http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient");
+    when(mockChain.fetchAllStructureDefinitions())
+        .thenReturn(List.of(usCorePatient, usQualityCorePatient));
+
+    // when
+    BuilderResourceMetadata output =
+        structureDefinitionService.getBuilderResourceMetadata(ModelType.US_QUALITY_CORE_0_5_0);
+
+    // then
+    assertThat(output.getPrimaryPatientProfile().getId(), is(equalTo("us-quality-core-patient")));
+    assertThat(
+        output.getPrimaryPatientProfile().getProfile(),
+        is(
+            equalTo(
+                "http://fhir.org/guides/onc/us-quality-core/StructureDefinition/us-quality-core-patient")));
   }
 
   @Test

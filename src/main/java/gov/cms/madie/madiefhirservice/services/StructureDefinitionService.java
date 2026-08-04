@@ -4,6 +4,7 @@ import ca.uhn.fhir.context.support.IValidationSupport;
 import ca.uhn.fhir.parser.IParser;
 import ca.uhn.fhir.parser.StrictErrorHandler;
 import gov.cms.madie.madiefhirservice.constants.UriConstants;
+import gov.cms.madie.madiefhirservice.dto.BuilderResourceMetadata;
 import gov.cms.madie.madiefhirservice.dto.ResourceIdentifier;
 import gov.cms.madie.madiefhirservice.dto.StructureDefinitionDto;
 import gov.cms.madie.madiefhirservice.exceptions.ResourceNotFoundException;
@@ -21,6 +22,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+import java.net.URI;
 
 @Slf4j
 @Service
@@ -161,6 +163,83 @@ public class StructureDefinitionService {
                   .build();
             })
         .toList();
+  }
+
+  public BuilderResourceMetadata getBuilderResourceMetadata(ModelType modelType) {
+    IValidationSupport chain = modelAwareFhirFactory.getValidationSupportForModel(modelType);
+    List<StructureDefinition> structureDefinitions =
+        Objects.requireNonNull(chain.fetchAllStructureDefinitions()).stream()
+            .map(resource -> (StructureDefinition) resource)
+            .toList();
+    List<String> resourcePaths = getResourcePaths(structureDefinitions);
+    return BuilderResourceMetadata.builder()
+        .resourcePaths(resourcePaths)
+        .primaryPatientProfile(getPrimaryPatientProfile(structureDefinitions, resourcePaths))
+        .build();
+  }
+
+  private List<String> getResourcePaths(List<StructureDefinition> structureDefinitions) {
+    return structureDefinitions.stream()
+        .filter(
+            structureDefinition ->
+                "resource".equals(structureDefinition.getKind().toCode())
+                    && structureDefinition.getUrl() != null)
+        .map(StructureDefinition::getUrl)
+        .map(this::getResourcePath)
+        .filter(path -> path != null && !"/fhir".equals(path))
+        .distinct()
+        .toList();
+  }
+
+  private ResourceIdentifier getPrimaryPatientProfile(
+      List<StructureDefinition> structureDefinitions, List<String> resourcePaths) {
+    List<StructureDefinition> patientProfiles =
+        structureDefinitions.stream()
+            .filter(
+                structureDefinition ->
+                    "resource".equals(structureDefinition.getKind().toCode())
+                        && "Patient".equals(structureDefinition.getType())
+                        && structureDefinition.getUrl() != null)
+            .filter(
+                structureDefinition ->
+                    resourcePaths.stream()
+                        .anyMatch(path -> structureDefinition.getUrl().contains(path)))
+            .toList();
+
+    return patientProfiles.stream()
+        .filter(
+            candidate ->
+                patientProfiles.stream()
+                    .noneMatch(
+                        profile ->
+                            candidate
+                                .getUrl()
+                                .equals(getBaseDefinitionUrl(profile.getBaseDefinition()))))
+        .findFirst()
+        .map(
+            structureDefinition ->
+                ResourceIdentifier.builder()
+                    .id(structureDefinition.getIdElement().getIdPart())
+                    .title(structureDefinition.getTitle())
+                    .type(structureDefinition.getType())
+                    .profile(structureDefinition.getUrl())
+                    .build())
+        .orElseThrow(() -> new ResourceNotFoundException("Patient StructureDefinition", null));
+  }
+
+  private String getBaseDefinitionUrl(String baseDefinition) {
+    if (baseDefinition == null) {
+      return null;
+    }
+    return baseDefinition.split("\\|", 2)[0];
+  }
+
+  private String getResourcePath(String profileUrl) {
+    int structureDefinitionIndex = profileUrl.indexOf("/StructureDefinition/");
+    if (structureDefinitionIndex < 0) {
+      return null;
+    }
+    return URI.create(profileUrl.substring(0, structureDefinitionIndex)).getPath();
   }
 
   /**
