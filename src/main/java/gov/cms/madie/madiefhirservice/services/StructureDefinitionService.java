@@ -165,6 +165,14 @@ public class StructureDefinitionService {
         .toList();
   }
 
+  /**
+   * Builds the metadata required by the resource builder from all StructureDefinitions available
+   * for a model. The metadata contains the distinct implementation-guide resource paths and the
+   * most specific Patient profile.
+   *
+   * @param modelType the model whose StructureDefinitions are used to build the metadata
+   * @return resource paths and the primary Patient profile for the model
+   */
   public BuilderResourceMetadata getBuilderResourceMetadata(ModelType modelType) {
     IValidationSupport chain = modelAwareFhirFactory.getValidationSupportForModel(modelType);
     List<StructureDefinition> structureDefinitions =
@@ -178,6 +186,14 @@ public class StructureDefinitionService {
         .build();
   }
 
+  /**
+   * Extracts distinct implementation-guide paths from resource StructureDefinition canonical URLs.
+   * Definitions without canonical URLs or a {@code /StructureDefinition/} segment are ignored, as
+   * is the base {@code /fhir} path.
+   *
+   * @param structureDefinitions the definitions from which canonical paths are extracted
+   * @return distinct resource paths in their original encounter order
+   */
   private List<String> getResourcePaths(List<StructureDefinition> structureDefinitions) {
     return structureDefinitions.stream()
         .filter(
@@ -191,6 +207,16 @@ public class StructureDefinitionService {
         .toList();
   }
 
+  /**
+   * Selects the most specific Patient profile associated with one of the supplied resource paths.
+   * A profile is considered most specific when its canonical URL is not referenced as the base
+   * definition of another eligible Patient profile.
+   *
+   * @param structureDefinitions the definitions searched for eligible Patient profiles
+   * @param resourcePaths the implementation-guide paths used to restrict eligible profiles
+   * @return an identifier describing the most specific Patient profile
+   * @throws ResourceNotFoundException when no eligible Patient profile is found
+   */
   private ResourceIdentifier getPrimaryPatientProfile(
       List<StructureDefinition> structureDefinitions, List<String> resourcePaths) {
     List<StructureDefinition> patientProfiles =
@@ -227,6 +253,12 @@ public class StructureDefinitionService {
         .orElseThrow(() -> new ResourceNotFoundException("Patient StructureDefinition", null));
   }
 
+  /**
+   * Removes an optional version suffix from a base-definition canonical URL.
+   *
+   * @param baseDefinition the canonical URL, optionally followed by a pipe and version
+   * @return the unversioned canonical URL, or {@code null} when the input is {@code null}
+   */
   private String getBaseDefinitionUrl(String baseDefinition) {
     if (baseDefinition == null) {
       return null;
@@ -234,6 +266,13 @@ public class StructureDefinitionService {
     return baseDefinition.split("\\|", 2)[0];
   }
 
+  /**
+   * Extracts the URI path preceding the {@code /StructureDefinition/} segment of a profile
+   * canonical URL.
+   *
+   * @param profileUrl the profile canonical URL
+   * @return the canonical URL's resource path, or {@code null} when the expected segment is absent
+   */
   private String getResourcePath(String profileUrl) {
     int structureDefinitionIndex = profileUrl.indexOf("/StructureDefinition/");
     if (structureDefinitionIndex < 0) {
