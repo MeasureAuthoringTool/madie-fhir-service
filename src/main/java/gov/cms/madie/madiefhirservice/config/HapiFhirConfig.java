@@ -106,7 +106,7 @@ public class HapiFhirConfig {
     npmPackageSupport.loadPackageFromClasspath(
         "classpath:packages/hl7.fhir.uv.extensions.r4-5.2.0.tgz");
     npmPackageSupport.loadPackageFromClasspath(
-        "classpath:packages/hl7.fhir.xver-extensions-0.1.0.tgz");
+        "classpath:packages/hl7.fhir.uv.xver-r5.r4-0.1.0.tgz");
 
     CustomUnknownCodeSystemWarningValidationSupport unknownCodeSystemWarningValidationSupport =
         getUnknownCodeSystemValidationSupport(qicore6FhirContext);
@@ -140,7 +140,7 @@ public class HapiFhirConfig {
     npmPackageSupport.loadPackageFromClasspath(
         "classpath:packages/hl7.fhir.uv.extensions.r4-5.2.0.tgz");
     npmPackageSupport.loadPackageFromClasspath(
-        "classpath:packages/hl7.fhir.xver-extensions-0.1.0.tgz");
+        "classpath:packages/hl7.fhir.uv.xver-r5.r4-0.1.0.tgz");
 
     CustomUnknownCodeSystemWarningValidationSupport unknownCodeSystemWarningValidationSupport =
         getUnknownCodeSystemValidationSupport(uscore6FhirContext);
@@ -176,7 +176,7 @@ public class HapiFhirConfig {
     npmPackageSupport.loadPackageFromClasspath(
         "classpath:packages/hl7.fhir.uv.extensions.r4-5.2.0.tgz");
     npmPackageSupport.loadPackageFromClasspath(
-        "classpath:packages/hl7.fhir.xver-extensions-0.1.0.tgz");
+        "classpath:packages/hl7.fhir.uv.xver-r5.r4-0.1.0.tgz");
 
     CustomUnknownCodeSystemWarningValidationSupport unknownCodeSystemWarningValidationSupport =
         getUnknownCodeSystemValidationSupport(usqualitycore05FhirContext);
