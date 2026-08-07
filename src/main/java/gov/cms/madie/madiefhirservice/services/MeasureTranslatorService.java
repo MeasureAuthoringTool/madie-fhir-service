@@ -240,14 +240,14 @@ public class MeasureTranslatorService {
   private UsageContext buildIntendedVenue(CodeConcept intendedVenue) {
     Coding coding =
         new Coding()
-            .setSystem("http://hl7.org/fhir/us/cqfmeasures/CodeSystem/intended-venue-codes")
+            .setSystem(UriConstants.CqfMeasures.INTENDED_VENUE_CODES_URI)
             .setCode(intendedVenue.getCode())
             .setDisplay(intendedVenue.getDisplay());
 
     UsageContext usageContext = new UsageContext();
     usageContext.setCode(
         new Coding()
-            .setSystem("http://terminology.hl7.org/CodeSystem/usage-context-type")
+            .setSystem(UriConstants.CodeSystem.USAGE_CONTEXT_TYPE_SYSTEM_URI)
             .setCode("venue")
             .setDisplay("Venue"));
     usageContext.setValue(new CodeableConcept(coding));
@@ -259,13 +259,13 @@ public class MeasureTranslatorService {
     UsageContext usageContext = new UsageContext();
     usageContext.setCode(
         new Coding()
-            .setSystem("http://terminology.hl7.org/CodeSystem/usage-context-type")
+            .setSystem(UriConstants.CodeSystem.USAGE_CONTEXT_TYPE_SYSTEM_URI)
             .setCode("venue")
             .setDisplay("Clinical Venue"));
     usageContext.setValue(
         new CodeableConcept(
             new Coding()
-                .setSystem("http://cms.gov/CodeSystem/measure-eligibility")
+                .setSystem(UriConstants.CodeSystem.MEASURE_ELIGIBILITY_SYSTEM_URI)
                 .setCode("tele-health-eligible")
                 .setDisplay("Telehealth Eligible")));
 
