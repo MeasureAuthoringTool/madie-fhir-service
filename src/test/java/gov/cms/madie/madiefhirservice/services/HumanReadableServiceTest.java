@@ -17,6 +17,8 @@ import gov.cms.madie.models.measure.Stratification;
 
 import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.r4.model.Attachment;
+import org.hl7.fhir.r4.model.CodeableConcept;
+import org.hl7.fhir.r4.model.Coding;
 import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.Library;
 import org.hl7.fhir.r4.model.MarkdownType;
@@ -24,6 +26,7 @@ import org.hl7.fhir.r4.model.Period;
 import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.RelatedArtifact;
 import org.hl7.fhir.r4.model.RelatedArtifact.RelatedArtifactType;
+import org.hl7.fhir.r4.model.UsageContext;
 import org.hl7.fhir.r5.context.SimpleWorkerContext;
 import org.hl7.fhir.r5.liquid.LiquidEngine;
 import org.junit.jupiter.api.BeforeEach;
@@ -170,6 +173,20 @@ class HumanReadableServiceTest
 
   @Test
   public void generateMeasureHumanReadableUsingIncludes() throws IOException {
+    measure.addUseContext(
+        new UsageContext()
+            .setCode(
+                new Coding()
+                    .setSystem("http://terminology.hl7.org/CodeSystem/usage-context-type")
+                    .setCode("venue")
+                    .setDisplay("Clinical Venue"))
+            .setValue(
+                new CodeableConcept(
+                    new Coding()
+                        .setSystem("http://cms.gov/CodeSystem/measure-eligibility")
+                        .setCode("tele-health-eligible")
+                        .setDisplay("Telehealth Eligible"))));
+
     var le = new LiquidEngine(new SimpleWorkerContext.SimpleWorkerContextBuilder().build(), null);
     // Set include resolver
     le.setIncludeResolver(this);
@@ -177,6 +194,8 @@ class HumanReadableServiceTest
 
     var generatedHumanReadable = hr.generateMeasureHumanReadable(measure, madieMeasure.getId());
     assertNotNull(generatedHumanReadable);
+    assertTrue(generatedHumanReadable.contains("Clinical Venue"));
+    assertTrue(generatedHumanReadable.contains("Telehealth Eligible"));
   }
 
   @Test
