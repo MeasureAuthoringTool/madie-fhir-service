@@ -1,5 +1,6 @@
 package gov.cms.madie.madiefhirservice.resources;
 
+import gov.cms.madie.madiefhirservice.dto.BuilderResourceMetadata;
 import gov.cms.madie.madiefhirservice.dto.ResourceIdentifier;
 import gov.cms.madie.madiefhirservice.dto.StructureDefinitionDto;
 import gov.cms.madie.madiefhirservice.services.StructureDefinitionService;
@@ -46,5 +47,11 @@ public class ResourceController {
   @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
   public List<ResourceIdentifier> getAllResources(@PathVariable(required = false) String model) {
     return structureDefinitionService.getAllResources(ModelTypeResolver.resolve(model));
+  }
+
+  @GetMapping(value = "/builder-metadata", produces = MediaType.APPLICATION_JSON_VALUE)
+  public BuilderResourceMetadata getBuilderResourceMetadata(
+      @PathVariable(required = false) String model) {
+    return structureDefinitionService.getBuilderResourceMetadata(ModelTypeResolver.resolve(model));
   }
 }

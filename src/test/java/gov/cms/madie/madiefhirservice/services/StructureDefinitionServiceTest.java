@@ -3,6 +3,7 @@ package gov.cms.madie.madiefhirservice.services;
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.context.support.IValidationSupport;
 import gov.cms.madie.madiefhirservice.constants.UriConstants;
+import gov.cms.madie.madiefhirservice.dto.BuilderResourceMetadata;
 import gov.cms.madie.madiefhirservice.dto.ResourceIdentifier;
 import gov.cms.madie.madiefhirservice.dto.StructureDefinitionDto;
 import gov.cms.madie.madiefhirservice.exceptions.ResourceNotFoundException;
@@ -17,6 +18,7 @@ import org.hl7.fhir.r4.model.ValueSet;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.function.Executable;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Spy;
@@ -207,6 +209,53 @@ class StructureDefinitionServiceTest {
   }
 
   @Test
+  void testGetExtensionsForTargetPathHandlesInapplicableContexts() {
+    // given
+    StructureDefinition noContext = buildDef("no-context", "Extension", "No Context Extension");
+    noContext.setStatus(PublicationStatus.ACTIVE);
+    noContext.setExperimental(false);
+
+    StructureDefinition matchingContext =
+        buildDef("matching-context", "Extension", "Matching Context Extension");
+    matchingContext.setStatus(PublicationStatus.ACTIVE);
+    matchingContext.setExperimental(false);
+
+    StructureDefinition.StructureDefinitionContextComponent contextWithoutExpression =
+        new StructureDefinition.StructureDefinitionContextComponent();
+    contextWithoutExpression.addModifierExtension(
+        new Extension("http://example.com/modifier", new StringType("modifier")));
+
+    StructureDefinition.StructureDefinitionContextComponent matchingExpression =
+        new StructureDefinition.StructureDefinitionContextComponent();
+    matchingExpression.setExpression("Patient.name");
+    matchingExpression.setType(StructureDefinition.ExtensionContextType.ELEMENT);
+    matchingContext.setContext(List.of(contextWithoutExpression, matchingExpression));
+
+    StructureDefinition nonMatchingContext =
+        buildDef("non-matching-context", "Extension", "Non-matching Context Extension");
+    nonMatchingContext.setStatus(PublicationStatus.ACTIVE);
+    nonMatchingContext.setExperimental(false);
+    StructureDefinition.StructureDefinitionContextComponent nonMatchingExpression =
+        new StructureDefinition.StructureDefinitionContextComponent();
+    nonMatchingExpression.setExpression("Encounter");
+    nonMatchingExpression.setType(StructureDefinition.ExtensionContextType.ELEMENT);
+    nonMatchingContext.setContext(List.of(nonMatchingExpression));
+
+    when(mockChain.fetchAllStructureDefinitions())
+        .thenReturn(List.of(noContext, matchingContext, nonMatchingContext));
+    when(mockChain.getFhirContext()).thenReturn(fhirContextQiCoreStu600);
+
+    // when
+    List<StructureDefinitionDto> output =
+        structureDefinitionService.getExtensionsForTargetPath(
+            ModelType.QI_CORE_6_0_0, "Patient.name", "resource");
+
+    // then
+    assertThat(output.size(), is(equalTo(1)));
+    assertThat(output.get(0).getDefinition().contains("\"id\": \"matching-context\""), is(true));
+  }
+
+  @Test
   void testGetStructureDefinitionByIdReturnsQiCoreResourceStructureDefinitionDto() {
     // given
     StructureDefinition def1 = new StructureDefinition();
@@ -387,6 +436,103 @@ class StructureDefinitionServiceTest {
     assertThat(
         output.stream().anyMatch(r -> r.getId() == null && "Valid Resource".equals(r.getTitle())),
         is(true));
+  }
+
+  @Test
+  void testGetBuilderResourceMetadataReturnsDistinctProfileUrlPaths() {
+    // given
+    StructureDefinition qicorePatient = buildDef("qicore-patient", "Patient", "QICore Patient");
+    qicorePatient.setUrl("http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient");
+    StructureDefinition qicoreEncounter =
+        buildDef("qicore-encounter", "Encounter", "QICore Encounter");
+    qicoreEncounter.setUrl("http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter");
+    StructureDefinition usCorePatient = buildDef("us-core-patient", "Patient", "US Core Patient");
+    usCorePatient.setUrl("http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient");
+    StructureDefinition basePatient = buildDef("Patient", "Patient", "Patient");
+    basePatient.setUrl("http://hl7.org/fhir/StructureDefinition/Patient");
+    when(mockChain.fetchAllStructureDefinitions())
+        .thenReturn(List.of(qicorePatient, qicoreEncounter, usCorePatient, basePatient));
+
+    // when
+    BuilderResourceMetadata output =
+        structureDefinitionService.getBuilderResourceMetadata(ModelType.QI_CORE_6_0_0);
+
+    // then
+    assertThat(output.getResourcePaths(), is(equalTo(List.of("/fhir/us/qicore", "/fhir/us/core"))));
+    assertThat(output.getPrimaryPatientProfile().getId(), is(equalTo("qicore-patient")));
+  }
+
+  @Test
+  void testGetBuilderResourceMetadataIgnoresInvalidResourcePaths() {
+    // given
+    StructureDefinition qicorePatient = buildDef("qicore-patient", "Patient", "QICore Patient");
+    qicorePatient.setUrl("http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient");
+
+    StructureDefinition invalidCanonical =
+        buildDef("invalid-canonical", "Encounter", "Invalid Canonical");
+    invalidCanonical.setUrl("http://example.com/not-a-structure-definition");
+
+    StructureDefinition missingCanonical =
+        buildDef("missing-canonical", "Patient", "Missing Canonical");
+
+    StructureDefinition nonResource =
+        buildDef("non-resource", "Patient", "Non-resource Definition");
+    nonResource.setKind(StructureDefinition.StructureDefinitionKind.COMPLEXTYPE);
+    nonResource.setUrl("http://example.com/ignored/StructureDefinition/non-resource");
+
+    when(mockChain.fetchAllStructureDefinitions())
+        .thenReturn(List.of(qicorePatient, invalidCanonical, missingCanonical, nonResource));
+
+    // when
+    BuilderResourceMetadata output =
+        structureDefinitionService.getBuilderResourceMetadata(ModelType.QI_CORE_6_0_0);
+
+    // then
+    assertThat(output.getResourcePaths(), is(equalTo(List.of("/fhir/us/qicore"))));
+    assertThat(output.getPrimaryPatientProfile().getId(), is(equalTo("qicore-patient")));
+  }
+
+  @Test
+  void testGetBuilderResourceMetadataThrowsWhenPatientProfileIsMissing() {
+    // given
+    StructureDefinition observation =
+        buildDef("qicore-observation", "Observation", "QICore Observation");
+    observation.setUrl("http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-observation");
+    when(mockChain.fetchAllStructureDefinitions()).thenReturn(List.of(observation));
+
+    // when
+    Executable action =
+        () -> structureDefinitionService.getBuilderResourceMetadata(ModelType.QI_CORE_6_0_0);
+
+    // then
+    assertThrows(ResourceNotFoundException.class, action);
+  }
+
+  @Test
+  void testGetBuilderResourceMetadataReturnsMostSpecificModelPatient() {
+    // given
+    StructureDefinition usQualityCorePatient =
+        buildDef("us-quality-core-patient", "Patient", "US Quality Core Patient");
+    usQualityCorePatient.setUrl(
+        "http://fhir.org/guides/onc/us-quality-core/StructureDefinition/us-quality-core-patient");
+    usQualityCorePatient.setBaseDefinition(
+        "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient|6.1.0");
+    StructureDefinition usCorePatient = buildDef("us-core-patient", "Patient", "US Core Patient");
+    usCorePatient.setUrl("http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient");
+    when(mockChain.fetchAllStructureDefinitions())
+        .thenReturn(List.of(usCorePatient, usQualityCorePatient));
+
+    // when
+    BuilderResourceMetadata output =
+        structureDefinitionService.getBuilderResourceMetadata(ModelType.US_QUALITY_CORE_0_5_0);
+
+    // then
+    assertThat(output.getPrimaryPatientProfile().getId(), is(equalTo("us-quality-core-patient")));
+    assertThat(
+        output.getPrimaryPatientProfile().getProfile(),
+        is(
+            equalTo(
+                "http://fhir.org/guides/onc/us-quality-core/StructureDefinition/us-quality-core-patient")));
   }
 
   @Test
