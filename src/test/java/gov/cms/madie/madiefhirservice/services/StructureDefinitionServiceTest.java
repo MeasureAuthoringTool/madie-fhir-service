@@ -58,12 +58,14 @@ class StructureDefinitionServiceTest {
     // given
     when(mockChain.fetchAllStructureDefinitions()).thenReturn(List.of());
 
-    // when / then
-    assertThrows(
-        ResourceNotFoundException.class,
+    // when
+    Executable action =
         () ->
             structureDefinitionService.getStructureDefinitionById(
-                ModelType.QI_CORE_6_0_0, "qicore-practitioner"));
+                ModelType.QI_CORE_6_0_0, "qicore-practitioner");
+
+    // then
+    assertThrows(ResourceNotFoundException.class, action);
   }
 
   @Test
@@ -79,12 +81,35 @@ class StructureDefinitionServiceTest {
     def3.setId("us-core-practitioner");
     when(mockChain.fetchAllStructureDefinitions()).thenReturn(List.of(def1, def3));
 
-    // when / then
-    assertThrows(
-        ResourceNotFoundException.class,
+    // when
+    Executable action =
         () ->
             structureDefinitionService.getStructureDefinitionById(
-                ModelType.QI_CORE_6_0_0, "qicore-practitioner"));
+                ModelType.QI_CORE_6_0_0, "qicore-practitioner");
+
+    // then
+    assertThrows(ResourceNotFoundException.class, action);
+  }
+
+  @Test
+  void testGetStructureDefinitionByIdThrowsNotFoundForVersionedIdWithNoMatch() {
+    // given
+    when(mockChain.fetchAllStructureDefinitions()).thenReturn(List.of());
+
+    // when
+    Executable action =
+        () ->
+            structureDefinitionService.getStructureDefinitionById(
+                ModelType.QI_CORE_6_0_0, "qicore-practitioner|6.0.0");
+
+    // then
+    ResourceNotFoundException exception = assertThrows(ResourceNotFoundException.class, action);
+    assertThat(
+        exception.getMessage(),
+        is(
+            equalTo(
+                "Could not find StructureDefinition resource for measure: "
+                    + "qicore-practitioner")));
   }
 
   @Test
@@ -286,6 +311,29 @@ class StructureDefinitionServiceTest {
     assertThat(output.getDefinition().contains("\"kind\": \"resource\""), is(true));
     assertThat(
         output.getDefinition().contains("\"resourceType\": \"StructureDefinition\""), is(true));
+  }
+
+  @Test
+  void testGetStructureDefinitionByIdReturnsResourceForVersionedId() {
+    // given
+    StructureDefinition definition =
+        new StructureDefinition()
+            .setKind(StructureDefinition.StructureDefinitionKind.RESOURCE)
+            .setTitle("QICore Patient")
+            .setVersion("6.0.0");
+    definition.setId("qicore-patient");
+    when(mockChain.fetchAllStructureDefinitions()).thenReturn(List.of(definition));
+    when(mockChain.getFhirContext()).thenReturn(fhirContextQiCoreStu600);
+
+    // when
+    StructureDefinitionDto output =
+        structureDefinitionService.getStructureDefinitionById(
+            ModelType.QI_CORE_6_0_0, "qicore-patient|6.0.0");
+
+    // then
+    assertThat(output, is(notNullValue()));
+    assertThat(output.getDefinition().contains("\"id\": \"qicore-patient\""), is(true));
+    assertThat(output.getDefinition().contains("\"version\": \"6.0.0\""), is(true));
   }
 
   @Test

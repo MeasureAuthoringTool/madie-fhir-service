@@ -156,8 +156,8 @@ public class HapiFhirConfig {
             validationConfig);
 
     return new ValidationSupportChain(
-        npmPackageSupport,
         vsesValidationSupport,
+        npmPackageSupport,
         new DefaultProfileValidationSupport(uscore6FhirContext),
         new CustomQiCoreInMemoryValidationSupport(uscore6FhirContext, validationConfig),
         new CommonCodeSystemsTerminologyService(uscore6FhirContext),
@@ -192,8 +192,8 @@ public class HapiFhirConfig {
             validationConfig);
 
     return new ValidationSupportChain(
-        npmPackageSupport,
         vsesValidationSupport,
+        npmPackageSupport,
         new DefaultProfileValidationSupport(usqualitycore05FhirContext),
         new CustomQiCoreInMemoryValidationSupport(usqualitycore05FhirContext, validationConfig),
         new CommonCodeSystemsTerminologyService(usqualitycore05FhirContext),
