@@ -25,8 +25,10 @@ public final class UriConstants {
     public static final String IMPROVEMENT_NOTATION_CODE_SYSTEM_URI =
         "http://terminology.hl7.org/CodeSystem/measure-improvement-notation";
 
-    public static final String CODE_SYSTEM_URI =
+    public static final String USAGE_CONTEXT_TYPE_SYSTEM_URI =
         "http://terminology.hl7.org/CodeSystem/usage-context-type";
+    public static final String MEASURE_ELIGIBILITY_SYSTEM_URI =
+        "http://cms.gov/CodeSystem/measure-eligibility";
   }
 
   public static final class CqfMeasures {
@@ -106,6 +108,8 @@ public final class UriConstants {
         "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-groupId";
     public static final String CQFM_COMPONENT_URI =
         "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-component";
+    public static final String INTENDED_VENUE_CODES_URI =
+        "http://hl7.org/fhir/us/cqfmeasures/CodeSystem/intended-venue-codes";
   }
 
   public static final class CqfTestCases {

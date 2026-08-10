@@ -322,6 +322,7 @@
          "display": "EC",
          "definition": "An eligible clinician is a clinician who is eligible to participate in a quality measurement intiative."
       },
+      "telehealthEligible": true,
       "measureDefinitions": [
       	{
       	  "term": "test term1",
