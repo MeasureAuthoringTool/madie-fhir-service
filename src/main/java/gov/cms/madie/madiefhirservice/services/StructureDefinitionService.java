@@ -35,20 +35,21 @@ public class StructureDefinitionService {
    * Fetches the structure definition for the given resource
    *
    * @param modelType the model to fetch the structure definition for
-   * @param structureDefinitionId ID of the structure definition, as found in the
-   *     StructureDefinitions based on model and version. e.g. Patient, us-core-patient,
-   *     qicore-patient
+   * @param structureDefinitionId ID of the structure definition, optionally followed by a
+   *     pipe-delimited version, as found in the StructureDefinitions for the model. e.g. Patient,
+   *     us-core-patient, qicore-patient|6.0.0
    */
   public StructureDefinitionDto getStructureDefinitionById(
       ModelType modelType, String structureDefinitionId) {
     IValidationSupport chain = modelAwareFhirFactory.getValidationSupportForModel(modelType);
 
+    String unversionedId = structureDefinitionId.split("\\|", 2)[0];
+
     IBaseResource structureDefinition =
         Objects.requireNonNull(chain.fetchAllStructureDefinitions()).stream()
-            .filter(resource -> structureDefinitionId.equals(resource.getIdElement().getIdPart()))
+            .filter(resource -> unversionedId.equals(resource.getIdElement().getIdPart()))
             .findFirst()
-            .orElseThrow(
-                () -> new ResourceNotFoundException("StructureDefinition", structureDefinitionId));
+            .orElseThrow(() -> new ResourceNotFoundException("StructureDefinition", unversionedId));
 
     IParser parser =
         chain
