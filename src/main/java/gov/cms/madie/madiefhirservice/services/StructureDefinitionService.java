@@ -208,8 +208,8 @@ public class StructureDefinitionService {
   }
 
   /**
-   * Selects the most specific Patient profile associated with one of the supplied resource paths.
-   * A profile is considered most specific when its canonical URL is not referenced as the base
+   * Selects the most specific Patient profile associated with one of the supplied resource paths. A
+   * profile is considered most specific when its canonical URL is not referenced as the base
    * definition of another eligible Patient profile.
    *
    * @param structureDefinitions the definitions searched for eligible Patient profiles

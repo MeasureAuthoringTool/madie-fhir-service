@@ -11,6 +11,7 @@ import org.hl7.fhir.instance.model.api.IBaseBundle;
 import org.hl7.fhir.instance.model.api.IBaseOperationOutcome;
 import org.hl7.fhir.instance.model.api.IBaseResource;
 import org.hl7.fhir.r4.model.Bundle;
+import org.hl7.fhir.r4.model.CarePlan;
 import org.hl7.fhir.r4.model.Encounter;
 import org.hl7.fhir.r4.model.OperationOutcome;
 import org.hl7.fhir.r4.model.Patient;
@@ -628,7 +629,47 @@ class ResourceValidationServiceTest {
     assertThat(
         ((OperationOutcome) outcome).getIssue().get(0).getDiagnostics(),
         is(
-            "Resource [Procedure/proc-1] will not be included in execution because one or more references do not resolve within the bundle."));
+            "Resource [Procedure/proc-1] will not be included in execution because the following attributes are a "
+                + "reference that do not resolve within the bundle.\n\n- performer.actor"));
+  }
+
+  @Test
+  void testValidateBundleReferencesForExecutionIncludesAllInvalidAttributePaths() {
+    Bundle bundle = bundleWithInvalidNestedResources.copy();
+    ((Procedure) bundle.getEntry().get(1).getResource())
+        .setSubject(new Reference("Patient/non-existent"));
+
+    IBaseOperationOutcome outcome =
+        validationService.validateBundleReferencesForExecution(fhirContext, bundle, false);
+
+    assertThat(
+        ((OperationOutcome) outcome).getIssue().get(0).getDiagnostics(),
+        is(
+            "Resource [Procedure/proc-1] will not be included in execution because the following attributes are a "
+                + "reference that do not resolve within the bundle.\n\n- subject\n- performer.actor"));
+  }
+
+  @Test
+  void testValidateBundleReferencesForExecutionReportsCarePlanNestedReferencePath() {
+    Bundle bundle = new Bundle();
+    bundle.setType(Bundle.BundleType.COLLECTION);
+
+    CarePlan carePlan = new CarePlan();
+    carePlan.setId("CarePlan/care-plan-1");
+    CarePlan.CarePlanActivityDetailComponent detail =
+        new CarePlan.CarePlanActivityDetailComponent();
+    detail.addPerformer(new Reference("Practitioner/non-existent"));
+    carePlan.addActivity().setDetail(detail);
+    bundle.addEntry().setResource(carePlan);
+
+    IBaseOperationOutcome outcome =
+        validationService.validateBundleReferencesForExecution(fhirContext, bundle, false);
+
+    assertThat(
+        ((OperationOutcome) outcome).getIssue().get(0).getDiagnostics(),
+        is(
+            "Resource [CarePlan/care-plan-1] will not be included in execution because the following attributes are a "
+                + "reference that do not resolve within the bundle.\n\n- activity.detail.performer"));
   }
 
   @Test
