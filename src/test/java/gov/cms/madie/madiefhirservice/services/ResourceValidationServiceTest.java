@@ -27,6 +27,7 @@ import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.test.util.ReflectionTestUtils;
 
 import java.util.List;
 import java.util.Set;
@@ -670,6 +671,20 @@ class ResourceValidationServiceTest {
         is(
             "Resource [CarePlan/care-plan-1] will not be included in execution because the following attributes are a "
                 + "reference that do not resolve within the bundle.\n\n- activity.detail.performer"));
+  }
+
+  @Test
+  void testAppendAttributePath() {
+    assertThat(
+        ReflectionTestUtils.invokeMethod(validationService, "appendAttributePath", "", "performer"),
+        is(equalTo("performer")));
+    assertThat(
+        ReflectionTestUtils.invokeMethod(validationService, "appendAttributePath", "activity", ""),
+        is(equalTo("activity")));
+    assertThat(
+        ReflectionTestUtils.invokeMethod(
+            validationService, "appendAttributePath", "activity.detail", "performer"),
+        is(equalTo("activity.detail.performer")));
   }
 
   @Test
