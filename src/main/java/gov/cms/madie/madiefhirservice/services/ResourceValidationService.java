@@ -127,30 +127,28 @@ public class ResourceValidationService {
     List<IBaseResource> resources = BundleUtil.toListOfResources(fhirContext, bundleResource);
     IBaseOperationOutcome operationOutcome = OperationOutcomeUtil.newInstance(fhirContext);
 
-    // Identify Resources in the bundle with one or more Reference fields that do resolve to IDs
+    // Identify Resources in the bundle with one or more Reference fields that do not resolve to IDs
     // within the Bundle.
-    Set<IBaseResource> resourcesWithInvalidReferences =
-        findResourcesWithInvalidReferences(fhirContext, resources);
+    Map<IBaseResource, Set<String>> resourcesWithInvalidReferencePaths =
+        findResourcesWithInvalidReferencePaths(fhirContext, resources);
 
     // Add an issue to the OperationOutcome for each resource with invalid references.
     // If lenientPatientRefs is true, use a warning to notify users; otherwise use an error
     // to exclude the resource from execution of the test case.
     final String severity = lenientPatientRefs ? "warning" : "error";
-    final String message =
-        lenientPatientRefs
-            ? "Resource [%s] contains a reference that does not resolve within the bundle"
-            : "Resource [%s] will not be included in execution "
-                + "because one or more references do not resolve within the bundle.";
-    resourcesWithInvalidReferences.forEach(
-        resource ->
+    resourcesWithInvalidReferencePaths.forEach(
+        (resource, attributePaths) ->
             OperationOutcomeUtil.addIssue(
                 fhirContext,
                 operationOutcome,
                 severity,
-                message.formatted(
-                    resource.getIdElement().getResourceType()
-                        + "/"
-                        + resource.getIdElement().getIdPart()),
+                lenientPatientRefs
+                    ? String.format(
+                        "Resource [%s] contains a reference that does not resolve within the bundle",
+                        resource.getIdElement().getResourceType()
+                            + "/"
+                            + resource.getIdElement().getIdPart())
+                    : formatInvalidReferenceMessage(resource, attributePaths),
                 null,
                 "invalid"));
     return operationOutcome;
@@ -167,12 +165,13 @@ public class ResourceValidationService {
   public Set<IBaseResource> findResourcesWithInvalidReferences(
       FhirContext fhirContext, IBaseBundle bundleResource) {
     List<IBaseResource> resources = BundleUtil.toListOfResources(fhirContext, bundleResource);
-    return findResourcesWithInvalidReferences(fhirContext, resources);
+    return new LinkedHashSet<>(
+        findResourcesWithInvalidReferencePaths(fhirContext, resources).keySet());
   }
 
-  private Set<IBaseResource> findResourcesWithInvalidReferences(
+  private Map<IBaseResource, Set<String>> findResourcesWithInvalidReferencePaths(
       FhirContext fhirContext, List<IBaseResource> resources) {
-    Set<IBaseResource> resourcesWithInvalidReferences = new HashSet<>();
+    Map<IBaseResource, Set<String>> resourcesWithInvalidReferencePaths = new LinkedHashMap<>();
 
     // List of existing Ids in Bundle in the format "ResourceType/ID"
     List<String> existingIds =
@@ -191,6 +190,7 @@ public class ResourceValidationService {
 
       // Loop over the children of the Resource to find Reference fields
       for (BaseRuntimeChildDefinition child : resourceDefinition.getChildren()) {
+        String attributePath = child.getElementName();
         child
             .getAccessor()
             .getValues(resource)
@@ -198,16 +198,30 @@ public class ResourceValidationService {
                 iBase -> {
                   if (iBase instanceof IBaseReference baseReference
                       && isInvalidReferenceToBundleEntry(baseReference, existingIds)) {
-                    resourcesWithInvalidReferences.add(resource);
-                  } else if (iBase instanceof IBaseBackboneElement backboneElement
-                      && hasInvalidReferencesInBackboneToBundleEntries(
-                          fhirContext, backboneElement, existingIds)) {
-                    resourcesWithInvalidReferences.add(resource);
+                    addInvalidReferencePath(
+                        resourcesWithInvalidReferencePaths, resource, attributePath);
+                  } else if (iBase instanceof IBaseBackboneElement backboneElement) {
+                    addInvalidReferencePathsInBackbone(
+                        fhirContext,
+                        backboneElement,
+                        existingIds,
+                        attributePath,
+                        resource,
+                        resourcesWithInvalidReferencePaths);
                   }
                 });
       }
     }
-    return resourcesWithInvalidReferences;
+    return resourcesWithInvalidReferencePaths;
+  }
+
+  private void addInvalidReferencePath(
+      Map<IBaseResource, Set<String>> resourcesWithInvalidReferencePaths,
+      IBaseResource resource,
+      String attributePath) {
+    resourcesWithInvalidReferencePaths
+        .computeIfAbsent(resource, ignored -> new LinkedHashSet<>())
+        .add(attributePath);
   }
 
   private boolean isInvalidReferenceToBundleEntry(
@@ -234,10 +248,14 @@ public class ResourceValidationService {
    * @param fhirContext The FHIR context
    * @param backbone The backbone element to check
    * @param existingIds List of valid resource identifiers in format "ResourceType/Id"
-   * @return true if any invalid reference is found
    */
-  private boolean hasInvalidReferencesInBackboneToBundleEntries(
-      FhirContext fhirContext, IBaseBackboneElement backbone, List<String> existingIds) {
+  private void addInvalidReferencePathsInBackbone(
+      FhirContext fhirContext,
+      IBaseBackboneElement backbone,
+      List<String> existingIds,
+      String parentAttributePath,
+      IBaseResource resource,
+      Map<IBaseResource, Set<String>> resourcesWithInvalidReferencePaths) {
 
     // Get the definition for this backbone element
     // Use getElementDefinition instead of getResourceDefinition
@@ -247,22 +265,48 @@ public class ResourceValidationService {
 
     // Iterate through all children of the backbone element
     for (BaseRuntimeChildDefinition child : backboneDef.getChildren()) {
+      String attributePath = appendAttributePath(parentAttributePath, child.getElementName());
       List<IBase> values = child.getAccessor().getValues(backbone);
 
       for (IBase value : values) {
         // Check if this is a Reference
         if (value instanceof IBaseReference baseReference
             && isInvalidReferenceToBundleEntry(baseReference, existingIds)) {
-          return true;
+          addInvalidReferencePath(resourcesWithInvalidReferencePaths, resource, attributePath);
           // Check if this is a nested Backbone Element (recursion)
-        } else if (value instanceof IBaseBackboneElement nestedBackbone
-            && hasInvalidReferencesInBackboneToBundleEntries(
-                fhirContext, nestedBackbone, existingIds)) {
-          return true;
+        } else if (value instanceof IBaseBackboneElement nestedBackbone) {
+          addInvalidReferencePathsInBackbone(
+              fhirContext,
+              nestedBackbone,
+              existingIds,
+              attributePath,
+              resource,
+              resourcesWithInvalidReferencePaths);
         }
       }
     }
-    return false; // No invalid references found
+  }
+
+  private String appendAttributePath(String parentAttributePath, String childAttributeName) {
+    if (StringUtils.isBlank(parentAttributePath)) {
+      return childAttributeName;
+    }
+    if (StringUtils.isBlank(childAttributeName)) {
+      return parentAttributePath;
+    }
+    return parentAttributePath + "." + childAttributeName;
+  }
+
+  private String formatInvalidReferenceMessage(IBaseResource resource, Set<String> attributePaths) {
+    String resourceId =
+        resource.getIdElement().getResourceType() + "/" + resource.getIdElement().getIdPart();
+    String bulletList =
+        String.join(
+            "\n", attributePaths.stream().map(attributePath -> "- " + attributePath).toList());
+    return String.format(
+        "Resource [%s] will not be included in execution because the following attributes are a "
+            + "reference that do not resolve within the bundle.\n\n%s",
+        resourceId, bulletList);
   }
 
   public boolean isSuccessful(FhirContext fhirContext, IBaseOperationOutcome outcome) {
