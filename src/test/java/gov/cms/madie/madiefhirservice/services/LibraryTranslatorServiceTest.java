@@ -229,20 +229,14 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
                 }
                 """)
             .build();
-    when(elmTranslatorClient.getModuleDefinitionLibrary(
-            any(CqlLibraryDetails.class),
-            eq(false),
-            eq(TOKEN),
-            eq(CqlCompilerException.ErrorSeverity.Info)))
-        .thenReturn(r5Library);
 
     // when - call method under test
     Library library = libraryTranslatorService.convertToFhirLibrary(externalLibrary, null, TOKEN);
 
     // then - perform assertions
     assertThat(library.getIdElement().getIdPart(), is(equalTo("source-library-id")));
-    assertThat(library.getRelatedArtifact().isEmpty(), is(false));
-    assertThat(library.getDataRequirement().isEmpty(), is(false));
+    assertThat(library.getRelatedArtifact().isEmpty(), is(true));
+    assertThat(library.getDataRequirement().isEmpty(), is(true));
   }
 
   @Test

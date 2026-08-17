@@ -58,33 +58,7 @@ public class LibraryTranslatorService {
 
   private Library convertExternalFhirLibrary(
       CqlLibraryDto cqlLibrary, Set<String> expressions, String accessToken) {
-    Library library = externalLibraryResourceMapper.toFhirLibrary(cqlLibrary);
-    enrichMissingModuleDefinition(library, cqlLibrary, expressions, accessToken);
-    return library;
-  }
-
-  private void enrichMissingModuleDefinition(
-      Library library, CqlLibraryDto cqlLibrary, Set<String> expressions, String accessToken) {
-    boolean missingRelatedArtifacts = library.getRelatedArtifact().isEmpty();
-    boolean missingDataRequirements = library.getDataRequirement().isEmpty();
-    if (!missingRelatedArtifacts && !missingDataRequirements) {
-      return;
-    }
-
-    Library moduleDefinition =
-        retrieveLibraryModuleDefinition(
-            CqlLibraryDetails.builder()
-                .libraryName(cqlLibrary.getCqlLibraryName())
-                .cql(cqlLibrary.getCql())
-                .expressions(expressions)
-                .build(),
-            accessToken);
-    if (missingRelatedArtifacts) {
-      library.setRelatedArtifact(moduleDefinition.getRelatedArtifact());
-    }
-    if (missingDataRequirements) {
-      library.setDataRequirement(moduleDefinition.getDataRequirement());
-    }
+    return externalLibraryResourceMapper.toFhirLibrary(cqlLibrary);
   }
 
   private Library convertToFhirLibrary(
