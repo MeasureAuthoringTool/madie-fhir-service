@@ -1,8 +1,7 @@
 package gov.cms.madie.madiefhirservice.services;
 
 import gov.cms.madie.madiefhirservice.exceptions.CqlLibraryNotFoundException;
-import gov.cms.madie.models.common.Version;
-import gov.cms.madie.models.library.CqlLibrary;
+import gov.cms.madie.models.dto.CqlLibraryDto;
 import org.cqframework.cql.cql2elm.CqlCompilerException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,6 +17,7 @@ import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
+import java.util.Optional;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -43,18 +43,19 @@ class CqlLibraryServiceTest {
 
   @Test
   void getLibraryReturnsLibrary() {
-    CqlLibrary theLibrary =
-        CqlLibrary.builder()
-            .cqlLibraryName("FHIRHelpers")
-            .version(Version.parse("4.0.001"))
-            .build();
-    ResponseEntity<CqlLibrary> response = ResponseEntity.ok(theLibrary);
+    CqlLibraryDto theLibrary =
+        CqlLibraryDto.builder().cqlLibraryName("FHIRHelpers").version("4.0.001").build();
+    ResponseEntity<CqlLibraryDto> response = ResponseEntity.ok(theLibrary);
     when(restTemplate.exchange(
             any(URI.class), any(HttpMethod.class), any(HttpEntity.class), any(Class.class)))
         .thenReturn(response);
-    CqlLibrary output =
+    CqlLibraryDto output =
         cqlLibraryService.getLibrary(
-            "FHIRHelpers", "4.0.001", "OKTA_TOKEN", CqlCompilerException.ErrorSeverity.Info);
+            "FHIRHelpers",
+            "4.0.001",
+            Optional.empty(),
+            "OKTA_TOKEN",
+            CqlCompilerException.ErrorSeverity.Info);
     assertThat(output, is(notNullValue()));
     assertThat(output, is(equalTo(theLibrary)));
   }
@@ -72,6 +73,7 @@ class CqlLibraryServiceTest {
                 cqlLibraryService.getLibrary(
                     "FHIRHelpers",
                     "4.0.001",
+                    Optional.empty(),
                     "OKTA_TOKEN",
                     CqlCompilerException.ErrorSeverity.Info));
     assertThat(
@@ -85,9 +87,13 @@ class CqlLibraryServiceTest {
     when(restTemplate.exchange(
             any(URI.class), any(HttpMethod.class), any(HttpEntity.class), any(Class.class)))
         .thenReturn(response);
-    CqlLibrary output =
+    CqlLibraryDto output =
         cqlLibraryService.getLibrary(
-            "FHIRHelpers", "4.0.001", "OKTA_TOKEN", CqlCompilerException.ErrorSeverity.Info);
+            "FHIRHelpers",
+            "4.0.001",
+            Optional.empty(),
+            "OKTA_TOKEN",
+            CqlCompilerException.ErrorSeverity.Info);
     assertThat(output, is(nullValue()));
   }
 
@@ -97,9 +103,13 @@ class CqlLibraryServiceTest {
     when(restTemplate.exchange(
             any(URI.class), any(HttpMethod.class), any(HttpEntity.class), any(Class.class)))
         .thenReturn(response);
-    CqlLibrary output =
+    CqlLibraryDto output =
         cqlLibraryService.getLibrary(
-            "FHIRHelpers", "4.0.001", "OKTA_TOKEN", CqlCompilerException.ErrorSeverity.Info);
+            "FHIRHelpers",
+            "4.0.001",
+            Optional.empty(),
+            "OKTA_TOKEN",
+            CqlCompilerException.ErrorSeverity.Info);
     assertThat(output, is(nullValue()));
   }
 }

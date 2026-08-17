@@ -3,6 +3,7 @@ package gov.cms.madie.madiefhirservice.services;
 import gov.cms.madie.madiefhirservice.constants.UriConstants;
 import gov.cms.madie.madiefhirservice.cql.LibraryCqlVisitorFactory;
 import gov.cms.madie.madiefhirservice.dto.CqlLibraryDetails;
+import gov.cms.madie.models.dto.CqlLibraryDto;
 import gov.cms.madie.madiefhirservice.utils.FhirResourceHelpers;
 import gov.cms.madie.models.library.CqlLibrary;
 import lombok.extern.slf4j.Slf4j;
@@ -42,46 +43,92 @@ public class LibraryTranslatorService {
 
   public Library convertToFhirLibrary(
       CqlLibrary cqlLibrary, Set<String> expressions, String accessToken) {
-    var visitor = libCqlVisitorFactory.visit(cqlLibrary.getCql());
+    return convertToFhirLibrary(LibrarySource.from(cqlLibrary), expressions, accessToken);
+  }
+
+  public Library convertToFhirLibrary(
+      CqlLibraryDto cqlLibrary, Set<String> expressions, String accessToken) {
+    return convertToFhirLibrary(LibrarySource.from(cqlLibrary), expressions, accessToken);
+  }
+
+  private Library convertToFhirLibrary(
+      LibrarySource cqlLibrary, Set<String> expressions, String accessToken) {
+    var visitor = libCqlVisitorFactory.visit(cqlLibrary.cql());
     Library library = new Library();
-    library.setId(cqlLibrary.getCqlLibraryName());
+    library.setId(cqlLibrary.name());
     library.setLanguage("en");
-    library.setName(cqlLibrary.getCqlLibraryName());
-    library.setVersion(cqlLibrary.getVersion().toString());
+    library.setName(cqlLibrary.name());
+    library.setVersion(cqlLibrary.version());
     library.setDate(new Date());
     library.setStatus(Enumerations.PublicationStatus.ACTIVE);
     library.setPublisher(
-        cqlLibrary.getPublisher() != null && StringUtils.isNotBlank(cqlLibrary.getPublisher())
-            ? cqlLibrary.getPublisher()
+        cqlLibrary.publisher() != null && StringUtils.isNotBlank(cqlLibrary.publisher())
+            ? cqlLibrary.publisher()
             : UNKNOWN_VALUE);
-    library.setDescription(Objects.toString(cqlLibrary.getDescription(), UNKNOWN_VALUE));
-    library.setExperimental(cqlLibrary.isExperimental());
-    library.setContent(
-        createContent(cqlLibrary.getCql(), cqlLibrary.getElmJson(), cqlLibrary.getElmXml()));
+    library.setDescription(Objects.toString(cqlLibrary.description(), UNKNOWN_VALUE));
+    library.setExperimental(cqlLibrary.experimental());
+    library.setContent(createContent(cqlLibrary.cql(), cqlLibrary.elmJson(), cqlLibrary.elmXml()));
     library.setType(createType(UriConstants.CodeSystem.LIBRARY_SYSTEM_TYPE_URI, SYSTEM_CODE));
-    library.setUrl(
-        FhirResourceHelpers.buildResourceFullUrl("Library", cqlLibrary.getCqlLibraryName()));
+    library.setUrl(FhirResourceHelpers.buildResourceFullUrl("Library", cqlLibrary.name()));
     library.getExtension().addAll(visitor.getDrcExtensions());
     library.setMeta(createLibraryMeta());
-    library.setTitle(cqlLibrary.getCqlLibraryName());
-    library.setPublisher(cqlLibrary.getPublisher());
+    library.setTitle(cqlLibrary.name());
+    library.setPublisher(cqlLibrary.publisher());
     Identifier identifier = new Identifier();
     identifier.setUse(IdentifierUse.OFFICIAL);
     identifier.setSystem("https://madie.cms.gov/login");
-    identifier.setValue(cqlLibrary.getId());
+    identifier.setValue(cqlLibrary.id());
     library.setIdentifier(List.of(identifier));
     // Use the DataRequirementsProcessor to construct data requirements and related artifacts.
     Library libraryModuleDefinition =
         retrieveLibraryModuleDefinition(
             CqlLibraryDetails.builder()
-                .libraryName(cqlLibrary.getCqlLibraryName())
-                .cql(cqlLibrary.getCql())
+                .libraryName(cqlLibrary.name())
+                .cql(cqlLibrary.cql())
                 .expressions(expressions)
                 .build(),
             accessToken);
     library.setRelatedArtifact(libraryModuleDefinition.getRelatedArtifact());
     library.setDataRequirement(libraryModuleDefinition.getDataRequirement());
     return library;
+  }
+
+  private record LibrarySource(
+      String id,
+      String name,
+      String version,
+      String cql,
+      String elmJson,
+      String elmXml,
+      String publisher,
+      String description,
+      boolean experimental) {
+
+    private static LibrarySource from(CqlLibrary cqlLibrary) {
+      return new LibrarySource(
+          cqlLibrary.getId(),
+          cqlLibrary.getCqlLibraryName(),
+          cqlLibrary.getVersion().toString(),
+          cqlLibrary.getCql(),
+          cqlLibrary.getElmJson(),
+          cqlLibrary.getElmXml(),
+          cqlLibrary.getPublisher(),
+          cqlLibrary.getDescription(),
+          cqlLibrary.isExperimental());
+    }
+
+    private static LibrarySource from(CqlLibraryDto cqlLibrary) {
+      return new LibrarySource(
+          cqlLibrary.getId(),
+          cqlLibrary.getCqlLibraryName(),
+          cqlLibrary.getVersion(),
+          cqlLibrary.getCql(),
+          cqlLibrary.getElmJson(),
+          cqlLibrary.getElmXml(),
+          cqlLibrary.getPublisher(),
+          cqlLibrary.getDescription(),
+          cqlLibrary.isExperimental());
+    }
   }
 
   private Library retrieveLibraryModuleDefinition(
