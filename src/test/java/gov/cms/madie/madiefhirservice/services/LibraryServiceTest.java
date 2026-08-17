@@ -1,12 +1,11 @@
 package gov.cms.madie.madiefhirservice.services;
 
 import gov.cms.madie.madiefhirservice.cql.LibraryCqlVisitorFactory;
+import gov.cms.madie.models.dto.CqlLibraryDto;
 import gov.cms.madie.madiefhirservice.exceptions.*;
 import gov.cms.madie.madiefhirservice.utils.BundleUtil;
 import gov.cms.madie.madiefhirservice.utils.LibraryHelper;
 import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
-import gov.cms.madie.models.common.Version;
-import gov.cms.madie.models.library.CqlLibrary;
 import org.cqframework.cql.cql2elm.CqlCompilerException;
 import org.hl7.fhir.r4.model.Attachment;
 import org.hl7.fhir.r4.model.Bundle;
@@ -75,17 +74,19 @@ class LibraryServiceTest implements LibraryHelper, ResourceFileUtil {
             .setVersion("0.1.0")
             .setContent(List.of(attachment));
 
-    CqlLibrary cqlLibrary =
-        CqlLibrary.builder()
-            .cqlLibraryName("IncludedLibrary")
-            .version(Version.builder().major(0).minor(1).revisionNumber(0).build())
-            .build();
+    CqlLibraryDto cqlLibrary =
+        CqlLibraryDto.builder().cqlLibraryName("IncludedLibrary").version("0.1.000").build();
 
     when(libCqlVisitorFactory.visit(anyString())).thenReturn(visitor1).thenReturn(visitor2);
     when(cqlLibraryService.getLibrary(
-            anyString(), anyString(), anyString(), any(CqlCompilerException.ErrorSeverity.class)))
+            anyString(),
+            anyString(),
+            any(),
+            anyString(),
+            any(CqlCompilerException.ErrorSeverity.class)))
         .thenReturn(cqlLibrary);
-    when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class), any(), anyString()))
+    when(libraryTranslatorService.convertToFhirLibrary(
+            any(CqlLibraryDto.class), any(), anyString()))
         .thenReturn(library);
 
     Map<String, Library> includedLibraryMap = new HashMap<>();
@@ -133,7 +134,11 @@ class LibraryServiceTest implements LibraryHelper, ResourceFileUtil {
 
     when(libCqlVisitorFactory.visit(anyString())).thenReturn(visitor1).thenReturn(visitor2);
     when(cqlLibraryService.getLibrary(
-            anyString(), anyString(), anyString(), any(CqlCompilerException.ErrorSeverity.class)))
+            anyString(),
+            anyString(),
+            any(),
+            anyString(),
+            any(CqlCompilerException.ErrorSeverity.class)))
         .thenThrow(new CqlLibraryNotFoundException("Test Exception Here!", "0.1.000"));
 
     Map<String, Library> libraries = new HashMap<>();
@@ -151,5 +156,28 @@ class LibraryServiceTest implements LibraryHelper, ResourceFileUtil {
     assertThat(
         exception.getMessage(),
         is(equalTo("Cannot find a CQL Library with name: Test Exception Here!, version: 0.1.000")));
+  }
+
+  @Test
+  public void testParseLibraryString() {
+    String fullLibraryString = "Namespace.LibraryName";
+    String[] result = libraryService.parseLibraryString(fullLibraryString);
+    assertThat(result[0], is(equalTo("Namespace")));
+    assertThat(result[1], is(equalTo("LibraryName")));
+
+    fullLibraryString = "LibraryName";
+    result = libraryService.parseLibraryString(fullLibraryString);
+    assertThat(result[0], is(equalTo("")));
+    assertThat(result[1], is(equalTo("LibraryName")));
+
+    fullLibraryString = "";
+    result = libraryService.parseLibraryString(fullLibraryString);
+    assertThat(result[0], is(equalTo("")));
+    assertThat(result[1], is(equalTo("")));
+
+    fullLibraryString = null;
+    result = libraryService.parseLibraryString(fullLibraryString);
+    assertThat(result[0], is(equalTo("")));
+    assertThat(result[1], is(equalTo("")));
   }
 }

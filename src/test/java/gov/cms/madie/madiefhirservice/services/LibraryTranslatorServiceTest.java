@@ -3,6 +3,7 @@ package gov.cms.madie.madiefhirservice.services;
 import gov.cms.madie.madiefhirservice.constants.UriConstants;
 import gov.cms.madie.madiefhirservice.cql.LibraryCqlVisitorFactory;
 import gov.cms.madie.madiefhirservice.dto.CqlLibraryDetails;
+import gov.cms.madie.models.dto.CqlLibraryDto;
 import gov.cms.madie.madiefhirservice.utils.LibraryHelper;
 import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
 import gov.cms.madie.models.library.CqlLibrary;
@@ -117,6 +118,34 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
     assertThat(library.getMeta().hasProfile(UriConstants.Library.CQL_LIBRARY_URI), is(true));
     assertThat(library.getMeta().hasProfile(UriConstants.Library.ELM_JSON_LIBRARY_URI), is(true));
     assertThat(library.getMeta().hasProfile(UriConstants.Library.ELM_XML_LIBRARY_URI), is(true));
+  }
+
+  @Test
+  public void convertToFhirLibraryShouldRetainExternalLibraryVersion() {
+    // given - mocks
+    var visitor = new LibraryCqlVisitorFactory().visit(exm1234Cql);
+    CqlLibraryDto externalLibrary =
+        CqlLibraryDto.builder()
+            .id("external-library-id")
+            .cqlLibraryName("ExternalLibrary")
+            .version("1.0.1")
+            .cql(exm1234Cql)
+            .namespacePrefix("hl7.fhir.us.qicore")
+            .external(true)
+            .build();
+    when(libCqlVisitorFactory.visit(exm1234Cql)).thenReturn(visitor);
+    when(elmTranslatorClient.getModuleDefinitionLibrary(
+            any(CqlLibraryDetails.class),
+            anyBoolean(),
+            anyString(),
+            eq(CqlCompilerException.ErrorSeverity.Info)))
+        .thenReturn(r5Library);
+
+    // when - call method under test
+    Library library = libraryTranslatorService.convertToFhirLibrary(externalLibrary, null, TOKEN);
+
+    // then - assertions
+    assertThat(library.getVersion(), is(equalTo("1.0.1")));
   }
 
   @Test
