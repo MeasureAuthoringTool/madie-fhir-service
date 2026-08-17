@@ -48,7 +48,9 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
   public void createCqlLibrary() {
     libraryTranslatorService =
         new LibraryTranslatorService(
-            libCqlVisitorFactory, elmTranslatorClient, FhirContext.forR4Cached());
+            libCqlVisitorFactory,
+            elmTranslatorClient,
+            new ExternalLibraryResourceMapper(FhirContext.forR4Cached()));
     exm1234Cql = getStringFromTestResource("/test-cql/EXM124v7QICore4.cql");
     cqlLibrary = createCqlLibrary(exm1234Cql);
     r5Library =
