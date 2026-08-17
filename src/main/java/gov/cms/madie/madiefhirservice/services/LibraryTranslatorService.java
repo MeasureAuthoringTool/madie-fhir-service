@@ -1,5 +1,7 @@
 package gov.cms.madie.madiefhirservice.services;
 
+import ca.uhn.fhir.context.FhirContext;
+import ca.uhn.fhir.parser.DataFormatException;
 import gov.cms.madie.madiefhirservice.constants.UriConstants;
 import gov.cms.madie.madiefhirservice.cql.LibraryCqlVisitorFactory;
 import gov.cms.madie.madiefhirservice.dto.CqlLibraryDetails;
@@ -19,8 +21,10 @@ import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.Library;
 import org.hl7.fhir.r4.model.Meta;
 import org.hl7.fhir.r4.model.Identifier.IdentifierUse;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 @Slf4j
@@ -34,11 +38,15 @@ public class LibraryTranslatorService {
 
   private final LibraryCqlVisitorFactory libCqlVisitorFactory;
   private final ElmTranslatorClient elmTranslatorClient;
+  private final FhirContext qicoreFhirContext;
 
   public LibraryTranslatorService(
-      LibraryCqlVisitorFactory libCqlVisitorFactory, ElmTranslatorClient elmTranslatorClient) {
+      LibraryCqlVisitorFactory libCqlVisitorFactory,
+      ElmTranslatorClient elmTranslatorClient,
+      @Qualifier("qicoreFhirContext") FhirContext qicoreFhirContext) {
     this.libCqlVisitorFactory = libCqlVisitorFactory;
     this.elmTranslatorClient = elmTranslatorClient;
+    this.qicoreFhirContext = qicoreFhirContext;
   }
 
   public Library convertToFhirLibrary(
@@ -48,7 +56,71 @@ public class LibraryTranslatorService {
 
   public Library convertToFhirLibrary(
       CqlLibraryDto cqlLibrary, Set<String> expressions, String accessToken) {
+    if (cqlLibrary.isExternal() && StringUtils.isNotBlank(cqlLibrary.getFhirResource())) {
+      return convertExternalFhirLibrary(cqlLibrary, expressions, accessToken);
+    }
     return convertToFhirLibrary(LibrarySource.from(cqlLibrary), expressions, accessToken);
+  }
+
+  private Library convertExternalFhirLibrary(
+      CqlLibraryDto cqlLibrary, Set<String> expressions, String accessToken) {
+    Library library = parseExternalFhirLibrary(cqlLibrary);
+    restoreContent(library, cqlLibrary);
+    enrichMissingModuleDefinition(library, cqlLibrary, expressions, accessToken);
+    return library;
+  }
+
+  private Library parseExternalFhirLibrary(CqlLibraryDto cqlLibrary) {
+    try {
+      return qicoreFhirContext
+          .newJsonParser()
+          .parseResource(Library.class, cqlLibrary.getFhirResource());
+    } catch (DataFormatException ex) {
+      throw new DataFormatException(
+          "Unable to parse external FHIR Library [" + cqlLibrary.getCqlLibraryName() + "]", ex);
+    }
+  }
+
+  private void restoreContent(Library library, CqlLibraryDto cqlLibrary) {
+    restoreAttachment(library, CQL_CONTENT_TYPE, cqlLibrary.getCql());
+    restoreAttachment(library, XML_ELM_CONTENT_TYPE, cqlLibrary.getElmXml());
+    restoreAttachment(library, JSON_ELM_CONTENT_TYPE, cqlLibrary.getElmJson());
+  }
+
+  private void restoreAttachment(Library library, String contentType, String content) {
+    if (content == null) {
+      return;
+    }
+    Attachment attachment =
+        library.getContent().stream()
+            .filter(existing -> contentType.equals(existing.getContentType()))
+            .findFirst()
+            .orElseGet(() -> library.addContent().setContentType(contentType));
+    attachment.setData(content.getBytes(StandardCharsets.UTF_8));
+  }
+
+  private void enrichMissingModuleDefinition(
+      Library library, CqlLibraryDto cqlLibrary, Set<String> expressions, String accessToken) {
+    boolean missingRelatedArtifacts = library.getRelatedArtifact().isEmpty();
+    boolean missingDataRequirements = library.getDataRequirement().isEmpty();
+    if (!missingRelatedArtifacts && !missingDataRequirements) {
+      return;
+    }
+
+    Library moduleDefinition =
+        retrieveLibraryModuleDefinition(
+            CqlLibraryDetails.builder()
+                .libraryName(cqlLibrary.getCqlLibraryName())
+                .cql(cqlLibrary.getCql())
+                .expressions(expressions)
+                .build(),
+            accessToken);
+    if (missingRelatedArtifacts) {
+      library.setRelatedArtifact(moduleDefinition.getRelatedArtifact());
+    }
+    if (missingDataRequirements) {
+      library.setDataRequirement(moduleDefinition.getDataRequirement());
+    }
   }
 
   private Library convertToFhirLibrary(

@@ -1,5 +1,7 @@
 package gov.cms.madie.madiefhirservice.services;
 
+import ca.uhn.fhir.context.FhirContext;
+import ca.uhn.fhir.parser.DataFormatException;
 import gov.cms.madie.madiefhirservice.constants.UriConstants;
 import gov.cms.madie.madiefhirservice.cql.LibraryCqlVisitorFactory;
 import gov.cms.madie.madiefhirservice.dto.CqlLibraryDetails;
@@ -15,27 +17,28 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
 import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.nio.charset.StandardCharsets;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHelper {
   private static final String TOKEN = "token";
-  @InjectMocks private LibraryTranslatorService libraryTranslatorService;
+  private LibraryTranslatorService libraryTranslatorService;
   @Mock private LibraryCqlVisitorFactory libCqlVisitorFactory;
   @Mock private ElmTranslatorClient elmTranslatorClient;
-  ;
 
   private CqlLibrary cqlLibrary;
   private String exm1234Cql;
@@ -43,6 +46,9 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
 
   @BeforeEach
   public void createCqlLibrary() {
+    libraryTranslatorService =
+        new LibraryTranslatorService(
+            libCqlVisitorFactory, elmTranslatorClient, FhirContext.forR4Cached());
     exm1234Cql = getStringFromTestResource("/test-cql/EXM124v7QICore4.cql");
     cqlLibrary = createCqlLibrary(exm1234Cql);
     r5Library =
@@ -121,8 +127,165 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
   }
 
   @Test
-  public void convertToFhirLibraryShouldRetainExternalLibraryVersion() {
-    // given - mocks
+  public void convertToFhirLibraryShouldUseExternalFhirResource() {
+    // given - set up mocks
+    String externalFhirResource =
+        """
+        {
+          "resourceType": "Library",
+          "id": "source-library-id",
+          "meta": {"profile": ["http://example.org/source-profile"]},
+          "url": "http://example.org/Library/ExternalLibrary",
+          "identifier": [{
+            "use": "official",
+            "system": "http://example.org/libraries",
+            "value": "source-identifier"
+          }],
+          "extension": [{
+            "url": "http://example.org/source-extension",
+            "valueString": "preserve-me"
+          }],
+          "name": "ExternalLibrary",
+          "title": "Source Library Title",
+          "status": "active",
+          "version": "1.0.1",
+          "publisher": "Source Publisher",
+          "type": {"coding": [{"code": "logic-library"}]},
+          "content": [
+            {"contentType": "text/cql", "title": "Source CQL"},
+            {"contentType": "application/elm+json", "title": "Source ELM JSON"}
+          ],
+          "relatedArtifact": [{
+            "type": "depends-on",
+            "display": "Source dependency",
+            "resource": "Library/SourceDependency"
+          }],
+          "dataRequirement": [{"type": "Encounter"}]
+        }
+        """;
+    CqlLibraryDto externalLibrary =
+        CqlLibraryDto.builder()
+            .id("external-library-id")
+            .cqlLibraryName("ExternalLibrary")
+            .version("1.0.1")
+            .cql(exm1234Cql)
+            .elmJson("ELM JSON")
+            .elmXml("ELM XML")
+            .namespacePrefix("hl7.fhir.us.qicore")
+            .external(true)
+            .fhirResource(externalFhirResource)
+            .build();
+
+    // when - call method under test
+    Library library = libraryTranslatorService.convertToFhirLibrary(externalLibrary, null, TOKEN);
+
+    // then - perform assertions
+    assertThat(library.getIdElement().getIdPart(), is(equalTo("source-library-id")));
+    assertThat(library.getUrl(), is(equalTo("http://example.org/Library/ExternalLibrary")));
+    assertThat(library.getTitle(), is(equalTo("Source Library Title")));
+    assertThat(library.getPublisher(), is(equalTo("Source Publisher")));
+    assertThat(library.getVersion(), is(equalTo("1.0.1")));
+    assertThat(library.getIdentifierFirstRep().getValue(), is(equalTo("source-identifier")));
+    assertThat(
+        library.getMeta().getProfile().get(0).getValue(),
+        is(equalTo("http://example.org/source-profile")));
+    assertThat(
+        library.getExtension().get(0).getUrl(), is(equalTo("http://example.org/source-extension")));
+    assertThat(library.getRelatedArtifactFirstRep().getDisplay(), is(equalTo("Source dependency")));
+    assertThat(library.getDataRequirementFirstRep().getType(), is(equalTo("Encounter")));
+    assertThat(getContent(library, "text/cql").getTitle(), is(equalTo("Source CQL")));
+    assertThat(
+        new String(getContent(library, "text/cql").getData(), StandardCharsets.UTF_8),
+        is(equalTo(exm1234Cql)));
+    assertThat(
+        new String(getContent(library, "application/elm+json").getData(), StandardCharsets.UTF_8),
+        is(equalTo("ELM JSON")));
+    assertThat(
+        new String(getContent(library, "application/elm+xml").getData(), StandardCharsets.UTF_8),
+        is(equalTo("ELM XML")));
+    verifyNoInteractions(libCqlVisitorFactory, elmTranslatorClient);
+  }
+
+  @Test
+  public void convertToFhirLibraryShouldEnrichMissingExternalModuleDefinition() {
+    // given - set up mocks
+    CqlLibraryDto externalLibrary =
+        CqlLibraryDto.builder()
+            .cqlLibraryName("ExternalLibrary")
+            .version("1.0.1")
+            .cql(exm1234Cql)
+            .external(true)
+            .fhirResource(
+                """
+                {
+                  "resourceType": "Library",
+                  "id": "source-library-id",
+                  "name": "ExternalLibrary",
+                  "status": "active",
+                  "version": "1.0.1",
+                  "type": {"coding": [{"code": "logic-library"}]}
+                }
+                """)
+            .build();
+    when(elmTranslatorClient.getModuleDefinitionLibrary(
+            any(CqlLibraryDetails.class),
+            eq(false),
+            eq(TOKEN),
+            eq(CqlCompilerException.ErrorSeverity.Info)))
+        .thenReturn(r5Library);
+
+    // when - call method under test
+    Library library = libraryTranslatorService.convertToFhirLibrary(externalLibrary, null, TOKEN);
+
+    // then - perform assertions
+    assertThat(library.getIdElement().getIdPart(), is(equalTo("source-library-id")));
+    assertThat(library.getRelatedArtifact().isEmpty(), is(false));
+    assertThat(library.getDataRequirement().isEmpty(), is(false));
+  }
+
+  @Test
+  public void convertToFhirLibraryShouldRejectMalformedExternalFhirResource() {
+    // given - set up mocks
+    CqlLibraryDto malformedLibrary =
+        CqlLibraryDto.builder()
+            .cqlLibraryName("MalformedLibrary")
+            .external(true)
+            .fhirResource("{not-json")
+            .build();
+
+    // when - call method under test
+    DataFormatException exception =
+        assertThrows(
+            DataFormatException.class,
+            () -> libraryTranslatorService.convertToFhirLibrary(malformedLibrary, null, TOKEN));
+
+    // then - perform assertions
+    assertThat(exception.getMessage(), containsString("MalformedLibrary"));
+  }
+
+  @Test
+  public void convertToFhirLibraryShouldRejectWrongExternalResourceType() {
+    // given - set up mocks
+    CqlLibraryDto externalLibrary =
+        CqlLibraryDto.builder()
+            .cqlLibraryName("ObservationResource")
+            .external(true)
+            .fhirResource("{\"resourceType\":\"Observation\",\"status\":\"final\",\"code\":{}}")
+            .build();
+
+    // when - call method under test
+    DataFormatException exception =
+        assertThrows(
+            DataFormatException.class,
+            () -> libraryTranslatorService.convertToFhirLibrary(externalLibrary, null, TOKEN));
+
+    // then - perform assertions
+    assertThat(exception.getMessage(), containsString("ObservationResource"));
+  }
+
+  @Test
+  public void convertToFhirLibraryShouldGenerateResourceWhenExternalFhirResourceIsMissing() {
+    // given - set up mocks
     var visitor = new LibraryCqlVisitorFactory().visit(exm1234Cql);
     CqlLibraryDto externalLibrary =
         CqlLibraryDto.builder()
@@ -144,8 +307,16 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
     // when - call method under test
     Library library = libraryTranslatorService.convertToFhirLibrary(externalLibrary, null, TOKEN);
 
-    // then - assertions
+    // then - perform assertions
+    assertThat(library.getId(), is(equalTo("ExternalLibrary")));
     assertThat(library.getVersion(), is(equalTo("1.0.1")));
+  }
+
+  private org.hl7.fhir.r4.model.Attachment getContent(Library library, String contentType) {
+    return library.getContent().stream()
+        .filter(content -> contentType.equals(content.getContentType()))
+        .findFirst()
+        .orElseThrow();
   }
 
   @Test
