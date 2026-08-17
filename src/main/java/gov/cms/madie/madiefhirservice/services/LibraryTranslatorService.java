@@ -51,13 +51,12 @@ public class LibraryTranslatorService {
   public Library convertToFhirLibrary(
       CqlLibraryDto cqlLibrary, Set<String> expressions, String accessToken) {
     if (cqlLibrary.isExternal() && StringUtils.isNotBlank(cqlLibrary.getFhirResource())) {
-      return convertExternalFhirLibrary(cqlLibrary, expressions, accessToken);
+      return convertExternalFhirLibrary(cqlLibrary);
     }
     return convertToFhirLibrary(LibrarySource.from(cqlLibrary), expressions, accessToken);
   }
 
-  private Library convertExternalFhirLibrary(
-      CqlLibraryDto cqlLibrary, Set<String> expressions, String accessToken) {
+  private Library convertExternalFhirLibrary(CqlLibraryDto cqlLibrary) {
     return externalLibraryResourceMapper.toFhirLibrary(cqlLibrary);
   }
 
