@@ -1,5 +1,6 @@
 package gov.cms.madie.madiefhirservice.services;
 
+import gov.cms.madie.madiefhirservice.constants.LibraryContentTypeConstants;
 import gov.cms.madie.madiefhirservice.constants.UriConstants;
 import gov.cms.madie.madiefhirservice.cql.LibraryCqlVisitorFactory;
 import gov.cms.madie.madiefhirservice.dto.CqlLibraryDetails;
@@ -26,19 +27,20 @@ import java.util.*;
 @Slf4j
 @Service
 public class LibraryTranslatorService {
-  public static final String CQL_CONTENT_TYPE = "text/cql";
-  public static final String JSON_ELM_CONTENT_TYPE = "application/elm+json";
-  public static final String XML_ELM_CONTENT_TYPE = "application/elm+xml";
   public static final String SYSTEM_CODE = "logic-library";
   public static final String UNKNOWN_VALUE = "UNKNOWN";
 
   private final LibraryCqlVisitorFactory libCqlVisitorFactory;
   private final ElmTranslatorClient elmTranslatorClient;
+  private final ExternalLibraryResourceMapper externalLibraryResourceMapper;
 
   public LibraryTranslatorService(
-      LibraryCqlVisitorFactory libCqlVisitorFactory, ElmTranslatorClient elmTranslatorClient) {
+      LibraryCqlVisitorFactory libCqlVisitorFactory,
+      ElmTranslatorClient elmTranslatorClient,
+      ExternalLibraryResourceMapper externalLibraryResourceMapper) {
     this.libCqlVisitorFactory = libCqlVisitorFactory;
     this.elmTranslatorClient = elmTranslatorClient;
+    this.externalLibraryResourceMapper = externalLibraryResourceMapper;
   }
 
   public Library convertToFhirLibrary(
@@ -48,7 +50,14 @@ public class LibraryTranslatorService {
 
   public Library convertToFhirLibrary(
       CqlLibraryDto cqlLibrary, Set<String> expressions, String accessToken) {
+    if (cqlLibrary.isExternal() && StringUtils.isNotBlank(cqlLibrary.getFhirResource())) {
+      return convertExternalFhirLibrary(cqlLibrary);
+    }
     return convertToFhirLibrary(LibrarySource.from(cqlLibrary), expressions, accessToken);
+  }
+
+  private Library convertExternalFhirLibrary(CqlLibraryDto cqlLibrary) {
+    return externalLibraryResourceMapper.toFhirLibrary(cqlLibrary);
   }
 
   private Library convertToFhirLibrary(
@@ -163,13 +172,13 @@ public class LibraryTranslatorService {
   private List<Attachment> createContent(String cql, String elmJson, String elmXml) {
     List<Attachment> attachments = new ArrayList<>(3);
     if (cql != null) {
-      attachments.add(createAttachment(CQL_CONTENT_TYPE, cql.getBytes()));
+      attachments.add(createAttachment(LibraryContentTypeConstants.CQL, cql.getBytes()));
     }
     if (elmXml != null) {
-      attachments.add(createAttachment(XML_ELM_CONTENT_TYPE, elmXml.getBytes()));
+      attachments.add(createAttachment(LibraryContentTypeConstants.ELM_XML, elmXml.getBytes()));
     }
     if (elmJson != null) {
-      attachments.add(createAttachment(JSON_ELM_CONTENT_TYPE, elmJson.getBytes()));
+      attachments.add(createAttachment(LibraryContentTypeConstants.ELM_JSON, elmJson.getBytes()));
     }
     return attachments;
   }
