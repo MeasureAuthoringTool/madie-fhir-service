@@ -28,6 +28,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -98,6 +100,44 @@ class LibraryServiceTest implements LibraryHelper, ResourceFileUtil {
         "TOKEN");
     assertThat(includedLibraryMap.size(), is(equalTo(1)));
     assertNotNull(includedLibraryMap.get("IncludedLibrary0.1.000"));
+  }
+
+  @Test
+  public void testGetIncludedLibrariesExcludesExternalLibrariesFromPublishBundle() {
+    String mainLibrary =
+        "library MainLibrary version '1.1.000'\n"
+            + "using FHIR version '4.0.1'\n"
+            + "include hl7.fhir.us.qicore.QICoreCommon version '6.0.0' called QICoreCommon\n";
+
+    var visitor = new LibraryCqlVisitorFactory().visit(mainLibrary);
+    CqlLibraryDto externalLibrary =
+        CqlLibraryDto.builder()
+            .cqlLibraryName("QICoreCommon")
+            .version("6.0.0")
+            .namespacePrefix("hl7.fhir.us.qicore")
+            .external(true)
+            .build();
+
+    when(libCqlVisitorFactory.visit(mainLibrary)).thenReturn(visitor);
+    when(cqlLibraryService.getLibrary(
+            "QICoreCommon",
+            "6.0.0",
+            java.util.Optional.of("hl7.fhir.us.qicore"),
+            "TOKEN",
+            CqlCompilerException.ErrorSeverity.Info))
+        .thenReturn(externalLibrary);
+
+    Map<String, Library> includedLibraryMap = new HashMap<>();
+    libraryService.getIncludedLibraries(
+        mainLibrary,
+        includedLibraryMap,
+        BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT_PUBLISH,
+        CqlCompilerException.ErrorSeverity.Info,
+        "TOKEN");
+
+    assertThat(includedLibraryMap.size(), is(equalTo(0)));
+    verify(libraryTranslatorService, never())
+        .convertToFhirLibrary(any(CqlLibraryDto.class), any(), anyString());
   }
 
   @Test

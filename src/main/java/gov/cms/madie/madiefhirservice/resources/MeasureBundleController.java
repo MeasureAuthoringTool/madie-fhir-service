@@ -3,6 +3,7 @@ package gov.cms.madie.madiefhirservice.resources;
 import ca.uhn.fhir.context.FhirContext;
 import gov.cms.madie.madiefhirservice.services.ExportService;
 import gov.cms.madie.madiefhirservice.services.MeasureBundleService;
+import gov.cms.madie.madiefhirservice.utils.BundleUtil;
 import gov.cms.madie.madiefhirservice.utils.ExportFileNamesUtil;
 import gov.cms.madie.models.measure.Measure;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -43,14 +44,21 @@ public class MeasureBundleController {
       @RequestBody @Validated(Measure.ValidationSequence.class) Measure measure,
       @RequestHeader(value = HttpHeaders.ACCEPT, required = false) String accept,
       @RequestHeader("Authorization") String accessToken,
-      @RequestParam(defaultValue = "Info") CqlCompilerException.ErrorSeverity elmErrorSeverity,
-      @RequestParam(required = false, defaultValue = "calculation", name = "bundleType")
+      @RequestParam(required = false) CqlCompilerException.ErrorSeverity elmErrorSeverity,
+      @RequestParam(
+              required = false,
+              defaultValue = BundleUtil.MEASURE_BUNDLE_TYPE_CALCULATION,
+              name = "bundleType")
           String bundleType) {
 
     try {
       Bundle bundle =
           measureBundleService.createMeasureBundle(
-              measure, request.getUserPrincipal(), bundleType, accessToken, elmErrorSeverity);
+              measure,
+              request.getUserPrincipal(),
+              bundleType,
+              accessToken,
+              defaultElmErrorSeverity(bundleType, elmErrorSeverity));
 
       if (accept != null
           && accept.toUpperCase().contains(MediaType.APPLICATION_XML_VALUE.toUpperCase())) {
@@ -97,7 +105,12 @@ public class MeasureBundleController {
   public ResponseEntity<byte[]> generateMeasureExport(
       HttpServletRequest request,
       @RequestBody @Validated(Measure.ValidationSequence.class) Measure measure,
-      @RequestParam(defaultValue = "Info") CqlCompilerException.ErrorSeverity elmErrorSeverity,
+      @RequestParam(required = false) CqlCompilerException.ErrorSeverity elmErrorSeverity,
+      @RequestParam(
+              required = false,
+              defaultValue = BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT,
+              name = "bundleType")
+          String bundleType,
       @RequestHeader("Authorization") String accessToken) {
 
     return ResponseEntity.ok()
@@ -107,6 +120,21 @@ public class MeasureBundleController {
         .contentType(MediaType.APPLICATION_OCTET_STREAM)
         .body(
             exportService.createExport(
-                measure, request.getUserPrincipal(), elmErrorSeverity, accessToken));
+                measure,
+                request.getUserPrincipal(),
+                bundleType,
+                defaultElmErrorSeverity(bundleType, elmErrorSeverity),
+                accessToken));
+  }
+
+  private CqlCompilerException.ErrorSeverity defaultElmErrorSeverity(
+      String bundleType, CqlCompilerException.ErrorSeverity elmErrorSeverity) {
+    if (elmErrorSeverity != null) {
+      return elmErrorSeverity;
+    }
+
+    return BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT_PUBLISH.equalsIgnoreCase(bundleType)
+        ? CqlCompilerException.ErrorSeverity.Error
+        : CqlCompilerException.ErrorSeverity.Info;
   }
 }

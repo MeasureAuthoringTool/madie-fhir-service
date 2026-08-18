@@ -61,6 +61,11 @@ public class LibraryService {
                 Optional.ofNullable(libraryParts[0]), // prefix
                 accessToken,
                 errorSeverity);
+        // Exclude external libraries from publishable bundles
+        if (BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT_PUBLISH.equals(bundleType)
+            && cqlLibrary.isExternal()) {
+          continue;
+        }
         // Todo If the library is already in libraryMap, we can skip the call to
         // cqlLibraryToFhirLibrary and assume the library is already in the correct format.
         // We can also skip the call to findCqlAttachment and getIncludedLibraries since we would
