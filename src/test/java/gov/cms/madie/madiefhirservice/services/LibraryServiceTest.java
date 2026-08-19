@@ -56,7 +56,8 @@ class LibraryServiceTest implements LibraryHelper, ResourceFileUtil {
   }
 
   @Test
-  public void testGetIncludedLibraries() {
+  public void testGetIncludedLibrariesIncludesNonExternalLibrariesInPublishBundle() {
+    // given - set up mocks
     String mainLibrary =
         "   library MainLibrary version '1.1.000'\n"
             + "   using FHIR version '4.0.1'\n"
@@ -91,19 +92,23 @@ class LibraryServiceTest implements LibraryHelper, ResourceFileUtil {
             any(CqlLibraryDto.class), any(), anyString()))
         .thenReturn(library);
 
+    // when - call method under test
     Map<String, Library> includedLibraryMap = new HashMap<>();
     libraryService.getIncludedLibraries(
         mainLibrary,
         includedLibraryMap,
-        BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT,
+        BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT_PUBLISH,
         CqlCompilerException.ErrorSeverity.Info,
         "TOKEN");
+
+    // then - perform assertions
     assertThat(includedLibraryMap.size(), is(equalTo(1)));
     assertNotNull(includedLibraryMap.get("IncludedLibrary0.1.000"));
   }
 
   @Test
   public void testGetIncludedLibrariesExcludesExternalLibrariesFromPublishBundle() {
+    // given - set up mocks
     String mainLibrary =
         "library MainLibrary version '1.1.000'\n"
             + "using FHIR version '4.0.1'\n"
@@ -127,6 +132,7 @@ class LibraryServiceTest implements LibraryHelper, ResourceFileUtil {
             CqlCompilerException.ErrorSeverity.Info))
         .thenReturn(externalLibrary);
 
+    // when - call method under test
     Map<String, Library> includedLibraryMap = new HashMap<>();
     libraryService.getIncludedLibraries(
         mainLibrary,
@@ -135,6 +141,7 @@ class LibraryServiceTest implements LibraryHelper, ResourceFileUtil {
         CqlCompilerException.ErrorSeverity.Info,
         "TOKEN");
 
+    // then - perform assertions
     assertThat(includedLibraryMap.size(), is(equalTo(0)));
     verify(libraryTranslatorService, never())
         .convertToFhirLibrary(any(CqlLibraryDto.class), any(), anyString());

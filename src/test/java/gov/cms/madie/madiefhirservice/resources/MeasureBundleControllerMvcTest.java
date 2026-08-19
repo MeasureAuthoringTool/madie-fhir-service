@@ -135,6 +135,7 @@ public class MeasureBundleControllerMvcTest implements ResourceFileUtil {
 
   @Test
   public void testGetPublishMeasureBundleDefaultsToErrorSeverity() throws Exception {
+    // given - set up mocks
     String madieMeasureJson = getStringFromTestResource("/measures/madie_measure.json");
     Bundle testBundle = MeasureTestHelper.createTestMeasureBundle();
 
@@ -147,6 +148,7 @@ public class MeasureBundleControllerMvcTest implements ResourceFileUtil {
         .thenReturn(testBundle);
     when(fhirContext.newJsonParser()).thenReturn(FhirContext.forR4().newJsonParser());
 
+    // when - call method under test
     mockMvc
         .perform(
             MockMvcRequestBuilders.put("/fhir/measures/bundles")
@@ -158,6 +160,7 @@ public class MeasureBundleControllerMvcTest implements ResourceFileUtil {
                 .contentType(MediaType.APPLICATION_JSON_VALUE))
         .andExpect(status().isOk());
 
+    // then - perform assertions
     verify(measureBundleService)
         .createMeasureBundle(
             any(Measure.class),
@@ -168,9 +171,49 @@ public class MeasureBundleControllerMvcTest implements ResourceFileUtil {
   }
 
   @Test
-  public void testExportMeasure() throws Exception {
+  public void testGetMeasureBundleUsesExplicitErrorSeverity() throws Exception {
+    // given - set up mocks
+    String madieMeasureJson = getStringFromTestResource("/measures/madie_measure.json");
+    Bundle testBundle = MeasureTestHelper.createTestMeasureBundle();
+
+    when(measureBundleService.createMeasureBundle(
+            any(Measure.class),
+            any(Principal.class),
+            eq(BundleUtil.MEASURE_BUNDLE_TYPE_CALCULATION),
+            anyString(),
+            eq(CqlCompilerException.ErrorSeverity.Error)))
+        .thenReturn(testBundle);
+    when(fhirContext.newJsonParser()).thenReturn(FhirContext.forR4().newJsonParser());
+
+    // when - call method under test
+    mockMvc
+        .perform(
+            MockMvcRequestBuilders.put("/fhir/measures/bundles")
+                .with(user(TEST_USER_ID))
+                .with(csrf())
+                .header(HttpHeaders.AUTHORIZATION, "test-okta")
+                .queryParam(
+                    "elmErrorSeverity", String.valueOf(CqlCompilerException.ErrorSeverity.Error))
+                .content(madieMeasureJson)
+                .contentType(MediaType.APPLICATION_JSON_VALUE))
+        .andExpect(status().isOk());
+
+    // then - perform assertions
+    verify(measureBundleService)
+        .createMeasureBundle(
+            any(Measure.class),
+            any(Principal.class),
+            eq(BundleUtil.MEASURE_BUNDLE_TYPE_CALCULATION),
+            anyString(),
+            eq(CqlCompilerException.ErrorSeverity.Error));
+  }
+
+  @Test
+  public void testExportMeasureForPublishDefaultsToErrorSeverity() throws Exception {
+    // given - set up mocks
     String madieMeasureJson = getStringFromTestResource("/measures/madie_measure.json");
 
+    // when - call method under test
     MvcResult result =
         mockMvc
             .perform(
@@ -186,6 +229,7 @@ public class MeasureBundleControllerMvcTest implements ResourceFileUtil {
             .andExpect(content().contentType(MediaType.APPLICATION_OCTET_STREAM_VALUE))
             .andReturn();
 
+    // then - perform assertions
     assertThat(result.getResponse().getContentType(), is(equalTo("application/octet-stream")));
     assertThat(
         result.getResponse().getHeader("Content-Disposition"),
@@ -196,6 +240,32 @@ public class MeasureBundleControllerMvcTest implements ResourceFileUtil {
             any(Principal.class),
             eq(BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT_PUBLISH),
             eq(CqlCompilerException.ErrorSeverity.Error),
+            anyString());
+  }
+
+  @Test
+  public void testExportMeasureDefaultsToInfoSeverity() throws Exception {
+    // given - set up mocks
+    String madieMeasureJson = getStringFromTestResource("/measures/madie_measure.json");
+
+    // when - call method under test
+    mockMvc
+        .perform(
+            MockMvcRequestBuilders.put("/fhir/measures/export")
+                .with(user(TEST_USER_ID))
+                .with(csrf())
+                .header(HttpHeaders.AUTHORIZATION, "test-okta")
+                .content(madieMeasureJson)
+                .contentType(MediaType.APPLICATION_JSON_VALUE))
+        .andExpect(status().isOk());
+
+    // then - perform assertions
+    verify(exportService)
+        .createExport(
+            any(Measure.class),
+            any(Principal.class),
+            eq(BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT),
+            eq(CqlCompilerException.ErrorSeverity.Info),
             anyString());
   }
 }
