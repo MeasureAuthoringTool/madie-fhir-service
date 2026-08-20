@@ -58,14 +58,12 @@ public class LibraryTranslatorService {
     if (BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT.equals(bundleType)) {
       Parameters cqlOptionParameters =
           TranslatorConfigUtil.getCqlOptionParameters(cqlLibraryDto.getElmJson());
-      if (!cqlOptionParameters.getParameter().isEmpty()) {
-        // remove any existing "options" parameters to avoid duplicates, then add the new one.
-        library
-            .getContained()
-            .removeIf(resource -> "options".equals(resource.getIdElement().getIdPart()));
-        library.getContained().add(cqlOptionParameters);
-        addCqlOptionExtensionIfMissing(library);
-      }
+      // remove any existing "options" parameters to avoid duplicates, then add the new one.
+      library
+          .getContained()
+          .removeIf(resource -> "options".equals(resource.getIdElement().getIdPart()));
+      library.getContained().add(cqlOptionParameters);
+      addCqlOptionExtensionIfMissing(library);
     }
     return library;
   }
