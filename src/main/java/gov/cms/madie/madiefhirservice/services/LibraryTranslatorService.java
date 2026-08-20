@@ -49,13 +49,13 @@ public class LibraryTranslatorService {
   public Library convertToFhirLibrary(
       CqlLibraryDto cqlLibrary, Set<String> expressions, String bundleType, String accessToken) {
     if (cqlLibrary.isExternal() && StringUtils.isNotBlank(cqlLibrary.getFhirResource())) {
-      return convertExternalFhirLibrary(cqlLibrary, bundleType);
+      return convertExternalFhirLibrary(cqlLibrary);
     }
     return convertToFhirLibrary(
         LibrarySource.from(cqlLibrary), expressions, bundleType, accessToken);
   }
 
-  private Library convertExternalFhirLibrary(CqlLibraryDto cqlLibrary, String bundleType) {
+  private Library convertExternalFhirLibrary(CqlLibraryDto cqlLibrary) {
     Library library = externalLibraryResourceMapper.toFhirLibrary(cqlLibrary);
     addCqlOptionExtensionIfMissing(library);
     Parameters cqlOptionParameters =
