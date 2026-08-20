@@ -4,6 +4,8 @@ import gov.cms.madie.madiefhirservice.constants.LibraryContentTypeConstants;
 import gov.cms.madie.madiefhirservice.constants.UriConstants;
 import gov.cms.madie.madiefhirservice.cql.LibraryCqlVisitorFactory;
 import gov.cms.madie.madiefhirservice.dto.CqlLibraryDetails;
+import gov.cms.madie.madiefhirservice.utils.BundleUtil;
+import gov.cms.madie.madiefhirservice.utils.TranslatorConfigUtil;
 import gov.cms.madie.models.dto.CqlLibraryDto;
 import gov.cms.madie.madiefhirservice.utils.FhirResourceHelpers;
 import gov.cms.madie.models.library.CqlLibrary;
@@ -19,6 +21,7 @@ import org.hl7.fhir.r4.model.Enumerations;
 import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.Library;
 import org.hl7.fhir.r4.model.Meta;
+import org.hl7.fhir.r4.model.Parameters;
 import org.hl7.fhir.r4.model.Identifier.IdentifierUse;
 import org.springframework.stereotype.Service;
 
@@ -44,24 +47,30 @@ public class LibraryTranslatorService {
   }
 
   public Library convertToFhirLibrary(
-      CqlLibrary cqlLibrary, Set<String> expressions, String accessToken) {
-    return convertToFhirLibrary(LibrarySource.from(cqlLibrary), expressions, accessToken);
-  }
-
-  public Library convertToFhirLibrary(
-      CqlLibraryDto cqlLibrary, Set<String> expressions, String accessToken) {
+      CqlLibraryDto cqlLibrary, Set<String> expressions, String bundleType, String accessToken) {
     if (cqlLibrary.isExternal() && StringUtils.isNotBlank(cqlLibrary.getFhirResource())) {
-      return convertExternalFhirLibrary(cqlLibrary);
+      return convertExternalFhirLibrary(cqlLibrary, bundleType);
     }
-    return convertToFhirLibrary(LibrarySource.from(cqlLibrary), expressions, accessToken);
+    return convertToFhirLibrary(
+        LibrarySource.from(cqlLibrary), expressions, bundleType, accessToken);
   }
 
-  private Library convertExternalFhirLibrary(CqlLibraryDto cqlLibrary) {
-    return externalLibraryResourceMapper.toFhirLibrary(cqlLibrary);
+  private Library convertExternalFhirLibrary(CqlLibraryDto cqlLibrary, String bundleType) {
+    Library library = externalLibraryResourceMapper.toFhirLibrary(cqlLibrary);
+    addCqlOptionExtensionIfMissing(library);
+    Parameters cqlOptionParameters =
+        TranslatorConfigUtil.getCqlOptionParameters(cqlLibrary.getElmJson());
+    // remove old options parameter if it exists, and add the new one to match the MADiE translator
+    // configs
+    library
+        .getContained()
+        .removeIf(resource -> "options".equals(resource.getIdElement().getIdPart()));
+    library.getContained().add(cqlOptionParameters);
+    return library;
   }
 
   private Library convertToFhirLibrary(
-      LibrarySource cqlLibrary, Set<String> expressions, String accessToken) {
+      LibrarySource cqlLibrary, Set<String> expressions, String bundleType, String accessToken) {
     var visitor = libCqlVisitorFactory.visit(cqlLibrary.cql());
     Library library = new Library();
     library.setId(cqlLibrary.name());
@@ -99,6 +108,13 @@ public class LibraryTranslatorService {
             accessToken);
     library.setRelatedArtifact(libraryModuleDefinition.getRelatedArtifact());
     library.setDataRequirement(libraryModuleDefinition.getDataRequirement());
+    if (BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT.equals(bundleType)) {
+      addCqlOptionExtensionIfMissing(library);
+      Parameters cqlOptionParameters =
+          TranslatorConfigUtil.getCqlOptionParameters(cqlLibrary.elmJson());
+      library.getContained().add(cqlOptionParameters);
+    }
+
     return library;
   }
 
@@ -185,6 +201,15 @@ public class LibraryTranslatorService {
 
   private CodeableConcept createType(String type, String code) {
     return new CodeableConcept().setCoding(Collections.singletonList(new Coding(type, code, null)));
+  }
+
+  private void addCqlOptionExtensionIfMissing(Library library) {
+    boolean cqlOptionExtensionPresent =
+        library.getExtension().stream()
+            .anyMatch(extension -> UriConstants.Library.CQL_OPTIONS_URL.equals(extension.getUrl()));
+    if (!cqlOptionExtensionPresent) {
+      library.addExtension(TranslatorConfigUtil.getCqlOptionExtension());
+    }
   }
 
   /* rawData are bytes that are NOT base64 encoded */

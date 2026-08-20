@@ -160,5 +160,8 @@ public final class UriConstants {
 
     public static String ELM_XML_LIBRARY_URI =
         "http://hl7.org/fhir/uv/cql/StructureDefinition/elm-xml-library";
+
+    public static final String CQL_OPTIONS_URL =
+        "http://hl7.org/fhir/StructureDefinition/cqf-cqlOptions";
   }
 }
