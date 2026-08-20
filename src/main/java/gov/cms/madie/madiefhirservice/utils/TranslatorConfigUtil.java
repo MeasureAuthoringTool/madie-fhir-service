@@ -33,8 +33,7 @@ public final class TranslatorConfigUtil {
     if (elmJson != null) {
       // Add translator options to parameters
       TranslatorConfig translatorConfig = getTranslationConfigs(elmJson);
-      if (translatorConfig.translatorOptions() != null
-          && !translatorConfig.translatorOptions().isEmpty()) {
+      if (!translatorConfig.translatorOptions().isEmpty()) {
         parameters
             .addParameter()
             .setName("translatorVersion")
@@ -49,9 +48,6 @@ public final class TranslatorConfigUtil {
             .setName("signatureLevel")
             .setValue(new StringType(translatorConfig.signatureLevel()));
       }
-      // because resource contains both JSON and CML format
-      parameters.addParameter().setName("format").setValue(new StringType("JSON"));
-      parameters.addParameter().setName("format").setValue(new StringType("XML"));
     }
     return parameters;
   }

@@ -13,7 +13,6 @@ import gov.cms.madie.models.library.CqlLibrary;
 import org.cqframework.cql.cql2elm.CqlCompilerException;
 import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.Library;
-import org.hl7.fhir.r4.model.Parameters;
 import org.hl7.fhir.r4.model.Identifier.IdentifierUse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,7 +20,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -153,10 +151,8 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
     assertThat(library.getName(), is(equalTo(cqlLibraryDto.getCqlLibraryName())));
     assertThat(library.getContent(), is(notNullValue()));
     assertThat(library.getContent().size(), is(equalTo(3)));
-    assertThat(library.getExtension().size(), is(equalTo(2)));
-    assertThat(library.getContained().size(), is(equalTo(1)));
-    assertThat(library.getContained().get(0), is(instanceOf(Parameters.class)));
-    assertThat(library.getContained().get(0).getIdElement().getIdPart(), is(equalTo("options")));
+    assertThat(library.getExtension().size(), is(equalTo(1)));
+    assertThat(library.getContained().size(), is(equalTo(0)));
     assertThat(library.getMeta().getProfile().size(), is(equalTo(7)));
     assertThat(library.getMeta().hasProfile(UriConstants.Library.SHAREABLE_LIBRARY_URI), is(true));
     assertThat(library.getMeta().hasProfile(UriConstants.Library.COMPUTABLE_LIBRARY_URI), is(true));
@@ -247,15 +243,13 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
     assertThat(
         new String(getContent(library, "application/elm+xml").getData(), StandardCharsets.UTF_8),
         is(equalTo("ELM XML")));
-    // external libraries always get cqlOption extension and contained Parameters
+    // cqlOption extension and contained Parameters are only added when translator options exist
     long cqlOptionExtensions =
         library.getExtension().stream()
             .filter(extension -> UriConstants.Library.CQL_OPTIONS_URL.equals(extension.getUrl()))
             .count();
-    assertThat(cqlOptionExtensions, is(equalTo(1L)));
-    assertThat(library.getContained().size(), is(equalTo(1)));
-    assertThat(library.getContained().get(0), is(instanceOf(Parameters.class)));
-    assertThat(library.getContained().get(0).getIdElement().getIdPart(), is(equalTo("options")));
+    assertThat(cqlOptionExtensions, is(equalTo(0L)));
+    assertThat(library.getContained().size(), is(equalTo(0)));
     verifyNoInteractions(libCqlVisitorFactory, elmTranslatorClient);
   }
 
@@ -334,10 +328,8 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
         library.getExtension().stream()
             .filter(extension -> UriConstants.Library.CQL_OPTIONS_URL.equals(extension.getUrl()))
             .count();
-    assertThat(cqlOptionExtensions, is(equalTo(1L)));
-    assertThat(library.getContained().size(), is(equalTo(1)));
-    assertThat(library.getContained().get(0), is(instanceOf(Parameters.class)));
-    assertThat(library.getContained().get(0).getIdElement().getIdPart(), is(equalTo("options")));
+    assertThat(cqlOptionExtensions, is(equalTo(0L)));
+    assertThat(library.getContained().size(), is(equalTo(0)));
   }
 
   @Test
@@ -450,10 +442,8 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
     assertThat(library.getName(), is(equalTo(cqlLibDto.getCqlLibraryName())));
     assertThat(library.getContent(), is(notNullValue()));
     assertThat(library.getContent().size(), is(equalTo(3)));
-    assertThat(library.getExtension().size(), is(equalTo(3)));
-    assertThat(library.getContained().size(), is(equalTo(1)));
-    assertThat(library.getContained().get(0), is(instanceOf(Parameters.class)));
-    assertThat(library.getContained().get(0).getIdElement().getIdPart(), is(equalTo("options")));
+    assertThat(library.getExtension().size(), is(equalTo(2)));
+    assertThat(library.getContained().size(), is(equalTo(0)));
     assertThat(library.getMeta().getProfile().size(), is(equalTo(7)));
     assertThat(library.getMeta().hasProfile(UriConstants.Library.SHAREABLE_LIBRARY_URI), is(true));
     assertThat(library.getMeta().hasProfile(UriConstants.Library.COMPUTABLE_LIBRARY_URI), is(true));
