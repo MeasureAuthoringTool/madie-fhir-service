@@ -47,30 +47,29 @@ public class LibraryTranslatorService {
   }
 
   public Library convertToFhirLibrary(
-      CqlLibraryDto cqlLibrary, Set<String> expressions, String bundleType, String accessToken) {
-    if (cqlLibrary.isExternal() && StringUtils.isNotBlank(cqlLibrary.getFhirResource())) {
-      return convertExternalFhirLibrary(cqlLibrary);
+      CqlLibraryDto cqlLibraryDto, Set<String> expressions, String bundleType, String accessToken) {
+    Library library;
+    if (cqlLibraryDto.isExternal() && StringUtils.isNotBlank(cqlLibraryDto.getFhirResource())) {
+      library = externalLibraryResourceMapper.toFhirLibrary(cqlLibraryDto);
+    } else {
+      library = convertToFhirLibrary(LibrarySource.from(cqlLibraryDto), expressions, accessToken);
     }
-    return convertToFhirLibrary(
-        LibrarySource.from(cqlLibrary), expressions, bundleType, accessToken);
-  }
-
-  private Library convertExternalFhirLibrary(CqlLibraryDto cqlLibrary) {
-    Library library = externalLibraryResourceMapper.toFhirLibrary(cqlLibrary);
-    addCqlOptionExtensionIfMissing(library);
-    Parameters cqlOptionParameters =
-        TranslatorConfigUtil.getCqlOptionParameters(cqlLibrary.getElmJson());
-    // remove old options parameter if it exists, and add the new one to match the MADiE translator
-    // configs
-    library
-        .getContained()
-        .removeIf(resource -> "options".equals(resource.getIdElement().getIdPart()));
-    library.getContained().add(cqlOptionParameters);
+    // Add the CQL Options extension and parameters to the library if this is an export bundle.
+    if (BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT.equals(bundleType)) {
+      addCqlOptionExtensionIfMissing(library);
+      Parameters cqlOptionParameters =
+          TranslatorConfigUtil.getCqlOptionParameters(cqlLibraryDto.getElmJson());
+      // remove any existing "options" parameters to avoid duplicates, then add the new one.
+      library
+          .getContained()
+          .removeIf(resource -> "options".equals(resource.getIdElement().getIdPart()));
+      library.getContained().add(cqlOptionParameters);
+    }
     return library;
   }
 
   private Library convertToFhirLibrary(
-      LibrarySource cqlLibrary, Set<String> expressions, String bundleType, String accessToken) {
+      LibrarySource cqlLibrary, Set<String> expressions, String accessToken) {
     var visitor = libCqlVisitorFactory.visit(cqlLibrary.cql());
     Library library = new Library();
     library.setId(cqlLibrary.name());
@@ -108,12 +107,6 @@ public class LibraryTranslatorService {
             accessToken);
     library.setRelatedArtifact(libraryModuleDefinition.getRelatedArtifact());
     library.setDataRequirement(libraryModuleDefinition.getDataRequirement());
-    if (BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT.equals(bundleType)) {
-      addCqlOptionExtensionIfMissing(library);
-      Parameters cqlOptionParameters =
-          TranslatorConfigUtil.getCqlOptionParameters(cqlLibrary.elmJson());
-      library.getContained().add(cqlOptionParameters);
-    }
 
     return library;
   }

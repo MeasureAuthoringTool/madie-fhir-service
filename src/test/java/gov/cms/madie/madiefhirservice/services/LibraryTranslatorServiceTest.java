@@ -220,7 +220,8 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
 
     // when - call method under test
     Library library =
-        libraryTranslatorService.convertToFhirLibrary(externalLibrary, null, null, TOKEN);
+        libraryTranslatorService.convertToFhirLibrary(
+            externalLibrary, null, BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT, TOKEN);
 
     // then - perform assertions
     assertThat(library.getIdElement().getIdPart(), is(equalTo("source-library-id")));
@@ -288,7 +289,8 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
             .build();
 
     Library library =
-        libraryTranslatorService.convertToFhirLibrary(externalLibrary, null, null, TOKEN);
+        libraryTranslatorService.convertToFhirLibrary(
+            externalLibrary, null, BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT, TOKEN);
 
     long cqlOptionExtensions =
         library.getExtension().stream()
@@ -321,13 +323,13 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
 
     // when - call method under test
     Library library =
-        libraryTranslatorService.convertToFhirLibrary(externalLibrary, null, null, TOKEN);
+        libraryTranslatorService.convertToFhirLibrary(
+            externalLibrary, null, BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT, TOKEN);
 
     // then - perform assertions
     assertThat(library.getIdElement().getIdPart(), is(equalTo("source-library-id")));
     assertThat(library.getRelatedArtifact().isEmpty(), is(true));
     assertThat(library.getDataRequirement().isEmpty(), is(true));
-    // external libraries always get cqlOption extension and contained Parameters
     long cqlOptionExtensions =
         library.getExtension().stream()
             .filter(extension -> UriConstants.Library.CQL_OPTIONS_URL.equals(extension.getUrl()))
