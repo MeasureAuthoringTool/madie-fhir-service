@@ -6,6 +6,7 @@ import gov.cms.madie.madiefhirservice.constants.UriConstants;
 import gov.cms.madie.madiefhirservice.cql.LibraryCqlVisitorFactory;
 import gov.cms.madie.madiefhirservice.dto.CqlLibraryDetails;
 import gov.cms.madie.models.dto.CqlLibraryDto;
+import gov.cms.madie.madiefhirservice.utils.BundleUtil;
 import gov.cms.madie.madiefhirservice.utils.LibraryHelper;
 import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
 import gov.cms.madie.models.library.CqlLibrary;
@@ -41,6 +42,7 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
   @Mock private ElmTranslatorClient elmTranslatorClient;
 
   private CqlLibrary cqlLibrary;
+  private CqlLibraryDto cqlLibraryDto;
   private String exm1234Cql;
   private org.hl7.fhir.r5.model.Library r5Library;
 
@@ -52,7 +54,19 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
             elmTranslatorClient,
             new ExternalLibraryResourceMapper(FhirContext.forR4Cached()));
     exm1234Cql = getStringFromTestResource("/test-cql/EXM124v7QICore4.cql");
-    cqlLibrary = createCqlLibrary(exm1234Cql);
+    CqlLibrary cqlLibrary = createCqlLibrary(exm1234Cql);
+    cqlLibraryDto =
+        CqlLibraryDto.builder()
+            .id(cqlLibrary.getId())
+            .cqlLibraryName(cqlLibrary.getCqlLibraryName())
+            .version(cqlLibrary.getVersion().toString())
+            .publisher(cqlLibrary.getPublisher())
+            .description(cqlLibrary.getDescription())
+            .experimental(cqlLibrary.isExperimental())
+            .cql(cqlLibrary.getCql())
+            .elmJson(cqlLibrary.getElmJson())
+            .elmXml(cqlLibrary.getElmXml())
+            .build();
     r5Library =
         convertToFhirR5Resource(
             org.hl7.fhir.r5.model.Library.class,
@@ -60,7 +74,7 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
   }
 
   @Test
-  public void convertToFhirLibrary() {
+  public void convertToFhirLibraryForPublishableBundle() {
     var visitor = new LibraryCqlVisitorFactory().visit(exm1234Cql);
     when(libCqlVisitorFactory.visit(anyString())).thenReturn(visitor);
     when(elmTranslatorClient.getModuleDefinitionLibrary(
@@ -70,20 +84,22 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
             eq(CqlCompilerException.ErrorSeverity.Info)))
         .thenReturn(r5Library);
 
-    Library library = libraryTranslatorService.convertToFhirLibrary(cqlLibrary, null, TOKEN);
-    assertEquals(library.getName(), cqlLibrary.getCqlLibraryName());
-    assertEquals(library.getVersion(), cqlLibrary.getVersion().toString());
-    assertThat(library.getTitle(), is(equalTo(cqlLibrary.getCqlLibraryName())));
-    assertThat(library.getPublisher(), is(equalTo(cqlLibrary.getPublisher())));
+    Library library =
+        libraryTranslatorService.convertToFhirLibrary(
+            cqlLibraryDto, null, BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT_PUBLISH, TOKEN);
+    assertEquals(library.getName(), cqlLibraryDto.getCqlLibraryName());
+    assertEquals(library.getVersion(), cqlLibraryDto.getVersion());
+    assertThat(library.getTitle(), is(equalTo(cqlLibraryDto.getCqlLibraryName())));
+    assertThat(library.getPublisher(), is(equalTo(cqlLibraryDto.getPublisher())));
     Identifier identifier = new Identifier();
     identifier.setUse(IdentifierUse.OFFICIAL);
     identifier.setSystem("https://madie.cms.gov/login");
-    identifier.setValue(cqlLibrary.getId());
+    identifier.setValue(cqlLibraryDto.getId());
     assertThat(library.getIdentifier().get(0).getValue(), is(equalTo(identifier.getValue())));
     assertThat(library.getIdentifier().get(0).getSystem(), is(equalTo(identifier.getSystem())));
     assertThat(library.getIdentifier().get(0).getUse(), is(equalTo(identifier.getUse())));
-    assertThat(library.getId(), is(equalTo(cqlLibrary.getCqlLibraryName())));
-    assertThat(library.getId(), is(equalTo(cqlLibrary.getCqlLibraryName())));
+    assertThat(library.getId(), is(equalTo(cqlLibraryDto.getCqlLibraryName())));
+    assertThat(library.getId(), is(equalTo(cqlLibraryDto.getCqlLibraryName())));
     assertThat(
         library.getRelatedArtifact().get(0).getDisplay(),
         is(equalTo(r5Library.getRelatedArtifact().get(0).getDisplay())));
@@ -96,6 +112,13 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
     assertThat(library.getMeta().hasProfile(UriConstants.Library.CQL_LIBRARY_URI), is(true));
     assertThat(library.getMeta().hasProfile(UriConstants.Library.ELM_JSON_LIBRARY_URI), is(true));
     assertThat(library.getMeta().hasProfile(UriConstants.Library.ELM_XML_LIBRARY_URI), is(true));
+    // no cqlOption extension or contained Parameters for publishable bundleType
+    long cqlOptionExtensions =
+        library.getExtension().stream()
+            .filter(extension -> UriConstants.Library.CQL_OPTIONS_URL.equals(extension.getUrl()))
+            .count();
+    assertThat(cqlOptionExtensions, is(equalTo(0L)));
+    assertThat(library.getContained().isEmpty(), is(true));
   }
 
   @Test
@@ -109,14 +132,27 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
             eq(CqlCompilerException.ErrorSeverity.Info)))
         .thenReturn(r5Library);
 
-    cqlLibrary.setElmJson("ELMJSON");
-    cqlLibrary.setElmXml("ELMXML");
+    cqlLibraryDto =
+        CqlLibraryDto.builder()
+            .id(cqlLibraryDto.getId())
+            .cqlLibraryName(cqlLibraryDto.getCqlLibraryName())
+            .version(cqlLibraryDto.getVersion())
+            .publisher(cqlLibraryDto.getPublisher())
+            .description(cqlLibraryDto.getDescription())
+            .experimental(cqlLibraryDto.isExperimental())
+            .cql(cqlLibraryDto.getCql())
+            .elmJson("ELMJSON")
+            .elmXml("ELMXML")
+            .build();
 
-    Library library = libraryTranslatorService.convertToFhirLibrary(cqlLibrary, null, TOKEN);
-    assertThat(library.getName(), is(equalTo(cqlLibrary.getCqlLibraryName())));
+    Library library =
+        libraryTranslatorService.convertToFhirLibrary(
+            cqlLibraryDto, null, BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT, TOKEN);
+    assertThat(library.getName(), is(equalTo(cqlLibraryDto.getCqlLibraryName())));
     assertThat(library.getContent(), is(notNullValue()));
     assertThat(library.getContent().size(), is(equalTo(3)));
-    assertThat(library.getExtension().size(), is(equalTo(1)));
+    assertThat(library.getExtension().size(), is(equalTo(2)));
+    assertThat(library.getContained().size(), is(equalTo(1)));
     assertThat(library.getMeta().getProfile().size(), is(equalTo(7)));
     assertThat(library.getMeta().hasProfile(UriConstants.Library.SHAREABLE_LIBRARY_URI), is(true));
     assertThat(library.getMeta().hasProfile(UriConstants.Library.COMPUTABLE_LIBRARY_URI), is(true));
@@ -179,7 +215,9 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
             .build();
 
     // when - call method under test
-    Library library = libraryTranslatorService.convertToFhirLibrary(externalLibrary, null, TOKEN);
+    Library library =
+        libraryTranslatorService.convertToFhirLibrary(
+            externalLibrary, null, BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT, TOKEN);
 
     // then - perform assertions
     assertThat(library.getIdElement().getIdPart(), is(equalTo("source-library-id")));
@@ -205,7 +243,53 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
     assertThat(
         new String(getContent(library, "application/elm+xml").getData(), StandardCharsets.UTF_8),
         is(equalTo("ELM XML")));
+    long cqlOptionExtensions =
+        library.getExtension().stream()
+            .filter(extension -> UriConstants.Library.CQL_OPTIONS_URL.equals(extension.getUrl()))
+            .count();
+    assertThat(cqlOptionExtensions, is(equalTo(1L)));
+    assertThat(library.getContained().size(), is(equalTo(1)));
     verifyNoInteractions(libCqlVisitorFactory, elmTranslatorClient);
+  }
+
+  @Test
+  public void convertToFhirLibraryShouldNotDuplicateCqlOptionExtensionForExternalLibrary() {
+    String externalFhirResource =
+            """
+        {
+          "resourceType": "Library",
+          "id": "source-library-id",
+          "name": "ExternalLibrary",
+          "status": "active",
+          "version": "1.0.1",
+          "type": {"coding": [{"code": "logic-library"}]},
+          "extension": [
+            {
+              "url": "%s",
+              "valueReference": {"reference": "#options"}
+            }
+          ]
+        }
+        """
+            .formatted(UriConstants.Library.CQL_OPTIONS_URL);
+    CqlLibraryDto externalLibrary =
+        CqlLibraryDto.builder()
+            .cqlLibraryName("ExternalLibrary")
+            .version("1.0.1")
+            .external(true)
+            .elmJson("ELM JSON")
+            .fhirResource(externalFhirResource)
+            .build();
+
+    Library library =
+        libraryTranslatorService.convertToFhirLibrary(
+            externalLibrary, null, BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT, TOKEN);
+
+    long cqlOptionExtensions =
+        library.getExtension().stream()
+            .filter(extension -> UriConstants.Library.CQL_OPTIONS_URL.equals(extension.getUrl()))
+            .count();
+    assertThat(cqlOptionExtensions, is(equalTo(1L)));
   }
 
   @Test
@@ -231,12 +315,20 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
             .build();
 
     // when - call method under test
-    Library library = libraryTranslatorService.convertToFhirLibrary(externalLibrary, null, TOKEN);
+    Library library =
+        libraryTranslatorService.convertToFhirLibrary(
+            externalLibrary, null, BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT, TOKEN);
 
     // then - perform assertions
     assertThat(library.getIdElement().getIdPart(), is(equalTo("source-library-id")));
     assertThat(library.getRelatedArtifact().isEmpty(), is(true));
     assertThat(library.getDataRequirement().isEmpty(), is(true));
+    long cqlOptionExtensions =
+        library.getExtension().stream()
+            .filter(extension -> UriConstants.Library.CQL_OPTIONS_URL.equals(extension.getUrl()))
+            .count();
+    assertThat(cqlOptionExtensions, is(equalTo(1L)));
+    assertThat(library.getContained().size(), is(equalTo(1)));
   }
 
   @Test
@@ -253,7 +345,8 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
     DataFormatException exception =
         assertThrows(
             DataFormatException.class,
-            () -> libraryTranslatorService.convertToFhirLibrary(malformedLibrary, null, TOKEN));
+            () ->
+                libraryTranslatorService.convertToFhirLibrary(malformedLibrary, null, null, TOKEN));
 
     // then - perform assertions
     assertThat(exception.getMessage(), containsString("MalformedLibrary"));
@@ -273,7 +366,8 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
     DataFormatException exception =
         assertThrows(
             DataFormatException.class,
-            () -> libraryTranslatorService.convertToFhirLibrary(externalLibrary, null, TOKEN));
+            () ->
+                libraryTranslatorService.convertToFhirLibrary(externalLibrary, null, null, TOKEN));
 
     // then - perform assertions
     assertThat(exception.getMessage(), containsString("ObservationResource"));
@@ -301,7 +395,8 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
         .thenReturn(r5Library);
 
     // when - call method under test
-    Library library = libraryTranslatorService.convertToFhirLibrary(externalLibrary, null, TOKEN);
+    Library library =
+        libraryTranslatorService.convertToFhirLibrary(externalLibrary, null, null, TOKEN);
 
     // then - perform assertions
     assertThat(library.getId(), is(equalTo("ExternalLibrary")));
@@ -327,14 +422,27 @@ public class LibraryTranslatorServiceTest implements ResourceFileUtil, LibraryHe
             eq(CqlCompilerException.ErrorSeverity.Info)))
         .thenReturn(r5Library);
     CqlLibrary cqlLib = createCqlLibrary(cql);
-    cqlLib.setElmJson("ELMJSON");
-    cqlLib.setElmXml("ELMXML");
+    CqlLibraryDto cqlLibDto =
+        CqlLibraryDto.builder()
+            .id(cqlLib.getId())
+            .cqlLibraryName(cqlLib.getCqlLibraryName())
+            .version(cqlLib.getVersion().toString())
+            .publisher(cqlLib.getPublisher())
+            .description(cqlLib.getDescription())
+            .experimental(cqlLib.isExperimental())
+            .cql(cqlLib.getCql())
+            .elmJson("ELMJSON")
+            .elmXml("ELMXML")
+            .build();
 
-    Library library = libraryTranslatorService.convertToFhirLibrary(cqlLib, null, TOKEN);
-    assertThat(library.getName(), is(equalTo(cqlLib.getCqlLibraryName())));
+    Library library =
+        libraryTranslatorService.convertToFhirLibrary(
+            cqlLibDto, null, BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT, TOKEN);
+    assertThat(library.getName(), is(equalTo(cqlLibDto.getCqlLibraryName())));
     assertThat(library.getContent(), is(notNullValue()));
     assertThat(library.getContent().size(), is(equalTo(3)));
-    assertThat(library.getExtension().size(), is(equalTo(2)));
+    assertThat(library.getExtension().size(), is(equalTo(3)));
+    assertThat(library.getContained().size(), is(equalTo(1)));
     assertThat(library.getMeta().getProfile().size(), is(equalTo(7)));
     assertThat(library.getMeta().hasProfile(UriConstants.Library.SHAREABLE_LIBRARY_URI), is(true));
     assertThat(library.getMeta().hasProfile(UriConstants.Library.COMPUTABLE_LIBRARY_URI), is(true));

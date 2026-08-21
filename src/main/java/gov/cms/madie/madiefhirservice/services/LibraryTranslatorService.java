@@ -4,6 +4,8 @@ import gov.cms.madie.madiefhirservice.constants.LibraryContentTypeConstants;
 import gov.cms.madie.madiefhirservice.constants.UriConstants;
 import gov.cms.madie.madiefhirservice.cql.LibraryCqlVisitorFactory;
 import gov.cms.madie.madiefhirservice.dto.CqlLibraryDetails;
+import gov.cms.madie.madiefhirservice.utils.BundleUtil;
+import gov.cms.madie.madiefhirservice.utils.TranslatorConfigUtil;
 import gov.cms.madie.models.dto.CqlLibraryDto;
 import gov.cms.madie.madiefhirservice.utils.FhirResourceHelpers;
 import gov.cms.madie.models.library.CqlLibrary;
@@ -19,6 +21,7 @@ import org.hl7.fhir.r4.model.Enumerations;
 import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.Library;
 import org.hl7.fhir.r4.model.Meta;
+import org.hl7.fhir.r4.model.Parameters;
 import org.hl7.fhir.r4.model.Identifier.IdentifierUse;
 import org.springframework.stereotype.Service;
 
@@ -44,20 +47,25 @@ public class LibraryTranslatorService {
   }
 
   public Library convertToFhirLibrary(
-      CqlLibrary cqlLibrary, Set<String> expressions, String accessToken) {
-    return convertToFhirLibrary(LibrarySource.from(cqlLibrary), expressions, accessToken);
-  }
-
-  public Library convertToFhirLibrary(
-      CqlLibraryDto cqlLibrary, Set<String> expressions, String accessToken) {
-    if (cqlLibrary.isExternal() && StringUtils.isNotBlank(cqlLibrary.getFhirResource())) {
-      return convertExternalFhirLibrary(cqlLibrary);
+      CqlLibraryDto cqlLibraryDto, Set<String> expressions, String bundleType, String accessToken) {
+    Library library;
+    if (cqlLibraryDto.isExternal() && StringUtils.isNotBlank(cqlLibraryDto.getFhirResource())) {
+      library = externalLibraryResourceMapper.toFhirLibrary(cqlLibraryDto);
+    } else {
+      library = convertToFhirLibrary(LibrarySource.from(cqlLibraryDto), expressions, accessToken);
     }
-    return convertToFhirLibrary(LibrarySource.from(cqlLibrary), expressions, accessToken);
-  }
-
-  private Library convertExternalFhirLibrary(CqlLibraryDto cqlLibrary) {
-    return externalLibraryResourceMapper.toFhirLibrary(cqlLibrary);
+    // Add the CQL Options extension and parameters to the library if this is an export bundle.
+    if (BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT.equals(bundleType)) {
+      Parameters cqlOptionParameters =
+          TranslatorConfigUtil.getCqlOptionParameters(cqlLibraryDto.getElmJson());
+      // remove any existing "options" parameters to avoid duplicates, then add the new one.
+      library
+          .getContained()
+          .removeIf(resource -> "options".equals(resource.getIdElement().getIdPart()));
+      library.getContained().add(cqlOptionParameters);
+      addCqlOptionExtensionIfMissing(library);
+    }
+    return library;
   }
 
   private Library convertToFhirLibrary(
@@ -99,6 +107,7 @@ public class LibraryTranslatorService {
             accessToken);
     library.setRelatedArtifact(libraryModuleDefinition.getRelatedArtifact());
     library.setDataRequirement(libraryModuleDefinition.getDataRequirement());
+
     return library;
   }
 
@@ -185,6 +194,15 @@ public class LibraryTranslatorService {
 
   private CodeableConcept createType(String type, String code) {
     return new CodeableConcept().setCoding(Collections.singletonList(new Coding(type, code, null)));
+  }
+
+  private void addCqlOptionExtensionIfMissing(Library library) {
+    boolean cqlOptionExtensionPresent =
+        library.getExtension().stream()
+            .anyMatch(extension -> UriConstants.Library.CQL_OPTIONS_URL.equals(extension.getUrl()));
+    if (!cqlOptionExtensionPresent) {
+      library.addExtension(TranslatorConfigUtil.getCqlOptionExtension());
+    }
   }
 
   /* rawData are bytes that are NOT base64 encoded */
