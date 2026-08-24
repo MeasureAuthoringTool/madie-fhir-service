@@ -7,8 +7,9 @@ import gov.cms.madie.madiefhirservice.exceptions.CqlLibraryNotFoundException;
 import gov.cms.madie.madiefhirservice.utils.BundleUtil;
 import gov.cms.madie.madiefhirservice.utils.MeasureTestHelper;
 import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
-import gov.cms.madie.models.library.CqlLibrary;
+import gov.cms.madie.models.dto.CqlLibraryDto;
 import gov.cms.madie.models.measure.Measure;
+import gov.cms.madie.models.measure.Population;
 import org.cqframework.cql.cql2elm.CqlCompilerException;
 import org.hl7.fhir.instance.model.api.IIdType;
 import org.hl7.fhir.r4.model.*;
@@ -76,7 +77,8 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
     when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure))
         .thenReturn(measure);
 
-    when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class), any(), anyString()))
+    when(libraryTranslatorService.convertToFhirLibrary(
+            any(CqlLibraryDto.class), any(), anyString(), anyString()))
         .thenReturn(library);
     doAnswer(
             invocation -> {
@@ -170,7 +172,8 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
     when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure))
         .thenReturn(measure);
 
-    when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class), any(), anyString()))
+    when(libraryTranslatorService.convertToFhirLibrary(
+            any(CqlLibraryDto.class), any(), anyString(), anyString()))
         .thenReturn(library);
 
     doThrow(new CqlLibraryNotFoundException("FHIRHelpers", "4.0.001"))
@@ -202,7 +205,8 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
     when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure))
         .thenReturn(measure);
 
-    when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class), any(), anyString()))
+    when(libraryTranslatorService.convertToFhirLibrary(
+            any(CqlLibraryDto.class), any(), anyString(), anyString()))
         .thenReturn(library);
 
     doAnswer(
@@ -279,7 +283,8 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
     when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure))
         .thenReturn(measure);
 
-    when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class), any(), anyString()))
+    when(libraryTranslatorService.convertToFhirLibrary(
+            any(CqlLibraryDto.class), any(), anyString(), anyString()))
         .thenReturn(library);
 
     when(elmTranslatorClient.getEffectiveDataRequirements(
@@ -318,7 +323,8 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
     when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure))
         .thenReturn(measure);
 
-    when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class), any(), anyString()))
+    when(libraryTranslatorService.convertToFhirLibrary(
+            any(CqlLibraryDto.class), any(), anyString(), anyString()))
         .thenReturn(library);
 
     when(elmTranslatorClient.getEffectiveDataRequirements(
@@ -353,7 +359,8 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
     when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure))
         .thenReturn(measure);
 
-    when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class), any(), anyString()))
+    when(libraryTranslatorService.convertToFhirLibrary(
+            any(CqlLibraryDto.class), any(), anyString(), anyString()))
         .thenReturn(library);
 
     when(elmTranslatorClient.getEffectiveDataRequirements(
@@ -388,7 +395,8 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
     when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure))
         .thenReturn(measure);
 
-    when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class), any(), anyString()))
+    when(libraryTranslatorService.convertToFhirLibrary(
+            any(CqlLibraryDto.class), any(), anyString(), anyString()))
         .thenReturn(library);
 
     when(elmTranslatorClient.getEffectiveDataRequirements(
@@ -422,7 +430,8 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
     when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure))
         .thenReturn(measure);
 
-    when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class), any(), anyString()))
+    when(libraryTranslatorService.convertToFhirLibrary(
+            any(CqlLibraryDto.class), any(), anyString(), anyString()))
         .thenReturn(library);
 
     when(elmTranslatorClient.getEffectiveDataRequirements(
@@ -457,7 +466,8 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
     when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure))
         .thenReturn(measure);
 
-    when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class), any(), anyString()))
+    when(libraryTranslatorService.convertToFhirLibrary(
+            any(CqlLibraryDto.class), any(), anyString(), anyString()))
         .thenReturn(library);
 
     when(elmTranslatorClient.getEffectiveDataRequirements(
@@ -489,7 +499,8 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
     when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure))
         .thenReturn(measure);
 
-    when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class), any(), anyString()))
+    when(libraryTranslatorService.convertToFhirLibrary(
+            any(CqlLibraryDto.class), any(), anyString(), anyString()))
         .thenReturn(library);
 
     when(elmTranslatorClient.getEffectiveDataRequirements(
@@ -521,26 +532,28 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
 
   @Test
   public void testCreateCqlLibraryForMadieMeasure() {
-    CqlLibrary result = measureBundleService.createCqlLibraryForMadieMeasure(madieMeasure);
+    CqlLibraryDto result = measureBundleService.createCqlLibraryDtoForMadieMeasure(madieMeasure);
 
     assertThat(result, is(notNullValue()));
     assertThat(result.getId(), is(equalTo(madieMeasure.getCqlLibraryName())));
     assertThat(result.getCqlLibraryName(), is(equalTo(madieMeasure.getCqlLibraryName())));
-    assertThat(result.getVersion(), is(equalTo(madieMeasure.getVersion())));
+    assertThat(result.getVersion(), is(equalTo(madieMeasure.getVersion().toString())));
     assertThat(result.getCql(), is(equalTo(madieMeasure.getCql())));
   }
 
   @Test
   public void testGetMeasureLibraryResourceForMadieMeasure() {
-    when(libraryTranslatorService.convertToFhirLibrary(any(CqlLibrary.class), any(), anyString()))
+    when(libraryTranslatorService.convertToFhirLibrary(
+            any(CqlLibraryDto.class), any(), anyString(), anyString()))
         .thenReturn(library);
 
     Library result =
         measureBundleService.getMeasureLibraryResourceForMadieMeasure(
             madieMeasure.getGroups().get(0).getPopulations().stream()
-                .map(p -> p.getDefinition())
+                .map(Population::getDefinition)
                 .collect(java.util.stream.Collectors.toSet()),
             madieMeasure,
+            BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT,
             "token");
 
     assertThat(result, is(notNullValue()));

@@ -28,6 +28,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import ca.uhn.fhir.context.FhirContext;
 import gov.cms.madie.madiefhirservice.exceptions.InternalServerException;
+import gov.cms.madie.madiefhirservice.utils.BundleUtil;
 import gov.cms.madie.madiefhirservice.utils.MeasureTestHelper;
 import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
 import gov.cms.madie.models.common.Version;
@@ -103,9 +104,20 @@ class ExportServiceTest implements ResourceFileUtil {
 
     byte[] result =
         exportService.createExport(
-            madieMeasure, principal, CqlCompilerException.ErrorSeverity.Info, "Bearer TOKEN");
+            madieMeasure,
+            principal,
+            BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT_PUBLISH,
+            CqlCompilerException.ErrorSeverity.Info,
+            "******");
 
     assertThat(result, is(equalTo("This is a test".getBytes())));
+    Mockito.verify(measureBundleService)
+        .createMeasureBundle(
+            madieMeasure,
+            principal,
+            BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT_PUBLISH,
+            "******",
+            CqlCompilerException.ErrorSeverity.Info);
   }
 
   @Test
@@ -124,8 +136,9 @@ class ExportServiceTest implements ResourceFileUtil {
                 exportService.createExport(
                     madieMeasure,
                     principal,
+                    BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT,
                     CqlCompilerException.ErrorSeverity.Info,
-                    "Bearer TOKEN"));
+                    "******"));
     assertThat(
         ex.getMessage(),
         is(equalTo("Unexpected error while generating exports for measureID: xyz-p13r-13ert")));

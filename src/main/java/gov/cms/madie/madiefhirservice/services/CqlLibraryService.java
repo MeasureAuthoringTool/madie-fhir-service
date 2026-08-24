@@ -1,7 +1,7 @@
 package gov.cms.madie.madiefhirservice.services;
 
 import gov.cms.madie.madiefhirservice.exceptions.CqlLibraryNotFoundException;
-import gov.cms.madie.models.library.CqlLibrary;
+import gov.cms.madie.models.dto.CqlLibraryDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.cqframework.cql.cql2elm.CqlCompilerException;
@@ -17,6 +17,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -31,18 +32,19 @@ public class CqlLibraryService {
   @Value("${madie.library.service.versioned.uri}")
   private String librariesVersionedUri;
 
-  @Cacheable(value = "libraries", key = "{ #root.methodName, #name, #version }")
-  public CqlLibrary getLibrary(
+  @Cacheable(value = "libraries", key = "{ #root.methodName, #name, #version, #namespacePrefix }")
+  public CqlLibraryDto getLibrary(
       String name,
       String version,
+      Optional<String> namespacePrefix,
       String accessToken,
       CqlCompilerException.ErrorSeverity errorSeverity) {
-    URI uri = buildMadieLibraryServiceUri(name, version, errorSeverity);
+    URI uri = buildMadieLibraryServiceUri(name, version, namespacePrefix, errorSeverity);
     HttpHeaders headers = new HttpHeaders();
     headers.add("Authorization", accessToken);
 
-    ResponseEntity<CqlLibrary> responseEntity =
-        restTemplate.exchange(uri, HttpMethod.GET, new HttpEntity<>(headers), CqlLibrary.class);
+    ResponseEntity<CqlLibraryDto> responseEntity =
+        restTemplate.exchange(uri, HttpMethod.GET, new HttpEntity<>(headers), CqlLibraryDto.class);
 
     if (responseEntity.getStatusCode().is2xxSuccessful()) {
       if (responseEntity.hasBody()) {
@@ -78,11 +80,15 @@ public class CqlLibraryService {
    * @return
    */
   private URI buildMadieLibraryServiceUri(
-      String name, String version, CqlCompilerException.ErrorSeverity errorSeverity) {
+      String name,
+      String version,
+      Optional<String> namespacePrefix,
+      CqlCompilerException.ErrorSeverity errorSeverity) {
     return UriComponentsBuilder.fromUriString(madieLibraryService + librariesVersionedUri)
         .queryParam("name", name)
         .queryParam("version", version)
         .queryParam("errorSeverity", errorSeverity)
+        .queryParamIfPresent("namespacePrefix", namespacePrefix)
         .build()
         .encode()
         .toUri();
