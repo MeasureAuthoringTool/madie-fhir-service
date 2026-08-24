@@ -20,6 +20,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -145,6 +146,80 @@ class LibraryServiceTest implements LibraryHelper, ResourceFileUtil {
     assertThat(includedLibraryMap.size(), is(equalTo(0)));
     verify(libraryTranslatorService, never())
         .convertToFhirLibrary(any(CqlLibraryDto.class), any(), anyString());
+  }
+
+  @Test
+  void testGetIncludedLibrariesInheritsNamespaceForNestedUnqualifiedInclude() {
+    // given - set up mocks
+    String namespacePrefix = "hl7.fhir.uv.cql";
+    String mainLibrary =
+        "library MainLibrary version '1.0.0'\n"
+            + "using FHIR version '4.0.1'\n"
+            + "include hl7.fhir.uv.cql.FHIRCommon version '4.0.1' called FHIRCommon\n";
+    String fhirCommonCql =
+        "library FHIRCommon version '4.0.1'\n"
+            + "using FHIR version '4.0.1'\n"
+            + "include FHIRHelpers version '4.0.1' called FHIRHelpers\n";
+    String fhirHelpersCql = "library FHIRHelpers version '4.0.1'\nusing FHIR version '4.0.1'";
+    CqlLibraryDto fhirCommon =
+        CqlLibraryDto.builder()
+            .cqlLibraryName("FHIRCommon")
+            .version("4.0.1")
+            .namespacePrefix(namespacePrefix)
+            .external(true)
+            .build();
+    CqlLibraryDto fhirHelpers =
+        CqlLibraryDto.builder()
+            .cqlLibraryName("FHIRHelpers")
+            .version("4.0.1")
+            .namespacePrefix(namespacePrefix)
+            .external(true)
+            .build();
+    Library fhirCommonLibrary = createLibrary(fhirCommonCql);
+    Library fhirHelpersLibrary = createLibrary(fhirHelpersCql);
+    when(libCqlVisitorFactory.visit(mainLibrary))
+        .thenReturn(new LibraryCqlVisitorFactory().visit(mainLibrary));
+    when(libCqlVisitorFactory.visit(fhirCommonCql))
+        .thenReturn(new LibraryCqlVisitorFactory().visit(fhirCommonCql));
+    when(libCqlVisitorFactory.visit(fhirHelpersCql))
+        .thenReturn(new LibraryCqlVisitorFactory().visit(fhirHelpersCql));
+    when(cqlLibraryService.getLibrary(
+            "FHIRCommon",
+            "4.0.1",
+            Optional.of(namespacePrefix),
+            "TOKEN",
+            CqlCompilerException.ErrorSeverity.Info))
+        .thenReturn(fhirCommon);
+    when(cqlLibraryService.getLibrary(
+            "FHIRHelpers",
+            "4.0.1",
+            Optional.of(namespacePrefix),
+            "TOKEN",
+            CqlCompilerException.ErrorSeverity.Info))
+        .thenReturn(fhirHelpers);
+    when(libraryTranslatorService.convertToFhirLibrary(fhirCommon, null, "TOKEN"))
+        .thenReturn(fhirCommonLibrary);
+    when(libraryTranslatorService.convertToFhirLibrary(fhirHelpers, null, "TOKEN"))
+        .thenReturn(fhirHelpersLibrary);
+
+    // when - call method under test
+    Map<String, Library> includedLibraryMap = new HashMap<>();
+    libraryService.getIncludedLibraries(
+        mainLibrary,
+        includedLibraryMap,
+        BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT,
+        CqlCompilerException.ErrorSeverity.Info,
+        "TOKEN");
+
+    // then - perform assertions
+    verify(cqlLibraryService)
+        .getLibrary(
+            "FHIRHelpers",
+            "4.0.1",
+            Optional.of(namespacePrefix),
+            "TOKEN",
+            CqlCompilerException.ErrorSeverity.Info);
+    assertThat(includedLibraryMap.size(), is(equalTo(2)));
   }
 
   @Test
