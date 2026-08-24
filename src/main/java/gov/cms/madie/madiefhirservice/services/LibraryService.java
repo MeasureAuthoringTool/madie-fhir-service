@@ -1,5 +1,6 @@
 package gov.cms.madie.madiefhirservice.services;
 
+import gov.cms.madie.madiefhirservice.constants.LibraryContentTypeConstants;
 import gov.cms.madie.madiefhirservice.cql.LibraryCqlVisitor;
 import gov.cms.madie.madiefhirservice.cql.LibraryCqlVisitorFactory;
 import gov.cms.madie.models.dto.CqlLibraryDto;
@@ -31,7 +32,8 @@ public class LibraryService {
 
   public Library cqlLibraryToFhirLibrary(
       CqlLibraryDto cqlLibrary, final String bundleType, String accessToken) {
-    Library library = libraryTranslatorService.convertToFhirLibrary(cqlLibrary, null, accessToken);
+    Library library =
+        libraryTranslatorService.convertToFhirLibrary(cqlLibrary, null, bundleType, accessToken);
     if (BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT.equals(bundleType)) {
       library.setText(createLibraryNarrativeText(library));
     }
@@ -141,8 +143,9 @@ public class LibraryService {
 
   private Attachment findCqlAttachment(Library library) {
     return library.getContent().stream()
-        .filter(a -> a.getContentType().equals("text/cql"))
+        .filter(a -> a.getContentType().equals(LibraryContentTypeConstants.CQL))
         .findFirst()
-        .orElseThrow(() -> new LibraryAttachmentNotFoundException(library, "text/cql"));
+        .orElseThrow(
+            () -> new LibraryAttachmentNotFoundException(library, LibraryContentTypeConstants.CQL));
   }
 }

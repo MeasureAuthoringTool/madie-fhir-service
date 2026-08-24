@@ -6,6 +6,7 @@ import gov.cms.madie.madiefhirservice.exceptions.*;
 import gov.cms.madie.madiefhirservice.utils.BundleUtil;
 import gov.cms.madie.madiefhirservice.utils.LibraryHelper;
 import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
+
 import org.cqframework.cql.cql2elm.CqlCompilerException;
 import org.hl7.fhir.r4.model.Attachment;
 import org.hl7.fhir.r4.model.Bundle;
@@ -72,11 +73,17 @@ class LibraryServiceTest implements LibraryHelper, ResourceFileUtil {
 
     Attachment attachment =
         new Attachment().setContentType("text/cql").setData(includedLibrary.getBytes());
+    Attachment elmAttachment =
+        new Attachment()
+            .setContentType("application/elm+json")
+            .setData(
+                "{\"library\":{\"annotation\":[{\"type\":\"CqlToElmInfo\",\"translatorVersion\":\"5.0.0\",\"translatorOptions\":\"EnableLocators\",\"signatureLevel\":\"Overloads\"}]}}"
+                    .getBytes());
     Library library =
         new Library()
             .setName("IncludedLibrary")
             .setVersion("0.1.0")
-            .setContent(List.of(attachment));
+            .setContent(List.of(attachment, elmAttachment));
 
     CqlLibraryDto cqlLibrary =
         CqlLibraryDto.builder().cqlLibraryName("IncludedLibrary").version("0.1.000").build();
@@ -90,7 +97,7 @@ class LibraryServiceTest implements LibraryHelper, ResourceFileUtil {
             any(CqlCompilerException.ErrorSeverity.class)))
         .thenReturn(cqlLibrary);
     when(libraryTranslatorService.convertToFhirLibrary(
-            any(CqlLibraryDto.class), any(), anyString()))
+            any(CqlLibraryDto.class), any(), anyString(), anyString()))
         .thenReturn(library);
 
     // when - call method under test
@@ -145,7 +152,7 @@ class LibraryServiceTest implements LibraryHelper, ResourceFileUtil {
     // then - perform assertions
     assertThat(includedLibraryMap.size(), is(equalTo(0)));
     verify(libraryTranslatorService, never())
-        .convertToFhirLibrary(any(CqlLibraryDto.class), any(), anyString());
+        .convertToFhirLibrary(any(CqlLibraryDto.class), any(), anyString(), anyString());
   }
 
   @Test
