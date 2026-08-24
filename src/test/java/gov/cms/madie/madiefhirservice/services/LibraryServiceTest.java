@@ -204,9 +204,11 @@ class LibraryServiceTest implements LibraryHelper, ResourceFileUtil {
             "TOKEN",
             CqlCompilerException.ErrorSeverity.Info))
         .thenReturn(fhirHelpers);
-    when(libraryTranslatorService.convertToFhirLibrary(fhirCommon, null, "TOKEN"))
+    when(libraryTranslatorService.convertToFhirLibrary(
+            fhirCommon, null, BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT, "TOKEN"))
         .thenReturn(fhirCommonLibrary);
-    when(libraryTranslatorService.convertToFhirLibrary(fhirHelpers, null, "TOKEN"))
+    when(libraryTranslatorService.convertToFhirLibrary(
+            fhirHelpers, null, BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT, "TOKEN"))
         .thenReturn(fhirHelpersLibrary);
 
     // when - call method under test
