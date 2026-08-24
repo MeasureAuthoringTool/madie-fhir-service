@@ -46,6 +46,16 @@ public class LibraryService {
       final String bundleType,
       CqlCompilerException.ErrorSeverity errorSeverity,
       final String accessToken) {
+    getIncludedLibraries(null, cql, libraryMap, bundleType, errorSeverity, accessToken);
+  }
+
+  public void getIncludedLibraries(
+      final String namespacePrefix,
+      String cql,
+      Map<String, Library> libraryMap,
+      final String bundleType,
+      CqlCompilerException.ErrorSeverity errorSeverity,
+      final String accessToken) {
     if (StringUtils.isBlank(cql) || libraryMap == null) {
       log.error("Invalid method arguments provided to getIncludedLibraries");
       throw new IllegalArgumentException("Please provide valid arguments.");
@@ -56,11 +66,16 @@ public class LibraryService {
       String key = libraryNameValuePair.getLeft() + libraryNameValuePair.getRight();
       if (!libraryMap.containsKey(key)) {
         var libraryParts = parseLibraryString(libraryNameValuePair.getLeft());
+        Optional<String> includedLibNamespacePrefix =
+            Optional.ofNullable(libraryParts[0])
+                .filter(StringUtils::isNotBlank)
+                .or(() -> Optional.ofNullable(namespacePrefix).filter(StringUtils::isNotBlank));
+
         CqlLibraryDto cqlLibrary =
             cqlLibraryService.getLibrary(
                 libraryParts[1], // name
                 libraryNameValuePair.getRight(), // version
-                Optional.ofNullable(libraryParts[0]), // prefix
+                includedLibNamespacePrefix,
                 accessToken,
                 errorSeverity);
         // Exclude external libraries from publishable bundles
@@ -77,7 +92,12 @@ public class LibraryService {
 
         Attachment attachment = findCqlAttachment(library);
         getIncludedLibraries(
-            new String(attachment.getData()), libraryMap, bundleType, errorSeverity, accessToken);
+            includedLibNamespacePrefix.orElse(null),
+            new String(attachment.getData()),
+            libraryMap,
+            bundleType,
+            errorSeverity,
+            accessToken);
       }
     }
   }
