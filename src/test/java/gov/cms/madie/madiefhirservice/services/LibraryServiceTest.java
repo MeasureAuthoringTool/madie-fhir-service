@@ -291,24 +291,20 @@ class LibraryServiceTest implements LibraryHelper, ResourceFileUtil {
 
   @Test
   public void testParseLibraryString() {
-    String fullLibraryString = "Namespace.LibraryName";
+    assertLibraryParts("Namespace.LibraryName", "Namespace", "LibraryName");
+    assertLibraryParts("hl7.fhir.uv.cql.FHIRCommon", "hl7.fhir.uv.cql", "FHIRCommon");
+    assertLibraryParts(" LibraryName ", "", "LibraryName");
+    assertLibraryParts("`hl7.fhir`.\"uv\".cql.`FHIR Common`", "hl7.fhir.uv.cql", "FHIR Common");
+    assertLibraryParts("`hl7`.`fhir`.uv.cql.`FHIR\\`Common`", "hl7.fhir.uv.cql", "FHIR`Common");
+    assertLibraryParts("", "", "");
+    assertLibraryParts(null, "", "");
+  }
+
+  private void assertLibraryParts(
+      String fullLibraryString, String expectedNamespace, String expectedLibraryName) {
     String[] result = libraryService.parseLibraryString(fullLibraryString);
-    assertThat(result[0], is(equalTo("Namespace")));
-    assertThat(result[1], is(equalTo("LibraryName")));
 
-    fullLibraryString = "LibraryName";
-    result = libraryService.parseLibraryString(fullLibraryString);
-    assertThat(result[0], is(equalTo("")));
-    assertThat(result[1], is(equalTo("LibraryName")));
-
-    fullLibraryString = "";
-    result = libraryService.parseLibraryString(fullLibraryString);
-    assertThat(result[0], is(equalTo("")));
-    assertThat(result[1], is(equalTo("")));
-
-    fullLibraryString = null;
-    result = libraryService.parseLibraryString(fullLibraryString);
-    assertThat(result[0], is(equalTo("")));
-    assertThat(result[1], is(equalTo("")));
+    assertThat(result[0], is(equalTo(expectedNamespace)));
+    assertThat(result[1], is(equalTo(expectedLibraryName)));
   }
 }

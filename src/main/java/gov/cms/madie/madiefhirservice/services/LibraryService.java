@@ -11,12 +11,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Pair;
 import org.cqframework.cql.cql2elm.CqlCompilerException;
+import org.cqframework.cql.cql2elm.StringEscapeUtils;
 import org.hl7.fhir.r4.model.Attachment;
 import org.hl7.fhir.r4.model.Library;
 import org.hl7.fhir.r4.model.Narrative;
 import org.hl7.fhir.r4.model.Narrative.NarrativeStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -71,6 +74,9 @@ public class LibraryService {
                 .filter(StringUtils::isNotBlank)
                 .or(() -> Optional.ofNullable(namespacePrefix).filter(StringUtils::isNotBlank));
 
+        log.info(
+            "Looking for library namespace prefix: [{}]", includedLibNamespacePrefix.orElse("N/A"));
+
         CqlLibraryDto cqlLibrary =
             cqlLibraryService.getLibrary(
                 libraryParts[1], // name
@@ -102,15 +108,59 @@ public class LibraryService {
     }
   }
 
+  private String normalizeIdentifier(String identifierText) {
+    String trimmedIdentifier = identifierText.trim();
+    boolean isDelimited = trimmedIdentifier.startsWith("\"") || trimmedIdentifier.startsWith("`");
+    if (isDelimited) {
+      trimmedIdentifier = trimmedIdentifier.substring(1, trimmedIdentifier.length() - 1);
+    }
+
+    return StringEscapeUtils.unescapeCql(trimmedIdentifier);
+  }
+
+  private List<String> getQualifiedIdentifiers(String qualifiedIdentifier) {
+    List<String> identifiers = new ArrayList<>();
+    StringBuilder identifier = new StringBuilder();
+    char enclosingCharacter = 0;
+    boolean escaped = false;
+
+    for (char character : qualifiedIdentifier.toCharArray()) {
+      if (escaped) {
+        identifier.append(character);
+        escaped = false;
+      } else if (character == '\\') {
+        identifier.append(character);
+        escaped = true;
+      } else if (enclosingCharacter != 0) {
+        identifier.append(character);
+        if (character == enclosingCharacter) {
+          enclosingCharacter = 0;
+        }
+      } else if (character == '"' || character == '`') {
+        enclosingCharacter = character;
+        identifier.append(character);
+      } else if (character == '.') {
+        identifiers.add(normalizeIdentifier(identifier.toString()));
+        identifier.setLength(0);
+      } else {
+        identifier.append(character);
+      }
+    }
+
+    identifiers.add(normalizeIdentifier(identifier.toString()));
+    return identifiers;
+  }
+
   /**
    * Parses a library identifier into namespace and library name parts.
    *
-   * <p>The split is performed on the last {@code '.'} character:
+   * <p>Each qualified identifier component is normalized. The last component is the library name,
+   * while preceding components form the namespace prefix:
    *
    * <ul>
    *   <li>If {@code fullLibraryString} is {@code null} or blank, returns {@code {"", ""}}.
-   *   <li>If no {@code '.'} is present, returns {@code {"", trimmedInput}}.
-   *   <li>If {@code '.'} is present, returns {@code {trimmedNamespace, trimmedLibraryName}}.
+   *   <li>If one identifier is present, returns {@code {"", normalizedIdentifier}}.
+   *   <li>If multiple identifiers are present, returns the joined namespace and library name.
    * </ul>
    *
    * @param fullLibraryString the raw library identifier, optionally namespace-qualified
@@ -122,16 +172,9 @@ public class LibraryService {
       return new String[] {"", ""};
     }
 
-    int lastDotIndex = fullLibraryString.lastIndexOf('.');
-
-    if (lastDotIndex == -1) {
-      return new String[] {"", fullLibraryString.trim()};
-    }
-
-    String namespace = fullLibraryString.substring(0, lastDotIndex).trim();
-    String libraryName = fullLibraryString.substring(lastDotIndex + 1).trim();
-
-    return new String[] {namespace, libraryName};
+    List<String> identifiers = getQualifiedIdentifiers(fullLibraryString);
+    String libraryName = identifiers.remove(identifiers.size() - 1);
+    return new String[] {String.join(".", identifiers), libraryName};
   }
 
   private Narrative createLibraryNarrativeText(Library library) {
