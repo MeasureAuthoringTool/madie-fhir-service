@@ -28,7 +28,7 @@ public class VersionAgnosticProfileValidationSupport extends BaseValidationSuppo
     }
 
     StructureDefinition structureDefinition = fetchFromDelegates(canonicalUrl);
-    if (structureDefinition != null || !canonicalUrl.contains("|")) {
+    if (structureDefinition != null) {
       return structureDefinition;
     }
 
