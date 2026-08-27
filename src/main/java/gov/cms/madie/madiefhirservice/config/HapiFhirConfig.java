@@ -184,8 +184,8 @@ public class HapiFhirConfig {
     DefaultProfileValidationSupport defaultProfileValidationSupport =
         new DefaultProfileValidationSupport(usqualitycore05FhirContext);
 
-    VersionAgnosticProfileValidationSupport versionAgnosticProfileValidationSupport =
-        new VersionAgnosticProfileValidationSupport(
+    CustomProfileValidationSupport versionAgnosticProfileValidationSupport =
+        new CustomProfileValidationSupport(
             usqualitycore05FhirContext, npmPackageSupport, defaultProfileValidationSupport);
 
     RemoteTerminologyServiceValidationSupport remoteTerminologyServiceValidationSupport =

@@ -10,17 +10,18 @@ import org.hl7.fhir.r4.model.StructureDefinition;
 import java.util.Arrays;
 import java.util.List;
 
-/** Supports versioned profile canonical resolution by falling back to the unversioned canonical. */
-public class VersionAgnosticProfileValidationSupport extends BaseValidationSupport {
+public class CustomProfileValidationSupport extends BaseValidationSupport {
 
   private final List<IValidationSupport> delegates;
 
-  public VersionAgnosticProfileValidationSupport(
-      FhirContext fhirContext, IValidationSupport... delegates) {
+  public CustomProfileValidationSupport(FhirContext fhirContext, IValidationSupport... delegates) {
     super(fhirContext);
     this.delegates = Arrays.asList(delegates);
   }
 
+  /**
+   * Supports versioned profile canonical resolution by falling back to the unversioned canonical.
+   */
   @Override
   public StructureDefinition fetchStructureDefinition(String canonicalUrl) {
     if (StringUtils.isBlank(canonicalUrl)) {

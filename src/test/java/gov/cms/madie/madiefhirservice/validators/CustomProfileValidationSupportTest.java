@@ -11,7 +11,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
-class VersionAgnosticProfileValidationSupportTest {
+class CustomProfileValidationSupportTest {
 
   private static final String CANONICAL_URL =
       "http://hl7.org/fhir/StructureDefinition/Coverage|4.0.1";
@@ -21,8 +21,8 @@ class VersionAgnosticProfileValidationSupportTest {
   @Test
   void testGetName() {
     IValidationSupport delegate = mock(IValidationSupport.class);
-    VersionAgnosticProfileValidationSupport support =
-        new VersionAgnosticProfileValidationSupport(FhirContext.forR4(), delegate);
+    CustomProfileValidationSupport support =
+        new CustomProfileValidationSupport(FhirContext.forR4(), delegate);
 
     String name = support.getName();
 
@@ -32,8 +32,8 @@ class VersionAgnosticProfileValidationSupportTest {
   @Test
   void testFetchStructureDefinitionWhenCanonicalUrlIsBlank() {
     IValidationSupport delegate = mock(IValidationSupport.class);
-    VersionAgnosticProfileValidationSupport support =
-        new VersionAgnosticProfileValidationSupport(FhirContext.forR4(), delegate);
+    CustomProfileValidationSupport support =
+        new CustomProfileValidationSupport(FhirContext.forR4(), delegate);
 
     StructureDefinition result = support.fetchStructureDefinition("");
 
@@ -47,8 +47,8 @@ class VersionAgnosticProfileValidationSupportTest {
     StructureDefinition expected = new StructureDefinition();
     when(delegate.fetchStructureDefinition(CANONICAL_URL)).thenReturn(expected);
 
-    VersionAgnosticProfileValidationSupport support =
-        new VersionAgnosticProfileValidationSupport(FhirContext.forR4(), delegate);
+    CustomProfileValidationSupport support =
+        new CustomProfileValidationSupport(FhirContext.forR4(), delegate);
 
     StructureDefinition result = support.fetchStructureDefinition(CANONICAL_URL);
 
@@ -65,8 +65,8 @@ class VersionAgnosticProfileValidationSupportTest {
     when(delegate.fetchStructureDefinition(CANONICAL_URL)).thenReturn(null);
     when(delegate.fetchStructureDefinition(UNVERSIONED_CANONICAL)).thenReturn(expected);
 
-    VersionAgnosticProfileValidationSupport support =
-        new VersionAgnosticProfileValidationSupport(FhirContext.forR4(), delegate);
+    CustomProfileValidationSupport support =
+        new CustomProfileValidationSupport(FhirContext.forR4(), delegate);
 
     StructureDefinition result = support.fetchStructureDefinition(CANONICAL_URL);
 
@@ -82,8 +82,8 @@ class VersionAgnosticProfileValidationSupportTest {
     when(delegate.fetchStructureDefinition(CANONICAL_URL)).thenReturn(null);
     when(delegate.fetchStructureDefinition(UNVERSIONED_CANONICAL)).thenReturn(null);
 
-    VersionAgnosticProfileValidationSupport support =
-        new VersionAgnosticProfileValidationSupport(FhirContext.forR4(), delegate);
+    CustomProfileValidationSupport support =
+        new CustomProfileValidationSupport(FhirContext.forR4(), delegate);
 
     StructureDefinition result = support.fetchStructureDefinition(CANONICAL_URL);
 
