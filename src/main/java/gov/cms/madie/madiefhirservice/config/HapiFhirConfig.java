@@ -184,7 +184,7 @@ public class HapiFhirConfig {
     DefaultProfileValidationSupport defaultProfileValidationSupport =
         new DefaultProfileValidationSupport(usqualitycore05FhirContext);
 
-    CustomProfileValidationSupport versionAgnosticProfileValidationSupport =
+    CustomProfileValidationSupport customProfileValidationSupport =
         new CustomProfileValidationSupport(
             usqualitycore05FhirContext, npmPackageSupport, defaultProfileValidationSupport);
 
@@ -202,7 +202,7 @@ public class HapiFhirConfig {
         vsesValidationSupport,
         npmPackageSupport,
         defaultProfileValidationSupport,
-        versionAgnosticProfileValidationSupport,
+        customProfileValidationSupport,
         new CustomQiCoreInMemoryValidationSupport(usqualitycore05FhirContext, validationConfig),
         new CommonCodeSystemsTerminologyService(usqualitycore05FhirContext),
         remoteTerminologyServiceValidationSupport,
