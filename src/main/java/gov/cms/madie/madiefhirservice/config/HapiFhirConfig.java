@@ -181,6 +181,13 @@ public class HapiFhirConfig {
     CustomUnknownCodeSystemWarningValidationSupport unknownCodeSystemWarningValidationSupport =
         getUnknownCodeSystemValidationSupport(usqualitycore05FhirContext);
 
+    DefaultProfileValidationSupport defaultProfileValidationSupport =
+        new DefaultProfileValidationSupport(usqualitycore05FhirContext);
+
+    CustomProfileValidationSupport customProfileValidationSupport =
+        new CustomProfileValidationSupport(
+            usqualitycore05FhirContext, npmPackageSupport, defaultProfileValidationSupport);
+
     RemoteTerminologyServiceValidationSupport remoteTerminologyServiceValidationSupport =
         getRemoteTerminologyServiceValidationSupport(usqualitycore05FhirContext);
 
@@ -194,7 +201,8 @@ public class HapiFhirConfig {
     return new ValidationSupportChain(
         vsesValidationSupport,
         npmPackageSupport,
-        new DefaultProfileValidationSupport(usqualitycore05FhirContext),
+        defaultProfileValidationSupport,
+        customProfileValidationSupport,
         new CustomQiCoreInMemoryValidationSupport(usqualitycore05FhirContext, validationConfig),
         new CommonCodeSystemsTerminologyService(usqualitycore05FhirContext),
         remoteTerminologyServiceValidationSupport,
