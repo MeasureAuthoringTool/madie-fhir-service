@@ -1,0 +1,63 @@
+{
+  "name": "madie-fhir-service",
+  "version": "",
+  "description": "FHIR Service for MADiE",
+  "longDescription": "",
+  "permissions": {
+    "licenses": [
+      {
+        "name": "CC0-1.0",
+        "URL": ""
+      }
+    ],
+    "usageType": [],
+    "exemptionText": ""
+  },
+  "organization": "Centers for Medicare & Medicaid Services",
+  "repositoryURL": "https://github.com/MeasureAuthoringTool/madie-fhir-service",
+  "repositoryVisibility": "public",
+  "homepageURL": "",
+  "downloadURL": "",
+  "disclaimerURL": "",
+  "disclaimerText": "",
+  "vcs": "git",
+  "laborHours": 8839,
+  "reuseFrequency": {
+    "forks": 3,
+    "clones": 0
+  },
+  "platforms": [],
+  "categories": [],
+  "languages": [
+    "Java",
+    "HTML",
+    "CQL",
+    "Liquid",
+    "Dockerfile"
+  ],
+  "contractNumber": [],
+  "SBOM": "https://github.com/MeasureAuthoringTool/madie-fhir-service/network/dependencies",
+  "relatedCode": [],
+  "reusedCode": [],
+  "partners": [],
+  "date": {
+    "created": "2022-03-16T18:35:11Z",
+    "lastModified": "2026-08-28T15:27:11Z",
+    "metadataLastUpdated": "2026-09-01T03:05:07.588Z"
+  },
+  "tags": [],
+  "contact": {
+    "email": "",
+    "name": ""
+  },
+  "feedbackMechanism": "https://github.com/MeasureAuthoringTool/madie-fhir-service/issues",
+  "AIUseCaseID": "0",
+  "localisation": false,
+  "userInput": false,
+  "group": "",
+  "projects": [],
+  "systems": [],
+  "subsetInHealthcare": [],
+  "userType": [],
+  "maturityModelTier": 0
+}
