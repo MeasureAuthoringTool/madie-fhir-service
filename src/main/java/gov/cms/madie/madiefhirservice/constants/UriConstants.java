@@ -139,6 +139,14 @@ public final class UriConstants {
     public static final String CBE_ID = "https://madie.cms.gov/measure/cbeId";
   }
 
+  public static final class MadieMeasureReport {
+    // A composite Numerator can be a decimal (e.g. weighted/linear composite scoring). FHIR's
+    // MeasureReport.group.population.count is integer-only, so the value is preserved as a Quantity
+    // in this extension instead of being rounded into count.
+    public static final String COMPOSITE_NUMERATOR_SCORE =
+        "http://hl7.org/fhir/StructureDefinition/measurereport-countQuantity";
+  }
+
   public static final class Library {
     public static String SHAREABLE_LIBRARY_URI =
         "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-shareablelibrary";

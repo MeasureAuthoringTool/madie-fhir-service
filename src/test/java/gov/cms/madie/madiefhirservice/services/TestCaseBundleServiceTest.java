@@ -14,6 +14,7 @@ import static org.mockito.Mockito.doReturn;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.*;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -24,6 +25,7 @@ import org.apache.commons.lang3.time.DateFormatUtils;
 import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.MeasureReport;
 import org.hl7.fhir.r4.model.Parameters;
+import org.hl7.fhir.r4.model.Quantity;
 import org.hl7.fhir.r4.model.Reference;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -52,6 +54,10 @@ import gov.cms.madie.models.measure.Measure;
 import gov.cms.madie.models.measure.PopulationType;
 import gov.cms.madie.models.measure.Stratification;
 import gov.cms.madie.models.measure.TestCase;
+import gov.cms.madie.models.measure.CompositeScoreExpectedValue;
+import gov.cms.madie.models.measure.Score;
+import gov.cms.madie.models.measure.TestCaseGroupPopulation;
+import gov.cms.madie.models.measure.TestCasePopulationValue;
 import gov.cms.madie.packaging.utils.PackagingUtilityFactory;
 import gov.cms.madie.packaging.utils.qicore411.PackagingUtilityImpl;
 
@@ -601,5 +607,204 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
     PopulationType result =
         testCaseBundleService.getPopulationType(PopulationType.INITIAL_POPULATION);
     assertEquals(PopulationType.INITIAL_POPULATION, result);
+  }
+
+  // -------------------- Composite Test Case tests --------------------
+
+  @Test
+  void isCompositePopulationReturnsTrueWhenNoPopulationValuesAndCompositeScorePresent() {
+    TestCaseGroupPopulation population =
+        TestCaseGroupPopulation.builder()
+            .groupId("group-1")
+            .populationValues(null)
+            .compositeScoreValues(
+                CompositeScoreExpectedValue.builder()
+                    .compositeScore(Score.builder().expected(33.33).actual(0.0).build())
+                    .build())
+            .build();
+    assertTrue(testCaseBundleService.isCompositePopulation(population));
+  }
+
+  @Test
+  void isCompositePopulationReturnsTrueWhenPopulationValuesEmptyAndCompositeScorePresent() {
+    TestCaseGroupPopulation population =
+        TestCaseGroupPopulation.builder()
+            .groupId("group-1")
+            .populationValues(new ArrayList<>())
+            .compositeScoreValues(
+                CompositeScoreExpectedValue.builder()
+                    .compositeScore(Score.builder().expected(33.33).actual(0.0).build())
+                    .build())
+            .build();
+    assertTrue(testCaseBundleService.isCompositePopulation(population));
+  }
+
+  @Test
+  void isCompositePopulationReturnsFalseWhenPopulationValuesPresent() {
+    TestCaseGroupPopulation population =
+        TestCaseGroupPopulation.builder()
+            .groupId("group-1")
+            .populationValues(
+                List.of(
+                    TestCasePopulationValue.builder()
+                        .name(PopulationType.INITIAL_POPULATION)
+                        .expected(true)
+                        .build()))
+            .compositeScoreValues(
+                CompositeScoreExpectedValue.builder()
+                    .compositeScore(Score.builder().expected(33.33).actual(0.0).build())
+                    .build())
+            .build();
+    assertFalse(testCaseBundleService.isCompositePopulation(population));
+  }
+
+  @Test
+  void isCompositePopulationReturnsFalseWhenCompositeScoreValuesNull() {
+    TestCaseGroupPopulation population =
+        TestCaseGroupPopulation.builder()
+            .groupId("group-1")
+            .populationValues(null)
+            .compositeScoreValues(null)
+            .build();
+    assertFalse(testCaseBundleService.isCompositePopulation(population));
+  }
+
+  @Test
+  void buildCompositeMeasureReportGroupComponentBuildsScoresAndPopulations() {
+    TestCaseGroupPopulation population =
+        TestCaseGroupPopulation.builder()
+            .groupId("group-1")
+            .compositeScoreValues(
+                CompositeScoreExpectedValue.builder()
+                    .compositeScore(Score.builder().expected(33.33).actual(0.0).build())
+                    .denominatorScore(Score.builder().expected(3.0).actual(0.0).build())
+                    .numeratorScore(Score.builder().expected(1.0).actual(0.0).build())
+                    .build())
+            .build();
+
+    MeasureReport.MeasureReportGroupComponent groupComponent =
+        new MeasureReport.MeasureReportGroupComponent();
+    groupComponent.setId("Group_1");
+
+    MeasureReport.MeasureReportGroupComponent result =
+        testCaseBundleService.buildCompositeMeasureReportGroupComponent(groupComponent, population);
+
+    // group id is preserved
+    assertEquals("Group_1", result.getId());
+
+    // measure score is the expected composite score (percentage)
+    assertEquals(0, result.getMeasureScore().getValue().compareTo(new BigDecimal("33.33")));
+
+    assertEquals(2, result.getPopulation().size());
+
+    // Denominator is stored as an integer count
+    MeasureReport.MeasureReportGroupPopulationComponent denominator = result.getPopulation().get(0);
+    assertEquals(
+        PopulationType.DENOMINATOR.toCode(), denominator.getCode().getCoding().get(0).getCode());
+    assertTrue(denominator.hasCount());
+    assertEquals(3, denominator.getCount());
+    assertFalse(
+        denominator.hasExtension(UriConstants.MadieMeasureReport.COMPOSITE_NUMERATOR_SCORE));
+
+    // Numerator is stored as a Quantity extension (never a count), even for whole numbers
+    MeasureReport.MeasureReportGroupPopulationComponent numerator = result.getPopulation().get(1);
+    assertEquals(
+        PopulationType.NUMERATOR.toCode(), numerator.getCode().getCoding().get(0).getCode());
+    assertFalse(numerator.hasCount());
+    Quantity numeratorScore = getNumeratorScoreExtension(numerator);
+    assertEquals(0, numeratorScore.getValue().compareTo(new BigDecimal("1.0")));
+  }
+
+  @Test
+  void buildCompositeMeasureReportGroupComponentHandlesMissingDenominatorAndNumeratorScores() {
+    TestCaseGroupPopulation population =
+        TestCaseGroupPopulation.builder()
+            .groupId("group-1")
+            .compositeScoreValues(
+                CompositeScoreExpectedValue.builder()
+                    .compositeScore(Score.builder().expected(50.0).actual(0.0).build())
+                    .denominatorScore(null)
+                    .numeratorScore(null)
+                    .build())
+            .build();
+
+    MeasureReport.MeasureReportGroupComponent groupComponent =
+        new MeasureReport.MeasureReportGroupComponent();
+    groupComponent.setId("Group_1");
+
+    MeasureReport.MeasureReportGroupComponent result =
+        testCaseBundleService.buildCompositeMeasureReportGroupComponent(groupComponent, population);
+
+    assertTrue(result.getPopulation().isEmpty());
+    assertEquals(0, result.getMeasureScore().getValue().compareTo(new BigDecimal("50.0")));
+  }
+
+  @Test
+  void buildCompositeMeasureReportGroupComponentHandlesMissingCompositeScore() {
+    TestCaseGroupPopulation population =
+        TestCaseGroupPopulation.builder()
+            .groupId("group-1")
+            .compositeScoreValues(
+                CompositeScoreExpectedValue.builder()
+                    .compositeScore(null)
+                    .denominatorScore(Score.builder().expected(4.0).actual(0.0).build())
+                    .numeratorScore(Score.builder().expected(2.0).actual(0.0).build())
+                    .build())
+            .build();
+
+    MeasureReport.MeasureReportGroupComponent groupComponent =
+        new MeasureReport.MeasureReportGroupComponent();
+    groupComponent.setId("Group_1");
+
+    MeasureReport.MeasureReportGroupComponent result =
+        testCaseBundleService.buildCompositeMeasureReportGroupComponent(groupComponent, population);
+
+    // no measure score when composite score is absent
+    assertTrue(result.getMeasureScore().isEmpty());
+    assertEquals(2, result.getPopulation().size());
+    assertEquals(4, result.getPopulation().get(0).getCount());
+    Quantity numeratorScore = getNumeratorScoreExtension(result.getPopulation().get(1));
+    assertEquals(0, numeratorScore.getValue().compareTo(new BigDecimal("2.0")));
+  }
+
+  @Test
+  void buildCompositeMeasureReportGroupComponentPreservesDecimalNumeratorAsQuantityExtension() {
+    TestCaseGroupPopulation population =
+        TestCaseGroupPopulation.builder()
+            .groupId("group-1")
+            .compositeScoreValues(
+                CompositeScoreExpectedValue.builder()
+                    .compositeScore(Score.builder().expected(66.66).actual(0.0).build())
+                    .denominatorScore(Score.builder().expected(3.0).actual(0.0).build())
+                    .numeratorScore(Score.builder().expected(1.4).actual(0.0).build())
+                    .build())
+            .build();
+
+    MeasureReport.MeasureReportGroupComponent groupComponent =
+        new MeasureReport.MeasureReportGroupComponent();
+    groupComponent.setId("Group_1");
+
+    MeasureReport.MeasureReportGroupComponent result =
+        testCaseBundleService.buildCompositeMeasureReportGroupComponent(groupComponent, population);
+
+    // Denominator is always an integer count
+    MeasureReport.MeasureReportGroupPopulationComponent denominator = result.getPopulation().get(0);
+    assertTrue(denominator.hasCount());
+    assertEquals(3, denominator.getCount());
+
+    // Decimal numerator is preserved exactly as a Quantity extension and NOT rounded into count
+    MeasureReport.MeasureReportGroupPopulationComponent numerator = result.getPopulation().get(1);
+    assertFalse(numerator.hasCount());
+    Quantity numeratorScore = getNumeratorScoreExtension(numerator);
+    assertEquals(0, numeratorScore.getValue().compareTo(new BigDecimal("1.4")));
+  }
+
+  private Quantity getNumeratorScoreExtension(
+      MeasureReport.MeasureReportGroupPopulationComponent numerator) {
+    assertTrue(numerator.hasExtension(UriConstants.MadieMeasureReport.COMPOSITE_NUMERATOR_SCORE));
+    return (Quantity)
+        numerator
+            .getExtensionByUrl(UriConstants.MadieMeasureReport.COMPOSITE_NUMERATOR_SCORE)
+            .getValue();
   }
 }

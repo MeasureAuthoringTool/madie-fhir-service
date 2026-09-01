@@ -256,6 +256,15 @@ public class TestCaseBundleService {
               var measureReportGroupComponent = new MeasureReport.MeasureReportGroupComponent();
               Group matchingGroup = getGroup(groups, population.getGroupId());
               measureReportGroupComponent.setId(matchingGroup.getDisplayId());
+
+              // MAT-XXXX: Composite Test Cases don't have regular populationValues, instead they
+              // carry compositeScoreValues (composite/denominator/numerator scores). Handle these
+              // separately from the existing (non-composite) test case workflow.
+              if (isCompositePopulation(population)) {
+                return buildCompositeMeasureReportGroupComponent(
+                    measureReportGroupComponent, population);
+              }
+
               // adding populations
               if (population.getPopulationValues() != null) {
                 var measureReportGroupPopulationComponents =
@@ -293,6 +302,93 @@ public class TestCaseBundleService {
               return measureReportGroupComponent;
             })
         .collect(Collectors.toList());
+  }
+
+  /**
+   * A Composite Test Case has no regular populationValues; instead it carries compositeScoreValues
+   * (composite/denominator/numerator expected scores).
+   *
+   * @param population test case group population
+   * @return true if the population represents a Composite Test Case
+   */
+  protected boolean isCompositePopulation(TestCaseGroupPopulation population) {
+    return CollectionUtils.isEmpty(population.getPopulationValues())
+        && population.getCompositeScoreValues() != null;
+  }
+
+  /**
+   * Builds a MeasureReportGroupComponent for a Composite Test Case. The composite score expected
+   * value becomes the measure score (a percentage, e.g. 33.33), while the denominator and numerator
+   * expected scores become Denominator and Numerator population components. The Denominator is
+   * always an integer count; the Numerator may be a decimal and is stored as a Quantity extension.
+   * No stratification is generated for composite test cases.
+   *
+   * @param measureReportGroupComponent group component with its id already populated
+   * @param population test case group population carrying the compositeScoreValues
+   * @return the populated MeasureReportGroupComponent
+   */
+  protected MeasureReport.MeasureReportGroupComponent buildCompositeMeasureReportGroupComponent(
+      MeasureReport.MeasureReportGroupComponent measureReportGroupComponent,
+      TestCaseGroupPopulation population) {
+    CompositeScoreExpectedValue compositeScoreValues = population.getCompositeScoreValues();
+
+    // adding Denominator and Numerator population components from the composite scores
+    List<MeasureReport.MeasureReportGroupPopulationComponent> populationComponents =
+        new ArrayList<>();
+    if (compositeScoreValues.getDenominatorScore() != null) {
+      populationComponents.add(
+          buildCompositePopulationComponent(
+              PopulationType.DENOMINATOR, compositeScoreValues.getDenominatorScore()));
+    }
+    if (compositeScoreValues.getNumeratorScore() != null) {
+      populationComponents.add(
+          buildCompositePopulationComponent(
+              PopulationType.NUMERATOR, compositeScoreValues.getNumeratorScore()));
+    }
+    measureReportGroupComponent.setPopulation(populationComponents);
+
+    // adding measure score (the expected composite score, e.g. a percentage like 33.33)
+    if (compositeScoreValues.getCompositeScore() != null) {
+      measureReportGroupComponent.setMeasureScore(
+          new Quantity().setValue(compositeScoreValues.getCompositeScore().getExpected()));
+    }
+    return measureReportGroupComponent;
+  }
+
+  /**
+   * Builds a Denominator/Numerator population component for a Composite Test Case.
+   *
+   * <p>The Denominator is always an integer and is stored directly in the FHIR population {@code
+   * count}. The Numerator, however, can be a decimal (e.g. weighted/linear composite scoring).
+   * Since FHIR's population {@code count} is integer-only, the Numerator value is preserved as a
+   * {@code Quantity} extension instead of being rounded into {@code count}.
+   *
+   * @param populationType population type (Denominator or Numerator) for the composite population
+   * @param score composite denominator/numerator expected score
+   * @return the composite population component
+   */
+  private MeasureReport.MeasureReportGroupPopulationComponent buildCompositePopulationComponent(
+      PopulationType populationType, Score score) {
+    var populationComponent =
+        new MeasureReport.MeasureReportGroupPopulationComponent()
+            .setCode(
+                FhirResourceHelpers.buildCodeableConcept(
+                    populationType.toCode(),
+                    UriConstants.CodeSystem.POPULATION_SYSTEM_URI,
+                    populationType.getDisplay()));
+
+    if (populationType == PopulationType.NUMERATOR) {
+      // A composite Numerator can be a decimal; FHIR's population.count is integer-only, so
+      // preserve the exact value as a Quantity extension instead of rounding it into count.
+      populationComponent.addExtension(
+          new Extension(
+              UriConstants.MadieMeasureReport.COMPOSITE_NUMERATOR_SCORE,
+              new Quantity().setValue(score.getExpected())));
+    } else {
+      // Denominator is always an integer and is stored directly in the population count
+      populationComponent.setCount((int) score.getExpected());
+    }
+    return populationComponent;
   }
 
   /**
