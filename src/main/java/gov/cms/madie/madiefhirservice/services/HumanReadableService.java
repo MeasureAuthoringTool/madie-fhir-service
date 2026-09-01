@@ -24,6 +24,9 @@ import static org.springframework.web.util.HtmlUtils.htmlEscape;
 @RequiredArgsConstructor
 public class HumanReadableService extends ResourceUtils {
 
+  /** cqf-logicDefinition sub-extension holding the CQL statement; escaped by the template. */
+  private static final String LOGIC_DEFINITION_STATEMENT = "statement";
+
   private final LiquidEngine liquidEngine;
 
   private String escapeStr(String val) {
@@ -56,6 +59,11 @@ public class HumanReadableService extends ResourceUtils {
                             .getExtension()
                             .forEach(
                                 innerExtension -> {
+                                  // logic-definition*.html now escape statements; skip to avoid
+                                  // double-escaping.
+                                  if (LOGIC_DEFINITION_STATEMENT.equals(innerExtension.getUrl())) {
+                                    return;
+                                  }
                                   if (innerExtension.getValue() instanceof StringType) {
                                     innerExtension.setValue(
                                         new StringType(
@@ -151,10 +159,10 @@ public class HumanReadableService extends ResourceUtils {
                                 .forEach(
                                     coding -> coding.setDisplay(escapeStr(coding.getDisplay())))));
 
+    // Keep only the CQL attachment; library-content.html escapes its contents.
     r5Library.setContent(
         r5Library.getContent().stream()
             .filter(content -> content.getContentType().equalsIgnoreCase("text/cql"))
-            .map(content -> content.setData(escapeStr(new String(content.getData())).getBytes()))
             .collect(Collectors.toList()));
   }
 }
