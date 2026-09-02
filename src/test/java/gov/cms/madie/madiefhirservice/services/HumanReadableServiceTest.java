@@ -1,6 +1,7 @@
 package gov.cms.madie.madiefhirservice.services;
 
 import ca.uhn.fhir.model.api.TemporalPrecisionEnum;
+import gov.cms.madie.madiefhirservice.constants.UriConstants;
 import gov.cms.madie.madiefhirservice.exceptions.HumanReadableGenerationException;
 import gov.cms.madie.madiefhirservice.exceptions.ResourceNotFoundException;
 import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
@@ -42,6 +43,7 @@ import java.util.Date;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -196,6 +198,77 @@ class HumanReadableServiceTest
     assertNotNull(generatedHumanReadable);
     assertTrue(generatedHumanReadable.contains("Clinical Venue"));
     assertTrue(generatedHumanReadable.contains("Telehealth Eligible"));
+  }
+
+  /** Pins the sample-content-ig template release; update this test on each version upgrade. */
+  @Test
+  public void humanReadableReportsPinnedLiquidTemplateVersion() throws IOException {
+    var realEngine =
+        new LiquidEngine(new SimpleWorkerContext.SimpleWorkerContextBuilder().build(), null);
+    realEngine.setIncludeResolver(this);
+
+    var measureHtml =
+        new HumanReadableService(realEngine)
+            .generateMeasureHumanReadable(measure, "template-version-check");
+
+    assertTrue(
+        measureHtml.contains("version 0.5.6 of the sample-content-ig Liquid templates"),
+        "Human Readable should report the pinned Liquid template version");
+  }
+
+  /**
+   * Since 0.5.6 the templates escape CQL via FHIRPath {@code .escape('html')}, so {@link
+   * HumanReadableService} must not escape it as well.
+   */
+  @Test
+  public void humanReadableEscapesCqlExactlyOnce() throws IOException {
+    // Reference the contained effective-data-requirements so logic definitions render.
+    measure
+        .getExtension()
+        .add(
+            new org.hl7.fhir.r4.model.Extension()
+                .setUrl(UriConstants.CqfMeasures.EFFECTIVE_DATA_REQUIREMENT_URL)
+                .setValue(new Reference().setReference("#effective-data-requirements")));
+
+    ((Library) measure.getContained().get(0))
+        .getExtension().stream()
+            .filter(extension -> extension.getUrl().contains("logicDefinition"))
+            .findFirst()
+            .flatMap(
+                logicDefinition ->
+                    logicDefinition.getExtension().stream()
+                        .filter(subExtension -> "statement".equals(subExtension.getUrl()))
+                        .findFirst())
+            .ifPresent(
+                statement ->
+                    statement.setValue(
+                        new org.hl7.fhir.r4.model.StringType("define \"X\": 1 < 2 and 3 > 2 & 4")));
+
+    var realEngine =
+        new LiquidEngine(new SimpleWorkerContext.SimpleWorkerContextBuilder().build(), null);
+    realEngine.setIncludeResolver(this);
+    var realTemplateService = new HumanReadableService(realEngine);
+
+    var measureHtml =
+        realTemplateService.generateMeasureHumanReadable(measure, "cql-escaping-check");
+    assertTrue(
+        measureHtml.contains("1 &lt; 2 and 3 &gt; 2 &amp; 4"),
+        "Measure CQL statements should be escaped exactly once");
+    assertNoDoubleEscaping(measureHtml);
+
+    var libraryHtml = realTemplateService.generateLibraryHumanReadable(library);
+    assertTrue(
+        libraryHtml.contains("Interval&lt;DateTime&gt;"),
+        "Library CQL content should be escaped exactly once");
+    assertNoDoubleEscaping(libraryHtml);
+  }
+
+  private void assertNoDoubleEscaping(String html) {
+    for (String doubleEscaped : List.of("&amp;lt;", "&amp;gt;", "&amp;amp;", "&amp;quot;")) {
+      assertFalse(
+          html.contains(doubleEscaped),
+          "Human Readable contains double-escaped entity: " + doubleEscaped);
+    }
   }
 
   @Test
