@@ -762,7 +762,7 @@ public class MeasureTranslatorService {
     ext.addExtension(
         new Extension(
             "guidance",
-            new StringType(
+            new MarkdownType(
                 RichTextUtil.sanitizeText(madieMeasure.getSupplementalDataDescription()))));
     ext.addExtension(new Extension("usage", codeableConcept));
 
@@ -796,7 +796,7 @@ public class MeasureTranslatorService {
     ext.addExtension(
         new Extension(
             "guidance",
-            new StringType(
+            new MarkdownType(
                 RichTextUtil.sanitizeText(madieMeasure.getRiskAdjustmentDescription()))));
     ext.addExtension(new Extension("usage", codeableConcept));
 
