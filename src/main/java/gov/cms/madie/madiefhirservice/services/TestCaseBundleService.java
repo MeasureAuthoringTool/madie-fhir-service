@@ -379,11 +379,14 @@ public class TestCaseBundleService {
 
     if (populationType == PopulationType.NUMERATOR) {
       // A composite Numerator can be a decimal; FHIR's population.count is integer-only, so
-      // preserve the exact value as a Quantity extension instead of rounding it into count.
-      populationComponent.addExtension(
+      // preserve the exact value as a Quantity extension on the primitive _count element instead
+      // of rounding it into count.
+      IntegerType countElement = new IntegerType();
+      countElement.addExtension(
           new Extension(
               UriConstants.MadieMeasureReport.COMPOSITE_NUMERATOR_SCORE,
               new Quantity().setValue(score.getExpected())));
+      populationComponent.setCountElement(countElement);
     } else {
       // Denominator is always an integer and is stored directly in the population count
       populationComponent.setCount((int) score.getExpected());

@@ -710,7 +710,8 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
     MeasureReport.MeasureReportGroupPopulationComponent numerator = result.getPopulation().get(1);
     assertEquals(
         PopulationType.NUMERATOR.toCode(), numerator.getCode().getCoding().get(0).getCode());
-    assertFalse(numerator.hasCount());
+    assertNotNull(numerator.getCountElement());
+    assertFalse(numerator.getCountElement().hasValue());
     Quantity numeratorScore = getNumeratorScoreExtension(numerator);
     assertEquals(0, numeratorScore.getValue().compareTo(new BigDecimal("1.0")));
   }
@@ -794,16 +795,22 @@ class TestCaseBundleServiceTest implements ResourceFileUtil {
 
     // Decimal numerator is preserved exactly as a Quantity extension and NOT rounded into count
     MeasureReport.MeasureReportGroupPopulationComponent numerator = result.getPopulation().get(1);
-    assertFalse(numerator.hasCount());
+    assertNotNull(numerator.getCountElement());
+    assertFalse(numerator.getCountElement().hasValue());
     Quantity numeratorScore = getNumeratorScoreExtension(numerator);
     assertEquals(0, numeratorScore.getValue().compareTo(new BigDecimal("1.4")));
   }
 
   private Quantity getNumeratorScoreExtension(
       MeasureReport.MeasureReportGroupPopulationComponent numerator) {
-    assertTrue(numerator.hasExtension(UriConstants.MadieMeasureReport.COMPOSITE_NUMERATOR_SCORE));
+    assertNotNull(numerator.getCountElement());
+    assertTrue(
+        numerator
+            .getCountElement()
+            .hasExtension(UriConstants.MadieMeasureReport.COMPOSITE_NUMERATOR_SCORE));
     return (Quantity)
         numerator
+            .getCountElement()
             .getExtensionByUrl(UriConstants.MadieMeasureReport.COMPOSITE_NUMERATOR_SCORE)
             .getValue();
   }
