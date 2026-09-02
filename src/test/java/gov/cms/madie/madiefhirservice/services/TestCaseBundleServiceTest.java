@@ -57,7 +57,6 @@ import gov.cms.madie.packaging.utils.qicore411.PackagingUtilityImpl;
 
 @ExtendWith(MockitoExtension.class)
 class TestCaseBundleServiceTest implements ResourceFileUtil {
-
   @InjectMocks private TestCaseBundleService testCaseBundleService;
 
   @Spy private FhirContext fhirContext;
