@@ -109,7 +109,7 @@ public final class UriConstants {
     public static final String CQFM_COMPONENT_URI =
         "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-component";
     public static final String INTENDED_VENUE_CODES_URI =
-        "http://hl7.org/fhir/uv/cqm/ValueSet/intended-venue";
+        "http://hl7.org/fhir/uv/cqm/CodeSystem/intended-venue-codes";
   }
 
   public static final class CqfTestCases {
