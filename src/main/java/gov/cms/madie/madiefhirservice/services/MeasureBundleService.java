@@ -3,7 +3,7 @@ package gov.cms.madie.madiefhirservice.services;
 import gov.cms.madie.madiefhirservice.constants.UriConstants;
 import gov.cms.madie.madiefhirservice.dto.CqlLibraryDetails;
 import gov.cms.madie.madiefhirservice.utils.*;
-import gov.cms.madie.models.library.CqlLibrary;
+import gov.cms.madie.models.dto.CqlLibraryDto;
 import gov.cms.madie.models.measure.Measure;
 import java.security.Principal;
 import lombok.RequiredArgsConstructor;
@@ -96,7 +96,7 @@ public class MeasureBundleService {
       String libraryHr = humanReadableService.generateLibraryHumanReadable(measureLibrary);
       setNarrativeText(measureLibrary, libraryHr);
     }
-    if (BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT.equals(bundleType)) {
+    if (!BundleUtil.MEASURE_BUNDLE_TYPE_CALCULATION.equals(bundleType)) {
       // get human-readable for measure
       String humanReadable =
           humanReadableService.generateMeasureHumanReadable(measureForHR, madieMeasure.getId());
@@ -119,7 +119,8 @@ public class MeasureBundleService {
       CqlCompilerException.ErrorSeverity errorSeverity,
       final String accessToken) {
     Library library =
-        getMeasureLibraryResourceForMadieMeasure(expressions, madieMeasure, accessToken);
+        getMeasureLibraryResourceForMadieMeasure(
+            expressions, madieMeasure, bundleType, accessToken);
     if (madieMeasure.getMeasureMetaData().getSteward() != null) {
       library.setPublisher(madieMeasure.getMeasureMetaData().getSteward().getName());
     }
@@ -146,10 +147,11 @@ public class MeasureBundleService {
    * @return library- r4 library
    */
   public Library getMeasureLibraryResourceForMadieMeasure(
-      Set<String> expressions, Measure madieMeasure, String accessToken) {
+      Set<String> expressions, Measure madieMeasure, String bundleType, String accessToken) {
     log.info("Preparing Measure library resource for measure: {}", madieMeasure.getId());
-    CqlLibrary cqlLibrary = createCqlLibraryForMadieMeasure(madieMeasure);
-    return libraryTranslatorService.convertToFhirLibrary(cqlLibrary, expressions, accessToken);
+    CqlLibraryDto cqlLibraryDto = createCqlLibraryDtoForMadieMeasure(madieMeasure);
+    return libraryTranslatorService.convertToFhirLibrary(
+        cqlLibraryDto, expressions, bundleType, accessToken);
   }
 
   /**
@@ -159,11 +161,11 @@ public class MeasureBundleService {
    * @param madieMeasure instance of MADiE Measure
    * @return CqlLibrary
    */
-  public CqlLibrary createCqlLibraryForMadieMeasure(Measure madieMeasure) {
-    return CqlLibrary.builder()
+  public CqlLibraryDto createCqlLibraryDtoForMadieMeasure(Measure madieMeasure) {
+    return CqlLibraryDto.builder()
         .id(madieMeasure.getCqlLibraryName())
         .cqlLibraryName(madieMeasure.getCqlLibraryName())
-        .version(madieMeasure.getVersion())
+        .version(madieMeasure.getVersion().toString())
         .description(madieMeasure.getCqlLibraryName())
         .cql(madieMeasure.getCql())
         .elmJson(madieMeasure.getElmJson())
