@@ -35,55 +35,55 @@ public final class UriConstants {
     public static final String EFFECTIVE_DATA_REQUIREMENT_URL =
         "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-effectiveDataRequirements";
     public static final String SCORING_URI =
-        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-scoring";
+        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-scoring";
     public static final String COMPOSITE_SCORING_URI =
-        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-compositeScoring";
+        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-compositeScoring";
     public static final String SCORING_UNIT_URI =
-        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-scoringUnit";
+        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-scoringUnit";
 
     public static final String SCORING_PRECISION_URI =
-        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-scoringPrecision";
+        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-scoringPrecision";
     public static final String POPULATION_BASIS =
-        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-populationBasis";
+        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-populationBasis";
     public static final String CQFM_TYPE =
-        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-type";
+        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-type";
     public static final String PROPORTION_PROFILE_URI =
-        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/proportion-measure-cqfm";
+        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-proportionmeasure";
     public static final String COHORT_PROFILE_URI =
-        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cohort-measure-cqfm";
+        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-cohortmeasure";
     public static final String CV_PROFILE_URI =
-        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cv-measure-cqfm";
+        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-cvmeasure";
     public static final String RATIO_PROFILE_URI =
-        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/ratio-measure-cqfm";
+        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-ratiomeasure";
     public static final String CRITERIA_REFERENCE_URI =
-        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-criteriaReference";
+        "http://hl7.org/fhir/StructureDefinition/cqf-criteriaReference";
     public static final String AGGREGATE_METHOD_URI =
-        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-aggregateMethod";
+        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-aggregateMethod";
     public static final String APPLIES_TO_URI =
-        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-appliesTo";
+        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-appliesTo";
 
     public static final String CQL_MEASURE_PROFILE_URI =
-        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cql-measure-cqfm";
+        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-cqlmeasure";
 
     public static final String ELM_MEASURE_PROFILE_URI =
-        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/elm-measure-cqfm";
+        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-elmmeasure";
 
     public static final String SHAREABLE_MEASURE_PROFILE_URI =
         "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-shareablemeasure";
 
     public static final String COMPUTABLE_MEASURE_PROFILE_URI =
-        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm";
+        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-computablemeasure";
 
     public static final String PUBLISHABLE_MEASURE_PROFILE_URI =
-        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/publishable-measure-cqfm";
+        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-publishablemeasure";
 
     public static final String EXECUTABLE_MEASURE_PROFILE_URI =
-        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/executable-measure-cqfm";
+        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-executablemeasure";
     public static final String COMPOSITE_MEASURE_PROFILE_URI =
-        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/composite-measure-cqfm";
+        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-compositemeasure";
 
     public static final String SUPPLEMENTAL_DATA_GUIDANCE_URI =
-        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-supplementalDataGuidance";
+        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-supplementalDataGuidance";
 
     public static final String MEASURE_DEFINITION_EXT_URI =
         // TODO Use this URL once liquid templates are updated:
@@ -91,44 +91,38 @@ public final class UriConstants {
         "http://hl7.org/fhir/StructureDefinition/cqf-definitionTerm";
 
     public static final String INCLUDE_IN_REPORT_TYPE_URI =
-        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-includeInReportType";
+        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-includeInReportType";
 
     public static final String DIRECT_REFERENCE_CODE_URI =
         "http://hl7.org/fhir/StructureDefinition/cqf-directReferenceCode";
 
     public static final String RATE_AGGREGATION_URI =
-        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-rateAggregation";
+        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-rateAggregation";
 
     public static final String IMPROVEMENT_NOTATION_URI =
-        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-improvementNotation";
+        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-improvementNotation";
 
     public static final String IMPROVEMENT_NOTATION_GUIDANCE_URI =
         "http://hl7.org/fhir/StructureDefinition/cqf-improvementNotationGuidance";
     public static final String CQFM_GROUP_ID_URI =
-        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-groupId";
+        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-groupId";
     public static final String CQFM_COMPONENT_URI =
-        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-component";
+        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-component";
     public static final String INTENDED_VENUE_CODES_URI =
-        "http://hl7.org/fhir/us/cqfmeasures/CodeSystem/intended-venue-codes";
-
+        "http://hl7.org/fhir/uv/cqm/CodeSystem/intended-venue-codes";
     public static final String DATA_ABSENT_REASON_URI =
         "http://hl7.org/fhir/StructureDefinition/data-absent-reason";
   }
 
   public static final class CqfTestCases {
     public static final String CQFM_TEST_CASES =
-        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/test-case-cqfm";
+        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-testcase";
     public static final String IS_TEST_CASE =
-        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-isTestCase";
+        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-isTestCase";
     public static final String CQFM_INPUT_PARAMETERS =
         "http://hl7.org/fhir/StructureDefinition/cqf-inputParameters";
     public static final String CQFM_TEST_CASE_DESCRIPTION =
-        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-testCaseDescription";
-  }
-
-  public static final class UseContext {
-    public static final String VALUE_CODABLE_CONTEXT_CODING_SYSTEM_URI =
-        "http://hl7.org/fhir/us/cqfmeasures/CodeSystem/quality-programs";
+        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-testCaseDescription";
   }
 
   public static final class QiCore {
@@ -143,9 +137,6 @@ public final class UriConstants {
   }
 
   public static final class MadieMeasureReport {
-    // A composite Numerator can be a decimal (e.g. weighted/linear composite scoring). FHIR's
-    // MeasureReport.group.population.count is integer-only, so the value is preserved as a Quantity
-    // in this extension instead of being rounded into count.
     public static final String COMPOSITE_NUMERATOR_SCORE =
         "http://hl7.org/fhir/StructureDefinition/measurereport-countQuantity";
   }
@@ -158,7 +149,7 @@ public final class UriConstants {
         "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-computablelibrary";
 
     public static String PUBLISHABLE_LIBRARY_URI =
-        "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-publishablelibrary";
+        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-publishablelibrary";
 
     public static String EXECUTABLE_LIBRARY_URI =
         "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-executablelibrary";

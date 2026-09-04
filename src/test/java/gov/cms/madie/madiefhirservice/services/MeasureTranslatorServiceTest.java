@@ -618,8 +618,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertFalse(element.hasValue());
     assertThat(element.getExtension().size(), is(1));
     Extension extension = element.getExtensionFirstRep();
-    assertThat(
-        extension.getUrl(), is(UriConstants.CqfMeasures.DATA_ABSENT_REASON_URI));
+    assertThat(extension.getUrl(), is(UriConstants.CqfMeasures.DATA_ABSENT_REASON_URI));
     assertThat(((CodeType) extension.getValue()).getValue(), is("unknown"));
   }
 
