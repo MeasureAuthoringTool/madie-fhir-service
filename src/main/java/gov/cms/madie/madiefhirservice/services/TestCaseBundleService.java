@@ -257,9 +257,6 @@ public class TestCaseBundleService {
               Group matchingGroup = getGroup(groups, population.getGroupId());
               measureReportGroupComponent.setId(matchingGroup.getDisplayId());
 
-              // MAT-XXXX: Composite Test Cases don't have regular populationValues, instead they
-              // carry compositeScoreValues (composite/denominator/numerator scores). Handle these
-              // separately from the existing (non-composite) test case workflow.
               if (isCompositePopulation(population)) {
                 return buildCompositeMeasureReportGroupComponent(
                     measureReportGroupComponent, population);
