@@ -603,6 +603,26 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
   }
 
   @Test
+  public void testCreateFhirMeasureAddsDataAbsentReasonForBlankCopyrightAndDisclaimer() {
+    madieRatioMeasure.getMeasureMetaData().setCopyright(null);
+    madieRatioMeasure.getMeasureMetaData().setDisclaimer(" ");
+
+    org.hl7.fhir.r4.model.Measure measure =
+        measureTranslatorService.createFhirMeasureForMadieMeasure(madieRatioMeasure);
+
+    assertDataAbsentReason(measure.getCopyrightElement());
+    assertDataAbsentReason(measure.getDisclaimerElement());
+  }
+
+  private void assertDataAbsentReason(MarkdownType element) {
+    assertFalse(element.hasValue());
+    assertThat(element.getExtension().size(), is(1));
+    Extension extension = element.getExtensionFirstRep();
+    assertThat(extension.getUrl(), is(UriConstants.CqfMeasures.DATA_ABSENT_REASON_URI));
+    assertThat(((CodeType) extension.getValue()).getValue(), is("unknown"));
+  }
+
+  @Test
   public void testCreateFhirMeasureForMadieCVMeasure() {
     org.hl7.fhir.r4.model.Measure measure =
         measureTranslatorService.createFhirMeasureForMadieMeasure(madieCVMeasure);

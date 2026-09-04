@@ -47,6 +47,12 @@ public class MeasureTranslatorService {
     Organization steward = madieMeasure.getMeasureMetaData().getSteward();
     boolean isComposite = madieMeasure.getMeasureMetaData().isComposite();
     org.hl7.fhir.r4.model.Measure measure = new org.hl7.fhir.r4.model.Measure();
+    // process fields that require extensions first
+    setMarkdownOrDataAbsentReason(
+        measure.getCopyrightElement(), madieMeasure.getMeasureMetaData().getCopyright());
+    setMarkdownOrDataAbsentReason(
+        measure.getDisclaimerElement(), madieMeasure.getMeasureMetaData().getDisclaimer());
+
     measure
         .setName(madieMeasure.getCqlLibraryName())
         .setTitle(RichTextUtil.sanitizeText(madieMeasure.getMeasureName()))
@@ -61,8 +67,6 @@ public class MeasureTranslatorService {
         .setApprovalDate(getApprovalDate(madieMeasure))
         .setLastReviewDate(getLastReviewDate(madieMeasure))
         .setPublisher(RichTextUtil.sanitizeText(getStewardName(steward)))
-        .setCopyright(RichTextUtil.sanitizeText(getCopyright(madieMeasure)))
-        .setDisclaimer(RichTextUtil.sanitizeText(getDisclaimer(madieMeasure)))
         .setRationale(RichTextUtil.sanitizeText(madieMeasure.getMeasureMetaData().getRationale()))
         .setPurpose(RichTextUtil.sanitizeText(madieMeasure.getMeasureMetaData().getPurpose()))
         .setContact(buildContactDetail(madieMeasure.getMeasureMetaData().getSteward(), false))
@@ -110,14 +114,13 @@ public class MeasureTranslatorService {
     return lastReviewDate != null ? Date.from(lastReviewDate) : null;
   }
 
-  private String getCopyright(Measure madieMeasure) {
-    String copyright = madieMeasure.getMeasureMetaData().getCopyright();
-    return StringUtils.isBlank(copyright) ? UNKNOWN : copyright;
-  }
-
-  private String getDisclaimer(Measure madieMeasure) {
-    String disclaimer = madieMeasure.getMeasureMetaData().getDisclaimer();
-    return StringUtils.isBlank(disclaimer) ? UNKNOWN : disclaimer;
+  private void setMarkdownOrDataAbsentReason(MarkdownType element, String value) {
+    if (StringUtils.isBlank(value)) {
+      element.addExtension(
+          UriConstants.CqfMeasures.DATA_ABSENT_REASON_URI, new CodeType("unknown"));
+    } else {
+      element.setValue(RichTextUtil.sanitizeText(value));
+    }
   }
 
   private Enumerations.PublicationStatus getStatus(Measure madieMeasure) {

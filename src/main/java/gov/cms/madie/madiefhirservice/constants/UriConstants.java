@@ -110,6 +110,8 @@ public final class UriConstants {
         "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-component";
     public static final String INTENDED_VENUE_CODES_URI =
         "http://hl7.org/fhir/uv/cqm/CodeSystem/intended-venue-codes";
+    public static final String DATA_ABSENT_REASON_URI =
+        "http://hl7.org/fhir/StructureDefinition/data-absent-reason";
   }
 
   public static final class CqfTestCases {
@@ -132,6 +134,11 @@ public final class UriConstants {
     public static final String CMS_ID = "https://madie.cms.gov/measure/cmsId";
     public static final String SHORT_NAME = "https://madie.cms.gov/measure/shortName";
     public static final String CBE_ID = "https://madie.cms.gov/measure/cbeId";
+  }
+
+  public static final class MadieMeasureReport {
+    public static final String COMPOSITE_NUMERATOR_SCORE =
+        "http://hl7.org/fhir/StructureDefinition/measurereport-countQuantity";
   }
 
   public static final class Library {
