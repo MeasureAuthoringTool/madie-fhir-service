@@ -29,6 +29,8 @@ import java.net.URI;
 @AllArgsConstructor
 public class StructureDefinitionService {
 
+  private static final String CROSS_VERSION_PROFILE_TITLE_PREFIX = "Cross-version Profile";
+
   private ModelAwareFhirFactory modelAwareFhirFactory;
 
   /**
@@ -146,6 +148,7 @@ public class StructureDefinitionService {
               String idPart =
                   resource.getIdElement() != null ? resource.getIdElement().getIdPart() : null;
               return "resource".equals(sd.getKind().toCode())
+                  && (title == null || !title.startsWith(CROSS_VERSION_PROFILE_TITLE_PREFIX))
                   && (title != null && !title.isEmpty() || idPart != null && !idPart.isEmpty());
             })
         .map(
