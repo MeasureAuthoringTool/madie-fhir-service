@@ -110,6 +110,9 @@ public final class UriConstants {
         "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-component";
     public static final String INTENDED_VENUE_CODES_URI =
         "http://hl7.org/fhir/us/cqfmeasures/CodeSystem/intended-venue-codes";
+
+    public static final String DATA_ABSENT_REASON_URI =
+        "http://hl7.org/fhir/StructureDefinition/data-absent-reason";
   }
 
   public static final class CqfTestCases {

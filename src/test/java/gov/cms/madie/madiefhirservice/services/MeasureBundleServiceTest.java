@@ -319,6 +319,65 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
   }
 
   @Test
+  public void createMeasureBundleCarriesDataAbsentReasonsForCopyrightAndDisclaimer() {
+    madieMeasure.getMeasureMetaData().setComposite(true);
+    addDataAbsentReason(measure.getCopyrightElement());
+    addDataAbsentReason(measure.getDisclaimerElement());
+    when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure))
+        .thenReturn(measure);
+
+    Bundle bundle =
+        measureBundleService.createMeasureBundle(
+            madieMeasure,
+            mock(Principal.class),
+            BundleUtil.MEASURE_BUNDLE_TYPE_CALCULATION,
+            "token",
+            CqlCompilerException.ErrorSeverity.Error);
+
+    org.hl7.fhir.r4.model.Measure bundledMeasure =
+        (org.hl7.fhir.r4.model.Measure) bundle.getEntryFirstRep().getResource();
+    assertDataAbsentReason(bundledMeasure.getCopyrightElement());
+    assertDataAbsentReason(bundledMeasure.getDisclaimerElement());
+  }
+
+  @Test
+  public void createMeasureBundleConvertsCopyrightAndDisclaimerValuesToMarkdown() {
+    madieMeasure.getMeasureMetaData().setComposite(true);
+    measure.setCopyright("<p><strong>Copyright</strong></p>");
+    measure.setDisclaimer("<p><em>Disclaimer</em></p>");
+    when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure))
+        .thenReturn(measure);
+
+    Bundle bundle =
+        measureBundleService.createMeasureBundle(
+            madieMeasure,
+            mock(Principal.class),
+            BundleUtil.MEASURE_BUNDLE_TYPE_CALCULATION,
+            "token",
+            CqlCompilerException.ErrorSeverity.Error);
+
+    org.hl7.fhir.r4.model.Measure bundledMeasure =
+        (org.hl7.fhir.r4.model.Measure) bundle.getEntryFirstRep().getResource();
+    assertThat(bundledMeasure.getCopyright().trim(), is(equalTo("**Copyright**")));
+    assertThat(bundledMeasure.getDisclaimer().trim(), is(equalTo("*Disclaimer*")));
+  }
+
+  private void addDataAbsentReason(MarkdownType element) {
+    element.setValue(null);
+    element.addExtension(
+        UriConstants.CqfMeasures.DATA_ABSENT_REASON_URI, new CodeType("unknown"));
+  }
+
+  private void assertDataAbsentReason(MarkdownType element) {
+    assertThat(element.hasValue(), is(false));
+    assertThat(element.getExtension().size(), is(1));
+    Extension extension = element.getExtensionFirstRep();
+    assertThat(
+        extension.getUrl(), is(UriConstants.CqfMeasures.DATA_ABSENT_REASON_URI));
+    assertThat(((CodeType) extension.getValue()).getValue(), is("unknown"));
+  }
+
+  @Test
   public void testCreateMeasureBundleWithMeasureDefinitionExtension() {
     when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure))
         .thenReturn(measure);
