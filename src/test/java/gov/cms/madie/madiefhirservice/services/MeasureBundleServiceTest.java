@@ -364,16 +364,14 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
 
   private void addDataAbsentReason(MarkdownType element) {
     element.setValue(null);
-    element.addExtension(
-        UriConstants.CqfMeasures.DATA_ABSENT_REASON_URI, new CodeType("unknown"));
+    element.addExtension(UriConstants.CqfMeasures.DATA_ABSENT_REASON_URI, new CodeType("unknown"));
   }
 
   private void assertDataAbsentReason(MarkdownType element) {
     assertThat(element.hasValue(), is(false));
     assertThat(element.getExtension().size(), is(1));
     Extension extension = element.getExtensionFirstRep();
-    assertThat(
-        extension.getUrl(), is(UriConstants.CqfMeasures.DATA_ABSENT_REASON_URI));
+    assertThat(extension.getUrl(), is(UriConstants.CqfMeasures.DATA_ABSENT_REASON_URI));
     assertThat(((CodeType) extension.getValue()).getValue(), is("unknown"));
   }
 
