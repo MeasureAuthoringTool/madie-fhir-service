@@ -193,7 +193,7 @@ public class MeasureBundleService {
     Extension extension =
         new Extension()
             .setUrl(UriConstants.CqfMeasures.EFFECTIVE_DATA_REQUIREMENT_URL)
-            .setValue(new Reference().setReference("#effective-data-requirements"));
+            .setValue(new CanonicalType("#effective-data-requirements"));
     measure.getExtension().add(extension);
   }
 
