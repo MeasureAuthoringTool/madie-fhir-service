@@ -300,11 +300,13 @@ public class MeasureBundleService {
       org.hl7.fhir.r4.model.Measure measure) {
     // Create a deep copy of the measure
     org.hl7.fhir.r4.model.Measure newMeasure = measure.copy();
+    convertExtensionOrValueToMarkdown(
+        measure.getCopyrightElement(), newMeasure.getCopyrightElement());
+    convertExtensionOrValueToMarkdown(
+        measure.getDisclaimerElement(), newMeasure.getDisclaimerElement());
     newMeasure
         .setDescription(RichTextUtil.toMarkDown(measure.getDescription()))
         .setTitle(RichTextUtil.toMarkDown(measure.getTitle()))
-        .setCopyright(RichTextUtil.toMarkDown(measure.getCopyright()))
-        .setDisclaimer(RichTextUtil.toMarkDown(measure.getDisclaimer()))
         .setRationale(RichTextUtil.toMarkDown(measure.getRationale()))
         .setPurpose(RichTextUtil.toMarkDown(measure.getPurpose()))
         .setUsage(RichTextUtil.toMarkDown(measure.getUsage()))
@@ -389,5 +391,13 @@ public class MeasureBundleService {
     }
 
     return newMeasure;
+  }
+
+  private void convertExtensionOrValueToMarkdown(MarkdownType source, MarkdownType target) {
+    if (source.hasExtension()) {
+      target.setExtension(source.getExtension());
+    } else if (source.hasValue()) {
+      target.setValue(RichTextUtil.toMarkDown(source.getValue()));
+    }
   }
 }

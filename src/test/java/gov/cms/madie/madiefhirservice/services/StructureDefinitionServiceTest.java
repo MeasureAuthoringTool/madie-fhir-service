@@ -433,8 +433,17 @@ class StructureDefinitionServiceTest {
     def10.setType("Observation");
     def10.setId("valid-observation"); // Should be included
     def10.setUrl("http://hl7.org/fhir/StructureDefinition/valid-observation");
+    StructureDefinition crossVersionProfile = new StructureDefinition();
+    crossVersionProfile.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
+    crossVersionProfile.setTitle("Cross-version Profile: QICore Patient");
+    crossVersionProfile.setType("Patient");
+    crossVersionProfile.setId("cross-version-profile-qicore-patient");
+    crossVersionProfile.setUrl(
+        "http://hl7.org/fhir/us/qicore/StructureDefinition/cross-version-profile-qicore-patient");
     when(mockChain.fetchAllStructureDefinitions())
-        .thenReturn(List.of(def1, def2, def3, def4, def5, def6, def7, def8, def9, def10));
+        .thenReturn(
+            List.of(
+                def1, def2, def3, def4, def5, def6, def7, def8, def9, def10, crossVersionProfile));
 
     // when
     List<ResourceIdentifier> output =
@@ -484,6 +493,31 @@ class StructureDefinitionServiceTest {
     assertThat(
         output.stream().anyMatch(r -> r.getId() == null && "Valid Resource".equals(r.getTitle())),
         is(true));
+    assertThat(
+        output.stream().noneMatch(r -> r.getTitle().startsWith("Cross-version Profile")), is(true));
+  }
+
+  @Test
+  void testGetAllResourcesExcludesCrossVersionProfilesForFhirModels() {
+    // given
+    StructureDefinition crossVersionProfile = new StructureDefinition();
+    crossVersionProfile.setKind(StructureDefinition.StructureDefinitionKind.RESOURCE);
+    crossVersionProfile.setTitle("Cross-version Profile: US Quality Core Patient");
+    crossVersionProfile.setType("Patient");
+    crossVersionProfile.setId("cross-version-profile-us-quality-core-patient");
+    crossVersionProfile.setUrl(
+        "http://fhir.org/guides/onc/us-quality-core/StructureDefinition/cross-version-profile-us-quality-core-patient");
+    when(mockChain.fetchAllStructureDefinitions()).thenReturn(List.of(crossVersionProfile));
+
+    // when
+    List<ResourceIdentifier> qiCoreOutput =
+        structureDefinitionService.getAllResources(ModelType.QI_CORE_6_0_0);
+    List<ResourceIdentifier> usQualityCoreOutput =
+        structureDefinitionService.getAllResources(ModelType.US_QUALITY_CORE_0_5_0);
+
+    // then
+    assertTrue(qiCoreOutput.isEmpty());
+    assertTrue(usQualityCoreOutput.isEmpty());
   }
 
   @Test
