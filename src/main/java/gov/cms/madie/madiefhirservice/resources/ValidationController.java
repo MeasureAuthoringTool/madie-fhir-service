@@ -46,7 +46,7 @@ public class ValidationController {
       produces = MediaType.APPLICATION_JSON_VALUE)
   public HapiOperationOutcome validateBundleByModel(
       @PathVariable("model") String model,
-      @RequestParam(defaultValue = "false") boolean lenientPatientRefs,
+      @RequestParam(defaultValue = "false") boolean lenientExecution,
       HttpEntity<String> request) {
     final ModelType modelType = ModelTypeResolver.resolve(model);
     IParser parser = validatorFactory.getJsonParserForModel(modelType);
@@ -80,7 +80,7 @@ public class ValidationController {
         validationService.validateBundleResourcesIdValid(fhirContext, bundle);
     IBaseOperationOutcome validReferencesOutcome =
         validationService.validateBundleReferencesForExecution(
-            fhirContext, bundle, lenientPatientRefs);
+            fhirContext, bundle, lenientExecution);
 
     ValidationResult result = fhirValidator.validateWithResult(bundle);
 

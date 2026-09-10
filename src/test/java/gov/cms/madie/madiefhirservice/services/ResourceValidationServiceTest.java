@@ -50,6 +50,8 @@ class ResourceValidationServiceTest {
   private static Bundle bundleWithValidResources;
   private static Bundle bundleWithInvalidResources;
   private static Bundle bundleWithInvalidNestedResources;
+  private static Bundle bundleWithPatientResourceWithInvalidReference;
+  private static Procedure procedure;
 
   @InjectMocks ResourceValidationService validationService;
 
@@ -69,8 +71,11 @@ class ResourceValidationServiceTest {
         .getMeta()
         .addProfile("http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient");
     bundleWithValidResources.addEntry().setResource(patient);
+    bundleWithPatientResourceWithInvalidReference = bundleWithValidResources.copy();
+    ((Patient) bundleWithPatientResourceWithInvalidReference.getEntry().get(0).getResource())
+        .setManagingOrganization(new Reference("Organization/non-existent"));
 
-    Procedure procedure = new Procedure();
+    procedure = new Procedure();
     procedure.setId("Procedure/proc-1");
     procedure
         .getMeta()
@@ -589,10 +594,74 @@ class ResourceValidationServiceTest {
     OperationOutcome outcome = (OperationOutcome) baseOperationOutcome;
     assertThat(outcome.getIssue().size(), is(1));
     assertThat(outcome.getIssue().get(0).getSeverity().toCode(), is(equalTo("warning")));
-    assertThat(
-        outcome.getIssue().get(0).getDiagnostics(),
-        is(
-            "Resource [Procedure/proc-1] contains a reference that does not resolve within the bundle"));
+    assertTrue(
+        outcome
+            .getIssue()
+            .get(0)
+            .getDiagnostics()
+            .contains("Resource [Procedure/proc-1] will not be included in execution"));
+    assertTrue(outcome.getIssue().get(0).getDiagnostics().contains("performer.actor"));
+  }
+
+  @Test
+  void testValidateBundleReferencesForLenientExecutionWithPatientWithInvalidReference() {
+    // Act
+    IBaseOperationOutcome baseOperationOutcome =
+        validationService.validateBundleReferencesForExecution(
+            fhirContext, bundleWithPatientResourceWithInvalidReference, true);
+
+    // Assert
+    OperationOutcome outcome = (OperationOutcome) baseOperationOutcome;
+    assertThat(outcome.getIssue().size(), is(1));
+    assertThat(outcome.getIssue().get(0).getSeverity().toCode(), is(equalTo("warning")));
+    assertTrue(outcome.getIssue().get(0).getDiagnostics().contains("Resource [Patient/pat-1]"));
+    assertTrue(outcome.getIssue().get(0).getDiagnostics().contains("managingOrganization"));
+  }
+
+  @Test
+  void testValidateBundleReferencesForStrictExecutionWithPatientWithInvalidReference() {
+    // Act
+    IBaseOperationOutcome baseOperationOutcome =
+        validationService.validateBundleReferencesForExecution(
+            fhirContext, bundleWithPatientResourceWithInvalidReference, false);
+
+    // Assert
+    OperationOutcome outcome = (OperationOutcome) baseOperationOutcome;
+    assertThat(outcome.getIssue().size(), is(1));
+    assertThat(outcome.getIssue().get(0).getSeverity().toCode(), is(equalTo("error")));
+    assertTrue(outcome.getIssue().get(0).getDiagnostics().contains("Resource [Patient/pat-1]"));
+    assertTrue(outcome.getIssue().get(0).getDiagnostics().contains("managingOrganization"));
+  }
+
+  @Test
+  void testValidateBundleWithPatientAndResourcesWithInvalidReferences() {
+    // Assemble
+    Bundle testBundle = bundleWithPatientResourceWithInvalidReference.copy();
+    testBundle
+        .addEntry()
+        .setResource(procedure.copy().setSubject(new Reference("Patient/different-patient")));
+
+    // Act
+    IBaseOperationOutcome baseOperationOutcome =
+        validationService.validateBundleReferencesForExecution(fhirContext, testBundle, false);
+
+    // Assert
+    OperationOutcome outcome = (OperationOutcome) baseOperationOutcome;
+    assertThat(outcome.getIssue().size(), is(2));
+
+    // Verify the first issue is for the Patient Resource.
+    assertTrue(outcome.getIssue().get(0).getDiagnostics().contains("Resource [Patient/pat-1]"));
+    assertTrue(outcome.getIssue().get(0).getDiagnostics().contains("managingOrganization"));
+
+    // Verify the second entry is for the Procedure Resource.
+    assertTrue(outcome.getIssue().get(1).getDiagnostics().contains("Resource [Procedure/proc-1]"));
+    assertTrue(outcome.getIssue().get(1).getDiagnostics().contains("subject"));
+
+    // lenientExecution is false, so the patient invalid reference is an error
+    assertThat(outcome.getIssue().get(0).getSeverity().toCode(), is(equalTo("error")));
+
+    // All other resources should be warnings and are not affected by the lenientExecution flag
+    assertThat(outcome.getIssue().get(1).getSeverity().toCode(), is(equalTo("warning")));
   }
 
   @Test
@@ -625,7 +694,8 @@ class ResourceValidationServiceTest {
             fhirContext, bundleWithInvalidNestedResources, false);
 
     // Assert
-    assertThat(validationService.isSuccessful(fhirContext, outcome), is(false));
+    assertThat(
+        validationService.isSuccessful(fhirContext, outcome), is(true)); // no errors, just warnings
     assertThat(((OperationOutcome) outcome).getIssue().size(), is(equalTo(1)));
     assertThat(
         ((OperationOutcome) outcome).getIssue().get(0).getDiagnostics(),
