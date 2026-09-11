@@ -117,7 +117,7 @@ public class ResourceValidationService {
    * @return HAPI BaseOperationOutcome with warnings for invalid references.
    */
   public IBaseOperationOutcome validateBundleReferencesForExecution(
-      FhirContext fhirContext, IBaseBundle bundleResource, boolean lenientPatientRefs) {
+      FhirContext fhirContext, IBaseBundle bundleResource, boolean lenientExecution) {
     if (bundleResource == null) {
       throw new IllegalArgumentException("Bundle resource cannot be null");
     }
@@ -132,23 +132,18 @@ public class ResourceValidationService {
     Map<IBaseResource, Set<String>> resourcesWithInvalidReferencePaths =
         findResourcesWithInvalidReferencePaths(fhirContext, resources);
 
-    // Add an issue to the OperationOutcome for each resource with invalid references.
-    // If lenientPatientRefs is true, use a warning to notify users; otherwise use an error
-    // to exclude the resource from execution of the test case.
-    final String severity = lenientPatientRefs ? "warning" : "error";
+    // Add a warning severity issue to the OperationOutcome for each resource with invalid
+    // references.
+    // If the Resource type is Patient, severity will be set based on lenientExecution flag.
+    // If lenientExecution is true, severity will be warning; otherwise error.
+    final String severity = lenientExecution ? "warning" : "error";
     resourcesWithInvalidReferencePaths.forEach(
         (resource, attributePaths) ->
             OperationOutcomeUtil.addIssue(
                 fhirContext,
                 operationOutcome,
-                severity,
-                lenientPatientRefs
-                    ? String.format(
-                        "Resource [%s] contains a reference that does not resolve within the bundle",
-                        resource.getIdElement().getResourceType()
-                            + "/"
-                            + resource.getIdElement().getIdPart())
-                    : formatInvalidReferenceMessage(resource, attributePaths),
+                "Patient".equals(resource.fhirType()) ? severity : "warning",
+                formatInvalidReferenceMessage(resource, attributePaths, lenientExecution),
                 null,
                 "invalid"));
     return operationOutcome;
@@ -297,12 +292,25 @@ public class ResourceValidationService {
     return parentAttributePath + "." + childAttributeName;
   }
 
-  private String formatInvalidReferenceMessage(IBaseResource resource, Set<String> attributePaths) {
+  private String formatInvalidReferenceMessage(
+      IBaseResource resource, Set<String> attributePaths, boolean lenientExecution) {
     String resourceId =
         resource.getIdElement().getResourceType() + "/" + resource.getIdElement().getIdPart();
     String bulletList =
         String.join(
             "\n", attributePaths.stream().map(attributePath -> "- " + attributePath).toList());
+    if ("Patient".equals(resource.fhirType())) {
+      if (!lenientExecution) {
+        return String.format(
+            "Execution will be blocked due to Resource [%s] having the following reference attributes"
+                + " that do not resolve within the bundle.\n\n%s",
+            resourceId, bulletList);
+      }
+      return String.format(
+          "Resource [%s] contains a reference that does not resolve within the bundle. The following attributes are a "
+              + "reference that do not resolve within the bundle.\n\n%s",
+          resourceId, bulletList);
+    }
     return String.format(
         "Resource [%s] will not be included in execution because the following attributes are a "
             + "reference that do not resolve within the bundle.\n\n%s",
