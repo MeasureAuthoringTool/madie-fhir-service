@@ -134,7 +134,7 @@ public class TestCaseBundleService {
       var resourceType = entry.getResource().getResourceType() + "/";
       var resourceID = resourceType.equals("Patient/") ? patientId : UUID.randomUUID().toString();
       bundleString =
-          bundleString.replaceAll(
+          bundleString.replace(
               resourceType + entry.getResource().getIdPart(), resourceType + resourceID);
     }
     bundleCopy = parser.parseResource(Bundle.class, bundleString);
