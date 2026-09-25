@@ -307,7 +307,7 @@ class ModelAwareFhirFactoryTest {
   @Test
   public void testParseForModelUnsupportedModelThrowsUnsupportedTypeException() {
     // given
-    ModelType modelType = ModelType.QI_CORE_7_0_0;
+    ModelType modelType = ModelType.US_CORE_6_1_0;
     String bundleString = "{ \"resourceType\" : \"Bundle\", \"entry\": []}";
     IParser mockParser = Mockito.mock(IParser.class);
 
