@@ -42,6 +42,12 @@
 				<artifactId>ucum</artifactId>
 				<version>${org.fhir.ucum.version}</version>
 			</dependency>
+			<!--override vulnerable jsoup version 1.15.4 transitive of flexmark-all@0.64.8-->
+			<dependency>
+				<groupId>org.jsoup</groupId>
+				<artifactId>jsoup</artifactId>
+				<version>1.23.2</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
