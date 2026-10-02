@@ -186,6 +186,9 @@ public class MeasureTranslatorService {
     if (isNotEmpty(measureDefinitionsExts)) {
       extensions.addAll(measureDefinitionsExts);
     }
+    // Render "None" for empty elements in liquid HR templates when true
+    extensions.add(
+        new Extension(UriConstants.CqfMeasures.RENDER_MISSING_ELEMENTS_URI, new BooleanType(true)));
     return extensions;
   }
 
