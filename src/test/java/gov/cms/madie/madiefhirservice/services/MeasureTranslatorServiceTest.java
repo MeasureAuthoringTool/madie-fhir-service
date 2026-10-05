@@ -155,6 +155,11 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertThat(ravgExt, is(notNullValue()));
     assertThat(ravgExt.getExtension(), is(notNullValue()));
     assertThat(ravgExt.getExtension().size(), is(equalTo(2)));
+    // Render Missing Elements
+    Extension renderMissingElementsExt =
+        measure.getExtensionByUrl(UriConstants.CqfMeasures.RENDER_MISSING_ELEMENTS_URI);
+    assertThat(renderMissingElementsExt, is(notNullValue()));
+    assertThat(((BooleanType) renderMissingElementsExt.getValue()).booleanValue(), is(true));
 
     assertThat(measure.getGroup().get(0), is(notNullValue()));
     MeasureGroupComponent group1 = measure.getGroup().get(0);
@@ -1095,6 +1100,20 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     List<MeasureGroupStratifierComponent> stratifier = measureGroupComponent.getStratifier();
     assertThat(stratifier, is(empty()));
     assertThat(stratifier.size(), is(equalTo(0)));
+  }
+
+  @Test
+  void testCreateFhirMeasureForVersionedMeasureAddsRenderMissingElements() {
+    madieMeasure.getMeasureMetaData().setDraft(false);
+
+    org.hl7.fhir.r4.model.Measure measure =
+        measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure);
+
+    List<Extension> renderMissingElementsExts =
+        measure.getExtensionsByUrl(UriConstants.CqfMeasures.RENDER_MISSING_ELEMENTS_URI);
+    assertThat(renderMissingElementsExts.size(), is(equalTo(1)));
+    assertThat(
+        ((BooleanType) renderMissingElementsExts.get(0).getValue()).booleanValue(), is(true));
   }
 
   @Test
