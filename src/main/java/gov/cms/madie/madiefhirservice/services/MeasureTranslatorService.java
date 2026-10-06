@@ -186,6 +186,14 @@ public class MeasureTranslatorService {
     if (isNotEmpty(measureDefinitionsExts)) {
       extensions.addAll(measureDefinitionsExts);
     }
+    Extension limitationsExt = buildLimitationsExt(madieMeasure);
+    if (limitationsExt != null) {
+      extensions.add(limitationsExt);
+    }
+    Extension authoritativeSourceExt = buildAuthoritativeSourceExt(madieMeasure);
+    if (authoritativeSourceExt != null) {
+      extensions.add(authoritativeSourceExt);
+    }
     // Render "None" for empty elements in liquid HR templates when true
     extensions.add(
         new Extension(UriConstants.CqfMeasures.RENDER_MISSING_ELEMENTS_URI, new BooleanType(true)));
@@ -773,6 +781,26 @@ public class MeasureTranslatorService {
     ext.addExtension(new Extension("usage", codeableConcept));
 
     return ext;
+  }
+
+  public Extension buildLimitationsExt(Measure madieMeasure) {
+    MeasureMetaData metaData = madieMeasure.getMeasureMetaData();
+    if (metaData == null || StringUtils.isBlank(metaData.getLimitations())) {
+      return null;
+    }
+    return new Extension(
+        UriConstants.CqfMeasures.LIMITATIONS_URI,
+        new MarkdownType(RichTextUtil.sanitizeText(metaData.getLimitations())));
+  }
+
+  public Extension buildAuthoritativeSourceExt(Measure madieMeasure) {
+    MeasureMetaData metaData = madieMeasure.getMeasureMetaData();
+    if (metaData == null || StringUtils.isBlank(metaData.getAuthoritativeSource())) {
+      return null;
+    }
+    return new Extension(
+        UriConstants.FhirStructureDefinitions.AUTHORITATIVE_SOURCE_URI,
+        new UriType(StringUtils.trim(metaData.getAuthoritativeSource())));
   }
 
   /**

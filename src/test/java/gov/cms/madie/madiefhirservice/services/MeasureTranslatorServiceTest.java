@@ -1677,4 +1677,70 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
             .count();
     assertThat(composedOfCount, is(equalTo(0L)));
   }
+
+  @Test
+  void testCreateFhirMeasureAddsLimitationsExtension() {
+    madieMeasure
+        .getMeasureMetaData()
+        .setLimitations("<p>Measure limitations<script>alert(1)</script></p>");
+
+    org.hl7.fhir.r4.model.Measure measure =
+        measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure);
+
+    List<Extension> limitationsExts =
+        measure.getExtensionsByUrl(UriConstants.CqfMeasures.LIMITATIONS_URI);
+    assertThat(limitationsExts.size(), is(equalTo(1)));
+    Extension limitationsExt = limitationsExts.get(0);
+    assertInstanceOf(MarkdownType.class, limitationsExt.getValue());
+    assertThat(
+        limitationsExt.getValue().primitiveValue(), is(equalTo("<p>Measure limitations</p>")));
+  }
+
+  @Test
+  void testBuildLimitationsExtReturnsNullWhenLimitationsIsBlank() {
+    madieMeasure.getMeasureMetaData().setLimitations("   ");
+    assertNull(measureTranslatorService.buildLimitationsExt(madieMeasure));
+
+    madieMeasure.getMeasureMetaData().setLimitations(null);
+    assertNull(measureTranslatorService.buildLimitationsExt(madieMeasure));
+  }
+
+  @Test
+  void testBuildLimitationsExtReturnsNullWhenMetaDataIsNull() {
+    madieMeasure.setMeasureMetaData(null);
+    assertNull(measureTranslatorService.buildLimitationsExt(madieMeasure));
+  }
+
+  @Test
+  void testCreateFhirMeasureAddsAuthoritativeSourceExtension() {
+    madieMeasure.getMeasureMetaData().setAuthoritativeSource("  https://www.test.org/source  ");
+
+    org.hl7.fhir.r4.model.Measure measure =
+        measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure);
+
+    List<Extension> authoritativeSourceExts =
+        measure.getExtensionsByUrl(
+            UriConstants.FhirStructureDefinitions.AUTHORITATIVE_SOURCE_URI);
+    assertThat(authoritativeSourceExts.size(), is(equalTo(1)));
+    Extension authoritativeSourceExt = authoritativeSourceExts.get(0);
+    assertInstanceOf(UriType.class, authoritativeSourceExt.getValue());
+    assertThat(
+        authoritativeSourceExt.getValue().primitiveValue(),
+        is(equalTo("https://www.test.org/source")));
+  }
+
+  @Test
+  void testBuildAuthoritativeSourceExtReturnsNullWhenAuthoritativeSourceIsBlank() {
+    madieMeasure.getMeasureMetaData().setAuthoritativeSource("   ");
+    assertNull(measureTranslatorService.buildAuthoritativeSourceExt(madieMeasure));
+
+    madieMeasure.getMeasureMetaData().setAuthoritativeSource(null);
+    assertNull(measureTranslatorService.buildAuthoritativeSourceExt(madieMeasure));
+  }
+
+  @Test
+  void testBuildAuthoritativeSourceExtReturnsNullWhenMetaDataIsNull() {
+    madieMeasure.setMeasureMetaData(null);
+    assertNull(measureTranslatorService.buildAuthoritativeSourceExt(madieMeasure));
+  }
 }
