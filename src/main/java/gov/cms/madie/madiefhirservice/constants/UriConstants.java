@@ -8,6 +8,9 @@ public final class UriConstants {
   public static final class FhirStructureDefinitions {
     public static final String CATEGORY_URI =
         "http://hl7.org/fhir/StructureDefinition/structuredefinition-category";
+
+    public static final String AUTHORITATIVE_SOURCE_URI =
+        "http://hl7.org/fhir/StructureDefinition/artifact-authoritativeSource";
   }
 
   public static final class CodeSystem {
@@ -87,6 +90,9 @@ public final class UriConstants {
 
     public static final String RENDER_MISSING_ELEMENTS_URI =
         "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-renderMissingElements";
+
+    public static final String LIMITATIONS_URI =
+        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-limitations";
 
     public static final String MEASURE_DEFINITION_EXT_URI =
         // TODO Use this URL once liquid templates are updated:
