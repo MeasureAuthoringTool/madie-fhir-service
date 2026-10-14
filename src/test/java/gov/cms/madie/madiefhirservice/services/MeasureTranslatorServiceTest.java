@@ -1719,8 +1719,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
         measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure);
 
     List<Extension> authoritativeSourceExts =
-        measure.getExtensionsByUrl(
-            UriConstants.FhirStructureDefinitions.AUTHORITATIVE_SOURCE_URI);
+        measure.getExtensionsByUrl(UriConstants.FhirStructureDefinitions.AUTHORITATIVE_SOURCE_URI);
     assertThat(authoritativeSourceExts.size(), is(equalTo(1)));
     Extension authoritativeSourceExt = authoritativeSourceExts.get(0);
     assertInstanceOf(UriType.class, authoritativeSourceExt.getValue());
@@ -1742,5 +1741,40 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
   void testBuildAuthoritativeSourceExtReturnsNullWhenMetaDataIsNull() {
     madieMeasure.setMeasureMetaData(null);
     assertNull(measureTranslatorService.buildAuthoritativeSourceExt(madieMeasure));
+  }
+
+  @Test
+  void testCreateFhirMeasureAddsTrendingIssuesExtension() {
+    madieMeasure
+        .getMeasureMetaData()
+        .setTrendingIssues("<p>Measure trending issues<script>alert(1)</script></p>");
+
+    org.hl7.fhir.r4.model.Measure measure =
+        measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure);
+
+    List<Extension> trendingIssuesExts =
+        measure.getExtensionsByUrl(UriConstants.CqfMeasures.TRENDING_ISSUES_URI);
+    assertThat(trendingIssuesExts.size(), is(equalTo(1)));
+    Extension trendingIssuesExt = trendingIssuesExts.get(0);
+    assertInstanceOf(MarkdownType.class, trendingIssuesExt.getValue());
+    // unsafe markup is stripped, just like the other rich text metadata fields
+    assertThat(
+        trendingIssuesExt.getValue().primitiveValue(),
+        is(equalTo("<p>Measure trending issues</p>")));
+  }
+
+  @Test
+  void testBuildTrendingIssuesExtReturnsNullWhenTrendingIssuesIsBlank() {
+    madieMeasure.getMeasureMetaData().setTrendingIssues("   ");
+    assertNull(measureTranslatorService.buildTrendingIssuesExt(madieMeasure));
+
+    madieMeasure.getMeasureMetaData().setTrendingIssues(null);
+    assertNull(measureTranslatorService.buildTrendingIssuesExt(madieMeasure));
+  }
+
+  @Test
+  void testBuildTrendingIssuesExtReturnsNullWhenMetaDataIsNull() {
+    madieMeasure.setMeasureMetaData(null);
+    assertNull(measureTranslatorService.buildTrendingIssuesExt(madieMeasure));
   }
 }

@@ -140,7 +140,6 @@ public class MeasureTranslatorService {
       measure.addUseContext(
           buildIntendedVenue(madieMeasure.getMeasureMetaData().getIntendedVenue()));
     }
-
     if (Boolean.TRUE.equals(madieMeasure.getMeasureMetaData().getTelehealthEligible())) {
       measure.addUseContext(buildTelehealthEligible());
     }
@@ -189,6 +188,10 @@ public class MeasureTranslatorService {
     Extension limitationsExt = buildLimitationsExt(madieMeasure);
     if (limitationsExt != null) {
       extensions.add(limitationsExt);
+    }
+    Extension trendingIssuesExt = buildTrendingIssuesExt(madieMeasure);
+    if (trendingIssuesExt != null) {
+      extensions.add(trendingIssuesExt);
     }
     Extension authoritativeSourceExt = buildAuthoritativeSourceExt(madieMeasure);
     if (authoritativeSourceExt != null) {
@@ -265,7 +268,6 @@ public class MeasureTranslatorService {
             .setCode("venue")
             .setDisplay("Venue"));
     usageContext.setValue(new CodeableConcept(coding));
-
     return usageContext;
   }
 
@@ -282,7 +284,6 @@ public class MeasureTranslatorService {
                 .setSystem(UriConstants.CodeSystem.MEASURE_ELIGIBILITY_SYSTEM_URI)
                 .setCode("tele-health-eligible")
                 .setDisplay("Telehealth Eligible")));
-
     return usageContext;
   }
 
@@ -352,7 +353,6 @@ public class MeasureTranslatorService {
         }
       }
     }
-
     return meta;
   }
 
@@ -791,6 +791,16 @@ public class MeasureTranslatorService {
     return new Extension(
         UriConstants.CqfMeasures.LIMITATIONS_URI,
         new MarkdownType(RichTextUtil.sanitizeText(metaData.getLimitations())));
+  }
+
+  public Extension buildTrendingIssuesExt(Measure madieMeasure) {
+    MeasureMetaData metaData = madieMeasure.getMeasureMetaData();
+    if (metaData == null || StringUtils.isBlank(metaData.getTrendingIssues())) {
+      return null;
+    }
+    return new Extension(
+        UriConstants.CqfMeasures.TRENDING_ISSUES_URI,
+        new MarkdownType(RichTextUtil.sanitizeText(metaData.getTrendingIssues())));
   }
 
   public Extension buildAuthoritativeSourceExt(Measure madieMeasure) {
