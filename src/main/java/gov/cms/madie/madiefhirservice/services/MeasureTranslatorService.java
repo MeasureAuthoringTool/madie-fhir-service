@@ -52,7 +52,6 @@ public class MeasureTranslatorService {
         measure.getCopyrightElement(), madieMeasure.getMeasureMetaData().getCopyright());
     setMarkdownOrDataAbsentReason(
         measure.getDisclaimerElement(), madieMeasure.getMeasureMetaData().getDisclaimer());
-
     measure
         .setName(madieMeasure.getCqlLibraryName())
         .setTitle(RichTextUtil.sanitizeText(madieMeasure.getMeasureName()))
