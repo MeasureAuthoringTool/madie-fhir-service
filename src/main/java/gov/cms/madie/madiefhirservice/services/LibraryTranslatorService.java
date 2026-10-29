@@ -207,6 +207,6 @@ public class LibraryTranslatorService {
 
   /* rawData are bytes that are NOT base64 encoded */
   private Attachment createAttachment(String contentType, byte[] rawData) {
-    return new Attachment().setContentType(contentType).setData(rawData == null ? null : rawData);
+    return new Attachment().setContentType(contentType).setData(rawData);
   }
 }
