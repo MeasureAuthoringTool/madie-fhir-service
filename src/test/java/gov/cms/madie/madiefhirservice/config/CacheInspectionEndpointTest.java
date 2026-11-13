@@ -2,14 +2,29 @@ package gov.cms.madie.madiefhirservice.config;
 
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
+import gov.cms.madie.madiefhirservice.clients.UserRoleConverter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.caffeine.CaffeineCache;
 import org.springframework.cache.concurrent.ConcurrentMapCache;
+import org.springframework.boot.autoconfigure.AutoConfigurations;
+import org.springframework.boot.actuate.autoconfigure.endpoint.EndpointAutoConfiguration;
+import org.springframework.boot.actuate.autoconfigure.endpoint.web.WebEndpointAutoConfiguration;
+import org.springframework.boot.test.context.ConfigDataApplicationContextInitializer;
+import org.springframework.boot.test.context.runner.WebApplicationContextRunner;
+import org.springframework.boot.http.converter.autoconfigure.HttpMessageConvertersAutoConfiguration;
+import org.springframework.boot.jackson.autoconfigure.JacksonAutoConfiguration;
+import org.springframework.boot.webmvc.autoconfigure.WebMvcAutoConfiguration;
+import org.springframework.boot.webmvc.autoconfigure.DispatcherServletAutoConfiguration;
+import org.springframework.boot.webmvc.autoconfigure.actuate.web.WebMvcEndpointManagementContextConfiguration;
+import org.springframework.security.oauth2.jwt.JwtDecoder;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -20,6 +35,10 @@ import java.util.Map;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(MockitoExtension.class)
 class CacheInspectionEndpointTest {
@@ -53,7 +72,65 @@ class CacheInspectionEndpointTest {
     Map<String, Object> result = cacheInspectionEndpoint.inspect();
 
     assertThat(result).isNotNull();
-    assertThat(result).hasSize(1); // Only cacheManagerType
+    assertThat(result).containsOnlyKeys("cacheManagerType", "jvmMemory");
+  }
+
+  @Test
+  void inspectShouldIncludeJvmHeapMemory() {
+    when(mockCacheManager.getCacheNames()).thenReturn(List.of());
+    assertThat(cacheInspectionEndpoint.inspect().get("jvmMemory"))
+        .isInstanceOfSatisfying(
+            Map.class,
+            memory -> {
+              assertThat(memory.get("heapUsedBytes")).isInstanceOf(Long.class);
+              assertThat((Long) memory.get("heapUsedBytes")).isGreaterThanOrEqualTo(0);
+              assertThat((Long) memory.get("heapCommittedBytes"))
+                  .isGreaterThanOrEqualTo((Long) memory.get("heapUsedBytes"));
+              assertThat((Long) memory.get("heapMaxBytes")).isNotZero();
+            });
+  }
+
+  @Test
+  void configuredCachesShouldRecordStatsAndPreserveCapacity() {
+    CacheManager manager = new CacheConfig().cacheManager();
+    CaffeineCache cache = (CaffeineCache) manager.getCache("libraries");
+    assertThat(cache).isNotNull();
+    assertThat(cache.getNativeCache().policy().isRecordingStats()).isTrue();
+    assertThat(cache.getNativeCache().policy().eviction().orElseThrow().getMaximum())
+        .isEqualTo(500);
+  }
+
+  @ParameterizedTest
+  @ValueSource(strings = {"default", "local", "aws", "it"})
+  void actuatorShouldExposeInspectorUsingApplicationConfiguration(String profile) {
+    new WebApplicationContextRunner()
+        .withInitializer(new ConfigDataApplicationContextInitializer())
+        .withPropertyValues("spring.profiles.active=" + profile)
+        .withConfiguration(
+            AutoConfigurations.of(
+                EndpointAutoConfiguration.class,
+                WebEndpointAutoConfiguration.class,
+                DispatcherServletAutoConfiguration.class,
+                WebMvcEndpointManagementContextConfiguration.class,
+                WebMvcAutoConfiguration.class,
+                JacksonAutoConfiguration.class,
+                HttpMessageConvertersAutoConfiguration.class))
+        .withUserConfiguration(SecurityConfig.class)
+        .withBean(UserRoleConverter.class, () -> mock(UserRoleConverter.class))
+        .withBean(JwtDecoder.class, () -> mock(JwtDecoder.class))
+        .withBean(CacheManager.class, () -> new CacheConfig().cacheManager())
+        .withBean(CacheInspectionEndpoint.class)
+        .run(
+            context -> {
+              assertThat(context).hasNotFailed();
+              var mvc = MockMvcBuilders.webAppContextSetup(context).apply(springSecurity()).build();
+              mvc.perform(get("/api/actuator/cache-inspection").contextPath("/api"))
+                  .andExpect(status().isOk())
+                  .andExpect(jsonPath("$.libraries.statsEnabled").value(true))
+                  .andExpect(jsonPath("$.libraries.keys").isArray())
+                  .andExpect(jsonPath("$.jvmMemory.heapUsedBytes").isNumber())
+                  .andExpect(jsonPath("$.jvmMemory.heapMaxBytes").isNumber());
+            });
   }
 
   @Test

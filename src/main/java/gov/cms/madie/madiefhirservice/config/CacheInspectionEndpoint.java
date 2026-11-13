@@ -14,8 +14,11 @@ import org.springframework.stereotype.Component;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.lang.management.ManagementFactory;
+import java.lang.management.MemoryUsage;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.ConcurrentMap;
 
@@ -36,6 +39,13 @@ public class CacheInspectionEndpoint {
   public Map<String, Object> inspect() {
     Map<String, Object> result = new LinkedHashMap<>();
     result.put("cacheManagerType", cacheManager.getClass().getSimpleName());
+    MemoryUsage heap = ManagementFactory.getMemoryMXBean().getHeapMemoryUsage();
+    result.put(
+        "jvmMemory",
+        Map.of(
+            "heapUsedBytes", heap.getUsed(),
+            "heapMaxBytes", heap.getMax(),
+            "heapCommittedBytes", heap.getCommitted()));
 
     for (String cacheName : cacheManager.getCacheNames()) {
       Cache springCache = cacheManager.getCache(cacheName);
@@ -68,21 +78,20 @@ public class CacheInspectionEndpoint {
     cacheInfo.put("type", "CaffeineCache");
     cacheInfo.put("entryCount", nativeCache.estimatedSize());
 
-    // Stats are only available if Caffeine was built with recordStats()
-    try {
-      CacheStats stats = nativeCache.stats();
-      cacheInfo.put("hitCount", stats.hitCount());
-      cacheInfo.put("missCount", stats.missCount());
-      long totalRequests = stats.hitCount() + stats.missCount();
-      cacheInfo.put(
-          "hitRate", totalRequests > 0 ? String.format("%.2f%%", stats.hitRate() * 100) : "N/A");
-      cacheInfo.put("evictionCount", stats.evictionCount());
-      cacheInfo.put("loadCount", stats.loadCount());
-      cacheInfo.put(
-          "averageLoadPenaltyMs", String.format("%.2f", stats.averageLoadPenalty() / 1_000_000.0));
-    } catch (Exception e) {
-      cacheInfo.put("stats", "Stats recording not enabled for this cache");
-    }
+    CacheStats stats = nativeCache.stats();
+    cacheInfo.put("statsEnabled", nativeCache.policy().isRecordingStats());
+    cacheInfo.put("hitCount", stats.hitCount());
+    cacheInfo.put("missCount", stats.missCount());
+    cacheInfo.put(
+        "hitRate",
+        stats.requestCount() > 0
+            ? String.format(Locale.ROOT, "%.2f%%", stats.hitRate() * 100)
+            : "N/A");
+    cacheInfo.put("evictionCount", stats.evictionCount());
+    cacheInfo.put("loadCount", stats.loadCount());
+    cacheInfo.put(
+        "averageLoadPenaltyMs",
+        String.format(Locale.ROOT, "%.2f", stats.averageLoadPenalty() / 1_000_000.0));
 
     addMemoryEstimate(cacheEntries, cacheInfo);
     addKeys(cacheEntries, cacheInfo);
