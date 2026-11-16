@@ -1,6 +1,9 @@
 package gov.cms.madie.madiefhirservice.services;
 
+import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.rest.api.MethodOutcome;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import gov.cms.madie.madiefhirservice.constants.UriConstants;
 import gov.cms.madie.madiefhirservice.dto.CqlLibraryDetails;
 import gov.cms.madie.madiefhirservice.exceptions.CqlLibraryNotFoundException;
@@ -8,6 +11,8 @@ import gov.cms.madie.madiefhirservice.utils.BundleUtil;
 import gov.cms.madie.madiefhirservice.utils.MeasureTestHelper;
 import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
 import gov.cms.madie.models.dto.CqlLibraryDto;
+import gov.cms.madie.models.measure.DefDescPair;
+import gov.cms.madie.models.measure.Group;
 import gov.cms.madie.models.measure.Measure;
 import gov.cms.madie.models.measure.Population;
 import org.cqframework.cql.cql2elm.CqlCompilerException;
@@ -22,6 +27,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.security.Principal;
+import java.util.List;
 import java.util.Map;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -165,6 +171,78 @@ public class MeasureBundleServiceTest implements ResourceFileUtil {
     assertThat(
         measureEntryRequest.getUrl(), is(equalTo("Measure/" + madieMeasure.getCqlLibraryName())));
     assertThat(measureEntryRequest.getMethod(), is(equalTo(Bundle.HTTPVerb.POST)));
+  }
+
+  @Test
+  void testSerializedMeasureBundleContainsLinkIds() throws Exception {
+    madieMeasure =
+        MeasureTestHelper.createMadieMeasureFromJson(
+            getStringFromTestResource("/measures/madie_ratio_measure.json"));
+    madieMeasure.getMeasureMetaData().setComposite(true);
+    Group group = madieMeasure.getGroups().get(0);
+    group.setDisplayId("Group_1");
+    group.setComponents(List.of());
+    madieMeasure.setSupplementalData(
+        List.of(DefDescPair.builder().id("sde-id").definition("SDE One").build()));
+    madieMeasure.setRiskAdjustments(
+        List.of(DefDescPair.builder().id("rav-id").definition("RAV One").build()));
+    when(measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure))
+        .thenAnswer(
+            invocation ->
+                new MeasureTranslatorService()
+                    .createFhirMeasureForMadieMeasure(invocation.getArgument(0)));
+    when(humanReadableService.generateMeasureHumanReadable(any(), anyString()))
+        .thenReturn("<div xmlns=\"http://www.w3.org/1999/xhtml\">Measure</div>");
+
+    Bundle bundle =
+        measureBundleService.createMeasureBundle(
+            madieMeasure,
+            mock(Principal.class),
+            BundleUtil.MEASURE_BUNDLE_TYPE_EXPORT,
+            "token",
+            CqlCompilerException.ErrorSeverity.Error);
+    String json = FhirContext.forR4().newJsonParser().encodeResourceToString(bundle);
+    JsonNode measureJson = new ObjectMapper().readTree(json).path("entry").get(0).path("resource");
+    JsonNode groupJson = measureJson.path("group").get(0);
+    assertThat(groupJson.path("id").asText(), is("Group_1"));
+    assertJsonLinkId(groupJson, UriConstants.CqfMeasures.GROUP_LINK_ID_URI, group.getId());
+    for (int index = 0; index < group.getPopulations().size(); index++) {
+      JsonNode populationJson = groupJson.path("population").get(index);
+      Population population = group.getPopulations().get(index);
+      assertThat(populationJson.path("id").asText(), is(population.getDisplayId()));
+      assertJsonLinkId(
+          populationJson, UriConstants.CqfMeasures.POPULATION_LINK_ID_URI, population.getId());
+    }
+    JsonNode observationJson = groupJson.path("population").get(group.getPopulations().size());
+    assertJsonLinkId(
+        observationJson,
+        UriConstants.CqfMeasures.POPULATION_LINK_ID_URI,
+        group.getMeasureObservations().get(0).getId());
+    for (int index = 0; index < group.getStratifications().size(); index++) {
+      assertJsonLinkId(
+          groupJson.path("stratifier").get(index),
+          UriConstants.CqfMeasures.STRATIFIER_LINK_ID_URI,
+          group.getStratifications().get(index).getId());
+    }
+    assertJsonLinkId(
+        measureJson.path("supplementalData").get(0),
+        UriConstants.CqfMeasures.SUPPLEMENTAL_DATA_LINK_ID_URI,
+        "sde-id");
+    assertJsonLinkId(
+        measureJson.path("supplementalData").get(1),
+        UriConstants.CqfMeasures.SUPPLEMENTAL_DATA_LINK_ID_URI,
+        "rav-id");
+  }
+
+  private void assertJsonLinkId(JsonNode element, String url, String expectedId) {
+    List<JsonNode> extensions =
+        element
+            .withArray("extension")
+            .valueStream()
+            .filter(extension -> url.equals(extension.path("url").asText()))
+            .toList();
+    Assertions.assertEquals(1, extensions.size());
+    Assertions.assertEquals(expectedId, extensions.get(0).path("valueString").asText());
   }
 
   @Test
