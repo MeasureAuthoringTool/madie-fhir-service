@@ -98,7 +98,7 @@ public final class UriConstants {
         "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-trendingIssues";
 
     public static final String REPORTING_TIMING_URI =
-        "UPGRADE_NOTES.md";
+        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-reportingTiming";
 
     public static final String MEASURE_DEFINITION_EXT_URI =
         // TODO Use this URL once liquid templates are updated:
