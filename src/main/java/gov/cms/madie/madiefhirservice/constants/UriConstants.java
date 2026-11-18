@@ -97,6 +97,9 @@ public final class UriConstants {
     public static final String TRENDING_ISSUES_URI =
         "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-trendingIssues";
 
+    public static final String REPORTING_TIMING_URI =
+        "http://hl7.org/fhir/uv/cqm/StructureDefinition/cqm-reportingTiming";
+
     public static final String MEASURE_DEFINITION_EXT_URI =
         // TODO Use this URL once liquid templates are updated:
         //  "http://hl7.org/fhir/5.0/StructureDefinition/extension-Measure.term";
