@@ -45,7 +45,6 @@ public class MeasureTranslatorService {
       "{\"extension\":[{\"url\":\"http://hl7.org/fhir/StructureDefinition/data-absent-reason\",\"valueCode\":\"unknown\"}]}";
 
   public org.hl7.fhir.r4.model.Measure createFhirMeasureForMadieMeasure(Measure madieMeasure) {
-    log.info("Testing Statement for Nate and Stan");
     Organization steward = madieMeasure.getMeasureMetaData().getSteward();
     boolean isComposite = madieMeasure.getMeasureMetaData().isComposite();
     org.hl7.fhir.r4.model.Measure measure = new org.hl7.fhir.r4.model.Measure();
