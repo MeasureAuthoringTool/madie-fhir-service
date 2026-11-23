@@ -197,6 +197,10 @@ public class MeasureTranslatorService {
     if (authoritativeSourceExt != null) {
       extensions.add(authoritativeSourceExt);
     }
+    Extension reportingTimingExt = buildReportingTimingExt(madieMeasure);
+    if (reportingTimingExt != null) {
+      extensions.add(reportingTimingExt);
+    }
     // Render "None" for empty elements in liquid HR templates when true
     extensions.add(
         new Extension(UriConstants.CqfMeasures.RENDER_MISSING_ELEMENTS_URI, new BooleanType(true)));
@@ -825,6 +829,60 @@ public class MeasureTranslatorService {
     return new Extension(
         UriConstants.FhirStructureDefinitions.AUTHORITATIVE_SOURCE_URI,
         new UriType(StringUtils.trim(metaData.getAuthoritativeSource())));
+  }
+
+  /**
+   * Build the cqm-reportingTiming extension (when and how often the measure should be reported).
+   * Frequency, period and period unit are all required by the CQM Timing profile, so the extension
+   * is omitted unless all three are usable; time of day is optional. Period must also be
+   * non-negative
+   *
+   * @param madieMeasure
+   * @return the extension, or null when Reporting Time is not set, incomplete or invalid
+   */
+  public Extension buildReportingTimingExt(Measure madieMeasure) {
+    MeasureMetaData metaData = madieMeasure.getMeasureMetaData();
+    if (metaData == null
+        || metaData.getReportingTiming() == null
+        || metaData.getReportingTiming().getRepeat() == null) {
+      return null;
+    }
+    ReportingTiming.Repeat repeat = metaData.getReportingTiming().getRepeat();
+    Timing.UnitsOfTime periodUnit = toUnitsOfTime(repeat.getPeriodUnit());
+    if (repeat.getFrequency() == null
+        || repeat.getFrequency() < 1
+        || repeat.getPeriod() == null
+        || repeat.getPeriod().signum() < 0
+        || periodUnit == null) {
+      log.warn(
+          "Skipping incomplete or invalid Reporting Time for measure {}: {}",
+          madieMeasure.getId(),
+          repeat);
+      return null;
+    }
+    Timing.TimingRepeatComponent timingRepeat =
+        new Timing.TimingRepeatComponent()
+            .setFrequency(repeat.getFrequency())
+            .setPeriod(repeat.getPeriod())
+            .setPeriodUnit(periodUnit);
+    if (repeat.getTimeOfDay() != null) {
+      repeat.getTimeOfDay().stream()
+          .filter(StringUtils::isNotBlank)
+          .forEach(timingRepeat::addTimeOfDay);
+    }
+    return new Extension(
+        UriConstants.CqfMeasures.REPORTING_TIMING_URI, new Timing().setRepeat(timingRepeat));
+  }
+
+  private Timing.UnitsOfTime toUnitsOfTime(String periodUnit) {
+    if (StringUtils.isBlank(periodUnit)) {
+      return null;
+    }
+    try {
+      return Timing.UnitsOfTime.fromCode(periodUnit);
+    } catch (FHIRException ex) {
+      return null;
+    }
   }
 
   /**

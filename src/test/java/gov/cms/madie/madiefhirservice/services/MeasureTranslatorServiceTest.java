@@ -17,6 +17,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.empty;
 import static org.junit.jupiter.api.Assertions.*;
 
+import ca.uhn.fhir.context.FhirContext;
+import com.jayway.jsonpath.JsonPath;
 import gov.cms.madie.madiefhirservice.constants.UriConstants;
 import gov.cms.madie.madiefhirservice.exceptions.BundleOperationException;
 import gov.cms.madie.madiefhirservice.utils.FhirResourceHelpers;
@@ -36,11 +38,14 @@ import gov.cms.madie.models.measure.MeasureScoring;
 import gov.cms.madie.models.measure.MeasureSet;
 import gov.cms.madie.models.measure.Population;
 import gov.cms.madie.models.measure.PopulationType;
+import gov.cms.madie.models.measure.ReportingTiming;
 import gov.cms.madie.models.measure.Stratification;
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.hl7.fhir.r4.model.*;
@@ -1919,5 +1924,153 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
   void testBuildTrendingIssuesExtReturnsNullWhenMetaDataIsNull() {
     madieMeasure.setMeasureMetaData(null);
     assertNull(measureTranslatorService.buildTrendingIssuesExt(madieMeasure));
+  }
+
+  @Test
+  void testCreateFhirMeasureAddsReportingTimingExtension() {
+    madieMeasure
+        .getMeasureMetaData()
+        .setReportingTiming(buildReportingTiming(1, new BigDecimal("1"), "a", List.of("00:00:00")));
+
+    org.hl7.fhir.r4.model.Measure measure =
+        measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure);
+
+    List<Extension> reportingTimingExts =
+        measure.getExtensionsByUrl(UriConstants.CqfMeasures.REPORTING_TIMING_URI);
+    assertThat(reportingTimingExts.size(), is(equalTo(1)));
+    assertInstanceOf(Timing.class, reportingTimingExts.get(0).getValue());
+    Timing.TimingRepeatComponent repeat =
+        ((Timing) reportingTimingExts.get(0).getValue()).getRepeat();
+    assertThat(repeat.getFrequency(), is(equalTo(1)));
+    assertThat(repeat.getPeriod(), is(equalTo(new BigDecimal("1"))));
+    assertThat(repeat.getPeriodUnit(), is(equalTo(Timing.UnitsOfTime.A)));
+    assertThat(repeat.getTimeOfDay().size(), is(equalTo(1)));
+    assertThat(repeat.getTimeOfDay().get(0).getValue(), is(equalTo("00:00:00")));
+  }
+
+  @Test
+  void testReportingTimingExtensionIsEncodedAsValueTiming() {
+    madieMeasure
+        .getMeasureMetaData()
+        .setReportingTiming(buildReportingTiming(1, new BigDecimal("1"), "a", List.of("00:00:00")));
+
+    String measureJson =
+        FhirContext.forR4Cached()
+            .newJsonParser()
+            .encodeResourceToString(
+                measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure));
+
+    List<Map<String, Object>> repeats =
+        JsonPath.read(
+            measureJson,
+            "$.extension[?(@.url == '"
+                + UriConstants.CqfMeasures.REPORTING_TIMING_URI
+                + "')].valueTiming.repeat");
+    assertThat(repeats.size(), is(equalTo(1)));
+    assertThat(
+        repeats.get(0),
+        is(
+            equalTo(
+                Map.of(
+                    "frequency",
+                    1,
+                    "period",
+                    1,
+                    "periodUnit",
+                    "a",
+                    "timeOfDay",
+                    List.of("00:00:00")))));
+  }
+
+  @Test
+  void testBuildReportingTimingExtOmitsTimeOfDayWhenNotProvided() {
+    madieMeasure
+        .getMeasureMetaData()
+        .setReportingTiming(buildReportingTiming(2, new BigDecimal("1.5"), "d", null));
+
+    Extension reportingTimingExt = measureTranslatorService.buildReportingTimingExt(madieMeasure);
+
+    Timing.TimingRepeatComponent repeat = ((Timing) reportingTimingExt.getValue()).getRepeat();
+    assertThat(repeat.getFrequency(), is(equalTo(2)));
+    assertThat(repeat.getPeriod(), is(equalTo(new BigDecimal("1.5"))));
+    assertThat(repeat.getPeriodUnit(), is(equalTo(Timing.UnitsOfTime.D)));
+    assertFalse(repeat.hasTimeOfDay());
+
+    // blank entries are not time values
+    madieMeasure
+        .getMeasureMetaData()
+        .setReportingTiming(buildReportingTiming(2, new BigDecimal("1.5"), "d", List.of(" ")));
+    reportingTimingExt = measureTranslatorService.buildReportingTimingExt(madieMeasure);
+    assertFalse(((Timing) reportingTimingExt.getValue()).getRepeat().hasTimeOfDay());
+  }
+
+  @Test
+  void testBuildReportingTimingExtAllowsZeroPeriod() {
+    // period is non-negative, so zero is allowed
+    madieMeasure
+        .getMeasureMetaData()
+        .setReportingTiming(buildReportingTiming(1, BigDecimal.ZERO, "d", null));
+
+    Extension reportingTimingExt = measureTranslatorService.buildReportingTimingExt(madieMeasure);
+
+    Timing.TimingRepeatComponent repeat = ((Timing) reportingTimingExt.getValue()).getRepeat();
+    assertThat(repeat.getPeriod().signum(), is(equalTo(0)));
+  }
+
+  @Test
+  void testBuildReportingTimingExtReturnsNullWhenReportingTimingIsIncompleteOrInvalid() {
+    MeasureMetaData metaData = madieMeasure.getMeasureMetaData();
+
+    metaData.setReportingTiming(null);
+    assertNull(measureTranslatorService.buildReportingTimingExt(madieMeasure));
+
+    metaData.setReportingTiming(new ReportingTiming());
+    assertNull(measureTranslatorService.buildReportingTimingExt(madieMeasure));
+
+    metaData.setReportingTiming(buildReportingTiming(null, BigDecimal.ONE, "a", null));
+    assertNull(measureTranslatorService.buildReportingTimingExt(madieMeasure));
+
+    // frequency is a positiveInt
+    metaData.setReportingTiming(buildReportingTiming(0, BigDecimal.ONE, "a", null));
+    assertNull(measureTranslatorService.buildReportingTimingExt(madieMeasure));
+
+    metaData.setReportingTiming(buildReportingTiming(1, null, "a", null));
+    assertNull(measureTranslatorService.buildReportingTimingExt(madieMeasure));
+
+    // period must be non-negative
+    metaData.setReportingTiming(buildReportingTiming(1, new BigDecimal("-0.5"), "a", null));
+    assertNull(measureTranslatorService.buildReportingTimingExt(madieMeasure));
+
+    metaData.setReportingTiming(buildReportingTiming(1, BigDecimal.ONE, " ", null));
+    assertNull(measureTranslatorService.buildReportingTimingExt(madieMeasure));
+
+    // not a code from the FHIR units-of-time value set
+    metaData.setReportingTiming(buildReportingTiming(1, BigDecimal.ONE, "fortnight", null));
+    assertNull(measureTranslatorService.buildReportingTimingExt(madieMeasure));
+
+    // nothing is added to the measure either
+    org.hl7.fhir.r4.model.Measure measure =
+        measureTranslatorService.createFhirMeasureForMadieMeasure(madieMeasure);
+    assertThat(
+        measure.getExtensionsByUrl(UriConstants.CqfMeasures.REPORTING_TIMING_URI), is(empty()));
+  }
+
+  @Test
+  void testBuildReportingTimingExtReturnsNullWhenMetaDataIsNull() {
+    madieMeasure.setMeasureMetaData(null);
+    assertNull(measureTranslatorService.buildReportingTimingExt(madieMeasure));
+  }
+
+  private ReportingTiming buildReportingTiming(
+      Integer frequency, BigDecimal period, String periodUnit, List<String> timeOfDay) {
+    return ReportingTiming.builder()
+        .repeat(
+            ReportingTiming.Repeat.builder()
+                .frequency(frequency)
+                .period(period)
+                .periodUnit(periodUnit)
+                .timeOfDay(timeOfDay)
+                .build())
+        .build();
   }
 }
