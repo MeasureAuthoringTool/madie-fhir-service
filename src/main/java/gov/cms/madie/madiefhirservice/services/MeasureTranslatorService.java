@@ -26,7 +26,6 @@ import org.hl7.fhir.r4.model.Measure.MeasureGroupPopulationComponent;
 import org.hl7.fhir.r4.model.Measure.MeasureGroupStratifierComponent;
 import org.hl7.fhir.r4.model.Measure.MeasureSupplementalDataComponent;
 import org.hl7.fhir.r4.model.Reference;
-import org.hl7.fhir.r4.model.RelatedArtifact.RelatedArtifactType;
 import org.hl7.fhir.r4.model.*;
 import org.springframework.stereotype.Service;
 import ca.uhn.fhir.model.api.TemporalPrecisionEnum;
@@ -35,6 +34,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import static org.apache.commons.collections4.CollectionUtils.isNotEmpty;
+import static gov.cms.madie.madiefhirservice.utils.FhirResourceHelpers.buildRelatedArtifactForComponent;
+import static gov.cms.madie.madiefhirservice.utils.FhirResourceHelpers.buildRelatedArtifacts;
 
 @Slf4j
 @Service
@@ -399,6 +400,8 @@ public class MeasureTranslatorService {
     Element element =
         buildMeasureGroupComponent(
             madieGroup, measurePopulations, measureStratifications, popBasisValue);
+    element.addExtension(
+        buildLinkId(UriConstants.CqfMeasures.GROUP_LINK_ID_URI, madieGroup.getId()));
     if (scoringUnit != null) {
       element.addExtension(new Extension(UriConstants.CqfMeasures.SCORING_UNIT_URI, scoringUnit));
     }
@@ -447,6 +450,10 @@ public class MeasureTranslatorService {
                           buildRelatedArtifactForComponent(component))));
     }
     return (MeasureGroupComponent) element;
+  }
+
+  private Extension buildLinkId(String url, String id) {
+    return StringUtils.isNotBlank(id) ? new Extension(url, new StringType(id)) : null;
   }
 
   private Element buildMeasureGroupComponent(
@@ -522,8 +529,10 @@ public class MeasureTranslatorService {
                               StringUtils.isNotBlank(population.getDisplayId())
                                   ? population.getDisplayId()
                                   : population.getId()))
-                      .addExtension(buildPopulationTypeExtension(population, madieGroup));
-              // TODO: Add an extension for measure observations
+                      .addExtension(buildPopulationTypeExtension(population, madieGroup))
+                      .addExtension(
+                          buildLinkId(
+                              UriConstants.CqfMeasures.POPULATION_LINK_ID_URI, population.getId()));
             })
         .collect(Collectors.toList());
   }
@@ -560,6 +569,9 @@ public class MeasureTranslatorService {
                               StringUtils.isNotBlank(measureObservation.getDisplayId())
                                   ? measureObservation.getDisplayId()
                                   : measureObservation.getId()));
+              observationPopulation.addExtension(
+                  buildLinkId(
+                      UriConstants.CqfMeasures.POPULATION_LINK_ID_URI, measureObservation.getId()));
               if (StringUtils.isNotBlank(measureObservation.getCriteriaReference())) {
                 observationPopulation.addExtension(
                     new Extension(
@@ -615,6 +627,9 @@ public class MeasureTranslatorService {
                     for (Extension extension : extensionList) {
                       stratComponent.addExtension(extension);
                     }
+                    stratComponent.addExtension(
+                        buildLinkId(
+                            UriConstants.CqfMeasures.STRATIFIER_LINK_ID_URI, strat.getId()));
                     return stratComponent;
                   })
               .collect(Collectors.toList());
@@ -901,6 +916,10 @@ public class MeasureTranslatorService {
                             measureSupplementalDataComponent.addExtension(
                                 buildIncludeInReportTypeExtension(measureReportType)));
               }
+              measureSupplementalDataComponent.addExtension(
+                  buildLinkId(
+                      UriConstants.CqfMeasures.SUPPLEMENTAL_DATA_LINK_ID_URI,
+                      supplementalData.getId()));
               return measureSupplementalDataComponent;
             })
         .collect(Collectors.toList());
@@ -934,6 +953,10 @@ public class MeasureTranslatorService {
                             measureSupplementalDataComponent.addExtension(
                                 buildIncludeInReportTypeExtension(measureReportType)));
               }
+              measureSupplementalDataComponent.addExtension(
+                  buildLinkId(
+                      UriConstants.CqfMeasures.SUPPLEMENTAL_DATA_LINK_ID_URI,
+                      riskAdjustment.getId()));
               return measureSupplementalDataComponent;
             })
         .collect(Collectors.toList());
@@ -943,49 +966,6 @@ public class MeasureTranslatorService {
     return new Extension(
         UriConstants.CqfMeasures.INCLUDE_IN_REPORT_TYPE_URI,
         new CodeType(measureReportType.toCode()));
-  }
-
-  private List<RelatedArtifact> buildRelatedArtifacts(
-      List<gov.cms.madie.models.measure.Reference> references) {
-    return references.stream()
-        .map(
-            reference ->
-                "Justification".equalsIgnoreCase(reference.getReferenceType())
-                    ? new RelatedArtifact()
-                        .setType(
-                            RelatedArtifactType.fromCode(
-                                reference.getReferenceType().toLowerCase()))
-                        .setDisplayElement(
-                            new StringType(RichTextUtil.sanitizeText(reference.getReferenceText())))
-                    : new RelatedArtifact()
-                        .setType(
-                            RelatedArtifactType.fromCode(
-                                !"unknown".equalsIgnoreCase(reference.getReferenceType())
-                                    ? reference.getReferenceType().toLowerCase()
-                                    : ""))
-                        .setCitation(RichTextUtil.sanitizeText(reference.getReferenceText())))
-        .collect(Collectors.toList());
-  }
-
-  private RelatedArtifact buildRelatedArtifactForComponent(Component component) {
-    String display = component.getMeasureName();
-    String resourceUrl =
-        UriConstants.MADIE_URL
-            + "/Measure/"
-            + component.getMeasureLibraryName()
-            + "|"
-            + component.getMeasureVersion();
-    RelatedArtifact relatedArtifact =
-        new RelatedArtifact().setType(RelatedArtifactType.COMPOSEDOF).setResource(resourceUrl);
-    if (component.isMultiGroupComponent()) {
-      display += ", " + StringUtils.capitalize(component.getGroupDisplayId().replace("-", " "));
-      relatedArtifact.addExtension(
-          new Extension(
-              UriConstants.CqfMeasures.CQFM_GROUP_ID_URI,
-              new StringType(component.getGroupDisplayId())));
-    }
-    relatedArtifact.setDisplay(RichTextUtil.sanitizeText(display));
-    return relatedArtifact;
   }
 
   private String findReferencedPopulationDisplayIdByCriteriaReference(
