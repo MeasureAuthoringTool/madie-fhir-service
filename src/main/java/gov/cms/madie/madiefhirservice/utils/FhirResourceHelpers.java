@@ -8,6 +8,7 @@ import gov.cms.madie.models.measure.TestCasePopulationValue;
 import gov.cms.madie.models.measure.TestCaseStratificationValue;
 import org.apache.commons.lang3.StringUtils;
 import org.hl7.fhir.r4.model.*;
+import org.hl7.fhir.r4.model.RelatedArtifact.RelatedArtifactType;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
@@ -137,6 +138,50 @@ public class FhirResourceHelpers {
 
   public static String buildResourceFullUrl(String resourceType, String resourceName) {
     return madieUrl + "/" + resourceType + "/" + resourceName;
+  }
+
+  public static List<RelatedArtifact> buildRelatedArtifacts(
+      List<gov.cms.madie.models.measure.Reference> references) {
+    return references.stream()
+        .map(
+            reference ->
+                "Justification".equalsIgnoreCase(reference.getReferenceType())
+                    ? new RelatedArtifact()
+                        .setType(
+                            RelatedArtifactType.fromCode(
+                                reference.getReferenceType().toLowerCase()))
+                        .setDisplayElement(
+                            new StringType(RichTextUtil.sanitizeText(reference.getReferenceText())))
+                    : new RelatedArtifact()
+                        .setType(
+                            RelatedArtifactType.fromCode(
+                                !"unknown".equalsIgnoreCase(reference.getReferenceType())
+                                    ? reference.getReferenceType().toLowerCase()
+                                    : ""))
+                        .setCitation(RichTextUtil.sanitizeText(reference.getReferenceText())))
+        .collect(Collectors.toList());
+  }
+
+  public static RelatedArtifact buildRelatedArtifactForComponent(
+      gov.cms.madie.models.measure.Component component) {
+    String display = component.getMeasureName();
+    String resourceUrl =
+        UriConstants.MADIE_URL
+            + "/Measure/"
+            + component.getMeasureLibraryName()
+            + "|"
+            + component.getMeasureVersion();
+    RelatedArtifact relatedArtifact =
+        new RelatedArtifact().setType(RelatedArtifactType.COMPOSEDOF).setResource(resourceUrl);
+    if (component.isMultiGroupComponent()) {
+      display += ", " + StringUtils.capitalize(component.getGroupDisplayId().replace("-", " "));
+      relatedArtifact.addExtension(
+          new Extension(
+              UriConstants.CqfMeasures.CQFM_GROUP_ID_URI,
+              new StringType(component.getGroupDisplayId())));
+    }
+    relatedArtifact.setDisplay(RichTextUtil.sanitizeText(display));
+    return relatedArtifact;
   }
 
   public static String getGroupPopulationDisplayId(Group group, String popId) {

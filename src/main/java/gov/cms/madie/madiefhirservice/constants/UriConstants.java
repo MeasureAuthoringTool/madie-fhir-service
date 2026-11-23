@@ -35,6 +35,14 @@ public final class UriConstants {
   }
 
   public static final class CqfMeasures {
+    public static final String GROUP_LINK_ID_URI =
+        "http://hl7.org/fhir/5.0/StructureDefinition/extension-Measure.group.linkId";
+    public static final String POPULATION_LINK_ID_URI =
+        "http://hl7.org/fhir/5.0/StructureDefinition/extension-Measure.group.population.linkId";
+    public static final String STRATIFIER_LINK_ID_URI =
+        "http://hl7.org/fhir/5.0/StructureDefinition/extension-Measure.group.stratifier.linkId";
+    public static final String SUPPLEMENTAL_DATA_LINK_ID_URI =
+        "http://hl7.org/fhir/5.0/StructureDefinition/extension-Measure.supplementalData.linkId";
     public static final String EFFECTIVE_DATA_REQUIREMENT_URL =
         "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-effectiveDataRequirements";
     public static final String SCORING_URI =

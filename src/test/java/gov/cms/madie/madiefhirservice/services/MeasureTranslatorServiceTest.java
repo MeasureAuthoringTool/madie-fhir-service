@@ -27,6 +27,7 @@ import gov.cms.madie.madiefhirservice.utils.ResourceFileUtil;
 import gov.cms.madie.models.common.Organization;
 import gov.cms.madie.models.measure.AssociationType;
 import gov.cms.madie.models.measure.Component;
+import gov.cms.madie.models.measure.DefDescPair;
 import gov.cms.madie.models.measure.Endorsement;
 import gov.cms.madie.models.measure.Group;
 import gov.cms.madie.models.measure.Measure;
@@ -80,6 +81,146 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     String cvMeasureJson = getStringFromTestResource("/measures/madie_cv_measure.json");
     madieCVMeasure = MeasureTestHelper.createMadieMeasureFromJson(cvMeasureJson);
     ReflectionTestUtils.setField(fhirResourceHelpers, "madieUrl", "madie.cms.gov");
+  }
+
+  @Test
+  void testGroupLinkIdUsesStoredId() {
+    Group group = new Group();
+    group.setId("stored-group-id");
+    group.setDisplayId("Group_1");
+    group.setPopulations(List.of());
+
+    MeasureGroupComponent result = measureTranslatorService.buildGroups(List.of(group)).get(0);
+
+    assertEquals("Group_1", result.getId());
+    Extension linkId =
+        result.getExtensionByUrl(
+            "http://hl7.org/fhir/5.0/StructureDefinition/extension-Measure.group.linkId");
+    assertNotNull(linkId);
+    assertEquals("stored-group-id", linkId.getValue().primitiveValue());
+  }
+
+  @Test
+  void testLinkIdsForMeasureComponents() {
+    Group firstGroup = madieRatioMeasure.getGroups().get(0);
+    firstGroup.setDisplayId("Group_1");
+    Group secondGroup = firstGroup.toBuilder().id("second-group-id").displayId("Group_2").build();
+    madieRatioMeasure.setGroups(List.of(firstGroup, secondGroup));
+    madieRatioMeasure.setSupplementalData(
+        List.of(
+            DefDescPair.builder().id("sde-1").definition("SDE One").build(),
+            DefDescPair.builder()
+                .id("sde-2")
+                .definition("SDE Two")
+                .includeInReportType(List.of(MeasureReportType.INDIVIDUAL))
+                .build()));
+    madieRatioMeasure.setRiskAdjustments(
+        List.of(
+            DefDescPair.builder().id("rav-1").definition("RAV One").build(),
+            DefDescPair.builder().id("rav-2").definition("RAV Two").build()));
+
+    org.hl7.fhir.r4.model.Measure result =
+        measureTranslatorService.createFhirMeasureForMadieMeasure(madieRatioMeasure);
+
+    for (int groupIndex = 0; groupIndex < madieRatioMeasure.getGroups().size(); groupIndex++) {
+      Group source = madieRatioMeasure.getGroups().get(groupIndex);
+      MeasureGroupComponent group = result.getGroup().get(groupIndex);
+      assertEquals(source.getDisplayId(), group.getId());
+      assertLinkId(group, UriConstants.CqfMeasures.GROUP_LINK_ID_URI, source.getId());
+      for (int index = 0; index < source.getPopulations().size(); index++) {
+        Population population = source.getPopulations().get(index);
+        MeasureGroupPopulationComponent resultPopulation = group.getPopulation().get(index);
+        assertEquals(population.getDisplayId(), resultPopulation.getId());
+        assertLinkId(
+            resultPopulation, UriConstants.CqfMeasures.POPULATION_LINK_ID_URI, population.getId());
+      }
+      MeasureObservation observation = source.getMeasureObservations().get(0);
+      MeasureGroupPopulationComponent resultObservation =
+          group.getPopulation().get(source.getPopulations().size());
+      assertEquals(observation.getDisplayId(), resultObservation.getId());
+      assertLinkId(
+          resultObservation, UriConstants.CqfMeasures.POPULATION_LINK_ID_URI, observation.getId());
+      assertNotNull(
+          resultObservation.getExtensionByUrl(UriConstants.CqfMeasures.CRITERIA_REFERENCE_URI));
+      for (int index = 0; index < source.getStratifications().size(); index++) {
+        Stratification stratification = source.getStratifications().get(index);
+        MeasureGroupStratifierComponent resultStratifier = group.getStratifier().get(index);
+        assertEquals(stratification.getDisplayId(), resultStratifier.getId());
+        assertLinkId(
+            resultStratifier,
+            UriConstants.CqfMeasures.STRATIFIER_LINK_ID_URI,
+            stratification.getId());
+        assertFalse(
+            resultStratifier.getExtensionsByUrl(UriConstants.CqfMeasures.APPLIES_TO_URI).isEmpty());
+      }
+    }
+    List<String> expectedIds = List.of("sde-1", "sde-2", "rav-1", "rav-2");
+    List<String> expectedElementIds = List.of("sde-one", "sde-two", "rav-one", "rav-two");
+    assertEquals(expectedIds.size(), result.getSupplementalData().size());
+    for (int index = 0; index < expectedIds.size(); index++) {
+      var supplementalData = result.getSupplementalData().get(index);
+      assertEquals(expectedElementIds.get(index), supplementalData.getId());
+      assertLinkId(
+          supplementalData,
+          UriConstants.CqfMeasures.SUPPLEMENTAL_DATA_LINK_ID_URI,
+          expectedIds.get(index));
+    }
+    assertNotNull(
+        result
+            .getSupplementalData()
+            .get(1)
+            .getExtensionByUrl(UriConstants.CqfMeasures.INCLUDE_IN_REPORT_TYPE_URI));
+  }
+
+  @Test
+  void testMissingLinkIdsAreOmitted() {
+    Group group = madieRatioMeasure.getGroups().get(0);
+    group.setId(null);
+    group.getPopulations().get(0).setId(null);
+    group.getMeasureObservations().get(0).setId(" ");
+    group.getMeasureObservations().get(0).setCriteriaReference(null);
+    group.getStratifications().get(0).setId(null);
+    madieRatioMeasure.setSupplementalData(
+        List.of(DefDescPair.builder().definition("SDE One").build()));
+    madieRatioMeasure.setRiskAdjustments(
+        List.of(DefDescPair.builder().id(" ").definition("RAV One").build()));
+
+    org.hl7.fhir.r4.model.Measure result =
+        measureTranslatorService.createFhirMeasureForMadieMeasure(madieRatioMeasure);
+    MeasureGroupComponent resultGroup = result.getGroup().get(0);
+    assertFalse(resultGroup.hasExtension(UriConstants.CqfMeasures.GROUP_LINK_ID_URI));
+    assertFalse(
+        resultGroup
+            .getPopulation()
+            .get(0)
+            .hasExtension(UriConstants.CqfMeasures.POPULATION_LINK_ID_URI));
+    assertFalse(
+        resultGroup
+            .getPopulation()
+            .get(group.getPopulations().size())
+            .hasExtension(UriConstants.CqfMeasures.POPULATION_LINK_ID_URI));
+    assertFalse(
+        resultGroup
+            .getStratifier()
+            .get(0)
+            .hasExtension(UriConstants.CqfMeasures.STRATIFIER_LINK_ID_URI));
+    assertFalse(
+        result
+            .getSupplementalData()
+            .get(0)
+            .hasExtension(UriConstants.CqfMeasures.SUPPLEMENTAL_DATA_LINK_ID_URI));
+    assertFalse(
+        result
+            .getSupplementalData()
+            .get(1)
+            .hasExtension(UriConstants.CqfMeasures.SUPPLEMENTAL_DATA_LINK_ID_URI));
+  }
+
+  private void assertLinkId(Element element, String url, String expectedId) {
+    List<Extension> extensions = element.getExtensionsByUrl(url);
+    assertEquals(1, extensions.size());
+    assertInstanceOf(StringType.class, extensions.get(0).getValue());
+    assertEquals(expectedId, extensions.get(0).getValue().primitiveValue());
   }
 
   @Test
@@ -749,7 +890,7 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertThat(
         groupPopComponentObs.getCode().getCoding().get(0).getCode(),
         is(equalTo("measure-observation")));
-    assertThat(groupPopComponentObs.getExtension().size(), is(equalTo(2)));
+    assertThat(groupPopComponentObs.getExtension().size(), is(equalTo(3)));
     assertThat(
         groupPopComponentObs.getExtensionByUrl(UriConstants.CqfMeasures.CRITERIA_REFERENCE_URI),
         is(notNullValue()));
@@ -973,7 +1114,8 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
 
     Expression expression = measureGroupStratifierComponent.getCriteria();
     assertThat(expression, is(notNullValue()));
-    List<Extension> appliesToExt = measureGroupStratifierComponent.getExtension();
+    List<Extension> appliesToExt =
+        measureGroupStratifierComponent.getExtensionsByUrl(UriConstants.CqfMeasures.APPLIES_TO_URI);
     assertThat(appliesToExt.size(), is(2));
     Type value = appliesToExt.get(0).getValue();
     CodeableConcept codeableConcept = value.castToCodeableConcept(value);
@@ -1044,7 +1186,8 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     Expression expression = measureGroupStratifierComponent.getCriteria();
     assertThat(expression, is(notNullValue()));
 
-    List<Extension> appliesToExt = measureGroupStratifierComponent.getExtension();
+    List<Extension> appliesToExt =
+        measureGroupStratifierComponent.getExtensionsByUrl(UriConstants.CqfMeasures.APPLIES_TO_URI);
     assertThat(appliesToExt.size(), is(2));
     Type value = appliesToExt.get(0).getValue();
     CodeableConcept codeableConcept = value.castToCodeableConcept(value);
