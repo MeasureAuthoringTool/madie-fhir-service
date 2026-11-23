@@ -834,10 +834,11 @@ public class MeasureTranslatorService {
   /**
    * Build the cqm-reportingTiming extension (when and how often the measure should be reported).
    * Frequency, period and period unit are all required by the CQM Timing profile, so the extension
-   * is omitted unless all three are usable; time of day is optional.
+   * is omitted unless all three are usable; time of day is optional. Period must also be
+   * non-negative
    *
    * @param madieMeasure
-   * @return the extension, or null when Reporting Time is not set or is incomplete
+   * @return the extension, or null when Reporting Time is not set, incomplete or invalid
    */
   public Extension buildReportingTimingExt(Measure madieMeasure) {
     MeasureMetaData metaData = madieMeasure.getMeasureMetaData();
@@ -851,9 +852,12 @@ public class MeasureTranslatorService {
     if (repeat.getFrequency() == null
         || repeat.getFrequency() < 1
         || repeat.getPeriod() == null
+        || repeat.getPeriod().signum() < 0
         || periodUnit == null) {
       log.warn(
-          "Skipping incomplete Reporting Time for measure {}: {}", madieMeasure.getId(), repeat);
+          "Skipping incomplete or invalid Reporting Time for measure {}: {}",
+          madieMeasure.getId(),
+          repeat);
       return null;
     }
     Timing.TimingRepeatComponent timingRepeat =

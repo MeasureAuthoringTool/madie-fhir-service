@@ -2005,7 +2005,20 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
   }
 
   @Test
-  void testBuildReportingTimingExtReturnsNullWhenReportingTimingIsIncomplete() {
+  void testBuildReportingTimingExtAllowsZeroPeriod() {
+    // period is non-negative, so zero is allowed
+    madieMeasure
+        .getMeasureMetaData()
+        .setReportingTiming(buildReportingTiming(1, BigDecimal.ZERO, "d", null));
+
+    Extension reportingTimingExt = measureTranslatorService.buildReportingTimingExt(madieMeasure);
+
+    Timing.TimingRepeatComponent repeat = ((Timing) reportingTimingExt.getValue()).getRepeat();
+    assertThat(repeat.getPeriod().signum(), is(equalTo(0)));
+  }
+
+  @Test
+  void testBuildReportingTimingExtReturnsNullWhenReportingTimingIsIncompleteOrInvalid() {
     MeasureMetaData metaData = madieMeasure.getMeasureMetaData();
 
     metaData.setReportingTiming(null);
@@ -2022,6 +2035,10 @@ public class MeasureTranslatorServiceTest implements ResourceFileUtil {
     assertNull(measureTranslatorService.buildReportingTimingExt(madieMeasure));
 
     metaData.setReportingTiming(buildReportingTiming(1, null, "a", null));
+    assertNull(measureTranslatorService.buildReportingTimingExt(madieMeasure));
+
+    // period must be non-negative
+    metaData.setReportingTiming(buildReportingTiming(1, new BigDecimal("-0.5"), "a", null));
     assertNull(measureTranslatorService.buildReportingTimingExt(madieMeasure));
 
     metaData.setReportingTiming(buildReportingTiming(1, BigDecimal.ONE, " ", null));
