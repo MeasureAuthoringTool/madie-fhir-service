@@ -30,6 +30,7 @@ import org.hl7.fhir.r4.model.RelatedArtifact.RelatedArtifactType;
 import org.hl7.fhir.r4.model.UsageContext;
 import org.hl7.fhir.r5.context.SimpleWorkerContext;
 import org.hl7.fhir.r5.liquid.LiquidEngine;
+import org.jsoup.Jsoup;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -198,6 +199,49 @@ class HumanReadableServiceTest
     assertNotNull(generatedHumanReadable);
     assertTrue(generatedHumanReadable.contains("Clinical Venue"));
     assertTrue(generatedHumanReadable.contains("Telehealth Eligible"));
+  }
+
+  @Test
+  void terminologyRowsHaveOneHeaderAndOneContentCell() throws IOException {
+    measure.addExtension(
+        "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-effectiveDataRequirements",
+        new Reference("#effective-data-requirements"));
+    var effectiveDataRequirements = (Library) measure.getContained().get(0);
+    effectiveDataRequirements.addRelatedArtifact(
+        new RelatedArtifact()
+            .setType(RelatedArtifactType.DEPENDSON)
+            .setDisplay("Value set Non Invasive Oxygen Therapy Device Codes")
+            .setResource("http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1170.57"));
+    effectiveDataRequirements.addRelatedArtifact(
+        new RelatedArtifact()
+            .setType(RelatedArtifactType.DEPENDSON)
+            .setDisplay("Code system Value Codes")
+            .setResource("http://example.org/CodeSystem/value-codes"));
+
+    var realEngine =
+        new LiquidEngine(new SimpleWorkerContext.SimpleWorkerContextBuilder().build(), null);
+    realEngine.setIncludeResolver(this);
+    var html = new HumanReadableService(realEngine).generateMeasureHumanReadable(measure, "test");
+    var rows = Jsoup.parse(html).select("tr");
+
+    var valueSetRow =
+        rows.stream()
+            .filter(
+                row -> row.text().contains("Value set Non Invasive Oxygen Therapy Device Codes"))
+            .findFirst()
+            .orElseThrow();
+    assertEquals(2, valueSetRow.children().size());
+    assertEquals("Value Set", valueSetRow.child(0).text());
+    assertEquals("td", valueSetRow.child(1).tagName());
+
+    var codeSystemRow =
+        rows.stream()
+            .filter(row -> row.text().contains("Code system Value Codes"))
+            .findFirst()
+            .orElseThrow();
+    assertEquals(2, codeSystemRow.children().size());
+    assertEquals("Code System", codeSystemRow.child(0).text());
+    assertEquals("td", codeSystemRow.child(1).tagName());
   }
 
   /** Pins the sample-content-ig template release; update this test on each version upgrade. */
